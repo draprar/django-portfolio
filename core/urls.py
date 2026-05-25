@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import HomeView, ContactView, health_check
+
+from .views import ContactView, HomeView, health_check
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),

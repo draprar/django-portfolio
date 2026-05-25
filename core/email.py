@@ -1,8 +1,9 @@
 import logging
-import sib_api_v3_sdk
-from sib_api_v3_sdk.rest import ApiException
-from django.conf import settings
+
 import bleach
+import sib_api_v3_sdk
+from django.conf import settings
+from sib_api_v3_sdk.rest import ApiException
 
 logger = logging.getLogger(__name__)
 

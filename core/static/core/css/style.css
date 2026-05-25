@@ -1,134 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* ── Design tokens ──────────────────────────────────────────────────────────── */
 :root {
-    --primary: #495057;
-    --dark: #2c3e50;
-    --light: #f8f9fa;
-  }
+  --primary: #c4922a;
+  --dark:    #0f1117;
+  --surface: #1a1e27;
+  --light:   #e8e8e8;
+  --muted:   #8a8f9a;
+  --border:  rgba(255, 255, 255, 0.08);
+}
 
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--light);
-    color: #333;
-    scroll-behavior: smooth;
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--dark);
+  color: var(--light);
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
 
-  html, body {
-    overflow-x: hidden;
-  }
+html, body { overflow-x: hidden; }
 
-  .right {
-    margin-left: -0.5px;
-  }
+/* ── Page loader ────────────────────────────────────────────────────────────── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-  .navbar-nav .nav-link {
-    position: relative;
-    color: var(--dark);
-    transition: color 0.3s;
-    padding-bottom: 4px;
-    display: inline-block;
-  }
+.spinner-border {
+  border-color: var(--primary) transparent var(--primary) transparent !important;
+}
+
+/* ── Navbar — transparent by default, frosted glass on scroll ───────────────── */
+.navbar {
+  background: transparent;
+  box-shadow: none;
+  border-bottom: none;
+  backdrop-filter: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1030;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 12, 18, 0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: none;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--light) !important;
+  transition: color 0.25s;
+}
+.navbar-brand:hover { color: var(--primary) !important; }
+
+/* Animated underline on nav links */
+.navbar-nav .nav-link {
+  position: relative;
+  color: var(--light);
+  transition: color 0.3s;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after { transform: scaleX(1); }
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active       { color: var(--primary); }
+
+/* Keep collapse transparent until Bootstrap adds .show */
+.navbar-collapse {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: none;
+}
+
+/* Inline SVG hamburger recolored for dark backgrounds */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232,232,232,0.85%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* ── Mobile navbar — brand left / lang center / burger right ────────────────── */
+@media (max-width: 991.98px) {
 
   .navbar {
-    background: transparent;
-    box-shadow: none;
-    border-bottom: none;
-    backdrop-filter: none;
-    transition: background 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
-    z-index: 1030;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    min-height: 60px;
   }
 
-  .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-bottom: none;
+  .navbar .container { position: relative; } /* anchor for absolute children */
+
+  .navbar-brand {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1060;
+    white-space: nowrap;
   }
 
-  .navbar-collapse {
-    width: 100%;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    transition: all 0.3s ease;
+  .navbar-toggler {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1070;
+  }
+
+  .lang-switcher.d-lg-none {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1055;
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .lang-switcher.d-lg-none .lang-btn {
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+    min-width: 38px;
     text-align: center;
-    background: transparent !important;
-    box-shadow: none !important;
-    transition: none;
   }
 
-  @media (max-width: 991.98px) {
-    .navbar-collapse {
-      position: fixed;
-      top: 56px;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      height: auto;
-      overflow-y: visible;
-    }
-
-    .navbar-collapse.show .navbar-nav {
-	  background: white;
-	  padding: 1rem 0;
-	  border-radius: 0 0 10px 10px;
-	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	}
-	.navbar-collapse.show {
-	  background: white;
-	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* jak navbar-nav */
-	  border-radius: 0 0 10px 10px;
-	}
+  /* Dropdown panel anchored directly below the navbar bar */
+  .navbar-collapse {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    z-index: 1040;
+    height: auto;
+    overflow-y: visible;
   }
-@media (max-width: 991.98px) {
+
   .navbar-collapse.show {
-    background: white;
+    background: #1a1e27 !important;
     padding-bottom: 1rem;
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   }
+
+  .navbar-collapse.show .navbar-nav {
+    background: #1a1e27;
+    padding: 1rem 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Override Bootstrap's default link color inside the dark dropdown */
+  .navbar-collapse.show .navbar-nav .nav-link { color: var(--light); }
+
+  .navbar-collapse.show .navbar-nav .nav-link:hover,
+  .navbar-collapse.show .navbar-nav .nav-link.active { color: var(--primary); }
 
   .extra-mobile-links {
     padding: 0 1rem;
-    background: white;
+    background: #1a1e27;
   }
 
   .extra-mobile-links a {
-    color: var(--dark);
+    color: var(--light);
     text-decoration: underline dotted;
     transition: color 0.2s;
   }
 
-  .extra-mobile-links a:hover {
-    color: var(--primary);
-  }
+  .extra-mobile-links a:hover { color: var(--primary); }
 }
-  .navbar-nav .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 100%;
-    background-color: var(--primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease-in-out;
-  }
 
-  .navbar-nav .nav-link:hover::after,
-  .navbar-nav .nav-link.active::after {
-    transform: scaleX(1);
-  }
+/* ── Language switcher ──────────────────────────────────────────────────────── */
+.lang-switcher { display: flex; gap: 0.5rem; }
 
-  .navbar-nav .nav-link:hover,
-  .navbar-nav .nav-link.active {
-    color: var(--primary);
-  }
+@media (max-width: 991.98px) { .lang-switcher { justify-content: center; margin-top: 1rem; } }
+@media (min-width: 992px)    { .lang-switcher { margin-left: 1rem; } }
 
-  .split-section {
+.lang-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.btn-outline-secondary {
+  color: var(--light);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Hero split section ─────────────────────────────────────────────────────── */
+.split-section {
   display: flex;
   height: 80vh;
   max-height: 600px;
@@ -139,24 +227,24 @@
   flex-wrap: wrap;
 }
 
+/*
+ * position:relative + overflow:hidden on every .half (not just .left) so the
+ * absolutely-positioned canvas elements are always clipped to their container.
+ */
 .half {
   flex: 1 0 50%;
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
   min-height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.left {
-  background-image: url('../img/left.png');
-  background-position: right center;
-}
+.left  { background-image: url('../img/left.png');  background-position: right center; }
+.right { background-image: url('../img/right.png'); background-position: left center; margin-left: -0.5px; }
 
-.right {
-  background-image: url('../img/right.png');
-  background-position: left center;
-}
-
+/* ── Hero text boxes ────────────────────────────────────────────────────────── */
 .text-box {
   position: absolute;
   top: 50%;
@@ -174,13 +262,8 @@
   z-index: 2;
 }
 
-.left-text {
-  left: 4%;
-}
-
-.right-text {
-  right: 4%;
-}
+.left-text  { left: 4%; }
+.right-text { right: 4%; }
 
 .text-box h2 {
   font-size: 1.3rem;
@@ -190,13 +273,27 @@
   text-wrap: balance;
 }
 
+/* Gold accent bar — mirrors the section h2::after treatment */
+.text-box h2::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), #e0b060);
+  margin: 6px auto 8px;
+  border-radius: 2px;
+}
+
 .text-box p {
   font-size: 1rem;
   margin: 0;
   line-height: 1.5;
 }
 
+/* ── Hero — mobile layout ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
+
+  /* Stack images side-by-side; text boxes reflow below via .split-text-boxes-mobile */
   .split-section {
     flex-direction: row;
     flex-wrap: wrap-reverse;
@@ -206,306 +303,134 @@
   .half {
     width: 50%;
     height: 40vh;
-    background-size: auto 100%;   /* jak na desktopie */
+    background-size: auto 100%;
     background-repeat: no-repeat;
   }
 
-  .left {
-    background-position: right center; /* przyklei lewy obraz do środka */
-  }
+  .left  { background-position: right center; }
+  .right { background-position: left center; }
 
-  .right {
-    background-position: left center;  /* przyklei prawy obraz do środka */
-  }
+  /* Hide in-image boxes; they're duplicated outside the .half elements */
+  .half .text-box { display: none; }
 
+  /* Reflow as centered block elements beneath the images */
   .text-box {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
+    top: auto; left: auto; right: auto;
     transform: none;
     width: 90%;
     margin: 0.75rem auto;
-    background: rgba(0, 0, 0, 0.55); /* taki jak na desktopie */
-    backdrop-filter: blur(5px);
-    color: white;
-    padding: 20px 24px;
-    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 20px 24px;
     font-size: 0.95rem;
   }
 
   .left-text,
-  .right-text {
-    margin-bottom: 1rem;
-    width: 90%;
-  }
+  .right-text { margin-bottom: 1rem; width: 90%; }
 
-  .text-box h2 {
-    font-size: 1.1rem;
-  }
+  .text-box h2 { font-size: 1.1rem; }
+  .text-box p  { font-size: 0.9rem; }
 
-  .text-box p {
-    font-size: 0.9rem;
-  }
+  /* Only unique overrides for the out-of-hero wrapper */
+  .split-text-boxes-mobile .text-box     { padding: 16px; max-width: 100%; }
+  .split-text-boxes-mobile .text-box h2  { margin-bottom: 0.5rem; }
+
+  /* Section spacing tightened on mobile */
+  section    { padding-top: 60px; padding-bottom: 60px; }
+  section h2 { font-size: 1.65rem; margin-bottom: 0.4rem; }
 }
 
-  .card-style {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: 0.3s;
-  }
+/* ── Hero — desktop refinements ─────────────────────────────────────────────── */
+@media (min-width: 992px) {
+  .left-text  { left: 3%;  margin-left: 2rem; }
+  .right-text { right: 3%; margin-right: 2rem; }
 
-  .card-style:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 20px rgba(73, 80, 87, 0.15);
-  }
-
-  footer {
-    background: var(--dark);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-  }
-
-  .social-icons a {
-    color: white;
-    margin: 0 10px;
-    font-size: 20px;
-    transition: color 0.3s;
-    text-decoration: none;
-  }
-
-  .social-icons a:hover {
-    color: var(--primary);
-  }
-
-  footer .social-icons i {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
-  }
-
-  .btn-primary {
-    background-color: var(--primary);
-    border-color: var(--primary);
-  }
-
-  .btn-primary:hover {
-    background-color: #343a40;
-    border-color: #343a40;
-  }
-
-  .spinner-border {
-    border-color: var(--primary) transparent var(--primary) transparent !important;
-  }
-
-  #loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-
-  section {
-    padding: 4rem 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    scroll-margin-top: 100px;
-  }
-
-  section h2 {
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .gap-4 > .col-md-3,
-  .gap-4 > .col-md-4,
-  .gap-4 > .col-md-6 {
-    margin-bottom: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    section {
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-
-    section h2 {
-      margin-bottom: 30px;
-    }
-  }
-
-  .lang-switcher {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  @media (max-width: 991.98px) {
-    .lang-switcher {
-      justify-content: center;
-      margin-top: 1rem;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .lang-switcher {
-      margin-left: 1rem;
-    }
-  }
-  @media (min-width: 992px) {
-	  .left-text {
-		left: 3%;
-		margin-left: 2rem;
-	  }
-
-	  .right-text {
-		right: 3%;
-		margin-right: 2rem;
-	  }
-
-	  .text-box {
-		max-width: 360px;
-		padding: 28px 32px;
-		font-size: 1.05rem;
-	  }
-
-	  .text-box h2 {
-		font-size: 1.4rem;
-	  }
-
-	  .text-box p {
-		font-size: 1.05rem;
-	  }
-	}
-	@media (max-width: 768px) {
-	  .split-text-boxes-mobile .text-box {
-		background: rgba(0, 0, 0, 0.55);
-		backdrop-filter: blur(5px);
-		color: white;
-		padding: 16px;
-		border-radius: 12px;
-		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-		font-size: 0.95rem;
-		max-width: 100%;
-	  }
-
-	  .split-text-boxes-mobile .text-box h2 {
-		font-size: 1.1rem;
-		margin-bottom: 0.5rem;
-		font-weight: 700;
-	  }
-
-	  .split-text-boxes-mobile .text-box p {
-		font-size: 0.9rem;
-		margin: 0;
-	  }
-	  .half .text-box {
-		display: none;
-	  }
-	}
-	.half.left {
-	  position: relative;
-	  overflow: hidden;
-	}
-
-	#matrixCanvas {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;   /* dopasowane do .half.left */
-	  height: 100%;
-	  z-index: 1;
-	  pointer-events: none;
-	  mix-blend-mode: screen; /* efekt przezroczystości na twarzy */
-	}
-
-	#glitchCanvas {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-      mix-blend-mode: screen; /* <<< najważniejsze — jak na lewej stronie */
-    }
-
-	.card-style:hover {
-	  transform: translateY(-5px);
-	  border-color: var(--primary);
-	  box-shadow: 0 10px 20px rgba(73, 80, 87, 0.15);
-	  cursor: pointer;
-	}
-a:focus:not(:focus-visible),
-button:focus:not(:focus-visible) {
-  outline: none;
+  .text-box    { max-width: 360px; padding: 28px 32px; font-size: 1.05rem; }
+  .text-box h2 { font-size: 1.4rem; }
+  .text-box p  { font-size: 1.05rem; }
 }
 
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: 3px;
+/* ── Canvas overlays ────────────────────────────────────────────────────────── */
+/*
+ * mix-blend-mode: multiply — glyphs invisible on dark image areas,
+ * visible on bright (face) areas. The JS fade uses white fills so
+ * the trail dissolves cleanly back to the underlying image.
+ * Both canvases share the same blend strategy for visual consistency.
+ */
+#matrixCanvas,
+#glitchCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
-.lang-btn.active {
-  background-color: var(--primary);
-  color: white;
-}
-ul.list-inline.small a {
-  color: inherit;
-  text-decoration: underline dotted;
-  margin: 0 0.5rem;
-  transition: color 0.2s;
+/* ── Sections ───────────────────────────────────────────────────────────────── */
+section {
+  padding: 4rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
 }
 
-ul.list-inline.small a:hover {
-  color: var(--primary);
-}
-.dropdown-menu a {
-  font-size: 0.9rem;
+/* Playfair Display adds editorial weight vs the Montserrat body text */
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--light);
+  margin-bottom: 0.4rem;
 }
 
-.dropdown-toggle::after {
-  margin-left: 0.3rem;
+section h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), #e0b060);
+  margin: 10px auto 36px;
+  border-radius: 2px;
 }
-.dropdown-menu {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  padding: 0.5rem 0;
+
+.gap-4 > .col-md-3,
+.gap-4 > .col-md-4,
+.gap-4 > .col-md-6 { margin-bottom: 2rem; }
+
+/* ── Cards ──────────────────────────────────────────────────────────────────── */
+.card-style {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: var(--light);
+  transition: 0.3s;
 }
-.dropdown-item:focus,
-.dropdown-item:focus-visible {
-  outline: 2px solid var(--primary); /* lub np. #495057 */
-  outline-offset: 2px;
-  border-radius: 4px;
-  background-color: rgba(73, 80, 87, 0.1); /* lekki highlight tła */
+
+.card-style:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
-.dropdown-item:hover {
-  background-color: rgba(0, 0, 0, 0.05); /* subtelny efekt jak na navbarze */
-  color: var(--primary); /* podkreślenie koloru jak reszta nav-linków */
-}
+
+/* Bootstrap .card dark-theme overrides */
+.card                         { background: var(--surface) !important; border: 1px solid var(--border) !important; color: var(--light) !important; }
+.card-text, .card .text-muted { color: var(--muted) !important; }
+
 .project-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-radius: 12px;
 }
+
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  border-color: var(--primary) !important;
 }
 
 .project-thumb {
@@ -516,12 +441,99 @@ ul.list-inline.small a:hover {
 }
 
 .project-thumb.placeholder {
-  background: #f8f9fa;
+  background: #22273a;
   height: 180px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+.btn-primary       { background-color: var(--primary); border-color: var(--primary); font-weight: 600; }
+.btn-primary:hover { background-color: #a8791f; border-color: #a8791f; }
+
+.btn-dark       { background-color: #22273a; border-color: #22273a; color: var(--light); font-weight: 600; transition: background 0.2s, border-color 0.2s; }
+.btn-dark:hover { background-color: var(--primary); border-color: var(--primary); color: #fff; }
+
+/* ── Contact form ───────────────────────────────────────────────────────────── */
+#contact .form-control {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--light);
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#contact .form-control::placeholder { color: var(--muted); }
+
+#contact .form-control:focus {
+  background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(196, 146, 42, 0.18);
+  color: var(--light);
+  outline: none;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────────── */
+footer {
+  background: #080a0f;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  padding: 36px 20px;
+  border-top: 1px solid rgba(196, 146, 42, 0.2);
+}
+
+footer p                   { font-size: 0.85rem; margin-bottom: 14px; }
+footer .social-icons i     { display: inline-block; vertical-align: middle; line-height: 1; }
+
+.social-icons a {
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 10px;
+  font-size: 20px;
+  transition: color 0.25s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.social-icons a:hover { color: var(--primary); transform: translateY(-2px); }
+
+/* ── Dropdown ───────────────────────────────────────────────────────────────── */
+.dropdown-menu {
+  background: #1a1e27;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  border: 1px solid var(--border);
+}
+
+.dropdown-menu a        { font-size: 0.9rem; color: var(--light); }
+.dropdown-toggle::after { margin-left: 0.3rem; }
+
+.dropdown-item:hover { background-color: rgba(196, 146, 42, 0.1); color: var(--primary); }
+
+.dropdown-item:focus,
+.dropdown-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+  background-color: rgba(196, 146, 42, 0.1);
+}
+
+/* ── Focus management ───────────────────────────────────────────────────────── */
+/* Suppress ring on mouse click; preserve it for keyboard navigation */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) { outline: none; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ── Utilities ──────────────────────────────────────────────────────────────── */
+
+/* Honeypot anti-spam field — off-screen, invisible to users */
 .hp-field {
   position: absolute !important;
   left: -9999px !important;
@@ -530,59 +542,12 @@ ul.list-inline.small a:hover {
   height: 1px !important;
   overflow: hidden !important;
 }
-/* === MOBILE NAVBAR — brand left / lang center / burger right + fixed spacing === */
-@media (max-width: 991.98px) {
 
-  .navbar {
-    padding-top: 0.8rem;        /* przywraca odstęp pionowy */
-    padding-bottom: 0.8rem;
-    min-height: 60px;           /* zapobiega spłaszczeniu po absolute */
-  }
-
-  .navbar .container {
-    position: relative;         /* anchor dla elementów absolutnych */
-  }
-
-  /* LEWO — Walery */
-  .navbar-brand {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1060;
-    white-space: nowrap;
-  }
-
-  /* PRAWO — Burger */
-  .navbar-toggler {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1070;
-  }
-
-  /* ŚRODEK — EN / PL */
-  .lang-switcher.d-lg-none {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1055;
-    display: flex;
-    gap: 0.4rem;
-  }
-
-  /* przyciski językowe — aby nie rozpychały navbaru */
-  .lang-switcher.d-lg-none .lang-btn {
-    padding-left: 0.45rem;
-    padding-right: 0.45rem;
-    min-width: 38px;
-    text-align: center;
-  }
-
-  /* rozwinięte menu nad treścią, ale pod togglerem */
-  .navbar-collapse {
-    z-index: 1040;
-  }
+ul.list-inline.small a {
+  color: inherit;
+  text-decoration: underline dotted;
+  margin: 0 0.5rem;
+  transition: color 0.2s;
 }
+
+ul.list-inline.small a:hover { color: var(--primary); }

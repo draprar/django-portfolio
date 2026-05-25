@@ -5,11 +5,11 @@ All tests are pure unit tests. No database access. All external dependencies are
 """
 
 import json
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
+
 import pytest
 from django.core.exceptions import ValidationError
 from django.http import HttpRequest
-from django.test import RequestFactory
 
 
 # ---------------------------------------------------------------------
@@ -56,8 +56,8 @@ def test_contact_form_honeypot_blocks():
 
 def test_contact_form_valid_calls_save(monkeypatch):
     """Ensure valid form calls model save()."""
-    from core.forms import ContactForm
     from core import models
+    from core.forms import ContactForm
 
     monkeypatch.setattr(models.Contact, "save", lambda self, *a, **kw: None)
 
@@ -107,9 +107,9 @@ def test_homeview_get_uses_render_and_projects(monkeypatch):
 
 
 def test_homeview_get_handles_database_error(monkeypatch):
-    import core.views as views_mod
-
     from django.db import DatabaseError
+
+    import core.views as views_mod
 
     monkeypatch.setattr(
         "core.views.Project",

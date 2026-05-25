@@ -1,7 +1,8 @@
-from django.db import models
-from django.core.validators import FileExtensionValidator
 from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
+from django.db import models
 from django.utils.translation import gettext_lazy as _
+
 
 def validate_file_size(file):
     max_mb = 5
@@ -40,7 +41,12 @@ class Contact(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     message = models.TextField()
-    submitted_at = models.DateTimeField(auto_now_add=True)
+    submitted_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ["-submitted_at"]
+        verbose_name = "Contact Submission"
+        verbose_name_plural = "Contact Submissions"
 
     def __str__(self):
-        return f"Message from {self.name}"
+        return f"Message from {self.name} ({self.submitted_at.strftime('%Y-%m-%d %H:%M')})"

@@ -4,24 +4,47 @@ from django.conf import settings
 from django.db import DatabaseError
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.views import View
 from django.utils.decorators import method_decorator
 from django.utils.html import escape
-
+from django.views import View
 from django_ratelimit.decorators import ratelimit
 
+from .email import send_brevo_email
 from .forms import ContactForm
 from .models import Project
-from .email import send_brevo_email
 
 logger = logging.getLogger(__name__)
 
 
 
 def health_check(request):
+    """
+    Health check endpoint for monitoring and deployment verification.
+
+    Returns:
+        JsonResponse: {"status": "ok"} with 200 status code if backend is running.
+
+    Args:
+        request: HttpRequest object
+
+    Use case: Called by monitoring services (e.g., Render, health probes) to verify
+    the application is responsive.
+    """
     return JsonResponse({"status": "ok"})
 
 class HomeView(View):
+    """
+    Main portfolio page view.
+
+    - Loads all projects from database
+    - Renders contact form for user submissions
+    - Gracefully handles database unavailability to keep homepage online
+
+    Security:
+    - Database errors are caught and logged without exposing details to users
+    - Projects list degrades to empty list if database is temporarily down
+    - Maintains service availability (fail-open approach)
+    """
     template_name = "core/index.html"
 
     def get(self, request):

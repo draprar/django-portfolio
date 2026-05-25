@@ -1,158 +1,139 @@
-// TWO CANVASES: left = binary matrix stream with trail, right = art-style mono symbols
 (() => {
-    // Canvas elements
-    const leftCanvas = document.getElementById("matrixCanvas");
-    const rightCanvas = document.getElementById("glitchCanvas");
+  const leftCanvas  = document.getElementById("matrixCanvas");
+  const rightCanvas = document.getElementById("glitchCanvas");
 
-    // Abort safely if matrix is not present on this page
-    if (!leftCanvas || !rightCanvas) {
-      // Script loaded globally, but matrix not used here
-      // Exit without errors
-      return;
-    }
+  // Exit silently — script is loaded globally but matrix is only used on the home page
+  if (!leftCanvas || !rightCanvas) return;
 
-    const leftCtx = leftCanvas.getContext("2d");
-    const rightCtx = rightCanvas.getContext("2d");
-    const leftContainer = leftCanvas.parentElement;
-    const rightContainer = rightCanvas.parentElement;
+  const leftCtx  = leftCanvas.getContext("2d");
+  const rightCtx = rightCanvas.getContext("2d");
+  const leftContainer  = leftCanvas.parentElement;
+  const rightContainer = rightCanvas.parentElement;
 
-    // ----- CONFIG -----
-    const pageBackgroundColor = "#0f0f0f"; // page background hex
-    const glyphColor = "#888888";          // glyph color
-    const fadeAlpha = 0.05;                // trail strength
-    // --------------------------------------------------
+  // ── Config ────────────────────────────────────────────────────────────────
+  //
+  // Both canvases use mix-blend-mode: multiply (set in CSS).
+  // Fade fills must be WHITE, not dark — white × image = image, so the trail
+  // dissolves cleanly back to the underlying photo without tinting the background.
+  // Gray glyphs: glyph × dark-bg ≈ invisible | glyph × bright-face = visible.
+  //
+  const GLYPH_COLOR = "#e8e8e8";
+  const FADE_ALPHA  = 0.12;           // higher = shorter trail
+  const FADE_COLOR  = `rgba(255, 255, 255, ${FADE_ALPHA})`;
 
-    // Font sizes (density)
-    const fontSizeLeft = 16;
-    const fontSizeRight = 18;
+  const FONT_LEFT  = 32;
+  const FONT_RIGHT = 36;
 
-    // Matrix column counters and rain drops
-    let columnsLeft = 0;
-    let dropsLeft = [];
-    let columnsRight = 0;
-    let dropsRight = [];
+  // ── Glyph sets ────────────────────────────────────────────────────────────
+  const GLYPHS_LEFT  = ["0", "1"];
+  const GLYPHS_RIGHT = [
+    "✦", "✧", "✎", "✐", "✒", "✏",
+    "★", "☆", "◆", "◇", "▲", "△", "●", "○"
+  ];
 
-    // Left side uses binary stream
-    const lettersLeft = "01".split("");
+  // ── State ─────────────────────────────────────────────────────────────────
+  let columnsLeft  = 0, dropsLeft  = [];
+  let columnsRight = 0, dropsRight = [];
+  let matrixEnabled = true;
+  let glitchEnabled = false;
 
-    // Right side uses mono-friendly unicode symbols
-    const lettersRight = [
-      "🔧","🔩","🏭","⚙️","🔌",
-      "🐍","💻","⌨️","🧠",
-      "📊","📈","📉","📑","🤖",
-      "📝","📘","📄","📂",
-      "🎨","✏️","🖌️","🧩","✒️"
-    ];
+  // ── Resize ────────────────────────────────────────────────────────────────
+  function resizeAll() {
+    leftCanvas.width   = leftContainer.offsetWidth;
+    leftCanvas.height  = leftContainer.offsetHeight;
+    columnsLeft  = Math.max(1, Math.floor(leftCanvas.width / FONT_LEFT));
+    dropsLeft    = Array(columnsLeft).fill(1);
 
-    // Toggles
-    let matrixEnabled = true;
-    let glitchEnabled = false;
+    rightCanvas.width  = rightContainer.offsetWidth;
+    rightCanvas.height = rightContainer.offsetHeight;
+    columnsRight = Math.max(1, Math.floor(rightCanvas.width / FONT_RIGHT));
+    dropsRight   = Array.from(
+      { length: columnsRight },
+      () => -Math.floor(Math.random() * 100)  // staggered start positions
+    );
+  }
 
-    // Utility: convert hex to rgba
-    function hexToRgba(hex, alpha = 1) {
-      let h = hex.replace("#", "");
-      if (h.length === 3) {
-        h = h.split("").map(ch => ch + ch).join("");
-      }
-      const intVal = parseInt(h, 16);
-      const r = (intVal >> 16) & 255;
-      const g = (intVal >> 8) & 255;
-      const b = intVal & 255;
-      return `rgba(${r},${g},${b},${alpha})`;
-    }
-
-    const fadeColor = hexToRgba(pageBackgroundColor, fadeAlpha);
-    const glyphFill = glyphColor;
-
-    // Resize canvases
-    function resizeAll() {
-      // LEFT
-      leftCanvas.width = leftContainer.offsetWidth;
-      leftCanvas.height = leftContainer.offsetHeight;
-      columnsLeft = Math.max(1, Math.floor(leftCanvas.width / fontSizeLeft));
-      dropsLeft = Array(columnsLeft).fill(1);
-
-      // RIGHT
-      rightCanvas.width = rightContainer.offsetWidth;
-      rightCanvas.height = rightContainer.offsetHeight;
-      columnsRight = Math.max(1, Math.floor(rightCanvas.width / fontSizeRight));
-      dropsRight = Array.from(
-        { length: columnsRight },
-        () => -Math.floor(Math.random() * 100)
-      );
-    }
-
-    // Debounced resize
+  // ResizeObserver fires on container layout changes (mobile, orientation, etc.)
+  // Falls back to window resize for older browsers
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => {
+      clearTimeout(window._matrixResizeTimeout);
+      window._matrixResizeTimeout = setTimeout(resizeAll, 80);
+    });
+    ro.observe(leftContainer);
+    ro.observe(rightContainer);
+  } else {
     window.addEventListener("resize", () => {
       clearTimeout(window._matrixResizeTimeout);
       window._matrixResizeTimeout = setTimeout(resizeAll, 120);
     });
+  }
 
-    document.addEventListener("DOMContentLoaded", resizeAll);
-    resizeAll(); // safety run
+  document.addEventListener("DOMContentLoaded", resizeAll);
+  resizeAll();
 
-    // LEFT MATRIX
-    function drawMatrix() {
-      if (!matrixEnabled) return;
+  // ── Draw functions ────────────────────────────────────────────────────────
 
-      leftCtx.fillStyle = fadeColor;
-      leftCtx.fillRect(0, 0, leftCanvas.width, leftCanvas.height);
+  function drawMatrix() {
+    if (!matrixEnabled) return;
 
-      leftCtx.fillStyle = glyphFill;
-      leftCtx.font = `${fontSizeLeft}px monospace`;
-      leftCtx.textBaseline = "top";
+    // White fill fades previous glyphs toward white each frame.
+    // With multiply blend mode, white × image = image → visually transparent.
+    leftCtx.fillStyle = FADE_COLOR;
+    leftCtx.fillRect(0, 0, leftCanvas.width, leftCanvas.height);
 
-      dropsLeft.forEach((y, i) => {
-        const text = lettersLeft[Math.floor(Math.random() * lettersLeft.length)];
-        leftCtx.fillText(text, i * fontSizeLeft, (y - 1) * fontSizeLeft);
+    leftCtx.fillStyle    = GLYPH_COLOR;
+    leftCtx.font         = `${FONT_LEFT}px monospace`;
+    leftCtx.textBaseline = "top";
 
-        if (y * fontSizeLeft > leftCanvas.height && Math.random() > 0.975) {
-          dropsLeft[i] = 0;
-        }
-        dropsLeft[i]++;
-      });
-    }
+    dropsLeft.forEach((y, i) => {
+      const char = GLYPHS_LEFT[Math.floor(Math.random() * GLYPHS_LEFT.length)];
+      leftCtx.fillText(char, i * FONT_LEFT, (y - 1) * FONT_LEFT);
 
-    // RIGHT ART MATRIX
-    function drawArtMatrix() {
-      if (!glitchEnabled) return;
-
-      rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
-
-      rightCtx.fillStyle = "#f8f9fa";
-      rightCtx.font = `${fontSizeRight}px monospace`;
-      rightCtx.textBaseline = "top";
-
-      dropsRight.forEach((y, i) => {
-        const text = lettersRight[Math.floor(Math.random() * lettersRight.length)];
-        rightCtx.fillText(text, i * fontSizeRight, (y - 1) * fontSizeRight);
-
-        if (y * fontSizeRight > rightCanvas.height && Math.random() > 0.975) {
-          dropsRight[i] = 0;
-        }
-        dropsRight[i]++;
-      });
-    }
-
-    // Toggle on click
-    document.querySelector(".split-section")?.addEventListener("click", () => {
-      matrixEnabled = !matrixEnabled;
-      glitchEnabled = !matrixEnabled;
-
-      if (!matrixEnabled) {
-        leftCtx.clearRect(0, 0, leftCanvas.width, leftCanvas.height);
-        dropsLeft = Array(columnsLeft).fill(1);
-      }
-
-      if (!glitchEnabled) {
-        rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
-        dropsRight = Array(columnsRight).fill(1);
-      }
+      if (y * FONT_LEFT > leftCanvas.height && Math.random() > 0.975) dropsLeft[i] = 0;
+      dropsLeft[i] += 0.5;  // half-speed for a slower, more deliberate fall
     });
+  }
 
-    // Main loop (~30 FPS)
-    setInterval(() => {
-      drawMatrix();
-      drawArtMatrix();
-    }, 33);
+  function drawArtMatrix() {
+    if (!glitchEnabled) return;
+
+    // Same fade strategy as the left canvas for visual consistency
+    rightCtx.fillStyle = FADE_COLOR;
+    rightCtx.fillRect(0, 0, rightCanvas.width, rightCanvas.height);
+
+    rightCtx.fillStyle    = GLYPH_COLOR;
+    rightCtx.font         = `${FONT_RIGHT}px monospace`;
+    rightCtx.textBaseline = "top";
+
+    dropsRight.forEach((y, i) => {
+      const char = GLYPHS_RIGHT[Math.floor(Math.random() * GLYPHS_RIGHT.length)];
+      rightCtx.fillText(char, i * FONT_RIGHT, (y - 1) * FONT_RIGHT);
+
+      if (y * FONT_RIGHT > rightCanvas.height && Math.random() > 0.975) dropsRight[i] = 0;
+      dropsRight[i] += 0.5;
+    });
+  }
+
+  // ── Click toggle — left binary ↔ right symbols ────────────────────────────
+  document.querySelector(".split-section")?.addEventListener("click", () => {
+    matrixEnabled = !matrixEnabled;
+    glitchEnabled = !matrixEnabled;
+
+    if (!matrixEnabled) {
+      leftCtx.clearRect(0, 0, leftCanvas.width, leftCanvas.height);
+      dropsLeft = Array(columnsLeft).fill(1);
+    }
+
+    if (!glitchEnabled) {
+      rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
+      dropsRight = Array(columnsRight).fill(1);
+    }
+  });
+
+  // ── Main loop (~30 fps) ───────────────────────────────────────────────────
+  setInterval(() => {
+    drawMatrix();
+    drawArtMatrix();
+  }, 33);
 })();
