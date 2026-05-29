@@ -216,17 +216,6 @@ body {
 
 .instagram-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    overflow: hidden;
-}
-
-
-.instagram-grid {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     max-width: 1200px;
@@ -238,21 +227,21 @@ body {
 .instagram-item {
     background: rgba(15, 15, 15, 0.6);
     border-radius: 12px;
-    overflow: visible; /* Zmień z hidden na visible, żeby skrypt mógł rozciągnąć ramkę */
+    overflow: visible;
     position: relative;
-    /* Usuń min-height: 500px; */
     display: flex;
     flex-direction: column;
+    min-height: 620px; /* fallback zanim iframe się wyrenderuje */
 }
 
 .instagram-item iframe {
-    min-height: 450px;
     border: none !important;
     box-shadow: none !important;
     display: block !important;
     width: 100% !important;
     min-width: 100% !important;
     margin: 0 !important;
+    /* NIE ustawiaj min-height tutaj — IG sam ustawia height atrybutem */
 }
 
 .instagram-media {
@@ -287,14 +276,7 @@ body {
     width: 100% !important;
 }
 
-.instagram-item iframe {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: unset !important;
-    height: auto !important;   /* let Instagram control height; no min-height clipping */
-    display: block;
-    margin: 0 auto;
-}
+/* instagram-item iframe — reguły w bloku powyżej */
 
 /* Skeleton placeholder while embeds load lazily */
 .ig-placeholder {

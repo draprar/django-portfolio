@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
 
-                // Jeśli to sekcja Instagrama, wymuś ponowne przeliczenie wysokości
                 if (entry.target.classList.contains('instagram-section')) {
                     if (window.instgrm) {
                         window.instgrm.Embeds.process();
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navbarLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            if (href.startsWith('#')) {
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
@@ -42,15 +41,55 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Force Instagram embeds to load on mobile
-    const loadInstagramEmbeds = () => {
+    // ── Instagram embeds ────────────────────────────────────────────────
+    const processEmbeds = () => {
         if (window.instgrm && window.instgrm.Embeds) {
             window.instgrm.Embeds.process();
         }
     };
 
-    loadInstagramEmbeds();
-    setTimeout(loadInstagramEmbeds, 1000);
-    setTimeout(loadInstagramEmbeds, 3000);
-    window.addEventListener('load', loadInstagramEmbeds);
+    processEmbeds();
+    setTimeout(processEmbeds, 1000);
+    setTimeout(processEmbeds, 3000);
+    window.addEventListener('load', processEmbeds);
+
+    /**
+     * Gdy IG wstrzyknie iframe do .instagram-item, obserwuj jego
+     * rzeczywistą wysokość i ustaw min-height kontenera na tę wartość.
+     * Dzięki temu kontener nigdy nie utnie embeda.
+     */
+    const watchIframes = () => {
+        document.querySelectorAll('.instagram-item').forEach(item => {
+            const iframe = item.querySelector('iframe');
+            if (!iframe || item.dataset.watched) return;
+            item.dataset.watched = '1';
+
+            const syncHeight = () => {
+                const h = iframe.getAttribute('height') || iframe.offsetHeight;
+                if (h && parseInt(h) > 100) {
+                    item.style.minHeight = parseInt(h) + 20 + 'px';
+                }
+            };
+
+            // MutationObserver na atrybut height iframe
+            const mo = new MutationObserver(syncHeight);
+            mo.observe(iframe, { attributes: true, attributeFilter: ['height', 'style'] });
+
+            // ResizeObserver jako backup
+            if (window.ResizeObserver) {
+                const ro = new ResizeObserver(syncHeight);
+                ro.observe(iframe);
+            }
+
+            syncHeight();
+        });
+    };
+
+    // Obserwuj DOM — reaguj gdy IG doda iframe do blockquote
+    const domObserver = new MutationObserver(() => watchIframes());
+    domObserver.observe(document.body, { childList: true, subtree: true });
+
+    setTimeout(watchIframes, 500);
+    setTimeout(watchIframes, 2000);
+    setTimeout(watchIframes, 5000);
 });
