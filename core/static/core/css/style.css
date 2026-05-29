@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Kaushan+Script&display=swap');
 
 /* ── Design tokens ──────────────────────────────────────────────────────────── */
 :root {
@@ -19,6 +19,7 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+  font-size: 0.95rem;
 }
 
 html, body { overflow-x: hidden; }
@@ -70,6 +71,7 @@ html, body { overflow-x: hidden; }
   transition: color 0.3s;
   padding-bottom: 4px;
   display: inline-block;
+  font-size: 0.92rem;
 }
 
 .navbar-nav .nav-link::after {
@@ -216,13 +218,44 @@ html, body { overflow-x: hidden; }
 }
 
 /* ── Hero split section ─────────────────────────────────────────────────────── */
+/* ── Hero tagline — strip above the split images ────────────────────────────── */
+.hero-tagline {
+  margin-top: 60px; /* main already clears navbar (80px padding-top); 30px gives breathing room above */
+  padding: 16px 24px;
+  text-align: center;
+  background: var(--dark);
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--primary);
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-tagline::before,
+.hero-tagline::after {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary));
+  vertical-align: middle;
+  margin: 0 16px;
+  opacity: 0.6;
+}
+
+.hero-tagline::after {
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
 .split-section {
   display: flex;
-  height: 80vh;
-  max-height: 600px;
+  height: 85vh;
+  max-height: 700px;
   overflow: hidden;
   position: relative;
-  margin-top: 70px;
+  margin-top: 0;
   gap: 0;
   flex-wrap: wrap;
 }
@@ -241,22 +274,22 @@ html, body { overflow-x: hidden; }
   overflow: hidden;
 }
 
-.left  { background-image: url('../img/left.png');  background-position: right center; }
-.right { background-image: url('../img/right.png'); background-position: left center; margin-left: -0.5px; }
+.left  { background-image: url('../img/left.png');  background-position: right 30%;}
+.right { background-image: url('../img/right.png'); background-position: left 20%; margin-left: -0.5px;}
 
 /* ── Hero text boxes ────────────────────────────────────────────────────────── */
 .text-box {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 280px;
+  width: 300px;
   max-width: 90%;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(5px);
   color: white;
   padding: 20px 24px;
   border-radius: 12px;
-  text-align: left;
+  text-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   font-size: 1rem;
   z-index: 2;
@@ -287,11 +320,15 @@ html, body { overflow-x: hidden; }
 .text-box p {
   font-size: 1rem;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* ── Hero — mobile layout ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
+
+  /* Hide tagline decorative lines on mobile — not enough width */
+  .hero-tagline::before,
+  .hero-tagline::after { display: none; }
 
   /* Stack images side-by-side; text boxes reflow below via .split-text-boxes-mobile */
   .split-section {
@@ -302,13 +339,14 @@ html, body { overflow-x: hidden; }
 
   .half {
     width: 50%;
-    height: 40vh;
+    height: 48vh;
     background-size: auto 100%;
     background-repeat: no-repeat;
   }
 
-  .left  { background-position: right center; }
-  .right { background-position: left center; }
+  /* Y 55%: image shifts so chin is visible, slight top crop instead */
+  .left  { background-position: right 55%; }
+  .right { background-position: left 55%; }
 
   /* Hide in-image boxes; they're duplicated outside the .half elements */
   .half .text-box { display: none; }
@@ -328,8 +366,8 @@ html, body { overflow-x: hidden; }
   .left-text,
   .right-text { margin-bottom: 1rem; width: 90%; }
 
-  .text-box h2 { font-size: 1.1rem; }
-  .text-box p  { font-size: 0.9rem; }
+  .text-box h2 { font-size: 1.25rem; }
+  .text-box p  { font-size: 0.98rem; }
 
   /* Only unique overrides for the out-of-hero wrapper */
   .split-text-boxes-mobile .text-box     { padding: 16px; max-width: 100%; }
@@ -337,16 +375,17 @@ html, body { overflow-x: hidden; }
 
   /* Section spacing tightened on mobile */
   section    { padding-top: 60px; padding-bottom: 60px; }
-  section h2 { font-size: 1.65rem; margin-bottom: 0.4rem; }
+  section h2 { font-size: 1.9rem; margin-bottom: 0.4rem; }
+  section p  { font-size: 0.95rem; }
 }
 
 /* ── Hero — desktop refinements ─────────────────────────────────────────────── */
 @media (min-width: 992px) {
-  .left-text  { left: 3%;  margin-left: 2rem; }
-  .right-text { right: 3%; margin-right: 2rem; }
+  .left-text  { left: 0;  margin-left: 1rem; }
+  .right-text { right: 0; margin-right: 2rem; }
 
-  .text-box    { max-width: 360px; padding: 28px 32px; font-size: 1.05rem; }
-  .text-box h2 { font-size: 1.4rem; }
+  .text-box    { max-width: 400px; padding: 28px 36px; font-size: 1.05rem; text-align: center; }
+  .text-box h2 { font-size: 1.5rem; }
   .text-box p  { font-size: 1.05rem; }
 }
 
@@ -380,10 +419,21 @@ section {
 section h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.2rem;
   text-align: center;
   color: var(--light);
   margin-bottom: 0.4rem;
+}
+
+section p, section div {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* Center prose in About and Origin sections */
+#about p, #about div,
+#origin p {
+  text-align: center;
 }
 
 section h2::after {
@@ -448,10 +498,10 @@ section h2::after {
 }
 
 /* ── Buttons ────────────────────────────────────────────────────────────────── */
-.btn-primary       { background-color: var(--primary); border-color: var(--primary); font-weight: 600; }
+.btn-primary       { background-color: var(--primary); border-color: var(--primary); font-weight: 700; }
 .btn-primary:hover { background-color: #a8791f; border-color: #a8791f; }
 
-.btn-dark       { background-color: #22273a; border-color: #22273a; color: var(--light); font-weight: 600; transition: background 0.2s, border-color 0.2s; }
+.btn-dark       { background-color: #22273a; border-color: #22273a; color: var(--light); font-weight: 700; transition: background 0.2s, border-color 0.2s; }
 .btn-dark:hover { background-color: var(--primary); border-color: var(--primary); color: #fff; }
 
 /* ── Contact form ───────────────────────────────────────────────────────────── */
@@ -483,7 +533,7 @@ footer {
   border-top: 1px solid rgba(196, 146, 42, 0.2);
 }
 
-footer p                   { font-size: 0.85rem; margin-bottom: 14px; }
+footer p                   { font-size: 0.9rem; margin-bottom: 14px; }
 footer .social-icons i     { display: inline-block; vertical-align: middle; line-height: 1; }
 
 .social-icons a {
@@ -531,6 +581,52 @@ button:focus-visible {
   border-radius: 3px;
 }
 
+/* ── Hyperlinks ────────────────────────────────────────────────────────── */
+.rich-link {
+  position: relative;
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* animated underline */
+.rich-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    #e0b060
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+
+.rich-link:hover {
+  color: var(--primary);
+}
+
+.rich-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* keyboard accessibility */
+.rich-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
 /* ── Utilities ──────────────────────────────────────────────────────────────── */
 
 /* Honeypot anti-spam field — off-screen, invisible to users */

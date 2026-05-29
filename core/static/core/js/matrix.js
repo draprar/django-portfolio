@@ -125,9 +125,9 @@
       dropsLeft = Array(columnsLeft).fill(1);
     }
 
-    if (!glitchEnabled) {
+    if (glitchEnabled) {   // ← było: !glitchEnabled
       rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
-      dropsRight = Array(columnsRight).fill(1);
+      dropsRight = Array(columnsRight).fill(1);   // reset do góry ekranu
     }
   });
 

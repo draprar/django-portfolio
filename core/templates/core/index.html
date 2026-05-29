@@ -2,14 +2,19 @@
 {% load static %}
 {% block content %}
 
+<!-- Hero Tagline -->
+<div class="hero-tagline">
+  <span data-en="Two ways of thinking. One way of acting." data-pl="Dwa sposoby myślenia, jeden sposób działania.">Dwa sposoby myślenia, jeden sposób działania.</span>
+</div>
+
 <!-- Desktop Split Section -->
 <section class="split-section">
-    <div class="half left" aria-hidden="true" aria-label="Engineer side – code, automation, analysis">
-    <div class="text-box left-text ">
-      <h2 class="text-uppercase" data-en="ENGINEER" data-pl="INŻYNIER">ENGINEER</h2>
-      <p data-en="Engineering is more than code and schematics — it's a way of thinking about data and technology as tools to create value."
-         data-pl="Inżynieria to nie tylko kod i schemat, ale sposób myślenia o danych i technologii jako narzędzia tworzenia wartości.">
-        Engineering is more than code and schematics — it's a way of thinking about data and technology as tools to create value.
+  <div class="half left" aria-hidden="true" aria-label="Engineer side – code, automation, analysis">
+    <div class="text-box left-text">
+      <h2 class="text-uppercase" data-en="ENGINEER" data-pl="INŻYNIER">INŻYNIER</h2>
+      <p data-en="I'm fascinated by numbers, models and processes. And that feeling when order emerges from chaos."
+         data-pl="Fascynują mnie liczby, modele i procesy. I to uczucie, gdy z chaosu wyłania się porządek.">
+        Fascynują mnie liczby, modele i procesy. I to uczucie, gdy z chaosu wyłania się porządek.
       </p>
     </div>
     <canvas id="matrixCanvas"></canvas>
@@ -17,10 +22,10 @@
 
   <div class="half right" aria-hidden="true" aria-label="Creative side – ideas, flexibility, intuition">
     <div class="text-box right-text">
-      <h2 class="text-uppercase" data-en="HUMANIST" data-pl="HUMANISTA">HUMANIST</h2>
-      <p data-en="Art, design and storytelling are three languages I use to convey ideas — in projects, space, and form itself."
-         data-pl="Sztuka, design i narracja to trzy języki, którymi przekazuję ideę — w projekcie, przestrzeni i samej formie.">
-        Art, design and storytelling are three languages I use to convey ideas — in projects, space, and form itself.
+      <h2 class="text-uppercase" data-en="HUMANIST" data-pl="HUMANISTA">HUMANISTA</h2>
+      <p data-en="I also appreciate symbols, narrative and art. Because they can often say more than data."
+         data-pl="Doceniam też symbole, narrację i sztukę. Bo często potrafią powiedzieć więcej niż dane.">
+        Doceniam też symbole, narrację i sztukę. Bo często potrafią powiedzieć więcej niż dane.
       </p>
     </div>
     <canvas id="glitchCanvas"></canvas>
@@ -30,116 +35,171 @@
 <!-- Mobile bubbles under split-section -->
 <div class="split-text-boxes-mobile d-flex flex-column flex-sm-row d-md-none px-3 gap-3">
   <div class="text-box flex-fill text-center">
-    <h2 class="text-uppercase" data-en="ENGINEER" data-pl="INŻYNIER">ENGINEER</h2>
-    <p data-en="Engineering is more than code and schematics — it's a way of thinking about data and technology as tools to create value."
-       data-pl="Inżynieria to nie tylko kod i schemat, ale sposób myślenia o danych i technologii jako narzędzia tworzenia wartości.">
-      Engineering is more than code and schematics — it's a way of thinking about data and technology as tools to create value.
+    <h2 class="text-uppercase" data-en="ENGINEER" data-pl="INŻYNIER">INŻYNIER</h2>
+    <p data-en="I'm fascinated by numbers, models and processes. And that feeling when order emerges from chaos."
+       data-pl="Fascynują mnie liczby, modele i procesy. I to uczucie, gdy z chaosu wyłania się porządek.">
+      Fascynują mnie liczby, modele i procesy. I to uczucie, gdy z chaosu wyłania się porządek.
     </p>
   </div>
   <div class="text-box flex-fill text-center">
-    <h2 class="text-uppercase" data-en="HUMANIST" data-pl="HUMANISTA">HUMANIST</h2>
-    <p data-en="Art, design and storytelling are three languages I use to convey ideas — in projects, space, and form itself."
-       data-pl="Sztuka, design i narracja to trzy języki, którymi przekazuję ideę — w projekcie, przestrzeni i samej formie.">
-      Art, design and storytelling are three languages I use to convey ideas — in projects, space, and form itself.
+    <h2 class="text-uppercase" data-en="HUMANIST" data-pl="HUMANISTA">HUMANISTA</h2>
+    <p data-en="I also appreciate symbols, narrative and art. Because they can often say more than data."
+       data-pl="Doceniam też symbole, narrację i sztukę. Bo często potrafią powiedzieć więcej niż dane.">
+      Doceniam też symbole, narrację i sztukę. Bo często potrafią powiedzieć więcej niż dane.
     </p>
   </div>
 </div>
 
 <!-- About Section -->
 <section id="about" class="container" data-aos="fade-up">
-  <h2 data-en="Who I am" data-pl="O mnie">Who I am</h2>
+  <h2 data-en="Who I am" data-pl="O mnie">O mnie</h2>
 
   <p
-    data-en="Hi! I’m <strong>Walery — an engineer, programmer and analyst</strong>. I have <strong>over a decade of experience</strong> in the electrical and telecom industries and several years’ practice in <strong>Python, data analysis and modeling</strong>."
-    data-pl="Cześć! Jestem <strong>Walery — inżynier, programista i analityk</strong>. Mam <strong>ponad dekadę doświadczenia</strong> w branży elektrycznej i telekomunikacyjnej oraz kilkuletnią praktykę w <strong>Pythonie, analizie danych i modelowaniu</strong>.">
-    Hi! I’m <strong>Walery — an engineer, programmer and analyst</strong>. I have <strong>over a decade of experience</strong> in the electrical and telecom industries and several years’ practice in <strong>Python, data analysis and modeling</strong>.
+    data-en="I'm an engineer. Over the years I've worked on technical projects, documentation, training, audits and problems that rarely have one correct answer."
+    data-pl="Jestem inżynierem, przez lata pracowałem przy projektach technicznych, dokumentacji, szkoleniach, audytach i problemach, które zwykle nie mają jednego poprawnego rozwiązania.">
+    Jestem inżynierem, przez lata pracowałem przy projektach technicznych, dokumentacji, szkoleniach, audytach i problemach, które zwykle nie mają jednego poprawnego rozwiązania.
   </p>
 
   <p
-    data-en="On a daily basis I work on analytics, technical documentation and audits, but what I enjoy most is <strong>designing and building tools that genuinely improve workflows</strong> — from <strong>automation and data pipelines</strong> to <strong>reporting and machine-learning models</strong>."
-    data-pl="Na co dzień zajmuję się analityką, dokumentacją techniczną i audytami, ale najwięcej satysfakcji daje mi <strong>projektowanie i budowanie narzędzi, które realnie usprawniają pracę</strong> — od <strong>automatyzacji i pipeline’ów danych</strong> po <strong>raportowanie i modele uczenia maszynowego</strong>.">
-    On a daily basis I work on analytics, technical documentation and audits, but what I enjoy most is <strong>designing and building tools that genuinely improve workflows</strong> — from <strong>automation and data pipelines</strong> to <strong>reporting and machine-learning models</strong>.
+    data-en="Over time I moved more and more towards programming and data analysis. Today I'm turning data into tools, mainly using Python, Power BI, and predictive models. I like projects that sit at the intersection of several worlds — ones where you need to understand the problem, analyse the data and build something that actually improves a process or helps someone."
+    data-pl="Z czasem zacząłem coraz bardziej iść w kierunku programowania i analizy danych. Dziś zamieniam dane w narzędzia, wykorzystując głównie Pythona, Power BI i modele predykcyjne. Lubię projekty stojące na styku kilku światów — takie, gdzie trzeba jednocześnie zrozumieć problem, przeanalizować dane i stworzyć rozwiązanie, które rzeczywiście coś usprawni lub komuś pomoże.">
+    Z czasem zacząłem coraz bardziej iść w kierunku programowania i analizy danych. Dziś zamieniam dane w narzędzia, wykorzystując głównie Pythona, Power BI i modele predykcyjne. Lubię projekty stojące na styku kilku światów — takie, gdzie trzeba jednocześnie zrozumieć problem, przeanalizować dane i stworzyć rozwiązanie, które rzeczywiście coś usprawni lub komuś pomoże.
   </p>
 
   <p
-    data-en="I most often work with <strong>Python (pandas, scikit-learn), SQL and Power BI</strong>. I also use <strong>Django and FastAPI</strong> in projects, and tie everything together with <strong>Git</strong> — mainly for building apps, automation and analytical tools."
-    data-pl="Najczęściej pracuję z <strong>Pythonem (pandas, scikit-learn), SQL i Power BI</strong>. W projektach korzystam też z <strong>Django i FastAPI</strong>, a całość spinam <strong>Gitem</strong> — głównie przy budowie aplikacji, automatyzacji i narzędzi analitycznych.">
-    I most often work with <strong>Python (pandas, scikit-learn), SQL and Power BI</strong>. I also use <strong>Django and FastAPI</strong> in projects, and tie everything together with <strong>Git</strong> — mainly for building apps, automation and analytical tools.
-  </p>
+    data-en='If you want to see where the engineer meets the humanist — browse the <a class="rich-link" href="#projects">projects section</a>, <a class="rich-link" href="https://github.com/draprar" target="_blank" rel="noopener noreferrer">GitHub</a> or <a class="rich-link" href="https://instagram.com/bazgrollin" target="_blank" rel="noopener noreferrer">Instagram</a>. You can also test a few apps directly from the <span class="menu-trigger rich-link">menu</span>.'
 
-  <div
-    data-en="In my work I combine three perspectives: analytical — I turn numbers into insights and decisions; engineering — I break problems down and look for the simplest solutions; humanistic — I make sure the result is readable and useful."
-    data-pl="W pracy łączę trzy perspektywy: analityczną — liczby zamieniam w wnioski i decyzje; inżynierską — problemy rozkładam na części i szukam najprostszych rozwiązań; humanistyczną — dbam o to, żeby efekt był czytelny i użyteczny.">
-    In my work I combine three perspectives: analytical — I turn numbers into insights and decisions; engineering — I break problems down and look for the simplest solutions; humanistic — I make sure the result is readable and useful.
-  </div>
+    data-pl='Jeżeli chcesz zobaczyć, gdzie spotyka się inżynier z humanistą — zajrzyj do <a class="rich-link" href="#projects">sekcji projektów</a>, na <a class="rich-link" href="https://github.com/draprar" target="_blank" rel="noopener noreferrer">GitHuba</a> lub <a class="rich-link" href="https://instagram.com/bazgrollin" target="_blank" rel="noopener noreferrer">Instagrama</a>. Kilka aplikacji z <span class="menu-trigger rich-link">menu</span> możesz też od razu przetestować.'>
+
+    Jeżeli chcesz zobaczyć, gdzie spotyka się inżynier z humanistą —
+    zajrzyj do <a class="rich-link" href="#projects">sekcji projektów</a>,
+    na
+    <a class="rich-link" href="https://github.com/draprar" target="_blank" rel="noopener noreferrer">GitHuba</a>
+    lub
+    <a class="rich-link" href="https://instagram.com/bazgrollin" target="_blank" rel="noopener noreferrer">Instagrama</a>.
+    Kilka aplikacji z <span class="menu-trigger">menu</span> możesz też od razu przetestować.
+  </p>
+</section>
+
+<!-- Origin Section -->
+<section id="origin" class="container" data-aos="fade-up">
+  <h2 data-en="Where did it come from?" data-pl="Skąd to się wzięło?">Skąd to się wzięło?</h2>
 
   <p
-    data-en="After hours I draw, paint and develop my own web projects — <strong>realizing my own ideas and testing new solutions</strong>."
-    data-pl="Po godzinach rysuję, maluję i rozwijam własne projekty webowe — <strong>realizując własne pomysły i testując nowe rozwiązania</strong>.">
-    After hours I draw, paint and develop my own web projects — <strong>realizing my own ideas and testing new solutions</strong>.
+    data-en="I've always liked making things."
+    data-pl="Od zawsze lubiłem tworzyć rzeczy.">
+    Od zawsze lubiłem tworzyć rzeczy.
   </p>
 
   <p
-    data-en="If you need someone who can <strong>translate an idea into a working tool</strong> — get in touch."
-    data-pl="Jeśli potrzebujesz kogoś, kto potrafi <strong>przełożyć pomysł na działające narzędzie</strong> — odezwij się.">
-    If you need someone who can <strong>translate an idea into a working tool</strong> — get in touch.
+    data-en="I built my first websites as a teenager, around the Heroes III community, where I was editor-in-chief of a fan magazine."
+    data-pl="Pierwsze strony internetowe stawiałem już jako nastolatek, wokół społeczności Heroes III, gdzie pełniłem rolę redaktora naczelnego fanowskiego czasopisma.">
+    Pierwsze strony internetowe stawiałem już jako nastolatek, wokół społeczności Heroes III, gdzie pełniłem rolę redaktora naczelnego fanowskiego czasopisma.
+  </p>
+
+  <p
+    data-en="A few years later, at seventeen, I founded the first rugby team in Mazury, coaching it as a playing coach for almost two years."
+    data-pl="Kilka lat później, już jako siedemnastolatek, założyłem pierwszą drużynę rugby na Mazurach, prowadząc ją przez prawie dwa lata jako grający trener.">
+    Kilka lat później, już jako siedemnastolatek, założyłem pierwszą drużynę rugby na Mazurach, prowadząc ją przez prawie dwa lata jako grający trener.
+  </p>
+
+  <p
+    data-en="Today, outside of work, I enjoy healthy sporting competition and carry out my own artistic projects — because the greatest satisfaction has always come from building something that previously existed only in my imagination."
+    data-pl="Dziś poza pracą lubię zdrową sportową rywalizację i realizuję własne projekty artystyczne, bo największą satysfakcję zawsze daje mi budowanie czegoś, co wcześniej istniało tylko w wyobraźni.">
+    Dziś poza pracą lubię zdrową sportową rywalizację i realizuję własne projekty artystyczne, bo największą satysfakcję zawsze daje mi budowanie czegoś, co wcześniej istniało tylko w wyobraźni.
   </p>
 </section>
 
 <!-- Services Section -->
 <section id="services" class="container" data-aos="fade-up">
-  <h2 data-en="What I Can Help With" data-pl="W czym mogę pomóc">What I Can Help With</h2>
+  <h2 data-en="What I can help with" data-pl="W czym mogę pomóc">W czym mogę pomóc</h2>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
 
-    <!-- Analityka i development -->
+    <!-- WWW -->
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0 project-card text-center">
+        <div class="card-body">
+          <i class="fas fa-globe fa-3x mb-3 text-secondary"></i>
+          <h5 data-en="WWW" data-pl="WWW">WWW</h5>
+          <p class="card-text text-muted"
+             data-en="Django applications, websites and web-based tools."
+             data-pl="Aplikacje Django, strony internetowe i narzędzia webowe.">
+            Aplikacje Django, strony internetowe i narzędzia webowe.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Power BI -->
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0 project-card text-center">
+        <div class="card-body">
+          <i class="fas fa-chart-bar fa-3x mb-3 text-secondary"></i>
+          <h5 data-en="Power BI" data-pl="Power BI">Power BI</h5>
+          <p class="card-text text-muted"
+             data-en="Dashboards, reports and data visualisation."
+             data-pl="Dashboardy, raporty i wizualizacja danych.">
+            Dashboardy, raporty i wizualizacja danych.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Python i analiza danych -->
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0 project-card text-center">
+        <div class="card-body">
+          <i class="fab fa-python fa-3x mb-3 text-secondary"></i>
+          <h5 data-en="Python &amp; Data Analysis" data-pl="Python i analiza danych">Python i analiza danych</h5>
+          <p class="card-text text-muted"
+             data-en="Automation, data processing, uncovering patterns and supporting decisions."
+             data-pl="Automatyzacja, przetwarzanie danych, odkrywanie zależności i wsparcie decyzji.">
+            Automatyzacja, przetwarzanie danych, odkrywanie zależności i wsparcie decyzji.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Predykcje i ML -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 project-card text-center">
         <div class="card-body">
           <i class="fas fa-brain fa-3x mb-3 text-secondary"></i>
-          <h5 data-en="Analytics & Development"
-              data-pl="Analityka i development">
-              Analytics & Development
-          </h5>
+          <h5 data-en="Predictions &amp; ML" data-pl="Predykcje i ML">Predykcje i ML</h5>
           <p class="card-text text-muted"
-             data-pl="Projektuję i wdrażam pipeline'y danych, modele ML i aplikacje webowe. Łączę doświadczenie inżynieryjne z analityką, budując narzędzia wspierające procesy i decyzje."
-             data-en="I design and implement data pipelines, ML models and web applications. I combine engineering experience with analytics to build tools that support processes and decisions.">
-            I design and implement data pipelines, ML models and web applications. I combine engineering experience with analytics to build tools that support processes and decisions.
+             data-en="Predictive models, classification and AI experiments."
+             data-pl="Modele predykcyjne, klasyfikacja i eksperymenty z AI.">
+            Modele predykcyjne, klasyfikacja i eksperymenty z AI.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Normalizacja i szkolenia -->
+    <!-- Szkolenia i dokumentacja -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 project-card text-center">
         <div class="card-body">
-          <i class="fas fa-file-contract fa-3x mb-3 text-secondary"></i>
-          <h5 data-en="Standards & Training"
-              data-pl="Normalizacja i szkolenia">
-              Standards & Training
-          </h5>
+          <i class="fas fa-graduation-cap fa-3x mb-3 text-secondary"></i>
+          <h5 data-en="Training &amp; Documentation" data-pl="Szkolenia i dokumentacja">Szkolenia i dokumentacja</h5>
           <p class="card-text text-muted"
-             data-pl="Tworzę dokumentację techniczną, wytyczne i standardy inżynieryjne. Prowadzę audyty oraz szkolenia certyfikacyjne, dbając o jasny przekaz i praktyczne wdrożenia."
-             data-en="I create technical documentation, guidelines and engineering standards. I conduct audits and certification training, ensuring clarity and practical implementation.">
-            I create technical documentation, guidelines and engineering standards. I conduct audits and certification training, ensuring clarity and practical implementation.
+             data-en="Educational materials, procedures and knowledge transfer."
+             data-pl="Materiały edukacyjne, procedury i przekazywanie wiedzy.">
+            Materiały edukacyjne, procedury i przekazywanie wiedzy.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Wizualizacja i raportowanie -->
+    <!-- Ilustracja i rysunek -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 project-card text-center">
         <div class="card-body">
-          <i class="fas fa-chart-line fa-3x mb-3 text-secondary"></i>
-          <h5 data-en="Visualization & Reporting"
-              data-pl="Wizualizacja i raportowanie">
-              Visualization & Reporting
-          </h5>
+          <i class="fas fa-paint-brush fa-3x mb-3 text-secondary"></i>
+          <h5 data-en="Illustration &amp; Drawing" data-pl="Ilustracja i rysunek">Ilustracja i rysunek</h5>
           <p class="card-text text-muted"
-             data-pl="Projektuję raporty i dashboardy w Power BI i Excelu — dostosowane do odbiorcy i gotowe do użycia. Dbam o to, żeby dane mówiły same za siebie."
-             data-en="I design reports and dashboards in Power BI and Excel — tailored to the audience and ready to use. I make sure the data speaks for itself.">
-            I design reports and dashboards in Power BI and Excel — tailored to the audience and ready to use. I make sure the data speaks for itself.
+             data-en="Drawings, graphic designs and commissions — on paper and beyond."
+             data-pl="Rysunki, projekty graficzne i prace na zamówienie — na papierze i nie tylko.">
+            Rysunki, projekty graficzne i prace na zamówienie — na papierze i nie tylko.
           </p>
         </div>
       </div>
@@ -150,7 +210,7 @@
 
 <!-- Projects Section -->
 <section id="projects" class="container" data-aos="fade-up">
-  <h2 data-en="Projects" data-pl="Projekty">Projects</h2>
+  <h2 data-en="Projects" data-pl="Projekty">Projekty</h2>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
 
     {% for project in projects %}
@@ -210,26 +270,26 @@
 
 <!-- Contact Section -->
 <section id="contact" class="container" data-aos="">
-  <h2 data-en="Contact" data-pl="Kontakt">Contact</h2>
-  <p data-en="Want to build something or ask a question? Drop me a message:"
-     data-pl="Masz pomysł lub pytanie? Wyślij wiadomość:">
-     Want to build something or ask a question? Drop me a message:
+  <h2 data-en="Contact" data-pl="Kontakt">Kontakt</h2>
+  <p data-en="Have a project, a question or just want to talk about an idea — write to me."
+     data-pl="Masz projekt, pytanie albo po prostu chcesz pogadać o pomyśle — napisz.">
+     Masz projekt, pytanie albo po prostu chcesz pogadać o pomyśle — napisz.
   </p>
 
   <div id="contact-alerts"></div>
 
-   <form method="post" action="{% url 'contact' %}" class="row g-3 mt-3" id="contact-form">
-     {% csrf_token %}
-     <input type="text" name="website" class="hp-field">
-     <div class="col-md-6">{{ form.name }}</div>
-     <div class="col-md-6">{{ form.email }}</div>
-     <div class="col-12">{{ form.message }}</div>
-     <div class="col-12 text-end">
-         <button type="submit" class="btn btn-dark">
-             <span data-en="Send Message" data-pl="Wyślij wiadomość">Send Message</span>
-         </button>
-     </div>
-   </form>
+  <form method="post" action="{% url 'contact' %}" class="row g-3 mt-3" id="contact-form">
+    {% csrf_token %}
+    <input type="text" name="website" class="hp-field">
+    <div class="col-md-6">{{ form.name }}</div>
+    <div class="col-md-6">{{ form.email }}</div>
+    <div class="col-12">{{ form.message }}</div>
+    <div class="col-12 text-end">
+        <button type="submit" class="btn btn-dark">
+            <span data-en="Send Message" data-pl="Wyślij wiadomość">Wyślij wiadomość</span>
+        </button>
+    </div>
+  </form>
 </section>
 <div style="height:10px"></div>
 {% endblock %}
