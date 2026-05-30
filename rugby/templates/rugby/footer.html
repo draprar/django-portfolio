@@ -1,8 +1,12 @@
 {% load static %}
 
-<footer class="p-4 bg-dark text-white text-center footer" id="footer">
-    <img src="{% static 'rugby/img/rugby.jpg' %}" class="img-fluid">
+<footer class="p-4 footer" id="footer">
+    <img src="{% static 'rugby/img/rugby.jpg' %}" class="img-fluid" alt="AFC Rugby Giżycko">
     <div class="container">
-        <p>© 2025 Walery — All rights reserved</p>
+        <p>© <span id="footer-year"></span> Walery — All rights reserved</p>
     </div>
 </footer>
+
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>

@@ -2,65 +2,89 @@
 
 <section class="page-section bg-light" id="media">
     <div class="container px-4 py-5">
-        <div class="text-center info">
-            <h2 class="text-uppercase title">Promocja klubu</h2>
+        <div class="text-center info" data-aos="fade-up">
+            <h2 class="text-uppercase">Promocja klubu</h2>
             <h5 class="my-3 text-muted"><em>Wybrane materiały prasowe, plakaty oraz media.</em></h5>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-aos="fade-up" data-aos-delay="100">
+
             <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-fluid" src="{% static 'rugby/img/1_poster.png' %}" alt="..." />
+                <div class="card shadow-sm h-100">
+                    <img class="img-fluid w-100" src="{% static 'rugby/img/1_poster.png' %}" alt="Pierwszy plakat" style="object-fit:cover;" />
                     <div class="card-body">
-                        <p class="font-weight-bold">Pierwszy plakat</p>
-                        <p class="text-muted">Autor: Jakub Turek</p>
+                        <p class="fw-semibold mb-1">Pierwszy plakat</p>
+                        <p class="text-muted small mb-0">Autor: Jakub Turek</p>
                     </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-fluid" src="{% static 'rugby/img/2_poster.jpg' %}" alt="..." />
+                <div class="card shadow-sm h-100">
+                    <img class="img-fluid w-100" src="{% static 'rugby/img/2_poster.jpg' %}" alt="Drugi plakat" style="object-fit:cover;" />
                     <div class="card-body">
-                        <p class="font-weight-bold">Drugi plakat</p>
-                        <p class="text-muted">Autor: Jakub Turek</p>
+                        <p class="fw-semibold mb-1">Drugi plakat</p>
+                        <p class="text-muted small mb-0">Autor: Jakub Turek</p>
                     </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-fluid" src="{% static 'rugby/img/gg.png' %}" alt="..." />
+                <div class="card shadow-sm h-100">
+                    <img class="img-fluid w-100" src="{% static 'rugby/img/gg.png' %}" alt="Artykuł Gazeta Giżycka" style="object-fit:cover;" />
                     <div class="card-body">
-                        <p class="font-weight-bold">Artykuł (Gazeta Giżycka)</p>
-                        <p class="text-muted">Autor: Paweł Mieczkowski</p>
+                        <p class="fw-semibold mb-1">Artykuł (Gazeta Giżycka)</p>
+                        <p class="text-muted small mb-0">Autor: Paweł Mieczkowski</p>
                     </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-fluid" src="{% static 'rugby/img/go.png' %}" alt="..." />
+                <div class="card shadow-sm h-100">
+                    <img class="img-fluid w-100" src="{% static 'rugby/img/go.png' %}" alt="Artykuł Gazeta Olsztyńska" style="object-fit:cover;" />
                     <div class="card-body">
-                        <p class="font-weight-bold">Artykuł (Gazeta Olsztyńska)</p>
-                        <p class="text-muted">Autor: Sebastian Woźniak</p>
+                        <p class="fw-semibold mb-1">Artykuł (Gazeta Olsztyńska)</p>
+                        <p class="text-muted small mb-0">Autor: Sebastian Woźniak</p>
                     </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-fluid" src="{% static 'rugby/img/pzr.png' %}" alt="..." />
+                <div class="card shadow-sm h-100">
+                    <img class="img-fluid w-100" src="{% static 'rugby/img/pzr.png' %}" alt="Encyklopedia Polskiego Rugby" style="object-fit:cover;" />
                     <div class="card-body">
-                        <p class="font-weight-bold">Encyklopedia Polskiego Rugby</p>
-                        <p class="text-muted">Autorzy: Maciej Powała-Niedźwiedzki & Jacek Wierzbicki</p>
+                        <p class="fw-semibold mb-1">Encyklopedia Polskiego Rugby</p>
+                        <p class="text-muted small mb-0">Autorzy: Maciej Powała-Niedźwiedzki &amp; Jacek Wierzbicki</p>
                     </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card shadow-sm">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/TBdK3AkhQKE?si=OQn3UF6b4k8XRycV" frameborder="2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="card shadow-sm h-100">
+                    <a href="https://www.youtube.com/watch?v=TBdK3AkhQKE"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="yt-thumb-link"
+                       aria-label="Obejrzyj film na YouTube">
+                        <div class="yt-thumb-wrap">
+                            <img
+                                src="https://img.youtube.com/vi/TBdK3AkhQKE/hqdefault.jpg"
+                                alt="Film AFC Rugby Giżycko"
+                                class="img-fluid w-100 yt-thumb-img">
+                            <div class="yt-play-btn" aria-hidden="true">
+                                <svg viewBox="0 0 68 48" width="68" height="48">
+                                    <path d="M66.52 7.74A8.5 8.5 0 0 0 60.7 1.9C55.4.5 34 .5 34 .5S12.6.5 7.3 1.9A8.5 8.5 0 0 0 1.48 7.74C.08 13.08.08 24 .08 24s0 10.92 1.4 16.26A8.5 8.5 0 0 0 7.3 46.1C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.4a8.5 8.5 0 0 0 5.82-5.84C67.92 34.92 67.92 24 67.92 24s0-10.92-1.4-16.26z" fill="#ff0000"/>
+                                    <path d="M27 34l18-10-18-10v20z" fill="#fff"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
                     <div class="card-body">
-                        <p class="font-weight-bold">Film</p>
-                        <p class="text-muted">Autor: Michał Walerowicz</p>
+                        <p class="fw-semibold mb-1">Film</p>
+                        <p class="text-muted small mb-0">Autor: Michał Walerowicz</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
