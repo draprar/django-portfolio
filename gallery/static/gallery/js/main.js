@@ -15,7 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
 
-    fadeInElements.forEach(element => observer.observe(element));
+    fadeInElements.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add('visible');
+        } else {
+            observer.observe(el);  // ← tego brakuje
+        }
+    });
+
 
     // Smooth scrolling for navbar links
     const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
