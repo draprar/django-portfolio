@@ -1,4 +1,5 @@
 import pytest
+
 from docdiff.extractors.extract_xlsx import XlsxExtractor
 
 

@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+
 from analytics.utils import count_visit
+
+from . import views
 
 app_name = "docdiff"
 

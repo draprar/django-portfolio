@@ -1,174 +1,281 @@
-from typing import List, Dict, Any
 import html
 import json
 import logging
 import re
 from difflib import SequenceMatcher
+from typing import Any, Dict, List
+
 from .heuristics_ai import analyze_change, generate_ai_summary
 
 _LOGGER = logging.getLogger(__name__)
 
 STYLE = """
 <style>
-/* ---------- LIGHT MODE ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* ── Design tokens — dark gold system ── */
 :root {
-  --bg: #f7f7f8;
-  --panel: #ffffff;
-  --muted: #666;
-  --text: #111;
-  --accent: #007bff;
-  --card-border: #e0e0e0;
-  --chip-bg: #fff;
-  --added-bg: #e6fbde;
-  --deleted-bg: #ffecec;
-  --changed-bg: #fff7e0;
-  --unchanged-bg: #ffffff;
+  --bg:           #0f1117;
+  --surface:      #1a1e27;
+  --surface2:     #22273a;
+  --border:       rgba(255,255,255,0.07);
+  --border-gold:  rgba(196,146,42,0.35);
+  --text:         #e0e0e0;
+  --muted:        #8a8f9a;
+  --gold:         #c4922a;
+  --gold-light:   #e0b060;
+  --added-bg:     rgba(34,90,50,0.35);
+  --added-border: rgba(52,168,83,0.5);
+  --added-text:   #7edd9a;
+  --deleted-bg:   rgba(100,28,28,0.35);
+  --deleted-border:rgba(220,38,38,0.5);
+  --deleted-text: #fca5a5;
+  --changed-bg:   rgba(90,70,15,0.3);
+  --changed-border:rgba(196,146,42,0.4);
+  --changed-text: #f1e0a0;
+  --unchanged-bg: transparent;
+  --del-bg:       rgba(120,30,30,0.55);
+  --del-color:    #ffb0b0;
+  --ins-bg:       rgba(25,80,45,0.55);
+  --ins-color:    #90f0b0;
 }
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
-.container { max-width: 1100px; margin: 0 auto; }
-.header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
-.controls { margin-bottom:12px; }
+
+.container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+}
+
+/* ── Top bar ── */
+.report-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.back-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: letter-spacing 0.25s ease, color 0.2s;
+}
+.back-link:hover { color: var(--gold-light); letter-spacing: 2px; }
+
+.topbar-right { display: flex; align-items: center; gap: 0.6rem; }
+
+/* ── Report header ── */
+.report-header { margin-bottom: 2.5rem; }
+
+.report-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.2rem;
+  display: inline-block;
+}
+
+.report-title::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin: 10px 0 1rem;
+  border-radius: 2px;
+}
+
+.report-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── Chips / buttons ── */
 .chip {
-  border:1px solid #ccc;
-  padding:6px 10px;
-  border-radius:16px;
-  margin:4px;
-  cursor:pointer;
-  display:inline-block;
-  background:var(--chip-bg);
-  transition:all 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--border-gold);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin: 3px;
+  cursor: pointer;
+  display: inline-block;
+  background: var(--surface2);
+  color: var(--text);
+  transition: all 0.2s ease;
+  user-select: none;
 }
-.chip:hover { transform: translateY(-1px); box-shadow:0 2px 4px rgba(0,0,0,0.1); }
-.chip.active { background:#007bff; color:#fff; border-color:#007bff; }
-
-.score { font-weight:bold; padding:2px 6px; border-radius:6px; margin-left:8px; font-size:0.9em; }
-.score.low { background:#d4fcbc; color:#083; }
-.score.med { background:#fcebb6; color:#6a4a00; }
-.score.high { background:#f8b4b4; color:#7a0000; }
-
-.toc {
-  margin-bottom:12px;
-  background:var(--panel);
-  padding:8px;
-  border-radius:6px;
-  border:1px solid var(--card-border);
+.chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196,146,42,0.15);
 }
-.toc a {
-  text-decoration:none;
-  margin-right:6px;
-  color:var(--accent);
-  font-size:0.9em;
+.chip.active {
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-color: transparent;
+  color: #0f1117;
 }
-.toc a:hover { text-decoration:underline; }
 
+/* ── Cards ── */
 .card {
-  background:var(--panel);
-  padding:10px;
-  border-radius:8px;
-  border:1px solid var(--card-border);
-  margin-bottom:10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--border-gold); }
+
+.card.added    { border-left: 3px solid var(--added-border);   background: var(--added-bg); }
+.card.deleted  { border-left: 3px solid var(--deleted-border); background: var(--deleted-bg); }
+.card.changed  { border-left: 3px solid var(--changed-border); background: var(--changed-bg); }
+.card.unchanged { opacity: 0.55; }
+.card.unchanged:hover { opacity: 0.8; }
+
+/* ── Score pills ── */
+.score {
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  letter-spacing: 0.5px;
+}
+.score.low  { background: rgba(34,90,50,0.5);  color: var(--added-text); }
+.score.med  { background: rgba(90,70,15,0.5);  color: var(--changed-text); }
+.score.high { background: rgba(100,28,28,0.5); color: var(--deleted-text); }
+
+/* ── Badges ── */
+.badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  margin-right: 5px;
 }
 
-.added { background-color: var(--added-bg); }
-.deleted { background-color: var(--deleted-bg); }
-.changed { background-color: var(--changed-bg); }
-.unchanged { background-color: var(--unchanged-bg); color: #777; }
+/* ── Meta row ── */
+.meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-table { border-collapse: collapse; margin-bottom: 10px; width:100%; }
-td, th { border: 1px solid #d0d0d0; padding: 6px; vertical-align: top; }
-pre.diff { background: #f4f4f4; padding: 8px; overflow: auto; border-radius:6px; }
+/* ── Text sizes ── */
+.small { font-size: 0.9rem; color: var(--text); }
 
-.meta { color: var(--muted); font-size: 0.9em; margin-bottom:6px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
-.badge { font-size:0.85em; padding:3px 6px; border-radius:6px; background:#f1f1f1; margin-right:6px; }
-.small { font-size:0.9em; color:#444; }
-
+/* ── AI section ── */
 .ai-section {
-  background:#f9fafb;
-  border-left:4px solid #007bff;
-  padding:8px 10px;
-  border-radius:6px;
-  margin:8px 0;
+  background: var(--surface2);
+  border-left: 3px solid var(--gold);
+  padding: 0.75rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
 }
 
-button.collapse-toggle {
-  background:var(--chip-bg);
-  border:1px solid #ccc;
-  border-radius:6px;
-  cursor:pointer;
-  padding:6px 12px;
-  transition:all 0.2s ease;
-}
-button.collapse-toggle:hover {
-  background:#f0f0f0;
-}
-
-/* ---------- DARK MODE (better contrast & accessibility) ---------- */
-body.dark {
-  --bg: #0e1117;
-  --panel: #161b22;
-  --muted: #b6bbc2;
-  --text: #e6edf3;
-  --accent: #58a6ff;
-  --card-border: #30363d;
-  --chip-bg: #1c2128;
-  --added-bg: #113417;
-  --deleted-bg: #3d1b1b;
-  --changed-bg: #3a351b;
-  --unchanged-bg: #161b22;
-}
-
-body.dark .card { border-color: #2a2f36; }
-body.dark .chip { border-color: #3d444d; color: #c9d1d9; }
-body.dark .chip:hover { background:#21262d; border-color:#58a6ff; }
-body.dark .chip.active { background:#58a6ff; color:#0d1117; }
-body.dark .badge { background:#2d333b; color:#f0f6fc; border:1px solid #3b434c; }
-body.dark .ai-section {
-  background:#20262d;
-  border-left-color:#58a6ff;
-  color:#e6edf3;
-}
-body.dark pre.diff {
-  background:#1f242a;
-  color:#e6edf3;
-  border:1px solid #30363d;
-}
-body.dark table, body.dark td, body.dark th { border-color:#30363d; }
-body.dark a { color:#58a6ff; }
-body.dark .dark-toggle {
-  background:#1f242a;
-  color:#f0f6fc;
-  border:1px solid #30363d;
-}
-body.dark .dark-toggle:hover {
-  background:#2d333b;
-}
-body.dark .score.low { background:#164a22; color:#9be9a8; }
-body.dark .score.med { background:#3f3b17; color:#f1e05a; }
-body.dark .score.high { background:#5c1f1f; color:#ffa198; }
-
-body.dark .added { background-color: var(--added-bg); color:#afffaf; }
-body.dark .deleted { background-color: var(--deleted-bg); color:#ffbcbc; }
-body.dark .changed { background-color: var(--changed-bg); color:#f9f1bb; }
-body.dark .unchanged { background-color: var(--unchanged-bg); color:#8b949e; }
-
-body.dark del {
-  background: #6e1a1a;
-  color: #ffbaba;
+/* ── Inline diff ── */
+del {
+  background: var(--del-bg);
+  color: var(--del-color);
   text-decoration: line-through;
-  padding: 0 2px;
-  border-radius:2px;
+  padding: 0 3px;
+  border-radius: 3px;
 }
-body.dark ins {
-  background: #1a522a;
-  color: #c8ffda;
-  padding: 0 2px;
-  border-radius:2px;
+ins {
+  background: var(--ins-bg);
+  color: var(--ins-color);
+  text-decoration: none;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+pre.diff {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0.5rem 0 0;
+}
+
+/* ── Tables ── */
+table { border-collapse: collapse; margin-bottom: 0.75rem; width: 100%; }
+td, th {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  vertical-align: top;
+  font-size: 0.85rem;
+}
+tr:hover td { background: rgba(196,146,42,0.04); }
+
+/* ── TOC ── */
+.toc { line-height: 2; }
+.toc a {
+  text-decoration: none;
+  margin-right: 6px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--gold-light); }
+
+/* ── Controls bar ── */
+.controls { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-gold); }
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .container { padding: 1.2rem 1rem 4rem; }
+  .report-topbar { flex-direction: column; align-items: flex-start; }
 }
 </style>
 """
@@ -235,7 +342,7 @@ def _render_ai_info(f, b: Dict[str, Any]):
 
     f.write("<div class='ai-section'><b>🧠 <span data-i18n='ai_summary'>AI Summary</span>:</b> ")
     if labels:
-        f.write(" ".join(f"<span class='badge'>{html.escape(l)}</span>" for l in labels))
+        f.write(" ".join(f"<span class='badge'>{html.escape(label)}</span>" for label in labels))
     if typ:
         f.write(f"<span class='badge'><span data-i18n='type'>Type</span>: {html.escape(typ)}</span>")
     if sem is not None:
@@ -246,39 +353,29 @@ def _render_ai_info(f, b: Dict[str, Any]):
 
 
 def _render_paragraph(f, b, cls):
-    f.write(f"<div class='card {cls}'>")
-    f.write("<div class='meta'>")
-    f.write("<span class='badge' data-i18n='paragraph'>PARAGRAPH</span>")
-    f.write("</div>")
     _render_ai_info(f, b)
 
     if b.get("change") == "changed":
         oldt = html.escape(b.get("old", {}).get("text", "") or "")
         newt = html.escape(b.get("new", {}).get("text", "") or "")
-        f.write(f"<p class='small'><b><span data-i18n='old'>Old</span>:</b> {oldt}</p>")
-        f.write(f"<p class='small'><b><span data-i18n='new'>New</span:</b> {newt}</p>")
+        f.write(f"<p class='small'><b><span data-i18n='old'>Przed</span>:</b> {oldt}</p>")
+        f.write(f"<p class='small'><b><span data-i18n='new'>Po</span>:</b> {newt}</p>")
         inline = b.get("inline_html")
         if inline:
-            # inline_html already contains <del>/<ins> - insert unescaped
-            f.write(f"<div class='small'><b><span data-i18n='inline'>Inline diff</span>:</b><div class='pre diff'>{inline}</div></div>")
+            f.write(f"<div class='small'><b><span data-i18n='inline'>Różnice</span>:</b>"
+                    f"<pre class='diff'>{inline}</pre></div>")
     else:
         text = html.escape(b.get("text") or b.get("old", {}).get("text") or "")
         f.write(f"<p class='small'>{text}</p>")
 
-    f.write("</div>")
-
 
 def _render_table(f, b, cls):
-    f.write(f"<div class='card {cls}'>")
-    f.write("<div class='meta'><span class='badge' data-i18n='table'>TABLE</span></div>")
     _render_ai_info(f, b)
 
-    # if we have table_changes (cell-level diffs), use them; otherwise, regular table
     table_changes = b.get("table_changes")
     if table_changes:
         rows = table_changes
     else:
-        # older format: table may be a list of rows (strings)
         rows = b.get("table") or b.get("new", {}).get("table") or []
 
     f.write("<table>")
@@ -287,25 +384,19 @@ def _render_table(f, b, cls):
         for cell in row:
             if isinstance(cell, dict):
                 if cell.get("type") == "same":
-                    # escape plain text
                     f.write(f"<td>{html.escape(cell.get('text',''))}</td>")
                 else:
-                    # inline_html has <del>/<ins>
                     f.write(f"<td>{cell.get('inline_html','')}</td>")
             else:
-                # cell is plain string
                 f.write(f"<td>{html.escape(str(cell))}</td>")
         f.write("</tr>")
-    f.write("</table></div>")
+    f.write("</table>")
 
 
 def _render_image(f, b, cls):
     sha = b.get("sha1") or b.get("new", {}).get("sha1") or ""
-    f.write(f"<div class='card {cls}'>")
-    f.write("<div class='meta'><span class='badge' data-i18n='image'>IMAGE</span></div>")
     _render_ai_info(f, b)
-    f.write(f"<p class='small'>SHA1={html.escape((sha or '')[:12])}...</p>")
-    f.write("</div>")
+    f.write(f"<p class='small'>SHA1: {html.escape((sha or '')[:12])}…</p>")
 
 # -------------------------
 # Main render
@@ -350,258 +441,255 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
 
     # 4) generate file
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write("<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>")
+        f.write("<!DOCTYPE html><html lang='pl'><head>")
+        f.write("<meta charset='utf-8'>")
+        f.write("<meta name='viewport' content='width=device-width,initial-scale=1'>")
+        f.write("<title data-i18n='title'>Raport porównania dokumentów</title>")
         f.write(STYLE)
 
-        # JS (deferred / DOMContentLoaded)
-        f.write("""
-        <script defer>
-        function toggleClass(el, cls){ el.classList.toggle(cls); }
-        function filterBy(){
-          document.querySelectorAll('[data-change]').forEach(function(n){
-            const ch = n.dataset.change;
-            const typ = n.dataset.type;
-            let show = true;
-            if(window.filterChange.length && window.filterChange.indexOf(ch) === -1) show = false;
-            if(window.filterType.length && window.filterType.indexOf(typ) === -1) show = false;
-            n.style.display = show ? '' : 'none';
-          });
-        }
-        function initFilters(){
-          window.filterChange = [];
-          window.filterType = [];
-          document.querySelectorAll('.chip.change').forEach(function(c){
-            c.addEventListener('click', function(){
-              toggleClass(c,'active');
-              const v = c.dataset.val;
-              if(c.classList.contains('active')) window.filterChange.push(v);
-              else window.filterChange = window.filterChange.filter(x=>x!==v);
-              filterBy();
-            });
-          document.querySelectorAll(".lang-btn").forEach(btn=>{
-              btn.addEventListener("click", function(){
-                setLang(this.dataset.lang);
-              });
-            });
-          });
-          document.querySelectorAll('.chip.type').forEach(function(c){
-            c.addEventListener('click', function(){
-              toggleClass(c,'active');
-              const v = c.dataset.val;
-              if(c.classList.contains('active')) window.filterType.push(v);
-              else window.filterType = window.filterType.filter(x=>x!==v);
-              filterBy();
-            });
-          });
-        
-          var collBtn = document.querySelector('.collapse-toggle');
-          if(collBtn){
-            collBtn.addEventListener('click', function(){
-              // check if currently collapsed (all unchanged hidden)
-              var unchanged = Array.from(document.querySelectorAll('.unchanged'));
-              var anyVisible = unchanged.some(x => x.style.display !== 'none');
-              if (anyVisible) {
-                  unchanged.forEach(x => x.style.display = 'none');
-                  this.dataset.state = "hidden";
-                  this.textContent = I18N[CURRENT_LANG].show_unchanged;
-                } else {
-                  unchanged.forEach(x => x.style.display = '');
-                  this.dataset.state = "shown";
-                  this.textContent = I18N[CURRENT_LANG].hide_unchanged;
-                }
-            });
-          }
-        
-          // dark mode toggle
-          var dmBtn = document.querySelector('.dark-toggle');
-          if(dmBtn){
-            dmBtn.addEventListener('click', function(){
-              document.body.classList.toggle('dark');
-              dmBtn.textContent = document.body.classList.contains('dark')
-              ? I18N[CURRENT_LANG].mode_dark
-              : I18N[CURRENT_LANG].mode_light;
-            });
-          }
-        
-          // smooth anchor scroll for TOC links
-          document.querySelectorAll('.toc a').forEach(function(a){
-            a.addEventListener('click', function(e){
-              e.preventDefault();
-              var id = this.getAttribute('href').slice(1);
-              var el = document.getElementById(id);
-              if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
-            });
-          });
-        
-        } // end initFilters
-        
-        document.addEventListener('DOMContentLoaded', initFilters);
-        </script>
-        """)
+        # ── i18n dictionary + lang switcher logic ──
         f.write("""
         <script>
         const I18N = {
+          pl: {
+            added:          "dodane",
+            deleted:        "usunięte",
+            changed:        "zmienione",
+            unchanged:      "bez zmian",
+            paragraph:      "Akapit",
+            table:          "Tabela",
+            image:          "Obraz",
+            score:          "Wynik",
+            back:           "Powrót do DocDiff",
+            title:          "Raport porównania dokumentów",
+            total:          "Łączna liczba bloków",
+            ai_summary:     "Podsumowanie AI",
+            toc:            "Najistotniejsze zmiany",
+            hide_unchanged: "Ukryj niezmienione",
+            show_unchanged: "Pokaż niezmienione",
+            change:         "zmiana",
+            old:            "Przed",
+            new:            "Po",
+            inline:         "Różnice",
+            relevance:      "Istotność",
+            confidence:     "Pewność",
+            type:           "Typ",
+            filter_change:  "Filtruj zmianę:",
+            filter_type:    "Filtruj typ:"
+          },
           en: {
-            added: "added", 
-            deleted: "deleted", 
-            changed: "changed", 
-            unchanged: "unchanged",
-            paragraph: "Paragraph",
-            table: "Table",
-            image: "Image",
-            score: "Score",
-            back: "Back to DocDiff",
-            title: "Document Comparison Report",
-            total: "Total blocks",
-            ai_summary: "AI Summary",
-            toc: "Most Significant Changes (TOC)",
+            added:          "added",
+            deleted:        "deleted",
+            changed:        "changed",
+            unchanged:      "unchanged",
+            paragraph:      "Paragraph",
+            table:          "Table",
+            image:          "Image",
+            score:          "Score",
+            back:           "Back to DocDiff",
+            title:          "Document Comparison Report",
+            total:          "Total blocks",
+            ai_summary:     "AI Summary",
+            toc:            "Most Significant Changes",
             hide_unchanged: "Hide unchanged",
             show_unchanged: "Show unchanged",
-            mode_light: "Mode: light",
-            mode_dark: "Mode: dark",
-            change: "change",
-            old: "Old",
-            new: "New",
-            inline: "Inline diff",
-            relevance: "Relevance",
-            confidence: "Confidence",
-            type: "Type"
-          },
-          pl: {
-            added: "dodane", 
-            deleted: "usunięte", 
-            changed: "zmienione", 
-            unchanged: "bez zmian",
-            paragraph: "Akapit",
-            table: "Tabela",
-            image: "Obraz",
-            score: "Wynik",
-            back: "Powrót do DocDiff",
-            title: "Raport porównania dokumentów",
-            total: "Łączna liczba bloków",
-            ai_summary: "Podsumowanie AI",
-            toc: "Najistotniejsze zmiany",
-            hide_unchanged: "Ukryj bez zmian",
-            show_unchanged: "Pokaż bez zmian",
-            mode_light: "Tryb: jasny",
-            mode_dark: "Tryb: ciemny",
-            change: "zmiana",
-            old: "Stare",
-            new: "Nowe",
-            inline: "Różnice",
-            relevance: "Istotność",
-            confidence: "Pewność",
-            type: "Typ"
+            change:         "change",
+            old:            "Before",
+            new:            "After",
+            inline:         "Inline diff",
+            relevance:      "Relevance",
+            confidence:     "Confidence",
+            type:           "Type",
+            filter_change:  "Filter by change:",
+            filter_type:    "Filter by type:"
           }
         };
 
-        let CURRENT_LANG = "en";
+        let CURRENT_LANG = "pl";
 
-        function setLang(lang){
+        function setLang(lang) {
           CURRENT_LANG = lang;
-    
-          document.querySelectorAll("[data-i18n]").forEach(el=>{
+          document.documentElement.lang = lang;
+          document.querySelectorAll("[data-i18n]").forEach(el => {
             const key = el.dataset.i18n;
-            if(I18N[lang][key]){
-              el.textContent = I18N[lang][key];
-            }
+            if (I18N[lang][key] !== undefined) el.textContent = I18N[lang][key];
           });
-    
-          const dmBtn = document.querySelector(".dark-toggle");
-          if (dmBtn) {
-            dmBtn.textContent = document.body.classList.contains("dark")
-              ? I18N[lang].mode_dark
-              : I18N[lang].mode_light;
+          // update document title
+          document.title = I18N[lang].title;
+          // update collapse button
+          const cb = document.querySelector(".collapse-toggle");
+          if (cb) {
+            cb.textContent = cb.dataset.state === "hidden"
+              ? I18N[lang].show_unchanged
+              : I18N[lang].hide_unchanged;
           }
-    
-          const collapseBtn = document.querySelector(".collapse-toggle");
-            if (collapseBtn) {
-              const hidden = collapseBtn.dataset.state === "hidden";
-              collapseBtn.textContent = hidden
+          // mark active lang button
+          document.querySelectorAll(".lang-btn").forEach(b => {
+            b.classList.toggle("active", b.dataset.lang === lang);
+          });
+        }
+        </script>
+        """)
+
+        # ── filter + collapse + scroll JS ──
+        f.write("""
+        <script defer>
+        function filterBy() {
+          document.querySelectorAll("[data-change]").forEach(function(n) {
+            const ch  = n.dataset.change;
+            const typ = n.dataset.type;
+            let show = true;
+            if (window.filterChange.length && !window.filterChange.includes(ch))  show = false;
+            if (window.filterType.length   && !window.filterType.includes(typ))   show = false;
+            n.style.display = show ? "" : "none";
+          });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          window.filterChange = [];
+          window.filterType   = [];
+
+          // chip filters
+          document.querySelectorAll(".chip.change").forEach(function(c) {
+            c.addEventListener("click", function() {
+              c.classList.toggle("active");
+              const v = c.dataset.val;
+              if (c.classList.contains("active")) window.filterChange.push(v);
+              else window.filterChange = window.filterChange.filter(x => x !== v);
+              filterBy();
+            });
+          });
+          document.querySelectorAll(".chip.type").forEach(function(c) {
+            c.addEventListener("click", function() {
+              c.classList.toggle("active");
+              const v = c.dataset.val;
+              if (c.classList.contains("active")) window.filterType.push(v);
+              else window.filterType = window.filterType.filter(x => x !== v);
+              filterBy();
+            });
+          });
+
+          // lang buttons
+          document.querySelectorAll(".lang-btn").forEach(function(btn) {
+            btn.addEventListener("click", function() { setLang(this.dataset.lang); });
+          });
+
+          // collapse unchanged
+          const collBtn = document.querySelector(".collapse-toggle");
+          if (collBtn) {
+            collBtn.addEventListener("click", function() {
+              const unchanged = Array.from(document.querySelectorAll(".unchanged"));
+              const anyVisible = unchanged.some(x => x.style.display !== "none");
+              unchanged.forEach(x => x.style.display = anyVisible ? "none" : "");
+              this.dataset.state = anyVisible ? "hidden" : "shown";
+              this.textContent = anyVisible
                 ? I18N[CURRENT_LANG].show_unchanged
                 : I18N[CURRENT_LANG].hide_unchanged;
-            }
-        }
-        
-        document.addEventListener("DOMContentLoaded", function () {
+            });
+          }
+
+          // smooth TOC scroll
+          document.querySelectorAll(".toc a").forEach(function(a) {
+            a.addEventListener("click", function(e) {
+              e.preventDefault();
+              const el = document.getElementById(this.getAttribute("href").slice(1));
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+          });
+
+          // init language
           setLang(CURRENT_LANG);
         });
         </script>
         """)
 
-        # body start
+        # ── body open ──
         f.write("</head><body><div class='container'>")
+
+        # ── top bar: back link + lang switcher ──
         f.write("""
-        <div style="margin-bottom:12px;font-size:1.1em; display:flex; justify-content:space-between; align-items:center;">
-          <a href="/docdiff/" style="text-decoration:none;color:var(--accent);">
-            ← <span data-i18n="back">Back to DocDiff</span>
-          </a>
-          <div>
-            <button class="chip lang-btn" data-lang="en">EN</button>
-            <button class="chip lang-btn" data-lang="pl">PL</button>
+        <div class='report-topbar'>
+          <a href='/docdiff/' class='back-link'>&#8592; <span data-i18n='back'>Powrót do DocDiff</span></a>
+          <div class='topbar-right'>
+            <button class='chip lang-btn' data-lang='pl'>PL</button>
+            <button class='chip lang-btn' data-lang='en'>EN</button>
           </div>
         </div>
         """)
-        f.write("<div class='header'><div>")
-        f.write("<h1 data-i18n='title'>Document Comparison Report</h1>")
-        f.write(f"<div class='small'><span data-i18n='total'>Total blocks</span>: {len(block_diffs)}</div>")
+
+        # ── report header ──
+        f.write("<div class='report-header'>")
+        f.write("<h1 class='report-title' data-i18n='title'>Raport porównania dokumentów</h1>")
+        f.write(f"<div class='report-meta'><span data-i18n='total'>Łączna liczba bloków</span>: {len(block_diffs)}"
+                f" &nbsp;|&nbsp; "
+                f"<span style='color:var(--added-text)'>+{stats.get('added',0)}</span>"
+                f" &nbsp;"
+                f"<span style='color:var(--deleted-text)'>-{stats.get('deleted',0)}</span>"
+                f" &nbsp;"
+                f"<span style='color:var(--changed-text)'>&#9654; {stats.get('changed',0)}</span>"
+                f"</div>")
         f.write("</div>")
 
-        # right side header: dark mode button
-        f.write("<div style='display:flex;align-items:center;gap:8px;'>")
-        f.write("<button class='chip dark-toggle'>Mode: light</button>")
-        f.write("</div></div>")  # header end
-
-        # AI summary card
+        # ── AI summary card ──
         safe_summary = html.escape(summary_html)
         f.write(f"""
-        <div class='card'>
-          <b data-i18n="ai_summary">AI Summary</b>:
-          <div class='small'>{safe_summary}</div>
+        <div class='card' style='margin-bottom:1.5rem;'>
+          <div class='ai-section' style='margin:0;border-radius:8px;'>
+            <b>&#129504; <span data-i18n='ai_summary'>Podsumowanie AI</span>:</b>
+            <div class='small' style='margin-top:0.4rem;'>{safe_summary}</div>
+          </div>
         </div>
         """)
 
-        # controls (chips)
-        f.write("<div class='controls card'>")
+        # ── filter controls ──
+        f.write("<div class='card controls' style='margin-bottom:1rem;gap:8px;'>")
+        f.write("<span style='font-size:0.78rem;font-weight:600;text-transform:uppercase;"
+                "letter-spacing:1px;color:var(--muted);' data-i18n='filter_change'>Filtruj zmianę:</span>")
         for ch in ("added", "deleted", "changed", "unchanged"):
             f.write(f"<span class='chip change' data-val='{ch}' data-i18n='{ch}'>{ch}</span>")
-        for t in stats["by_type"]:
-            f.write(f"<span class='chip type' data-val='{html.escape(t)}' data-i18n='{html.escape(t)}'>{html.escape(t)}</span>")
+        if stats["by_type"]:
+            f.write("<span style='font-size:0.78rem;font-weight:600;text-transform:uppercase;"
+                    "letter-spacing:1px;color:var(--muted);margin-left:0.5rem;' data-i18n='filter_type'>Filtruj typ:</span>")
+            for t in stats["by_type"]:
+                f.write(f"<span class='chip type' data-val='{html.escape(t)}' data-i18n='{html.escape(t)}'>{html.escape(t)}</span>")
         f.write("</div>")
 
-        # TOC sorted by AI score
-        f.write("""
-        <div class='toc card'>
-          <b data-i18n="toc">Most Significant Changes (TOC)</b>:
-        """)
+        # ── TOC ──
+        f.write("<div class='toc card' style='margin-bottom:1rem;'>")
+        f.write("<b data-i18n='toc'>Najistotniejsze zmiany</b>:<br>")
         for i in toc_items[:200]:
             b = block_diffs[i]
-            name = html.escape(str(b.get("type") or "blk"))
-            aisc = b.get("_ai_sem_score")
+            name  = html.escape(str(b.get("type") or "blk"))
+            aisc  = b.get("_ai_sem_score")
             score = b.get("_score", 0)
-            label = f"{aisc}/10" if aisc is not None else f"s={score}"
-            f.write(f"<a href='#blk{i}'>#{i}({name}) {label}</a>")
+            label = f"{aisc}/10" if aisc is not None else f"{score}"
+            f.write(f"<a href='#blk{i}'>#{i}&thinsp;({name})&thinsp;{label}</a>")
         f.write("</div>")
 
-        # collapse toggle
-        f.write("<div style='margin-bottom:10px;'><button class='collapse-toggle chip' data-i18n='hide_unchanged'>Hide unchanged</button></div>")
+        # ── collapse toggle ──
+        f.write("<div style='margin-bottom:1.5rem;'>")
+        f.write("<button class='collapse-toggle chip' data-state='shown' data-i18n='hide_unchanged'>Ukryj niezmienione</button>")
+        f.write("</div>")
 
         # render blocks
         for i, b in enumerate(block_diffs):
-            ch = html.escape(str(b.get("change", "unknown")))
+            ch = str(b.get("change", "unknown"))
             typ = b.get("type") or b.get("new", {}).get("type") or b.get("old", {}).get("type") or "unknown"
             typ = str(typ)
             score = b.get("_score", 0)
             score_cls = "low" if score < 3 else ("med" if score < 6 else "high")
-            # wrapper with attributes
-            f.write(f"<div id='blk{i}' class='card {html.escape(ch)}' data-change='{html.escape(ch)}' data-type='{html.escape(typ)}'>")
-            f.write("<div class='meta'>")
-            f.write(f"<span class='badge' data-i18n='{html.escape(typ)}>{html.escape(typ).upper()}</span>")
-            f.write(f"<span class='small'>change: {html.escape(str(b.get('change','')))}</span>")
-            f.write(f"<span class='score {score_cls}'>s={score}</span>")
-            f.write("</div>")  # meta end
 
-            # render by type
+            f.write(f"<div id='blk{i}' class='card {html.escape(ch)}' "
+                    f"data-change='{html.escape(ch)}' data-type='{html.escape(typ)}'>")
+
+            # meta row
+            f.write("<div class='meta'>")
+            f.write(f"<span class='badge' data-i18n='{html.escape(typ)}'>{html.escape(typ).upper()}</span>")
+            f.write(f"<span class='badge' data-i18n='{html.escape(ch)}'>{html.escape(ch)}</span>")
+            f.write(f"<span class='score {score_cls}'>{score}</span>")
+            f.write("</div>")
+
+            # render content by type (no extra wrapping card — already inside one)
             if typ == "paragraph":
                 _render_paragraph(f, b, html.escape(ch))
             elif typ == "table":
@@ -609,9 +697,9 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
             elif typ == "image":
                 _render_image(f, b, html.escape(ch))
             else:
-                f.write(f"<div class='small'><pre>{html.escape(str(b))}</pre></div>")
+                f.write(f"<pre class='diff'>{html.escape(str(b))}</pre>")
 
-            f.write("</div>")  # block wrapper
+            f.write("</div>")
 
         # footer / close
         f.write("</div></body></html>")

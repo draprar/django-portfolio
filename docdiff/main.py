@@ -1,20 +1,19 @@
-from pathlib import Path
 import argparse
 import logging
 import sys
 from enum import IntEnum
+from pathlib import Path
 
 from docdiff.diff_engine import compare_blocks
-from docdiff.report_builder import generate_html_report, generate_json_report
 
 # extractors
 from docdiff.extractors.extract_docx import DocxExtractor
 from docdiff.extractors.extract_txt import TxtExtractor
 from docdiff.extractors.extract_xlsx import XlsxExtractor
+from docdiff.report_builder import generate_html_report, generate_json_report
 
 _LOGGER = logging.getLogger(__name__)
 
-FILE_TYPE_MISMATCH = 7
 
 class ExitCode(IntEnum):
     OK = 0
@@ -23,6 +22,7 @@ class ExitCode(IntEnum):
     PARSE_ERROR = 4
     HTML_ERROR = 5
     JSON_ERROR = 6
+    FILE_TYPE_MISMATCH = 7
 
 EXTRACTOR_MAP = {
     ".docx": DocxExtractor,

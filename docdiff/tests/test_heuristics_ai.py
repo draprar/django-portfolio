@@ -1,11 +1,11 @@
-import pytest
 import types
-import numpy as np
 from unittest.mock import MagicMock
+
+import numpy as np
+import pytest
 
 import docdiff.heuristics_ai as ai
 from docdiff.heuristics_ai import get_nlp
-
 
 # ================================================================
 # Fixtures & Utilities

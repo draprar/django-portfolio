@@ -1,5 +1,6 @@
 import pytest
-from docdiff.extractors.extract_docx import _safe_hex_color, extract_docx_blocks, DocxExtractor
+
+from docdiff.extractors.extract_docx import DocxExtractor, _safe_hex_color, extract_docx_blocks
 
 
 class DummyRun:

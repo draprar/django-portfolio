@@ -1,7 +1,320 @@
-.docdiff-container {
-  max-width: 600px;
-  margin: 50px auto;
-  font-family: 'Montserrat', sans-serif;
+/* ════════════════════════════════════════════════════════════════════════════
+   docdiff/static/docdiff/style.css
+   Design system: --primary #c4922a | --dark #0f1117 | --surface #1a1e27
+   Fonts inherited from base: Montserrat + Playfair Display
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* ── Section: fills viewport so footer stays at bottom ─────────────────────── */
+.docdiff-section {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem 7rem;
 }
-label { display: block; margin-top: 10px; }
-button { margin-top: 15px; padding: 10px 15px; }
+
+.docdiff-inner {
+  width: 100%;
+  max-width: 840px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.docdiff-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.docdiff-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  color: #e8e8e8;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.docdiff-title::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, #c4922a, #e0b060);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+.docdiff-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: #8a8f9a;
+  margin-top: 1.6rem;
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Alert ──────────────────────────────────────────────────────────────────── */
+.docdiff-alert {
+  font-family: 'Montserrat', sans-serif;
+  background: rgba(127, 29, 29, 0.35);
+  border: 1px solid rgba(220, 38, 38, 0.45);
+  color: #fca5a5;
+  padding: 16px 28px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Form ───────────────────────────────────────────────────────────────────── */
+.docdiff-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+/* ── Upload pair: grid keeps arrow centered between two equal zones ─────────── */
+.upload-pair {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.upload-field label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #c4922a;
+}
+
+/* ── Drop zone ──────────────────────────────────────────────────────────────── */
+.file-drop {
+  background: #1a1e27;
+  border: 2px dashed rgba(196, 146, 42, 0.28);
+  border-radius: 14px;
+  cursor: pointer;
+  transition:
+    border-color 0.22s ease,
+    background   0.22s ease,
+    box-shadow   0.22s ease,
+    transform    0.18s ease;
+}
+
+.file-drop:hover {
+  border-color: rgba(196, 146, 42, 0.65);
+  background: rgba(196, 146, 42, 0.04);
+  box-shadow: 0 0 0 4px rgba(196, 146, 42, 0.07), 0 10px 36px rgba(0,0,0,0.45);
+  transform: translateY(-3px);
+}
+
+/* Active drag-over: bright gold glow */
+.file-drop.drag-over {
+  border-style: solid !important;
+  border-color: #c4922a !important;
+  background: rgba(196, 146, 42, 0.09) !important;
+  box-shadow:
+    0 0 0 5px rgba(196, 146, 42, 0.15),
+    0 0 48px rgba(196, 146, 42, 0.18),
+    inset 0 0 24px rgba(196, 146, 42, 0.07) !important;
+  transform: scale(1.02) !important;
+}
+
+/* File selected */
+.file-drop.has-file {
+  border-style: solid;
+  border-color: rgba(196, 146, 42, 0.5);
+  background: rgba(196, 146, 42, 0.03);
+}
+
+.file-drop-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  gap: 0.8rem;
+  text-align: center;
+  pointer-events: none; /* drop zone div handles click */
+}
+
+.drop-icon {
+  font-size: 2.4rem;
+  color: rgba(196, 146, 42, 0.4);
+  transition: color 0.22s, transform 0.22s;
+  line-height: 1;
+}
+
+.file-drop:hover     .drop-icon,
+.file-drop.drag-over .drop-icon { color: #c4922a; transform: translateY(-5px) scale(1.1); }
+.file-drop.has-file  .drop-icon { color: #c4922a; }
+
+.drop-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  color: #8a8f9a;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.file-drop:hover     .drop-label,
+.file-drop.drag-over .drop-label { color: #b4bac6; }
+
+.drop-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.84rem;
+  color: #c4922a;
+  font-weight: 600;
+  word-break: break-all;
+  min-height: 1.2em;
+  line-height: 1.5;
+}
+
+/* ── Arrow ──────────────────────────────────────────────────────────────────── */
+.upload-arrow {
+  font-size: 1.5rem;
+  color: rgba(196, 146, 42, 0.35);
+  text-align: center;
+  padding-top: 2rem; /* optically align with drop zone center */
+}
+
+/* ── Submit button ──────────────────────────────────────────────────────────── */
+.docdiff-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 17px 56px;
+  border: none;
+  border-radius: 10px;
+  background: #22273a;
+  color: #e8e8e8;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.22s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Gold fill slides in on hover */
+.docdiff-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #c4922a, #e0b060);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.docdiff-btn:hover:not(:disabled)::before { opacity: 1; }
+.docdiff-btn:hover:not(:disabled) {
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(196, 146, 42, 0.35);
+}
+.docdiff-btn:active:not(:disabled) { transform: translateY(-1px); }
+.docdiff-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.docdiff-btn .btn-text,
+.docdiff-btn .btn-icon { position: relative; z-index: 1; }
+
+/* ── Result page ────────────────────────────────────────────────────────────── */
+.docdiff-result-wrap {
+  max-width: 980px;
+  margin: 5rem auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.docdiff-result-wrap h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: #e8e8e8;
+}
+
+.docdiff-result-wrap h1::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #c4922a, #e0b060);
+  margin: 10px 0 1.8rem;
+  border-radius: 2px;
+}
+
+.docdiff-result-wrap p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #8a8f9a;
+}
+
+.docdiff-result-wrap iframe {
+  width: 100%;
+  height: 720px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  background: #1a1e27;
+  display: block;
+}
+
+.docdiff-result-wrap .open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #c4922a;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+
+.docdiff-result-wrap .open-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, #c4922a, #e0b060);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.docdiff-result-wrap .open-link:hover::after { transform: scaleX(1); }
+
+/* ── Mobile ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .upload-pair {
+    grid-template-columns: 1fr;
+  }
+  .upload-arrow {
+    padding-top: 0;
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+  .docdiff-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+  }
+  .file-drop-inner {
+    padding: 2.4rem 1.5rem;
+  }
+}

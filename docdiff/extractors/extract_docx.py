@@ -1,8 +1,11 @@
-from pathlib import Path
-from typing import Any, Dict, List
-from docx import Document
 import hashlib
 import logging
+from pathlib import Path
+from typing import Any, Dict, List
+
+from docx import Document
+
+from .base_extractor import BaseExtractor
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -87,16 +90,11 @@ def extract_docx_blocks(path: Path) -> List[Dict[str, Any]]:
                     _LOGGER.debug("Error extracting image from run", exc_info=True)
 
         elif tag.endswith("}tbl"):
-            tbl_obj = None
             for tbl in doc.tables:
                 rows = [[cell.text.strip() for cell in row.cells] for row in tbl.rows]
                 blocks.append({"type": "table", "table": rows})
 
     return blocks
-
-
-# Class wrapper compatible with BaseExtractor
-from .base_extractor import BaseExtractor
 
 
 class DocxExtractor(BaseExtractor):

@@ -1,10 +1,12 @@
 import logging
+
 import pytest
+
 from docdiff.diff_engine import (
-    html_inline_diff,
-    _table_cell_diff,
     _diff_tables,
+    _table_cell_diff,
     compare_blocks,
+    html_inline_diff,
 )
 
 # ================================================================

@@ -1,10 +1,11 @@
+import builtins
 import io
 import json
-import builtins
-import pytest
 from unittest.mock import patch
-import docdiff.report_builder as rb
 
+import pytest
+
+import docdiff.report_builder as rb
 
 # --- BASIC STRUCTURE TESTS ---
 

@@ -1,4 +1,5 @@
 import pytest
+
 from docdiff.extractors.extract_txt import TxtExtractor
 
 

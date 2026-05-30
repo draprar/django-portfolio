@@ -1,7 +1,8 @@
-from django.utils import timezone
-from django.contrib.auth.models import User
-from rugby.models import Post
 import pytest
+from django.contrib.auth.models import User
+from django.utils import timezone
+
+from rugby.models import Post
 
 
 @pytest.mark.django_db

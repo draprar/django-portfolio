@@ -1,18 +1,18 @@
-from django.shortcuts import render
+import shutil
+import tempfile
+from pathlib import Path
+
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django_ratelimit.decorators import ratelimit
-from pathlib import Path
-import tempfile
-import shutil
 
-from .extractors.extract_docx import DocxExtractor
-from .extractors.extract_xlsx import XlsxExtractor
-from .extractors.extract_txt import TxtExtractor
 from .diff_engine import compare_blocks
-from .report_builder import generate_html_report
+from .extractors.extract_docx import DocxExtractor
+from .extractors.extract_txt import TxtExtractor
+from .extractors.extract_xlsx import XlsxExtractor
 from .heuristics_ai import analyze_change
-
+from .report_builder import generate_html_report
 
 # Upload validation parameters
 MAX_FILE_SIZE_MB = 10
@@ -27,6 +27,8 @@ FORMAT_GROUP = {
     ".docx": "docx",
     ".xlsx": "xlsx",
 }
+
+GENERIC_UPLOAD_MIME = "application/octet-stream"
 
 # Error codes for frontend i18n
 ERROR_CODES = {
@@ -60,6 +62,17 @@ def _has_valid_signature(upload, ext: str) -> bool:
 
     return False
 
+
+def _mime_allowed(upload, ext: str) -> bool:
+    """Allow exact MIME, MIME with parameters and safe generic upload MIME."""
+    content_type = getattr(upload, "content_type", None)
+    if not content_type:
+        return True
+
+    normalized = content_type.split(";", 1)[0].strip().lower()
+    expected = ALLOWED_MIME.get(ext, "")
+    return normalized in {expected, GENERIC_UPLOAD_MIME}
+
 def validate_upload(upload):
     """Validate uploaded file extension, MIME and size."""
     ext = Path(upload.name).suffix.lower()
@@ -67,9 +80,8 @@ def validate_upload(upload):
         raise ValueError(ERROR_CODES["unsupported_type"])
     if upload.size > MAX_FILE_SIZE_MB * 1024 * 1024:
         raise ValueError(ERROR_CODES["file_too_large"])
-    if hasattr(upload, "content_type"):
-        if upload.content_type != ALLOWED_MIME.get(ext, ""):
-            raise ValueError(ERROR_CODES["mime_invalid"])
+    if not _mime_allowed(upload, ext):
+        raise ValueError(ERROR_CODES["mime_invalid"])
     if not _has_valid_signature(upload, ext):
         raise ValueError(ERROR_CODES["signature_invalid"])
 

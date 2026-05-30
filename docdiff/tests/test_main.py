@@ -1,14 +1,14 @@
-import pytest
-import sys
 import logging
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
+import pytest
+
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from docdiff import main
-
 
 # --- ARGUMENT PARSING ---
 

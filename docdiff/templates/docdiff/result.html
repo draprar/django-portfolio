@@ -2,14 +2,19 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wynik porównania</title>
+  <link rel="stylesheet" href="style-docdiff.css">
 </head>
 <body>
-  <main style="max-width:900px;margin:40px auto;">
+  <main class="docdiff-result-wrap">
     <h1>Wynik porównania</h1>
     <p>Raport AI:</p>
-    <iframe src="{{ report_url }}" style="width:100%;height:700px;border:1px solid #ccc;"></iframe>
-    <p><a href="{{ report_url }}" target="_blank">Otwórz raport w nowej karcie</a></p>
+    <iframe src="{{ report_url }}" title="Raport porównania dokumentów"></iframe>
+    <br>
+    <a href="{{ report_url }}" target="_blank" rel="noopener noreferrer" class="open-link">
+      Otwórz raport w nowej karcie &nbsp;↗
+    </a>
   </main>
 </body>
 </html>

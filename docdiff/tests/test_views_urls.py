@@ -1,7 +1,9 @@
 import pytest
-from django.urls import reverse, resolve
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.cache import cache
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import override_settings
+from django.urls import resolve, reverse
+
 from docdiff.views import docdiff_view
 
 
@@ -71,6 +73,25 @@ class TestDocDiffView:
         html = response.content.decode().lower()
         assert "signature_invalid" in html
 
+    def test_txt_mime_with_charset_is_accepted(self, client):
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"Ala ma kota", content_type="text/plain; charset=utf-8")
+        new_file = SimpleUploadedFile("new.txt", b"Ala ma dwa koty", content_type="text/plain; charset=utf-8")
+
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "mime_invalid" not in response.content.decode().lower()
+
+    def test_octet_stream_mime_for_txt_is_accepted(self, client):
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"one", content_type="application/octet-stream")
+        new_file = SimpleUploadedFile("new.txt", b"two", content_type="application/octet-stream")
+
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "mime_invalid" not in response.content.decode().lower()
+
+    @override_settings(RATELIMIT_ENABLE=True)
     def test_post_rate_limited_after_ten_requests(self, client):
         url = reverse("docdiff:compare")
         cache.clear()

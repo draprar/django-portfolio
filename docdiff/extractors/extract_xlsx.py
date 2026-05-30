@@ -1,6 +1,8 @@
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
 from openpyxl import load_workbook
+
 from .base_extractor import BaseExtractor
 
 

@@ -11,7 +11,7 @@ Block analysis using spaCy (pl_core_news_sm):
 
 import re
 from difflib import SequenceMatcher
-from typing import Dict, Any, List
+from typing import Any, Dict, List
 
 # ---------------------------------------------------------------------
 # spaCy loader (singleton)
@@ -131,7 +131,7 @@ def classify_change_type(old_text: str, new_text: str, labels: List[str]) -> str
     combined = (old_text + " " + new_text).lower()
 
     # Substantive – differences in data, numbers, dates, amounts
-    if any(l in labels for l in ["number", "amount", "date", "unit"]):
+    if any(label in labels for label in ["number", "amount", "date", "unit"]):
         return "substantive"
 
     # Technical – references to legal articles, paragraphs, etc.
@@ -253,17 +253,19 @@ def generate_ai_summary(blocks: List[Dict[str, Any]]) -> str:
     if not changed:
         return "No significant changes detected in the document."
 
-    type_counts = {}
+    type_counts: Dict[str, int] = {}
     for b in changed:
         t = b.get("change_type") or "undefined"
         type_counts[t] = type_counts.get(t, 0) + 1
 
-    top_type = max(type_counts, key=type_counts.get)
+    top_type = max(type_counts, key=lambda key: type_counts[key])
     percent_major = round(type_counts[top_type] / len(changed) * 100, 1)
+
+    dominant_labels = sorted({label for block in changed for label in (block.get("labels") or [])})
 
     return (
         f"The document contains {len(changed)} changes (out of {total} blocks), "
         f"of which {percent_major}% are of type {top_type}. "
         f"Dominant AI labels: "
-        f"{', '.join(sorted({l for b in changed for l in (b.get('labels') or [])})) or 'none'}."
+        f"{', '.join(dominant_labels) or 'none'}."
     )
