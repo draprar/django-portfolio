@@ -671,3 +671,17 @@ ul.list-inline.small a {
 }
 
 ul.list-inline.small a:hover { color: var(--primary); }
+
+/* Override p styles */
+
+#about p,
+#origin p {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  #about p,
+  #origin p {
+    font-size: 1.1rem;
+  }
+}
