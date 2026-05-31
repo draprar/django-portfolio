@@ -1,13 +1,23 @@
 (function () {
   'use strict';
 
+  // Converts \n to <br> — needed for post body text from Django (no linebreaksbr server-side)
+  function nl2br(str) {
+    return str.replace(/\n/g, '<br>');
+  }
+
   function applyTextToElement(el, text) {
     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
       if ('placeholder' in el) el.placeholder = text;
       if ('value' in el && (el.type === 'button' || el.type === 'submit')) el.value = text;
       return;
     }
-    el.innerHTML = text;
+    // For accordion bodies (post text): convert newlines to <br>
+    if (el.classList.contains('accordion-body')) {
+      el.innerHTML = nl2br(text);
+    } else {
+      el.innerHTML = text;
+    }
   }
 
   function switchLang(lang) {

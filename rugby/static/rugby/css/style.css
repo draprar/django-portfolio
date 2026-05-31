@@ -794,6 +794,47 @@ footer.footer p {
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
+   LANG SWITCHER
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.lang-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  line-height: 1.4;
+}
+
+.lang-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-dim);
+}
+
+.lang-btn.active {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-dim);
+}
+
+/* Mobile: lang buttons centred inside collapsed menu */
+@media (max-width: 767.98px) {
+  .navbar-collapse .lang-switcher-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0 0.25rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
    FOCUS / ACCESSIBILITY
    ══════════════════════════════════════════════════════════════════════════════ */
 

@@ -45,12 +45,23 @@
           <a class="nav-link text-uppercase" href="{% url 'home' %}#contact"
              data-en="Contact" data-pl="Kontakt">Kontakt</a>
         </li>
+
+        <!-- Mobile: separator + centred lang buttons inside collapse -->
+        <li class="nav-item d-md-none">
+          <hr class="my-2" style="border-color: var(--border);">
+        </li>
+        <li class="nav-item d-md-none">
+          <div class="lang-switcher-mobile">
+            <button class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
+            <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+        </li>
       </ul>
 
-      <!-- Language switcher -->
-      <div class="d-flex align-items-center gap-2 ms-2 mb-2 mb-md-0">
-        <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="pl" aria-pressed="false">PL</button>
-        <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      <!-- Desktop: lang buttons right of nav -->
+      <div class="d-none d-md-flex align-items-center gap-2 ms-2">
+        <button class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
     </div>
 

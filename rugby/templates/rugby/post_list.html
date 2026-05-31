@@ -4,12 +4,26 @@
 <div class="accordion" id="accordion">
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading{{ post.id }}">
-            <button class="accordion-button btn-archive collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ post.id }}" aria-expanded="true" aria-controls="collapse{{ post.id }}">
-                <strong>{{ post.title }} ({{ post.published_date }})</strong>
+            <button class="accordion-button btn-archive collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{ post.id }}"
+                    aria-expanded="false"
+                    aria-controls="collapse{{ post.id }}"
+                    data-pl="{{ post.title_pl }} ({{ post.published_date|date:'d.m.Y' }})"
+                    data-en="{% if post.title_en %}{{ post.title_en }}{% else %}{{ post.title_pl }}{% endif %} ({{ post.published_date|date:'d.m.Y' }})">
+                <strong>{{ post.title_pl }} ({{ post.published_date|date:'d.m.Y' }})</strong>
             </button>
         </h2>
-        <div id="collapse{{ post.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ post.id }}" data-bs-parent="#accordion">
-            <div class="accordion-body">{{ post.text|linebreaksbr }}</div>
+        <div id="collapse{{ post.id }}"
+             class="accordion-collapse collapse"
+             aria-labelledby="heading{{ post.id }}"
+             data-bs-parent="#accordion">
+            <div class="accordion-body"
+                 data-pl="{{ post.text_pl }}"
+                 data-en="{% if post.text_en %}{{ post.text_en }}{% else %}{{ post.text_pl }}{% endif %}">
+                {{ post.text_pl|linebreaksbr }}
+            </div>
         </div>
     </div>
 </div>
