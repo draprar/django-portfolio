@@ -121,13 +121,23 @@
     glitchEnabled = !matrixEnabled;
 
     if (!matrixEnabled) {
+      // Switching TO right (glitch) — clear left and reset its drops
       leftCtx.clearRect(0, 0, leftCanvas.width, leftCanvas.height);
       dropsLeft = Array(columnsLeft).fill(1);
-    }
 
-    if (glitchEnabled) {   // ← było: !glitchEnabled
+      // Also reset right so it starts fresh (not frozen mid-frame)
       rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
-      dropsRight = Array(columnsRight).fill(1);   // reset do góry ekranu
+      dropsRight = Array.from(
+        { length: columnsRight },
+        () => -Math.floor(Math.random() * 30)
+      );
+    } else {
+      // Switching BACK TO left — clear right canvas and reset its drops
+      rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
+      dropsRight = Array.from(
+        { length: columnsRight },
+        () => -Math.floor(Math.random() * 100)
+      );
     }
   });
 
