@@ -27,7 +27,9 @@
 <body>
 
 <!-- Back to top -->
-<button onclick="topFunction()" id="topBtn" title="Wróć na górę">
+<button onclick="topFunction()" id="topBtn"
+        data-en="Back to top" data-pl="Wróć na górę"
+        title="Wróć na górę">
   <i class="fa fa-arrow-up"></i>
 </button>
 
@@ -49,8 +51,13 @@
 <section class="page-section bg-light" id="archive">
   <div class="container px-4 py-5">
     <div class="text-center info" data-aos="fade-up">
-      <h2 class="text-uppercase">Archiwum</h2>
-      <h5 class="my-3 text-muted">Poniżej znajduje się archiwum newsów.</h5>
+      <h2 class="text-uppercase"
+          data-en="Archive" data-pl="Archiwum">Archiwum</h2>
+      <h5 class="my-3 text-muted"
+          data-en="Below you will find the news archive."
+          data-pl="Poniżej znajduje się archiwum newsów.">
+        Poniżej znajduje się archiwum newsów.
+      </h5>
     </div>
     <div data-aos="fade-up" data-aos-delay="100">
       {% block news %}{% endblock %}
@@ -65,6 +72,7 @@
 <script src="{% static 'rugby/js/top.js' %}"></script>
 <script src="{% static 'rugby/js/scroll.js' %}"></script>
 <script src="{% static 'rugby/js/enhancements.js' %}"></script>
+<script src="{% static 'rugby/js/lang.js' %}"></script>
 
 <script>
   AOS.init({ duration: 750, once: true, offset: 60 });

@@ -26,21 +26,32 @@
           <a class="nav-link text-uppercase" href="/"><img src="{% static 'gallery/img/logo.png' %}" alt="Logo" width="32" height="32" class="me-2"> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#info">Drużyna</a>
+          <a class="nav-link text-uppercase" href="#info"
+             data-en="Team" data-pl="Drużyna">Drużyna</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#media">Promocja</a>
+          <a class="nav-link text-uppercase" href="#media"
+             data-en="Promotion" data-pl="Promocja">Promocja</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#about">Historia</a>
+          <a class="nav-link text-uppercase" href="#about"
+             data-en="History" data-pl="Historia">Historia</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#archive">Archiwum</a>
+          <a class="nav-link text-uppercase" href="#archive"
+             data-en="Archive" data-pl="Archiwum">Archiwum</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase" href="{% url 'home' %}#contact">Kontakt</a>
+          <a class="nav-link text-uppercase" href="{% url 'home' %}#contact"
+             data-en="Contact" data-pl="Kontakt">Kontakt</a>
         </li>
       </ul>
+
+      <!-- Language switcher -->
+      <div class="d-flex align-items-center gap-2 ms-2 mb-2 mb-md-0">
+        <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="pl" aria-pressed="false">PL</button>
+        <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
 
   </div>
