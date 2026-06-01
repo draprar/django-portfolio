@@ -19,6 +19,8 @@ local_settings.py
 # === DATABASES ===
 *.sqlite3
 *.sqlite3-journal
+db.sqlite3
+test_db.sqlite3
 
 # === ENVIRONMENT ===
 /myvenv
@@ -28,14 +30,16 @@ venv/
 ENV/
 *.env
 .env.*
+!.env.example
 
 # === DJANGO PROJECT FILES ===
 # Media & user uploads (store elsewhere in prod!)
 media/
 staticfiles/
+django_warnings.log
 
 # Local debug artifacts
-debug/*.txt
+debug/
 
 # === SYSTEM ===
 *~
