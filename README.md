@@ -6,20 +6,35 @@
 
 🌐 Live: [walery.site](https://walery.site)
 
-**Combined Django project** integrating 8 full-stack applications into a unified portfolio. Demonstrates modern Django patterns: split view architecture, async views, REST APIs, AI integration, and clean layering.
+A full-stack Django portfolio by an engineer-turned-developer — 8 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
+
+> Split view architecture · async views · DRF + SimpleJWT · AI heuristics · 94% test coverage
 
 ## What's inside?
 
-| App | Purpose                                                         |
-|-----|-----------------------------------------------------------------|
-| **tonguetwister** | Language practice platform with chatbot + REST API + auth flows |
-| **docdiff** | Document comparison engine with AI analysis + HTML/JSON reports |
-| **gallery** | Image gallery with categories and full CRUD                     |
-| **core** | Landing page, contact form, user profiles                       |
-| **rugby** | Archive of rugby team                                           |
-| **bies** | Static pages integration                                        |
-| **analytics** | Stubs (tracking disabled)                                       |
-| **config** | Global Django settings, URLs, ASGI/WSGI                         |
+| App | Purpose | Stack highlights |
+|-----|---------|-----------------|
+| **tonguetwister** | Language practice platform | async views · DRF + SimpleJWT · chatbot · email auth |
+| **docdiff** | Document comparison engine | AI semantic scoring · MIME/signature validation · HTML reports |
+| **gallery** | Image gallery with categories | CRUD · DRF · Instagram feed integration |
+| **core** | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
+| **rugby** | Rugby team archive | static content |
+| **bies** | Static pages integration | — |
+| **analytics** | Stubs — tracking disabled | — |
+| **config** | Global settings, URLs, ASGI/WSGI | — |
+
+## Code highlights
+
+| Pattern | Where | Detail |
+|---------|-------|--------|
+| Split view architecture | `tonguetwister/views_*.py` | CRUD · auth · API · main logic in separate modules |
+| Async views | `tonguetwister/views_main.py` | chatbot with `asyncio.wait_for` timeout + Sentry capture |
+| DRF + SimpleJWT | `tonguetwister/views_api.py` | read-only ViewSets, per-endpoint auth, 5 min cache |
+| AI heuristics | `docdiff/heuristics_ai.py` | semantic scoring on paragraph-level diffs |
+| File security | `docdiff/views.py` | extension + MIME + magic-byte signature validation |
+| Rate limiting | `core/`, `tonguetwister/` | `django-ratelimit` per-IP on all mutation endpoints |
+| Email auth flow | `tonguetwister/views_auth.py` | token-based activation + password reset via Brevo |
+| Test coverage | project-wide | 94% — pytest + coverage, CI threshold at 60% |
 
 ## Quick start (5 min)
 
@@ -63,15 +78,6 @@ mypy config core tonguetwister gallery docdiff rugby bies analytics
 ruff check .
 ```
 
-## Code highlights
-
-- **Split view architecture** (`tonguetwister/views_*.py`) — CRUD, auth, API, main logic separated
-- **Async views** — chatbot with timeout handling
-- **DRF + SimpleJWT** — full REST API with token auth
-- **AI heuristics** — document analysis with semantic scoring
-- **Bootstrap 5 + i18n** — responsive frontend with Polish/English
-- **94% test coverage** — pytest + coverage tracking
-
 ## Requirements structure
 
 | File | Purpose |
@@ -107,11 +113,10 @@ DOCDIFF_MAX_UNCOMPRESSED_MB=120
 
 - Rate limiting on contact endpoints + honeypot fields
 - File validation (extension, MIME, signature) in DocDiff
-- Chatbot feature-flagged and disabled by default
+- Chatbot feature-flagged for controlled rollout (disabled by default)
 - JWT token auth with 24h expiry
 - CSRF protection + CORS validated
 
 ## License
 
 MIT
-

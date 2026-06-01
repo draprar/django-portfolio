@@ -34,6 +34,7 @@ dj-database-url==3.0.1
 Django==5.2.14
 django-cors-headers==4.7.0
 django-environ==0.12.0
+django-extensions==3.2.3
 django-nine==0.2.7
 django-ratelimit==4.1.0
 django-redis==5.4.0
