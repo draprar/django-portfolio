@@ -9,6 +9,7 @@ import docdiff.report_builder as rb
 
 # --- BASIC STRUCTURE TESTS ---
 
+
 def test_style_constant_contains_dark_and_light():
     """STYLE constant should contain both dark and light mode definitions."""
     assert "dark" in rb.STYLE
@@ -16,6 +17,7 @@ def test_style_constant_contains_dark_and_light():
 
 
 # --- COMPUTE STATS AND SCORES ---
+
 
 def test_compute_stats_and_scores_all_categories():
     """Should compute stats correctly for all change types and categories."""
@@ -39,8 +41,7 @@ def test_compute_stats_and_scores_all_categories():
 def test_compute_stats_and_scores_with_numbers_units_years():
     """Extra scoring for digits, units and years should increase the score."""
     blocks = [
-        {"change": "changed", "type": "paragraph",
-         "old": {"text": "value 12"}, "new": {"text": "value 13 kg 2024"}},
+        {"change": "changed", "type": "paragraph", "old": {"text": "value 12"}, "new": {"text": "value 13 kg 2024"}},
     ]
     stats = rb.compute_stats_and_scores(blocks)
     b = blocks[0]
@@ -49,6 +50,7 @@ def test_compute_stats_and_scores_with_numbers_units_years():
 
 
 # --- RENDER HELPERS ---
+
 
 def test_render_ai_info_empty(monkeypatch):
     """_render_ai_info should render nothing when no AI data present."""
@@ -81,7 +83,7 @@ def test_render_paragraph_changed_and_unchanged():
         "change": "changed",
         "old": {"text": "old text"},
         "new": {"text": "new text"},
-        "inline_html": "<del>old</del><ins>new</ins>"
+        "inline_html": "<del>old</del><ins>new</ins>",
     }
     f1 = io.StringIO()
     rb._render_paragraph(f1, changed, "changed")
@@ -126,19 +128,21 @@ def test_render_image_with_and_without_sha():
 
 # --- MAIN HTML REPORT ---
 
+
 @patch("docdiff.report_builder.analyze_change")
 @patch("docdiff.report_builder.generate_ai_summary", return_value="Summary OK")
 def test_generate_html_report_success(mock_summary, mock_analyze, tmp_path):
     """Should generate a complete HTML report and fill AI fields."""
     mock_analyze.return_value = {
-        "labels": ["person"], "semantic_score": 9.9,
-        "change_type": "substantive", "confidence": 0.88
+        "labels": ["person"],
+        "semantic_score": 9.9,
+        "change_type": "substantive",
+        "confidence": 0.88,
     }
 
     blocks = [
         {"change": "added", "type": "paragraph", "text": "abc"},
-        {"change": "changed", "type": "paragraph",
-         "old": {"text": "old"}, "new": {"text": "new"}},
+        {"change": "changed", "type": "paragraph", "old": {"text": "old"}, "new": {"text": "new"}},
     ]
     out = tmp_path / "report.html"
     rb.generate_html_report(blocks, output_path=str(out))
@@ -155,8 +159,7 @@ def test_generate_html_report_success(mock_summary, mock_analyze, tmp_path):
 @patch("docdiff.report_builder.generate_ai_summary", return_value="Summary fallback")
 def test_generate_html_report_with_ai_exception(mock_summary, mock_analyze, tmp_path):
     """Should handle AI exceptions gracefully and still produce report."""
-    blocks = [{"change": "changed", "type": "paragraph",
-               "old": {"text": "a"}, "new": {"text": "b"}}]
+    blocks = [{"change": "changed", "type": "paragraph", "old": {"text": "a"}, "new": {"text": "b"}}]
     out = tmp_path / "report.html"
     rb.generate_html_report(blocks, output_path=str(out))
     html = out.read_text(encoding="utf-8")
@@ -169,8 +172,10 @@ def test_generate_html_report_with_ai_exception(mock_summary, mock_analyze, tmp_
 @patch("docdiff.report_builder.generate_ai_summary", return_value="<script>alert('x')</script>")
 def test_generate_html_report_escapes_ai_summary(mock_summary, mock_analyze, tmp_path):
     mock_analyze.return_value = {
-        "labels": ["person"], "semantic_score": 8.1,
-        "change_type": "substantive", "confidence": 0.8
+        "labels": ["person"],
+        "semantic_score": 8.1,
+        "change_type": "substantive",
+        "confidence": 0.8,
     }
     blocks = [{"change": "changed", "type": "paragraph", "old": {"text": "a"}, "new": {"text": "b"}}]
     out = tmp_path / "report.html"
@@ -181,6 +186,7 @@ def test_generate_html_report_escapes_ai_summary(mock_summary, mock_analyze, tmp
 
 
 # --- JSON EXPORT ---
+
 
 def test_generate_json_report_success(tmp_path):
     """Should successfully create a JSON report."""
@@ -195,7 +201,10 @@ def test_generate_json_report_success(tmp_path):
 def test_generate_json_report_error(monkeypatch):
     """Should raise and log if JSON writing fails."""
     blocks = [{"change": "added"}]
-    def bad_open(*a, **kw): raise IOError("fail")
+
+    def bad_open(*a, **kw):
+        raise IOError("fail")
+
     monkeypatch.setattr(builtins, "open", bad_open)
     with pytest.raises(IOError):
         rb.generate_json_report(blocks, output_path="x.json")

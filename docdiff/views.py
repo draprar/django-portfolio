@@ -73,6 +73,7 @@ def _mime_allowed(upload, ext: str) -> bool:
     expected = ALLOWED_MIME.get(ext, "")
     return normalized in {expected, GENERIC_UPLOAD_MIME}
 
+
 def validate_upload(upload):
     """Validate uploaded file extension, MIME and size."""
     ext = Path(upload.name).suffix.lower()
@@ -85,12 +86,14 @@ def validate_upload(upload):
     if not _has_valid_signature(upload, ext):
         raise ValueError(ERROR_CODES["signature_invalid"])
 
+
 def validate_file_pair(file_old, file_new):
     ext_old = Path(file_old.name).suffix.lower()
     ext_new = Path(file_new.name).suffix.lower()
 
     if FORMAT_GROUP.get(ext_old) != FORMAT_GROUP.get(ext_new):
         raise ValueError(ERROR_CODES["format_mismatch"])
+
 
 @require_http_methods(["GET", "POST"])
 @ratelimit(key="ip", rate="10/h", method="POST", block=True)
@@ -105,11 +108,7 @@ def docdiff_view(request):
         file_new = request.FILES.get("file_new")
 
         if not file_old or not file_new:
-            return render(
-                request,
-                "docdiff/upload.html",
-                {"error_code": ERROR_CODES["missing_files"]}
-            )
+            return render(request, "docdiff/upload.html", {"error_code": ERROR_CODES["missing_files"]})
 
         # Validate uploads
         try:
@@ -117,11 +116,7 @@ def docdiff_view(request):
             validate_upload(file_new)
             validate_file_pair(file_old, file_new)
         except ValueError as e:
-            return render(
-                request,
-                "docdiff/upload.html",
-                {"error_code": str(e)}
-            )
+            return render(request, "docdiff/upload.html", {"error_code": str(e)})
 
         temp_dir = Path(tempfile.mkdtemp())
         try:
@@ -161,29 +156,17 @@ def docdiff_view(request):
                 old_blocks = old_extractor.extract_blocks(old_path)
                 new_blocks = new_extractor.extract_blocks(new_path)
             except Exception:
-                return render(
-                    request,
-                    "docdiff/upload.html",
-                    {"error_code": ERROR_CODES["extract_failed"]}
-                )
+                return render(request, "docdiff/upload.html", {"error_code": ERROR_CODES["extract_failed"]})
 
             if not old_blocks and not new_blocks:
-                return render(
-                    request,
-                    "docdiff/upload.html",
-                    {"error_code": ERROR_CODES["empty_documents"]}
-                )
+                return render(request, "docdiff/upload.html", {"error_code": ERROR_CODES["empty_documents"]})
 
             diff_result = compare_blocks(old_blocks, new_blocks)
 
             # Prevent excessive AI processing
             changed_blocks = [b for b in diff_result if b.get("change") == "changed"]
             if len(changed_blocks) > 300:
-                return render(
-                    request,
-                    "docdiff/upload.html",
-                    {"error_code": ERROR_CODES["too_many_changes"]}
-                )
+                return render(request, "docdiff/upload.html", {"error_code": ERROR_CODES["too_many_changes"]})
 
             # AI semantic analysis
             for block in diff_result:
@@ -195,24 +178,28 @@ def docdiff_view(request):
 
                 # AI text only
                 if old_type != "paragraph" or new_type != "paragraph":
-                    block.update({
-                        "labels": [],
-                        "semantic_score": None,
-                        "change_type": "structural",
-                        "confidence": 1.0,
-                    })
+                    block.update(
+                        {
+                            "labels": [],
+                            "semantic_score": None,
+                            "change_type": "structural",
+                            "confidence": 1.0,
+                        }
+                    )
                     continue
 
                 try:
                     ai_info = analyze_change(block)
                     block.update(ai_info)
                 except Exception:
-                    block.update({
-                        "labels": [],
-                        "semantic_score": None,
-                        "change_type": "ai_error",
-                        "confidence": 0.0,
-                    })
+                    block.update(
+                        {
+                            "labels": [],
+                            "semantic_score": None,
+                            "change_type": "ai_error",
+                            "confidence": 0.0,
+                        }
+                    )
 
             # Generate report
             output_html = temp_dir / "report.html"

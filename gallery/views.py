@@ -24,8 +24,9 @@ class Home(generic.ListView):
     Displays the homepage with a list of Gallery images.
     Allows filtering by category using GET parameters.
     """
+
     model = Gallery
-    template_name = 'gallery/home.html'
+    template_name = "gallery/home.html"
     queryset = Gallery.objects.all()
 
     def get_queryset(self):
@@ -33,7 +34,7 @@ class Home(generic.ListView):
         Optionally filters images by the selected category.
         """
         queryset = super().get_queryset()
-        category = self.request.GET.get('category', None)
+        category = self.request.GET.get("category", None)
         if category:
             queryset = queryset.filter(category__title=category)
         return queryset
@@ -43,15 +44,15 @@ class Home(generic.ListView):
         Adds categories and Instagram posts to the context.
         """
         context = super().get_context_data(**kwargs)
-        category = self.request.GET.get('category', None)
-        context['selected_category'] = category if category else "All"
-        context['categories'] = Category.objects.all().prefetch_related('images').order_by('-id')
+        category = self.request.GET.get("category", None)
+        context["selected_category"] = category if category else "All"
+        context["categories"] = Category.objects.all().prefetch_related("images").order_by("-id")
 
         # Include Instagram posts in context
         if category:
-            context['instagram_posts'] = InstagramPost.objects.filter(category__title=category).order_by('-created_at')
+            context["instagram_posts"] = InstagramPost.objects.filter(category__title=category).order_by("-created_at")
         else:
-            context['instagram_posts'] = InstagramPost.objects.all().order_by('-created_at')
+            context["instagram_posts"] = InstagramPost.objects.all().order_by("-created_at")
 
         return context
 
@@ -69,17 +70,18 @@ class AdminOnlyMixin(UserPassesTestMixin):
         Redirects unauthorized users to the home page with an error message.
         """
         messages.error(self.request, "You do not have permission to perform this action.")
-        return redirect('gallery:gallery_home')
+        return redirect("gallery:gallery_home")
 
 
 class UploadImage(AdminOnlyMixin, generic.CreateView):
     """
     View for admins to upload a new image to the gallery.
     """
+
     model = Gallery
-    template_name = 'gallery/upload-image.html'
+    template_name = "gallery/upload-image.html"
     form_class = GalleryForm
-    success_url = reverse_lazy('gallery:gallery_home')
+    success_url = reverse_lazy("gallery:gallery_home")
 
     def form_valid(self, form):
         """
@@ -100,32 +102,35 @@ class DeleteImage(AdminOnlyMixin, generic.DeleteView):
     """
     View for admins to delete an existing image from the gallery.
     """
+
     model = Gallery
-    template_name = 'gallery/delete-image.html'
-    success_url = reverse_lazy('gallery:gallery_home')
+    template_name = "gallery/delete-image.html"
+    success_url = reverse_lazy("gallery:gallery_home")
 
     def get_object(self, queryset=None):
         """
         Retrieves the image object based on the primary key.
         """
-        return get_object_or_404(Gallery, pk=self.kwargs['pk'])
+        return get_object_or_404(Gallery, pk=self.kwargs["pk"])
 
 
 class CreateCategory(AdminOnlyMixin, generic.CreateView):
     """
     View for admins to create a new image category.
     """
+
     model = Category
-    template_name = 'gallery/create-category.html'
+    template_name = "gallery/create-category.html"
     form_class = CategoryForm
-    success_url = reverse_lazy('gallery:upload-image')
+    success_url = reverse_lazy("gallery:upload-image")
 
 
 class ContactView(View):
     """
     Handles displaying and processing of the contact form.
     """
-    template_name = 'gallery/contact.html'
+
+    template_name = "gallery/contact.html"
 
     @method_decorator(ratelimit(key="ip", rate="5/m", method="POST", block=True))
     def dispatch(self, *args, **kwargs):
@@ -136,7 +141,7 @@ class ContactView(View):
         Renders an empty contact form.
         """
         form = ContactForm()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {"form": form})
 
     def post(self, request):
         """
@@ -151,20 +156,20 @@ class ContactView(View):
 
                 # Send email notification
                 send_mail(
-                    'New Contact Form Submission',
+                    "New Contact Form Submission",
                     f"Message from {form.cleaned_data['name']} ({form.cleaned_data['email']}):\n\n{form.cleaned_data['message']}",
                     settings.DEFAULT_FROM_EMAIL,
                     [settings.EMAIL_HOST_USER],
                 )
-                messages.success(request, 'Your message has been sent successfully!')
+                messages.success(request, "Your message has been sent successfully!")
             except BadHeaderError as e:
                 logger.error(f"BadHeaderError: {e}")
                 messages.error(request, "Invalid header found.")
             except Exception as e:
                 logger.error(f"Error sending email: {e}")
                 messages.error(request, "An error occurred while sending the email. Please try again later.")
-            return redirect('home')
-        return render(request, self.template_name, {'form': form})
+            return redirect("home")
+        return render(request, self.template_name, {"form": form})
 
 
 def custom_404(request, exception):
@@ -172,7 +177,7 @@ def custom_404(request, exception):
     Custom 404 error view.
     Renders the 404.html template with a 404 status code.
     """
-    return render(request, 'gallery/404.html', status=404)
+    return render(request, "gallery/404.html", status=404)
 
 
 def custom_500(request):
@@ -180,13 +185,14 @@ def custom_500(request):
     Custom 500 error view.
     Renders the 500.html template with a 500 status code.
     """
-    return render(request, 'gallery/500.html', status=500)
+    return render(request, "gallery/500.html", status=500)
 
 
 class CategoryListView(generics.ListAPIView):
     """
     API view to retrieve a list of all categories.
     """
+
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
@@ -195,7 +201,8 @@ class GalleryListView(generics.ListAPIView):
     """
     API view to retrieve a list of all gallery items, with optional filtering by category.
     """
+
     queryset = Gallery.objects.all()
     serializer_class = GallerySerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['category__title', 'title']  # Enable searching by category or image title
+    search_fields = ["category__title", "title"]  # Enable searching by category or image title

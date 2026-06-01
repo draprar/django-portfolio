@@ -9,19 +9,17 @@ env = environ.Env()
 
 urlpatterns = [
     path(f"{env('DJANGO_ADMIN_URL', default='admin')}/", admin.site.urls),
-    path('', include('core.urls')),             # portfolio landing page
-    path('gallery/', include(('gallery.urls', 'gallery'), namespace='gallery')),  # gallery
-    path('rugby/', include('rugby.urls')),       # rugby
-    path('tonguetwister/', include('tonguetwister.urls')),  # tonguetwister
-    path('bies/', include('bies.urls')),        # bies
-    path('docdiff/', include('docdiff.urls')),  # AI Document Diff Tool
-    path('analytics/', include('analytics.urls')),        # analytics
-
-
+    path("", include("core.urls")),  # portfolio landing page
+    path("gallery/", include(("gallery.urls", "gallery"), namespace="gallery")),  # gallery
+    path("rugby/", include("rugby.urls")),  # rugby
+    path("tonguetwister/", include("tonguetwister.urls")),  # tonguetwister
+    path("bies/", include("bies.urls")),  # bies
+    path("docdiff/", include("docdiff.urls")),  # AI Document Diff Tool
+    path("analytics/", include("analytics.urls")),  # analytics
     # API
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
 ]
 
 handler404 = "config.views.custom_404_view"

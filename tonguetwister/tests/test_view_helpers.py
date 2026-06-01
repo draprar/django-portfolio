@@ -82,4 +82,3 @@ def test_build_exercises_pdf_response_sets_headers_and_sanitizes_html(monkeypatc
     assert any("Łamańce językowe" in t for t in paragraph_texts)
     assert "<b>" not in " ".join(paragraph_texts)
     assert "<script>" not in " ".join(paragraph_texts)
-

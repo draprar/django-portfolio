@@ -30,6 +30,7 @@ async def test_chatbot_view_empty(async_client):
     assert response.status_code == 200
     assert response.json() == {"response": "Nie rozumiem."}
 
+
 @pytest.mark.parametrize("text", ["hej", "cześć", "witaj", "siema"])
 def test_greeting_detection(text):
     response = chatbot_instance.get_response(text)
@@ -41,14 +42,14 @@ def test_greeting_detection(text):
     [
         ("super fajnie świetnie", "pozytywne"),
         ("okropnie źle tragicznie", "przykro"),
-    ]
+    ],
 )
 def test_sentiment_detection(message, expected_phrase):
     with patch.object(Chatbot, "load_data") as mock_load:
         mock_load.side_effect = [
             {},  # keywords
             {"tragicznie", "źle", "okropnie"},  # negative_words
-            {"super", "fajnie", "świetnie"}     # positive_words
+            {"super", "fajnie", "świetnie"},  # positive_words
         ]
         chatbot = Chatbot()
         response = chatbot.get_response(message)
@@ -112,4 +113,3 @@ async def test_chatbot_view_timeout(async_get_chatbot, async_client):
     async_get_chatbot.return_value.get_response.side_effect = lambda _msg: time.sleep(0.1)
     response = await async_client.get(reverse("chatbot"), {"message": "hej"})
     assert response.status_code == 503
-

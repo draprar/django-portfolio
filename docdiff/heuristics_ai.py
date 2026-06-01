@@ -30,6 +30,7 @@ def get_numpy():
     if _NP is None:
         try:
             import numpy as np
+
             _NP = np
         except Exception as e:
             print(f"[WARN] NumPy failed to load: {e}")
@@ -42,6 +43,7 @@ def get_kmeans():
     if _KMEANS is None:
         try:
             from sklearn.cluster import KMeans
+
             _KMEANS = KMeans
         except Exception as e:
             print(f"[WARN] scikit-learn failed to load: {e}")
@@ -54,6 +56,7 @@ def get_nlp():
     if _NLP is None:
         try:
             import spacy
+
             _NLP = spacy.load("pl_core_news_sm")
         except Exception as e:
             print(f"[WARN] spaCy model failed to load: {e}")

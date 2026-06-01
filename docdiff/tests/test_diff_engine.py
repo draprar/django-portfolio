@@ -13,6 +13,7 @@ from docdiff.diff_engine import (
 # Tests for html_inline_diff
 # ================================================================
 
+
 @pytest.mark.unit
 def test_html_inline_diff_equal():
     """Verify that identical strings return unchanged plain text."""
@@ -47,6 +48,7 @@ def test_html_inline_diff_replace():
 # Tests for _table_cell_diff
 # ================================================================
 
+
 @pytest.mark.unit
 def test_table_cell_diff_same():
     """Return type 'same' when both cells are identical."""
@@ -67,6 +69,7 @@ def test_table_cell_diff_changed():
 # ================================================================
 # Tests for _diff_tables
 # ================================================================
+
 
 @pytest.mark.unit
 def test_diff_tables_equal():
@@ -91,6 +94,7 @@ def test_diff_tables_changed_and_extra_row():
 # ================================================================
 # Tests for compare_blocks
 # ================================================================
+
 
 @pytest.mark.unit
 def test_compare_blocks_equal_paragraphs():
@@ -162,6 +166,7 @@ def test_compare_blocks_image_handling():
 @pytest.mark.unit
 def test_compare_blocks_handles_exception_during_diff(monkeypatch, caplog):
     """Force an exception during diff generation to trigger logger.debug branch."""
+
     def broken_diff(a, b):
         raise ValueError("Boom")
 

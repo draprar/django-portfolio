@@ -9,7 +9,6 @@ from rugby.models import Post
 
 @pytest.mark.django_db
 class TestPostListView:
-
     def setup_method(self):
         self.client = Client()
 

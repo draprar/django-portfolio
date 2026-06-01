@@ -19,14 +19,17 @@ from tonguetwister.models import (
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize("model_class, text", [
-    # Test string representation of Twister, Articulator, Exercise, Trivia, Funfact
-    (Twister, "Test Twister"),
-    (Articulator, "Test Articulator"),
-    (Exercise, "Test Exercise"),
-    (Trivia, "Test Trivia"),
-    (Funfact, "Test Funfact")
-])
+@pytest.mark.parametrize(
+    "model_class, text",
+    [
+        # Test string representation of Twister, Articulator, Exercise, Trivia, Funfact
+        (Twister, "Test Twister"),
+        (Articulator, "Test Articulator"),
+        (Exercise, "Test Exercise"),
+        (Trivia, "Test Trivia"),
+        (Funfact, "Test Funfact"),
+    ],
+)
 def test_model_str(model_class, text):
     instance = model_class.objects.create(text=text)
     assert str(instance) == text
@@ -60,12 +63,15 @@ def test_profile_is_created_automatically_for_new_user():
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize("model_class, related_field, user_profile_model_class", [
-    # Test relationships between UserProfile models and their related fields
-    (Twister, "twister", UserProfileTwister),
-    (Articulator, "articulator", UserProfileArticulator),
-    (Exercise, "exercise", UserProfileExercise),
-])
+@pytest.mark.parametrize(
+    "model_class, related_field, user_profile_model_class",
+    [
+        # Test relationships between UserProfile models and their related fields
+        (Twister, "twister", UserProfileTwister),
+        (Articulator, "articulator", UserProfileArticulator),
+        (Exercise, "exercise", UserProfileExercise),
+    ],
+)
 def test_user_profile_relationship(model_class, related_field, user_profile_model_class):
     user = User.objects.create_user(username="testuser", password="test_password")
     related_instance = model_class.objects.create(text=f"Sample {model_class}.__name__")

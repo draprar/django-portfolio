@@ -254,4 +254,3 @@ def oldpolish_delete(request, pk):
         oldpolish.delete()
         return redirect("oldpolish_list")
     return render(request, "tonguetwister/oldpolishs/oldpolish_confirm_delete.html", {"oldpolish": oldpolish})
-

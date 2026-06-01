@@ -90,9 +90,13 @@ def test_send_activation_email_captures_exception(monkeypatch, rf):
     user = User.objects.create_user(username="mail-fail-user", email="mail@example.com", password="StrongPass123!")
     request = rf.get("/")
 
-    monkeypatch.setattr("tonguetwister.views_auth.send_brevo_email", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom")))
+    monkeypatch.setattr(
+        "tonguetwister.views_auth.send_brevo_email", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom"))
+    )
     captured = {"called": False}
-    monkeypatch.setattr("tonguetwister.views_auth.sentry_sdk.capture_exception", lambda _exc: captured.__setitem__("called", True))
+    monkeypatch.setattr(
+        "tonguetwister.views_auth.sentry_sdk.capture_exception", lambda _exc: captured.__setitem__("called", True)
+    )
 
     send_activation_email(user, request)
     assert captured["called"] is True
@@ -161,7 +165,9 @@ def test_contact_post_handles_send_mail_exception(monkeypatch, rf):
             return True
 
     monkeypatch.setattr("tonguetwister.views_auth.ContactForm", DummyForm)
-    monkeypatch.setattr("tonguetwister.views_auth.send_mail", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("smtp")))
+    monkeypatch.setattr(
+        "tonguetwister.views_auth.send_mail", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("smtp"))
+    )
     monkeypatch.setattr("tonguetwister.views_auth.redirect", lambda _name: HttpResponse(status=302))
 
     raw_contact = contact.__wrapped__.__wrapped__
@@ -169,6 +175,3 @@ def test_contact_post_handles_send_mail_exception(monkeypatch, rf):
     assert response.status_code == 302
     messages = [m.message for m in get_messages(request)]
     assert any("Nie udalo sie wyslac wiadomosci" in msg for msg in messages)
-
-
-

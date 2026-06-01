@@ -31,5 +31,3 @@ def test_api_docs_and_redoc_endpoints_render(client):
 
     assert docs.status_code == 200
     assert redoc.status_code == 200
-
-

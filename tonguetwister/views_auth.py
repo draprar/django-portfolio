@@ -268,4 +268,3 @@ def contact(request):
         form = ContactForm()
 
     return render(request, "tonguetwister/partials/static/contact.html", {"form": form})
-

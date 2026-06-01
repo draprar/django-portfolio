@@ -6,29 +6,34 @@ from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
 class OldPolishSerializer(serializers.ModelSerializer):
     class Meta:
         model = OldPolish
-        fields = ['id', 'old_text', 'new_text']
+        fields = ["id", "old_text", "new_text"]
+
 
 class ArticulatorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Articulator
-        fields = ['id', 'text']
+        fields = ["id", "text"]
+
 
 class FunfactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funfact
-        fields = ['id', 'text']
+        fields = ["id", "text"]
+
 
 class TwisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Twister
-        fields = ['id', 'text']
+        fields = ["id", "text"]
+
 
 class ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
-        fields = ['id', 'text']
+        fields = ["id", "text"]
+
 
 class TriviaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trivia
-        fields = ['id', 'text']
+        fields = ["id", "text"]

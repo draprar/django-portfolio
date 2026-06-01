@@ -60,7 +60,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # One-to-one relationship with User model
     login_streak = models.PositiveIntegerField(default=1)  # Tracks the number of consecutive login days
     last_login_date = models.DateField(auto_now=True)  # Automatically updates on login
-    avatar = models.ImageField(upload_to='avatars/%Y/%m/%d/', null=True, blank=True)  # Stores user's avatar image by date
+    avatar = models.ImageField(
+        upload_to="avatars/%Y/%m/%d/", null=True, blank=True
+    )  # Stores user's avatar image by date
     email_confirmed = models.BooleanField(default=False)  # Indicates if the user has confirmed their email
 
     def update_login_streak(self):
@@ -78,7 +80,7 @@ class Profile(models.Model):
             self.save()
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f"{self.user.username} Profile"
 
 
 # Represents the many-to-many relationship between a user and user articulators

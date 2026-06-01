@@ -18,9 +18,7 @@ def load_more_generic(request, model, user_profile_model, related_field, limit=1
 
         if request.user.is_authenticated:
             user_texts = set(
-                user_profile_model.objects.filter(user=request.user).values_list(
-                    f"{related_field}__text", flat=True
-                )
+                user_profile_model.objects.filter(user=request.user).values_list(f"{related_field}__text", flat=True)
             )
         else:
             user_texts = set()
@@ -71,14 +69,10 @@ def build_user_content_context(user, form):
     )
 
     user_exercises = UserProfileExercise.objects.filter(user=user).select_related("exercise")
-    user_exercises_texts = list(
-        UserProfileExercise.objects.filter(user=user).values_list("exercise__text", flat=True)
-    )
+    user_exercises_texts = list(UserProfileExercise.objects.filter(user=user).values_list("exercise__text", flat=True))
 
     user_twisters = UserProfileTwister.objects.filter(user=user).select_related("twister")
-    user_twisters_texts = list(
-        UserProfileTwister.objects.filter(user=user).values_list("twister__text", flat=True)
-    )
+    user_twisters_texts = list(UserProfileTwister.objects.filter(user=user).values_list("twister__text", flat=True))
 
     return {
         "form": form,
@@ -140,4 +134,3 @@ def build_exercises_pdf_response(context, base_dir):
 
     pdf.build(story)
     return response
-

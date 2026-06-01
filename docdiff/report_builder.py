@@ -302,11 +302,11 @@ def compute_stats_and_scores(block_diffs: List[Dict[str, Any]]) -> Dict[str, Any
         if ch in ("added", "deleted"):
             score += 2.5
         if ch == "changed":
-            old_text = (b.get("old", {}).get("text") or "")
-            new_text = (b.get("new", {}).get("text") or "")
+            old_text = b.get("old", {}).get("text") or ""
+            new_text = b.get("new", {}).get("text") or ""
             ratio = SequenceMatcher(None, old_text, new_text).ratio()
             score += (1.0 - ratio) * 6.0
-            combined = (old_text + " " + new_text)
+            combined = old_text + " " + new_text
             if re.search(r"\d", combined):
                 score += 0.8
             if re.search(r"\b(kg|m|mm|cm|%|km|PLN|EUR|kW)\b", combined, re.I):
@@ -362,8 +362,10 @@ def _render_paragraph(f, b, cls):
         f.write(f"<p class='small'><b><span data-i18n='new'>Po</span>:</b> {newt}</p>")
         inline = b.get("inline_html")
         if inline:
-            f.write(f"<div class='small'><b><span data-i18n='inline'>Różnice</span>:</b>"
-                    f"<pre class='diff'>{inline}</pre></div>")
+            f.write(
+                f"<div class='small'><b><span data-i18n='inline'>Różnice</span>:</b>"
+                f"<pre class='diff'>{inline}</pre></div>"
+            )
     else:
         text = html.escape(b.get("text") or b.get("old", {}).get("text") or "")
         f.write(f"<p class='small'>{text}</p>")
@@ -384,9 +386,9 @@ def _render_table(f, b, cls):
         for cell in row:
             if isinstance(cell, dict):
                 if cell.get("type") == "same":
-                    f.write(f"<td>{html.escape(cell.get('text',''))}</td>")
+                    f.write(f"<td>{html.escape(cell.get('text', ''))}</td>")
                 else:
-                    f.write(f"<td>{cell.get('inline_html','')}</td>")
+                    f.write(f"<td>{cell.get('inline_html', '')}</td>")
             else:
                 f.write(f"<td>{html.escape(str(cell))}</td>")
         f.write("</tr>")
@@ -397,6 +399,7 @@ def _render_image(f, b, cls):
     sha = b.get("sha1") or b.get("new", {}).get("sha1") or ""
     _render_ai_info(f, b)
     f.write(f"<p class='small'>SHA1: {html.escape((sha or '')[:12])}…</p>")
+
 
 # -------------------------
 # Main render
@@ -620,14 +623,16 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
         # ── report header ──
         f.write("<div class='report-header'>")
         f.write("<h1 class='report-title' data-i18n='title'>Raport porównania dokumentów</h1>")
-        f.write(f"<div class='report-meta'><span data-i18n='total'>Łączna liczba bloków</span>: {len(block_diffs)}"
-                f" &nbsp;|&nbsp; "
-                f"<span style='color:var(--added-text)'>+{stats.get('added',0)}</span>"
-                f" &nbsp;"
-                f"<span style='color:var(--deleted-text)'>-{stats.get('deleted',0)}</span>"
-                f" &nbsp;"
-                f"<span style='color:var(--changed-text)'>&#9654; {stats.get('changed',0)}</span>"
-                f"</div>")
+        f.write(
+            f"<div class='report-meta'><span data-i18n='total'>Łączna liczba bloków</span>: {len(block_diffs)}"
+            f" &nbsp;|&nbsp; "
+            f"<span style='color:var(--added-text)'>+{stats.get('added', 0)}</span>"
+            f" &nbsp;"
+            f"<span style='color:var(--deleted-text)'>-{stats.get('deleted', 0)}</span>"
+            f" &nbsp;"
+            f"<span style='color:var(--changed-text)'>&#9654; {stats.get('changed', 0)}</span>"
+            f"</div>"
+        )
         f.write("</div>")
 
         # ── AI summary card ──
@@ -643,15 +648,21 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
 
         # ── filter controls ──
         f.write("<div class='card controls' style='margin-bottom:1rem;gap:8px;'>")
-        f.write("<span style='font-size:0.78rem;font-weight:600;text-transform:uppercase;"
-                "letter-spacing:1px;color:var(--muted);' data-i18n='filter_change'>Filtruj zmianę:</span>")
+        f.write(
+            "<span style='font-size:0.78rem;font-weight:600;text-transform:uppercase;"
+            "letter-spacing:1px;color:var(--muted);' data-i18n='filter_change'>Filtruj zmianę:</span>"
+        )
         for ch in ("added", "deleted", "changed", "unchanged"):
             f.write(f"<span class='chip change' data-val='{ch}' data-i18n='{ch}'>{ch}</span>")
         if stats["by_type"]:
-            f.write("<span style='font-size:0.78rem;font-weight:600;text-transform:uppercase;"
-                    "letter-spacing:1px;color:var(--muted);margin-left:0.5rem;' data-i18n='filter_type'>Filtruj typ:</span>")
+            f.write(
+                "<span style='font-size:0.78rem;font-weight:600;text-transform:uppercase;"
+                "letter-spacing:1px;color:var(--muted);margin-left:0.5rem;' data-i18n='filter_type'>Filtruj typ:</span>"
+            )
             for t in stats["by_type"]:
-                f.write(f"<span class='chip type' data-val='{html.escape(t)}' data-i18n='{html.escape(t)}'>{html.escape(t)}</span>")
+                f.write(
+                    f"<span class='chip type' data-val='{html.escape(t)}' data-i18n='{html.escape(t)}'>{html.escape(t)}</span>"
+                )
         f.write("</div>")
 
         # ── TOC ──
@@ -659,8 +670,8 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
         f.write("<b data-i18n='toc'>Najistotniejsze zmiany</b>:<br>")
         for i in toc_items[:200]:
             b = block_diffs[i]
-            name  = html.escape(str(b.get("type") or "blk"))
-            aisc  = b.get("_ai_sem_score")
+            name = html.escape(str(b.get("type") or "blk"))
+            aisc = b.get("_ai_sem_score")
             score = b.get("_score", 0)
             label = f"{aisc}/10" if aisc is not None else f"{score}"
             f.write(f"<a href='#blk{i}'>#{i}&thinsp;({name})&thinsp;{label}</a>")
@@ -668,7 +679,9 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
 
         # ── collapse toggle ──
         f.write("<div style='margin-bottom:1.5rem;'>")
-        f.write("<button class='collapse-toggle chip' data-state='shown' data-i18n='hide_unchanged'>Ukryj niezmienione</button>")
+        f.write(
+            "<button class='collapse-toggle chip' data-state='shown' data-i18n='hide_unchanged'>Ukryj niezmienione</button>"
+        )
         f.write("</div>")
 
         # render blocks
@@ -679,8 +692,10 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
             score = b.get("_score", 0)
             score_cls = "low" if score < 3 else ("med" if score < 6 else "high")
 
-            f.write(f"<div id='blk{i}' class='card {html.escape(ch)}' "
-                    f"data-change='{html.escape(ch)}' data-type='{html.escape(typ)}'>")
+            f.write(
+                f"<div id='blk{i}' class='card {html.escape(ch)}' "
+                f"data-change='{html.escape(ch)}' data-type='{html.escape(typ)}'>"
+            )
 
             # meta row
             f.write("<div class='meta'>")

@@ -255,5 +255,3 @@ def delete_twister(request, twister_id):
     twister = get_object_or_404(UserProfileTwister, id=twister_id, user=request.user)
     twister.delete()
     return JsonResponse({"status": "Twister deleted"})
-
-

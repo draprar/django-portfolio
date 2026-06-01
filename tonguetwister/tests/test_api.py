@@ -15,6 +15,7 @@ from tonguetwister.serializers import (
 
 # --- FIXTURES ---
 
+
 @pytest.fixture
 def api_client():
     """Return a DRF APIClient instance without authentication."""
@@ -32,6 +33,7 @@ def auth_client():
 
 
 # --- OLD POLISH ---
+
 
 @pytest.mark.django_db
 def test_oldpolish_list_success(api_client):
@@ -53,6 +55,7 @@ def test_oldpolish_list_not_found(api_client):
 
 # --- ARTICULATORS ---
 
+
 @pytest.mark.django_db
 def test_articulator_list_success(api_client):
     """Should return a list with a single Articulator object."""
@@ -72,6 +75,7 @@ def test_articulator_list_not_found(api_client):
 
 
 # --- TWISTERS ---
+
 
 @pytest.mark.django_db
 def test_twister_list_success(api_client):
@@ -93,6 +97,7 @@ def test_twister_list_not_found(api_client):
 
 # --- EXERCISES ---
 
+
 @pytest.mark.django_db
 def test_exercise_list_success(api_client):
     """Should return a list with a single Exercise object."""
@@ -113,6 +118,7 @@ def test_exercise_list_not_found(api_client):
 
 # --- TRIVIAS ---
 
+
 @pytest.mark.django_db
 def test_trivia_list_success(api_client):
     """Should return a list with a single Trivia object."""
@@ -132,6 +138,7 @@ def test_trivia_list_not_found(api_client):
 
 
 # --- FUNFACTS (JWT protected) ---
+
 
 @pytest.mark.django_db
 def test_funfact_list_success(auth_client):
@@ -176,6 +183,7 @@ def test_funfact_list_not_found(auth_client):
 
 
 # --- AUTH (JWT tokens) ---
+
 
 @pytest.mark.django_db
 def test_token_obtain_success(api_client):

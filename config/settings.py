@@ -44,6 +44,7 @@ SENTRY_DSN = env("SENTRY_DSN", default=None)
 if SENTRY_DSN:
     import sentry_sdk
     from sentry_sdk.integrations.redis import RedisIntegration
+
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         integrations=[RedisIntegration()],
@@ -55,8 +56,12 @@ if SENTRY_DSN:
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 # In production, require explicit CSRF_TRUSTED_ORIGINS (no default with http://)
-CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[] if not DEBUG else ["http://localhost", "http://127.0.0.1"])
-CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=[] if not DEBUG else ["http://localhost", "http://127.0.0.1"])
+CSRF_TRUSTED_ORIGINS = env.list(
+    "DJANGO_CSRF_TRUSTED_ORIGINS", default=[] if not DEBUG else ["http://localhost", "http://127.0.0.1"]
+)
+CORS_ALLOWED_ORIGINS = env.list(
+    "CORS_ALLOWED_ORIGINS", default=[] if not DEBUG else ["http://localhost", "http://127.0.0.1"]
+)
 
 
 def _validate_production_env() -> None:
@@ -102,7 +107,7 @@ if not DEBUG:
     SESSION_COOKIE_AGE = 60 * 60 * 2  # 2h max session lifetime
 
     # X-Frame-Options to prevent clickjacking
-    X_FRAME_OPTIONS = 'DENY'
+    X_FRAME_OPTIONS = "DENY"
 
     # Content Security Policy (CSP) Headers
     SECURE_BROWSER_XSS_FILTER = True  # Enable XSS filter in browsers
@@ -111,64 +116,62 @@ if not DEBUG:
 
 # Application definition
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # Apps
-    'core',
-    'gallery',
-    'tonguetwister',
-    'rugby',
-    'bies',
-    'docdiff',
-    'analytics',
-
+    "core",
+    "gallery",
+    "tonguetwister",
+    "rugby",
+    "bies",
+    "docdiff",
+    "analytics",
     # External
-    'django_ratelimit',
-    'rest_framework',
-    'corsheaders',
-    'drf_spectacular',
-    'rest_framework_simplejwt',
-    'django_extensions',
+    "django_ratelimit",
+    "rest_framework",
+    "corsheaders",
+    "drf_spectacular",
+    "rest_framework_simplejwt",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
     #'base.middleware.LoginStreakMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'gallery.context_processors.categories',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "gallery.context_processors.categories",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
@@ -177,32 +180,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # DATABASE - production uses DATABASE_URL; fallback to local sqlite for dev
 DATABASE_URL = env("DATABASE_URL", default=None)
 if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
-    }
+    DATABASES = {"default": dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)}
 else:
     # Local/dev fallback
-    DATABASES = {
-        "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": str(BASE_DIR / "db.sqlite3")}
-    }
+    DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": str(BASE_DIR / "db.sqlite3")}}
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
-    'DEFAULT_THROTTLE_CLASSES': [
-        'tonguetwister.throttling.CustomAnonThrottle',
+    "DEFAULT_THROTTLE_CLASSES": [
+        "tonguetwister.throttling.CustomAnonThrottle",
     ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '50/hour',
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "50/hour",
     },
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',  # JSON
-        'rest_framework.renderers.BrowsableAPIRenderer' # UI
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",  # JSON
+        "rest_framework.renderers.BrowsableAPIRenderer",  # UI
     ],
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }
 
 # Swagger configuration
@@ -262,43 +261,43 @@ if _testing:
 
 # JWT configuration
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'AUTH_HEADER_TYPES': ('Bearer',),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 # STATICFILES_DIRS = [BASE_DIR / 'core/static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 WHITENOISE_MANIFEST_STRICT = False
 
 # --- Media storage backend ---
@@ -312,12 +311,14 @@ if USE_S3:
     SUPABASE_PROJECT_REF = env("SUPABASE_PROJECT_REF", default=None)
 
     missing = [
-        k for k, v in {
+        k
+        for k, v in {
             "AWS_ACCESS_KEY_ID": AWS_ACCESS_KEY_ID,
             "AWS_SECRET_ACCESS_KEY": AWS_SECRET_ACCESS_KEY,
             "AWS_STORAGE_BUCKET_NAME": AWS_STORAGE_BUCKET_NAME,
             "SUPABASE_PROJECT_REF": SUPABASE_PROJECT_REF,
-        }.items() if not v
+        }.items()
+        if not v
     ]
     if missing:
         raise ImproperlyConfigured(f"Missing required S3 settings: {', '.join(missing)}")
@@ -367,9 +368,9 @@ if _testing:
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Email backend settings (using SMTP)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -420,12 +421,14 @@ SECURE_CSP = {
     "frame-ancestors": "'none'",
 }
 
+
 # Define a simple middleware factory so it is importable as 'config.settings.csp_headers'
 def csp_headers(get_response):
     """
     Simple middleware that injects a CSP header.
     It uses REPORT-ONLY mode while SECURE_CSP_REPORT_ONLY is True.
     """
+
     def middleware(request):
         response = get_response(request)
         # Build policy string like: "default-src 'self'; img-src 'self' data: https:; ..."
@@ -433,7 +436,9 @@ def csp_headers(get_response):
         header_name = "Content-Security-Policy-Report-Only" if SECURE_CSP_REPORT_ONLY else "Content-Security-Policy"
         response[header_name] = csp_policy
         return response
+
     return middleware
+
 
 # Insert CSP middleware right after SecurityMiddleware if that middleware exists.
 try:

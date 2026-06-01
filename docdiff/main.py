@@ -24,6 +24,7 @@ class ExitCode(IntEnum):
     JSON_ERROR = 6
     FILE_TYPE_MISMATCH = 7
 
+
 EXTRACTOR_MAP = {
     ".docx": DocxExtractor,
     ".doc": DocxExtractor,
@@ -39,6 +40,7 @@ FORMAT_GROUP = {
     ".xls": "xlsx",
     ".xlsx": "xlsx",
 }
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Compare two files and generate a report.")
@@ -59,11 +61,9 @@ def choose_extractor(path: Path):
     ext = path.suffix.lower()
     cls = EXTRACTOR_MAP.get(ext)
     if cls is None:
-        raise ValueError(
-            f"No extractor available for extension: {ext}. "
-            "Supported formats: .docx, .doc, .xlsx, .txt"
-        )
+        raise ValueError(f"No extractor available for extension: {ext}. Supported formats: .docx, .doc, .xlsx, .txt")
     return cls()
+
 
 def validate_files(old: Path, new: Path) -> None:
     old_ext = old.suffix.lower()
@@ -76,10 +76,8 @@ def validate_files(old: Path, new: Path) -> None:
         raise ValueError(f"Unsupported file format: {new_ext}")
 
     if FORMAT_GROUP[old_ext] != FORMAT_GROUP[new_ext]:
-        raise ValueError(
-            f"File format mismatch: {old_ext} vs {new_ext}. "
-            "Both files must have the same format."
-        )
+        raise ValueError(f"File format mismatch: {old_ext} vs {new_ext}. Both files must have the same format.")
+
 
 def main() -> int:
     args = parse_args()

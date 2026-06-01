@@ -9,6 +9,7 @@ def validate_file_size(file):
     if file.size > max_mb * 1024 * 1024:
         raise ValidationError(_(f"Max file size is {max_mb} MB"))
 
+
 class Project(models.Model):
     title_en = models.CharField(max_length=200)
     title_pl = models.CharField(max_length=200)
@@ -21,10 +22,10 @@ class Project(models.Model):
         blank=True,
         null=True,
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif', 'webp']),
-            validate_file_size
+            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "gif", "webp"]),
+            validate_file_size,
         ],
-        help_text="Allowed: jpg, png, gif, webp. Max 5 MB."
+        help_text="Allowed: jpg, png, gif, webp. Max 5 MB.",
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -34,10 +35,12 @@ class Project(models.Model):
     def __str__(self):
         return f"{self.title_en} / {self.title_pl}"
 
+
 class Contact(models.Model):
     """
     Represents a contact form submission from the portfolio page.
     """
+
     name = models.CharField(max_length=255)
     email = models.EmailField()
     message = models.TextField()

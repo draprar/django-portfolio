@@ -69,9 +69,7 @@ def extract_docx_blocks(path: Path) -> List[Dict[str, Any]]:
                 try:
                     blips = run._element.findall(".//a:blip", namespaces)
                     for blip in blips:
-                        embed = blip.get(
-                            "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed"
-                        )
+                        embed = blip.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed")
                         if embed and embed in related:
                             part = related[embed]
                             data = part.blob if hasattr(part, "blob") else part._blob

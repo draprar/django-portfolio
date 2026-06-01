@@ -11,6 +11,7 @@ from docdiff.heuristics_ai import get_nlp
 # Fixtures & Utilities
 # ================================================================
 
+
 @pytest.fixture
 def mock_nlp(monkeypatch):
     """Mock spaCy nlp() to avoid loading large language model."""
@@ -25,6 +26,7 @@ def mock_nlp(monkeypatch):
 # ================================================================
 # extract_labels_spacy
 # ================================================================
+
 
 def test_extract_labels_with_entities(monkeypatch):
     """Return correct semantic labels when entities are detected."""
@@ -56,6 +58,7 @@ def test_extract_labels_empty_text(mock_nlp):
 # semantic_similarity
 # ================================================================
 
+
 def test_semantic_similarity_normal(mock_nlp):
     """Return similarity from spaCy doc.similarity()."""
     result = ai.semantic_similarity("Ala ma kota", "Ala posiada kota")
@@ -72,6 +75,7 @@ def test_semantic_similarity_empty_inputs(mock_nlp):
 # ================================================================
 # classify_change_type
 # ================================================================
+
 
 def test_classify_substantive_due_to_labels():
     """Return 'substantive' when number/date/unit labels exist."""
@@ -107,6 +111,7 @@ def test_classify_default_substantive():
 # analyze_change
 # ================================================================
 
+
 def test_analyze_change_successful(mock_nlp):
     """Full flow with mock nlp: labels, semantic_score, type, confidence."""
     block = {"old": {"text": "Stara wersja"}, "new": {"text": "Nowa wersja"}}
@@ -130,6 +135,7 @@ def test_analyze_change_fallback_on_exception(monkeypatch):
 # ================================================================
 # cluster_changes
 # ================================================================
+
 
 def test_cluster_changes_too_few_blocks():
     """Return empty dict when fewer than 3 changed blocks."""
@@ -162,6 +168,7 @@ def test_cluster_changes_with_mocked_kmeans(monkeypatch):
 # generate_ai_summary
 # ================================================================
 
+
 def test_generate_ai_summary_no_changes():
     """Return neutral message when no changed blocks."""
     blocks = [{"change": "unchanged"}]
@@ -180,6 +187,7 @@ def test_generate_ai_summary_with_changes():
     assert "The document contains" in result
     assert "type technical" in result
     assert "date" in result or "number" in result
+
 
 def nlp(text: str):
     model = get_nlp()

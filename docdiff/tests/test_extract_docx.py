@@ -18,6 +18,7 @@ class DummyRun:
 # _safe_hex_color() tests
 # --------------------------
 
+
 def test_safe_hex_color_valid():
     """Should return formatted hex color when run.font.color.rgb exists."""
     run = DummyRun(color_rgb=(255, 0, 0))
@@ -40,6 +41,7 @@ def test_safe_hex_color_exception():
 # --------------------------
 # extract_docx_blocks() tests
 # --------------------------
+
 
 def test_extract_docx_blocks_missing_file(tmp_path):
     """Should raise FileNotFoundError for missing files."""

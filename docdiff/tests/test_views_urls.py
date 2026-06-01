@@ -62,10 +62,14 @@ class TestDocDiffView:
     def test_spoofed_docx_signature_rejected(self, client):
         url = reverse("docdiff:compare")
         fake_docx_1 = SimpleUploadedFile(
-            "old.docx", b"not-a-zip", content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            "old.docx",
+            b"not-a-zip",
+            content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         )
         fake_docx_2 = SimpleUploadedFile(
-            "new.docx", b"still-not-a-zip", content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            "new.docx",
+            b"still-not-a-zip",
+            content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         )
 
         response = client.post(url, {"file_old": fake_docx_1, "file_new": fake_docx_2})

@@ -7,13 +7,13 @@ from tonguetwister.models import OldPolish, Twister
 
 
 class Command(BaseCommand):
-    help = 'Import data from CSV files into the MySQL database'
+    help = "Import data from CSV files into the MySQL database"
 
     def handle(self, *args, **kwargs):
         # Define file paths for CSV files containing data to import
         files = {
-            'twister': '/home/lingwolamki/django-tonguetwister/twister_data.csv',
-            'old_polish': '/home/lingwolamki/django-tonguetwister/oldpolish_data.csv'
+            "twister": "/home/lingwolamki/django-tonguetwister/twister_data.csv",
+            "old_polish": "/home/lingwolamki/django-tonguetwister/oldpolish_data.csv",
         }
 
         # Loop over each file path and model to import data
@@ -24,16 +24,16 @@ class Command(BaseCommand):
                 continue
 
             # Select the model to use based on the file label
-            model = Twister if label == 'twister' else OldPolish
+            model = Twister if label == "twister" else OldPolish
 
             # Prepare a list to hold records for bulk creation
             records = []
             try:
-                with open(file_path, mode='r') as file:
+                with open(file_path, mode="r") as file:
                     reader = csv.DictReader(file)  # Read CSV data as dictionaries
                     for row in reader:
                         # Define unique field(s) to identify duplicate records
-                        unique_fields = {'id': row.get('id')}  # Check if 'id' exists
+                        unique_fields = {"id": row.get("id")}  # Check if 'id' exists
 
                         # Skip the row if a record with the same 'id' already exists
                         if not model.objects.filter(**unique_fields).exists():

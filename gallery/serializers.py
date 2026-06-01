@@ -6,7 +6,7 @@ from .models import Category, Gallery
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'title']
+        fields = ["id", "title"]
 
 
 class GallerySerializer(serializers.ModelSerializer):
@@ -14,4 +14,4 @@ class GallerySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Gallery
-        fields = ['id', 'image', 'title', 'description', 'created_at', 'category']
+        fields = ["id", "image", "title", "description", "created_at", "category"]

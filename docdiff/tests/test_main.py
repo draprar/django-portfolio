@@ -12,6 +12,7 @@ from docdiff import main
 
 # --- ARGUMENT PARSING ---
 
+
 @pytest.mark.unit
 def test_parse_args_basic(monkeypatch):
     """Ensure command-line arguments are parsed correctly with defaults."""
@@ -25,6 +26,7 @@ def test_parse_args_basic(monkeypatch):
 
 # --- LOGGING SETUP ---
 
+
 @pytest.mark.unit
 def test_setup_logging_sets_correct_level(caplog):
     """Verify that setup_logging allows capturing DEBUG messages when verbose=True."""
@@ -35,6 +37,7 @@ def test_setup_logging_sets_correct_level(caplog):
 
 
 # --- EXTRACTOR SELECTION ---
+
 
 @pytest.mark.unit
 @pytest.mark.parametrize(
@@ -65,6 +68,7 @@ def test_choose_extractor_invalid(tmp_path):
 
 # --- MAIN FUNCTION: FILE EXISTENCE ERRORS ---
 
+
 @pytest.mark.unit
 def test_main_returns_old_not_found(monkeypatch, tmp_path):
     """Return OLD_NOT_FOUND if the old file does not exist."""
@@ -93,6 +97,7 @@ def test_main_returns_new_not_found(monkeypatch, tmp_path):
 
 # --- MAIN FUNCTION: PARSE / HTML / JSON ERRORS ---
 
+
 @pytest.mark.unit
 def test_main_parse_error(monkeypatch, tmp_path):
     """Return PARSE_ERROR if any extractor raises an exception while reading files."""
@@ -103,7 +108,9 @@ def test_main_parse_error(monkeypatch, tmp_path):
 
     args = SimpleNamespace(old=fake_old, new=fake_new, output="x.html", json=None, verbose=False)
     monkeypatch.setattr(main, "parse_args", lambda: args)
-    monkeypatch.setattr(main, "choose_extractor", lambda path: MagicMock(extract_blocks=MagicMock(side_effect=Exception("boom"))))
+    monkeypatch.setattr(
+        main, "choose_extractor", lambda path: MagicMock(extract_blocks=MagicMock(side_effect=Exception("boom")))
+    )
 
     code = main.main()
     assert code == main.ExitCode.PARSE_ERROR
@@ -155,6 +162,7 @@ def test_main_json_error(monkeypatch, tmp_path):
 
 
 # --- MAIN FUNCTION: SUCCESSFUL EXECUTION ---
+
 
 @pytest.mark.unit
 def test_main_ok(monkeypatch, tmp_path):

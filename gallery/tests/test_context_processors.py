@@ -24,5 +24,3 @@ def test_categories_context_processor_handles_database_error(monkeypatch):
 
     ctx = categories(Mock())
     assert ctx["categories"] == []
-
-

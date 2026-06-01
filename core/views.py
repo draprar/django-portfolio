@@ -16,7 +16,6 @@ from .models import Project
 logger = logging.getLogger(__name__)
 
 
-
 def health_check(request):
     """
     Health check endpoint for monitoring and deployment verification.
@@ -32,6 +31,7 @@ def health_check(request):
     """
     return JsonResponse({"status": "ok"})
 
+
 class HomeView(View):
     """
     Main portfolio page view.
@@ -45,6 +45,7 @@ class HomeView(View):
     - Projects list degrades to empty list if database is temporarily down
     - Maintains service availability (fail-open approach)
     """
+
     template_name = "core/index.html"
 
     def get(self, request):
@@ -74,8 +75,9 @@ class ContactView(View):
     def post(self, request, *args, **kwargs):
         # Basic XHR check (case-insensitive)
         if request.headers.get("x-requested-with", "").lower() != "xmlhttprequest":
-            logger.warning("Contact attempt rejected: missing or invalid XHR header from %s",
-                           request.META.get("REMOTE_ADDR"))
+            logger.warning(
+                "Contact attempt rejected: missing or invalid XHR header from %s", request.META.get("REMOTE_ADDR")
+            )
             return JsonResponse({"success": False, "message": "Invalid request."}, status=400)
 
         # Honeypot: invisible field that bots often fill
@@ -88,18 +90,12 @@ class ContactView(View):
         is_valid = form.is_valid()
 
         # Log only IP and validation result. Do NOT log form data or message content.
-        logger.debug("Contact form submitted from %s. Valid: %s",
-                     request.META.get("REMOTE_ADDR"), is_valid)
+        logger.debug("Contact form submitted from %s. Valid: %s", request.META.get("REMOTE_ADDR"), is_valid)
 
         if not is_valid:
             errors = {field: list(errs) for field, errs in form.errors.items()}
-            logger.warning("Invalid contact form from %s. Errors: %s",
-                           request.META.get("REMOTE_ADDR"), errors)
-            return JsonResponse({
-                "success": False,
-                "message": "Invalid form data.",
-                "errors": errors
-            }, status=400)
+            logger.warning("Invalid contact form from %s. Errors: %s", request.META.get("REMOTE_ADDR"), errors)
+            return JsonResponse({"success": False, "message": "Invalid form data.", "errors": errors}, status=400)
 
         # At this point form is valid. Save and send email.
         try:
@@ -127,22 +123,17 @@ class ContactView(View):
 
             if result:
                 logger.info("Contact form processed successfully from %s", request.META.get("REMOTE_ADDR"))
-                return JsonResponse({
-                    "success": True,
-                    "message": "Your message has been sent successfully!"
-                })
+                return JsonResponse({"success": True, "message": "Your message has been sent successfully!"})
             else:
                 logger.error("Email sending failed for contact from %s", request.META.get("REMOTE_ADDR"))
-                return JsonResponse({
-                    "success": False,
-                    "message": "Email service failed, please try again later."
-                }, status=500)
+                return JsonResponse(
+                    {"success": False, "message": "Email service failed, please try again later."}, status=500
+                )
 
         except Exception:
             # logger.exception records traceback but avoid attaching user content
             logger.exception("Unhandled error processing contact form from %s", request.META.get("REMOTE_ADDR"))
-            return JsonResponse({
-                "success": False,
-                "message": "An error occurred while sending the email. Please try again later."
-            }, status=500)
-
+            return JsonResponse(
+                {"success": False, "message": "An error occurred while sending the email. Please try again later."},
+                status=500,
+            )

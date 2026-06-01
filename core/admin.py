@@ -14,8 +14,7 @@ class ProjectAdmin(admin.ModelAdmin):
     def admin_image_preview(self, obj):
         if obj.image:
             return format_html(
-                '<img src="{}" style="max-height:80px; max-width:200px; object-fit:contain;"/>',
-                obj.image.url
+                '<img src="{}" style="max-height:80px; max-width:200px; object-fit:contain;"/>', obj.image.url
             )
         return "-"
 
@@ -40,4 +39,3 @@ class ContactAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         # Allow deletion only for admins
         return request.user.is_superuser
-

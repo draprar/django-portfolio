@@ -1,5 +1,5 @@
-import json
 import hashlib
+import json
 import random
 import re
 import string
@@ -23,16 +23,19 @@ class Chatbot:
         self.negative_words = self.load_data("tonguetwister/data/negative_words.pkl")
         self.positive_words = self.load_data("tonguetwister/data/positive_words.pkl")
         self.unanswered_questions = set()
-        self.negative_pattern = re.compile(r'\b(?:' + '|'.join(map(re.escape, self.negative_words)) + r')\b',
-                                           re.IGNORECASE)
-        self.positive_pattern = re.compile(r'\b(?:' + '|'.join(map(re.escape, self.positive_words)) + r')\b',
-                                           re.IGNORECASE)
+        self.negative_pattern = re.compile(
+            r"\b(?:" + "|".join(map(re.escape, self.negative_words)) + r")\b", re.IGNORECASE
+        )
+        self.positive_pattern = re.compile(
+            r"\b(?:" + "|".join(map(re.escape, self.positive_words)) + r")\b", re.IGNORECASE
+        )
 
     @property
     def nlp(self):
         """Lazy load spaCy model on first access."""
         if self._nlp is None:
             import spacy
+
             self._nlp = spacy.load("pl_core_news_sm")
         return self._nlp
 
@@ -46,10 +49,11 @@ class Chatbot:
         try:
             with open(filepath, "rb") as f:
                 import pickle  # local import – legacy .pkl files only, never from network/cache
+
                 return pickle.load(f)
         except Exception as e:
             print(f"Error loading file {filepath}: {e}")
-            return {} if 'keywords' in filepath else set()
+            return {} if "keywords" in filepath else set()
 
     def save_unanswered_questions(self, redis_key="chatbot:unanswered_questions", flush_threshold=5):
         max_items = getattr(settings, "CHATBOT_UNANSWERED_MAX_ITEMS", 10000)
@@ -146,8 +150,15 @@ class Chatbot:
                 return "Cieszę się, że masz pozytywne nastawienie! Jak mogę Ci jeszcze pomóc?"
 
             # Check for Wikipedia requests
-            wiki_phrases = ["powiedz mi o", "informacje o", "co to jest", "kim jest", "czym jest", "co oznacza",
-                            "co wiadomo o"]
+            wiki_phrases = [
+                "powiedz mi o",
+                "informacje o",
+                "co to jest",
+                "kim jest",
+                "czym jest",
+                "co oznacza",
+                "co wiadomo o",
+            ]
             for phrase in wiki_phrases:
                 if user_input.startswith(phrase):
                     topic = user_input.replace(phrase, "").strip()
@@ -161,9 +172,9 @@ class Chatbot:
             return "Dziękuję za wiadomość. Jak mogę pomóc?"
 
         except Exception as e:
-            sentry_sdk.capture_exception(e) # logging to Sentry
+            sentry_sdk.capture_exception(e)  # logging to Sentry
             return "Wystąpił błąd, spróbuj ponownie później."
+
 
 # Backward-compatible module singleton used by tests and legacy imports.
 chatbot_instance = Chatbot()
-

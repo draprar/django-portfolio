@@ -8,8 +8,8 @@ from .models import Profile
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
-        Signal to automatically create or update a user profile
-        when a User instance is created or saved.
+    Signal to automatically create or update a user profile
+    when a User instance is created or saved.
     """
     # Keep this idempotent: existing users without profile are backfilled,
     # and new users always get a profile.

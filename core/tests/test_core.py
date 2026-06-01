@@ -17,12 +17,14 @@ from django.http import HttpRequest
 # ---------------------------------------------------------------------
 def test_validate_file_size_allows_5mb():
     from core.models import validate_file_size
+
     fake_file = Mock(size=5 * 1024 * 1024)
     validate_file_size(fake_file)
 
 
 def test_validate_file_size_rejects_over_5mb():
     from core.models import validate_file_size
+
     fake_file = Mock(size=(5 * 1024 * 1024) + 1)
     with pytest.raises(ValidationError):
         validate_file_size(fake_file)
@@ -30,13 +32,15 @@ def test_validate_file_size_rejects_over_5mb():
 
 def test_project_str_returns_combined_titles():
     from core.models import Project
+
     p = Project(title_en="Hello", title_pl="Cześć")
     assert str(p) == "Hello / Cześć"
 
 
 def test_file_extension_validator_rejects_bad_ext():
     from django.core.validators import FileExtensionValidator
-    validator = FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif', 'webp'])
+
+    validator = FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "gif", "webp"])
     fake_file = Mock()
     fake_file.name = "malicious.exe"
     with pytest.raises(ValidationError):
@@ -48,6 +52,7 @@ def test_file_extension_validator_rejects_bad_ext():
 # ---------------------------------------------------------------------
 def test_contact_form_honeypot_blocks():
     from core.forms import ContactForm
+
     data = {"name": "Test", "email": "a@b.c", "message": "hi", "website": "spam"}
     form = ContactForm(data=data)
     assert not form.is_valid()
@@ -80,6 +85,7 @@ def test_contact_form_valid_calls_save(monkeypatch):
 # ---------------------------------------------------------------------
 def test_health_check_view_returns_ok():
     from core.views import health_check
+
     req = HttpRequest()
     resp = health_check(req)
     assert resp.status_code == 200
@@ -111,10 +117,7 @@ def test_homeview_get_handles_database_error(monkeypatch):
 
     import core.views as views_mod
 
-    monkeypatch.setattr(
-        "core.views.Project",
-        Mock(objects=Mock(all=Mock(side_effect=DatabaseError("db down"))))
-    )
+    monkeypatch.setattr("core.views.Project", Mock(objects=Mock(all=Mock(side_effect=DatabaseError("db down")))))
 
     def fake_render(request, template_name, context):
         fake_response = Mock()
@@ -134,7 +137,7 @@ def test_contactview_post_success_and_error_paths(monkeypatch):
     import core.views as views_mod
 
     fake_request = Mock()
-    fake_request.headers = {'x-requested-with': 'XMLHttpRequest'}
+    fake_request.headers = {"x-requested-with": "XMLHttpRequest"}
     fake_request.POST = {"name": "A", "email": "a@b.c", "message": "hello", "website": ""}
 
     # CASE 1: valid + email success
@@ -150,7 +153,9 @@ def test_contactview_post_success_and_error_paths(monkeypatch):
     assert json.loads(resp.content)["success"] is True
 
     # CASE 2: valid + email raises exception
-    def raise_exc(*a, **k): raise Exception("smtp boom")
+    def raise_exc(*a, **k):
+        raise Exception("smtp boom")
+
     monkeypatch.setattr("core.views.send_brevo_email", raise_exc)
     resp2 = views_mod.ContactView().post(fake_request)
     assert resp2.status_code == 500
@@ -171,7 +176,7 @@ def test_contactview_post_email_returns_none(monkeypatch):
     import core.views as views_mod
 
     fake_request = Mock()
-    fake_request.headers = {'x-requested-with': 'XMLHttpRequest'}
+    fake_request.headers = {"x-requested-with": "XMLHttpRequest"}
     fake_request.POST = {}
 
     mock_form = Mock()
@@ -201,7 +206,7 @@ def test_contactview_rejects_honeypot(monkeypatch):
     import core.views as views_mod
 
     fake_request = Mock()
-    fake_request.headers = {'x-requested-with': 'XMLHttpRequest'}
+    fake_request.headers = {"x-requested-with": "XMLHttpRequest"}
     fake_request.POST = {"website": "http://spam.example"}
 
     resp = views_mod.ContactView().post(fake_request)
@@ -213,6 +218,7 @@ def test_contactview_rejects_honeypot(monkeypatch):
 def test_contactview_get_returns_405(client):
     """GET on /contact/ must return 405 (only POST is allowed)."""
     from django.urls import reverse
+
     resp = client.get(reverse("contact"))
     assert resp.status_code == 405
 
@@ -288,9 +294,9 @@ def test_send_brevo_email_handles_api_exception(monkeypatch):
 # ---------------------------------------------------------------------
 def test_supabase_public_storage_url_reads_media_url(monkeypatch):
     from core.storages_backends import SupabasePublicStorage
+
     fake_settings = Mock()
     fake_settings.MEDIA_URL = "https://cdn.example/"
     monkeypatch.setattr("core.storages_backends.settings", fake_settings)
     inst = object.__new__(SupabasePublicStorage)
     assert inst.url("folder/file.jpg") == "https://cdn.example/folder/file.jpg"
-

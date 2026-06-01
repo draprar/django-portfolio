@@ -2,6 +2,7 @@
 Comparing document blocks with inline HTML diff for paragraphs
 and cell-level diff for tables.
 """
+
 import html
 import logging
 from difflib import SequenceMatcher
@@ -9,12 +10,14 @@ from typing import Any, Dict, List
 
 _LOGGER = logging.getLogger(__name__)
 
+
 def _safe_str(value: Any) -> str:
     if isinstance(value, str):
         return value
     if value is None:
         return ""
     return str(value)
+
 
 def html_inline_diff(a: str, b: str) -> str:
     """
@@ -35,10 +38,7 @@ def html_inline_diff(a: str, b: str) -> str:
         elif tag == "insert":
             parts.append(f"<ins>{html.escape(b[j1:j2])}</ins>")
         elif tag == "replace":
-            parts.append(
-                f"<del>{html.escape(a[i1:i2])}</del>"
-                f"<ins>{html.escape(b[j1:j2])}</ins>"
-            )
+            parts.append(f"<del>{html.escape(a[i1:i2])}</del><ins>{html.escape(b[j1:j2])}</ins>")
     return "".join(parts)
 
 
@@ -130,7 +130,10 @@ def compare_blocks(old_blocks: List[Dict[str, Any]], new_blocks: List[Dict[str, 
                 entry: Dict[str, Any] = {"change": "changed", "old": old, "new": new}
                 try:
                     if old.get("type") == "paragraph" and new.get("type") == "paragraph":
-                        entry["inline_html"] = html_inline_diff(_safe_str(old.get("text")), _safe_str(new.get("text")),)
+                        entry["inline_html"] = html_inline_diff(
+                            _safe_str(old.get("text")),
+                            _safe_str(new.get("text")),
+                        )
                     elif old.get("type") == "table" and new.get("type") == "table":
                         entry["table_changes"] = _diff_tables(old.get("table", []), new.get("table", []))
                 except Exception:

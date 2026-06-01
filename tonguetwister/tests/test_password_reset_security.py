@@ -92,5 +92,3 @@ def test_password_reset_email_lookup_is_case_insensitive(client):
     assert response.status_code == 302
     assert response.url == reverse("password_reset_done")
     user.refresh_from_db()
-
-

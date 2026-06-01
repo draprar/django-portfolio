@@ -7,7 +7,6 @@ from rugby.models import Post
 
 @pytest.mark.django_db
 class TestPostModel:
-
     def test_create_post(self):
         user = User.objects.create(username="testuser")
         post = Post.objects.create(
