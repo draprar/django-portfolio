@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
+from django.views.decorators.http import require_POST
 
 
 def stats_view(request):
@@ -8,12 +8,9 @@ def stats_view(request):
     return render(request, 'analytics/stats.html', {'visits': [], 'total': 0, 'disabled': True})
 
 
-@csrf_exempt
+@require_POST
 def record_leave(request):
     """Analytics endpoint kept for compatibility, but tracking is disabled."""
-    if request.method != "POST":
-        return JsonResponse({"ok": False, "error": "Invalid method"}, status=405)
-
     return JsonResponse({"ok": True, "disabled": True})
 
 
