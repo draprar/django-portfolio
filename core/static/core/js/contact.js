@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = form.querySelector("button[type=submit]");
   const alertBox = document.querySelector("#contact-alerts");
 
-  // helper
+  // helper: pobiera tekst z ukrytych <span id="msg-...">
   function getMessage(id) {
     const lang = document.documentElement.lang || "en";
     const el = document.getElementById(id);
@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
 
       if (data.success) {
-        showAlert("success", "msg-success");
+        showAlert("success", data.message_key);
         form.reset();
       } else {
-        showAlert("warning", "msg-fail");
+        showAlert("warning", data.message_key);
       }
     } catch (err) {
       showAlert("danger", "msg-error");

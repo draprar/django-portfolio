@@ -78,7 +78,7 @@ class ContactView(View):
             logger.warning(
                 "Contact attempt rejected: missing or invalid XHR header from %s", request.META.get("REMOTE_ADDR")
             )
-            return JsonResponse({"success": False, "message": "Invalid request."}, status=400)
+            return JsonResponse({"success": False, "message_key": "msg-invalid"}, status=400)
 
         # Honeypot: invisible field that bots often fill
         if request.POST.get("website"):
@@ -95,7 +95,7 @@ class ContactView(View):
         if not is_valid:
             errors = {field: list(errs) for field, errs in form.errors.items()}
             logger.warning("Invalid contact form from %s. Errors: %s", request.META.get("REMOTE_ADDR"), errors)
-            return JsonResponse({"success": False, "message": "Invalid form data.", "errors": errors}, status=400)
+            return JsonResponse({"success": False, "message_key": "msg-fail"}, status=400)
 
         # At this point form is valid. Save and send email.
         try:
@@ -123,17 +123,12 @@ class ContactView(View):
 
             if result:
                 logger.info("Contact form processed successfully from %s", request.META.get("REMOTE_ADDR"))
-                return JsonResponse({"success": True, "message": "Your message has been sent successfully!"})
+                return JsonResponse({"success": True, "message_key": "msg-success"})
             else:
                 logger.error("Email sending failed for contact from %s", request.META.get("REMOTE_ADDR"))
-                return JsonResponse(
-                    {"success": False, "message": "Email service failed, please try again later."}, status=500
-                )
+                return JsonResponse({"success": False, "message_key": "msg-error"}, status=500)
 
         except Exception:
             # logger.exception records traceback but avoid attaching user content
             logger.exception("Unhandled error processing contact form from %s", request.META.get("REMOTE_ADDR"))
-            return JsonResponse(
-                {"success": False, "message": "An error occurred while sending the email. Please try again later."},
-                status=500,
-            )
+            return JsonResponse({"success": False, "message_key": "msg-error"}, status=500)
