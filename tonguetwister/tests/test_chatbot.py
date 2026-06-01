@@ -1,8 +1,8 @@
+import asyncio
 from unittest.mock import patch
 
 import pytest
 import wikipedia
-import asyncio
 from django.test import override_settings
 from django.urls import reverse
 
@@ -107,12 +107,13 @@ async def test_chatbot_view_rejects_too_long_input(async_client):
 @pytest.mark.django_db
 @pytest.mark.asyncio
 @override_settings(FEATURE_CHATBOT_ENABLED=True, CHATBOT_RESPONSE_TIMEOUT_SECONDS=0.01)
-@patch("tonguetwister.views_main.get_chatbot")
-async def test_chatbot_view_timeout(mock_get_chatbot, async_client):
-    async def slow_response(msg):
+@patch("tonguetwister.views_main.sync_to_async")
+async def test_chatbot_view_timeout(mock_sync_to_async, async_client):
+    async def slow_async_call(msg):
         await asyncio.sleep(0.2)
         return "Delayed response"
-    
-    mock_get_chatbot.return_value.get_response = slow_response
+
+    # sync_to_async zwraca coroutine, więc mockujemy żeby zwracałoasync funkcję
+    mock_sync_to_async.return_value = slow_async_call
     response = await async_client.get(reverse("chatbot"), {"message": "hej"})
     assert response.status_code == 503
