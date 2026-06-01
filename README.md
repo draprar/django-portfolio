@@ -40,8 +40,8 @@ A full-stack Django portfolio by an engineer-turned-developer — 8 integrated a
 
 ```bash
 # 1. Clone & venv
-git clone https://github.com/draprar/django_portfolio-walery.git
-cd django_portfolio-walery
+git clone https://github.com/draprar/django-portfolio.git
+cd django-portfolio
 python -m venv venv
 
 # Windows
