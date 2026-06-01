@@ -1,147 +1,115 @@
 # Walery Portfolio (Django)
+![CI](https://github.com/draprar/django-portfolio/actions/workflows/ci.yaml/badge.svg)
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Code style](https://img.shields.io/badge/code%20style-ruff-261230)
 
-🌐 [walery.site](https://walery.site)
+🌐 Live: [walery.site](https://walery.site)
 
-Personal Django-based portfolio that integrates multiple previously standalone apps into one project.
+**Combined Django project** integrating 8 full-stack applications into a unified portfolio. Demonstrates modern Django patterns: split view architecture, async views, REST APIs, AI integration, and clean layering.
 
-## Stack
+## What's inside?
 
-- Backend: Django 5, Django REST Framework, SimpleJWT
-- Frontend: Bootstrap 5
-- Storage: local media by default, optional Supabase S3-compatible backend
-- Caching: LocMem (default), optional Redis
-- Deployment: Render + GitHub Actions
+| App | Purpose                                                         |
+|-----|-----------------------------------------------------------------|
+| **tonguetwister** | Language practice platform with chatbot + REST API + auth flows |
+| **docdiff** | Document comparison engine with AI analysis + HTML/JSON reports |
+| **gallery** | Image gallery with categories and full CRUD                     |
+| **core** | Landing page, contact form, user profiles                       |
+| **rugby** | Archive of rugby team                                           |
+| **bies** | Static pages integration                                        |
+| **analytics** | Stubs (tracking disabled)                                       |
+| **config** | Global Django settings, URLs, ASGI/WSGI                         |
 
-## Apps in this repository
-
-- `config` - global project configuration (settings, URLs, WSGI/ASGI)
-- `core` - landing page and main contact flow
-- `tonguetwister` - language practice app + API + auth flows
-- `docdiff` - document comparison and diff reports
-- `gallery` - image gallery and categories
-- `rugby` - blog-like section for rugby posts
-- `bies` - lightweight static app integrated into portfolio
-- `analytics` - compatibility stubs (tracking intentionally disabled)
-
-### Tonguetwister view architecture
-
-The app uses a split view layout to keep responsibilities isolated:
-
-- `tonguetwister/views_main.py` - homepage, chatbot endpoint, load-more endpoints, user-content and add/remove actions
-- `tonguetwister/views_crud.py` - admin CRUD views for content models
-- `tonguetwister/views_auth.py` - auth, activation, password reset, contact form
-- `tonguetwister/views_api.py` - DRF viewsets, token endpoint, API health endpoint
-- `tonguetwister/views.py` - compatibility facade for existing imports and URLs
-
-## Local setup
-
-### 1. Clone and create virtual environment
+## Quick start (5 min)
 
 ```bash
+# 1. Clone & venv
 git clone https://github.com/draprar/django_portfolio-walery.git
 cd django_portfolio-walery
 python -m venv venv
-```
 
-Windows PowerShell:
-
-```powershell
+# Windows
 .\venv\Scripts\Activate.ps1
-```
-
-Linux/macOS:
-
-```bash
+# Linux/macOS
 source venv/bin/activate
-```
 
-### 2. Install dependencies
-
-**For production (only runtime dependencies):**
-```bash
+# 2. Install & setup
 pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-**For development (includes pytest, mypy, ruff, pip-audit, etc.):**
-```bash
-pip install --upgrade pip
-pip install -r requirements-dev.txt
-```
-
-**Requirements structure:**
-- `requirements.txt` → `requirements-prod.txt` — entry file for production
-- `requirements-prod.txt` — pinned production dependencies
-- `requirements-prod.lock.txt` — reproducible deployment snapshot (for production CI/CD)
-- `requirements-dev.txt` — development tools + all production deps (for local dev + CI quality gates)
-
-### 3. Configure environment
-
-```bash
+pip install -r requirements-dev.txt  # includes pytest, mypy, ruff
 cp .env.example .env
-```
-
-For development, defaults from `.env.example` are enough. Keep `USE_S3=False` unless you provide full S3/Supabase credentials.
-
-### 4. Run migrations and start server
-
-```bash
 python manage.py migrate
+
+# 3. Run
 python manage.py runserver
+# → http://127.0.0.1:8000/
 ```
 
-Open `http://127.0.0.1:8000/`.
+## Dev workflows
 
-## Tests
-
+**Tests:**
 ```bash
 pytest -q
+# or: pytest -q --cov=. --cov-report=term-missing
 ```
 
-If tests fail because dependencies are missing, install from `requirements.txt` in your project virtualenv.
+**Type checking:**
+```bash
+mypy config core tonguetwister gallery docdiff rugby bies analytics
+```
 
-## CI quality gates
+**Linting:**
+```bash
+ruff check .
+```
 
-GitHub Actions pipeline:
-- **Install:** `pip install -r requirements-dev.txt` (includes all dev tools)
-- **Checks:**
-  - Django system checks
-  - migration drift check (`makemigrations --check --dry-run`)
-  - linting (`ruff`)
-  - type checks (`mypy`)
-  - tests with coverage threshold
-  - dependency audit (`pip-audit`)
+## Code highlights
 
-**Production Render deploy:**
-- **Install:** `pip install -r requirements.txt` (only runtime deps, faster & smaller)
-- build runs deploy checks and collectstatic
-- migrations run in pre-deploy command
+- **Split view architecture** (`tonguetwister/views_*.py`) — CRUD, auth, API, main logic separated
+- **Async views** — chatbot with timeout handling
+- **DRF + SimpleJWT** — full REST API with token auth
+- **AI heuristics** — document analysis with semantic scoring
+- **Bootstrap 5 + i18n** — responsive frontend with Polish/English
+- **94% test coverage** — pytest + coverage tracking
 
-Minimal required environment variables for production deploy:
+## Requirements structure
 
-- `DJANGO_DEBUG=False`
-- `DJANGO_SECRET_KEY=<long-random-secret>`
-- `DJANGO_ALLOWED_HOSTS=walery.onrender.com,walery.site`
-- `DJANGO_CSRF_TRUSTED_ORIGINS=https://walery.onrender.com,https://walery.site`
-- `CORS_ALLOWED_ORIGINS=https://walery.onrender.com,https://walery.site`
+| File | Purpose |
+|------|---------|
+| `requirements.txt` | → Production runtime (→ requirements-prod.txt) |
+| `requirements-dev.txt` | Development: prod + pytest, mypy, ruff, pip-audit |
+| `requirements-prod.lock.txt` | Pinned snapshot for reproducible CI/CD |
 
-Optional storage setup:
+**CI/CD pipeline** (GitHub Actions):
+- Django checks + migrations drift detection
+- Type checks (mypy), linting (ruff), security audit (pip-audit)
+- Tests with 60% coverage threshold
 
-- Keep `USE_S3=False` to use local media storage.
-- If `USE_S3=True`, you must provide full S3/Supabase credentials:
-  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_STORAGE_BUCKET_NAME`, `SUPABASE_PROJECT_REF`.
+## Environment setup
 
-Optional DocDiff hardening overrides:
-- `DOCDIFF_MAX_FILE_MB` (default `10`)
-- `DOCDIFF_MAX_ARCHIVE_ENTRIES` (default `3000`)
-- `DOCDIFF_MAX_UNCOMPRESSED_MB` (default `120`)
-- `DOCDIFF_MAX_COMPRESSION_RATIO` (default `80.0`)
+For local development, `.env.example` contains sensible defaults. Optional features:
 
-## Security notes
+**S3 storage setup:**
+```
+USE_S3=True
+AWS_ACCESS_KEY_ID=<key>
+AWS_SECRET_ACCESS_KEY=<secret>
+AWS_STORAGE_BUCKET_NAME=<bucket>
+```
 
-- Contact endpoints use rate limiting and honeypot fields.
-- DocDiff upload flow validates extension, MIME type and file signature.
-- Chatbot is feature-flagged and disabled by default.
+**DocDiff limits:**
+```
+DOCDIFF_MAX_FILE_MB=10
+DOCDIFF_MAX_UNCOMPRESSED_MB=120
+```
+
+## Security features
+
+- Rate limiting on contact endpoints + honeypot fields
+- File validation (extension, MIME, signature) in DocDiff
+- Chatbot feature-flagged and disabled by default
+- JWT token auth with 24h expiry
+- CSRF protection + CORS validated
 
 ## License
 
