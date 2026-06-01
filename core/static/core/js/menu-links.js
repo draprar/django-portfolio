@@ -58,6 +58,12 @@ if (menuTrigger) {
   };
 
   menuTrigger.addEventListener('mouseenter', trigger);
-  menuTrigger.addEventListener('touchstart', trigger, { passive: true });
-  menuTrigger.addEventListener('click', trigger);
+  menuTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    trigger();
+  });
+  menuTrigger.addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+    trigger();
+  }, { passive: true });
 }

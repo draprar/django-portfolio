@@ -26,6 +26,7 @@ document.addEventListener('click', (e) => {
 
   const clickedInsideMenu = collapseEl.contains(e.target);
   const clickedToggler = toggler && toggler.contains(e.target);
+  const clickedMenuTrigger = e.target.closest('.menu-trigger');
 
-  if (!clickedInsideMenu && !clickedToggler) bsCollapse.hide();
+  if (!clickedInsideMenu && !clickedToggler && !clickedMenuTrigger) bsCollapse.hide();
 });
