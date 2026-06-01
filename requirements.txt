@@ -1,3 +1,2 @@
-# Entry-point requirements file.
-# Keep exact pins in requirements.lock.txt for reproducible installs.
--r requirements.lock.txt
+# Produkcyjne zależności
+-r requirements-prod.txt

@@ -57,12 +57,23 @@ source venv/bin/activate
 
 ### 2. Install dependencies
 
+**For production (only runtime dependencies):**
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-`requirements.txt` is an entry file that points to the pinned lock snapshot in `requirements.lock.txt`.
+**For development (includes pytest, mypy, ruff, pip-audit, etc.):**
+```bash
+pip install --upgrade pip
+pip install -r requirements-dev.txt
+```
+
+**Requirements structure:**
+- `requirements.txt` → `requirements-prod.txt` — entry file for production
+- `requirements-prod.txt` — pinned production dependencies
+- `requirements-prod.lock.txt` — reproducible deployment snapshot (for production CI/CD)
+- `requirements-dev.txt` — development tools + all production deps (for local dev + CI quality gates)
 
 ### 3. Configure environment
 
@@ -91,20 +102,20 @@ If tests fail because dependencies are missing, install from `requirements.txt` 
 
 ## CI quality gates
 
-GitHub Actions pipeline runs:
+GitHub Actions pipeline:
+- **Install:** `pip install -r requirements-dev.txt` (includes all dev tools)
+- **Checks:**
+  - Django system checks
+  - migration drift check (`makemigrations --check --dry-run`)
+  - linting (`ruff`)
+  - type checks (`mypy`)
+  - tests with coverage threshold
+  - dependency audit (`pip-audit`)
 
-- Django system checks
-- migration drift check (`makemigrations --check --dry-run`)
-- linting (`ruff`)
-- type checks (`mypy`)
-- tests with coverage threshold
-- dependency audit (`pip-audit`)
-
-## Production (Render)
-
-Render deploy flow:
-- build installs dependencies, runs deploy checks and collectstatic
-- migrations run in pre-deploy command (`python manage.py migrate --noinput`)
+**Production Render deploy:**
+- **Install:** `pip install -r requirements.txt` (only runtime deps, faster & smaller)
+- build runs deploy checks and collectstatic
+- migrations run in pre-deploy command
 
 Minimal required environment variables for production deploy:
 
