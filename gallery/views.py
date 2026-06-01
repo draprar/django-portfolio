@@ -46,7 +46,7 @@ class Home(generic.ListView):
         context = super().get_context_data(**kwargs)
         category = self.request.GET.get("category", None)
         context["selected_category"] = category if category else "All"
-        context["categories"] = Category.objects.all().prefetch_related("images").order_by("-id")
+        context["categories"] = Category.objects.all().prefetch_related("images").order_by("id")
 
         # Include Instagram posts in context
         if category:
