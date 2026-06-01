@@ -199,7 +199,9 @@ body {
 .hero {
   width: 100vw;
   height: 100vh;
+  height: 100dvh; /* dynamic viewport — accounts for mobile browser chrome */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -231,6 +233,15 @@ body {
       linear-gradient(rgba(0,0,0,0.65), rgba(15,17,23,0.45)),
       url("../img/header_mob.jpg");
     background-attachment: scroll;
+    /* Pad for notch / home-indicator on modern phones */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* On mobile the scroll-hint sits absolute at 5% from bottom —
+     nudge content up slightly so it reads centred visually */
+  .hero-content {
+    margin-bottom: 10vh;
   }
 }
 
@@ -274,7 +285,7 @@ body {
 /* Scroll hint */
 .hero-scroll-hint {
   position: absolute;
-  bottom: 30px;
+  bottom: 5%;
   left: 0;
   right: 0;
   margin: 0 auto;
