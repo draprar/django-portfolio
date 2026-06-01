@@ -5,8 +5,247 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LingwoŁamki - przedłuż swój język - Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="{% static 'tonguetwister/css/style.css' %}" rel="stylesheet"/>
     <link rel="icon" href="{% static 'tonguetwister/assets/favicon.ico' %}" type="image/x-icon"/>
+    <style>
+        :root {
+            --primary:  #c4922a;
+            --dark:     #0f1117;
+            --surface:  #1a1e27;
+            --surface2: #22273a;
+            --light:    #e8e8e8;
+            --muted:    #8a8f9a;
+            --border:   rgba(255, 255, 255, 0.08);
+            --radius:   10px;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            padding-bottom: 60px;
+        }
+
+        /* ── Page title ──────────────────────────────────────────────── */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--light);
+            margin: 0 0 6px;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), #e0b060);
+            margin: 8px 0 28px;
+            border-radius: 2px;
+        }
+
+        /* ── Avatar block ────────────────────────────────────────────── */
+        .avatar-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+
+        .avatar-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            text-decoration: none;
+        }
+
+        .avatar-toggle-btn:hover {
+            border-color: var(--primary);
+            background: rgba(196, 146, 42, 0.08);
+            color: var(--light);
+        }
+
+        .avatar-form-inner {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .avatar-preview img {
+            border-radius: 50%;
+            border: 3px solid rgba(196, 146, 42, 0.4);
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+
+        .btn-avatar-delete {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid rgba(224, 92, 92, 0.4);
+            background: rgba(224, 92, 92, 0.1);
+            color: #e05c5c;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            margin-right: 8px;
+        }
+
+        .btn-avatar-delete:hover {
+            background: rgba(224, 92, 92, 0.25);
+            border-color: #e05c5c;
+        }
+
+        .btn-avatar-save {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid rgba(196, 146, 42, 0.4);
+            background: var(--primary);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-avatar-save:hover { background: #a8791f; }
+
+        /* ── Export button ───────────────────────────────────────────── */
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(196, 146, 42, 0.2);
+            margin-bottom: 32px;
+        }
+
+        .export-btn:hover {
+            background: #a8791f;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(196, 146, 42, 0.35);
+        }
+
+        /* ── Content sections ────────────────────────────────────────── */
+        .content-section {
+            margin-bottom: 36px;
+        }
+
+        .content-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-bottom: 4px;
+        }
+
+        .content-section-title::after {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), #e0b060);
+            margin: 6px 0 14px;
+            border-radius: 2px;
+        }
+
+        /* ── Individual exercise items ───────────────────────────────── */
+        .content-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            transition: border-color 0.2s;
+        }
+
+        .content-item:hover {
+            border-color: rgba(196, 146, 42, 0.3);
+        }
+
+        .content-item-text {
+            flex: 1;
+            color: var(--light);
+        }
+
+        .btn-remove {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(224, 92, 92, 0.35);
+            background: rgba(224, 92, 92, 0.08);
+            color: #e05c5c;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-remove:hover {
+            background: rgba(224, 92, 92, 0.22);
+            border-color: #e05c5c;
+        }
+
+        /* ── Empty state ─────────────────────────────────────────────── */
+        .empty-state {
+            padding: 20px;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* ── Navbar image size fix ───────────────────────────────────── */
+        header img,
+        nav img,
+        .navbar img,
+        .navbar-brand img,
+        #navbar-avatar {
+            width: 32px !important;
+            height: 32px !important;
+            max-width: 32px !important;
+            max-height: 32px !important;
+        }
+    </style>
 </head>
 <body>
 <button class="btn" onclick="topFunction()" id="topBtn"><i class="fa fa-arrow-up"></i></button>
@@ -16,72 +255,88 @@
 </header>
 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 
-<h2><strong>Moja zawartość</strong></h2>
-<div class="avatar-upload-container">
-    <h2>
-        <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#avatarForm" aria-expanded="false" aria-controls="avatarForm">
-            Zarządzaj awatarem 🎭
+<div class="container" style="max-width: 720px; padding-top: 32px;">
+
+    <h1 class="page-title">Moja zawartość</h1>
+
+    <!-- Avatar section -->
+    <div class="avatar-section">
+        <button class="avatar-toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#avatarForm" aria-expanded="false" aria-controls="avatarForm">
+            🎭 Zarządzaj awatarem
         </button>
-    </h2>
-    <div class="collapse" id="avatarForm">
-        <div class="card card-body">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group">
+        <div class="collapse" id="avatarForm">
+            <div class="avatar-form-inner">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     {% if user.profile.avatar %}
                         <div class="avatar-preview">
-                            <img src="{{ user.profile.avatar.url }}" alt="Current Avatar" style="max-width: 150px; max-height: 150px;">
-                        </div><br>
+                            <img src="{{ user.profile.avatar.url }}" alt="Aktualny awatar">
+                        </div>
                     {% endif %}
                     {{ form.avatar }}
-                </div><br>
-                {% if user.profile.avatar %}
-                    <button type="submit" name="action" value="delete-avatar" class="btn btn-danger btn-block">Usuń awatar</button>
-                    <button type="submit" class="btn btn-dark btn-block">Zmień (maks. 2MB)</button>
-                {% else %}
-                    <button type="submit" class="btn btn-dark btn-block">Dodaj (maks. 2MB)</button>
-                {% endif %}
-            </form>
+                    <div style="margin-top: 12px;">
+                        {% if user.profile.avatar %}
+                            <button type="submit" name="action" value="delete-avatar" class="btn-avatar-delete">Usuń awatar</button>
+                            <button type="submit" class="btn-avatar-save">Zmień (maks. 2MB)</button>
+                        {% else %}
+                            <button type="submit" class="btn-avatar-save">Dodaj (maks. 2MB)</button>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<a href="?export=exercises" class="btn btn-primary">Eksportuj ćwiczenia do PDF 💾</a>
 
-<h3>Rozgrzewanie artykulatorów</h3>
-<div id="user-articulators-container">
-    {% for user_articulator in user_articulators %}
-        <div class="user-articulator col-md-16 fs-4" id="articulator-{{ user_articulator.id }}">
-            {{ user_articulator.articulator.text }}
-            <button class="btn btn-danger delete-articulator-btn" data-id="{{ user_articulator.id }}">-</button>
-        </div>
-    {% empty %}
-        <p class="col-md-16 fs-4">Nie masz zapisanych ćwiczeń artykulacyjnych.</p>
-    {% endfor %}
-</div>
+    <!-- Export -->
+    <a href="?export=exercises" class="export-btn">💾 Eksportuj ćwiczenia do PDF</a>
 
-<h3>Ćwiczenia właściwe</h3>
-<div id="user-exercises-container">
-    {% for user_exercise in user_exercises %}
-        <div class="user-exercise col-md-16 fs-4" id="exercise-{{ user_exercise.id }}">
-            {{ user_exercise.exercise.text }}
-            <button class="btn btn-danger delete-exercise-btn" data-id="{{ user_exercise.id }}">-</button>
+    <!-- Articulators -->
+    <div class="content-section">
+        <h2 class="content-section-title">Rozgrzewanie artykulatorów</h2>
+        <div id="user-articulators-container">
+            {% for user_articulator in user_articulators %}
+                <div class="content-item" id="articulator-{{ user_articulator.id }}">
+                    <span class="content-item-text">{{ user_articulator.articulator.text }}</span>
+                    <button class="btn-remove delete-articulator-btn" data-id="{{ user_articulator.id }}" title="Usuń">−</button>
+                </div>
+            {% empty %}
+                <div class="empty-state">Nie masz zapisanych ćwiczeń artykulacyjnych.</div>
+            {% endfor %}
         </div>
-    {% empty %}
-        <p class="col-md-16 fs-4">Nie masz zapisanych ćwiczeń właściwych.</p>
-    {% endfor %}
-</div>
+    </div>
 
-<h3>Łamańce językowe</h3>
-<div id="user-twisters-container">
-    {% for user_twister in user_twisters %}
-        <div class="user-twister col-md-16 fs-4" id="twister-{{ user_twister.id }}">
-            {{ user_twister.twister.text }}
-            <button class="btn btn-danger delete-twister-btn" data-id="{{ user_twister.id }}">-</button>
+    <!-- Exercises -->
+    <div class="content-section">
+        <h2 class="content-section-title">Ćwiczenia właściwe</h2>
+        <div id="user-exercises-container">
+            {% for user_exercise in user_exercises %}
+                <div class="content-item" id="exercise-{{ user_exercise.id }}">
+                    <span class="content-item-text">{{ user_exercise.exercise.text }}</span>
+                    <button class="btn-remove delete-exercise-btn" data-id="{{ user_exercise.id }}" title="Usuń">−</button>
+                </div>
+            {% empty %}
+                <div class="empty-state">Nie masz zapisanych ćwiczeń właściwych.</div>
+            {% endfor %}
         </div>
-    {% empty %}
-        <p class="col-md-16 fs-4">Nie masz zapisanych łamańców językowych.</p>
-    {% endfor %}
-</div>
+    </div>
+
+    <!-- Twisters -->
+    <div class="content-section">
+        <h2 class="content-section-title">Łamańce językowe</h2>
+        <div id="user-twisters-container">
+            {% for user_twister in user_twisters %}
+                <div class="content-item" id="twister-{{ user_twister.id }}">
+                    <span class="content-item-text">{{ user_twister.twister.text }}</span>
+                    <button class="btn-remove delete-twister-btn" data-id="{{ user_twister.id }}" title="Usuń">−</button>
+                </div>
+            {% empty %}
+                <div class="empty-state">Nie masz zapisanych łamańców językowych.</div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div><!-- /container -->
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 <script src="{% static 'tonguetwister/js/loadAddDeleteArticulators.js' %}"></script>
