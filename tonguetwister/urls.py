@@ -1,13 +1,23 @@
-from django.contrib.auth.views import LogoutView
-from django.urls import path, include
-from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import (OldPolishViewSet, ArticulatorViewSet, FunfactViewSet, ExerciseViewSet, TriviaViewSet,
-                    TwisterViewSet, CustomTokenObtainPairView, HealthCheckView)
 from rest_framework_simplejwt.views import TokenRefreshView
+
 from analytics.utils import count_visit
+
+from . import views
+from .views import (
+    ArticulatorViewSet,
+    CustomTokenObtainPairView,
+    ExerciseViewSet,
+    FunfactViewSet,
+    HealthCheckView,
+    OldPolishViewSet,
+    TriviaViewSet,
+    TwisterViewSet,
+)
 
 router = DefaultRouter()
 router.register(r'oldpolish', OldPolishViewSet, basename='oldpolish')
@@ -65,7 +75,7 @@ urlpatterns = [
     path('delete-exercise/<int:exercise_id>/', views.delete_exercise, name='delete_exercise'),
     path('add-twister/<int:twister_id>/', views.add_twister, name='add_twister'),
     path('delete-twister/<int:twister_id>/', views.delete_twister, name='delete_twister'),
-    #path('contact/', views.contact, name='contact'),
+    # path('contact/', views.contact, name='tw_contact'),  # disabled
     path('chatbot/', views.chatbot, name='chatbot'),
     path('api/', include(router.urls)),
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),

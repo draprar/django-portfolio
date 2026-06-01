@@ -5,4 +5,5 @@ class TongueTwisterConfig(AppConfig):
     name = 'tonguetwister'
 
     def ready(self):
-        import tonguetwister.signals
+        # Ensure signal receivers are registered at app startup.
+        from . import signals  # noqa: F401

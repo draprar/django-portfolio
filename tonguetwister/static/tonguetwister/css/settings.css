@@ -1,15 +1,215 @@
-body {
-  background-color: #f8f9fa;
-  height: 100vh;
-  margin-top: 10px;
+/* ═══════════════════════════════════════════════════════════════
+   LingwoŁamki — settings.css
+   Dark theme aligned with portfolio design system.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --primary:  #c4922a;
+  --dark:     #0f1117;
+  --surface:  #1a1e27;
+  --surface2: #22273a;
+  --light:    #e8e8e8;
+  --muted:    #8a8f9a;
+  --border:   rgba(255, 255, 255, 0.08);
+  --radius:   10px;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  min-height: 100vh;
+  margin-top: 10px;
+  padding-bottom: 60px;
+}
+
+/* ── Page heading ───────────────────────────────────────────────────────────── */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--light);
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), #e0b060);
+  margin: 6px 0 24px;
+  border-radius: 2px;
+}
+
+/* ── Settings card/panel ────────────────────────────────────────────────────── */
+.card,
+.settings-panel {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--light) !important;
+}
+
+/* ── Form controls ──────────────────────────────────────────────────────────── */
 .form-control {
   height: 50px;
   font-size: 16px;
+  background: var(--surface2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: var(--light);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.form-control::placeholder {
+  color: var(--muted);
+}
+
+.form-control:focus {
+  background: var(--surface2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(196, 146, 42, 0.18);
+  color: var(--light);
+  outline: none;
+}
+
+/* Textarea */
+textarea.form-control {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Labels */
+label,
+.form-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── Submit / action buttons ────────────────────────────────────────────────── */
 button[type="submit"] {
   height: 50px;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0 32px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(196, 146, 42, 0.25);
+}
+
+button[type="submit"]:hover {
+  background: #a8791f;
+  box-shadow: 0 6px 20px rgba(196, 146, 42, 0.4);
+}
+
+/* Secondary / cancel buttons */
+.btn-secondary {
+  background: var(--surface2);
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.btn-secondary:hover {
+  background: var(--surface);
+  border-color: var(--muted);
+  color: var(--light);
+}
+
+/* Danger / delete buttons */
+.btn-danger {
+  background: rgba(224, 92, 92, 0.15);
+  border-color: rgba(224, 92, 92, 0.4);
+  color: #e05c5c;
+}
+
+.btn-danger:hover {
+  background: rgba(224, 92, 92, 0.3);
+  color: #fff;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────────── */
+a {
+  color: var(--primary);
+  transition: color 0.2s;
+}
+
+a:hover { color: #e0b060; }
+
+/* ── Error / help text ──────────────────────────────────────────────────────── */
+.errorlist,
+.text-danger {
+  color: #e05c5c !important;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  list-style: none;
+  padding: 0;
+}
+
+.helptext,
+.form-text {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ── Tables (e.g. repetitions list) ────────────────────────────────────────── */
+.table {
+  color: var(--light);
+  border-color: var(--border);
+}
+
+.table thead th {
+  border-color: rgba(196, 146, 42, 0.3);
+  color: var(--primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.table td, .table th {
+  border-color: var(--border);
+  vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--light);
+}
+
+/* ── Alerts ─────────────────────────────────────────────────────────────────── */
+.alert {
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.alert-success {
+  background: rgba(196, 146, 42, 0.1);
+  border-color: rgba(196, 146, 42, 0.3);
+  color: var(--primary);
+}
+
+.alert-danger {
+  background: rgba(224, 92, 92, 0.12);
+  border-color: rgba(224, 92, 92, 0.3);
+  color: #e05c5c;
+}
+
+.alert-info {
+  background: rgba(196, 146, 42, 0.08);
+  border-color: rgba(196, 146, 42, 0.2);
+  color: var(--muted);
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────────── */
+hr {
+  border-color: var(--border);
+  margin: 28px 0;
 }

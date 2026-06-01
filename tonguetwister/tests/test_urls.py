@@ -1,8 +1,8 @@
 import pytest
-from django.urls import reverse, NoReverseMatch
 from django.test import Client
-from rest_framework.test import APIClient
+from django.urls import NoReverseMatch, reverse
 from rest_framework import status
+from rest_framework.test import APIClient
 
 client = Client()
 

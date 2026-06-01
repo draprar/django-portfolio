@@ -1,10 +1,20 @@
+from datetime import timedelta
+
 import pytest
 from django.contrib.auth.models import User
 from django.utils import timezone
-from datetime import timedelta
+
 from tonguetwister.models import (
-    Profile, Twister, Articulator, Exercise, Trivia, Funfact,
-    OldPolish, UserProfileTwister, UserProfileArticulator, UserProfileExercise
+    Articulator,
+    Exercise,
+    Funfact,
+    OldPolish,
+    Profile,
+    Trivia,
+    Twister,
+    UserProfileArticulator,
+    UserProfileExercise,
+    UserProfileTwister,
 )
 
 
@@ -41,6 +51,12 @@ def test_profile():
     profile.save()
     profile.update_login_streak()
     assert profile.login_streak == 1
+
+
+@pytest.mark.django_db
+def test_profile_is_created_automatically_for_new_user():
+    user = User.objects.create_user(username="signal_user", password="test_password")
+    assert Profile.objects.filter(user=user).exists()
 
 
 @pytest.mark.django_db

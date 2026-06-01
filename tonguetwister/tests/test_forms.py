@@ -1,15 +1,16 @@
-import pytest
 import os
-from django.contrib.auth.models import User, Group
+
+import pytest
+from django.contrib.auth.models import Group, User
 from django.core.files.uploadedfile import SimpleUploadedFile
-from tonguetwister.forms import CustomUserCreationForm, LoginForm, ContactForm, AvatarUploadForm
-from tonguetwister.models import Profile
+
+from tonguetwister.forms import AvatarUploadForm, ContactForm, CustomUserCreationForm, LoginForm
 
 
 @pytest.mark.django_db
 def test_custom_creation_form_valid_data():
     # Test valid user registration with group assignment
-    group = Group.objects.create(name='Regular Users')
+    Group.objects.create(name='Regular Users')
     form_data = {
         'username': 'testuser',
         'email': 'test@example.com',

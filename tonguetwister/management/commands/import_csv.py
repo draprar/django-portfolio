@@ -1,7 +1,9 @@
 import csv
 import os
+
 from django.core.management.base import BaseCommand
-from tonguetwister.models import Twister, OldPolish
+
+from tonguetwister.models import OldPolish, Twister
 
 
 class Command(BaseCommand):

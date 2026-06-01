@@ -1,18 +1,25 @@
 import pytest
-from django.core import mail
-from django.core.files.uploadedfile import SimpleUploadedFile
-from django.urls import reverse
-from django.http import JsonResponse
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes
+from django.contrib.auth.models import Group, User
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth.models import User, Group
 from django.contrib.messages import get_messages
-from django.test import AsyncClient, Client
-from tonguetwister.models import Twister, Articulator, Exercise, Trivia, Funfact, OldPolish, UserProfileTwister, UserProfileArticulator, UserProfileExercise
-from tonguetwister.views import get_chatbot
-from tonguetwister.forms import ContactForm, AvatarUploadForm
+from django.http import JsonResponse
+from django.urls import reverse
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+
+from tonguetwister.models import (
+    Articulator,
+    Exercise,
+    Funfact,
+    OldPolish,
+    Trivia,
+    Twister,
+    UserProfileArticulator,
+    UserProfileExercise,
+    UserProfileTwister,
+)
 from tonguetwister.tokens import account_activation_token
+from tonguetwister.views import get_chatbot
 
 
 # Tests for main view responses and context in various states
@@ -475,7 +482,6 @@ class TestAuthViews:
 
     def test_password_reset_success(self, client, regular_user):
         # Test password reset with valid email shows correct response
-        user = regular_user
         response = client.get(reverse('password_reset'), data={'email': 'user@example.com'})
 
         assert response.status_code == 200
@@ -526,7 +532,7 @@ class TestAuthViews:
 class TestContactViews:
     @pytest.fixture
     def url(self):
-        return reverse('contact')
+        return reverse('tw_contact')
 
     @pytest.fixture
     def valid_form_data(self):

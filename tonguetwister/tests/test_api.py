@@ -1,15 +1,17 @@
 import pytest
-from rest_framework.test import APIClient
-from tonguetwister.models import (
-    OldPolish, Articulator, Twister, Exercise, Trivia, Funfact
-)
-from tonguetwister.serializers import (
-    OldPolishSerializer, ArticulatorSerializer, TwisterSerializer,
-    ExerciseSerializer, TriviaSerializer, FunfactSerializer
-)
 from django.contrib.auth.models import User
+from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from tonguetwister.models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
+from tonguetwister.serializers import (
+    ArticulatorSerializer,
+    ExerciseSerializer,
+    FunfactSerializer,
+    OldPolishSerializer,
+    TriviaSerializer,
+    TwisterSerializer,
+)
 
 # --- FIXTURES ---
 
@@ -145,6 +147,23 @@ def test_funfact_list_unauthorized(api_client):
     """Should deny access without JWT token."""
     response = api_client.get("/tonguetwister/api/funfacts/")
     assert response.status_code == 401
+
+
+@pytest.mark.django_db
+def test_funfact_unauthorized_after_authenticated_request_stays_401():
+    """Authenticated response must not be reused for anonymous caller."""
+    user = User.objects.create_user(username="cache-user", password="pass123")
+    token = RefreshToken.for_user(user).access_token
+    auth_client = APIClient()
+    auth_client.credentials(HTTP_AUTHORIZATION=f"Bearer {token}")
+    Funfact.objects.create(text="cache isolation check")
+
+    first = auth_client.get("/tonguetwister/api/funfacts/")
+    assert first.status_code == 200
+
+    anon_client = APIClient()
+    second = anon_client.get("/tonguetwister/api/funfacts/")
+    assert second.status_code == 401
 
 
 @pytest.mark.django_db

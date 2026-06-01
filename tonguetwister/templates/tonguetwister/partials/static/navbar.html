@@ -1,8 +1,16 @@
 {% load static %}
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <div class="d-flex align-items-center">
-        <a class="navbar-brand" href="/"><img src="{% static 'tonguetwister/assets/ttlogo.png' %}" alt="" width="28" height="28" class="d-inline-block align-text-top"> Walery — Strona główna</a>
+    <div class="d-flex align-items-center gap-2">
+        <!-- LingwoŁamki icon — back to /tonguetwister/ -->
+        <a href="/tonguetwister/" class="navbar-tt-home" aria-label="LingwoŁamki">
+          <img src="{% static 'tonguetwister/assets/ttlogo.png' %}" alt="LingwoŁamki" width="28" height="28" class="tt-logo">
+        </a>
+        <!-- Portfolio home — avatar + "Home" label -->
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'core/img/avatar.jpg' %}" alt="Home" id="navbar-avatar">
+          Home
+        </a>
     </div>
     <div class="ml-auto">
       {% if user.is_authenticated %}

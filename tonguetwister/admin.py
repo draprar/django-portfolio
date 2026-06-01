@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Twister, Articulator, Exercise, Trivia, Funfact, OldPolish
+
+from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
 
 admin.site.register(Twister)
 admin.site.register(Articulator)

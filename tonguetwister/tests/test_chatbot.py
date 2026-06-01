@@ -1,9 +1,12 @@
-import pytest
 from unittest.mock import patch
-from django.urls import reverse
-from django.test import override_settings
+
+import pytest
 import wikipedia
-from tonguetwister.chatbot import chatbot_instance, Chatbot
+from django.test import override_settings
+from django.urls import reverse
+
+from tonguetwister.chatbot import Chatbot, chatbot_instance
+
 
 @pytest.mark.django_db
 @pytest.mark.asyncio

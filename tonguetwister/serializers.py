@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import OldPolish, Articulator, Funfact, Twister, Exercise, Trivia
+
+from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
+
 
 class OldPolishSerializer(serializers.ModelSerializer):
     class Meta:

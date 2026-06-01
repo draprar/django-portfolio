@@ -104,14 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextButton.addEventListener('click', function () {
                     var slideArrowContainer = document.getElementById('slide-arrow-container');
 
-                    // Handle step 2 - show arrow container
+                    // Handle step 2 - on desktop highlight the real arrow, no fake arrow on mobile
                     if (step === 2 && slideArrowContainer) {
-                        if (window.innerWidth <= 992) {
-                            slideArrowContainer.style.display = 'block';
-                        }
+                        // Never show the fake slide-arrow-container — real arrows are always visible now
+                        slideArrowContainer.style.display = 'none';
                         moveToStep(step + 1); // Move to next step
 
-                    // Handle step 3 - hide arrow container and move swiper
+                    // Handle step 3 - hide any arrow container and move swiper
                     } else if (step === 3 && slideArrowContainer) {
                         slideArrowContainer.style.display = 'none';
                         var swiperInstance = document.querySelector('.mySwiper').swiper;

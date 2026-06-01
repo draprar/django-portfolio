@@ -1,9 +1,10 @@
 from django import forms
-from .models import Articulator, Exercise, Twister, Trivia, Funfact, Profile, OldPolish
-from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group, User
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+
+from .models import Articulator, Exercise, Funfact, OldPolish, Profile, Trivia, Twister
 
 
 # Form to create or edit Articulator model instances

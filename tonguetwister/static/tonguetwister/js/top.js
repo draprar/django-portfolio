@@ -10,9 +10,9 @@ const mybutton = document.getElementById("topBtn");
 window.onscroll = () => {
   // Check if the user has scrolled more than 1px down
   if (window.pageYOffset > 1) {
-    myButton.style.display = "block"; // Show the button
+    mybutton.style.display = "block"; // Show the button
   } else {
-    myButton.style.display = "none"; // Hide the button
+    mybutton.style.display = "none"; // Hide the button
   }
 };
 

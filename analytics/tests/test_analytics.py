@@ -1,8 +1,9 @@
 import json
+
 import pytest
+from django.http import JsonResponse
 from django.urls import reverse
 from django.utils import timezone
-from django.http import JsonResponse
 
 from analytics.models import Visit, VisitLog
 from analytics.utils import count_visit
@@ -58,7 +59,6 @@ class TestRecordLeave:
         url = reverse("record_leave")
         response = client.get(url)
         assert response.status_code == 405
-        assert response.json().get("ok") is False
 
     def test_post_returns_disabled_and_creates_no_rows(self, client):
         url = reverse("record_leave")

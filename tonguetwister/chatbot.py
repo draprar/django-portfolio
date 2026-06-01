@@ -1,12 +1,14 @@
-import pickle
+import json
+import hashlib
 import random
 import re
 import string
-import sentry_sdk
+
 import requests
+import sentry_sdk
 import wikipedia
-from django.core.cache import cache
 from django.conf import settings
+from django.core.cache import cache
 
 
 class Chatbot:
@@ -35,9 +37,15 @@ class Chatbot:
         return self._nlp
 
     @staticmethod
+    def _make_cache_key(prefix: str, raw: str) -> str:
+        digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+        return f"{prefix}:{digest}"
+
+    @staticmethod
     def load_data(filepath):
         try:
             with open(filepath, "rb") as f:
+                import pickle  # local import – legacy .pkl files only, never from network/cache
                 return pickle.load(f)
         except Exception as e:
             print(f"Error loading file {filepath}: {e}")
@@ -52,7 +60,8 @@ class Chatbot:
             self.unanswered_questions.pop()
 
         if len(self.unanswered_questions) >= flush_threshold:
-            cache.set(redis_key, pickle.dumps(self.unanswered_questions), timeout=cache_ttl)
+            # Use JSON (not pickle) to avoid RCE risk via a compromised Redis instance.
+            cache.set(redis_key, json.dumps(list(self.unanswered_questions)), timeout=cache_ttl)
 
     def lemmatize_input(self, text):
         doc = self.nlp(text.lower())  # spaCy
@@ -105,7 +114,7 @@ class Chatbot:
                 return "Nie zrozumiałem. Możesz powtórzyć?"
 
             # Cache key for Redis
-            cache_key = f"chatbot:response:{user_input_clean}"
+            cache_key = self._make_cache_key("chatbot:response", user_input_clean)
             cached_response = cache.get(cache_key)
 
             if cached_response:
