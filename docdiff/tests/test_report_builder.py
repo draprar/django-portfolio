@@ -88,7 +88,7 @@ def test_render_paragraph_changed_and_unchanged():
     f1 = io.StringIO()
     rb._render_paragraph(f1, changed, "changed")
     html1 = f1.getvalue()
-    assert "Inline diff" in html1
+    assert "data-i18n='inline'" in html1
     assert "<del>" in html1.lower()
     assert "<ins>" in html1.lower()
 
@@ -150,7 +150,7 @@ def test_generate_html_report_success(mock_summary, mock_analyze, tmp_path):
     assert "<html" in html
     assert "AI Summary" in html
     assert "Document Comparison Report" in html
-    assert "Mode: light" in html
+    assert "Summary OK" in html
     # check that AI fields were added
     assert "_ai_labels" in blocks[1]
 

@@ -16,8 +16,8 @@ class TestPostListView:
         user = User.objects.create(username="testuser")
         Post.objects.create(
             author=user,
-            title="Test Post",
-            text="This is a test post.",
+            title_pl="Test Post",
+            text_pl="This is a test post.",
             published_date=timezone.now(),
         )
         url = reverse("post_list")
@@ -38,8 +38,8 @@ class TestPostListView:
         # Post z przyszłą datą, nie powinien się pokazać
         Post.objects.create(
             author=user,
-            title="Future Post",
-            text="Should not appear",
+            title_pl="Future Post",
+            text_pl="Should not appear",
             published_date=timezone.now() + timezone.timedelta(days=1),
         )
         url = reverse("post_list")

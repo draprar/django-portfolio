@@ -11,12 +11,12 @@ class TestPostModel:
         user = User.objects.create(username="testuser")
         post = Post.objects.create(
             author=user,
-            title="Test Post",
-            text="This is a test post.",
+            title_pl="Test Post",
+            text_pl="This is a test post.",
             created_date=timezone.now(),
         )
-        assert post.title == "Test Post"
-        assert post.text == "This is a test post."
+        assert post.title_pl == "Test Post"
+        assert post.text_pl == "This is a test post."
         assert post.published_date is None
         assert str(post) == "Test Post"
 
@@ -24,8 +24,8 @@ class TestPostModel:
         user = User.objects.create(username="testuser")
         post = Post.objects.create(
             author=user,
-            title="Publish Test Post",
-            text="Publishing test post.",
+            title_pl="Publish Test Post",
+            text_pl="Publishing test post.",
             created_date=timezone.now(),
         )
         post.publish()
@@ -36,8 +36,8 @@ class TestPostModel:
         user = User.objects.create(username="testuser")
         Post.objects.create(
             author=user,
-            title="Test Post",
-            text="This is a test post.",
+            title_pl="Test Post",
+            text_pl="This is a test post.",
             created_date=timezone.now(),
         )
         user.delete()

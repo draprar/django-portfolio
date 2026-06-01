@@ -2,6 +2,7 @@ from unittest.mock import patch
 
 import pytest
 import wikipedia
+import asyncio
 from django.test import override_settings
 from django.urls import reverse
 
@@ -106,10 +107,12 @@ async def test_chatbot_view_rejects_too_long_input(async_client):
 @pytest.mark.django_db
 @pytest.mark.asyncio
 @override_settings(FEATURE_CHATBOT_ENABLED=True, CHATBOT_RESPONSE_TIMEOUT_SECONDS=0.01)
-@patch("tonguetwister.views.get_chatbot")
-async def test_chatbot_view_timeout(async_get_chatbot, async_client):
-    import time
-
-    async_get_chatbot.return_value.get_response.side_effect = lambda _msg: time.sleep(0.1)
+@patch("tonguetwister.views_main.get_chatbot")
+async def test_chatbot_view_timeout(mock_get_chatbot, async_client):
+    async def slow_response(msg):
+        await asyncio.sleep(0.2)
+        return "Delayed response"
+    
+    mock_get_chatbot.return_value.get_response = slow_response
     response = await async_client.get(reverse("chatbot"), {"message": "hej"})
     assert response.status_code == 503
