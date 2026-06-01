@@ -89,6 +89,9 @@ PySocks==1.7.1
 python-dateutil==2.9.0.post0
 python-docx==1.2.0
 python-dotenv==1.2.2
+psycopg2-binary==2.9.10
+pillow==12.2.0
+py-serializable==2.1.0
 pytz==2025.1
 pywin32==308; sys_platform == "win32"
 PyYAML==6.0.2
@@ -137,4 +140,3 @@ wikipedia==1.4.0
 wrapt==1.17.2
 wsproto==1.2.0
 zopfli==0.2.3.post1
-
