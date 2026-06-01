@@ -1,0 +1,16 @@
+target-version = "py311"
+line-length = 120
+exclude = [
+  "migrations",
+  "staticfiles",
+  ".venv",
+  "venv",
+]
+
+[lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+"analytics/models.py" = ["I001"]
+
