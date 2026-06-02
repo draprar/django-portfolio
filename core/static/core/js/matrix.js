@@ -127,7 +127,7 @@
       leftCtx.fillText(char, i * FONT_LEFT, (row - 1) * FONT_LEFT);
 
       if (row * FONT_LEFT > leftCanvas.height && Math.random() > 0.975) dropsLeft[i] = 0;
-      dropsLeft[i] += 0.35;  // slower, more ambient feel
+      dropsLeft[i] += 0.4;  // slower, more ambient feel
     });
   }
 
@@ -148,7 +148,7 @@
       rightCtx.fillText(char, i * FONT_RIGHT, (row - 1) * FONT_RIGHT);
 
       if (row * FONT_RIGHT > rightCanvas.height && Math.random() > 0.975) dropsRight[i] = 0;
-      dropsRight[i] += 0.35;  // symbols drift slower than binary
+      dropsRight[i] += 0.4;  // symbols drift slower than binary
     });
   }
 
