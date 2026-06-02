@@ -25,16 +25,16 @@ A full-stack Django portfolio by an engineer-turned-developer — 8 integrated a
 
 ## Code highlights
 
-| Pattern | Where | Detail |
-|---------|-------|--------|
-| Split view architecture | `tonguetwister/views_*.py` | CRUD · auth · API · main logic in separate modules |
+| Pattern | Where | Detail                                                   |
+|---------|-------|----------------------------------------------------------|
+| Split view architecture | `tonguetwister/views_*.py` | CRUD · auth · API · main logic in separate modules       |
 | Async views | `tonguetwister/views_main.py` | chatbot with `asyncio.wait_for` timeout + Sentry capture |
-| DRF + SimpleJWT | `tonguetwister/views_api.py` | read-only ViewSets, per-endpoint auth, 5 min cache |
-| AI heuristics | `docdiff/heuristics_ai.py` | semantic scoring on paragraph-level diffs |
-| File security | `docdiff/views.py` | extension + MIME + magic-byte signature validation |
-| Rate limiting | `core/`, `tonguetwister/` | `django-ratelimit` per-IP on all mutation endpoints |
-| Email auth flow | `tonguetwister/views_auth.py` | token-based activation + password reset via Brevo |
-| Test coverage | project-wide | 94% — pytest + coverage, CI threshold at 60% |
+| DRF + SimpleJWT | `tonguetwister/views_api.py` | read-only ViewSets, per-endpoint auth, 5 min cache       |
+| AI heuristics | `docdiff/heuristics_ai.py` | semantic scoring on paragraph-level diffs                |
+| File security | `docdiff/views.py` | extension + MIME + magic-byte signature validation       |
+| Rate limiting | `core/`, `tonguetwister/` | `django-ratelimit` per-IP on all mutation endpoints      |
+| Email auth flow | `tonguetwister/views_auth.py` | token-based activation + password reset via Brevo        |
+| Test coverage | project-wide | 95% — pytest + coverage, CI threshold at 80%             |
 
 ## Quick start (5 min)
 

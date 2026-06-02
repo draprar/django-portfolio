@@ -74,7 +74,7 @@ jobs:
         run: python manage.py makemigrations --check --dry-run
 
       - name: Run tests
-        run: python -m pytest -q --cov=. --cov-report=term-missing --cov-fail-under=60
+        run: python -m pytest -q --cov=. --cov-report=term-missing --cov-fail-under=80
 
   pip_audit:
     runs-on: ubuntu-latest

@@ -1,9 +1,3 @@
-# core/tests/test_core.py
-"""
-Unit tests for the `core` app.
-All tests are pure unit tests. No database access. All external dependencies are mocked.
-"""
-
 import json
 from unittest.mock import Mock
 
@@ -12,9 +6,7 @@ from django.core.exceptions import ValidationError
 from django.http import HttpRequest
 
 
-# ---------------------------------------------------------------------
 # MODELS / VALIDATORS
-# ---------------------------------------------------------------------
 def test_validate_file_size_allows_5mb():
     from core.models import validate_file_size
 
@@ -47,9 +39,7 @@ def test_file_extension_validator_rejects_bad_ext():
         validator(fake_file)
 
 
-# ---------------------------------------------------------------------
 # FORMS
-# ---------------------------------------------------------------------
 def test_contact_form_honeypot_blocks():
     from core.forms import ContactForm
 
@@ -80,9 +70,7 @@ def test_contact_form_valid_calls_save(monkeypatch):
     assert isinstance(result, models.Contact)
 
 
-# ---------------------------------------------------------------------
 # VIEWS
-# ---------------------------------------------------------------------
 def test_health_check_view_returns_ok():
     from core.views import health_check
 
@@ -138,37 +126,56 @@ def test_contactview_post_success_and_error_paths(monkeypatch):
 
     fake_request = Mock()
     fake_request.headers = {"x-requested-with": "XMLHttpRequest"}
-    fake_request.POST = {"name": "A", "email": "a@b.c", "message": "hello", "website": ""}
+    fake_request.POST = {
+        "name": "A",
+        "email": "a@b.c",
+        "message": "hello",
+        "website": ""
+    }
 
     # CASE 1: valid + email success
     mock_form = Mock()
     mock_form.is_valid.return_value = True
-    mock_form.cleaned_data = {"name": "Tester", "email": "a@b.c", "message": "Hi!"}
+    mock_form.cleaned_data = {
+        "name": "Tester",
+        "email": "a@b.c",
+        "message": "Hi!"
+    }
     mock_form.save.return_value = Mock()
+
     monkeypatch.setattr("core.views.ContactForm", lambda *a, **k: mock_form)
     monkeypatch.setattr("core.views.send_brevo_email", lambda *a, **k: True)
 
     resp = views_mod.ContactView().post(fake_request)
     assert resp.status_code == 200
     assert json.loads(resp.content)["success"] is True
+    assert json.loads(resp.content)["message_key"] == "msg-success"
 
     # CASE 2: valid + email raises exception
     def raise_exc(*a, **k):
         raise Exception("smtp boom")
 
     monkeypatch.setattr("core.views.send_brevo_email", raise_exc)
+
     resp2 = views_mod.ContactView().post(fake_request)
     assert resp2.status_code == 500
+    body2 = json.loads(resp2.content)
+    assert body2["success"] is False
+    assert body2["message_key"] == "msg-error"
 
     # CASE 3: invalid form
     bad_form = Mock()
     bad_form.is_valid.return_value = False
     bad_form.errors = {"email": ["invalid"]}
+
     monkeypatch.setattr("core.views.ContactForm", lambda *a, **k: bad_form)
+
     resp3 = views_mod.ContactView().post(fake_request)
     assert resp3.status_code == 400
+
     body3 = json.loads(resp3.content)
-    assert "email" in body3["errors"]
+    assert body3["success"] is False
+    assert body3["message_key"] == "msg-fail"
 
 
 def test_contactview_post_email_returns_none(monkeypatch):
@@ -223,9 +230,7 @@ def test_contactview_get_returns_405(client):
     assert resp.status_code == 405
 
 
-# ---------------------------------------------------------------------
 # EMAIL
-# ---------------------------------------------------------------------
 def test_send_brevo_email_success(monkeypatch):
     from core import email as email_mod
 
@@ -289,9 +294,7 @@ def test_send_brevo_email_handles_api_exception(monkeypatch):
     assert res is None
 
 
-# ---------------------------------------------------------------------
 # STORAGE
-# ---------------------------------------------------------------------
 def test_supabase_public_storage_url_reads_media_url(monkeypatch):
     from core.storages_backends import SupabasePublicStorage
 
