@@ -1,2 +1,2 @@
-# Produkcyjne zależności
+# Production dependencies
 -r requirements-prod.txt

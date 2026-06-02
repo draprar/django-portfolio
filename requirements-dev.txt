@@ -1,5 +1,3 @@
-# Zależności dev: testing, linting, type checking, security scanning
-# Zawiera: pytest, mypy, ruff, bandit, coverage, ipython, jupyter, itp.
 -r requirements-prod.txt
 
 # Testing
