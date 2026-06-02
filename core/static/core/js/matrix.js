@@ -37,16 +37,44 @@
   let matrixEnabled = true;
   let glitchEnabled = false;
 
+  // ── Safari / svh fallback ─────────────────────────────────────────────────
+  // Safari < 16 doesn't support svh units. We measure innerHeight once on load
+  // (before any scroll) and pin the split-section height via a CSS custom prop.
+  // This prevents the section from jumping when Safari's toolbar appears/hides.
+  function lockSplitHeight() {
+    const supportsSvh = CSS.supports('height', '1svh');
+    if (!supportsSvh) {
+      const h = Math.min(window.innerHeight * 0.85, 700);
+      document.documentElement.style.setProperty('--split-h', `${h}px`);
+    }
+  }
+  lockSplitHeight();
+
   // ── Resize ────────────────────────────────────────────────────────────────
   function resizeAll() {
-    leftCanvas.width   = leftContainer.offsetWidth;
-    leftCanvas.height  = leftContainer.offsetHeight;
-    columnsLeft  = Math.max(1, Math.floor(leftCanvas.width / FONT_LEFT));
-    dropsLeft    = Array(columnsLeft).fill(1);
+    const lw = leftContainer.offsetWidth;
+    const lh = leftContainer.offsetHeight;
+    const rw = rightContainer.offsetWidth;
+    const rh = rightContainer.offsetHeight;
 
-    rightCanvas.width  = rightContainer.offsetWidth;
-    rightCanvas.height = rightContainer.offsetHeight;
-    columnsRight = Math.max(1, Math.floor(rightCanvas.width / FONT_RIGHT));
+    // Retry once if the containers haven't laid out yet (e.g. on first paint)
+    if (!lw || !lh || !rw || !rh) {
+      requestAnimationFrame(resizeAll);
+      return;
+    }
+
+    leftCanvas.width   = lw;
+    leftCanvas.height  = lh;
+    columnsLeft  = Math.max(1, Math.floor(lw / FONT_LEFT));
+    // Stagger left drops the same way as right — prevents the "wall of glyphs" effect
+    dropsLeft    = Array.from(
+      { length: columnsLeft },
+      () => -Math.floor(Math.random() * 60)
+    );
+
+    rightCanvas.width  = rw;
+    rightCanvas.height = rh;
+    columnsRight = Math.max(1, Math.floor(rw / FONT_RIGHT));
     dropsRight   = Array.from(
       { length: columnsRight },
       () => -Math.floor(Math.random() * 100)  // staggered start positions
@@ -87,10 +115,11 @@
     leftCtx.textBaseline = "top";
 
     dropsLeft.forEach((y, i) => {
+      const row = Math.floor(y);
       const char = GLYPHS_LEFT[Math.floor(Math.random() * GLYPHS_LEFT.length)];
-      leftCtx.fillText(char, i * FONT_LEFT, (y - 1) * FONT_LEFT);
+      leftCtx.fillText(char, i * FONT_LEFT, (row - 1) * FONT_LEFT);
 
-      if (y * FONT_LEFT > leftCanvas.height && Math.random() > 0.975) dropsLeft[i] = 0;
+      if (row * FONT_LEFT > leftCanvas.height && Math.random() > 0.975) dropsLeft[i] = 0;
       dropsLeft[i] += 0.5;  // half-speed for a slower, more deliberate fall
     });
   }
@@ -107,10 +136,11 @@
     rightCtx.textBaseline = "top";
 
     dropsRight.forEach((y, i) => {
+      const row = Math.floor(y);
       const char = GLYPHS_RIGHT[Math.floor(Math.random() * GLYPHS_RIGHT.length)];
-      rightCtx.fillText(char, i * FONT_RIGHT, (y - 1) * FONT_RIGHT);
+      rightCtx.fillText(char, i * FONT_RIGHT, (row - 1) * FONT_RIGHT);
 
-      if (y * FONT_RIGHT > rightCanvas.height && Math.random() > 0.975) dropsRight[i] = 0;
+      if (row * FONT_RIGHT > rightCanvas.height && Math.random() > 0.975) dropsRight[i] = 0;
       dropsRight[i] += 0.5;
     });
   }

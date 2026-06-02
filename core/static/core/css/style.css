@@ -244,7 +244,11 @@ html, body { overflow-x: hidden; }
 
 .split-section {
   display: flex;
-  height: 85vh;
+  /* svh = "small viewport height" — uses the smaller stable size (after Safari hides its chrome).
+     This prevents the section from resizing when Safari shows/hides its toolbar on scroll.
+     Fallback: JS sets --split-h on mount (see matrix.js) for older browsers without svh support. */
+  height: 85svh;
+  height: var(--split-h, 85svh);
   max-height: 700px;
   overflow: hidden;
   position: relative;
