@@ -120,7 +120,7 @@
       leftCtx.fillText(char, i * FONT_LEFT, (row - 1) * FONT_LEFT);
 
       if (row * FONT_LEFT > leftCanvas.height && Math.random() > 0.975) dropsLeft[i] = 0;
-      dropsLeft[i] += 0.5;  // half-speed for a slower, more deliberate fall
+      dropsLeft[i] += 0.35;  // half-speed for a slower, more deliberate fall
     });
   }
 
@@ -141,7 +141,7 @@
       rightCtx.fillText(char, i * FONT_RIGHT, (row - 1) * FONT_RIGHT);
 
       if (row * FONT_RIGHT > rightCanvas.height && Math.random() > 0.975) dropsRight[i] = 0;
-      dropsRight[i] += 0.5;
+      dropsRight[i] += 0.35;
     });
   }
 
