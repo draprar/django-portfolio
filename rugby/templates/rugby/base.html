@@ -26,6 +26,10 @@
 </head>
 <body>
 
+<div id="loader">
+  <div class="spinner-border text-primary" role="status"></div>
+</div>
+
 <!-- Back to top -->
 <button onclick="topFunction()" id="topBtn"
         data-en="Back to top" data-pl="Wróć na górę"
@@ -76,6 +80,12 @@
 
 <script>
   AOS.init({ duration: 750, once: true, offset: 60 });
+</script>
+<script>
+  window.addEventListener('load', function () {
+    var loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+  });
 </script>
 
 </body>

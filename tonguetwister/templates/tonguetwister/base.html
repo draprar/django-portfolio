@@ -16,6 +16,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 </head>
 <body data-user-authenticated="{{ user.is_authenticated|yesno:'true,false' }}">
+
+<div id="loader">
+  <div class="spinner-border text-primary" role="status"></div>
+</div>
+
 <button class="btn" onclick="topFunction()" id="topBtn"><i class="fa fa-arrow-up"></i></button>
 
 <header>
@@ -76,6 +81,12 @@
         micOnSrc: "{% static 'tonguetwister/assets/mic-on.svg' %}",
         micOffSrc: "{% static 'tonguetwister/assets/mic-off.svg' %}"
     };
+</script>
+<script>
+  window.addEventListener('load', function () {
+    var loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+  });
 </script>
 </body>
 </html>
