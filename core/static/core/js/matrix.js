@@ -45,6 +45,9 @@
   function lockSplitHeight() {
     const h = Math.min(window.innerHeight * 0.85, 700);
     document.documentElement.style.setProperty('--split-h', `${h}px`);
+    // Pin mobile half-height so it doesn't react to toolbar show/hide on iOS in-app browsers
+    const halfH = Math.round(window.innerHeight * 0.48);
+    document.documentElement.style.setProperty('--half-h', `${halfH}px`);
   }
   lockSplitHeight();
 
