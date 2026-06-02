@@ -231,7 +231,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 620px; /* fallback zanim iframe się wyrenderuje */
+    min-height: 620px; /* fallback for iframe */
 }
 
 .instagram-item iframe {
@@ -241,7 +241,6 @@ body {
     width: 100% !important;
     min-width: 100% !important;
     margin: 0 !important;
-    /* NIE ustawiaj min-height tutaj — IG sam ustawia height atrybutem */
 }
 
 .instagram-media {

@@ -60,11 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(processEmbeds, 3000);
     window.addEventListener('load', processEmbeds);
 
-    /**
-     * Gdy IG wstrzyknie iframe do .instagram-item, obserwuj jego
-     * rzeczywistą wysokość i ustaw min-height kontenera na tę wartość.
-     * Dzięki temu kontener nigdy nie utnie embeda.
-     */
     const watchIframes = () => {
         document.querySelectorAll('.instagram-item').forEach(item => {
             const iframe = item.querySelector('iframe');
@@ -78,11 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             };
 
-            // MutationObserver na atrybut height iframe
+            // MutationObserver - height iframe
             const mo = new MutationObserver(syncHeight);
             mo.observe(iframe, { attributes: true, attributeFilter: ['height', 'style'] });
 
-            // ResizeObserver jako backup
+            // ResizeObserver backup
             if (window.ResizeObserver) {
                 const ro = new ResizeObserver(syncHeight);
                 ro.observe(iframe);
@@ -92,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Obserwuj DOM — reaguj gdy IG doda iframe do blockquote
+    // Observe DOM
     const domObserver = new MutationObserver(() => watchIframes());
     domObserver.observe(document.body, { childList: true, subtree: true });
 

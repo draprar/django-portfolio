@@ -137,7 +137,7 @@ class TestAnalyticsUrls:
     """Ensure url names resolve (no namespace assumed)."""
 
     def test_urls_resolve_correct_views(self):
-        # Simply ensure reversing the names works in current project setup.
+        # We only care that the routes are registered and reversible.
         assert reverse("stats")
         assert reverse("overview")
         assert reverse("record_leave")

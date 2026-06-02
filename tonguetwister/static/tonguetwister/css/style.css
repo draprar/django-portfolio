@@ -1,10 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   LingwoŁamki — style.css
-   Design tokens imported from portfolio (style-core.css).
-   Drop this file in place of the old tonguetwister/css/style.css.
-   No HTML or JS changes required.
-   ═══════════════════════════════════════════════════════════════ */
-
 /* ── Design tokens (mirror portfolio) ──────────────────────────────────────── */
 :root {
   --primary:  #c4922a;
@@ -36,11 +29,6 @@ a { color: var(--primary); }
 a:hover { color: #e0b060; }
 
 /* ── Swiper overflow wrapper ─────────────────────────────────────────────────── */
-/*
- * The wrapper clips horizontal overflow (prevents mobile side-scroll)
- * without touching the swiper element itself — so overflow: visible
- * on .mySwiper works correctly and success cards aren't clipped.
- */
 .swiper-overflow-wrapper {
   overflow: hidden;
   width: 100%;
@@ -69,11 +57,6 @@ a:hover { color: #e0b060; }
 }
 
 /* ── Navigation arrows ───────────────────────────────────────────────────────── */
-/*
- * position: absolute within .mySwiper (which is position:relative by default in Swiper).
- * This keeps them pinned to the sides at mid-height of the swiper, not the viewport.
- * On mobile they're smaller but always visible.
- */
 .swiper-button-next,
 .swiper-button-prev {
   position: absolute !important;
@@ -663,7 +646,3 @@ button:focus-visible {
   outline-offset: 2px;
   border-radius: 3px;
 }
-
-/* ── Utility: Google Fonts for Playfair Display ─────────────────────────────── */
-/* Add this import at the very top of base.html <head> if not already present:  */
-/* <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Kaushan+Script&display=swap" rel="stylesheet"> */

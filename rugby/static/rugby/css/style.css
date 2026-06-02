@@ -1,8 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════════════════════
-   AFC Rugby Giżycko — style.css  (rugby/static/rugby/css/style.css)
-   Dark theme, aligned 1:1 with main portfolio landing page.
-   ═══════════════════════════════════════════════════════════════════════════════ */
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
 /* ── Design tokens ──────────────────────────────────────────────────────────── */
@@ -60,9 +55,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   NAVBAR
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* NAVBAR */
 
 .navbar {
   background: transparent !important;
@@ -151,7 +144,6 @@ body {
 
 /* ── Mobile dropdown ────────────────────────────────────────────────────────── */
 @media (max-width: 767.98px) {
-  /* Tło od razu na collapse — nie czekamy na .show, żeby uniknąć flashu */
   .navbar-collapse {
     position: fixed;
     top: 56px;
@@ -192,9 +184,7 @@ body {
   .navbar-collapse .navbar-nav .nav-link.active { color: var(--primary) !important; }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   HERO
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* HERO */
 
 .hero {
   width: 100vw;
@@ -325,9 +315,7 @@ body {
   50%      { transform: rotate(45deg) translate(0, 5px); }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   SECTIONS — shared
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* SECTIONS — shared */
 
 .page-section {
   padding: 5.5rem 0;
@@ -384,9 +372,7 @@ em, i, .text-muted em, h5 em, p em {
 /* AOS: prevent FOUC */
 [data-aos] { opacity: 0; }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   INFO SECTION  (#info)
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* INFO SECTION  (#info) */
 
 #info h4 { color: var(--light); font-weight: 700; font-size: 1.155rem; }
 #info .text-muted { color: var(--muted) !important; font-size: 1.067rem; }
@@ -394,9 +380,7 @@ em, i, .text-muted em, h5 em, p em {
 
 .fa-stack .fa-circle { color: var(--primary) !important; }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   MEDIA / CARDS  (#media)
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* MEDIA / CARDS  (#media) */
 
 .card {
   background: var(--surface2) !important;
@@ -474,9 +458,7 @@ em, i, .text-muted em, h5 em, p em {
 }
 .link-warning:hover { color: #e0b060 !important; }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   TIMELINE  (#about)
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* TIMELINE  (#about) */
 
 .timeline {
   position: relative;
@@ -640,12 +622,7 @@ em, i, .text-muted em, h5 em, p em {
   .timeline > li.timeline-inverted > .timeline-panel { padding: 0 100px 20px 20px; }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   ACCORDION — archive  (#archive)
-   Destroyed all gold decoration. Clean, readable, Montserrat throughout.
-   ══════════════════════════════════════════════════════════════════════════════ */
-
-/* Override BS5 accordion CSS vars */
+/* ACCORDION — archive  (#archive) */
 .accordion {
   --bs-accordion-color:               var(--light);
   --bs-accordion-bg:                  var(--dark);
@@ -692,8 +669,6 @@ em, i, .text-muted em, h5 em, p em {
   height: 0 !important;
 }
 
-/* The gold "bar" under open accordion headers is Bootstrap's inset box-shadow.
-   We kill it at maximum specificity to beat both BS5 and old style-g.css. */
 body .accordion-button,
 body .accordion-button:not(.collapsed),
 body .accordion-button:focus,
@@ -727,7 +702,6 @@ body .accordion-item .accordion-header .accordion-button:not(.collapsed) {
   box-shadow: none !important;
 }
 
-/* No gold ring on focus — plain subtle border only */
 .accordion-button:focus {
   box-shadow: none !important;
   outline: none;
@@ -770,8 +744,6 @@ body .accordion-item .accordion-header .accordion-button:not(.collapsed) {
   background: var(--dark) !important;
 }
 
-/* ── The "Poniżej znajduje się..." subtitle in archive —
-   old stylesheet had a gold-bordered box here; we strip it completely. */
 #archive .info h5 {
   background: none !important;
   border: none !important;
@@ -779,9 +751,7 @@ body .accordion-item .accordion-header .accordion-button:not(.collapsed) {
   color: var(--muted) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   FOOTER
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* FOOTER */
 
 footer.footer {
   background: #080a0f !important;
@@ -804,9 +774,7 @@ footer.footer p {
   color: var(--muted);
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   LANG SWITCHER
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* LANG SWITCHER */
 
 .lang-btn {
   font-family: 'Montserrat', sans-serif;
@@ -845,9 +813,7 @@ footer.footer p {
   }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   FOCUS / ACCESSIBILITY
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* FOCUS / ACCESSIBILITY */
 
 a:focus:not(:focus-visible),
 button:focus:not(:focus-visible) { outline: none; }

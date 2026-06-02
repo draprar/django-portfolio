@@ -1,13 +1,6 @@
-/* ═══════════════════════════════════════════════════════════════
-   enhancements.js — rugby app
-   1. Lightbox for #media images
-   2. Animated timeline line in #about
-   ═══════════════════════════════════════════════════════════════ */
-
 (function () {
   'use strict';
 
-  /* ── 1. LIGHTBOX ───────────────────────────────────────────── */
   function buildLightbox() {
     const overlay = document.createElement('div');
     overlay.id = 'lb-overlay';
@@ -134,7 +127,6 @@
     });
   }
 
-  /* ── 2. ANIMATED TIMELINE LINE ─────────────────────────────── */
   function animateTimelineLine() {
     const timeline = document.querySelector('.timeline');
     if (!timeline) return;
@@ -149,7 +141,6 @@
     obs.observe(timeline);
   }
 
-  /* ── INIT ───────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     buildLightbox();
     animateTimelineLine();

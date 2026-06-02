@@ -10,18 +10,18 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-/* Tło ornamentowe */
+/* ornament */
 body::before,
 body::after {
   content: "";
-  position: fixed; /* <-- to zmienia wszystko */
+  position: fixed;
   width: 250px;
   height: 250px;
   background-repeat: no-repeat;
   background-size: contain;
   opacity: 0.08;
   z-index: 0;
-  pointer-events: none; /* żeby nie blokowało kliknięć */
+  pointer-events: none;
 }
 
 body::before {
@@ -95,7 +95,7 @@ a { color: #f5e1a4; text-decoration: underline; }
 @keyframes riseUp { from { opacity: 0; transform: translateY(20px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes pulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
 
-/* Galeria */
+/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -149,7 +149,7 @@ a { color: #f5e1a4; text-decoration: underline; }
   transition: transform 0.3s ease;
 }
 
-/* Responsywność */
+/* Responsive */
 @media (max-width: 600px) {
   body { padding: 1rem; }
   .container { padding: 1.5rem; }
@@ -164,9 +164,9 @@ a { color: #f5e1a4; text-decoration: underline; }
   background: #000;
   text-align: center;
   padding: 40px 0 30px;
-  color: #f5e1a4; /* spójny kolor */
-  font-family: 'Georgia', serif; /* jak reszta strony */
-  border-top: 1px solid rgba(245, 225, 164, 0.2); /* delikatna złota linia */
+  color: #f5e1a4;
+  font-family: 'Georgia', serif;
+  border-top: 1px solid rgba(245, 225, 164, 0.2);
 }
 
 .footer-content {

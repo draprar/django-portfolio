@@ -405,10 +405,10 @@ def _render_image(f, b, cls):
 # Main render
 # -------------------------
 def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "report.html") -> None:
-    # 1) basic statistics and scoring
+    # Basic statistics and scoring
     stats = compute_stats_and_scores(block_diffs)
 
-    # 2) AI analysis (for "changed") — fills _ai_* fields
+    # AI analysis (for "changed") — fills _ai_* fields
     for b in block_diffs:
         if b.get("change") == "changed":
             try:
@@ -424,7 +424,7 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
                 b["_ai_type"] = ""
                 b["_ai_conf"] = None
 
-    # 3) prepare TOC sorted by ai_score (fallback to _score)
+    # Prepare TOC sorted by ai_score (fallback to _score)
     # We want the most significant first
     indexed = list(range(len(block_diffs)))
 
@@ -442,7 +442,7 @@ def generate_html_report(block_diffs: List[Dict[str, Any]], output_path: str = "
 
     summary_html = generate_ai_summary(block_diffs)
 
-    # 4) generate file
+    # Generate file
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("<!DOCTYPE html><html lang='pl'><head>")
         f.write("<meta charset='utf-8'>")

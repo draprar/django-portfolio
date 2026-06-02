@@ -27,4 +27,4 @@ handler404 = "config.views.custom_404_view"
 if settings.DEBUG:
     # serve static files in debug using static() only if needed
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    # NOTE: we DO NOT serve MEDIA via Django static() because MEDIA is in Supabase.
+    # NOTE: we do not serve MEDIA via Django static() because MEDIA is in Supabase.

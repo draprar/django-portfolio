@@ -48,8 +48,7 @@ if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         integrations=[RedisIntegration()],
-        # 10% sampling in production to keep Sentry costs manageable.
-        # Increase to 1.0 only for short debugging sessions.
+        # 10% sampling in production to keep Sentry costs manageable
         traces_sample_rate=0.1,
         send_default_pii=False,
     )
