@@ -371,8 +371,8 @@ html, body { overflow-x: hidden; }
 
   .half {
     width: 50%;
-    height: 48svh;                  /* svh = stable viewport height — nie reaguje na paski iOS */
-    height: var(--half-h, 48svh);   /* JS pin z matrix.js dla starszych in-app browserów */
+    height: 53svh;                  /* svh = stable viewport height */
+    height: var(--half-h, 53svh);   /* JS pin z matrix.js dla starszych in-app browserów */
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-attachment: scroll;  /* explicit — zapobiega rekalkulacji przy resize */
