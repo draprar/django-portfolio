@@ -363,6 +363,9 @@ html, body { overflow-x: hidden; }
     flex-direction: row;
     flex-wrap: wrap-reverse;
     height: auto;
+
+    /* FIX Safari viewport jump */
+    min-height: 85svh;
   }
 
   .half {
