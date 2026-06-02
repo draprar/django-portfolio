@@ -37,18 +37,22 @@
   let matrixEnabled = true;
   let glitchEnabled = false;
 
-  // ── Safari / svh fallback ─────────────────────────────────────────────────
-  // Safari < 16 doesn't support svh units. We measure innerHeight once on load
-  // (before any scroll) and pin the split-section height via a CSS custom prop.
-  // This prevents the section from jumping when Safari's toolbar appears/hides.
+  // ── Lock split-section height ─────────────────────────────────────────────
+  // svh units are unreliable in in-app browsers (IG, LinkedIn WKWebView etc).
+  // CSS.supports may return true but the value still reacts to toolbar show/hide.
+  // Fix: always measure innerHeight once on first paint and pin as px via --split-h.
+  // Never update on scroll — only on a real orientation/resize within first second.
   function lockSplitHeight() {
-    const supportsSvh = CSS.supports('height', '1svh');
-    if (!supportsSvh) {
-      const h = Math.min(window.innerHeight * 0.85, 700);
-      document.documentElement.style.setProperty('--split-h', `${h}px`);
-    }
+    const h = Math.min(window.innerHeight * 0.85, 700);
+    document.documentElement.style.setProperty('--split-h', `${h}px`);
   }
   lockSplitHeight();
+
+  let heightLocked = false;
+  setTimeout(() => { heightLocked = true; }, 1000);
+  window.addEventListener('resize', () => {
+    if (!heightLocked) lockSplitHeight();
+  });
 
   // ── Resize ────────────────────────────────────────────────────────────────
   function resizeAll() {
@@ -120,7 +124,7 @@
       leftCtx.fillText(char, i * FONT_LEFT, (row - 1) * FONT_LEFT);
 
       if (row * FONT_LEFT > leftCanvas.height && Math.random() > 0.975) dropsLeft[i] = 0;
-      dropsLeft[i] += 0.35;  // half-speed for a slower, more deliberate fall
+      dropsLeft[i] += 0.35;  // slower, more ambient feel
     });
   }
 
@@ -141,7 +145,7 @@
       rightCtx.fillText(char, i * FONT_RIGHT, (row - 1) * FONT_RIGHT);
 
       if (row * FONT_RIGHT > rightCanvas.height && Math.random() > 0.975) dropsRight[i] = 0;
-      dropsRight[i] += 0.35;
+      dropsRight[i] += 0.35;  // symbols drift slower than binary
     });
   }
 
