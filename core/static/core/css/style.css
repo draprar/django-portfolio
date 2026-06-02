@@ -293,6 +293,16 @@ html, body { overflow-x: hidden; }
   pointer-events: none;
 }
 
+@media (max-width: 768px) {
+
+  .half.left::after,
+  .half.right::before {
+    width: 9px;
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
+  }
+}
+
 /* ── Hero text boxes ────────────────────────────────────────────────────────── */
 .text-box {
   position: absolute;
