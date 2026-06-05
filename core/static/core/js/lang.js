@@ -1,5 +1,3 @@
-AOS.init({ once: true, duration: 700 });
-
 (function () {
   // helpers
   const setDocumentLang = (lang) => {
