@@ -1,0 +1,171 @@
+{% load static %}
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radonica — Wyraj</title>
+  <meta name="description" content="Radonica — wiosenne święto przodków.">
+  <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
+<style>
+  .box {
+    position: relative;
+    overflow: hidden;
+
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.78),
+        rgba(0,0,0,0.62)
+      ),
+      url("{% static 'bies/img/radonica.png' %}") center/cover no-repeat;
+
+    background-size: 150% auto !important;
+    background-position: center !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(196,146,42,0.28);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .section-title {
+    text-align: center;
+  }
+
+  .section-title::after {
+    width: 72px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="{% static 'bies/img/radonica.png' %}" alt="Radonica" class="hero-img">
+    <div class="hero-veil"></div>
+  </div>
+
+  <!-- PAGE -->
+  <div class="page-wrap">
+    <div class="page-content">
+
+      <div class="switch">
+        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+        <button type="button" onclick="switchLang('en')">EN</button>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+      <!-- PL -->
+      <div class="lang active" id="pl">
+        <h1>Radonica</h1>
+        <p class="subtitle">obchodzona w połowie Miesiąca Łżykwiata</p>
+
+        <div class="tresc">
+
+          <div class="box">
+            <div class="section-title">O święcie</div>
+            <p>Gdy wiosenne światło powraca nad świat, a młoda zieleń budzi się do życia, wspomina się Radonicę — wiosenne święto przodków, dzień spotkania żywych i zmarłych.</p>
+            <p>Dzisiejsza Radonica jest kontynuacją dawnego obrzędu zadusznego, zachowanego w tradycji wschodniosłowiańskiej i znanego z etnografii XIX–XX wieku.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Obrzędy</div>
+            <p>Rodziny przygotowywały jaja, chleb i napoje, dzieląc się nimi z przodkami podczas uczty rozpoczynanej w domu, a kończonej na cmentarzu.</p>
+            <p>Na mogiłach pozostawiano pisanki i jedzenie, skrapiano groby wódką, a resztek posiłku nigdy nie zabierano z powrotem.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Symbolika</div>
+            <p>Radonica była świętem jasnym i radosnym, związanym z Wyrajem — górnym, słonecznym porządkiem, z którego przybywają dusze wraz z wiosną.</p>
+            <p>Jajko, znak życia i odrodzenia, stanowiło najważniejszy dar składany przodkom.</p>
+          </div>
+
+        </div>
+
+        <div class="zrodla">
+          <div class="section-title">Źródła</div>
+          <ul>
+            <li><strong>Andrzej Szyjewski</strong>, <em>Religia Słowian</em> (2003).</li>
+            <li><strong>Aleksander Gieysztor</strong>, <em>Mitologia Słowian</em> (2006).</li>
+            <li><strong>Józef Gołąbek</strong>, <em>Dziady białoruskie</em> (1926).</li>
+            <li><strong>Henryk Biegeleisen</strong>, <em>Śmierć w obrzędach ludu polskiego</em> (1930).</li>
+            <li><a href="https://pl.wikipedia.org/wiki/Radonica" target="_blank" rel="noopener">Wikipedia — Radonica ↗</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- EN -->
+      <div class="lang" id="en">
+        <h1>Radonica</h1>
+        <p class="subtitle">observed in the middle of the Month of Łżykwiat</p>
+
+        <div class="tresc">
+
+          <div class="box">
+            <div class="section-title">About the Feast</div>
+            <p>When spring light returns to the world and young greenery awakens, Radonica is remembered — the spring feast of ancestors, a day when the living meet the departed.</p>
+            <p>The modern form of Radonica continues an ancient memorial rite preserved in Eastern Slavic tradition and known from 19th–20th‑century ethnography.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Rites</div>
+            <p>Families prepared eggs, bread, and drinks, sharing them with their forebears during a meal that began at home and ended at the cemetery.</p>
+            <p>Painted eggs and food were left on graves, which were sprinkled with vodka, and the remains of the meal were never taken back home.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Symbolism</div>
+            <p>Radonica was a bright and joyful feast, linked to Vyraj — the upper, solar realm from which souls return with the spring.</p>
+            <p>The egg, a sign of life and renewal, was the most important offering given to the ancestors.</p>
+          </div>
+
+        </div>
+
+        <div class="zrodla">
+          <div class="section-title">Sources</div>
+          <ul>
+            <li><strong>Andrzej Szyjewski</strong>, <em>Religion of the Slavs</em> (2003).</li>
+            <li><strong>Aleksander Gieysztor</strong>, <em>Slavic Mythology</em> (2006).</li>
+            <li><strong>Józef Gołąbek</strong>, <em>Belarusian Ancestor Rites</em> (1926).</li>
+            <li><strong>Henryk Biegeleisen</strong>, <em>Death in Polish Folk Customs</em> (1930).</li>
+            <li><a href="https://en.wikipedia.org/wiki/Radonitsa" target="_blank" rel="noopener">Wikipedia — Radonitsa ↗</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+    </div><!-- /page-content -->
+
+    <footer class="footer">
+      <div class="lang active" id="pl-footer">
+        <a href="/wyraj/" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+      <div class="lang" id="en-footer">
+        <a href="/wyraj/" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+    </footer>
+
+  </div><!-- /page-wrap -->
+
+  <script src="{% static 'bies/js/wyraj.js' %}"></script>
+</body>
+</html>

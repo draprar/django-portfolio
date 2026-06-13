@@ -1,0 +1,171 @@
+{% load static %}
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mięsopust — Wyraj</title>
+  <meta name="description" content="Mięsopust — czas uciech i pożegnania zimy.">
+  <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
+<style>
+  .box {
+    position: relative;
+    overflow: hidden;
+
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.78),
+        rgba(0,0,0,0.62)
+      ),
+      url("{% static 'bies/img/miesopust.png' %}") center/cover no-repeat;
+
+    background-size: 150% auto !important;
+    background-position: center !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(196,146,42,0.28);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .section-title {
+    text-align: center;
+  }
+
+  .section-title::after {
+    width: 72px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="{% static 'bies/img/miesopust.png' %}" alt="Mięsopust" class="hero-img">
+    <div class="hero-veil"></div>
+  </div>
+
+  <!-- PAGE -->
+  <div class="page-wrap">
+    <div class="page-content">
+
+      <div class="switch">
+        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+        <button type="button" onclick="switchLang('en')">EN</button>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+      <!-- PL -->
+      <div class="lang active" id="pl">
+        <h1>Mięsopust</h1>
+        <p class="subtitle">obchodzony u kresu zimowego czasu</p>
+
+        <div class="tresc">
+
+          <div class="box">
+            <div class="section-title">O święcie</div>
+            <p>Gdy kończy się zimowy trud, a przedwiośnie tchnie pierwszą lekkością, wspomina się Mięsopust — czas pożegnania mięsa i ostatnich uciech przed wielkopostną ciszą.</p>
+            <p>Choć dawne kroniki nie opisują go jako święta słowiańskiego, pamięć ludu niesie go jako graniczny czas swawoli, obfitości i odwrócenia porządku.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Obrzędy</div>
+            <p>Tańce, hulanki i swawole wypełniały sioła, gdy lud żegnał zimę śmiechem i muzyką.</p>
+            <p>Obfite jadło i tłuste potrawy miały przywołać urodzaj, a przebierańcy odwracali role, by świat na chwilę stanął na opak.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Symbolika</div>
+            <p>Mięsopust był czasem przejścia — od zimowego bezruchu ku wiosennej żywotności, od sytości ku oczyszczeniu.</p>
+            <p>W obfitości stołów i swawoli widziano zaklinanie dobrobytu, zanim powrócił zwyczajny porządek roku.</p>
+          </div>
+
+        </div>
+
+        <div class="zrodla">
+          <div class="section-title">Źródła</div>
+          <ul>
+            <li>Trójka — zapustne zwyczaje i etymologia.</li>
+            <li>Focus — wróżby i symbolika obfitości.</li>
+            <li>UW FM — czas graniczny i „zdziczenie obyczajów”.</li>
+            <li>Wikipedia — Ostatki ↗</li>
+            <li>Dla Dziedzictwa — znaczenie mięsopustu jako „mięsa opust”.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- EN -->
+      <div class="lang" id="en">
+        <h1>Mięsopust</h1>
+        <p class="subtitle">observed at the waning of winter’s time</p>
+
+        <div class="tresc">
+
+          <div class="box">
+            <div class="section-title">About the Feast</div>
+            <p>When winter’s weight begins to loosen and early light stirs the land, Mięsopust is recalled — a time of farewell to meat and the last revels before the quiet of the fast.</p>
+            <p>Though not recorded as a Slavic feast in ancient chronicles, folk memory preserves it as a liminal season of merriment, excess, and the turning of the world upside down.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Rites</div>
+            <p>Dancing, revelry, and wild merrymaking filled the villages as people laughed winter away.</p>
+            <p>Rich foods and heavy dishes were eaten to summon abundance, while masqueraders reversed roles so that order might briefly dissolve.</p>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Symbolism</div>
+            <p>Mięsopust marked the passage from winter’s stillness to the rising vigor of spring, from fullness to cleansing.</p>
+            <p>In feasting and revelry people sought to charm prosperity before the year returned to its rightful order.</p>
+          </div>
+
+        </div>
+
+        <div class="zrodla">
+          <div class="section-title">Sources</div>
+          <ul>
+            <li>Trójka — customs and etymology.</li>
+            <li>Focus — divination and abundance symbolism.</li>
+            <li>UW FM — liminal time and social inversion.</li>
+            <li>Wikipedia — Ostatki ↗</li>
+            <li>Dla Dziedzictwa — meaning of “mięsa opust”.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+    </div><!-- /page-content -->
+
+    <footer class="footer">
+      <div class="lang active" id="pl-footer">
+        <a href="/wyraj/" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+      <div class="lang" id="en-footer">
+        <a href="/wyraj/" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+    </footer>
+
+  </div><!-- /page-wrap -->
+
+  <script src="{% static 'bies/js/wyraj.js' %}"></script>
+</body>
+</html>
