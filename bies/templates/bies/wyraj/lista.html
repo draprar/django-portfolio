@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="utf-8">
@@ -16,7 +15,6 @@
     <div class="loader-bar"></div>
   </div>
 
-  <!-- CAŁY PAGE W JEDNYM WRAPPERIE -->
   <div class="page-wrap lista-wrap">
     <div class="page-content">
 
@@ -27,43 +25,184 @@
 
       <div class="ornament">⸻✦⸻</div>
 
+      <!-- PL -->
       <div class="lang active" id="pl">
         <h1 class="lista-title">Wyraj</h1>
         <p class="subtitle">Słowiańskie Koło Roku</p>
+
         <div class="swieta-grid">
+
+          <!-- 1. Świętowit Letni -->
           <a href="/wyraj/swietowit-letni/" class="swieto-card">
             <div class="card-img-wrap">
               <img src="{% static 'bies/img/swietowit-letni.png' %}" alt="Świętowit Letni">
             </div>
             <div class="card-body">
               <span class="card-title">Świętowit Letni</span>
-              <span class="card-sub">Słowiańskie Święto Urodzaju i Siły</span>
+              <span class="card-sub">Święto Urodzaju i Siły</span>
             </div>
           </a>
+
+          <!-- 2. Gaik -->
+          <a href="/wyraj/gaik/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/gaik.png' %}" alt="Gaik">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Gaik</span>
+              <span class="card-sub">Wiosenny Obrzęd Gaju</span>
+            </div>
+          </a>
+
+          <!-- 3. Radonica -->
+          <a href="/wyraj/radonica/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/radonica.png' %}" alt="Radonica">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Radonica</span>
+              <span class="card-sub">Dzień Zmarłych</span>
+            </div>
+          </a>
+
+          <!-- 4. Śmigus-Dyngus -->
+          <a href="/wyraj/smigus-dyngus/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/smigus-dyngus.jpg' %}" alt="Śmigus-Dyngus">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Śmigus-Dyngus</span>
+              <span class="card-sub">Słowiański Lany Poniedziałek</span>
+            </div>
+          </a>
+
+          <!-- 5. Jare Gody -->
+          <a href="/wyraj/jare-gody/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/jare-gody.png' %}" alt="Jare Gody">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Jare Gody</span>
+              <span class="card-sub">Święto Wiosny</span>
+            </div>
+          </a>
+
+          <!-- 6. Mięsopust -->
+          <a href="/wyraj/miesopust/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/miesopust.png' %}" alt="Mięsopust">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Mięsopust (Zapusty)</span>
+              <span class="card-sub">Słowiański Karnawał</span>
+            </div>
+          </a>
+
+          <!-- 7. Szczodre Gody -->
+          <a href="/wyraj/szczodre-gody/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/szczodre-gody.jpg' %}" alt="Szczodre Gody">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Szczodre Gody</span>
+              <span class="card-sub">Słowiańskie Przesilenie Zimowe</span>
+            </div>
+          </a>
+
         </div>
       </div>
 
+      <!-- EN -->
       <div class="lang" id="en">
         <h1 class="lista-title">Wyraj</h1>
         <p class="subtitle">Slavic Wheel of the Year</p>
+
         <div class="swieta-grid">
+
+          <!-- 1. Świętowit Letni -->
           <a href="/wyraj/swietowit-letni/" class="swieto-card">
             <div class="card-img-wrap">
               <img src="{% static 'bies/img/swietowit-letni.png' %}" alt="Świętowit Letni">
             </div>
             <div class="card-body">
               <span class="card-title">Świętowit Letni</span>
-              <span class="card-sub">Slavic Festival of Harvest and Strength</span>
+              <span class="card-sub">Festival of Harvest and Strength</span>
             </div>
           </a>
+
+          <!-- 2. Gaik -->
+          <a href="/wyraj/gaik/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/gaik.png' %}" alt="Gaik">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Gaik</span>
+              <span class="card-sub">Sacred Spring Grove Rite</span>
+            </div>
+          </a>
+
+          <!-- 3. Radonica -->
+          <a href="/wyraj/radonica/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/radonica.png' %}" alt="Radonica">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Radonica</span>
+              <span class="card-sub">Day of the Dead</span>
+            </div>
+          </a>
+
+          <!-- 4. Śmigus-Dyngus -->
+          <a href="/wyraj/smigus-dyngus/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/smigus-dyngus.jpg' %}" alt="Śmigus-Dyngus">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Śmigus-Dyngus</span>
+              <span class="card-sub">Slavic Wet Monday</span>
+            </div>
+          </a>
+
+          <!-- 5. Jare Gody -->
+          <a href="/wyraj/jare-gody/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/jare-gody.png' %}" alt="Jare Gody">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Jare Gody</span>
+              <span class="card-sub">Slavic Spring Festival</span>
+            </div>
+          </a>
+
+          <!-- 6. Mięsopust -->
+          <a href="/wyraj/miesopust/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/miesopust.png' %}" alt="Mięsopust">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Mięsopust (Zapusty)</span>
+              <span class="card-sub">Slavic Carnival</span>
+            </div>
+          </a>
+
+          <!-- 7. Szczodre Gody -->
+          <a href="/wyraj/szczodre-gody/" class="swieto-card" onclick="return false;">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/szczodre-gody.jpg' %}" alt="Szczodre Gody">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Szczodre Gody</span>
+              <span class="card-sub">Slavic Winter Solstice Festival</span>
+            </div>
+          </a>
+
         </div>
       </div>
 
       <div class="ornament">⸻✦⸻</div>
 
-    </div><!-- /page-content -->
+    </div>
 
-    <!-- FOOTER WEWNĄTRZ page-wrap -->
     <footer class="footer">
       <div class="lang active" id="pl-footer">
         <a href="/" class="back-button">← Strona główna</a>
@@ -75,7 +214,7 @@
       </div>
     </footer>
 
-  </div><!-- /page-wrap -->
+  </div>
 
   <script src="{% static 'bies/js/wyraj.js' %}"></script>
 </body>

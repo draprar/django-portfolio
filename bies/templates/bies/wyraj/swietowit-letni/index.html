@@ -7,6 +7,40 @@
   <meta name="description" content="Świętowit Letni — słowiańskie święto urodzaju i siły.">
   <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  .box {
+    position: relative;
+    overflow: hidden;
+
+    /* warstwa przyciemnienia + lekka mgła */
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.78),
+        rgba(0,0,0,0.62)
+      ),
+      url("{% static 'bies/img/swietowit-letni.png' %}") center/cover no-repeat;
+
+    backdrop-filter: blur(8px); /* mocniejszy blur = czytelniejszy tekst */
+    border: 1px solid rgba(196,146,42,0.28);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+  }
+    .section-title {
+      text-align: center; /* wyśrodkowanie tekstu */
+    }
+
+    .section-title::after {
+      width: 72px; /* 2× więcej niż 36px */
+      margin-left: auto;
+      margin-right: auto;
+    }
+</style>
+
 </head>
 <body>
 
@@ -41,25 +75,24 @@
           <div class="box">
             <div class="section-title">O święcie</div>
             <ul>
-              <li>Gdy słońce stoi wysoko nad światem, a pola dojrzewają przed żniwami, wspomina się <strong>Świętowita</strong> — pana urodzaju, pomyślności i siły wspólnoty.</li>
-              <li>Dzisiejsze Świętowitowe Święto Letnie jest współczesną rekonstrukcją inspirowaną dawnymi wierzeniami Słowian połabskich.</li>
+              <p>Gdy słońce stoi wysoko nad światem, a pola dojrzewają przed żniwami, wspomina się <strong>Świętowita</strong> — pana urodzaju, pomyślności i siły wspólnoty.</p>
+              <p>Dzisiejsze Świętowitowe Święto Letnie jest współczesną rekonstrukcją inspirowaną dawnymi wierzeniami Słowian połabskich.</p>
             </ul>
           </div>
 
           <div class="box">
             <div class="section-title">Obrzędy</div>
             <ul>
-              <li>Przy Swarożym ogniu składano żertwy z chleba, miodu i darów ziemi, prosząc o dostatek oraz pomyślność rodu.</li>
-              <li>Wspólnym śpiewom, ucztom i modłom towarzyszyła pamięć o rytmie natury, który prowadzi człowieka od narodzin ku Wyrajowi.</li>
+              <p>Przy Swarożym ogniu składano żertwy z chleba, miodu i darów ziemi, prosząc o dostatek oraz pomyślność rodu.</p>
+              <p>Wspólnym śpiewom, ucztom i modłom towarzyszyła pamięć o rytmie natury, który prowadzi człowieka od narodzin ku Wyrajowi.</p>
             </ul>
           </div>
 
-          <div class="section-title">Symbolika</div>
           <div class="box">
-            <h3>Świętowit — Pan Czterech Stron</h3>
+          <div class="section-title">Symbolika</div>
             <ul>
-              <li>Świętowit przedstawiany był jako bóg o czterech obliczach zwróconych ku czterem stronom świata, widzący więcej niż śmiertelne oko.</li>
-              <li>Jego znakami były róg obfitości oraz biały koń z Arkony, przez którego żercy odczytywali wolę boga.</li>
+              <p>Świętowit przedstawiany był jako bóg o czterech obliczach zwróconych ku czterem stronom świata, widzący więcej niż śmiertelne oko.</p>
+              <p>Jego znakami były róg obfitości oraz biały koń z Arkony, przez którego żercy odczytywali wolę boga.</p>
             </ul>
           </div>
 
