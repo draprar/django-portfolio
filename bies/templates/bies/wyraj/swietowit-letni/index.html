@@ -1,0 +1,145 @@
+{% load static %}
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Świętowit Letni — Wyraj</title>
+  <meta name="description" content="Świętowit Letni — słowiańskie święto urodzaju i siły.">
+  <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- HERO poza wrapperem -->
+  <div class="hero">
+    <img src="{% static 'bies/img/swietowit-letni.png' %}" alt="Świętowit Letni" class="hero-img">
+    <div class="hero-veil"></div>
+  </div>
+
+  <!-- CAŁY PAGE W JEDNYM WRAPPERIE -->
+  <div class="page-wrap">
+    <div class="page-content">
+
+      <div class="switch">
+        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+        <button type="button" onclick="switchLang('en')">EN</button>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+      <!-- PL -->
+      <div class="lang active" id="pl">
+        <h1>Świętowit Letni</h1>
+
+        <div class="tresc">
+
+          <div class="box">
+            <div class="section-title">O święcie</div>
+            <ul>
+              <li>Gdy słońce stoi wysoko nad światem, a pola dojrzewają przed żniwami, wspomina się <strong>Świętowita</strong> — pana urodzaju, pomyślności i siły wspólnoty.</li>
+              <li>Dzisiejsze Świętowitowe Święto Letnie jest współczesną rekonstrukcją inspirowaną dawnymi wierzeniami Słowian połabskich.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Obrzędy</div>
+            <ul>
+              <li>Przy Swarożym ogniu składano żertwy z chleba, miodu i darów ziemi, prosząc o dostatek oraz pomyślność rodu.</li>
+              <li>Wspólnym śpiewom, ucztom i modłom towarzyszyła pamięć o rytmie natury, który prowadzi człowieka od narodzin ku Wyrajowi.</li>
+            </ul>
+          </div>
+
+          <div class="section-title">Symbolika</div>
+          <div class="box">
+            <h3>Świętowit — Pan Czterech Stron</h3>
+            <ul>
+              <li>Świętowit przedstawiany był jako bóg o czterech obliczach zwróconych ku czterem stronom świata, widzący więcej niż śmiertelne oko.</li>
+              <li>Jego znakami były róg obfitości oraz biały koń z Arkony, przez którego żercy odczytywali wolę boga.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="zrodla">
+          <div class="section-title">Źródła</div>
+          <ul>
+            <li><strong>Saxo Grammaticus</strong>, <em>Gesta Danorum</em> (ok. 1200) — najobszerniejszy opis kultu Świętowita i świątyni w Arkonie.</li>
+            <li><strong>Helmold z Bozowa</strong>, <em>Chronica Slavorum</em> (ok. 1167–1172) — jedno z najważniejszych źródeł o wierzeniach Słowian połabskich.</li>
+            <li><strong>Aleksander Brückner</strong>, <em>Mitologia słowiańska i polska</em> (1918).</li>
+            <li><strong>Andrzej Szyjewski</strong>, <em>Religia Słowian</em> (2003).</li>
+            <li><a href="https://pl.wikipedia.org/wiki/%C5%9Awi%C4%99towit" target="_blank" rel="noopener">Wikipedia — Świętowit ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EN -->
+      <div class="lang" id="en">
+        <h1>Świętowit Letni</h1>
+
+        <div class="tresc">
+
+          <div class="box">
+            <div class="section-title">About the Feast</div>
+            <ul>
+              <li>When the sun stands high above the world and the fields ripen before harvest, people honour <strong>Świętowit</strong> — lord of abundance, prosperity, and communal strength.</li>
+              <li>The modern Summer Feast of Świętowit is a contemporary reconstruction inspired by the beliefs of the ancient Polabian Slavs.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="section-title">Rites</div>
+            <ul>
+              <li>Offerings of bread, honey, and gifts of the earth were placed beside the sacred fire, asking for abundance and good fortune.</li>
+              <li>Feasting, songs, and prayers honoured the cycle of nature that guides all life from birth toward the mythical realm of Vyraj.</li>
+            </ul>
+          </div>
+
+          <div class="section-title">Symbolism</div>
+          <div class="box">
+            <h3>Świętowit — Lord of the Four Directions</h3>
+            <ul>
+              <li>Świętowit was depicted with four faces turned toward the four directions of the world, seeing beyond mortal sight.</li>
+              <li>His most famous symbols were the horn of abundance and the sacred white horse through which priests sought the will of the god.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="zrodla">
+          <div class="section-title">Sources</div>
+          <ul>
+            <li><strong>Saxo Grammaticus</strong>, <em>Gesta Danorum</em> (c. 1200) — the most detailed account of the cult of Świętowit and the temple at Arkona.</li>
+            <li><strong>Helmold of Bosau</strong>, <em>Chronica Slavorum</em> (c. 1167–1172) — one of the key sources on Polabian Slavic beliefs.</li>
+            <li><strong>Andrzej Szyjewski</strong>, <em>Religia Słowian</em> (2003).</li>
+            <li><strong>Aleksander Brückner</strong>, <em>Slavic and Polish Mythology</em> (1918).</li>
+            <li><a href="https://en.wikipedia.org/wiki/Svetovid" target="_blank" rel="noopener">Wikipedia — Svetovid ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+    </div><!-- /page-content -->
+
+    <!-- FOOTER WEWNĄTRZ page-wrap -->
+    <footer class="footer">
+      <div class="lang active" id="pl-footer">
+        <a href="/wyraj/" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+      <div class="lang" id="en-footer">
+        <a href="/wyraj/" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+    </footer>
+
+  </div><!-- /page-wrap -->
+
+  <script src="{% static 'bies/js/wyraj.js' %}"></script>
+</body>
+</html>

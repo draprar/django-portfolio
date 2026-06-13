@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wyraj — Słowiańskie Koło Roku</title>
+  <meta name="description" content="Wyraj — opisy słowiańskich świąt i obrzędów rocznych.">
+  <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- CAŁY PAGE W JEDNYM WRAPPERIE -->
+  <div class="page-wrap lista-wrap">
+    <div class="page-content">
+
+      <div class="switch">
+        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+        <button type="button" onclick="switchLang('en')">EN</button>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+      <div class="lang active" id="pl">
+        <h1 class="lista-title">Wyraj</h1>
+        <p class="subtitle">Słowiańskie Koło Roku</p>
+        <div class="swieta-grid">
+          <a href="/wyraj/swietowit-letni/" class="swieto-card">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/swietowit-letni.png' %}" alt="Świętowit Letni">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Świętowit Letni</span>
+              <span class="card-sub">Słowiańskie Święto Urodzaju i Siły</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="lang" id="en">
+        <h1 class="lista-title">Wyraj</h1>
+        <p class="subtitle">Slavic Wheel of the Year</p>
+        <div class="swieta-grid">
+          <a href="/wyraj/swietowit-letni/" class="swieto-card">
+            <div class="card-img-wrap">
+              <img src="{% static 'bies/img/swietowit-letni.png' %}" alt="Świętowit Letni">
+            </div>
+            <div class="card-body">
+              <span class="card-title">Świętowit Letni</span>
+              <span class="card-sub">Slavic Festival of Harvest and Strength</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+    </div><!-- /page-content -->
+
+    <!-- FOOTER WEWNĄTRZ page-wrap -->
+    <footer class="footer">
+      <div class="lang active" id="pl-footer">
+        <a href="/" class="back-button">← Strona główna</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+      <div class="lang" id="en-footer">
+        <a href="/" class="back-button">← Home</a>
+        <p>© {% now "Y" %} Walery — All rights reserved</p>
+      </div>
+    </footer>
+
+  </div><!-- /page-wrap -->
+
+  <script src="{% static 'bies/js/wyraj.js' %}"></script>
+</body>
+</html>
