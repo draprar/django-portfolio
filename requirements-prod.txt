@@ -21,13 +21,13 @@ click==8.1.8
 cloudpathlib==0.20.0
 colorama==0.4.6
 confection==0.1.5
-cryptography==46.0.7
+cryptography>=48.0.1
 cssselect2==0.7.0
 cyclonedx-python-lib==9.1.0
 cymem==2.0.11
 defusedxml==0.7.1
 dj-database-url==3.0.1
-Django==5.2.14
+Django>=5.2.15,<5.3
 django-cors-headers==4.7.0
 django-environ==0.12.0
 django-extensions==3.2.3
@@ -120,7 +120,7 @@ tinycss2==1.4.0
 tinyhtml5==2.0.0
 toml==0.10.2
 tomli==2.4.1
-tornado==6.5.5
+tornado>=6.5.7
 tqdm==4.67.1
 typing_extensions==4.12.2
 tzdata==2025.1
