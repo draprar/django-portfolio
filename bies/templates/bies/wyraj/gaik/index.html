@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Świętowit Letni — Wyraj</title>
-  <meta name="description" content="Gaik — słowiańskie święto wiosny.">
+  <title>Gaik — Wyraj</title>
+  <meta name="description" content="Gaik — słowiański obrzęd wiosenny: zielona gałąź, wstęgi, jaja. Rekonstrukcja na podstawie etnografii XIX–XX w.">
+  <meta property="og:image" content="{% static 'bies/img/gaik.png' %}">
   <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
@@ -12,38 +13,31 @@
   .box {
     position: relative;
     overflow: hidden;
-
-    /* warstwa przyciemnienia + lekka mgła */
     background:
       linear-gradient(
         rgba(0,0,0,0.78),
         rgba(0,0,0,0.62)
       ),
       url("{% static 'bies/img/gaik.png' %}") center/cover no-repeat;
-
-    background-size: 150% auto !important; /* zoom ×2 */
+    background-size: 150% auto !important;
     background-position: center !important;
-    backdrop-filter: blur(8px); /* mocniejszy blur = czytelniejszy tekst */
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(196,146,42,0.28);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
   }
-    .section-title {
-      text-align: center; /* wyśrodkowanie tekstu */
-    }
-
-    .section-title::after {
-      width: 72px; /* 2× więcej niż 36px */
-      margin-left: auto;
-      margin-right: auto;
-    }
+  .section-title {
+    text-align: center;
+  }
+  .section-title::after {
+    width: 72px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>
-
 </head>
 <body>
 
@@ -52,13 +46,11 @@
     <div class="loader-bar"></div>
   </div>
 
-  <!-- HERO poza wrapperem -->
   <div class="hero">
     <img src="{% static 'bies/img/gaik.png' %}" alt="Gaik" class="hero-img">
     <div class="hero-veil"></div>
   </div>
 
-  <!-- CAŁY PAGE W JEDNYM WRAPPERIE -->
   <div class="page-wrap">
     <div class="page-content">
 
@@ -78,7 +70,7 @@
 
           <div class="box">
             <div class="section-title">O święcie</div>
-            <p>Gdy młoda jutrzenka wstaje nad polami, a ziemia zrzuca sen zimowy, wchodzi do osad <strong>Gaik</strong> — zielona wierzchownia, znak nowego lata, żywota i siły roślinnej.</p>
+            <p>Gdy młoda jutrzenka wstaje nad polami, a ziemia zrzuca sen zimowy, wchodzi do osad <strong>Gaik</strong> — zielona gałąź, znak nowego lata, żywota i siły roślinnej.</p>
             <p>Dzisiejsze obchody Gaiku są współczesną rekonstrukcją opartą na pamięci ludu i zapisach etnografów XIX–XX wieku.</p>
           </div>
 
@@ -99,9 +91,9 @@
         <div class="zrodla">
           <div class="section-title">Źródła</div>
           <ul>
-            <li><strong>Józef Lompa</strong> — przekazy o Dziewannie i zwyczajach wiosennych.</li>
-            <li><strong>J. Pośpiech</strong>, <em>Zwyczaje i obrzędy doroczne na Śląsku</em> (1987).</li>
-            <li><strong>B. Ogrodowska</strong>, <em>Polskie obrzędy i zwyczaje doroczne</em> (2009).</li>
+            <li><strong>Oskar Kolberg</strong>, <em>Pieśni ludu obrzędowe: kogutek, gaik, okrężne</em> (1848).</li>
+            <li><strong>Jerzy Pośpiech</strong>, <em>Zwyczaje i obrzędy doroczne na Śląsku</em> (Instytut Śląski w Opolu, 1987).</li>
+            <li><strong>Barbara Ogrodowska</strong>, <em>Polskie obrzędy i zwyczaje doroczne</em> (Muza, 2009).</li>
             <li><a href="https://pl.wikipedia.org/wiki/Gaik_(%C5%9Bwi%C4%99to)" target="_blank" rel="noopener">Wikipedia — Gaik</a></li>
           </ul>
         </div>
@@ -138,9 +130,9 @@
         <div class="zrodla">
           <div class="section-title">Sources</div>
           <ul>
-            <li><strong>Józef Lompa</strong> — accounts of Dziewanna and spring customs.</li>
-            <li><strong>J. Pośpiech</strong>, <em>Annual Customs and Rites of Silesia</em> (1987).</li>
-            <li><strong>B. Ogrodowska</strong>, <em>Polish Annual Customs and Traditions</em> (2009).</li>
+            <li><strong>Oskar Kolberg</strong>, <em>Anthems of the Folk: Ritual Songs, Gaik, Circular</em> (1848).</li>
+            <li><strong>Jerzy Pośpiech</strong>, <em>Annual Customs and Rites of Silesia</em> (Instytut Śląski w Opolu, 1987).</li>
+            <li><strong>Barbara Ogrodowska</strong>, <em>Polish Annual Customs and Traditions</em> (Muza, 2009).</li>
             <li><a href="https://en.wikipedia.org/wiki/Gaik" target="_blank" rel="noopener">Wikipedia — Gaik</a></li>
           </ul>
         </div>
@@ -151,7 +143,6 @@
 
     </div><!-- /page-content -->
 
-    <!-- FOOTER WEWNĄTRZ page-wrap -->
     <footer class="footer">
       <div class="lang active" id="pl-footer">
         <a href="/wyraj/" class="back-button">← Wyraj</a>

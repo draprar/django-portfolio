@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mięsopust — Wyraj</title>
-  <meta name="description" content="Mięsopust — czas uciech i pożegnania zimy.">
+  <meta name="description" content="Mięsopust — słowiański czas pożegnania zimy: tańce, przebierańcy, obfite jadło. Obrzędy zapustów w tradycji ludowej.">
+  <meta property="og:image" content="{% static 'bies/img/miesopust.png' %}">
   <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
@@ -12,38 +13,31 @@
   .box {
     position: relative;
     overflow: hidden;
-
     background:
       linear-gradient(
         rgba(0,0,0,0.78),
         rgba(0,0,0,0.62)
       ),
       url("{% static 'bies/img/miesopust.png' %}") center/cover no-repeat;
-
     background-size: 150% auto !important;
     background-position: center !important;
     backdrop-filter: blur(8px);
     border: 1px solid rgba(196,146,42,0.28);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
   }
-
   .section-title {
     text-align: center;
   }
-
   .section-title::after {
     width: 72px;
     margin-left: auto;
     margin-right: auto;
   }
 </style>
-
 </head>
 <body>
 
@@ -52,13 +46,11 @@
     <div class="loader-bar"></div>
   </div>
 
-  <!-- HERO -->
   <div class="hero">
     <img src="{% static 'bies/img/miesopust.png' %}" alt="Mięsopust" class="hero-img">
     <div class="hero-veil"></div>
   </div>
 
-  <!-- PAGE -->
   <div class="page-wrap">
     <div class="page-content">
 
@@ -79,13 +71,13 @@
           <div class="box">
             <div class="section-title">O święcie</div>
             <p>Gdy kończy się zimowy trud, a przedwiośnie tchnie pierwszą lekkością, wspomina się Mięsopust — czas pożegnania mięsa i ostatnich uciech przed wielkopostną ciszą.</p>
-            <p>Choć dawne kroniki nie opisują go jako święta słowiańskiego, pamięć ludu niesie go jako graniczny czas swawoli, obfitości i odwrócenia porządku.</p>
+            <p>Choć dawne kroniki nie opisują go jako odrębnego święta słowiańskiego, pamięć ludu niesie go jako graniczny czas swawoli, obfitości i odwrócenia porządku, poświadczony w etnografii od XVI wieku.</p>
           </div>
 
           <div class="box">
             <div class="section-title">Obrzędy</div>
             <p>Tańce, hulanki i swawole wypełniały sioła, gdy lud żegnał zimę śmiechem i muzyką.</p>
-            <p>Obfite jadło i tłuste potrawy miały przywołać urodzaj, a przebierańcy odwracali role, by świat na chwilę stanął na opak <em>(domniemane dla okresu przedchrześcijańskiego — rekonstrukcja na podstawie późniejszej etnografii)</em>.</p>
+            <p>Obfite jadło i tłuste potrawy miały przywołać urodzaj, a przebierańcy odwracali role, by świat na chwilę stanął na opak <em>(rekonstrukcja dla okresu przedchrześcijańskiego — na podstawie późniejszej etnografii)</em>.</p>
           </div>
 
           <div class="box">
@@ -99,9 +91,9 @@
         <div class="zrodla">
           <div class="section-title">Źródła</div>
           <ul>
-            <li><a href="https://trojka.polskieradio.pl/artykul/3334388,zapusty-czyli-tance-hulanki-swawole-polski-karnawal-o-slowianskich-korzeniach" target="_blank" rel="noopener">Polskie Radio Trójka — „Zapusty, czyli tańce, hulanki, swawole. Polski karnawał o słowiańskich korzeniach"</a></li>
-            <li><a href="https://www.focus.pl/artykul/tlusty-czwartek-historia-pysznej-tradycji" target="_blank" rel="noopener">Focus — „Tłusty Czwartek: Historia pysznej tradycji"</a></li>
-            <li><a href="https://uwmfm.pl/czas-zabawy-okiem-zercy-slowianskiego/" target="_blank" rel="noopener">UW FM — "Zapusty, karnawał czy mięsopusty? Czas zabawy okiem żercy słowiańskiego"</a></li>
+            <li><strong>Barbara Ogrodowska</strong>, <em>Polskie obrzędy i zwyczaje doroczne</em> (Muza, 2009) — opis zapustów i karnawałowych obrzędów ludowych.</li>
+            <li><strong>Jerzy Pośpiech</strong>, <em>Zwyczaje i obrzędy doroczne na Śląsku</em> (Instytut Śląski w Opolu, 1987) — zapusty i ostatki w tradycji śląskiej.</li>
+            <li><strong>Kazimierz Moszyński</strong>, <em>Kultura ludowa Słowian, t. II: Kultura duchowa</em> (1934).</li>
             <li><a href="https://pl.wikipedia.org/wiki/Ostatki" target="_blank" rel="noopener">Wikipedia — Ostatki</a></li>
           </ul>
         </div>
@@ -111,14 +103,14 @@
       <!-- EN -->
       <div class="lang" id="en">
         <h1>Mięsopust</h1>
-        <p class="subtitle">observed at the waning of winter’s time</p>
+        <p class="subtitle">observed at the waning of winter's time</p>
 
         <div class="tresc">
 
           <div class="box">
             <div class="section-title">About the Feast</div>
-            <p>When winter’s weight begins to loosen and early light stirs the land, Mięsopust is recalled — a time of farewell to meat and the last revels before the quiet of the fast.</p>
-            <p>Though not recorded as a Slavic feast in ancient chronicles, folk memory preserves it as a liminal season of merriment, excess, and the turning of the world upside down.</p>
+            <p>When winter's weight begins to loosen and early light stirs the land, Mięsopust is recalled — a time of farewell to meat and the last revels before the quiet of the fast.</p>
+            <p>Though not recorded as a distinct Slavic feast in ancient chronicles, folk memory preserves it as a liminal season of merriment, excess, and the turning of order upside down, attested in ethnographic records from the 16th century onward.</p>
           </div>
 
           <div class="box">
@@ -129,7 +121,7 @@
 
           <div class="box">
             <div class="section-title">Symbolism</div>
-            <p>Mięsopust marked the passage from winter’s stillness to the rising vigor of spring, from fullness to cleansing.</p>
+            <p>Mięsopust marked the passage from winter's stillness to the rising vigor of spring, from fullness to cleansing.</p>
             <p>In feasting and revelry people sought to charm prosperity before the year returned to its rightful order.</p>
           </div>
 
@@ -138,9 +130,9 @@
         <div class="zrodla">
           <div class="section-title">Sources</div>
           <ul>
-            <li><a href="https://trojka.polskieradio.pl/artykul/3334388,zapusty-czyli-tance-hulanki-swawole-polski-karnawal-o-slowianskich-korzeniach" target="_blank" rel="noopener">Polish Radio Trójka — "Zapusty: dancing, revelry, merrymaking. Polish carnival with Slavic roots"</a></li>
-            <li><a href="https://www.focus.pl/artykul/tlusty-czwartek-historia-pysznej-tradycji" target="_blank" rel="noopener">Focus — "Fat Thursday: The history of a delicious tradition"</a></li>
-            <li><a href="https://uwmfm.pl/czas-zabawy-okiem-zercy-slowianskiego/" target="_blank" rel="noopener">UW FM — "Zapusty, carnival or Mięsopust? The season of fun through a Slavic priest's eyes"</a></li>
+            <li><strong>Barbara Ogrodowska</strong>, <em>Polish Annual Customs and Traditions</em> (Muza, 2009) — description of Zapusty and folk carnival rites.</li>
+            <li><strong>Jerzy Pośpiech</strong>, <em>Annual Customs and Rites of Silesia</em> (Instytut Śląski w Opolu, 1987) — Zapusty and Ostatki in Silesian tradition.</li>
+            <li><strong>Kazimierz Moszyński</strong>, <em>Folk Culture of the Slavs, Vol. II: Spiritual Culture</em> (1934).</li>
             <li><a href="https://pl.wikipedia.org/wiki/Ostatki" target="_blank" rel="noopener">Wikipedia — Ostatki</a></li>
           </ul>
         </div>

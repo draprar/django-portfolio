@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Śmigus‑Dyngus — Wyraj</title>
-  <meta name="description" content="Śmigus‑Dyngus — wiosenny zwyczaj oczyszczenia i odrodzenia.">
+  <meta name="description" content="Śmigus-Dyngus — woda, wierzba i wiosenna moc. Słowiańskie korzenie Lanego Poniedziałku w tradycji ludowej.">
+  <meta property="og:image" content="{% static 'bies/img/smigus-dyngus.jpg' %}">
   <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
@@ -12,38 +13,31 @@
   .box {
     position: relative;
     overflow: hidden;
-
     background:
       linear-gradient(
         rgba(0,0,0,0.78),
         rgba(0,0,0,0.62)
       ),
       url("{% static 'bies/img/smigus-dyngus.jpg' %}") center/cover no-repeat;
-
     background-size: 120% auto !important;
     background-position: center !important;
     backdrop-filter: blur(8px);
     border: 1px solid rgba(196,146,42,0.28);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
   }
-
   .section-title {
     text-align: center;
   }
-
   .section-title::after {
     width: 72px;
     margin-left: auto;
     margin-right: auto;
   }
 </style>
-
 </head>
 <body>
 
@@ -52,13 +46,11 @@
     <div class="loader-bar"></div>
   </div>
 
-  <!-- HERO -->
   <div class="hero">
     <img src="{% static 'bies/img/smigus-dyngus.jpg' %}" alt="Śmigus‑Dyngus" class="hero-img">
     <div class="hero-veil"></div>
   </div>
 
-  <!-- PAGE -->
   <div class="page-wrap">
     <div class="page-content">
 
@@ -99,10 +91,8 @@
         <div class="zrodla">
           <div class="section-title">Źródła</div>
           <ul>
-            <li><a href="https://www.rmf24.pl/ciekawostki/historia/news-czy-wiesz-dlaczego-oblewamy-sie-woda-w-wielkanoc-niezwykla-h,nId,7455877" target="_blank" rel="noopener">RMF24 — „Czy wiesz, dlaczego oblewamy się wodą w Wielkanoc? Niezwykła historia śmigusa-dyngusa"</a></li>
-            <li><a href="https://www.polskieradio.pl/5/3/artykul/3446702,wielkanocne-tradycje-w-polsce-skad-sie-wzial-smigus-dyngus" target="_blank" rel="noopener">Polskie Radio — „Wielkanocne tradycje w Polsce. Skąd się wziął śmigus-dyngus?"</a></li>
-            <li><a href="https://www.naszeszlaki.pl/smigus-dyngus-czyli-lany-poniedzialek-obrzedy-i-ciekawostki/" target="_blank" rel="noopener">Nasze Szlaki — „Śmigus Dyngus, czyli Lany Poniedziałek — obrzędy i ciekawostki"</a></li>
-            <li><a href="https://polonika.pl/aktualnosci/skad-sie-wzial-smigus-dyngus" target="_blank" rel="noopener">Polonika — „Skąd się wziął śmigus-dyngus?"</a></li>
+            <li><strong>Barbara Ogrodowska</strong>, <em>Polskie obrzędy i zwyczaje doroczne</em> (Muza, 2009) — wielkanocne i wielkopostne zwyczaje ludowe.</li>
+            <li><strong>Jerzy Pośpiech</strong>, <em>Zwyczaje i obrzędy doroczne na Śląsku</em> (Instytut Śląski w Opolu, 1987) — śmigus i dyngus w tradycji śląskiej.</li>
             <li><a href="https://pl.wikipedia.org/wiki/%C5%9Amigus-dyngus" target="_blank" rel="noopener">Wikipedia — Śmigus‑Dyngus</a></li>
           </ul>
         </div>
@@ -130,8 +120,8 @@
 
           <div class="box">
             <div class="section-title">Symbolism</div>
-            <p>The willow signified springtime vigor, and water — purification and the awakening of nature.</p>
-            <p>The custom was linked to the arrival of spring and the echo of the Jary Godi, though no evidence confirms it as an independent pre‑Christian feast.</p>
+            <p>The willow signified springtime vigour, and water — purification and the awakening of nature.</p>
+            <p>The custom was linked to the arrival of spring and the echo of Jare Gody, though no evidence confirms it as an independent pre‑Christian feast.</p>
           </div>
 
         </div>
@@ -139,10 +129,8 @@
         <div class="zrodla">
           <div class="section-title">Sources</div>
           <ul>
-            <li><a href="https://www.rmf24.pl/ciekawostki/historia/news-czy-wiesz-dlaczego-oblewamy-sie-woda-w-wielkanoc-niezwykla-h,nId,7455877" target="_blank" rel="noopener">RMF24 — "Do you know why we splash water at Easter? The remarkable history of Śmigus-Dyngus"</a></li>
-            <li><a href="https://www.polskieradio.pl/5/3/artykul/3446702,wielkanocne-tradycje-w-polsce-skad-sie-wzial-smigus-dyngus" target="_blank" rel="noopener">Polish Radio — "Easter traditions in Poland. Where does Śmigus-Dyngus come from?"</a></li>
-            <li><a href="https://www.naszeszlaki.pl/smigus-dyngus-czyli-lany-poniedzialek-obrzedy-i-ciekawostki/" target="_blank" rel="noopener">Nasze Szlaki — "Śmigus Dyngus, or Wet Monday — rites and curiosities"</a></li>
-            <li><a href="https://polonika.pl/aktualnosci/skad-sie-wzial-smigus-dyngus" target="_blank" rel="noopener">Polonika — "Where does Śmigus-Dyngus come from?"</a></li>
+            <li><strong>Barbara Ogrodowska</strong>, <em>Polish Annual Customs and Traditions</em> (Muza, 2009) — Easter and Lenten folk customs.</li>
+            <li><strong>Jerzy Pośpiech</strong>, <em>Annual Customs and Rites of Silesia</em> (Instytut Śląski w Opolu, 1987) — śmigus and dyngus in Silesian tradition.</li>
             <li><a href="https://en.wikipedia.org/wiki/%C5%9Amigus-dyngus" target="_blank" rel="noopener">Wikipedia — Śmigus‑Dyngus</a></li>
           </ul>
         </div>
