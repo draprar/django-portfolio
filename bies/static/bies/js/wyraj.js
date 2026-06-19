@@ -168,20 +168,43 @@ document.addEventListener("DOMContentLoaded", () => {
     // Etykieta — po zewnętrznej stronie koła
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     // Przesunięcie etykiety od węzła (w kierunku od centrum)
-    const labelR = labelRadius;
+    const labelR = labelRadius + 12;
     const lx = CX + labelR * Math.cos(rad);
     const ly = CY + labelR * Math.sin(rad);
     label.setAttribute("x", lx); label.setAttribute("y", ly);
     label.setAttribute("text-anchor",
       lx < CX - 5 ? "end" : lx > CX + 5 ? "start" : "middle");
     label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("font-size", "10");
+    label.setAttribute("font-size", isMobile ? "11" : "13");
     label.setAttribute("font-family", "'Playfair Display', serif");
     label.setAttribute("fill", "rgba(245,225,164,0.75)");
     label.setAttribute("class", "node-label");
     label.setAttribute("data-pl", s.tytul_pl);
     label.setAttribute("data-en", s.tytul_en);
-    label.textContent = s.tytul_pl;
+    const title = s.tytul_pl;
+
+    if (title.length > 12 && title.includes(" ")) {
+
+      const words = title.split(" ");
+
+      const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      first.setAttribute("x", lx);
+      first.setAttribute("dy", "-0.45em");
+      first.textContent = words[0];
+
+      const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      second.setAttribute("x", lx);
+      second.setAttribute("dy", "1.1em");
+      second.textContent = words.slice(1).join(" ");
+
+      label.appendChild(first);
+      label.appendChild(second);
+
+    } else {
+
+      label.textContent = title;
+
+    }
 
     g.appendChild(halo);
     g.appendChild(circle);
@@ -216,7 +239,35 @@ document.addEventListener("DOMContentLoaded", () => {
   window.switchLang = function (lang) {
     origSwitch(lang);
     document.querySelectorAll(".node-label").forEach(el => {
-      el.textContent = lang === "en" ? el.dataset.en : el.dataset.pl;
+
+        const title = lang === "en"
+            ? el.dataset.en
+            : el.dataset.pl;
+
+        el.replaceChildren();
+
+        if (title.length > 12 && title.includes(" ")) {
+
+            const words = title.split(" ");
+
+            const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+            first.setAttribute("x", el.getAttribute("x"));
+            first.setAttribute("dy", "-0.45em");
+            first.textContent = words[0];
+
+            const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+            second.setAttribute("x", el.getAttribute("x"));
+            second.setAttribute("dy", "1.1em");
+            second.textContent = words.slice(1).join(" ");
+
+            el.append(first, second);
+
+        } else {
+
+            el.textContent = title;
+
+        }
+
     });
   };
 });
