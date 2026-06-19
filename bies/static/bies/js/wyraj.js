@@ -125,25 +125,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const tooltip = document.getElementById("kolo-tooltip");
   if (!svg || !group) return;
 
-  const CX = 250, CY = 250, R = 185; // promień rozmieszczenia węzłów
+  const CX = 250;
+  const CY = 250;
+  const R = 175;          // węzły bliżej środka
+  const LABEL_OFFSET = 16; // odległość napisu od węzła
+  const isMobile = window.innerWidth < 768;
+
+  const radius = isMobile ? 165 : R;
+  const labelRadius = radius + (isMobile ? 10 : LABEL_OFFSET);
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
   };
 
-  data.forEach((s, idx) => {
+  data.forEach((s) => {
     // Kąt: 0° = góra, rosnąco zgodnie z ruchem wskazówek
     const rad = ((s.kat - 90) * Math.PI) / 180;
-    const x   = CX + R * Math.cos(rad);
-    const y   = CY + R * Math.sin(rad);
-
-    // Linia od centrum do węzła
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", CX); line.setAttribute("y1", CY);
-    line.setAttribute("x2", x);  line.setAttribute("y2", y);
-    line.setAttribute("stroke", "rgba(196,146,42,0.12)");
-    line.setAttribute("stroke-width", "1");
-    group.appendChild(line);
+    const x = CX + radius * Math.cos(rad);
+    const y = CY + radius * Math.sin(rad);
 
     // Węzeł — klikalny
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -169,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Etykieta — po zewnętrznej stronie koła
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     // Przesunięcie etykiety od węzła (w kierunku od centrum)
-    const labelR = R + 28;
+    const labelR = labelRadius;
     const lx = CX + labelR * Math.cos(rad);
     const ly = CY + labelR * Math.sin(rad);
     label.setAttribute("x", lx); label.setAttribute("y", ly);
@@ -187,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
     g.appendChild(halo);
     g.appendChild(circle);
     g.appendChild(label);
-    group.appendChild(line);
     group.appendChild(g);
 
     // Interakcje
