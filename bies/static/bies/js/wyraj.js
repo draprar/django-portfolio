@@ -129,10 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const CY = 250;
   const isMobile = window.innerWidth < 768;
 
-  // Węzły na promieniu ~155 (bliżej środka), etykiety zaraz za nimi (~190)
-  // Pierścień dekoracyjny jest na r=210, więc etykiety zostają wewnątrz
-  const NODE_R   = isMobile ? 145 : 155;
-  const LABEL_R  = isMobile ? 178 : 192;
+  // Węzły na promieniu ~130 mobile / 155 desktop, etykiety za nimi
+  // Pierścień dekoracyjny jest na r=218, więc etykiety zostają wewnątrz
+  const NODE_R   = isMobile ? 130 : 155;
+  const LABEL_R  = isMobile ? 170 : 192;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
     label.setAttribute("text-anchor", anchor);
     label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("font-size", isMobile ? "11" : "14");
+    label.setAttribute("font-size", isMobile ? "13" : "14");
     label.setAttribute("font-family", "'Playfair Display', serif");
     label.setAttribute("fill", "rgba(245,225,164,0.88)");
     label.setAttribute("class", "node-label");

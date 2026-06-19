@@ -407,9 +407,9 @@ a:hover { color: var(--gold); }
   .page-wrap.lista-wrap { margin-top: 1.2rem; margin-bottom: 1.5rem; }
   .page-content       { padding: 1.6rem 1.1rem 0; }
 
-  h1                  { font-size: 2rem; }
-  .lista-title        { font-size: 2.3rem; letter-spacing: 0.08em; }
-  .subtitle           { font-size: 1.05rem; }
+  h1                  { font-size: 2.6rem; }
+  .lista-title        { font-size: 3.2rem; letter-spacing: 0.1em; }
+  .subtitle           { font-size: 1.35rem; }
   .section-title      { font-size: 1.3rem; }
   p                   { font-size: 1.1rem; line-height: 1.75; }
   .tresc ul,
@@ -674,14 +674,14 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
    RESPONSIVE — uzupełnienia
    ============================================= */
 @media (max-width: 768px) {
-  .kolo-wrap           { width: min(380px, 96%); }
+  .kolo-wrap           { width: min(420px, 98%); }
   .nav-prev, .nav-next { max-width: 42%; padding: 0.4rem 0.5rem; }
   .nav-name            { font-size: 0.85rem; }
   .nav-hint            { display: none; }
   .duch-tag            { font-size: 0.82rem; }
   .reader-toggle       { top: 0.6rem; right: 0.6rem; width: 4rem; height: 4rem; font-size: 1.6rem; }
   .node-label {
-    font-size: 11px;
+    font-size: 13px;
     stroke-width: 2.5px;
   }
   .nav-kolo { font-size: 1.9rem !important; }
