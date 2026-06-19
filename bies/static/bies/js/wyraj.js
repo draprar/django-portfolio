@@ -127,12 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const CX = 250;
   const CY = 250;
-  const R = 175;          // węzły bliżej środka
-  const LABEL_OFFSET = 16; // odległość napisu od węzła
   const isMobile = window.innerWidth < 768;
 
-  const radius = isMobile ? 165 : R;
-  const labelRadius = radius + (isMobile ? 10 : LABEL_OFFSET);
+  // Węzły na promieniu ~155 (bliżej środka), etykiety zaraz za nimi (~190)
+  // Pierścień dekoracyjny jest na r=210, więc etykiety zostają wewnątrz
+  const NODE_R   = isMobile ? 145 : 155;
+  const LABEL_R  = isMobile ? 178 : 192;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
@@ -141,8 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
   data.forEach((s) => {
     // Kąt: 0° = góra, rosnąco zgodnie z ruchem wskazówek
     const rad = ((s.kat - 90) * Math.PI) / 180;
-    const x = CX + radius * Math.cos(rad);
-    const y = CY + radius * Math.sin(rad);
+    const x = CX + NODE_R * Math.cos(rad);
+    const y = CY + NODE_R * Math.sin(rad);
 
     // Węzeł — klikalny
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -165,46 +165,48 @@ document.addEventListener("DOMContentLoaded", () => {
     circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
     circle.setAttribute("filter", "url(#glow)");
 
-    // Etykieta — po zewnętrznej stronie koła
+    // Etykieta — między węzłem a pierścieniem dekoracyjnym
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    // Przesunięcie etykiety od węzła (w kierunku od centrum)
-    const labelR = labelRadius + 12;
-    const lx = CX + labelR * Math.cos(rad);
-    const ly = CY + labelR * Math.sin(rad);
+    const lx = CX + LABEL_R * Math.cos(rad);
+    const ly = CY + LABEL_R * Math.sin(rad);
     label.setAttribute("x", lx); label.setAttribute("y", ly);
-    label.setAttribute("text-anchor",
-      lx < CX - 5 ? "end" : lx > CX + 5 ? "start" : "middle");
+
+    // Zakotwiczenie: lewo/prawo/środek zależnie od pozycji na kole
+    const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
+    label.setAttribute("text-anchor", anchor);
     label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("font-size", isMobile ? "11" : "13");
+    label.setAttribute("font-size", isMobile ? "11" : "14");
     label.setAttribute("font-family", "'Playfair Display', serif");
-    label.setAttribute("fill", "rgba(245,225,164,0.75)");
+    label.setAttribute("fill", "rgba(245,225,164,0.88)");
     label.setAttribute("class", "node-label");
     label.setAttribute("data-pl", s.tytul_pl);
     label.setAttribute("data-en", s.tytul_en);
-    const title = s.tytul_pl;
 
-    if (title.length > 12 && title.includes(" ")) {
+    const buildLabel = (el, title, atX) => {
+      el.replaceChildren();
+      if (title.length > 11 && title.includes(" ")) {
+        const words = title.split(" ");
+        const mid = Math.ceil(words.length / 2);
+        const line1 = words.slice(0, mid).join(" ");
+        const line2 = words.slice(mid).join(" ");
 
-      const words = title.split(" ");
+        const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        first.setAttribute("x", atX);
+        first.setAttribute("dy", "-0.55em");
+        first.textContent = line1;
 
-      const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-      first.setAttribute("x", lx);
-      first.setAttribute("dy", "-0.45em");
-      first.textContent = words[0];
+        const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        second.setAttribute("x", atX);
+        second.setAttribute("dy", "1.15em");
+        second.textContent = line2;
 
-      const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-      second.setAttribute("x", lx);
-      second.setAttribute("dy", "1.1em");
-      second.textContent = words.slice(1).join(" ");
+        el.append(first, second);
+      } else {
+        el.textContent = title;
+      }
+    };
 
-      label.appendChild(first);
-      label.appendChild(second);
-
-    } else {
-
-      label.textContent = title;
-
-    }
+    buildLabel(label, s.tytul_pl, lx);
 
     g.appendChild(halo);
     g.appendChild(circle);
@@ -239,35 +241,31 @@ document.addEventListener("DOMContentLoaded", () => {
   window.switchLang = function (lang) {
     origSwitch(lang);
     document.querySelectorAll(".node-label").forEach(el => {
-
-        const title = lang === "en"
-            ? el.dataset.en
-            : el.dataset.pl;
+        const title = lang === "en" ? el.dataset.en : el.dataset.pl;
+        const atX = el.getAttribute("x");
 
         el.replaceChildren();
 
-        if (title.length > 12 && title.includes(" ")) {
-
+        if (title.length > 11 && title.includes(" ")) {
             const words = title.split(" ");
+            const mid = Math.ceil(words.length / 2);
+            const line1 = words.slice(0, mid).join(" ");
+            const line2 = words.slice(mid).join(" ");
 
             const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-            first.setAttribute("x", el.getAttribute("x"));
-            first.setAttribute("dy", "-0.45em");
-            first.textContent = words[0];
+            first.setAttribute("x", atX);
+            first.setAttribute("dy", "-0.55em");
+            first.textContent = line1;
 
             const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-            second.setAttribute("x", el.getAttribute("x"));
-            second.setAttribute("dy", "1.1em");
-            second.textContent = words.slice(1).join(" ");
+            second.setAttribute("x", atX);
+            second.setAttribute("dy", "1.15em");
+            second.textContent = line2;
 
             el.append(first, second);
-
         } else {
-
             el.textContent = title;
-
         }
-
     });
   };
 });

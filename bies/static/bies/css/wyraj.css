@@ -438,7 +438,7 @@ a:hover { color: var(--gold); }
    ============================================= */
 .kolo-wrap {
   position: relative;
-  width: min(460px, 92%);
+  width: min(600px, 96%);
   margin: 0.5rem auto 0.5rem;
 }
 #kolo-svg {
@@ -454,10 +454,11 @@ a:hover { color: var(--gold); }
 .node-label {
     pointer-events: none;
     transition: fill .2s;
-    font-size: 11px;
+    font-size: 13px;
     paint-order: stroke;
-    stroke: rgba(15,17,23,.95);
-    stroke-width: 2px;
+    stroke: rgba(15,17,23,.98);
+    stroke-width: 3px;
+    font-weight: 700;
 }
 
 /* Tooltip Koła */
@@ -523,21 +524,23 @@ a:hover { color: var(--gold); }
    ============================================= */
 .swieto-nav {
   border-top: 1px solid var(--border);
-  background: rgba(8,10,15,0.7);
-  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 1.4rem 2rem;
 }
 .swieto-nav .lang {
   display: none;
 }
 
 .swieto-nav .lang.active {
-  display: grid !important;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex !important;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.nav-prev, .nav-next {
+.nav-prev {
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -547,7 +550,22 @@ a:hover { color: var(--gold); }
   border-radius: 6px;
   border: 1px solid transparent;
   transition: border-color 0.2s, background 0.2s, color 0.2s;
+  flex: 0 0 auto;
   max-width: 38%;
+}
+.nav-next {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  flex: 0 0 auto;
+  max-width: 38%;
+  margin-left: auto;
 }
 .nav-prev:hover, .nav-next:hover {
   border-color: var(--border);
@@ -577,20 +595,26 @@ a:hover { color: var(--gold); }
   line-height: 1.25;
 }
 .nav-next .nav-info { text-align: right; }
-.nav-empty { width: 38%; }
+.nav-empty { flex: 0 0 auto; max-width: 38%; min-width: 0; }
 
-/* Symbol koła w centrum nawigacji */
+/* Runa Algiz w centrum nawigacji */
 .nav-kolo {
-  font-size: 1.4rem;
-  color: rgba(196,146,42,0.4);
+  font-size: 2.2rem !important;
+  color: rgba(196,146,42,0.5);
   text-decoration: none;
   flex-shrink: 0;
+  flex: 0 0 auto;
   transition: color 0.2s, transform 0.3s;
   line-height: 1;
+  text-shadow: 0 0 14px rgba(196,146,42,0.35);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .nav-kolo:hover {
   color: var(--primary);
-  transform: rotate(45deg) scale(1.15);
+  transform: translateX(-50%) scale(1.2);
+  text-shadow: 0 0 20px rgba(196,146,42,0.6);
 }
 
 /* =============================================
@@ -650,43 +674,37 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
    RESPONSIVE — uzupełnienia
    ============================================= */
 @media (max-width: 768px) {
-  .kolo-wrap           { width: min(340px, 96%); }
+  .kolo-wrap           { width: min(380px, 96%); }
   .nav-prev, .nav-next { max-width: 42%; padding: 0.4rem 0.5rem; }
   .nav-name            { font-size: 0.85rem; }
   .nav-hint            { display: none; }
   .duch-tag            { font-size: 0.82rem; }
   .reader-toggle       { top: 0.6rem; right: 0.6rem; width: 2.2rem; height: 2.2rem; font-size: 0.88rem; }
   .node-label {
-    font-size: 9px;
+    font-size: 11px;
+    stroke-width: 2.5px;
   }
+  .nav-kolo { font-size: 1.9rem !important; }
 }
 
-.swieto-nav .lang {
-  display: grid !important;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-}
-
-.nav-kolo {
-  font-size: 2.8rem !important;
-  line-height: 1;
-  text-shadow: 0 0 12px rgba(196,146,42,0.45);
+.swieto-nav {
+  position: relative; /* needed for absolute algiz centering */
 }
 
 @media (max-width: 400px) {
   .swieto-nav .lang.active {
-    display: grid !important;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0.6rem;
+    display: flex !important;
+    flex-direction: row;
+    gap: 0.4rem;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
   }
 
   .nav-prev, .nav-next, .nav-empty {
-    max-width: 100%;
+    max-width: 42%;
   }
 
   .nav-kolo {
-    order: 0 !important;
+    font-size: 1.8rem !important;
   }
 }
