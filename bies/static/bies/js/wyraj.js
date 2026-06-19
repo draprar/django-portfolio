@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const buildLabel = (el, title, atX) => {
       el.replaceChildren();
-      if (title.length > 11 && title.includes(" ")) {
+      if (title.length > 7 && title.includes(" ")) {
         const words = title.split(" ");
         const mid = Math.ceil(words.length / 2);
         const line1 = words.slice(0, mid).join(" ");
@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         el.replaceChildren();
 
-        if (title.length > 11 && title.includes(" ")) {
+        if (title.length > 7 && title.includes(" ")) {
             const words = title.split(" ");
             const mid = Math.ceil(words.length / 2);
             const line1 = words.slice(0, mid).join(" ");

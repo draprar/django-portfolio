@@ -626,12 +626,12 @@ a:hover { color: var(--gold); }
   position: fixed;
   top: 1rem; right: 1rem;
   z-index: 1000;
-  width: 2.6rem; height: 2.6rem;
+  width: 5rem; height: 5rem;
   border-radius: 50%;
   background: rgba(15,17,23,0.88);
   border: 1px solid rgba(196,146,42,0.3);
   color: var(--gold-dim);
-  font-size: 1rem;
+  font-size: 2rem;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
@@ -679,7 +679,7 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
   .nav-name            { font-size: 0.85rem; }
   .nav-hint            { display: none; }
   .duch-tag            { font-size: 0.82rem; }
-  .reader-toggle       { top: 0.6rem; right: 0.6rem; width: 2.2rem; height: 2.2rem; font-size: 0.88rem; }
+  .reader-toggle       { top: 0.6rem; right: 0.6rem; width: 4rem; height: 4rem; font-size: 1.6rem; }
   .node-label {
     font-size: 11px;
     stroke-width: 2.5px;
