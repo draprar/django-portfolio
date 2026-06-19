@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import resolve, reverse
 
 from bies.models import Swieto, ZrodloBibliograficzne
-from bies.views import wyraj_detail, wyraj_lista
+from bies.views import wyraj_lista
 
 
 def make_swieto(**kwargs):
