@@ -13,8 +13,7 @@
   <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
 <style>
   .box {
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     {% if swieto.obraz %}
     background:
       linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.62)),
@@ -24,27 +23,25 @@
     {% endif %}
     backdrop-filter: blur(8px);
     border: 1px solid rgba(196,146,42,0.28);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
   }
-  .section-title {
-    text-align: center;
-  }
-  .section-title::after {
-    width: 72px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .section-title { text-align: center; }
+  .section-title::after { width: 72px; margin-left: auto; margin-right: auto; }
 </style>
 </head>
 <body>
 
   <div id="loader">
-    <div class="loader-rune">ᛉ ᛟ ᛋ</div>
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
   </div>
+
+  <!-- Przycisk trybu czytania -->
+  <button class="reader-toggle" id="readerToggle"
+          aria-label="Tryb czytania" title="Tryb czytania">
+    <i class="fa-solid fa-book-open"></i>
+  </button>
 
   {% if swieto.obraz %}
   <div class="hero">
@@ -63,130 +60,173 @@
 
       <div class="ornament">⸻✦⸻</div>
 
-      <!-- PL -->
+      <!-- ═══ PL ═══ -->
       <div class="lang active" id="pl">
         <h1>{{ swieto.tytul_pl }}</h1>
         {% if swieto.podtytul_pl %}
           <p class="subtitle">{{ swieto.podtytul_pl }}</p>
         {% endif %}
 
-        <div class="tresc">
+        {% if swieto.duchy_pl %}
+        <div class="duchy-wrap reveal">
+          <span class="duchy-label">Duchy i bóstwa:</span>
+          {% for duch in swieto.get_duchy_list %}
+            <span class="duch-tag">{{ duch }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
 
+        <div class="tresc">
           {% if swieto.o_swiecie_pl %}
-          <div class="box">
+          <div class="box reveal">
             <div class="section-title">O święcie</div>
             {{ swieto.o_swiecie_pl|linebreaks }}
           </div>
           {% endif %}
-
           {% if swieto.obrzedy_pl %}
-          <div class="box">
+          <div class="box reveal">
             <div class="section-title">Obrzędy</div>
             {{ swieto.obrzedy_pl|linebreaks }}
           </div>
           {% endif %}
-
           {% if swieto.symbolika_pl %}
-          <div class="box">
+          <div class="box reveal">
             <div class="section-title">Symbolika</div>
             {{ swieto.symbolika_pl|linebreaks }}
           </div>
           {% endif %}
-
         </div>
 
-        {% with zrodla=swieto.zrodla.all %}
-        {% if zrodla %}
-        <div class="zrodla">
+        {% with zrodla=swieto.zrodla.all %}{% if zrodla %}
+        <div class="zrodla reveal">
           <div class="section-title">Źródła</div>
-          <ul>
-            {% for z in zrodla %}
+          <ul>{% for z in zrodla %}
             <li>
               {% if z.autor %}<strong>{{ z.autor }}</strong>, {% endif %}
-              <em>{{ z.tytul }}</em>
-              {% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
-              {% if z.url %}
-                <a href="{{ z.url }}" target="_blank" rel="noopener">
-                  {{ z.url_etykieta|default:z.url }}
-                </a>
-              {% endif %}
+              <em>{{ z.tytul }}</em>{% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
+              {% if z.url %}<a href="{{ z.url }}" target="_blank" rel="noopener">{{ z.url_etykieta|default:z.url }}</a>{% endif %}
             </li>
-            {% endfor %}
-          </ul>
+          {% endfor %}</ul>
         </div>
-        {% endif %}
-        {% endwith %}
+        {% endif %}{% endwith %}
+      </div><!-- /pl -->
 
-      </div><!-- /lang pl -->
-
-      <!-- EN -->
+      <!-- ═══ EN ═══ -->
       <div class="lang" id="en">
         <h1>{{ swieto.tytul_en }}</h1>
         {% if swieto.podtytul_en %}
           <p class="subtitle">{{ swieto.podtytul_en }}</p>
         {% endif %}
 
-        <div class="tresc">
+        {% if swieto.duchy_en %}
+        <div class="duchy-wrap reveal">
+          <span class="duchy-label">Spirits &amp; deities:</span>
+          {% for duch in swieto.get_duchy_list|dictsort:"0" %}
+            <span class="duch-tag">{{ duch }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
 
+        <div class="tresc">
           {% if swieto.o_swiecie_en %}
-          <div class="box">
+          <div class="box reveal">
             <div class="section-title">About the Feast</div>
             {{ swieto.o_swiecie_en|linebreaks }}
           </div>
           {% endif %}
-
           {% if swieto.obrzedy_en %}
-          <div class="box">
+          <div class="box reveal">
             <div class="section-title">Rites</div>
             {{ swieto.obrzedy_en|linebreaks }}
           </div>
           {% endif %}
-
           {% if swieto.symbolika_en %}
-          <div class="box">
+          <div class="box reveal">
             <div class="section-title">Symbolism</div>
             {{ swieto.symbolika_en|linebreaks }}
           </div>
           {% endif %}
-
         </div>
 
-        {% with zrodla=swieto.zrodla.all %}
-        {% if zrodla %}
-        <div class="zrodla">
+        {% with zrodla=swieto.zrodla.all %}{% if zrodla %}
+        <div class="zrodla reveal">
           <div class="section-title">Sources</div>
-          <ul>
-            {% for z in zrodla %}
+          <ul>{% for z in zrodla %}
             <li>
               {% if z.autor %}<strong>{{ z.autor }}</strong>, {% endif %}
-              <em>{{ z.tytul }}</em>
-              {% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
-              {% if z.url %}
-                <a href="{{ z.url }}" target="_blank" rel="noopener">
-                  {{ z.url_etykieta|default:z.url }}
-                </a>
-              {% endif %}
+              <em>{{ z.tytul }}</em>{% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
+              {% if z.url %}<a href="{{ z.url }}" target="_blank" rel="noopener">{{ z.url_etykieta|default:z.url }}</a>{% endif %}
             </li>
-            {% endfor %}
-          </ul>
+          {% endfor %}</ul>
         </div>
-        {% endif %}
-        {% endwith %}
-
-      </div><!-- /lang en -->
+        {% endif %}{% endwith %}
+      </div><!-- /en -->
 
       <div class="ornament">⸻✦⸻</div>
 
     </div><!-- /page-content -->
 
+    <!-- ═══ NAWIGACJA PREV/NEXT ═══ -->
+    <nav class="swieto-nav" aria-label="Nawigacja między świętami">
+      <div class="lang active" id="pl-nav">
+        {% if prev %}
+        <a href="{% url 'bies:wyraj-detail' prev.slug %}" class="nav-prev">
+          <span class="nav-arrow">←</span>
+          <span class="nav-info">
+            <span class="nav-hint">Poprzednie</span>
+            <span class="nav-name">{{ prev.tytul_pl }}</span>
+          </span>
+        </a>
+        {% else %}<div class="nav-empty"></div>{% endif %}
+
+        <a href="{% url 'bies:wyraj-lista' %}" class="nav-kolo" aria-label="Wróć do Koła Roku">
+          ✦
+        </a>
+
+        {% if next %}
+        <a href="{% url 'bies:wyraj-detail' next.slug %}" class="nav-next">
+          <span class="nav-info">
+            <span class="nav-hint">Następne</span>
+            <span class="nav-name">{{ next.tytul_pl }}</span>
+          </span>
+          <span class="nav-arrow">→</span>
+        </a>
+        {% else %}<div class="nav-empty"></div>{% endif %}
+      </div>
+
+      <div class="lang" id="en-nav">
+        {% if prev %}
+        <a href="{% url 'bies:wyraj-detail' prev.slug %}" class="nav-prev">
+          <span class="nav-arrow">←</span>
+          <span class="nav-info">
+            <span class="nav-hint">Previous</span>
+            <span class="nav-name">{{ prev.tytul_en }}</span>
+          </span>
+        </a>
+        {% else %}<div class="nav-empty"></div>{% endif %}
+
+        <a href="{% url 'bies:wyraj-lista' %}" class="nav-kolo" aria-label="Back to the Wheel">
+          ✦
+        </a>
+
+        {% if next %}
+        <a href="{% url 'bies:wyraj-detail' next.slug %}" class="nav-next">
+          <span class="nav-info">
+            <span class="nav-hint">Next</span>
+            <span class="nav-name">{{ next.tytul_en }}</span>
+          </span>
+          <span class="nav-arrow">→</span>
+        </a>
+        {% else %}<div class="nav-empty"></div>{% endif %}
+      </div>
+    </nav>
+
     <footer class="footer">
       <div class="lang active" id="pl-footer">
-        <a href="{% url 'bies:wyraj-lista' %}" class="back-button">← Wyraj</a>
         <p>© {% now "Y" %} Walery</p>
       </div>
       <div class="lang" id="en-footer">
-        <a href="{% url 'bies:wyraj-lista' %}" class="back-button">← Wyraj</a>
-        <p>© {% now "Y" %} Walery</p>
+        <p>© {% now "Y" %} Walery — All rights reserved</p>
       </div>
     </footer>
 

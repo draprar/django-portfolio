@@ -6,18 +6,16 @@ class Swieto(models.Model):
     """
     Jedno słowiańskie święto z Koła Roku.
     Treść przechowywana dwujęzycznie (PL + EN) bezpośrednio w polach modelu.
-    Obrazek zarządzany przez panel admina.
     """
 
     # --- identyfikator i kolejność ---
     slug = models.SlugField(
-        max_length=80,
-        unique=True,
+        max_length=80, unique=True,
         help_text="Część URL-a, np. 'gaik', 'jare-gody'. Wypełnia się automatycznie.",
     )
     kolejnosc = models.PositiveSmallIntegerField(
         default=0,
-        help_text="Kolejność wyświetlania na liście (rosnąco).",
+        help_text="Kolejność na liście i pozycja na Kole Roku (1–12, rosnąco).",
     )
 
     # --- tytuł ---
@@ -25,28 +23,46 @@ class Swieto(models.Model):
     tytul_en = models.CharField(max_length=120, verbose_name="Tytuł (EN)")
 
     # --- podtytuł / czas obchodów ---
-    podtytul_pl = models.CharField(
-        max_length=220, blank=True, verbose_name="Podtytuł (PL)"
-    )
-    podtytul_en = models.CharField(
-        max_length=220, blank=True, verbose_name="Podtytuł (EN)"
-    )
+    podtytul_pl = models.CharField(max_length=220, blank=True, verbose_name="Podtytuł (PL)")
+    podtytul_en = models.CharField(max_length=220, blank=True, verbose_name="Podtytuł (EN)")
 
     # --- meta description dla SEO ---
-    meta_opis_pl = models.CharField(
-        max_length=300, blank=True, verbose_name="Meta opis (PL)"
-    )
-    meta_opis_en = models.CharField(
-        max_length=300, blank=True, verbose_name="Meta opis (EN)"
-    )
+    meta_opis_pl = models.CharField(max_length=300, blank=True, verbose_name="Meta opis (PL)")
+    meta_opis_en = models.CharField(max_length=300, blank=True, verbose_name="Meta opis (EN)")
 
     # --- obrazek ---
     obraz = models.ImageField(
-        upload_to="bies/swieta/",
-        blank=True,
-        null=True,
+        upload_to="bies/swieta/", blank=True, null=True,
         verbose_name="Obrazek",
         help_text="Zalecany format: PNG lub JPG, min. 1200×800 px.",
+    )
+
+    # --- Koło Roku: kąt węzła (0° = góra, zgodnie z ruchem wskazówek) ---
+    kolo_kat = models.SmallIntegerField(
+        default=0,
+        verbose_name="Kąt na Kole Roku (stopnie)",
+        help_text=(
+            "Pozycja święta na okręgu. 0° = szczyt (przesilenie zimowe), "
+            "dalej zgodnie z ruchem wskazówek. Np. równonoc wiosenna ≈ 90°."
+        ),
+    )
+    # Kolor akcentu węzła — hex, np. '#c4922a'. Domyślnie złoty.
+    kolo_kolor = models.CharField(
+        max_length=20, default="#c4922a",
+        verbose_name="Kolor węzła na kole",
+        help_text="Hex, np. '#a3c47a' dla wiosennych, '#c4922a' dla złotych.",
+    )
+
+    # --- Powiązane duchy i bóstwa (prosty tekst, przecinkami) ---
+    duchy_pl = models.CharField(
+        max_length=300, blank=True,
+        verbose_name="Duchy / bóstwa (PL)",
+        help_text="Np. 'Jaryło, Marzanna, Wiosna'. Oddzielone przecinkami.",
+    )
+    duchy_en = models.CharField(
+        max_length=300, blank=True,
+        verbose_name="Duchy / bóstwa (EN)",
+        help_text="Np. 'Jaryło, Marzanna, Spring'. Oddzielone przecinkami.",
     )
 
     # --- sekcja: O święcie ---
@@ -78,6 +94,7 @@ class Swieto(models.Model):
             self.slug = slugify(self.tytul_pl)
         super().save(*args, **kwargs)
 
+    # --- gettery językowe ---
     def get_tytul(self, lang="pl"):
         return self.tytul_en if lang == "en" else self.tytul_pl
 
@@ -93,45 +110,41 @@ class Swieto(models.Model):
     def get_symbolike(self, lang="pl"):
         return self.symbolika_en if lang == "en" else self.symbolika_pl
 
+    def get_duchy_list(self, lang="pl"):
+        """Zwraca duchy jako listę stringów (po przecinku)."""
+        raw = self.duchy_en if lang == "en" else self.duchy_pl
+        return [d.strip() for d in raw.split(",") if d.strip()]
+
+    # --- nawigacja prev/next ---
+    def get_next(self):
+        return (
+            Swieto.objects.filter(kolejnosc__gt=self.kolejnosc)
+            .order_by("kolejnosc")
+            .first()
+        )
+
+    def get_prev(self):
+        return (
+            Swieto.objects.filter(kolejnosc__lt=self.kolejnosc)
+            .order_by("-kolejnosc")
+            .first()
+        )
+
 
 class ZrodloBibliograficzne(models.Model):
-    """
-    Źródło powiązane ze świętem — autor, tytuł, rok, link.
-    Jeden wiersz w bazie = jeden punktor na liście źródeł.
-    """
+    """Źródło powiązane ze świętem."""
 
     swieto = models.ForeignKey(
-        Swieto,
-        on_delete=models.CASCADE,
-        related_name="zrodla",
-        verbose_name="Święto",
+        Swieto, on_delete=models.CASCADE,
+        related_name="zrodla", verbose_name="Święto",
     )
-    kolejnosc = models.PositiveSmallIntegerField(
-        default=0,
-        help_text="Kolejność na liście źródeł.",
-    )
+    kolejnosc = models.PositiveSmallIntegerField(default=0)
 
-    autor = models.CharField(
-        max_length=200, blank=True, verbose_name="Autor",
-        help_text="Np. 'Oskar Kolberg'",
-    )
-    tytul = models.CharField(
-        max_length=400, verbose_name="Tytuł dzieła",
-        help_text="Np. 'Pieśni ludu obrzędowe: kogutek, gaik, okrężne'",
-    )
-    wydawca_rok = models.CharField(
-        max_length=200, blank=True, verbose_name="Wydawca / rok",
-        help_text="Np. 'WAM, 2003' lub '(1848)'",
-    )
-    url = models.URLField(
-        blank=True, verbose_name="Link (opcjonalnie)",
-        help_text="Np. link do Wikipedii lub skanów.",
-    )
-    # Etykieta linka — tylko gdy url jest wypełniony
-    url_etykieta = models.CharField(
-        max_length=200, blank=True, verbose_name="Etykieta linka",
-        help_text="Np. 'Wikipedia — Gaik'. Wypełnij tylko jeśli podano URL.",
-    )
+    autor = models.CharField(max_length=200, blank=True, verbose_name="Autor")
+    tytul = models.CharField(max_length=400, verbose_name="Tytuł dzieła")
+    wydawca_rok = models.CharField(max_length=200, blank=True, verbose_name="Wydawca / rok")
+    url = models.URLField(blank=True, verbose_name="Link (opcjonalnie)")
+    url_etykieta = models.CharField(max_length=200, blank=True, verbose_name="Etykieta linka")
 
     class Meta:
         verbose_name = "Źródło bibliograficzne"

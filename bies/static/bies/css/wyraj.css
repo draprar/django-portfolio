@@ -432,3 +432,224 @@ a:hover { color: var(--gold); }
   .lista-title  { font-size: 1.95rem; }
   .swieta-grid  { grid-template-columns: 1fr; }
 }
+
+/* =============================================
+   KOŁO ROKU
+   ============================================= */
+.kolo-wrap {
+  position: relative;
+  width: min(460px, 92%);
+  margin: 0.5rem auto 0.5rem;
+}
+#kolo-svg {
+  width: 100%; height: auto;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(196,146,42,0.08);
+}
+.kolo-node { transition: transform 0.2s ease; }
+.kolo-node:hover,
+.kolo-node:focus { transform-origin: center; outline: none; }
+.node-halo  { transition: opacity 0.25s ease; }
+.node-label { pointer-events: none; transition: fill 0.2s; }
+
+/* Tooltip Koła */
+.kolo-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%; transform: translateX(-50%);
+  background: rgba(15,17,23,0.96);
+  border: 1px solid rgba(196,146,42,0.35);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 20;
+}
+.kolo-tooltip.visible { opacity: 1; }
+.kolo-tooltip-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: var(--gold);
+}
+
+/* =============================================
+   DUCHY / BÓSTWA
+   ============================================= */
+.duchy-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.2rem 0 1.6rem;
+  justify-content: center;
+}
+.duchy-label {
+  font-size: 0.88rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+}
+.duch-tag {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border: 1px solid rgba(196,146,42,0.35);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--gold-dim);
+  background: rgba(196,146,42,0.07);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.duch-tag:hover {
+  background: rgba(196,146,42,0.18);
+  border-color: var(--primary);
+  color: var(--gold);
+}
+
+/* =============================================
+   NAWIGACJA PREV / NEXT
+   ============================================= */
+.swieto-nav {
+  border-top: 1px solid var(--border);
+  background: rgba(8,10,15,0.7);
+  padding: 1.2rem 1.5rem;
+}
+.swieto-nav .lang {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.swieto-nav .lang.active { display: flex; }
+
+.nav-prev, .nav-next {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  max-width: 38%;
+}
+.nav-prev:hover, .nav-next:hover {
+  border-color: var(--border);
+  background: rgba(196,146,42,0.06);
+  color: var(--gold);
+}
+.nav-arrow {
+  font-size: 1.3rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.nav-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.nav-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.nav-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.97rem;
+  color: var(--gold-dim);
+  line-height: 1.25;
+}
+.nav-next .nav-info { text-align: right; }
+.nav-empty { width: 38%; }
+
+/* Symbol koła w centrum nawigacji */
+.nav-kolo {
+  font-size: 1.4rem;
+  color: rgba(196,146,42,0.4);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.3s;
+  line-height: 1;
+}
+.nav-kolo:hover {
+  color: var(--primary);
+  transform: rotate(45deg) scale(1.15);
+}
+
+/* =============================================
+   READER MODE
+   ============================================= */
+
+/* Przycisk — przyklejony do prawego górnego rogu */
+.reader-toggle {
+  position: fixed;
+  top: 1rem; right: 1rem;
+  z-index: 1000;
+  width: 2.6rem; height: 2.6rem;
+  border-radius: 50%;
+  background: rgba(15,17,23,0.88);
+  border: 1px solid rgba(196,146,42,0.3);
+  color: var(--gold-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  backdrop-filter: blur(6px);
+}
+.reader-toggle:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* Tryb czytania — aktywny */
+body.reader-mode .hero            { display: none; }
+body.reader-mode .page-wrap       { margin-top: 2rem; max-width: 720px; }
+body.reader-mode .box             {
+  background: none !important;
+  backdrop-filter: none;
+  border-color: rgba(196,146,42,0.12);
+}
+body.reader-mode .box p           { font-size: 1.2rem; line-height: 1.95; }
+body.reader-mode h1               { font-size: clamp(2rem, 4vw, 2.8rem); }
+body.reader-mode .switch          { position: static; margin-bottom: 1rem; }
+body.reader-mode .page-content    { padding-top: 1.6rem; }
+body.reader-mode .kolo-wrap       { display: none; } /* ukryj na liście */
+body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
+
+/* =============================================
+   PLACEHOLDER — brak obrazka
+   ============================================= */
+.card-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface);
+  font-size: 2.5rem;
+  color: rgba(196,146,42,0.25);
+}
+
+/* =============================================
+   RESPONSIVE — uzupełnienia
+   ============================================= */
+@media (max-width: 768px) {
+  .kolo-wrap           { width: min(340px, 96%); }
+  .nav-prev, .nav-next { max-width: 42%; padding: 0.4rem 0.5rem; }
+  .nav-name            { font-size: 0.85rem; }
+  .nav-hint            { display: none; }
+  .duch-tag            { font-size: 0.82rem; }
+  .reader-toggle       { top: 0.6rem; right: 0.6rem; width: 2.2rem; height: 2.2rem; font-size: 0.88rem; }
+}
+
+@media (max-width: 400px) {
+  .swieto-nav .lang.active { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+  .nav-prev, .nav-next, .nav-empty { max-width: 100%; }
+  .nav-kolo { order: -1; }
+}

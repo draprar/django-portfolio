@@ -12,7 +12,8 @@
 <body>
 
   <div id="loader">
-    <div class="loader-rune">ᛉ ᛟ ᛋ</div>
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
   </div>
 
   <div class="page-wrap lista-wrap">
@@ -29,15 +30,79 @@
       <div class="lang active" id="pl">
         <h1 class="lista-title">Wyraj</h1>
         <p class="subtitle">Słowiańskie Koło Roku</p>
+      </div>
+      <!-- EN -->
+      <div class="lang" id="en">
+        <h1 class="lista-title">Wyraj</h1>
+        <p class="subtitle">Slavic Wheel of the Year</p>
+      </div>
 
+      <!-- ═══ KOŁO ROKU ═══ -->
+      <div class="kolo-wrap reveal">
+        <svg id="kolo-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Koło Roku — mapa słowiańskich świąt">
+
+          <!-- Tło -->
+          <defs>
+            <radialGradient id="kolo-bg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#1e2330"/>
+              <stop offset="100%" stop-color="#0f1117"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <circle cx="250" cy="250" r="248" fill="url(#kolo-bg)"
+                  stroke="rgba(196,146,42,0.2)" stroke-width="1"/>
+
+          <!-- Pierścienie dekoracyjne -->
+          <circle cx="250" cy="250" r="210" fill="none"
+                  stroke="rgba(196,146,42,0.12)" stroke-width="1" stroke-dasharray="4 6"/>
+          <circle cx="250" cy="250" r="150" fill="none"
+                  stroke="rgba(196,146,42,0.08)" stroke-width="1"/>
+          <circle cx="250" cy="250" r="60"  fill="none"
+                  stroke="rgba(196,146,42,0.15)" stroke-width="1"/>
+
+          <!-- Szprychy (4 główne kierunki) -->
+          <g stroke="rgba(196,146,42,0.1)" stroke-width="1">
+            <line x1="250" y1="40"  x2="250" y2="460"/>
+            <line x1="40"  y1="250" x2="460" y2="250"/>
+            <line x1="103" y1="103" x2="397" y2="397"/>
+            <line x1="397" y1="103" x2="103" y2="397"/>
+          </g>
+
+          <!-- Symbole pór roku w centrum -->
+          <text x="250" y="240" text-anchor="middle"
+                font-size="28" fill="rgba(196,146,42,0.6)" font-family="serif">✦</text>
+          <text x="250" y="268" text-anchor="middle"
+                font-size="9" fill="rgba(196,146,42,0.4)"
+                font-family="'Playfair Display',serif" letter-spacing="2">KOŁO ROKU</text>
+
+          <!-- Węzły świąt — generowane przez JS na podstawie danych Django -->
+          <g id="kolo-nodes"></g>
+        </svg>
+
+        <!-- Tooltip -->
+        <div id="kolo-tooltip" class="kolo-tooltip" aria-hidden="true">
+          <span class="kolo-tooltip-title"></span>
+        </div>
+      </div>
+      <!-- /KOŁO ROKU -->
+
+      <div class="ornament">⸻✦⸻</div>
+
+      <!-- PL siatka -->
+      <div class="lang active" id="pl-grid">
         <div class="swieta-grid">
           {% for s in swieta %}
-          <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card">
+          <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card reveal">
             <div class="card-img-wrap">
               {% if s.obraz %}
-                <img src="{{ s.obraz.url }}" alt="{{ s.tytul_pl }}">
+                <img src="{{ s.obraz.url }}" alt="{{ s.tytul_pl }}" loading="lazy">
               {% else %}
-                <img src="{% static 'bies/img/placeholder.png' %}" alt="{{ s.tytul_pl }}">
+                <div class="card-img-placeholder">✦</div>
               {% endif %}
             </div>
             <div class="card-body">
@@ -51,19 +116,16 @@
         </div>
       </div>
 
-      <!-- EN -->
-      <div class="lang" id="en">
-        <h1 class="lista-title">Wyraj</h1>
-        <p class="subtitle">Slavic Wheel of the Year</p>
-
+      <!-- EN siatka -->
+      <div class="lang" id="en-grid">
         <div class="swieta-grid">
           {% for s in swieta %}
-          <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card">
+          <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card reveal">
             <div class="card-img-wrap">
               {% if s.obraz %}
-                <img src="{{ s.obraz.url }}" alt="{{ s.tytul_en }}">
+                <img src="{{ s.obraz.url }}" alt="{{ s.tytul_en }}" loading="lazy">
               {% else %}
-                <img src="{% static 'bies/img/placeholder.png' %}" alt="{{ s.tytul_en }}">
+                <div class="card-img-placeholder">✦</div>
               {% endif %}
             </div>
             <div class="card-body">
@@ -92,8 +154,13 @@
       </div>
     </footer>
 
-  </div><!-- /page-wrap -->
+  </div>
 
+  <script>
+    /* Dane świąt z Django → JS */
+    window.KOLO_DATA = {{ kolo_data|safe }};
+  </script>
   <script src="{% static 'bies/js/wyraj.js' %}"></script>
 </body>
 </html>
+

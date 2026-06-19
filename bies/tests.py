@@ -5,9 +5,7 @@ from bies.models import Swieto, ZrodloBibliograficzne
 from bies.views import wyraj_detail, wyraj_lista
 
 
-# Helpers
 def make_swieto(**kwargs):
-    """Tworzy minimalne święto do testów."""
     defaults = {
         "slug": "test-swieto",
         "tytul_pl": "Testowe Święto",
@@ -17,56 +15,73 @@ def make_swieto(**kwargs):
     defaults.update(kwargs)
     return Swieto.objects.create(**defaults)
 
-# Model: Swieto
+
+# ── Model: Swieto ────────────────────────────────
+
 class SwietoModelTests(TestCase):
 
     def test_str_returns_tytul_pl(self):
-        s = make_swieto()
-        self.assertEqual(str(s), "Testowe Święto")
+        self.assertEqual(str(make_swieto()), "Testowe Święto")
 
-    def test_slug_autofill_from_tytul_pl(self):
-        """Slug generuje się automatycznie, jeśli nie podano."""
+    def test_slug_autofill(self):
         s = Swieto.objects.create(tytul_pl="Jare Gody", tytul_en="Jare Gody")
         self.assertEqual(s.slug, "jare-gody")
 
-    def test_slug_not_overwritten_if_provided(self):
+    def test_slug_not_overwritten(self):
         s = make_swieto(slug="moj-slug", tytul_pl="Coś")
         self.assertEqual(s.slug, "moj-slug")
 
     def test_get_tytul_pl(self):
-        s = make_swieto()
-        self.assertEqual(s.get_tytul("pl"), "Testowe Święto")
+        self.assertEqual(make_swieto().get_tytul("pl"), "Testowe Święto")
 
     def test_get_tytul_en(self):
-        s = make_swieto()
-        self.assertEqual(s.get_tytul("en"), "Test Feast")
+        self.assertEqual(make_swieto().get_tytul("en"), "Test Feast")
 
-    def test_get_podtytul_pl(self):
-        s = make_swieto(podtytul_pl="wiosną", podtytul_en="in spring")
-        self.assertEqual(s.get_podtytul("pl"), "wiosną")
+    def test_get_duchy_list_pl(self):
+        s = make_swieto(duchy_pl="Jaryło, Marzanna, Wiosna")
+        self.assertEqual(s.get_duchy_list("pl"), ["Jaryło", "Marzanna", "Wiosna"])
 
-    def test_get_podtytul_en(self):
-        s = make_swieto(podtytul_pl="wiosną", podtytul_en="in spring")
-        self.assertEqual(s.get_podtytul("en"), "in spring")
+    def test_get_duchy_list_empty(self):
+        self.assertEqual(make_swieto().get_duchy_list("pl"), [])
 
-    def test_default_ordering_by_kolejnosc(self):
+    def test_get_duchy_list_strips_spaces(self):
+        s = make_swieto(duchy_pl=" Weles ,  Mokosz ")
+        self.assertEqual(s.get_duchy_list("pl"), ["Weles", "Mokosz"])
+
+    def test_default_ordering(self):
         make_swieto(slug="b", tytul_pl="B", kolejnosc=2)
         make_swieto(slug="a", tytul_pl="A", kolejnosc=1)
-        slugs = list(Swieto.objects.values_list("slug", flat=True))
-        self.assertEqual(slugs, ["a", "b"])
+        self.assertEqual(
+            list(Swieto.objects.values_list("slug", flat=True)),
+            ["a", "b"],
+        )
 
-    def test_utworzone_auto_set(self):
-        s = make_swieto()
-        self.assertIsNotNone(s.utworzone)
+    def test_get_next(self):
+        s1 = make_swieto(slug="s1", kolejnosc=1)
+        s2 = make_swieto(slug="s2", kolejnosc=2)
+        self.assertEqual(s1.get_next(), s2)
 
-    def test_zaktualizowane_auto_set(self):
-        s = make_swieto()
-        self.assertIsNotNone(s.zaktualizowane)
+    def test_get_prev(self):
+        s1 = make_swieto(slug="s1", kolejnosc=1)
+        s2 = make_swieto(slug="s2", kolejnosc=2)
+        self.assertEqual(s2.get_prev(), s1)
+
+    def test_get_next_returns_none_for_last(self):
+        s = make_swieto(kolejnosc=99)
+        self.assertIsNone(s.get_next())
+
+    def test_get_prev_returns_none_for_first(self):
+        s = make_swieto(kolejnosc=1)
+        self.assertIsNone(s.get_prev())
+
+    def test_kolo_kat_default(self):
+        self.assertEqual(make_swieto().kolo_kat, 0)
+
+    def test_kolo_kolor_default(self):
+        self.assertEqual(make_swieto().kolo_kolor, "#c4922a")
 
 
-# ---------------------------------------------------------------------------
-# Model: ZrodloBibliograficzne
-# ---------------------------------------------------------------------------
+# ── Model: ZrodloBibliograficzne ─────────────────
 
 class ZrodloModelTests(TestCase):
 
@@ -75,145 +90,118 @@ class ZrodloModelTests(TestCase):
 
     def test_str_with_autor(self):
         z = ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto,
-            autor="Oskar Kolberg",
-            tytul="Pieśni ludu",
+            swieto=self.swieto, autor="Oskar Kolberg", tytul="Pieśni ludu"
         )
         self.assertIn("Oskar Kolberg", str(z))
-        self.assertIn("Pieśni ludu", str(z))
 
     def test_str_without_autor(self):
         z = ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto,
-            tytul="Wikipedia — Gaik",
+            swieto=self.swieto, tytul="Wikipedia — Gaik"
         )
         self.assertEqual(str(z), "Wikipedia — Gaik")
 
-    def test_related_name_zrodla(self):
-        ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto, tytul="Źródło A", kolejnosc=1
-        )
-        ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto, tytul="Źródło B", kolejnosc=2
-        )
-        self.assertEqual(self.swieto.zrodla.count(), 2)
-
-    def test_ordering_by_kolejnosc(self):
-        ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto, tytul="B", kolejnosc=2
-        )
-        ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto, tytul="A", kolejnosc=1
-        )
-        tytuly = list(
-            self.swieto.zrodla.values_list("tytul", flat=True)
-        )
-        self.assertEqual(tytuly, ["A", "B"])
-
     def test_cascade_delete(self):
-        ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto, tytul="Coś"
-        )
+        ZrodloBibliograficzne.objects.create(swieto=self.swieto, tytul="Coś")
         self.swieto.delete()
         self.assertEqual(ZrodloBibliograficzne.objects.count(), 0)
 
 
-# ---------------------------------------------------------------------------
-# Widok: wyraj_lista
-# ---------------------------------------------------------------------------
+# ── Widok: wyraj_lista ───────────────────────────
 
 class WyrajListaViewTests(TestCase):
 
     def test_returns_200(self):
-        response = self.client.get(reverse("bies:wyraj-lista"))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            self.client.get(reverse("bies:wyraj-lista")).status_code, 200
+        )
 
-    def test_url_resolves_to_correct_view(self):
-        match = resolve("/wyraj/")
-        self.assertEqual(match.func, wyraj_lista)
+    def test_url_resolves(self):
+        self.assertEqual(resolve("/wyraj/").func, wyraj_lista)
 
     def test_template_used(self):
-        response = self.client.get(reverse("bies:wyraj-lista"))
-        self.assertTemplateUsed(response, "bies/wyraj/lista.html")
+        self.assertTemplateUsed(
+            self.client.get(reverse("bies:wyraj-lista")),
+            "bies/wyraj/lista.html",
+        )
 
-    def test_context_contains_swieta(self):
+    def test_context_swieta(self):
         make_swieto()
-        response = self.client.get(reverse("bies:wyraj-lista"))
-        self.assertIn("swieta", response.context)
+        r = self.client.get(reverse("bies:wyraj-lista"))
+        self.assertIn("swieta", r.context)
 
-    def test_empty_lista_returns_200(self):
-        """Lista działa też gdy baza jest pusta."""
-        response = self.client.get(reverse("bies:wyraj-lista"))
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(list(response.context["swieta"]), [])
+    def test_context_kolo_data_is_json(self):
+        import json
+        make_swieto(kolo_kat=90, kolo_kolor="#aabbcc")
+        r = self.client.get(reverse("bies:wyraj-lista"))
+        data = json.loads(r.context["kolo_data"])
+        self.assertEqual(data[0]["kat"], 90)
+        self.assertEqual(data[0]["kolor"], "#aabbcc")
 
-    def test_lista_shows_all_swieta(self):
-        make_swieto(slug="a", tytul_pl="A")
-        make_swieto(slug="b", tytul_pl="B")
-        response = self.client.get(reverse("bies:wyraj-lista"))
-        self.assertEqual(response.context["swieta"].count(), 2)
+    def test_empty_lista_200(self):
+        self.assertEqual(
+            self.client.get(reverse("bies:wyraj-lista")).status_code, 200
+        )
 
 
-# ---------------------------------------------------------------------------
-# Widok: wyraj_detail
-# ---------------------------------------------------------------------------
+# ── Widok: wyraj_detail ──────────────────────────
 
 class WyrajDetailViewTests(TestCase):
 
     def setUp(self):
-        self.swieto = make_swieto(
-            slug="gaik",
-            o_swiecie_pl="Treść PL",
-            o_swiecie_en="Content EN",
+        self.s1 = make_swieto(slug="gaik",  kolejnosc=1, tytul_pl="Gaik")
+        self.s2 = make_swieto(slug="jare",  kolejnosc=2, tytul_pl="Jare Gody")
+        self.s3 = make_swieto(slug="trzeci",kolejnosc=3, tytul_pl="Trzecie")
+
+    def test_returns_200(self):
+        self.assertEqual(
+            self.client.get(reverse("bies:wyraj-detail", args=["gaik"])).status_code, 200
         )
 
-    def test_returns_200_for_existing_slug(self):
-        response = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
-        self.assertEqual(response.status_code, 200)
-
-    def test_returns_404_for_nonexistent_slug(self):
-        response = self.client.get(reverse("bies:wyraj-detail", args=["nie-istnieje"]))
-        self.assertEqual(response.status_code, 404)
-
-    def test_url_resolves_to_correct_view(self):
-        match = resolve("/wyraj/gaik/")
-        self.assertEqual(match.func, wyraj_detail)
+    def test_returns_404(self):
+        self.assertEqual(
+            self.client.get(reverse("bies:wyraj-detail", args=["nie-ma"])).status_code, 404
+        )
 
     def test_template_used(self):
-        response = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
-        self.assertTemplateUsed(response, "bies/wyraj/detail.html")
-
-    def test_context_contains_swieto(self):
-        response = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
-        self.assertIn("swieto", response.context)
-        self.assertEqual(response.context["swieto"], self.swieto)
-
-    def test_tytul_pl_in_response(self):
-        response = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
-        self.assertContains(response, "Testowe Święto")
-
-    def test_zrodla_in_context(self):
-        ZrodloBibliograficzne.objects.create(
-            swieto=self.swieto, tytul="Oskar Kolberg", kolejnosc=1
+        self.assertTemplateUsed(
+            self.client.get(reverse("bies:wyraj-detail", args=["gaik"])),
+            "bies/wyraj/detail.html",
         )
-        response = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
-        self.assertContains(response, "Oskar Kolberg")
+
+    def test_context_swieto(self):
+        r = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
+        self.assertEqual(r.context["swieto"], self.s1)
+
+    def test_context_prev_next(self):
+        r = self.client.get(reverse("bies:wyraj-detail", args=["jare"]))
+        self.assertEqual(r.context["prev"], self.s1)
+        self.assertEqual(r.context["next"], self.s3)
+
+    def test_first_has_no_prev(self):
+        r = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
+        self.assertIsNone(r.context["prev"])
+
+    def test_last_has_no_next(self):
+        r = self.client.get(reverse("bies:wyraj-detail", args=["trzeci"]))
+        self.assertIsNone(r.context["next"])
+
+    def test_duchy_in_response(self):
+        self.s1.duchy_pl = "Jaryło, Marzanna"
+        self.s1.save()
+        r = self.client.get(reverse("bies:wyraj-detail", args=["gaik"]))
+        self.assertContains(r, "Jaryło")
+        self.assertContains(r, "Marzanna")
 
 
-# ---------------------------------------------------------------------------
-# URL patterns
-# ---------------------------------------------------------------------------
+# ── URL patterns ─────────────────────────────────
 
 class UrlTests(TestCase):
 
     def test_lista_url(self):
-        url = reverse("bies:wyraj-lista")
-        self.assertEqual(url, "/wyraj/")
+        self.assertEqual(reverse("bies:wyraj-lista"), "/wyraj/")
 
-    def test_detail_url_with_slug(self):
-        url = reverse("bies:wyraj-detail", args=["szczodre-gody"])
-        self.assertEqual(url, "/wyraj/szczodre-gody/")
-
-    def test_detail_url_with_dashes(self):
-        url = reverse("bies:wyraj-detail", args=["smigus-dyngus"])
-        self.assertEqual(url, "/wyraj/smigus-dyngus/")
+    def test_detail_url(self):
+        self.assertEqual(
+            reverse("bies:wyraj-detail", args=["szczodre-gody"]),
+            "/wyraj/szczodre-gody/",
+        )

@@ -5,9 +5,6 @@ from .models import Swieto, ZrodloBibliograficzne
 
 
 class ZrodloInline(admin.TabularInline):
-    """
-    Źródła bibliograficzne edytowane bezpośrednio na stronie święta.
-    """
     model = ZrodloBibliograficzne
     extra = 1
     fields = ("kolejnosc", "autor", "tytul", "wydawca_rok", "url", "url_etykieta")
@@ -16,17 +13,13 @@ class ZrodloInline(admin.TabularInline):
 
 @admin.register(Swieto)
 class SwietoAdmin(admin.ModelAdmin):
-    list_display = (
-        "tytul_pl", "tytul_en", "slug", "kolejnosc",
-        "podglad_obrazka", "zaktualizowane",
-    )
-    list_editable = ("kolejnosc",)
+    list_display   = ("tytul_pl", "tytul_en", "slug", "kolejnosc", "kolo_kat", "podglad_obrazka", "zaktualizowane")
+    list_editable  = ("kolejnosc", "kolo_kat")
     prepopulated_fields = {"slug": ("tytul_pl",)}
-    search_fields = ("tytul_pl", "tytul_en", "slug")
-    ordering = ("kolejnosc", "tytul_pl")
+    search_fields  = ("tytul_pl", "tytul_en", "slug")
+    ordering       = ("kolejnosc", "tytul_pl")
     readonly_fields = ("podglad_obrazka", "utworzone", "zaktualizowane")
-
-    inlines = [ZrodloInline]
+    inlines        = [ZrodloInline]
 
     fieldsets = (
         ("Identyfikator", {
@@ -37,6 +30,17 @@ class SwietoAdmin(admin.ModelAdmin):
                 ("tytul_pl", "tytul_en"),
                 ("podtytul_pl", "podtytul_en"),
             ),
+        }),
+        ("Koło Roku", {
+            "fields": (("kolo_kat", "kolo_kolor"),),
+            "description": (
+                "kolo_kat: 0° = szczyt (przesilenie zimowe), dalej zgodnie z ruchem wskazówek. "
+                "Równonoc wiosenna ≈ 90°, przesilenie letnie ≈ 180°, równonoc jesienna ≈ 270°."
+            ),
+        }),
+        ("Duchy i bóstwa", {
+            "fields": (("duchy_pl", "duchy_en"),),
+            "description": "Oddzielone przecinkami, np. 'Jaryło, Marzanna, Wiosna'.",
         }),
         ("SEO", {
             "classes": ("collapse",),
@@ -64,8 +68,8 @@ class SwietoAdmin(admin.ModelAdmin):
     def podglad_obrazka(self, obj):
         if obj.obraz:
             return format_html(
-                '<img src="{}" style="max-height:90px; max-width:180px;'
-                ' object-fit:cover; border-radius:6px;"/>',
+                '<img src="{}" style="max-height:80px;max-width:160px;'
+                'object-fit:cover;border-radius:5px;"/>',
                 obj.obraz.url,
             )
         return "—"

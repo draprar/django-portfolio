@@ -1,58 +1,56 @@
 /* =============================================
-   WYRAJ — wyraj.js
-   • Loader
-   • Lang switch
-   • Scroll reveal
-   • Hero parallax
-   • Particle sparks on card hover
+   WYRAJ — wyraj.js  v2
+   loader · lang switch · scroll reveal
+   hero parallax · spark particles
+   koło roku · reader mode · prev/next keyboard
    ============================================= */
 
 // ── 1. LOADER ───────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   if (!loader) return;
-  window.addEventListener("load", () => {
+  const hide = () => {
     loader.style.opacity = "0";
-    setTimeout(() => { loader.style.display = "none"; }, 600);
-  });
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => { loader.style.display = "none"; }, 600);
-  }, 3500);
+    setTimeout(() => { loader.style.display = "none"; }, 620);
+  };
+  window.addEventListener("load", hide);
+  setTimeout(hide, 3500); // fallback
 });
 
 // ── 2. LANG SWITCH ──────────────────────────────
+const LANG_KEY = "wyraj_lang";
+
 window.switchLang = function (lang) {
-  const ids = [["pl","en"], ["pl-footer","en-footer"]];
-
-  function fadeSwitch(showEl, hideEl) {
-    if (!showEl || !hideEl) return;
-    hideEl.style.opacity = "0";
-    hideEl.classList.remove("active");
-    showEl.classList.add("active");
-    showEl.style.opacity = "0";
-    setTimeout(() => (showEl.style.opacity = "1"), 50);
-  }
-
-  ids.forEach(([plId, enId]) => {
-    const pl = document.getElementById(plId);
-    const en = document.getElementById(enId);
-    if (lang === "pl") fadeSwitch(pl, en);
-    else               fadeSwitch(en, pl);
+  // Wszystkie elementy z klasą .lang chowamy,
+  // te których id pasuje do lang lub lang-* pokazujemy
+  document.querySelectorAll(".lang").forEach(el => {
+    el.classList.remove("active");
+  });
+  document.querySelectorAll(`[id^="${lang}"]`).forEach(el => {
+    // Tylko bezpośrednie dopasowanie: "pl", "pl-footer", "pl-nav", "pl-grid"
+    if (el.id === lang || el.id.startsWith(lang + "-")) {
+      el.classList.add("active");
+    }
   });
 
   document.querySelectorAll(".switch button").forEach(btn => {
     btn.classList.toggle("active", btn.textContent.trim().toLowerCase() === lang);
   });
+
+  document.documentElement.lang = lang === "en" ? "en" : "pl";
+
+  try { localStorage.setItem(LANG_KEY, lang); } catch (_) {}
 };
+
+// Przywróć język
+(function () {
+  let saved = "pl";
+  try { saved = localStorage.getItem(LANG_KEY) || "pl"; } catch (_) {}
+  if (saved === "en") window.switchLang("en");
+})();
 
 // ── 3. SCROLL REVEAL ────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  const targets = document.querySelectorAll(
-    ".section-title, .tresc, .zrodla, .box, .swieto-card, .ornament"
-  );
-  targets.forEach(el => el.classList.add("reveal"));
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -60,22 +58,21 @@ document.addEventListener("DOMContentLoaded", () => {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  targets.forEach(el => obs.observe(el));
+  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 });
 
 // ── 4. HERO PARALLAX ────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   const heroImg = document.querySelector(".hero-img");
   if (!heroImg) return;
-
   let ticking = false;
   window.addEventListener("scroll", () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        heroImg.style.transform = `scale(1.06) translateY(${scrollY * 0.25}px)`;
+        heroImg.style.transform =
+          `scale(1.06) translateY(${window.scrollY * 0.25}px)`;
         ticking = false;
       });
       ticking = true;
@@ -83,55 +80,189 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ── 5. SPARK PARTICLES ON CARD HOVER ────────────
+// ── 5. SPARK PARTICLES ──────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".swieto-card");
-  if (!cards.length) return;
+  document.querySelectorAll(".swieto-card").forEach(card => {
+    card.addEventListener("mouseenter", e => {
+      const rect = card.getBoundingClientRect();
+      for (let i = 0; i < 7; i++) {
+        const spark = document.createElement("span");
+        const angle = (360 / 7) * i;
+        const dist  = 28 + Math.random() * 22;
+        const dx = Math.cos((angle * Math.PI) / 180) * dist;
+        const dy = Math.sin((angle * Math.PI) / 180) * dist;
+        Object.assign(spark.style, {
+          position: "absolute",
+          left: (e.clientX - rect.left) + "px",
+          top:  (e.clientY - rect.top)  + "px",
+          width: "4px", height: "4px", borderRadius: "50%",
+          background: "radial-gradient(circle, #f5e1a4, #c4922a)",
+          pointerEvents: "none", zIndex: "20",
+          transform: "translate(-50%,-50%) scale(1)",
+          transition: "transform .5s ease, opacity .5s ease",
+          opacity: "1",
+        });
+        card.style.position = "relative";
+        card.appendChild(spark);
+        requestAnimationFrame(() => {
+          spark.style.transform =
+            `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0)`;
+          spark.style.opacity = "0";
+        });
+        setTimeout(() => spark.remove(), 520);
+      }
+    });
+  });
+});
 
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", e => spawnSparks(e, card));
+// ── 6. KOŁO ROKU ────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  const data = window.KOLO_DATA;
+  if (!data || !data.length) return;
+
+  const svg    = document.getElementById("kolo-svg");
+  const group  = document.getElementById("kolo-nodes");
+  const tooltip = document.getElementById("kolo-tooltip");
+  if (!svg || !group) return;
+
+  const CX = 250, CY = 250, R = 185; // promień rozmieszczenia węzłów
+
+  const currentLang = () => {
+    try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
+  };
+
+  data.forEach((s, idx) => {
+    // Kąt: 0° = góra, rosnąco zgodnie z ruchem wskazówek
+    const rad = ((s.kat - 90) * Math.PI) / 180;
+    const x   = CX + R * Math.cos(rad);
+    const y   = CY + R * Math.sin(rad);
+
+    // Linia od centrum do węzła
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", CX); line.setAttribute("y1", CY);
+    line.setAttribute("x2", x);  line.setAttribute("y2", y);
+    line.setAttribute("stroke", "rgba(196,146,42,0.12)");
+    line.setAttribute("stroke-width", "1");
+    group.appendChild(line);
+
+    // Węzeł — klikalny
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("class", "kolo-node");
+    g.setAttribute("tabindex", "0");
+    g.setAttribute("role", "link");
+    g.setAttribute("aria-label", s.tytul_pl);
+    g.style.cursor = "pointer";
+
+    // Halo (glow)
+    const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    halo.setAttribute("cx", x); halo.setAttribute("cy", y); halo.setAttribute("r", "18");
+    halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.12");
+    halo.setAttribute("class", "node-halo");
+
+    // Węzeł właściwy
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", "10");
+    circle.setAttribute("fill", s.kolor);
+    circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
+    circle.setAttribute("filter", "url(#glow)");
+
+    // Etykieta — po zewnętrznej stronie koła
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    // Przesunięcie etykiety od węzła (w kierunku od centrum)
+    const labelR = R + 28;
+    const lx = CX + labelR * Math.cos(rad);
+    const ly = CY + labelR * Math.sin(rad);
+    label.setAttribute("x", lx); label.setAttribute("y", ly);
+    label.setAttribute("text-anchor",
+      lx < CX - 5 ? "end" : lx > CX + 5 ? "start" : "middle");
+    label.setAttribute("dominant-baseline", "middle");
+    label.setAttribute("font-size", "10");
+    label.setAttribute("font-family", "'Playfair Display', serif");
+    label.setAttribute("fill", "rgba(245,225,164,0.75)");
+    label.setAttribute("class", "node-label");
+    label.setAttribute("data-pl", s.tytul_pl);
+    label.setAttribute("data-en", s.tytul_en);
+    label.textContent = s.tytul_pl;
+
+    g.appendChild(halo);
+    g.appendChild(circle);
+    g.appendChild(label);
+    group.appendChild(line);
+    group.appendChild(g);
+
+    // Interakcje
+    const goTo = () => { window.location.href = s.url; };
+
+    g.addEventListener("click", goTo);
+    g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") goTo(); });
+
+    g.addEventListener("mouseenter", () => {
+      halo.setAttribute("opacity", "0.35");
+      circle.setAttribute("r", "13");
+      if (tooltip) {
+        const lang = currentLang();
+        tooltip.querySelector(".kolo-tooltip-title").textContent =
+          lang === "en" ? s.tytul_en : s.tytul_pl;
+        tooltip.classList.add("visible");
+      }
+    });
+    g.addEventListener("mouseleave", () => {
+      halo.setAttribute("opacity", "0.12");
+      circle.setAttribute("r", "10");
+      if (tooltip) tooltip.classList.remove("visible");
+    });
   });
 
-  function spawnSparks(e, parent) {
-    const rect = parent.getBoundingClientRect();
-    const count = 7;
+  // Aktualizuj etykiety przy zmianie języka
+  const origSwitch = window.switchLang;
+  window.switchLang = function (lang) {
+    origSwitch(lang);
+    document.querySelectorAll(".node-label").forEach(el => {
+      el.textContent = lang === "en" ? el.dataset.en : el.dataset.pl;
+    });
+  };
+});
 
-    for (let i = 0; i < count; i++) {
-      const spark = document.createElement("span");
-      spark.className = "spark";
+// ── 7. READER MODE ──────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  const btn  = document.getElementById("readerToggle");
+  if (!btn) return;
 
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const angle = (360 / count) * i;
-      const dist  = 28 + Math.random() * 22;
-      const dx = Math.cos((angle * Math.PI) / 180) * dist;
-      const dy = Math.sin((angle * Math.PI) / 180) * dist;
+  const READER_KEY = "wyraj_reader";
+  const body = document.body;
 
-      Object.assign(spark.style, {
-        position:   "absolute",
-        left:        x + "px",
-        top:         y + "px",
-        width:       "4px",
-        height:      "4px",
-        borderRadius:"50%",
-        background:  "radial-gradient(circle, #f5e1a4, #c4922a)",
-        pointerEvents: "none",
-        zIndex:      "20",
-        transform:   "translate(-50%,-50%) scale(1)",
-        transition:  `transform 0.5s ease, opacity 0.5s ease`,
-        opacity:     "1",
-      });
+  const apply = (on) => {
+    body.classList.toggle("reader-mode", on);
+    btn.setAttribute("aria-pressed", String(on));
+    btn.innerHTML = on
+      ? '<i class="fa-solid fa-book-open-reader"></i>'
+      : '<i class="fa-solid fa-book-open"></i>';
+    btn.title = on ? "Wyłącz tryb czytania" : "Tryb czytania";
+    try { localStorage.setItem(READER_KEY, on ? "1" : "0"); } catch (_) {}
+  };
 
-      parent.style.position = "relative";
-      parent.appendChild(spark);
+  // Przywróć stan
+  let saved = false;
+  try { saved = localStorage.getItem(READER_KEY) === "1"; } catch (_) {}
+  apply(saved);
 
-      requestAnimationFrame(() => {
-        spark.style.transform =
-          `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0)`;
-        spark.style.opacity = "0";
-      });
+  btn.addEventListener("click", () => apply(!body.classList.contains("reader-mode")));
+});
 
-      setTimeout(() => spark.remove(), 520);
-    }
+// ── 8. NAWIGACJA KLAWIATURĄ (← →) ─────────────
+document.addEventListener("keydown", e => {
+  // Tylko gdy nie jesteśmy w polu input/textarea
+  if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) return;
+  const lang = (() => { try { return localStorage.getItem("wyraj_lang") || "pl"; } catch(_){return "pl";} })();
+  const navEl = document.getElementById(`${lang}-nav`);
+  if (!navEl) return;
+
+  if (e.key === "ArrowLeft") {
+    const prev = navEl.querySelector(".nav-prev");
+    if (prev) { e.preventDefault(); window.location.href = prev.href; }
+  }
+  if (e.key === "ArrowRight") {
+    const next = navEl.querySelector(".nav-next");
+    if (next) { e.preventDefault(); window.location.href = next.href; }
   }
 });
