@@ -1,0 +1,198 @@
+{% load static %}
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ swieto.tytul_pl }} — Wyraj</title>
+  <meta name="description" content="{{ swieto.meta_opis_pl }}">
+  {% if swieto.obraz %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ swieto.obraz.url }}">
+  {% endif %}
+  <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
+<style>
+  .box {
+    position: relative;
+    overflow: hidden;
+    {% if swieto.obraz %}
+    background:
+      linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.62)),
+      url("{{ swieto.obraz.url }}") center/cover no-repeat;
+    background-size: 150% auto !important;
+    background-position: center !important;
+    {% endif %}
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(196,146,42,0.28);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .section-title {
+    text-align: center;
+  }
+  .section-title::after {
+    width: 72px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-rune">ᛋ ✦ ᛋ</div>
+    <div class="loader-bar"></div>
+  </div>
+
+  {% if swieto.obraz %}
+  <div class="hero">
+    <img src="{{ swieto.obraz.url }}" alt="{{ swieto.tytul_pl }}" class="hero-img">
+    <div class="hero-veil"></div>
+  </div>
+  {% endif %}
+
+  <div class="page-wrap">
+    <div class="page-content">
+
+      <div class="switch">
+        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+        <button type="button" onclick="switchLang('en')">EN</button>
+      </div>
+
+      <div class="ornament">⸻✦⸻</div>
+
+      <!-- PL -->
+      <div class="lang active" id="pl">
+        <h1>{{ swieto.tytul_pl }}</h1>
+        {% if swieto.podtytul_pl %}
+          <p class="subtitle">{{ swieto.podtytul_pl }}</p>
+        {% endif %}
+
+        <div class="tresc">
+
+          {% if swieto.o_swiecie_pl %}
+          <div class="box">
+            <div class="section-title">O święcie</div>
+            {{ swieto.o_swiecie_pl|linebreaks }}
+          </div>
+          {% endif %}
+
+          {% if swieto.obrzedy_pl %}
+          <div class="box">
+            <div class="section-title">Obrzędy</div>
+            {{ swieto.obrzedy_pl|linebreaks }}
+          </div>
+          {% endif %}
+
+          {% if swieto.symbolika_pl %}
+          <div class="box">
+            <div class="section-title">Symbolika</div>
+            {{ swieto.symbolika_pl|linebreaks }}
+          </div>
+          {% endif %}
+
+        </div>
+
+        {% with zrodla=swieto.zrodla.all %}
+        {% if zrodla %}
+        <div class="zrodla">
+          <div class="section-title">Źródła</div>
+          <ul>
+            {% for z in zrodla %}
+            <li>
+              {% if z.autor %}<strong>{{ z.autor }}</strong>, {% endif %}
+              <em>{{ z.tytul }}</em>
+              {% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
+              {% if z.url %}
+                <a href="{{ z.url }}" target="_blank" rel="noopener">
+                  {{ z.url_etykieta|default:z.url }}
+                </a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+      </div><!-- /lang pl -->
+
+      <!-- EN -->
+      <div class="lang" id="en">
+        <h1>{{ swieto.tytul_en }}</h1>
+        {% if swieto.podtytul_en %}
+          <p class="subtitle">{{ swieto.podtytul_en }}</p>
+        {% endif %}
+
+        <div class="tresc">
+
+          {% if swieto.o_swiecie_en %}
+          <div class="box">
+            <div class="section-title">About the Feast</div>
+            {{ swieto.o_swiecie_en|linebreaks }}
+          </div>
+          {% endif %}
+
+          {% if swieto.obrzedy_en %}
+          <div class="box">
+            <div class="section-title">Rites</div>
+            {{ swieto.obrzedy_en|linebreaks }}
+          </div>
+          {% endif %}
+
+          {% if swieto.symbolika_en %}
+          <div class="box">
+            <div class="section-title">Symbolism</div>
+            {{ swieto.symbolika_en|linebreaks }}
+          </div>
+          {% endif %}
+
+        </div>
+
+        {% with zrodla=swieto.zrodla.all %}
+        {% if zrodla %}
+        <div class="zrodla">
+          <div class="section-title">Sources</div>
+          <ul>
+            {% for z in zrodla %}
+            <li>
+              {% if z.autor %}<strong>{{ z.autor }}</strong>, {% endif %}
+              <em>{{ z.tytul }}</em>
+              {% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
+              {% if z.url %}
+                <a href="{{ z.url }}" target="_blank" rel="noopener">
+                  {{ z.url_etykieta|default:z.url }}
+                </a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+      </div><!-- /lang en -->
+
+      <div class="ornament">⸻✦⸻</div>
+
+    </div><!-- /page-content -->
+
+    <footer class="footer">
+      <div class="lang active" id="pl-footer">
+        <a href="{% url 'bies:wyraj-lista' %}" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+      <div class="lang" id="en-footer">
+        <a href="{% url 'bies:wyraj-lista' %}" class="back-button">← Wyraj</a>
+        <p>© {% now "Y" %} Walery</p>
+      </div>
+    </footer>
+
+  </div><!-- /page-wrap -->
+
+  <script src="{% static 'bies/js/wyraj.js' %}"></script>
+</body>
+</html>

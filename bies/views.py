@@ -1,37 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from analytics.utils import count_visit
+
+from .models import Swieto
 
 
 @count_visit
 def wyraj_lista(request):
-    return render(request, "bies/wyraj/lista.html")
+    """Lista wszystkich świąt Koła Roku."""
+    swieta = Swieto.objects.prefetch_related("zrodla").order_by("kolejnosc", "tytul_pl")
+    return render(request, "bies/wyraj/lista.html", {"swieta": swieta})
 
 
 @count_visit
-def wyraj_swietowit_letni(request):
-    return render(request, "bies/wyraj/swietowit-letni/index.html")
-
-@count_visit
-def wyraj_gaik(request):
-    return render(request, "bies/wyraj/gaik/index.html")
-
-@count_visit
-def wyraj_radonica(request):
-    return render(request, "bies/wyraj/radonica/index.html")
-
-@count_visit
-def wyraj_smigus_dyngus(request):
-    return render(request, "bies/wyraj/smigus-dyngus/index.html")
-
-@count_visit
-def wyraj_jare_gody(request):
-    return render(request, "bies/wyraj/jare-gody/index.html")
-
-@count_visit
-def wyraj_miesopust(request):
-    return render(request, "bies/wyraj/miesopust/index.html")
-
-@count_visit
-def wyraj_szczodre_gody(request):
-    return render(request, "bies/wyraj/szczodre-gody/index.html")
+def wyraj_detail(request, slug):
+    """
+    Uniwersalny widok szczegółowy dla dowolnego święta.
+    Zastępuje 7 osobnych widoków (wyraj_gaik, wyraj_radonica, itd.).
+    """
+    swieto = get_object_or_404(
+        Swieto.objects.prefetch_related("zrodla"), slug=slug
+    )
+    return render(request, "bies/wyraj/detail.html", {"swieto": swieto})
