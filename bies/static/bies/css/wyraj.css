@@ -528,11 +528,14 @@ a:hover { color: var(--gold); }
 }
 .swieto-nav .lang {
   display: none;
+}
+
+.swieto-nav .lang.active {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
 }
-.swieto-nav .lang.active { display: flex; }
 
 .nav-prev, .nav-next {
   display: flex;
@@ -658,8 +661,32 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
   }
 }
 
+.swieto-nav .lang {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.nav-kolo {
+  font-size: 2.8rem !important;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(196,146,42,0.45);
+}
+
 @media (max-width: 400px) {
-  .swieto-nav .lang.active { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
-  .nav-prev, .nav-next, .nav-empty { max-width: 100%; }
-  .nav-kolo { order: -1; }
+  .swieto-nav .lang.active {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.6rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .nav-prev, .nav-next, .nav-empty {
+    max-width: 100%;
+  }
+
+  .nav-kolo {
+    order: 0 !important;
+  }
 }
