@@ -112,23 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const data = window.KOLO_DATA;
   if (!data || !data.length) return;
 
-  const svg     = document.getElementById("kolo-svg");
-  const group   = document.getElementById("kolo-nodes");
-  const tooltip = document.getElementById("kolo-tooltip");
+  const svg   = document.getElementById("kolo-svg");
+  const group = document.getElementById("kolo-nodes");
   if (!svg || !group) return;
 
-  const CX = 250;
-  const CY = 250;
+  const CX = 250, CY = 250;
   const isMobile = window.innerWidth < 768;
-
-  const NODE_R  = isMobile ? 130 : 155;
-  const LABEL_R = isMobile ? 170 : 192;
+  const NODE_R   = isMobile ? 130 : 155;
+  const LABEL_R  = isMobile ? 170 : 192;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
   };
 
-  // ── build the "active feast" panel above the wheel ──────────────────────────
+  // ── Panel ───────────────────────────────────────────────────────────────────
   const koloWrap = document.querySelector(".kolo-wrap");
   const panel = document.createElement("div");
   panel.id = "kolo-panel";
@@ -151,19 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   koloWrap.parentNode.insertBefore(panel, koloWrap);
 
-  // pointer to panel elements
   const panelName = panel.querySelector(".kolo-panel-name");
   const panelSub  = panel.querySelector(".kolo-panel-sub");
   const panelBtn  = panel.querySelector(".kolo-panel-btn");
 
-  // ── build SVG nodes (static positions, wheel rotates as a whole) ─────────────
-  const nodeEls = []; // {g, halo, circle, label, data}
-
-  // Separate static group for labels — never rotated, only x/y updated
-  const labelGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  labelGroup.id = "kolo-labels";
-  svg.appendChild(labelGroup);
-
+  // ── Label helpers ───────────────────────────────────────────────────────────
   const buildLabel = (el, title, atX) => {
     el.replaceChildren();
     if (title.length > 7 && title.includes(" ")) {
@@ -181,117 +170,97 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  data.forEach((s) => {
-    const rad = ((s.kat - 90) * Math.PI) / 180;
-    const x = CX + NODE_R * Math.cos(rad);
-    const y = CY + NODE_R * Math.sin(rad);
+  // ── Build nodes ─────────────────────────────────────────────────────────────
+  // Labels live in a SEPARATE group that is never CSS-transformed.
+  // During spin-in it is hidden; revealed on animationend.
+  const labelGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  labelGroup.id = "kolo-labels";
+  labelGroup.setAttribute("visibility", "hidden"); // hidden during spin-in
+  svg.appendChild(labelGroup);
 
+  const nodeEls = [];
+
+  data.forEach((s) => {
+    const rad0 = ((s.kat - 90) * Math.PI) / 180;
+    const x0   = CX + NODE_R  * Math.cos(rad0);
+    const y0   = CY + NODE_R  * Math.sin(rad0);
+    const lx0  = CX + LABEL_R * Math.cos(rad0);
+    const ly0  = CY + LABEL_R * Math.sin(rad0);
+
+    // dot + halo in the rotating group
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("class", "kolo-node");
-    g.setAttribute("tabindex", "-1");
-    g.setAttribute("role", "button");
-    g.setAttribute("aria-label", s.tytul_pl);
-    g.style.cursor = "default";
 
     const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    halo.setAttribute("cx", x); halo.setAttribute("cy", y); halo.setAttribute("r", "20");
-    halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.1");
+    halo.setAttribute("cx", x0); halo.setAttribute("cy", y0); halo.setAttribute("r", "20");
+    halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.08");
     halo.setAttribute("class", "node-halo");
 
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", "10");
+    circle.setAttribute("cx", x0); circle.setAttribute("cy", y0); circle.setAttribute("r", "10");
     circle.setAttribute("fill", s.kolor);
     circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
     circle.setAttribute("filter", "url(#glow)");
-
-    // Label lives in static labelGroup — position only, no transform ever
-    const lx = CX + LABEL_R * Math.cos(rad);
-    const ly = CY + LABEL_R * Math.sin(rad);
-    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    label.setAttribute("x", lx); label.setAttribute("y", ly);
-    label.setAttribute("text-anchor", lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle");
-    label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("font-size", isMobile ? "13" : "14");
-    label.setAttribute("font-family", "'Playfair Display', serif");
-    label.setAttribute("fill", "rgba(245,225,164,0.75)");
-    label.setAttribute("class", "node-label");
-    label.setAttribute("data-pl", s.tytul_pl);
-    label.setAttribute("data-en", s.tytul_en);
-    buildLabel(label, s.tytul_pl, lx);
-    labelGroup.appendChild(label);
 
     g.appendChild(halo);
     g.appendChild(circle);
     group.appendChild(g);
 
+    // label in the STATIC group
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("x", lx0); label.setAttribute("y", ly0);
+    label.setAttribute("text-anchor", lx0 < CX - 8 ? "end" : lx0 > CX + 8 ? "start" : "middle");
+    label.setAttribute("dominant-baseline", "middle");
+    label.setAttribute("font-size", isMobile ? "13" : "14");
+    label.setAttribute("font-family", "'Playfair Display', serif");
+    label.setAttribute("fill", "rgba(245,225,164,0.65)");
+    label.setAttribute("class", "node-label");
+    label.setAttribute("data-pl", s.tytul_pl);
+    label.setAttribute("data-en", s.tytul_en);
+    buildLabel(label, s.tytul_pl, lx0);
+    labelGroup.appendChild(label);
+
     nodeEls.push({ g, halo, circle, label, data: s });
   });
 
-  // ── DIAL STATE ────────────────────────────────────────────────────────────────
-  // currentAngle: current rotation of the whole SVG (in degrees).
-  // Each node lives at s.kat degrees. The "active" node is whichever one,
-  // after rotation, lands closest to 0° (top = 12 o'clock).
-  // Active node angle (in wheel space) = (s.kat + currentAngle) mod 360.
-  // We want that to be 0°, so we want currentAngle = -s.kat (mod 360).
+  // ── State ───────────────────────────────────────────────────────────────────
+  // wheelAngle: accumulated rotation in degrees (unbounded — never wraps).
+  // Snapping always moves to the nearest snap angle *from the current value*
+  // by the shortest path, so we never get surprise full-circle jumps.
+  let wheelAngle = 0;
+  let activeIdx  = 0;
+  let dialActive = false;
 
-  let currentAngle = 0; // degrees, applied as transform to #kolo-nodes
-  let activeIdx    = 0;
-  let dialActive   = false; // true after spin-in ends
-
-  // Snap angles: for each node, the rotation that brings it to the top
-  const snapAngles = data.map(s => {
-    let a = -s.kat % 360;
-    if (a > 180) a -= 360;
-    if (a < -180) a += 360;
+  // snapBase[i]: the base angle (−180..180) that puts node i at the top.
+  // During snapping we find the version of this angle nearest to wheelAngle.
+  const snapBase = data.map(s => {
+    let a = ((-s.kat) % 360 + 360) % 360;   // 0..360
+    if (a > 180) a -= 360;                   // −180..180
     return a;
   });
 
-  const setActiveNode = (idx, animate = true) => {
-    activeIdx = ((idx % data.length) + data.length) % data.length;
-    const lang = currentLang();
-    const s = data[activeIdx];
-
-    // panel update
-    panel.classList.add("kolo-panel-changing");
-    setTimeout(() => {
-      panelName.textContent = lang === "en" ? s.tytul_en : s.tytul_pl;
-      panelSub.textContent  = s.data_pl ? (lang === "en" ? (s.data_en || "") : s.data_pl) : "";
-      panelBtn.href         = s.url;
-      panel.classList.remove("kolo-panel-changing");
-    }, 180);
-
-    // highlight active node
-    nodeEls.forEach(({ halo: h, circle: c, label: l }, i) => {
-      if (i === activeIdx) {
-        h.setAttribute("opacity", "0.38");
-        c.setAttribute("r", "14");
-        c.setAttribute("filter", "url(#glow)");
-        l.setAttribute("fill", "rgba(245,225,164,1)");
-        l.style.fontWeight = "900";
-      } else {
-        h.setAttribute("opacity", "0.08");
-        c.setAttribute("r", "10");
-        l.setAttribute("fill", "rgba(245,225,164,0.6)");
-        l.style.fontWeight = "";
-      }
-    });
+  // Return the snap angle for node i that is closest to `from` (no wrap jump).
+  const nearestSnap = (i, from) => {
+    let base = snapBase[i];
+    // Shift base by full rotations until it is closest to `from`
+    const diff = from - base;
+    base += Math.round(diff / 360) * 360;
+    return base;
   };
 
-  // Rotate circles via CSS transform on the nodes group (fast).
-  // Labels are in a separate static group — only their x/y SVG attributes move.
-  const applyRotation = (deg, transition = false) => {
-    // Rotate the dots group
-    group.style.transition = transition ? "transform 0.45s cubic-bezier(0.25,1,0.5,1)" : "none";
+  // ── Apply rotation ──────────────────────────────────────────────────────────
+  // Dots: CSS rotate on group (GPU, smooth).
+  // Labels: SVG x/y attributes only — zero CSS transform, always upright.
+  const applyRotation = (deg, snap = false) => {
+    group.style.transition    = snap ? "transform 0.42s cubic-bezier(0.25,1,0.5,1)" : "none";
     group.style.transformOrigin = `${CX}px ${CY}px`;
-    group.style.transform = `rotate(${deg}deg)`;
+    group.style.transform     = `rotate(${deg}deg)`;
 
-    // Reposition labels by updating SVG attributes only — no CSS transform, ever
-    const radOffset = (deg * Math.PI) / 180;
+    const radOff = (deg * Math.PI) / 180;
     nodeEls.forEach(({ label }, i) => {
-      const s  = data[i];
-      const rad = ((s.kat - 90) * Math.PI) / 180 + radOffset;
-      const lx = CX + LABEL_R * Math.cos(rad);
-      const ly = CY + LABEL_R * Math.sin(rad);
+      const rad = ((data[i].kat - 90) * Math.PI) / 180 + radOff;
+      const lx  = CX + LABEL_R * Math.cos(rad);
+      const ly  = CY + LABEL_R * Math.sin(rad);
       label.setAttribute("x", lx);
       label.setAttribute("y", ly);
       label.setAttribute("text-anchor", lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle");
@@ -299,125 +268,147 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Snap to nearest node
-  const snapToNearest = () => {
-    // Normalize currentAngle
-    let norm = ((currentAngle % 360) + 360) % 360;
-    if (norm > 180) norm -= 360;
+  // ── Highlight active node ───────────────────────────────────────────────────
+  let panelTimer = null;
+  const setActiveNode = (idx) => {
+    activeIdx = ((idx % data.length) + data.length) % data.length;
+    const lang = currentLang();
+    const s = data[activeIdx];
 
-    let bestIdx = 0, bestDist = Infinity;
-    snapAngles.forEach((sa, i) => {
-      // distance between norm and sa (both -180..180)
-      let d = Math.abs(norm - sa);
-      if (d > 180) d = 360 - d;
-      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    clearTimeout(panelTimer);
+    panel.classList.add("kolo-panel-changing");
+    panelTimer = setTimeout(() => {
+      panelName.textContent = lang === "en" ? s.tytul_en : s.tytul_pl;
+      panelSub.textContent  = s.data_pl ? (lang === "en" ? (s.data_en || "") : s.data_pl) : "";
+      panelBtn.href         = s.url;
+      panel.classList.remove("kolo-panel-changing");
+    }, 160);
+
+    nodeEls.forEach(({ halo: h, circle: c, label: l }, i) => {
+      const active = i === activeIdx;
+      h.setAttribute("opacity", active ? "0.35" : "0.08");
+      c.setAttribute("r",       active ? "14"   : "10");
+      l.setAttribute("fill",    active ? "rgba(245,225,164,1)" : "rgba(245,225,164,0.65)");
+      l.style.fontWeight = active ? "700" : "";
     });
+  };
 
-    currentAngle = snapAngles[bestIdx];
-    applyRotation(currentAngle, true);
+  // ── Snap to nearest node ────────────────────────────────────────────────────
+  const snapToNearest = () => {
+    let bestIdx = 0, bestDist = Infinity;
+    data.forEach((_, i) => {
+      const target = nearestSnap(i, wheelAngle);
+      const dist   = Math.abs(wheelAngle - target);
+      if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+    });
+    wheelAngle = nearestSnap(bestIdx, wheelAngle);
+    applyRotation(wheelAngle, true);
     setActiveNode(bestIdx);
   };
 
-  // ── DRAG / SWIPE ─────────────────────────────────────────────────────────────
-  let dragging   = false;
-  let lastAngle  = 0; // angle of pointer relative to wheel centre at drag start
-  let startRot   = 0; // currentAngle at drag start
-  let velocity   = 0;
-  let lastTime   = 0;
-  let lastDeltaA = 0;
+  // ── Drag / swipe ────────────────────────────────────────────────────────────
+  // Track delta between consecutive move events (not from drag-start),
+  // so wrap-around at ±180° never causes a jump.
+  let dragging    = false;
+  let prevPtrAngle = 0;
+  let velDeg      = 0;  // degrees/ms
+  let prevTime    = 0;
 
-  const pointerAngle = (e) => {
-    const rect = svg.getBoundingClientRect();
-    const cx   = rect.left + rect.width / 2;
-    const cy   = rect.top  + rect.height / 2;
-    const px   = (e.touches ? e.touches[0].clientX : e.clientX) - cx;
-    const py   = (e.touches ? e.touches[0].clientY : e.clientY) - cy;
-    return (Math.atan2(py, px) * 180) / Math.PI;
+  const ptrAngle = (e) => {
+    const r  = svg.getBoundingClientRect();
+    const cx = r.left + r.width  / 2;
+    const cy = r.top  + r.height / 2;
+    const px = (e.touches ? e.touches[0].clientX : e.clientX) - cx;
+    const py = (e.touches ? e.touches[0].clientY : e.clientY) - cy;
+    return Math.atan2(py, px) * 180 / Math.PI;
   };
 
   const onDragStart = (e) => {
     if (!dialActive) return;
-    dragging  = true;
-    lastAngle = pointerAngle(e);
-    startRot  = currentAngle;
-    velocity  = 0;
-    lastTime  = Date.now();
+    dragging     = true;
+    prevPtrAngle = ptrAngle(e);
+    velDeg       = 0;
+    prevTime     = Date.now();
     group.style.transition = "none";
     e.preventDefault();
   };
 
   const onDragMove = (e) => {
     if (!dragging) return;
-    const pa    = pointerAngle(e);
-    let delta   = pa - lastAngle;
-    if (delta > 180)  delta -= 360;
+    e.preventDefault();
+
+    const now  = Date.now();
+    const cur  = ptrAngle(e);
+
+    // shortest-arc delta between previous and current pointer angle
+    let delta = cur - prevPtrAngle;
+    if (delta >  180) delta -= 360;
     if (delta < -180) delta += 360;
-    lastDeltaA   = delta;
-    currentAngle = startRot + delta;
 
-    // velocity tracking
-    const now = Date.now();
-    velocity  = delta / Math.max(1, now - lastTime);
-    lastTime  = now;
+    // update velocity (degrees per ms, smoothed slightly)
+    const dt = Math.max(1, now - prevTime);
+    velDeg   = velDeg * 0.6 + (delta / dt) * 0.4;
 
-    applyRotation(currentAngle);
-    // live preview of closest node
-    let norm = ((currentAngle % 360) + 360) % 360;
-    if (norm > 180) norm -= 360;
+    wheelAngle   += delta;
+    prevPtrAngle  = cur;
+    prevTime      = now;
+
+    applyRotation(wheelAngle);
+
+    // live highlight closest node without snapping wheel
     let bestIdx = 0, bestDist = Infinity;
-    snapAngles.forEach((sa, i) => {
-      let d = Math.abs(norm - sa);
-      if (d > 180) d = 360 - d;
-      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    data.forEach((_, i) => {
+      const target = nearestSnap(i, wheelAngle);
+      const dist   = Math.abs(wheelAngle - target);
+      if (dist < bestDist) { bestDist = dist; bestIdx = i; }
     });
     if (bestIdx !== activeIdx) setActiveNode(bestIdx);
-    e.preventDefault();
   };
 
   const onDragEnd = () => {
     if (!dragging) return;
     dragging = false;
-    // add a small momentum nudge, then snap
-    currentAngle += velocity * 80;
+    // small momentum nudge (capped so it can't spin past 2 nodes)
+    const nudge = Math.max(-60, Math.min(60, velDeg * 120));
+    wheelAngle += nudge;
     snapToNearest();
   };
 
-  // Mouse
-  svg.addEventListener("mousedown",  onDragStart, { passive: false });
-  window.addEventListener("mousemove", onDragMove, { passive: false });
+  svg.addEventListener("mousedown",   onDragStart, { passive: false });
+  window.addEventListener("mousemove", onDragMove,  { passive: false });
   window.addEventListener("mouseup",   onDragEnd);
-  // Touch
-  svg.addEventListener("touchstart",  onDragStart, { passive: false });
-  svg.addEventListener("touchmove",   onDragMove,  { passive: false });
-  svg.addEventListener("touchend",    onDragEnd);
 
-  // Scroll wheel (desktop convenience)
+  svg.addEventListener("touchstart", onDragStart, { passive: false });
+  svg.addEventListener("touchmove",  onDragMove,  { passive: false });
+  svg.addEventListener("touchend",   onDragEnd);
+
+  // Scroll wheel — one step per tick
   svg.addEventListener("wheel", (e) => {
     if (!dialActive) return;
     e.preventDefault();
-    const step = e.deltaY > 0 ? 1 : -1;
-    const next = ((activeIdx + step) + data.length) % data.length;
-    currentAngle = snapAngles[next];
-    applyRotation(currentAngle, true);
+    const dir  = e.deltaY > 0 ? 1 : -1;
+    const next = ((activeIdx + dir) + data.length) % data.length;
+    wheelAngle = nearestSnap(next, wheelAngle);
+    applyRotation(wheelAngle, true);
     setActiveNode(next);
   }, { passive: false });
 
-  // Keyboard: arrow keys when wheel is focused
+  // Keyboard
   svg.setAttribute("tabindex", "0");
   svg.addEventListener("keydown", (e) => {
     if (!dialActive) return;
     if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
       e.preventDefault();
       const next = ((activeIdx - 1) + data.length) % data.length;
-      currentAngle = snapAngles[next];
-      applyRotation(currentAngle, true);
+      wheelAngle = nearestSnap(next, wheelAngle);
+      applyRotation(wheelAngle, true);
       setActiveNode(next);
     }
     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
       e.preventDefault();
       const next = (activeIdx + 1) % data.length;
-      currentAngle = snapAngles[next];
-      applyRotation(currentAngle, true);
+      wheelAngle = nearestSnap(next, wheelAngle);
+      applyRotation(wheelAngle, true);
       setActiveNode(next);
     }
     if (e.key === "Enter" || e.key === " ") {
@@ -426,60 +417,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ── SPIN-IN INTRO ────────────────────────────────────────────────────────────
+  // ── Spin-in intro ───────────────────────────────────────────────────────────
+  // Labels hidden until spin ends (labelGroup visibility="hidden" set above).
   svg.classList.add("spinning");
 
   svg.addEventListener("animationend", () => {
     svg.classList.remove("spinning");
-    dialActive = true;
 
-    // Find node closest to top (kat closest to 0)
-    let startIdx = 0, minKat = Infinity;
+    // Snap to node closest to 0° (top)
+    let startIdx = 0, minDist = Infinity;
     data.forEach((s, i) => {
-      const k = Math.abs(((s.kat + 180) % 360) - 180);
-      if (k < minKat) { minKat = k; startIdx = i; }
+      const d = Math.abs(nearestSnap(i, 0));
+      if (d < minDist) { minDist = d; startIdx = i; }
     });
-    currentAngle = snapAngles[startIdx];
-    applyRotation(currentAngle, true);
+    wheelAngle = nearestSnap(startIdx, 0);
+    applyRotation(wheelAngle, true);
     setActiveNode(startIdx);
 
-    // reveal panel
+    // Reveal labels and panel
+    labelGroup.setAttribute("visibility", "visible");
     panel.classList.add("kolo-panel-visible");
     svg.style.cursor = "grab";
+    dialActive = true;
   }, { once: true });
 
-  // ── LANGUAGE SWITCH hook ─────────────────────────────────────────────────────
+  // ── Language switch hook ────────────────────────────────────────────────────
   const origSwitch = window.switchLang;
   window.switchLang = function (lang) {
     origSwitch(lang);
 
-    // update node labels
-    document.querySelectorAll(".node-label").forEach(el => {
-      const title = lang === "en" ? el.dataset.en : el.dataset.pl;
-      const atX = el.getAttribute("x");
-      el.replaceChildren();
-      if (title.length > 7 && title.includes(" ")) {
-        const words = title.split(" ");
-        const mid = Math.ceil(words.length / 2);
-        [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, i) => {
-          const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-          ts.setAttribute("x", atX);
-          ts.setAttribute("dy", i === 0 ? "-0.55em" : "1.15em");
-          ts.textContent = line;
-          el.appendChild(ts);
-        });
-      } else {
-        el.textContent = title;
-      }
+    nodeEls.forEach(({ label }) => {
+      const title = lang === "en" ? label.dataset.en : label.dataset.pl;
+      const atX   = label.getAttribute("x");
+      buildLabel(label, title, atX);
     });
 
-    // update panel
     if (dialActive) {
       const s = data[activeIdx];
       panelName.textContent = lang === "en" ? s.tytul_en : s.tytul_pl;
     }
 
-    // toggle button labels
     panel.querySelectorAll(".kolo-panel-btn-label-pl, .kolo-panel-btn-label-en").forEach(el => {
       el.style.display = el.classList.contains(`kolo-panel-btn-label-${lang}`) ? "" : "none";
     });
