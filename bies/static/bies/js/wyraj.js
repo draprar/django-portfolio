@@ -273,11 +273,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Apply rotation to the nodes group (not the whole SVG to keep decorative rings static)
+  // Apply rotation by repositioning every node geometrically.
+  // Labels get a counter-rotation so they always read upright.
   const applyRotation = (deg, transition = false) => {
-    group.style.transition = transition ? "transform 0.45s cubic-bezier(0.25,1,0.5,1)" : "none";
-    group.style.transformOrigin = `${CX}px ${CY}px`;
-    group.style.transform = `rotate(${deg}deg)`;
+    const tr = transition ? "transform 0.45s cubic-bezier(0.25,1,0.5,1)" : "none";
+    const radOffset = (deg * Math.PI) / 180;
+
+    nodeEls.forEach(({ halo, circle, label }, i) => {
+      const s   = data[i];
+      const rad = ((s.kat - 90) * Math.PI) / 180 + radOffset;
+
+      const nx = CX + NODE_R  * Math.cos(rad);
+      const ny = CY + NODE_R  * Math.sin(rad);
+      const lx = CX + LABEL_R * Math.cos(rad);
+      const ly = CY + LABEL_R * Math.sin(rad);
+
+      // reposition halo & circle
+      halo.setAttribute("cx", nx); halo.setAttribute("cy", ny);
+      circle.setAttribute("cx", nx); circle.setAttribute("cy", ny);
+
+      // reposition label and counter-rotate so text stays upright
+      label.setAttribute("x", lx); label.setAttribute("y", ly);
+      const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
+      label.setAttribute("text-anchor", anchor);
+
+      // counter-rotate the label around its own anchor point
+      label.style.transition = tr;
+      label.style.transformOrigin = `${lx}px ${ly}px`;
+      label.style.transform = `rotate(${-deg}deg)`;
+
+      // update tspan x values to match new lx
+      label.querySelectorAll("tspan").forEach(ts => ts.setAttribute("x", lx));
+    });
   };
 
   // Snap to nearest node

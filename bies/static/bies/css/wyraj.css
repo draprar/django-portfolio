@@ -404,7 +404,7 @@ a:hover { color: var(--gold); }
    KOLO PANEL — active feast display
    ============================================= */
 #kolo-panel {
-  width: min(600px, 96%);
+  width: min(380px, 92%);
   margin: 0 auto;
   padding: 0 0.5rem;
 
@@ -422,36 +422,33 @@ a:hover { color: var(--gold); }
 
 .kolo-panel-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.55rem;
   background: rgba(26, 30, 39, 0.85);
   border: 1px solid rgba(196,146,42,0.28);
   border-radius: 10px;
-  padding: 0.85rem 1.2rem;
+  padding: 0.9rem 1.4rem;
   backdrop-filter: blur(6px);
   transition: opacity 0.18s ease, transform 0.18s ease;
-  min-height: 68px;
+  min-height: 72px;
+  text-align: center;
 }
 #kolo-panel.kolo-panel-changing .kolo-panel-inner {
   opacity: 0;
   transform: translateY(4px);
 }
 
-.kolo-panel-rune {
-  font-size: 1.6rem;
-  color: var(--primary);
-  flex-shrink: 0;
-  animation: pulse 3.5s ease-in-out infinite;
-  text-shadow: 0 0 14px rgba(196,146,42,0.55);
-  line-height: 1;
-}
+/* rune removed — element kept in DOM but hidden */
+.kolo-panel-rune { display: none; }
 
 .kolo-panel-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.1rem;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
 }
 .kolo-panel-name {
   font-family: 'Playfair Display', serif;
@@ -463,29 +460,32 @@ a:hover { color: var(--gold); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+  width: 100%;
 }
 .kolo-panel-sub {
   font-family: 'Kaushan Script', cursive;
   font-size: 0.82rem;
   color: var(--primary);
   min-height: 1em;
+  text-align: center;
 }
 
 .kolo-panel-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  justify-content: center;
   flex-shrink: 0;
-  padding: 0.5rem 1.1rem;
+  padding: 0.45rem 1.3rem;
   background: rgba(196,146,42,0.1);
   border: 1px solid rgba(196,146,42,0.4);
   border-radius: 6px;
   color: var(--gold);
   text-decoration: none;
   font-family: 'Playfair Display', serif;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
 }
 .kolo-panel-btn:hover {
@@ -586,10 +586,9 @@ a:hover { color: var(--gold); }
 
 /* Mobile tweaks for panel */
 @media (max-width: 600px) {
-  .kolo-panel-inner  { padding: 0.7rem 0.9rem; gap: 0.7rem; }
+  .kolo-panel-inner  { padding: 0.7rem 1rem; gap: 0.45rem; }
   .kolo-panel-name   { font-size: 1rem; }
-  .kolo-panel-btn    { padding: 0.45rem 0.85rem; font-size: 0.82rem; }
-  .kolo-panel-rune   { font-size: 1.3rem; }
+  .kolo-panel-btn    { padding: 0.4rem 1rem; font-size: 0.82rem; }
 }
 
 /* WHEEL SPIN-IN INTRO ANIMATION */
