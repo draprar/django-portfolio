@@ -159,6 +159,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── build SVG nodes (static positions, wheel rotates as a whole) ─────────────
   const nodeEls = []; // {g, halo, circle, label, data}
 
+  // Separate static group for labels — never rotated, only x/y updated
+  const labelGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  labelGroup.id = "kolo-labels";
+  svg.appendChild(labelGroup);
+
+  const buildLabel = (el, title, atX) => {
+    el.replaceChildren();
+    if (title.length > 7 && title.includes(" ")) {
+      const words = title.split(" ");
+      const mid = Math.ceil(words.length / 2);
+      [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, i) => {
+        const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        ts.setAttribute("x", atX);
+        ts.setAttribute("dy", i === 0 ? "-0.55em" : "1.15em");
+        ts.textContent = line;
+        el.appendChild(ts);
+      });
+    } else {
+      el.textContent = title;
+    }
+  };
+
   data.forEach((s) => {
     const rad = ((s.kat - 90) * Math.PI) / 180;
     const x = CX + NODE_R * Math.cos(rad);
@@ -166,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("class", "kolo-node");
-    g.setAttribute("tabindex", "-1"); // focus managed by dial mode
+    g.setAttribute("tabindex", "-1");
     g.setAttribute("role", "button");
     g.setAttribute("aria-label", s.tytul_pl);
     g.style.cursor = "default";
@@ -182,12 +204,12 @@ document.addEventListener("DOMContentLoaded", () => {
     circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
     circle.setAttribute("filter", "url(#glow)");
 
-    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    // Label lives in static labelGroup — position only, no transform ever
     const lx = CX + LABEL_R * Math.cos(rad);
     const ly = CY + LABEL_R * Math.sin(rad);
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     label.setAttribute("x", lx); label.setAttribute("y", ly);
-    const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
-    label.setAttribute("text-anchor", anchor);
+    label.setAttribute("text-anchor", lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle");
     label.setAttribute("dominant-baseline", "middle");
     label.setAttribute("font-size", isMobile ? "13" : "14");
     label.setAttribute("font-family", "'Playfair Display', serif");
@@ -195,29 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
     label.setAttribute("class", "node-label");
     label.setAttribute("data-pl", s.tytul_pl);
     label.setAttribute("data-en", s.tytul_en);
-
-    const buildLabel = (el, title, atX) => {
-      el.replaceChildren();
-      if (title.length > 7 && title.includes(" ")) {
-        const words = title.split(" ");
-        const mid = Math.ceil(words.length / 2);
-        [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, i) => {
-          const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-          ts.setAttribute("x", atX);
-          ts.setAttribute("dy", i === 0 ? "-0.55em" : "1.15em");
-          ts.textContent = line;
-          el.appendChild(ts);
-        });
-      } else {
-        el.textContent = title;
-      }
-    };
-
     buildLabel(label, s.tytul_pl, lx);
+    labelGroup.appendChild(label);
 
     g.appendChild(halo);
     g.appendChild(circle);
-    g.appendChild(label);
     group.appendChild(g);
 
     nodeEls.push({ g, halo, circle, label, data: s });
@@ -273,36 +277,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Apply rotation by repositioning every node geometrically.
-  // Labels get a counter-rotation so they always read upright.
+  // Rotate circles via CSS transform on the nodes group (fast).
+  // Labels are in a separate static group — only their x/y SVG attributes move.
   const applyRotation = (deg, transition = false) => {
-    const tr = transition ? "transform 0.45s cubic-bezier(0.25,1,0.5,1)" : "none";
+    // Rotate the dots group
+    group.style.transition = transition ? "transform 0.45s cubic-bezier(0.25,1,0.5,1)" : "none";
+    group.style.transformOrigin = `${CX}px ${CY}px`;
+    group.style.transform = `rotate(${deg}deg)`;
+
+    // Reposition labels by updating SVG attributes only — no CSS transform, ever
     const radOffset = (deg * Math.PI) / 180;
-
-    nodeEls.forEach(({ halo, circle, label }, i) => {
-      const s   = data[i];
+    nodeEls.forEach(({ label }, i) => {
+      const s  = data[i];
       const rad = ((s.kat - 90) * Math.PI) / 180 + radOffset;
-
-      const nx = CX + NODE_R  * Math.cos(rad);
-      const ny = CY + NODE_R  * Math.sin(rad);
       const lx = CX + LABEL_R * Math.cos(rad);
       const ly = CY + LABEL_R * Math.sin(rad);
-
-      // reposition halo & circle
-      halo.setAttribute("cx", nx); halo.setAttribute("cy", ny);
-      circle.setAttribute("cx", nx); circle.setAttribute("cy", ny);
-
-      // reposition label and counter-rotate so text stays upright
-      label.setAttribute("x", lx); label.setAttribute("y", ly);
-      const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
-      label.setAttribute("text-anchor", anchor);
-
-      // counter-rotate the label around its own anchor point
-      label.style.transition = tr;
-      label.style.transformOrigin = `${lx}px ${ly}px`;
-      label.style.transform = `rotate(${-deg}deg)`;
-
-      // update tspan x values to match new lx
+      label.setAttribute("x", lx);
+      label.setAttribute("y", ly);
+      label.setAttribute("text-anchor", lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle");
       label.querySelectorAll("tspan").forEach(ts => ts.setAttribute("x", lx));
     });
   };
