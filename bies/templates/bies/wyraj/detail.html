@@ -119,8 +119,8 @@
 
         {% if swieto.duchy_en %}
         <div class="duchy-wrap reveal">
-          <span class="duchy-label">Spirits &amp; deities:</span>
-          {% for duch in swieto.get_duchy_list|dictsort:"0" %}
+          <span class="duchy-label">Deities:</span>
+          {% for duch in swieto.get_duchy_list %}
             <span class="duch-tag">{{ duch }}</span>
           {% endfor %}
         </div>

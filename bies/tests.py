@@ -106,7 +106,7 @@ class ZrodloModelTests(TestCase):
         self.assertEqual(ZrodloBibliograficzne.objects.count(), 0)
 
 
-# ── Widok: wyraj_lista ───────────────────────────
+# ── View: wyraj_lista ────────────────────────────
 
 class WyrajListaViewTests(TestCase):
 
@@ -143,7 +143,7 @@ class WyrajListaViewTests(TestCase):
         )
 
 
-# ── Widok: wyraj_detail ──────────────────────────
+# ── View: wyraj_detail ──────────────────────────
 
 class WyrajDetailViewTests(TestCase):
 

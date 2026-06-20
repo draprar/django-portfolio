@@ -63,7 +63,7 @@ license-expression==30.4.4
 lxml==6.1.0
 marisa-trie==1.2.1
 MarkupSafe==3.0.2
-msgpack==1.1.1
+msgpack==1.2.1
 murmurhash==1.0.12
 numpy==2.3.2
 openpyxl==3.1.5

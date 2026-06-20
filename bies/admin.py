@@ -5,6 +5,7 @@ from .models import Swieto, ZrodloBibliograficzne
 
 
 class ZrodloInline(admin.TabularInline):
+    # Inline editor for bibliographic sources inside Swieto admin
     model = ZrodloBibliograficzne
     extra = 1
     fields = ("kolejnosc", "autor", "tytul", "wydawca_rok", "url", "url_etykieta")
@@ -13,58 +14,80 @@ class ZrodloInline(admin.TabularInline):
 
 @admin.register(Swieto)
 class SwietoAdmin(admin.ModelAdmin):
-    list_display   = ("tytul_pl", "tytul_en", "slug", "kolejnosc", "kolo_kat", "podglad_obrazka", "zaktualizowane")
-    list_editable  = ("kolejnosc", "kolo_kat")
-    prepopulated_fields = {"slug": ("tytul_pl",)}
-    search_fields  = ("tytul_pl", "tytul_en", "slug")
-    ordering       = ("kolejnosc", "tytul_pl")
-    readonly_fields = ("podglad_obrazka", "utworzone", "zaktualizowane")
-    inlines        = [ZrodloInline]
+    # Columns shown in the list view
+    list_display = (
+        "tytul_pl",
+        "tytul_en",
+        "slug",
+        "kolejnosc",
+        "kolo_kat",
+        "podglad_obrazka",
+        "zaktualizowane",
+    )
 
+    # Editable fields directly in list view
+    list_editable = ("kolejnosc", "kolo_kat")
+
+    # Auto-generate slug from title (PL)
+    prepopulated_fields = {"slug": ("tytul_pl",)}
+
+    # Searchable fields in admin search bar
+    search_fields = ("tytul_pl", "tytul_en", "slug")
+
+    # Default ordering in admin list view
+    ordering = ("kolejnosc", "tytul_pl")
+
+    # Read-only fields in detail view
+    readonly_fields = ("podglad_obrazka", "utworzone", "zaktualizowane")
+
+    # Inline models displayed inside Swieto admin
+    inlines = [ZrodloInline]
+
+    # Field grouping in admin form
     fieldsets = (
-        ("Identyfikator", {
+        ("Identifier", {
             "fields": ("slug", "kolejnosc"),
         }),
-        ("Tytuł i podtytuł", {
+        ("Title and Subtitle", {
             "fields": (
                 ("tytul_pl", "tytul_en"),
                 ("podtytul_pl", "podtytul_en"),
             ),
         }),
-        ("Koło Roku", {
+        ("Wheel of the Year", {
             "fields": (("kolo_kat", "kolo_kolor"),),
             "description": (
-                "kolo_kat: 0° = szczyt (przesilenie zimowe), dalej zgodnie z ruchem wskazówek. "
-                "Równonoc wiosenna ≈ 90°, przesilenie letnie ≈ 180°, równonoc jesienna ≈ 270°."
+                "kolo_kat: 0° = top (winter solstice), then clockwise. "
+                "Spring equinox ≈ 90°, summer solstice ≈ 180°, autumn equinox ≈ 270°."
             ),
         }),
-        ("Duchy i bóstwa", {
+        ("Spirits and Deities", {
             "fields": (("duchy_pl", "duchy_en"),),
-            "description": "Oddzielone przecinkami, np. 'Jaryło, Marzanna, Wiosna'.",
+            "description": "Comma-separated values, e.g. 'Jaryło, Marzanna, Spring'.",
         }),
         ("SEO", {
             "classes": ("collapse",),
             "fields": (("meta_opis_pl", "meta_opis_en"),),
         }),
-        ("Obrazek", {
+        ("Image", {
             "fields": ("obraz", "podglad_obrazka"),
         }),
-        ("O święcie", {
+        ("About", {
             "fields": ("o_swiecie_pl", "o_swiecie_en"),
         }),
-        ("Obrzędy", {
+        ("Rituals", {
             "fields": ("obrzedy_pl", "obrzedy_en"),
         }),
-        ("Symbolika", {
+        ("Symbolism", {
             "fields": ("symbolika_pl", "symbolika_en"),
         }),
-        ("Daty systemowe", {
+        ("System timestamps", {
             "classes": ("collapse",),
             "fields": ("utworzone", "zaktualizowane"),
         }),
     )
 
-    @admin.display(description="Podgląd")
+    @admin.display(description="Preview")
     def podglad_obrazka(self, obj):
         if obj.obraz:
             return format_html(
