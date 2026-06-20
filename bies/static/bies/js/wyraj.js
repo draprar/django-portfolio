@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Restore saved state
-  let saved = false;
+  let saved = true;
   try { saved = localStorage.getItem(READER_KEY) === "1"; } catch (_) {}
   apply(saved);
 
