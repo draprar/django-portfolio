@@ -458,10 +458,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     panel.querySelectorAll(".kolo-panel-btn-label-pl, .kolo-panel-btn-label-en").forEach(el => {
-      el.style.display = el.classList.contains(`kolo-panel-btn-label-${lang}`) ? "" : "none";
+      el.style.display = el.classList.contains(`kolo-panel-btn-label-${lang}`) ? "inline" : "none";
     });
     panel.querySelectorAll(".kolo-panel-hint-pl, .kolo-panel-hint-en").forEach(el => {
-      el.style.display = el.classList.contains(`kolo-panel-hint-${lang}`) ? "" : "none";
+      el.style.display = el.classList.contains(`kolo-panel-hint-${lang}`) ? "inline" : "none";
     });
   };
 });
@@ -484,9 +484,12 @@ document.addEventListener("DOMContentLoaded", () => {
     try { localStorage.setItem(READER_KEY, on ? "1" : "0"); } catch (_) {}
   };
 
-  // Restore saved state
-  let saved = true;
-  try { saved = localStorage.getItem(READER_KEY) === "1"; } catch (_) {}
+  // Restore saved state (default: reader mode OFF)
+  let saved = false;
+  try {
+    const stored = localStorage.getItem(READER_KEY);
+    if (stored !== null) saved = stored === "1";
+  } catch (_) {}
   apply(saved);
 
   btn.addEventListener("click", () => apply(!body.classList.contains("reader-mode")));
