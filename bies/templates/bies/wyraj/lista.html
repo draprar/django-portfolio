@@ -37,12 +37,11 @@
         <p class="subtitle">Slavic Wheel of the Year</p>
       </div>
 
-      <!-- ═══ KOŁO ROKU ═══ -->
+      <!-- KOŁO ROKU-->
       <div class="kolo-wrap reveal">
         <svg id="kolo-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"
              role="img" aria-label="Koło Roku — mapa słowiańskich świąt">
 
-          <!-- Tło -->
           <defs>
             <radialGradient id="kolo-bg" cx="50%" cy="50%" r="50%">
               <stop offset="0%"   stop-color="#1e2330"/>
@@ -57,7 +56,6 @@
           <circle cx="250" cy="250" r="248" fill="url(#kolo-bg)"
                   stroke="rgba(196,146,42,0.2)" stroke-width="1"/>
 
-          <!-- Pierścienie dekoracyjne -->
           <circle cx="250" cy="250" r="218" fill="none"
                   stroke="rgba(196,146,42,0.12)" stroke-width="1" stroke-dasharray="4 6"/>
           <circle cx="250" cy="250" r="155" fill="none"
@@ -65,14 +63,12 @@
           <circle cx="250" cy="250" r="60"  fill="none"
                   stroke="rgba(196,146,42,0.15)" stroke-width="1"/>
 
-          <!-- Symbole pór roku w centrum -->
           <text x="250" y="240" text-anchor="middle"
                 font-size="28" fill="rgba(196,146,42,0.6)" font-family="serif">✦</text>
           <text x="250" y="268" text-anchor="middle"
                 font-size="9" fill="rgba(196,146,42,0.4)"
                 font-family="'Playfair Display',serif" letter-spacing="2">KOŁO ROKU</text>
 
-          <!-- Węzły świąt — generowane przez JS na podstawie danych Django -->
           <g id="kolo-nodes"></g>
         </svg>
 
@@ -85,7 +81,7 @@
 
       <div class="ornament">⸻✦⸻</div>
 
-      <!-- PL siatka -->
+      <!-- PL -->
       <div class="lang active" id="pl-grid">
         <div class="swieta-grid">
           {% for s in swieta %}
@@ -108,7 +104,7 @@
         </div>
       </div>
 
-      <!-- EN siatka -->
+      <!-- EN -->
       <div class="lang" id="en-grid">
         <div class="swieta-grid">
           {% for s in swieta %}
@@ -149,7 +145,6 @@
   </div>
 
   <script>
-    /* Dane świąt z Django → JS */
     window.KOLO_DATA = {{ kolo_data|safe }};
   </script>
   <script src="{% static 'bies/js/wyraj.js' %}"></script>

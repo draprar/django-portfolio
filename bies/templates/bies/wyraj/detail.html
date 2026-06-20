@@ -37,7 +37,6 @@
     <div class="loader-bar"></div>
   </div>
 
-  <!-- Przycisk trybu czytania -->
   <button class="reader-toggle" id="readerToggle"
           aria-label="Tryb czytania" title="Tryb czytania">
     <i class="fa-solid fa-book-open"></i>
@@ -69,7 +68,7 @@
 
         {% if swieto.duchy_pl %}
         <div class="duchy-wrap reveal">
-          <span class="duchy-label">Duchy i bóstwa:</span>
+          <span class="duchy-label">bóstwa:</span>
           {% for duch in swieto.get_duchy_list %}
             <span class="duch-tag">{{ duch }}</span>
           {% endfor %}

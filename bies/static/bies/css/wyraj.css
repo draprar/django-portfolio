@@ -1,7 +1,3 @@
-/* =============================================
-   WYRAJ — Slavic Wheel of the Year
-   ============================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Kaushan+Script&display=swap');
 
 :root {
@@ -27,9 +23,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* =============================================
-   LOADER
-   ============================================= */
+/* LOADER */
 #loader {
   position: fixed;
   inset: 0;
@@ -69,9 +63,7 @@ body {
   100% { transform: translateX(400%);  }
 }
 
-/* =============================================
-   HERO
-   ============================================= */
+/* HERO */
 .hero {
   position: relative;
   width: 100%;
@@ -98,9 +90,7 @@ body {
     var(--dark) 100%);
 }
 
-/* =============================================
-   PAGE WRAPPER
-   ============================================= */
+/* PAGE WRAPPER */
 .page-wrap {
   width: 92%;
   max-width: 960px;
@@ -129,9 +119,7 @@ body {
   position: relative;
 }
 
-/* =============================================
-   LANG SWITCH
-   ============================================= */
+/* LANG SWITCH */
 .switch {
   position: absolute;
   top: 1rem; right: 1.5rem;
@@ -156,15 +144,11 @@ body {
   color: #fff;
 }
 
-/* =============================================
-   LANG VISIBILITY
-   ============================================= */
+/* LANG VISIBILITY */
 .lang { opacity:0; transition:opacity 0.4s ease; display:none; width:100%; }
 .lang.active { display:block; opacity:1; }
 
-/* =============================================
-   TYPOGRAPHY
-   ============================================= */
+/* TYPOGRAPHY */
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.4rem, 5.5vw, 3.6rem);
@@ -209,9 +193,7 @@ p {
 a { color: var(--gold-dim); text-decoration: underline; }
 a:hover { color: var(--gold); }
 
-/* =============================================
-   SECTION TITLE
-   ============================================= */
+/* SECTION TITLE */
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem; font-weight: 700;
@@ -226,9 +208,7 @@ a:hover { color: var(--gold); }
   margin-top: 6px; border-radius: 2px;
 }
 
-/* =============================================
-   CONTENT
-   ============================================= */
+/* CONTENT */
 .tresc { animation: fadeIn 1s ease both; }
 
 .tresc ul, .zrodla ul {
@@ -260,9 +240,7 @@ a:hover { color: var(--gold); }
   text-shadow: 0 0 8px rgba(196,146,42,0.5);
 }
 
-/* =============================================
-   SOURCES
-   ============================================= */
+/* SOURCES */
 .zrodla {
   margin-top: 2.8rem; padding-top: 1rem;
   border-top: 1px solid rgba(196,146,42,0.18);
@@ -273,9 +251,7 @@ a:hover { color: var(--gold); }
 .zrodla a  { color: var(--gold-dim); }
 .zrodla a:hover { color: var(--gold); }
 
-/* =============================================
-   ORNAMENT
-   ============================================= */
+/* ORNAMENT */
 .ornament {
   text-align: center; font-size: 1.44rem;
   margin: 2rem 0; color: var(--primary);
@@ -283,9 +259,7 @@ a:hover { color: var(--gold); }
   animation: pulse 4s ease-in-out infinite;
 }
 
-/* =============================================
-   FEAST GRID (lista page)
-   ============================================= */
+/* FEAST GRID */
 .swieta-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -330,9 +304,7 @@ a:hover { color: var(--gold); }
   font-size: 0.94rem; color: var(--primary);
 }
 
-/* =============================================
-   FOOTER — inside .page-wrap
-   ============================================= */
+/* FOOTER — inside .page-wrap */
 .footer {
   background: rgba(8,10,15,0.98);
   text-align: center;
@@ -375,9 +347,7 @@ a:hover { color: var(--gold); }
   color: #fff; transform: scale(1.04);
 }
 
-/* =============================================
-   ANIMATIONS
-   ============================================= */
+/* ANIMATIONS */
 @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
 @keyframes riseUp  {
   from { opacity:0; transform:translateY(16px) scale(0.97); }
@@ -393,9 +363,7 @@ a:hover { color: var(--gold); }
 }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
-/* =============================================
-   RESPONSIVE
-   ============================================= */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   body { font-size: 1.1rem; }
 
@@ -432,9 +400,7 @@ a:hover { color: var(--gold); }
   .swieta-grid  { grid-template-columns: 1fr; }
 }
 
-/* =============================================
-   WHEEL OF THE YEAR (Koło Roku)
-   ============================================= */
+/* WHEEL OF THE YEAR (Koło Roku) */
 .kolo-wrap {
   position: relative;
   width: min(600px, 96%);
@@ -444,7 +410,7 @@ a:hover { color: var(--gold); }
   width: 100%; height: auto;
   display: block;
   border-radius: 50%;
-  box-shadow: 0 0 60px rgba(196,146,42,0.08);
+  filter: drop-shadow(0 0 30px rgba(196,146,42,0.15));
 }
 .kolo-node { transition: transform 0.2s ease; }
 .kolo-node:hover,
@@ -482,38 +448,25 @@ a:hover { color: var(--gold); }
   color: var(--gold);
 }
 
-/* =============================================
-   WHEEL SPIN-IN INTRO ANIMATION
-   The wheel starts spinning fast (blurred) and
-   decelerates to rest — like an ancient wheel
-   coming to a halt.
-   ============================================= */
+/* WHEEL SPIN-IN INTRO ANIMATION */
 
-/* Spin keyframes — kept minimal on purpose.
-   Fewer stops = smoother deceleration.
-   The easing curve on the animation does all the work. */
 @keyframes koloSpinIn {
   0%   { transform: rotate(0deg);    filter: blur(7px) brightness(1.5); opacity: 0.25; }
   30%  { opacity: 1; }
   100% { transform: rotate(1080deg); filter: blur(0px) brightness(1);   opacity: 1; }
 }
 
-/* Separate keyframe just for blur — runs in sync but independently
-   so blur fades out earlier than rotation ends (feels more natural) */
 @keyframes koloBlurOut {
   0%   { filter: blur(7px) brightness(1.5); }
   60%  { filter: blur(0px) brightness(1); }
   100% { filter: blur(0px) brightness(1); }
 }
 
-/* Subtle ambient glow pulse once the wheel settles */
 @keyframes koloGlow {
-  0%, 100% { box-shadow: 0 0 60px rgba(196,146,42,0.08); }
-  50%       { box-shadow: 0 0 80px rgba(196,146,42,0.18), 0 0 120px rgba(196,146,42,0.06); }
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(196,146,42,0.12)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(196,146,42,0.30)); }
 }
 
-/* Class applied by JS to trigger the spin.
-   cubic-bezier: fast start, long gradual coast to stop — no bumps. */
 #kolo-svg.spinning {
   animation:
     koloSpinIn 3.4s cubic-bezier(0.22, 1, 0.36, 1) both,
@@ -521,12 +474,10 @@ a:hover { color: var(--gold); }
   transform-origin: center center;
 }
 
-/* During spin: hide tooltip & node pointer events to avoid accidental hovers */
 #kolo-svg.spinning .kolo-node {
   pointer-events: none;
 }
 
-/* Nodes fade in after spin settles */
 @keyframes nodeFadeIn {
   from { opacity: 0; transform: scale(0.7); }
   to   { opacity: 1; transform: scale(1); }
@@ -535,9 +486,7 @@ a:hover { color: var(--gold); }
   animation: nodeFadeIn 0.6s ease 2.8s both;
 }
 
-/* =============================================
-   SPIRITS & DEITIES (Duchy / Bóstwa)
-   ============================================= */
+/* SPIRITS & DEITIES (Duchy / Bóstwa) */
 .duchy-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -571,9 +520,7 @@ a:hover { color: var(--gold); }
   color: var(--gold);
 }
 
-/* =============================================
-   PREV / NEXT NAVIGATION
-   ============================================= */
+/* PREV / NEXT NAVIGATION */
 .swieto-nav {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);

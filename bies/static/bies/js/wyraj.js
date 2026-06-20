@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const LANG_KEY = "wyraj_lang";
 
 window.switchLang = function (lang) {
-  // Hide all .lang elements, then show those matching lang or lang-*
+  // Hide all .lang elements, then show those matching lang or lang-
   document.querySelectorAll(".lang").forEach(el => {
     el.classList.remove("active");
   });
@@ -228,8 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // WHEEL SPIN-IN INTRO
-  // Trigger the CSS spin animation shortly after DOM is ready.
-  // The CSS handles easing + blur — we just add/remove the class.
   svg.classList.add("spinning");
 
   // Re-enable pointer events on nodes once the spin is done
