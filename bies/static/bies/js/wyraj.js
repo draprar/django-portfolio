@@ -121,54 +121,77 @@ document.addEventListener("DOMContentLoaded", () => {
   const CY = 250;
   const isMobile = window.innerWidth < 768;
 
-  // Node radius and label radius — kept inside the decorative ring at r=218
-  const NODE_R   = isMobile ? 130 : 155;
-  const LABEL_R  = isMobile ? 170 : 192;
+  const NODE_R  = isMobile ? 130 : 155;
+  const LABEL_R = isMobile ? 170 : 192;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
   };
 
+  // ── build the "active feast" panel above the wheel ──────────────────────────
+  const koloWrap = document.querySelector(".kolo-wrap");
+  const panel = document.createElement("div");
+  panel.id = "kolo-panel";
+  panel.innerHTML = `
+    <div class="kolo-panel-inner">
+      <div class="kolo-panel-rune" aria-hidden="true">ᛉ</div>
+      <div class="kolo-panel-text">
+        <span class="kolo-panel-name"></span>
+        <span class="kolo-panel-sub"></span>
+      </div>
+      <a class="kolo-panel-btn" href="#" aria-label="Przejdź do święta">
+        <span class="kolo-panel-btn-label-pl">Odwiedź</span>
+        <span class="kolo-panel-btn-label-en">Visit</span>
+      </a>
+    </div>
+    <div class="kolo-panel-hint">
+      <span class="kolo-panel-hint-pl">Obróć koło, by wybrać święto</span>
+      <span class="kolo-panel-hint-en">Spin the wheel to choose a feast</span>
+    </div>
+  `;
+  koloWrap.parentNode.insertBefore(panel, koloWrap);
+
+  // pointer to panel elements
+  const panelName = panel.querySelector(".kolo-panel-name");
+  const panelSub  = panel.querySelector(".kolo-panel-sub");
+  const panelBtn  = panel.querySelector(".kolo-panel-btn");
+
+  // ── build SVG nodes (static positions, wheel rotates as a whole) ─────────────
+  const nodeEls = []; // {g, halo, circle, label, data}
+
   data.forEach((s) => {
-    // Angle: 0° = top, clockwise
     const rad = ((s.kat - 90) * Math.PI) / 180;
     const x = CX + NODE_R * Math.cos(rad);
     const y = CY + NODE_R * Math.sin(rad);
 
-    // Clickable group
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("class", "kolo-node");
-    g.setAttribute("tabindex", "0");
-    g.setAttribute("role", "link");
+    g.setAttribute("tabindex", "-1"); // focus managed by dial mode
+    g.setAttribute("role", "button");
     g.setAttribute("aria-label", s.tytul_pl);
-    g.style.cursor = "pointer";
+    g.style.cursor = "default";
 
-    // Glow halo
     const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    halo.setAttribute("cx", x); halo.setAttribute("cy", y); halo.setAttribute("r", "18");
-    halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.12");
+    halo.setAttribute("cx", x); halo.setAttribute("cy", y); halo.setAttribute("r", "20");
+    halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.1");
     halo.setAttribute("class", "node-halo");
 
-    // Main node circle
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", "10");
     circle.setAttribute("fill", s.kolor);
     circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
     circle.setAttribute("filter", "url(#glow)");
 
-    // Label — positioned between node and decorative ring
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     const lx = CX + LABEL_R * Math.cos(rad);
     const ly = CY + LABEL_R * Math.sin(rad);
     label.setAttribute("x", lx); label.setAttribute("y", ly);
-
-    // Anchor: left / right / centre depending on position on the wheel
     const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
     label.setAttribute("text-anchor", anchor);
     label.setAttribute("dominant-baseline", "middle");
     label.setAttribute("font-size", isMobile ? "13" : "14");
     label.setAttribute("font-family", "'Playfair Display', serif");
-    label.setAttribute("fill", "rgba(245,225,164,0.88)");
+    label.setAttribute("fill", "rgba(245,225,164,0.75)");
     label.setAttribute("class", "node-label");
     label.setAttribute("data-pl", s.tytul_pl);
     label.setAttribute("data-en", s.tytul_en);
@@ -178,20 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (title.length > 7 && title.includes(" ")) {
         const words = title.split(" ");
         const mid = Math.ceil(words.length / 2);
-        const line1 = words.slice(0, mid).join(" ");
-        const line2 = words.slice(mid).join(" ");
-
-        const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-        first.setAttribute("x", atX);
-        first.setAttribute("dy", "-0.55em");
-        first.textContent = line1;
-
-        const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-        second.setAttribute("x", atX);
-        second.setAttribute("dy", "1.15em");
-        second.textContent = line2;
-
-        el.append(first, second);
+        [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, i) => {
+          const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+          ts.setAttribute("x", atX);
+          ts.setAttribute("dy", i === 0 ? "-0.55em" : "1.15em");
+          ts.textContent = line;
+          el.appendChild(ts);
+        });
       } else {
         el.textContent = title;
       }
@@ -204,67 +220,252 @@ document.addEventListener("DOMContentLoaded", () => {
     g.appendChild(label);
     group.appendChild(g);
 
-    // Interactions
-    const goTo = () => { window.location.href = s.url; };
-
-    g.addEventListener("click", goTo);
-    g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") goTo(); });
-
-    g.addEventListener("mouseenter", () => {
-      halo.setAttribute("opacity", "0.35");
-      circle.setAttribute("r", "13");
-      if (tooltip) {
-        const lang = currentLang();
-        tooltip.querySelector(".kolo-tooltip-title").textContent =
-          lang === "en" ? s.tytul_en : s.tytul_pl;
-        tooltip.classList.add("visible");
-      }
-    });
-    g.addEventListener("mouseleave", () => {
-      halo.setAttribute("opacity", "0.12");
-      circle.setAttribute("r", "10");
-      if (tooltip) tooltip.classList.remove("visible");
-    });
+    nodeEls.push({ g, halo, circle, label, data: s });
   });
 
-  // WHEEL SPIN-IN INTRO
+  // ── DIAL STATE ────────────────────────────────────────────────────────────────
+  // currentAngle: current rotation of the whole SVG (in degrees).
+  // Each node lives at s.kat degrees. The "active" node is whichever one,
+  // after rotation, lands closest to 0° (top = 12 o'clock).
+  // Active node angle (in wheel space) = (s.kat + currentAngle) mod 360.
+  // We want that to be 0°, so we want currentAngle = -s.kat (mod 360).
+
+  let currentAngle = 0; // degrees, applied as transform to #kolo-nodes
+  let activeIdx    = 0;
+  let dialActive   = false; // true after spin-in ends
+
+  // Snap angles: for each node, the rotation that brings it to the top
+  const snapAngles = data.map(s => {
+    let a = -s.kat % 360;
+    if (a > 180) a -= 360;
+    if (a < -180) a += 360;
+    return a;
+  });
+
+  const setActiveNode = (idx, animate = true) => {
+    activeIdx = ((idx % data.length) + data.length) % data.length;
+    const lang = currentLang();
+    const s = data[activeIdx];
+
+    // panel update
+    panel.classList.add("kolo-panel-changing");
+    setTimeout(() => {
+      panelName.textContent = lang === "en" ? s.tytul_en : s.tytul_pl;
+      panelSub.textContent  = s.data_pl ? (lang === "en" ? (s.data_en || "") : s.data_pl) : "";
+      panelBtn.href         = s.url;
+      panel.classList.remove("kolo-panel-changing");
+    }, 180);
+
+    // highlight active node
+    nodeEls.forEach(({ halo: h, circle: c, label: l }, i) => {
+      if (i === activeIdx) {
+        h.setAttribute("opacity", "0.38");
+        c.setAttribute("r", "14");
+        c.setAttribute("filter", "url(#glow)");
+        l.setAttribute("fill", "rgba(245,225,164,1)");
+        l.style.fontWeight = "900";
+      } else {
+        h.setAttribute("opacity", "0.08");
+        c.setAttribute("r", "10");
+        l.setAttribute("fill", "rgba(245,225,164,0.6)");
+        l.style.fontWeight = "";
+      }
+    });
+  };
+
+  // Apply rotation to the nodes group (not the whole SVG to keep decorative rings static)
+  const applyRotation = (deg, transition = false) => {
+    group.style.transition = transition ? "transform 0.45s cubic-bezier(0.25,1,0.5,1)" : "none";
+    group.style.transformOrigin = `${CX}px ${CY}px`;
+    group.style.transform = `rotate(${deg}deg)`;
+  };
+
+  // Snap to nearest node
+  const snapToNearest = () => {
+    // Normalize currentAngle
+    let norm = ((currentAngle % 360) + 360) % 360;
+    if (norm > 180) norm -= 360;
+
+    let bestIdx = 0, bestDist = Infinity;
+    snapAngles.forEach((sa, i) => {
+      // distance between norm and sa (both -180..180)
+      let d = Math.abs(norm - sa);
+      if (d > 180) d = 360 - d;
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    });
+
+    currentAngle = snapAngles[bestIdx];
+    applyRotation(currentAngle, true);
+    setActiveNode(bestIdx);
+  };
+
+  // ── DRAG / SWIPE ─────────────────────────────────────────────────────────────
+  let dragging   = false;
+  let lastAngle  = 0; // angle of pointer relative to wheel centre at drag start
+  let startRot   = 0; // currentAngle at drag start
+  let velocity   = 0;
+  let lastTime   = 0;
+  let lastDeltaA = 0;
+
+  const pointerAngle = (e) => {
+    const rect = svg.getBoundingClientRect();
+    const cx   = rect.left + rect.width / 2;
+    const cy   = rect.top  + rect.height / 2;
+    const px   = (e.touches ? e.touches[0].clientX : e.clientX) - cx;
+    const py   = (e.touches ? e.touches[0].clientY : e.clientY) - cy;
+    return (Math.atan2(py, px) * 180) / Math.PI;
+  };
+
+  const onDragStart = (e) => {
+    if (!dialActive) return;
+    dragging  = true;
+    lastAngle = pointerAngle(e);
+    startRot  = currentAngle;
+    velocity  = 0;
+    lastTime  = Date.now();
+    group.style.transition = "none";
+    e.preventDefault();
+  };
+
+  const onDragMove = (e) => {
+    if (!dragging) return;
+    const pa    = pointerAngle(e);
+    let delta   = pa - lastAngle;
+    if (delta > 180)  delta -= 360;
+    if (delta < -180) delta += 360;
+    lastDeltaA   = delta;
+    currentAngle = startRot + delta;
+
+    // velocity tracking
+    const now = Date.now();
+    velocity  = delta / Math.max(1, now - lastTime);
+    lastTime  = now;
+
+    applyRotation(currentAngle);
+    // live preview of closest node
+    let norm = ((currentAngle % 360) + 360) % 360;
+    if (norm > 180) norm -= 360;
+    let bestIdx = 0, bestDist = Infinity;
+    snapAngles.forEach((sa, i) => {
+      let d = Math.abs(norm - sa);
+      if (d > 180) d = 360 - d;
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    });
+    if (bestIdx !== activeIdx) setActiveNode(bestIdx);
+    e.preventDefault();
+  };
+
+  const onDragEnd = () => {
+    if (!dragging) return;
+    dragging = false;
+    // add a small momentum nudge, then snap
+    currentAngle += velocity * 80;
+    snapToNearest();
+  };
+
+  // Mouse
+  svg.addEventListener("mousedown",  onDragStart, { passive: false });
+  window.addEventListener("mousemove", onDragMove, { passive: false });
+  window.addEventListener("mouseup",   onDragEnd);
+  // Touch
+  svg.addEventListener("touchstart",  onDragStart, { passive: false });
+  svg.addEventListener("touchmove",   onDragMove,  { passive: false });
+  svg.addEventListener("touchend",    onDragEnd);
+
+  // Scroll wheel (desktop convenience)
+  svg.addEventListener("wheel", (e) => {
+    if (!dialActive) return;
+    e.preventDefault();
+    const step = e.deltaY > 0 ? 1 : -1;
+    const next = ((activeIdx + step) + data.length) % data.length;
+    currentAngle = snapAngles[next];
+    applyRotation(currentAngle, true);
+    setActiveNode(next);
+  }, { passive: false });
+
+  // Keyboard: arrow keys when wheel is focused
+  svg.setAttribute("tabindex", "0");
+  svg.addEventListener("keydown", (e) => {
+    if (!dialActive) return;
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = ((activeIdx - 1) + data.length) % data.length;
+      currentAngle = snapAngles[next];
+      applyRotation(currentAngle, true);
+      setActiveNode(next);
+    }
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = (activeIdx + 1) % data.length;
+      currentAngle = snapAngles[next];
+      applyRotation(currentAngle, true);
+      setActiveNode(next);
+    }
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      window.location.href = data[activeIdx].url;
+    }
+  });
+
+  // ── SPIN-IN INTRO ────────────────────────────────────────────────────────────
   svg.classList.add("spinning");
 
-  // Re-enable pointer events on nodes once the spin is done
   svg.addEventListener("animationend", () => {
     svg.classList.remove("spinning");
+    dialActive = true;
+
+    // Find node closest to top (kat closest to 0)
+    let startIdx = 0, minKat = Infinity;
+    data.forEach((s, i) => {
+      const k = Math.abs(((s.kat + 180) % 360) - 180);
+      if (k < minKat) { minKat = k; startIdx = i; }
+    });
+    currentAngle = snapAngles[startIdx];
+    applyRotation(currentAngle, true);
+    setActiveNode(startIdx);
+
+    // reveal panel
+    panel.classList.add("kolo-panel-visible");
+    svg.style.cursor = "grab";
   }, { once: true });
 
-  // Update labels when language switches
+  // ── LANGUAGE SWITCH hook ─────────────────────────────────────────────────────
   const origSwitch = window.switchLang;
   window.switchLang = function (lang) {
     origSwitch(lang);
+
+    // update node labels
     document.querySelectorAll(".node-label").forEach(el => {
-        const title = lang === "en" ? el.dataset.en : el.dataset.pl;
-        const atX = el.getAttribute("x");
+      const title = lang === "en" ? el.dataset.en : el.dataset.pl;
+      const atX = el.getAttribute("x");
+      el.replaceChildren();
+      if (title.length > 7 && title.includes(" ")) {
+        const words = title.split(" ");
+        const mid = Math.ceil(words.length / 2);
+        [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, i) => {
+          const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+          ts.setAttribute("x", atX);
+          ts.setAttribute("dy", i === 0 ? "-0.55em" : "1.15em");
+          ts.textContent = line;
+          el.appendChild(ts);
+        });
+      } else {
+        el.textContent = title;
+      }
+    });
 
-        el.replaceChildren();
+    // update panel
+    if (dialActive) {
+      const s = data[activeIdx];
+      panelName.textContent = lang === "en" ? s.tytul_en : s.tytul_pl;
+    }
 
-        if (title.length > 7 && title.includes(" ")) {
-            const words = title.split(" ");
-            const mid = Math.ceil(words.length / 2);
-            const line1 = words.slice(0, mid).join(" ");
-            const line2 = words.slice(mid).join(" ");
-
-            const first = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-            first.setAttribute("x", atX);
-            first.setAttribute("dy", "-0.55em");
-            first.textContent = line1;
-
-            const second = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-            second.setAttribute("x", atX);
-            second.setAttribute("dy", "1.15em");
-            second.textContent = line2;
-
-            el.append(first, second);
-        } else {
-            el.textContent = title;
-        }
+    // toggle button labels
+    panel.querySelectorAll(".kolo-panel-btn-label-pl, .kolo-panel-btn-label-en").forEach(el => {
+      el.style.display = el.classList.contains(`kolo-panel-btn-label-${lang}`) ? "" : "none";
+    });
+    panel.querySelectorAll(".kolo-panel-hint-pl, .kolo-panel-hint-en").forEach(el => {
+      el.style.display = el.classList.contains(`kolo-panel-hint-${lang}`) ? "" : "none";
     });
   };
 });
