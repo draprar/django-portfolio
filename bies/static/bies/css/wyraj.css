@@ -1,5 +1,5 @@
 /* =============================================
-   WYRAJ — Słowiańskie Koło Roku
+   WYRAJ — Slavic Wheel of the Year
    ============================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Kaushan+Script&display=swap');
@@ -99,7 +99,7 @@ body {
 }
 
 /* =============================================
-   PAGE WRAPPER — jeden kontener ogarnia wszystko
+   PAGE WRAPPER
    ============================================= */
 .page-wrap {
   width: 92%;
@@ -114,16 +114,16 @@ body {
     inset 0 1px 0 rgba(196,146,42,0.08);
   position: relative;
   z-index: 2;
-  overflow: hidden; /* footer nie wyskakuje */
+  overflow: hidden;
 }
 
-/* lista — brak hero, normalny margines */
+/* list page — no hero, normal margin */
 .page-wrap.lista-wrap {
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
 }
 
-/* wewnętrzny padding dla treści */
+/* inner padding for content */
 .page-content {
   padding: 2.4rem 2.8rem 0;
   position: relative;
@@ -189,7 +189,7 @@ h1::after {
 }
 .lista-title::after { width: 80px; }
 
-/* Kaushan TYLKO subtitle */
+/* Kaushan only for .subtitle */
 .subtitle {
   text-align: center;
   font-family: 'Kaushan Script', cursive;
@@ -261,7 +261,7 @@ a:hover { color: var(--gold); }
 }
 
 /* =============================================
-   ŹRÓDŁA
+   SOURCES
    ============================================= */
 .zrodla {
   margin-top: 2.8rem; padding-top: 1rem;
@@ -284,7 +284,7 @@ a:hover { color: var(--gold); }
 }
 
 /* =============================================
-   LISTA KART
+   FEAST GRID (lista page)
    ============================================= */
 .swieta-grid {
   display: grid;
@@ -324,14 +324,14 @@ a:hover { color: var(--gold); }
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem; font-weight: 700; color: var(--gold);
 }
-/* Kaushan TYLKO card-sub */
+/* Kaushan only for card-sub */
 .card-sub {
   font-family: 'Kaushan Script', cursive;
   font-size: 0.94rem; color: var(--primary);
 }
 
 /* =============================================
-   FOOTER — wewnątrz .page-wrap
+   FOOTER — inside .page-wrap
    ============================================= */
 .footer {
   background: rgba(8,10,15,0.98);
@@ -339,7 +339,6 @@ a:hover { color: var(--gold); }
   padding: 2.4rem 1.5rem 2rem;
   border-top: 1px solid var(--border);
   margin-top: 2.5rem;
-  /* NIE ma margin — jest wewnątrz page-wrap */
 }
 .footer p {
   font-size: 1rem;
@@ -434,7 +433,7 @@ a:hover { color: var(--gold); }
 }
 
 /* =============================================
-   KOŁO ROKU
+   WHEEL OF THE YEAR (Koło Roku)
    ============================================= */
 .kolo-wrap {
   position: relative;
@@ -461,7 +460,7 @@ a:hover { color: var(--gold); }
     font-weight: 700;
 }
 
-/* Tooltip Koła */
+/* Wheel tooltip */
 .kolo-tooltip {
   position: absolute;
   bottom: calc(100% + 8px);
@@ -484,7 +483,53 @@ a:hover { color: var(--gold); }
 }
 
 /* =============================================
-   DUCHY / BÓSTWA
+   WHEEL SPIN-IN INTRO ANIMATION
+   The wheel starts spinning fast (blurred) and
+   decelerates to rest — like an ancient wheel
+   coming to a halt.
+   ============================================= */
+
+/* Blur filter applied during spin phase */
+@keyframes koloSpinIn {
+  0%   { transform: rotate(0deg);    filter: blur(6px) brightness(1.4); opacity: 0.3; }
+  15%  { transform: rotate(540deg);  filter: blur(4px) brightness(1.25); opacity: 0.7; }
+  55%  { transform: rotate(1260deg); filter: blur(1.5px) brightness(1.1); opacity: 0.9; }
+  80%  { transform: rotate(1530deg); filter: blur(0.4px) brightness(1.02); opacity: 1; }
+  92%  { transform: rotate(1588deg); filter: blur(0px); opacity: 1; }
+  96%  { transform: rotate(1596deg); filter: blur(0px); opacity: 1; }
+  100% { transform: rotate(1620deg); filter: blur(0px); opacity: 1; }
+}
+
+/* Subtle ambient glow pulse once the wheel settles */
+@keyframes koloGlow {
+  0%, 100% { box-shadow: 0 0 60px rgba(196,146,42,0.08); }
+  50%       { box-shadow: 0 0 80px rgba(196,146,42,0.18), 0 0 120px rgba(196,146,42,0.06); }
+}
+
+/* Class applied by JS to trigger the spin */
+#kolo-svg.spinning {
+  animation:
+    koloSpinIn 3.2s cubic-bezier(0.12, 0, 0.24, 1) both,
+    koloGlow   4s  ease-in-out 3.2s infinite;
+  transform-origin: center center;
+}
+
+/* During spin: hide tooltip & node pointer events to avoid accidental hovers */
+#kolo-svg.spinning .kolo-node {
+  pointer-events: none;
+}
+
+/* Nodes fade in after spin settles */
+@keyframes nodeFadeIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+#kolo-svg.spinning #kolo-nodes {
+  animation: nodeFadeIn 0.6s ease 2.8s both;
+}
+
+/* =============================================
+   SPIRITS & DEITIES (Duchy / Bóstwa)
    ============================================= */
 .duchy-wrap {
   display: flex;
@@ -520,13 +565,14 @@ a:hover { color: var(--gold); }
 }
 
 /* =============================================
-   NAWIGACJA PREV / NEXT
+   PREV / NEXT NAVIGATION
    ============================================= */
 .swieto-nav {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: transparent;
   padding: 1.4rem 2rem;
+  position: relative; /* needed for absolute algiz centering */
 }
 .swieto-nav .lang {
   display: none;
@@ -597,7 +643,7 @@ a:hover { color: var(--gold); }
 .nav-next .nav-info { text-align: right; }
 .nav-empty { flex: 0 0 auto; max-width: 38%; min-width: 0; }
 
-/* Runa Algiz w centrum nawigacji */
+/* Algiz rune centered in nav bar */
 .nav-kolo {
   font-size: 2.2rem !important;
   color: rgba(196,146,42,0.5);
@@ -621,7 +667,7 @@ a:hover { color: var(--gold); }
    READER MODE
    ============================================= */
 
-/* Przycisk — przyklejony do prawego górnego rogu */
+/* Fixed toggle button, top-right corner */
 .reader-toggle {
   position: fixed;
   top: 1rem; right: 1rem;
@@ -644,7 +690,7 @@ a:hover { color: var(--gold); }
   transform: scale(1.08);
 }
 
-/* Tryb czytania — aktywny */
+/* Reader mode active state */
 body.reader-mode .hero            { display: none; }
 body.reader-mode .page-wrap       { margin-top: 2rem; max-width: 720px; }
 body.reader-mode .box             {
@@ -656,11 +702,11 @@ body.reader-mode .box p           { font-size: 1.2rem; line-height: 1.95; }
 body.reader-mode h1               { font-size: clamp(2rem, 4vw, 2.8rem); }
 body.reader-mode .switch          { position: static; margin-bottom: 1rem; }
 body.reader-mode .page-content    { padding-top: 1.6rem; }
-body.reader-mode .kolo-wrap       { display: none; } /* ukryj na liście */
+body.reader-mode .kolo-wrap       { display: none; }
 body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
 
 /* =============================================
-   PLACEHOLDER — brak obrazka
+   IMAGE PLACEHOLDER (no feast image)
    ============================================= */
 .card-img-placeholder {
   width: 100%; height: 100%;
@@ -671,7 +717,64 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
 }
 
 /* =============================================
-   RESPONSIVE — uzupełnienia
+   SEASON BADGE — shown on feast cards
+   Displays which season the feast belongs to
+   as a small coloured pill in the card corner.
+   ============================================= */
+.card-season {
+  position: absolute;
+  top: 0.5rem; left: 0.5rem;
+  font-size: 0.72rem;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+  background: rgba(15,17,23,0.78);
+  border: 1px solid currentColor;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* =============================================
+   GOLDEN RUNE CURSOR TRAIL
+   Tiny rune glyphs follow the cursor for a
+   moment then fade out. Injected via JS.
+   ============================================= */
+.rune-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  font-size: 1rem;
+  color: var(--primary);
+  opacity: 0.85;
+  text-shadow: 0 0 8px rgba(196,146,42,0.9);
+  animation: runeFade 0.9s ease forwards;
+  user-select: none;
+  line-height: 1;
+}
+@keyframes runeFade {
+  0%   { opacity: 0.85; transform: translateY(0)   scale(1);    }
+  60%  { opacity: 0.5;  transform: translateY(-14px) scale(1.1); }
+  100% { opacity: 0;    transform: translateY(-28px) scale(0.7); }
+}
+
+/* =============================================
+   SCROLL PROGRESS BAR — gold line at top of page
+   ============================================= */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), #f5e1a4, var(--primary));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* =============================================
+   RESPONSIVE — tablet & mobile
    ============================================= */
 @media (max-width: 768px) {
   .kolo-wrap           { width: min(420px, 98%); }
@@ -685,10 +788,6 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
     stroke-width: 2.5px;
   }
   .nav-kolo { font-size: 1.9rem !important; }
-}
-
-.swieto-nav {
-  position: relative; /* needed for absolute algiz centering */
 }
 
 @media (max-width: 400px) {

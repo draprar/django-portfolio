@@ -1,11 +1,4 @@
-/* =============================================
-   WYRAJ — wyraj.js  v2
-   loader · lang switch · scroll reveal
-   hero parallax · spark particles
-   koło roku · reader mode · prev/next keyboard
-   ============================================= */
-
-// ── 1. LOADER ───────────────────────────────────
+// LOADER
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   if (!loader) return;
@@ -14,20 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { loader.style.display = "none"; }, 620);
   };
   window.addEventListener("load", hide);
-  setTimeout(hide, 3500); // fallback
+  setTimeout(hide, 3500); // safety fallback
 });
 
-// ── 2. LANG SWITCH ──────────────────────────────
+// LANG SWITCH
 const LANG_KEY = "wyraj_lang";
 
 window.switchLang = function (lang) {
-  // Wszystkie elementy z klasą .lang chowamy,
-  // te których id pasuje do lang lub lang-* pokazujemy
+  // Hide all .lang elements, then show those matching lang or lang-*
   document.querySelectorAll(".lang").forEach(el => {
     el.classList.remove("active");
   });
   document.querySelectorAll(`[id^="${lang}"]`).forEach(el => {
-    // Tylko bezpośrednie dopasowanie: "pl", "pl-footer", "pl-nav", "pl-grid"
+    // Exact match: "pl", "pl-footer", "pl-nav", "pl-grid"
     if (el.id === lang || el.id.startsWith(lang + "-")) {
       el.classList.add("active");
     }
@@ -42,14 +34,14 @@ window.switchLang = function (lang) {
   try { localStorage.setItem(LANG_KEY, lang); } catch (_) {}
 };
 
-// Przywróć język
+// Restore saved language on load
 (function () {
   let saved = "pl";
   try { saved = localStorage.getItem(LANG_KEY) || "pl"; } catch (_) {}
   if (saved === "en") window.switchLang("en");
 })();
 
-// ── 3. SCROLL REVEAL ────────────────────────────
+// SCROLL REVEAL
 document.addEventListener("DOMContentLoaded", () => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -63,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 });
 
-// ── 4. HERO PARALLAX ────────────────────────────
+// HERO PARALLAX
 document.addEventListener("DOMContentLoaded", () => {
   const heroImg = document.querySelector(".hero-img");
   if (!heroImg) return;
@@ -80,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ── 5. SPARK PARTICLES ──────────────────────────
+// SPARK PARTICLES
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".swieto-card").forEach(card => {
     card.addEventListener("mouseenter", e => {
@@ -115,13 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ── 6. KOŁO ROKU ────────────────────────────────
+// WHEEL OF THE YEAR
 document.addEventListener("DOMContentLoaded", () => {
   const data = window.KOLO_DATA;
   if (!data || !data.length) return;
 
-  const svg    = document.getElementById("kolo-svg");
-  const group  = document.getElementById("kolo-nodes");
+  const svg     = document.getElementById("kolo-svg");
+  const group   = document.getElementById("kolo-nodes");
   const tooltip = document.getElementById("kolo-tooltip");
   if (!svg || !group) return;
 
@@ -129,8 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const CY = 250;
   const isMobile = window.innerWidth < 768;
 
-  // Węzły na promieniu ~130 mobile / 155 desktop, etykiety za nimi
-  // Pierścień dekoracyjny jest na r=218, więc etykiety zostają wewnątrz
+  // Node radius and label radius — kept inside the decorative ring at r=218
   const NODE_R   = isMobile ? 130 : 155;
   const LABEL_R  = isMobile ? 170 : 192;
 
@@ -139,12 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   data.forEach((s) => {
-    // Kąt: 0° = góra, rosnąco zgodnie z ruchem wskazówek
+    // Angle: 0° = top, clockwise
     const rad = ((s.kat - 90) * Math.PI) / 180;
     const x = CX + NODE_R * Math.cos(rad);
     const y = CY + NODE_R * Math.sin(rad);
 
-    // Węzeł — klikalny
+    // Clickable group
     const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("class", "kolo-node");
     g.setAttribute("tabindex", "0");
@@ -152,26 +143,26 @@ document.addEventListener("DOMContentLoaded", () => {
     g.setAttribute("aria-label", s.tytul_pl);
     g.style.cursor = "pointer";
 
-    // Halo (glow)
+    // Glow halo
     const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     halo.setAttribute("cx", x); halo.setAttribute("cy", y); halo.setAttribute("r", "18");
     halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.12");
     halo.setAttribute("class", "node-halo");
 
-    // Węzeł właściwy
+    // Main node circle
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", "10");
     circle.setAttribute("fill", s.kolor);
     circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
     circle.setAttribute("filter", "url(#glow)");
 
-    // Etykieta — między węzłem a pierścieniem dekoracyjnym
+    // Label — positioned between node and decorative ring
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     const lx = CX + LABEL_R * Math.cos(rad);
     const ly = CY + LABEL_R * Math.sin(rad);
     label.setAttribute("x", lx); label.setAttribute("y", ly);
 
-    // Zakotwiczenie: lewo/prawo/środek zależnie od pozycji na kole
+    // Anchor: left / right / centre depending on position on the wheel
     const anchor = lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle";
     label.setAttribute("text-anchor", anchor);
     label.setAttribute("dominant-baseline", "middle");
@@ -213,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     g.appendChild(label);
     group.appendChild(g);
 
-    // Interakcje
+    // Interactions
     const goTo = () => { window.location.href = s.url; };
 
     g.addEventListener("click", goTo);
@@ -236,7 +227,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Aktualizuj etykiety przy zmianie języka
+  // WHEEL SPIN-IN INTRO
+  // Trigger the CSS spin animation shortly after DOM is ready.
+  // The CSS handles easing + blur — we just add/remove the class.
+  svg.classList.add("spinning");
+
+  // Re-enable pointer events on nodes once the spin is done
+  svg.addEventListener("animationend", () => {
+    svg.classList.remove("spinning");
+  }, { once: true });
+
+  // Update labels when language switches
   const origSwitch = window.switchLang;
   window.switchLang = function (lang) {
     origSwitch(lang);
@@ -270,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
-// ── 7. READER MODE ──────────────────────────────
+// READER MODE
 document.addEventListener("DOMContentLoaded", () => {
   const btn  = document.getElementById("readerToggle");
   if (!btn) return;
@@ -288,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try { localStorage.setItem(READER_KEY, on ? "1" : "0"); } catch (_) {}
   };
 
-  // Przywróć stan
+  // Restore saved state
   let saved = false;
   try { saved = localStorage.getItem(READER_KEY) === "1"; } catch (_) {}
   apply(saved);
@@ -296,9 +297,8 @@ document.addEventListener("DOMContentLoaded", () => {
   btn.addEventListener("click", () => apply(!body.classList.contains("reader-mode")));
 });
 
-// ── 8. NAWIGACJA KLAWIATURĄ (← →) ─────────────
 document.addEventListener("keydown", e => {
-  // Tylko gdy nie jesteśmy w polu input/textarea
+  // Ignore when focus is inside a form field
   if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) return;
   const lang = (() => { try { return localStorage.getItem("wyraj_lang") || "pl"; } catch(_){return "pl";} })();
   const navEl = document.getElementById(`${lang}-nav`);
@@ -313,3 +313,50 @@ document.addEventListener("keydown", e => {
     if (next) { e.preventDefault(); window.location.href = next.href; }
   }
 });
+
+// Spawns a random Elder Futhark rune near the cursor that floats up and fades.
+// Only active on non-touch devices to avoid lag on mobile.
+(function () {
+  if (window.matchMedia("(hover: none)").matches) return; // skip on touch
+
+  const RUNES = ["ᚠ","ᚢ","ᚦ","ᚨ","ᚱ","ᚲ","ᚷ","ᚹ","ᚺ","ᚾ","ᛁ","ᛃ","ᛇ","ᛈ","ᛉ","ᛊ","ᛏ","ᛒ","ᛖ","ᛗ","ᛚ","ᛜ","ᛞ","ᛟ"];
+  let last = 0;
+  const THROTTLE = 120; // ms between spawns — keeps it subtle
+
+  document.addEventListener("mousemove", e => {
+    const now = Date.now();
+    if (now - last < THROTTLE) return;
+    last = now;
+
+    const el = document.createElement("span");
+    el.className = "rune-trail";
+    el.textContent = RUNES[Math.floor(Math.random() * RUNES.length)];
+    // Small random offset so consecutive runes don't stack
+    el.style.left = (e.clientX + (Math.random() * 18 - 9)) + "px";
+    el.style.top  = (e.clientY + (Math.random() * 18 - 9)) + "px";
+    document.body.appendChild(el);
+
+    // Remove after animation ends (~900ms)
+    el.addEventListener("animationend", () => el.remove(), { once: true });
+  });
+})();
+
+// Thin golden line at the very top of the page showing read progress.
+(function () {
+  const bar = document.createElement("div");
+  bar.id = "scroll-progress";
+  document.body.prepend(bar);
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        const total    = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? ((scrolled / total) * 100) + "%" : "0%";
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
