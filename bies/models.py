@@ -58,6 +58,20 @@ class Swieto(models.Model):
         help_text="Hex color, e.g. '#a3c47a' for spring, '#c4922a' for golden tones.",
     )
 
+    # --- Calendar day of the festival (1–365) ---
+    # Used by the Wheel of the Year JS to highlight the festival closest to
+    # today's date. Count from Jan 1 = 1. For festivals straddling multiple
+    # days use the central/most important day (e.g. Noc Kupały ≈ Jun 23 = 174).
+    dzien_roku = models.PositiveSmallIntegerField(
+        default=1,
+        verbose_name="Day of year (1–365)",
+        help_text=(
+            "Approximate calendar day of this festival (Jan 1 = 1, Dec 31 = 365). "
+            "Used to auto-highlight the nearest feast on the Wheel of the Year. "
+            "E.g. Noc Kupały ≈ Jun 23 → 174, Szczodre Gody ≈ Dec 21 → 355."
+        ),
+    )
+
     # --- spirits and deities (comma-separated text) ---
     duchy_pl = models.CharField(
         max_length=300,

@@ -440,20 +440,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ── Spin-in intro ──────────────────────────────────────────────────────────
   // Find the node closest to today's calendar date and snap to it on load.
-  // Angle convention: 0° = winter solstice (top), clockwise.
-  // Day-of-year → angle: (dayOfYear / 365) * 360, shifted so Jan 1 ≈ 15°.
-  const todayAngle = (() => {
-    const now     = new Date();
-    const start   = new Date(now.getFullYear(), 0, 0);
-    const dayOfYear = Math.floor((now - start) / 86_400_000);
-    return (dayOfYear / 365) * 360;
-  })();
-
+  //
+  // Each feast has a `dzien_roku` field (1–365, set in the admin) representing
+  // its real calendar position. We compare today's day-of-year against those
+  // values. The year is treated as circular so Dec 31 → Jan 1 wraps correctly.
+  // This is fully robust to any number of feasts and any kolo_kat layout.
   const closestToToday = (() => {
+    const now       = new Date();
+    const start     = new Date(now.getFullYear(), 0, 0);
+    const todayDoy  = Math.floor((now - start) / 86_400_000); // 1–365
+
     let bestIdx = 0, bestDist = Infinity;
     data.forEach((s, i) => {
-      let diff = Math.abs(s.kat - todayAngle);
-      if (diff > 180) diff = 360 - diff; // wrap-aware
+      let diff = Math.abs(s.dzien_roku - todayDoy);
+      if (diff > 182) diff = 365 - diff; // wrap-aware (circular year)
       if (diff < bestDist) { bestDist = diff; bestIdx = i; }
     });
     return bestIdx;

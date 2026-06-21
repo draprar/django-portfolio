@@ -24,6 +24,7 @@ def wyraj_lista(request):
                 "podtytul_en": s.podtytul_en,
                 "kat":         s.kolo_kat,
                 "kolor":       s.kolo_kolor,
+                "dzien_roku":  s.dzien_roku,
                 "url":         f"/wyraj/{s.slug}/",
                 "obraz":       s.obraz.url if s.obraz else "",
             }
