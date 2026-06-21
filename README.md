@@ -19,7 +19,7 @@ A full-stack Django portfolio by an engineer-turned-developer — 8 integrated a
 | **gallery**       | Image gallery with categories | CRUD · DRF · Instagram feed integration |
 | **core**          | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
 | **rugby**         | Rugby team archive | static content |
-| **wyraj**         | Slavic Wheel of the Year | static content |
+| **bies**          | Slavic Wheel of the Year | static content |
 | **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
 
