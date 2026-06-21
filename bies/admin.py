@@ -55,10 +55,12 @@ class SwietoAdmin(admin.ModelAdmin):
             ),
         }),
         ("Wheel of the Year", {
-            "fields": (("kolo_kat", "kolo_kolor"),),
+            "fields": (("kolo_kat", "kolo_kolor"), "dzien_roku"),
             "description": (
                 "kolo_kat: 0° = top (winter solstice), then clockwise. "
-                "Spring equinox ≈ 90°, summer solstice ≈ 180°, autumn equinox ≈ 270°."
+                "Spring equinox ≈ 90°, summer solstice ≈ 180°, autumn equinox ≈ 270°. "
+                "dzien_roku: calendar day 1–365 (Jan 1 = 1) used to auto-highlight "
+                "the nearest feast on the Wheel. E.g. Noc Kupały ≈ Jun 23 → 174."
             ),
         }),
         ("Spirits and Deities", {

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ swieto.tytul_pl }} — Wyraj</title>
-  {# meta description: prefer PL; JS lang-switch cannot alter <head>, so we serve the PL version
-     which is what crawlers see. EN meta can be served via a separate EN URL if needed later. #}
+  <!-- meta description: prefer PL; JS lang-switch cannot alter <head>, so we serve the PL version
+       which is what crawlers see. EN meta can be served via a separate EN URL if needed later. -->
   <meta name="description" content="{{ swieto.meta_opis_pl }}">
   {% if swieto.obraz %}
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ swieto.obraz.url }}">
