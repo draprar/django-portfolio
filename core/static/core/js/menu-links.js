@@ -10,7 +10,8 @@ if (menuTrigger) {
       '/gallery/',
       '/tonguetwister/',
       '/rugby/',
-      '/docdiff/'
+      '/docdiff/',
+      '/wyraj/'
     ];
 
     const navLinks = menuLinks
