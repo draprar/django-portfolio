@@ -40,6 +40,15 @@ class Swieto(models.Model):
         help_text="Recommended format: PNG or JPG, min. 1200×800 px.",
     )
 
+    # --- video (card + hero background) ---
+    wideo = models.FileField(
+        upload_to="bies/swieta/video/",
+        blank=True,
+        null=True,
+        verbose_name="Video (MP4)",
+        help_text="MP4, recommended max 10 MB. Used as card thumbnail and hero background.",
+    )
+
     # --- Wheel of the Year: node angle (0° = top, clockwise direction) ---
     kolo_kat = models.SmallIntegerField(
         default=0,
