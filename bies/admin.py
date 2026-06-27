@@ -71,8 +71,12 @@ class SwietoAdmin(admin.ModelAdmin):
             "classes": ("collapse",),
             "fields": (("meta_opis_pl", "meta_opis_en"),),
         }),
-        ("Image", {
-            "fields": ("obraz", "podglad_obrazka"),
+        ("Image & Video", {
+            "fields": (
+                "obraz",
+                "wideo",
+                "podglad_obrazka",
+            ),
         }),
         ("About", {
             "fields": ("o_swiecie_pl", "o_swiecie_en"),
