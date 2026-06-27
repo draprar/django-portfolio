@@ -66,7 +66,7 @@ body {
 }
 
 /* =============================================
-   HERO
+   HERO — obsługuje zarówno <img> jak i <video>
    ============================================= */
 .hero {
   position: relative;
@@ -75,15 +75,21 @@ body {
   min-height: 340px;
   overflow: hidden;
 }
-.hero-img {
+.hero-img,
+.hero-video {
+  position: absolute;
+  inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: top center;
+  object-fit: cover;
+  /* wycentrowane w pionie i poziomie */
+  object-position: center center;
   display: block;
   filter: brightness(0.8) saturate(0.92);
   transition: filter 1.4s ease;
   transform: scale(1.03);
 }
-.hero:hover .hero-img { filter: brightness(0.92) saturate(1.05); }
+.hero:hover .hero-img,
+.hero:hover .hero-video { filter: brightness(0.92) saturate(1.05); }
 
 .hero-veil {
   position: absolute;
@@ -152,13 +158,6 @@ body {
   color: #fff;
 }
 
-/* Reader mode: prevent overlap with h1 on narrow screens. */
-body.reader-mode .switch {
-  position: static;
-  margin-bottom: 1rem;
-  justify-content: center;
-}
-
 /* =============================================
    LANG VISIBILITY
    ============================================= */
@@ -219,13 +218,14 @@ a:hover { color: var(--gold); }
   font-size: 1.5rem; font-weight: 700;
   margin: 2.2rem 0 0.7rem;
   color: var(--gold); letter-spacing: 0.05em;
+  text-align: center;
   animation: fadeIn 1.5s ease both;
 }
 .section-title::after {
   content: '';
   display: block; width: 36px; height: 2px;
   background: linear-gradient(90deg, var(--primary), #e0b060);
-  margin-top: 6px; border-radius: 2px;
+  margin: 6px auto 0; border-radius: 2px;
 }
 
 /* =============================================
@@ -240,20 +240,89 @@ a:hover { color: var(--gold); }
 }
 .tresc li, .zrodla li { margin-bottom: 0.65rem; }
 
+/* ── Box: tylko tekst, bez tła ── */
 .box {
-  background: var(--surface);
-  border: 1px solid rgba(196,146,42,0.18);
   border-radius: 10px;
   padding: 1.2rem 1.6rem; margin: 1.3rem 0;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  /* Brak background i border — czysty tekst */
+  position: relative;
+  z-index: 2;
 }
-.box:hover {
-  border-color: rgba(196,146,42,0.5);
-  box-shadow: 0 0 20px rgba(196,146,42,0.06);
-}
+
 .highlight {
   font-weight: bold; color: var(--primary);
   text-shadow: 0 0 8px rgba(196,146,42,0.5);
+}
+
+/* =============================================
+   TRESC-WITH-BG
+   Obrazek statyczny za boxami "O święcie" i "Obrzędy"
+   z rozmyciami góra/dół
+   ============================================= */
+.tresc-with-bg {
+  position: relative;
+  /* odległość od lewej/prawej krawędzi page-content */
+  margin-left: -2.8rem;
+  margin-right: -2.8rem;
+  padding-left: 2.8rem;
+  padding-right: 2.8rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Tło: statyczny obrazek */
+.tresc-with-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-img, none);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: local;
+  /* mocne przyciemnienie żeby tekst był czytelny */
+  filter: brightness(0.22) saturate(0.7);
+  z-index: 0;
+}
+
+/* Rozmycie górne */
+.tresc-with-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Pseudo-elementy nie wystarczą do dwóch gradientów — robimy przez box-shadow na ::before */
+/* Gradient góra */
+.tresc-with-bg > .fade-top,
+.tresc-with-bg > .fade-bottom {
+  display: none; /* obsługujemy przez maski CSS */
+}
+
+/* Maska rozmywająca krawędzie (góra i dół) */
+.tresc-with-bg {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+/* Gdy brak --bg-img: ukryj pseudo-element */
+.tresc-with-bg:not([style])::before,
+.tresc-with-bg[style="--bg-img: url('');"]::before {
+  display: none;
 }
 
 /* =============================================
@@ -300,18 +369,23 @@ a:hover { color: var(--gold); }
   box-shadow: 0 12px 40px rgba(0,0,0,0.8);
   border-color: var(--primary);
 }
-.card-img-wrap { overflow: hidden; aspect-ratio: 2/3; }
-.swieto-card img {
+.card-img-wrap { overflow: hidden; aspect-ratio: 2/3; position: relative; }
+
+/* Wspólny styl dla img i video w karcie */
+.swieto-card img,
+.card-video {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: top;
+  object-fit: cover; object-position: center;
   display: block;
   filter: brightness(0.85) saturate(0.9);
   transition: filter 0.35s ease, transform 0.45s ease;
 }
-.swieto-card:hover img {
+.swieto-card:hover img,
+.swieto-card:hover .card-video {
   filter: brightness(1) saturate(1.05);
   transform: scale(1.06);
 }
+
 .card-body {
   padding: 0.9rem 1.1rem;
   display: flex; flex-direction: column; gap: 0.25rem;
@@ -408,6 +482,13 @@ a:hover { color: var(--gold); }
   .ornament         { font-size: 1.2rem; margin: 1.4rem 0; }
   .back-button      { font-size: 0.85rem; padding: 0.5rem 1.2rem; }
   .footer p         { font-size: 0.9rem; }
+
+  .tresc-with-bg {
+    margin-left: -1.1rem;
+    margin-right: -1.1rem;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
 }
 
 @media (max-width: 400px) {
@@ -423,8 +504,6 @@ a:hover { color: var(--gold); }
   width: min(380px, 92%);
   margin: 0 auto;
   padding: 0 0.5rem;
-
-  /* Hidden until spin-in animation ends. */
   opacity: 0;
   transform: translateY(-8px);
   pointer-events: none;
@@ -456,7 +535,6 @@ a:hover { color: var(--gold); }
   transform: translateY(4px);
 }
 
-/* Rune element kept in DOM but not rendered. */
 .kolo-panel-rune { display: none; }
 
 .kolo-panel-text {
@@ -512,7 +590,6 @@ a:hover { color: var(--gold); }
   text-decoration: none;
 }
 
-/* Language toggling for button / hint labels. */
 .kolo-panel-btn-label-en { display: none; }
 .kolo-panel-btn-label-pl { display: inline; }
 
@@ -548,7 +625,6 @@ a:hover { color: var(--gold); }
 #kolo-svg:active   { cursor: grabbing; }
 #kolo-svg.spinning { cursor: default; }
 
-/* The rotating group — no transition during drag; applied in JS for snapping. */
 #kolo-nodes { transition: none; }
 
 .kolo-node  { outline: none; }
@@ -563,7 +639,6 @@ a:hover { color: var(--gold); }
   font-weight: 700;
 }
 
-/* Top indicator notch — shows which node is "selected". */
 .kolo-wrap::before {
   content: "▾";
   position: absolute;
@@ -650,7 +725,7 @@ a:hover { color: var(--gold); }
   border-bottom: 1px solid var(--border);
   background: transparent;
   padding: 1.4rem 2rem;
-  position: relative; /* needed for absolute algiz centering */
+  position: relative;
 }
 .swieto-nav .lang        { display: none; }
 .swieto-nav .lang.active {
@@ -707,7 +782,6 @@ a:hover { color: var(--gold); }
 .nav-next .nav-info { text-align: right; }
 .nav-empty { flex: 0 0 auto; max-width: 38%; min-width: 0; }
 
-/* Algiz rune — centered absolutely in the nav bar. */
 .nav-kolo {
   font-size: 2.2rem !important;
   color: rgba(196,146,42,0.5);
@@ -728,47 +802,6 @@ a:hover { color: var(--gold); }
 }
 
 /* =============================================
-   READER MODE
-   ============================================= */
-
-/* Fixed toggle button, top-right corner. */
-.reader-toggle {
-  position: fixed;
-  top: 1rem; right: 1rem;
-  z-index: 1000;
-  width: 5rem; height: 5rem;
-  border-radius: 50%;
-  background: rgba(15,17,23,0.88);
-  border: 1px solid rgba(196,146,42,0.3);
-  color: var(--gold-dim);
-  font-size: 2rem;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
-  backdrop-filter: blur(6px);
-}
-.reader-toggle:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-  transform: scale(1.08);
-}
-
-/* Reader mode active state. */
-body.reader-mode .hero         { display: none; }
-body.reader-mode .page-wrap    { margin-top: 2rem; max-width: 720px; }
-body.reader-mode .box          {
-  background: none !important;
-  backdrop-filter: none;
-  border-color: rgba(196,146,42,0.12);
-}
-body.reader-mode .box p        { font-size: 1.2rem; line-height: 1.95; }
-body.reader-mode h1            { font-size: clamp(2rem, 4vw, 2.8rem); }
-body.reader-mode .page-content { padding-top: 1.6rem; }
-body.reader-mode .kolo-wrap    { display: none; }
-body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
-
-/* =============================================
    IMAGE PLACEHOLDER (no feast image)
    ============================================= */
 .card-img-placeholder {
@@ -780,7 +813,7 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
 }
 
 /* =============================================
-   SEASON BADGE — small pill in the card corner
+   SEASON BADGE
    ============================================= */
 .card-season {
   position: absolute;
@@ -799,8 +832,6 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
 
 /* =============================================
    GOLDEN RUNE CURSOR TRAIL
-   Tiny Elder Futhark glyphs that float up and
-   fade. Injected via JS on non-touch devices.
    ============================================= */
 .rune-trail {
   position: fixed;
@@ -808,7 +839,6 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
   z-index: 9998;
   font-size: 1rem;
   color: var(--primary);
-  /* Centered on the spawn point via transform. */
   transform: translate(-50%, -50%);
   opacity: 0.85;
   text-shadow: 0 0 8px rgba(196,146,42,0.9);
@@ -823,7 +853,7 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
 }
 
 /* =============================================
-   SCROLL PROGRESS BAR — gold line at top
+   SCROLL PROGRESS BAR
    ============================================= */
 #scroll-progress {
   position: fixed;
@@ -845,7 +875,6 @@ body.reader-mode .swieto-card img { filter: brightness(0.7) saturate(0.7); }
   .nav-name            { font-size: 0.85rem; }
   .nav-hint            { display: none; }
   .duch-tag            { font-size: 0.82rem; }
-  .reader-toggle       { top: 0.6rem; right: 0.6rem; width: 4rem; height: 4rem; font-size: 1.6rem; }
   .node-label          { font-size: 13px; stroke-width: 2.5px; }
   .nav-kolo            { font-size: 1.9rem !important; }
 

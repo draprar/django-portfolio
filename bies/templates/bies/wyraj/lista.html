@@ -87,7 +87,10 @@
           {% for s in swieta %}
           <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card reveal">
             <div class="card-img-wrap">
-              {% if s.obraz %}
+              {% if s.wideo %}
+                <video src="{{ s.wideo.url }}" autoplay muted loop playsinline
+                       class="card-video" aria-hidden="true"></video>
+              {% elif s.obraz %}
                 <img src="{{ s.obraz.url }}" alt="{{ s.tytul_pl }}" loading="lazy">
               {% else %}
                 <div class="card-img-placeholder">✦</div>
@@ -110,7 +113,10 @@
           {% for s in swieta %}
           <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card reveal">
             <div class="card-img-wrap">
-              {% if s.obraz %}
+              {% if s.wideo %}
+                <video src="{{ s.wideo.url }}" autoplay muted loop playsinline
+                       class="card-video" aria-hidden="true"></video>
+              {% elif s.obraz %}
                 <img src="{{ s.obraz.url }}" alt="{{ s.tytul_en }}" loading="lazy">
               {% else %}
                 <div class="card-img-placeholder">✦</div>

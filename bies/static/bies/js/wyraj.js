@@ -503,36 +503,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// READER MODE
-// ─────────────────────────────────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("readerToggle");
-  if (!btn) return;
-
-  const READER_KEY = "wyraj_reader";
-  const body       = document.body;
-
-  const apply = (on) => {
-    body.classList.toggle("reader-mode", on);
-    btn.setAttribute("aria-pressed", String(on));
-    btn.innerHTML = on
-      ? '<i class="fa-solid fa-book-open-reader"></i>'
-      : '<i class="fa-solid fa-book-open"></i>';
-    btn.title = on ? "Wyłącz tryb czytania" : "Tryb czytania";
-    try { localStorage.setItem(READER_KEY, on ? "1" : "0"); } catch (_) {}
-  };
-
-  // Restore saved state (default: reader mode OFF).
-  let saved = false;
-  try {
-    const stored = localStorage.getItem(READER_KEY);
-    if (stored !== null) saved = stored === "1";
-  } catch (_) {}
-  apply(saved);
-
-  btn.addEventListener("click", () => apply(!body.classList.contains("reader-mode")));
-});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PREV / NEXT KEYBOARD NAVIGATION (detail page)

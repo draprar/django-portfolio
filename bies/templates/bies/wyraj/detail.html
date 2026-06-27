@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ swieto.tytul_pl }} — Wyraj</title>
-  <!-- meta description: prefer PL; JS lang-switch cannot alter <head>, so we serve the PL version
-       which is what crawlers see. EN meta can be served via a separate EN URL if needed later. -->
   <meta name="description" content="{{ swieto.meta_opis_pl }}">
   {% if swieto.obraz %}
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ swieto.obraz.url }}">
@@ -13,32 +11,6 @@
   <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
-  {% if swieto.obraz %}
-  <style>
-    /* Hero background image with dark overlay — scoped to this page only. */
-    .box {
-      position: relative; overflow: hidden;
-      background:
-        linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.62)),
-        url("{{ swieto.obraz.url }}") center / 150% auto no-repeat;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(196,146,42,0.28);
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-    }
-  </style>
-  {% else %}
-  <style>
-    .box {
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-    }
-  </style>
-  {% endif %}
-  <style>
-    .section-title { text-align: center; }
-    .section-title::after { width: 72px; margin-left: auto; margin-right: auto; }
-  </style>
 </head>
 <body>
 
@@ -47,12 +19,14 @@
     <div class="loader-bar"></div>
   </div>
 
-  <button class="reader-toggle" id="readerToggle"
-          aria-label="Tryb czytania" title="Tryb czytania">
-    <i class="fa-solid fa-book-open"></i>
-  </button>
-
-  {% if swieto.obraz %}
+  {% if swieto.wideo %}
+  <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="{{ swieto.wideo.url }}" type="video/mp4">
+    </video>
+    <div class="hero-veil"></div>
+  </div>
+  {% elif swieto.obraz %}
   <div class="hero">
     <img src="{{ swieto.obraz.url }}" alt="{{ swieto.tytul_pl }}" class="hero-img">
     <div class="hero-veil"></div>
@@ -78,7 +52,7 @@
 
         {% if duchy_pl_list %}
         <div class="duchy-wrap reveal">
-          <span class="duchy-label">bóstwa:</span>
+          <span class="duchy-label">Istoty / bóstwa:</span>
           {% for duch in duchy_pl_list %}
             <span class="duch-tag">{{ duch }}</span>
           {% endfor %}
@@ -86,18 +60,26 @@
         {% endif %}
 
         <div class="tresc">
-          {% if swieto.o_swiecie_pl %}
-          <div class="box reveal">
-            <div class="section-title">O święcie</div>
-            {{ swieto.o_swiecie_pl|linebreaks }}
-          </div>
+          {# Wrapper for the image-behind-boxes effect #}
+          {% if swieto.obraz and swieto.o_swiecie_pl and swieto.obrzedy_pl %}
+          <div class="tresc-with-bg" style="--bg-img: url('{{ swieto.obraz.url }}');">
+          {% else %}
+          <div class="tresc-with-bg">
           {% endif %}
-          {% if swieto.obrzedy_pl %}
-          <div class="box reveal">
-            <div class="section-title">Obrzędy</div>
-            {{ swieto.obrzedy_pl|linebreaks }}
+            {% if swieto.o_swiecie_pl %}
+            <div class="box reveal" id="box-o-swiecie-pl">
+              <div class="section-title">O święcie</div>
+              {{ swieto.o_swiecie_pl|linebreaks }}
+            </div>
+            {% endif %}
+            {% if swieto.obrzedy_pl %}
+            <div class="box reveal" id="box-obrzedy-pl">
+              <div class="section-title">Obrzędy</div>
+              {{ swieto.obrzedy_pl|linebreaks }}
+            </div>
+            {% endif %}
           </div>
-          {% endif %}
+
           {% if swieto.symbolika_pl %}
           <div class="box reveal">
             <div class="section-title">Symbolika</div>
@@ -129,7 +111,7 @@
 
         {% if duchy_en_list %}
         <div class="duchy-wrap reveal">
-          <span class="duchy-label">Deities:</span>
+          <span class="duchy-label">Spirits / deities:</span>
           {% for duch in duchy_en_list %}
             <span class="duch-tag">{{ duch }}</span>
           {% endfor %}
@@ -137,18 +119,25 @@
         {% endif %}
 
         <div class="tresc">
-          {% if swieto.o_swiecie_en %}
-          <div class="box reveal">
-            <div class="section-title">About the Feast</div>
-            {{ swieto.o_swiecie_en|linebreaks }}
-          </div>
+          {% if swieto.obraz and swieto.o_swiecie_en and swieto.obrzedy_en %}
+          <div class="tresc-with-bg" style="--bg-img: url('{{ swieto.obraz.url }}');">
+          {% else %}
+          <div class="tresc-with-bg">
           {% endif %}
-          {% if swieto.obrzedy_en %}
-          <div class="box reveal">
-            <div class="section-title">Rites</div>
-            {{ swieto.obrzedy_en|linebreaks }}
+            {% if swieto.o_swiecie_en %}
+            <div class="box reveal" id="box-o-swiecie-en">
+              <div class="section-title">About the Feast</div>
+              {{ swieto.o_swiecie_en|linebreaks }}
+            </div>
+            {% endif %}
+            {% if swieto.obrzedy_en %}
+            <div class="box reveal" id="box-obrzedy-en">
+              <div class="section-title">Rites</div>
+              {{ swieto.obrzedy_en|linebreaks }}
+            </div>
+            {% endif %}
           </div>
-          {% endif %}
+
           {% if swieto.symbolika_en %}
           <div class="box reveal">
             <div class="section-title">Symbolism</div>
