@@ -414,6 +414,10 @@ SECURE_CSP = {
         "'unsafe-inline'"
     ),
     "img-src": "'self' data: https:",
+    "media-src": (
+        "'self' "
+        "https://fovmqjulcvslfnjnbjoj.supabase.co"
+    ),
     "font-src": "'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
     "connect-src": "'self' https://cdn.jsdelivr.net https://unpkg.com",
     "frame-src": "'self' https://www.youtube.com https://www.instagram.com",
