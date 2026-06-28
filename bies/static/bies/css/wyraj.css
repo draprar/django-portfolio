@@ -109,7 +109,7 @@ body {
   margin: -4rem auto 0;
   background: rgba(15,17,23,0.97);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius) var(--radius) 0 0;
   box-shadow:
     0 -4px 40px rgba(0,0,0,0.5),
     0 24px 70px rgba(0,0,0,0.85),
@@ -117,6 +117,11 @@ body {
   position: relative;
   z-index: 2;
   overflow: hidden;
+}
+
+/* Dolne zaokrąglenie — tylko footer */
+.footer {
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 /* List page — no hero, normal margin. */
@@ -406,7 +411,7 @@ a:hover { color: var(--gold); }
   text-align: center;
   padding: 2.4rem 1.5rem 2rem;
   border-top: 1px solid var(--border);
-  margin-top: 0;
+  margin: 0;
   width: 100%;
   box-sizing: border-box;
 }
@@ -727,6 +732,9 @@ a:hover { color: var(--gold); }
   background: transparent;
   padding: 1.4rem 2rem;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
 }
 .swieto-nav .lang        { display: none; }
 .swieto-nav .lang.active {
