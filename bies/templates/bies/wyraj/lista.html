@@ -109,6 +109,7 @@
         <div class="swieta-grid">
           {% for s in swieta %}
           <a href="{% url 'bies:wyraj-detail' s.slug %}" class="swieto-card reveal">
+            <div class="card-img-wrap">
               {% if s.obraz %}
                 <img src="{{ s.obraz.url }}" alt="{{ s.tytul_en }}" loading="lazy">
               {% else %}
