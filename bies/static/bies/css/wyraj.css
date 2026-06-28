@@ -270,7 +270,7 @@ a:hover { color: var(--gold); }
   padding-bottom: 0.5rem;
 }
 
-/* Tło: statyczny obrazek */
+/* Tło: statyczny obrazek z maską tylko na tym elemencie */
 .tresc-with-bg::before {
   content: '';
   position: absolute;
@@ -281,6 +281,21 @@ a:hover { color: var(--gold); }
   background-attachment: local;
   /* mocne przyciemnienie żeby tekst był czytelny */
   filter: brightness(0.22) saturate(0.7);
+  /* maska tylko na tle — tekst w .box nie jest przyciemniany */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
   z-index: 0;
 }
 
@@ -301,23 +316,7 @@ a:hover { color: var(--gold); }
   display: none; /* obsługujemy przez maski CSS */
 }
 
-/* Maska rozmywająca krawędzie (góra i dół) */
-.tresc-with-bg {
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-}
+/* Maska rozmywająca krawędzie (góra i dół) — tylko na tle, nie na tekście */
 
 /* Gdy brak --bg-img: ukryj pseudo-element */
 .tresc-with-bg:not([style])::before,
