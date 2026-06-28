@@ -60,36 +60,51 @@
         {% endif %}
 
         <div class="tresc">
-  {# Wrapper for the image-behind-boxes effect #}
-  {% if swieto.obraz and swieto.o_swiecie_pl and swieto.obrzedy_pl %}
-  <div class="tresc-with-bg" style="--bg-img: url('{{ swieto.obraz.url }}');">
-  {% else %}
-  <div class="tresc-with-bg">
-  {% endif %}
+          {% if swieto.obraz and swieto.o_swiecie_pl and swieto.obrzedy_pl %}
+          <div class="tresc-with-bg" style="--bg-img: url('{{ swieto.obraz.url }}');">
+          {% else %}
+          <div class="tresc-with-bg">
+          {% endif %}
 
-    {% if swieto.o_swiecie_pl %}
-    <div class="box reveal" id="box-o-swiecie-pl">
-      <div class="section-title">O święcie</div>
-      {{ swieto.o_swiecie_pl|linebreaks }}
-    </div>
-    {% endif %}
+            {% if swieto.o_swiecie_pl %}
+            <div class="box reveal" id="box-o-swiecie-pl">
+              <div class="section-title">O święcie</div>
+              {{ swieto.o_swiecie_pl|linebreaks }}
+            </div>
+            {% endif %}
 
-    {% if swieto.obrzedy_pl %}
-    <div class="box reveal" id="box-obrzedy-pl">
-      <div class="section-title">Obrzędy</div>
-      {{ swieto.obrzedy_pl|linebreaks }}
-    </div>
-    {% endif %}
+            {% if swieto.obrzedy_pl %}
+            <div class="box reveal" id="box-obrzedy-pl">
+              <div class="section-title">Obrzędy</div>
+              {{ swieto.obrzedy_pl|linebreaks }}
+            </div>
+            {% endif %}
 
-    {% if swieto.symbolika_pl %}
-    <div class="box reveal">
-      <div class="section-title">Symbolika</div>
-      {{ swieto.symbolika_pl|linebreaks }}
-    </div>
-    {% endif %}
+          </div><!-- /tresc-with-bg -->
 
-  </div>
-</div>
+          {% if swieto.symbolika_pl %}
+          <div class="box reveal">
+            <div class="section-title">Symbolika</div>
+            {{ swieto.symbolika_pl|linebreaks }}
+          </div>
+          {% endif %}
+
+        </div><!-- /tresc -->
+
+        {% with zrodla=swieto.zrodla.all %}{% if zrodla %}
+        <div class="zrodla reveal">
+          <div class="section-title">Źródła</div>
+          <ul>{% for z in zrodla %}
+            <li>
+              {% if z.autor %}<strong>{{ z.autor }}</strong>, {% endif %}
+              <em>{{ z.tytul }}</em>{% if z.wydawca_rok %} ({{ z.wydawca_rok }}){% endif %}.
+              {% if z.url %}<a href="{{ z.url }}" target="_blank" rel="noopener">{{ z.url_etykieta|default:z.url }}</a>{% endif %}
+            </li>
+          {% endfor %}</ul>
+        </div>
+        {% endif %}{% endwith %}
+
+      </div><!-- /lang#pl -->
 
       <!-- ═══ EN ═══ -->
       <div class="lang" id="en">
@@ -125,7 +140,7 @@
               {{ swieto.obrzedy_en|linebreaks }}
             </div>
             {% endif %}
-          </div>
+          </div><!-- /tresc-with-bg -->
 
           {% if swieto.symbolika_en %}
           <div class="box reveal">
@@ -133,7 +148,7 @@
             {{ swieto.symbolika_en|linebreaks }}
           </div>
           {% endif %}
-        </div>
+        </div><!-- /tresc -->
 
         {% with zrodla=swieto.zrodla.all %}{% if zrodla %}
         <div class="zrodla reveal">
@@ -147,7 +162,8 @@
           {% endfor %}</ul>
         </div>
         {% endif %}{% endwith %}
-      </div><!-- /en -->
+
+      </div><!-- /lang#en -->
 
       <div class="ornament">⸻✦⸻</div>
 
@@ -220,16 +236,15 @@
   </div><!-- /page-wrap -->
 
   <script src="{% static 'bies/js/wyraj.js' %}"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const v = document.querySelector('.hero-video');
-        if (!v) return;
-        v.play().catch(() => {
-          // iOS wymaga interakcji — odpal po pierwszym dotyku
-          document.addEventListener('touchstart', () => v.play(), { once: true });
-        });
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const v = document.querySelector('.hero-video');
+      if (!v) return;
+      v.play().catch(() => {
+        document.addEventListener('touchstart', () => v.play(), { once: true });
       });
-    </script>
-    <script src="{% static 'bies/js/wyraj.js' %}"></script>
+    });
+  </script>
+
 </body>
 </html>
