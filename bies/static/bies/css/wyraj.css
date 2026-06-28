@@ -119,11 +119,6 @@ body {
   overflow: hidden;
 }
 
-/* Dolne zaokrąglenie — tylko footer */
-.footer {
-  border-radius: 0 0 var(--radius) var(--radius);
-}
-
 /* List page — no hero, normal margin. */
 .page-wrap.lista-wrap {
   margin-top: 3.5rem;
@@ -411,6 +406,7 @@ a:hover { color: var(--gold); }
   text-align: center;
   padding: 2.4rem 1.5rem 2rem;
   border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--radius) var(--radius);
   margin: 0;
   width: 100%;
   box-sizing: border-box;
