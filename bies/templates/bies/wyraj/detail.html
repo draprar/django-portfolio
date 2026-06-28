@@ -220,5 +220,16 @@
   </div><!-- /page-wrap -->
 
   <script src="{% static 'bies/js/wyraj.js' %}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const v = document.querySelector('.hero-video');
+        if (!v) return;
+        v.play().catch(() => {
+          // iOS wymaga interakcji — odpal po pierwszym dotyku
+          document.addEventListener('touchstart', () => v.play(), { once: true });
+        });
+      });
+    </script>
+    <script src="{% static 'bies/js/wyraj.js' %}"></script>
 </body>
 </html>
