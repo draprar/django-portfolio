@@ -60,6 +60,7 @@
         {% endif %}
 
         <div class="tresc">
+
           {% if swieto.obraz and swieto.o_swiecie_pl and swieto.obrzedy_pl %}
           <div class="tresc-with-bg" style="--bg-img: url('{{ swieto.obraz.url }}');">
           {% else %}
@@ -80,14 +81,14 @@
             </div>
             {% endif %}
 
-          </div><!-- /tresc-with-bg -->
+            {% if swieto.symbolika_pl %}
+            <div class="box reveal" id="box-symbolika-pl">
+              <div class="section-title">Symbolika</div>
+              {{ swieto.symbolika_pl|linebreaks }}
+            </div>
+            {% endif %}
 
-          {% if swieto.symbolika_pl %}
-          <div class="box reveal">
-            <div class="section-title">Symbolika</div>
-            {{ swieto.symbolika_pl|linebreaks }}
-          </div>
-          {% endif %}
+          </div><!-- /tresc-with-bg -->
 
         </div><!-- /tresc -->
 
@@ -123,31 +124,36 @@
         {% endif %}
 
         <div class="tresc">
+
           {% if swieto.obraz and swieto.o_swiecie_en and swieto.obrzedy_en %}
           <div class="tresc-with-bg" style="--bg-img: url('{{ swieto.obraz.url }}');">
           {% else %}
           <div class="tresc-with-bg">
           {% endif %}
+
             {% if swieto.o_swiecie_en %}
             <div class="box reveal" id="box-o-swiecie-en">
               <div class="section-title">About the Feast</div>
               {{ swieto.o_swiecie_en|linebreaks }}
             </div>
             {% endif %}
+
             {% if swieto.obrzedy_en %}
             <div class="box reveal" id="box-obrzedy-en">
               <div class="section-title">Rites</div>
               {{ swieto.obrzedy_en|linebreaks }}
             </div>
             {% endif %}
+
+            {% if swieto.symbolika_en %}
+            <div class="box reveal" id="box-symbolika-en">
+              <div class="section-title">Symbolism</div>
+              {{ swieto.symbolika_en|linebreaks }}
+            </div>
+            {% endif %}
+
           </div><!-- /tresc-with-bg -->
 
-          {% if swieto.symbolika_en %}
-          <div class="box reveal">
-            <div class="section-title">Symbolism</div>
-            {{ swieto.symbolika_en|linebreaks }}
-          </div>
-          {% endif %}
         </div><!-- /tresc -->
 
         {% with zrodla=swieto.zrodla.all %}{% if zrodla %}
