@@ -236,6 +236,10 @@ else:
             "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         }
     }
+    RATELIMIT_ENABLE = False  # LocMemCache is not a shared cache; disable for local dev
+    # django_ratelimit.checks.check_caches ignores RATELIMIT_ENABLE and
+    # unconditionally raises E003 for LocMemCache. Silence it explicitly.
+    SILENCED_SYSTEM_CHECKS = ["django_ratelimit.E003", "django_ratelimit.W001"]
 
 # --- Force SQLite + LocMemCache for pytest or explicit test mode ---
 # Keep this independent from generic CI env vars so production builds

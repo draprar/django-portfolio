@@ -483,6 +483,11 @@ document.addEventListener("DOMContentLoaded", () => {
       buildLabel(label, title, label.getAttribute("x"));
     });
 
+    const centerLabel = document.getElementById("kolo-center-label");
+    if (centerLabel) {
+      centerLabel.textContent = lang === "en" ? centerLabel.dataset.en : centerLabel.dataset.pl;
+    }
+
     if (dialActive) {
       const s = data[activeIdx];
       panelName.textContent = lang === "en" ? s.tytul_en : s.tytul_pl;
