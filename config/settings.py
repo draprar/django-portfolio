@@ -307,6 +307,13 @@ WHITENOISE_MANIFEST_STRICT = False
 # Use S3/Supabase only when explicitly enabled. Local file storage is default in dev.
 USE_S3 = env.bool("USE_S3", default=not DEBUG and not _testing)
 
+# --- Cloudflare R2 (ONLY 'bies') ---
+R2_ACCESS_KEY_ID = env("R2_ACCESS_KEY_ID", default=None)
+R2_SECRET_ACCESS_KEY = env("R2_SECRET_ACCESS_KEY", default=None)
+R2_BUCKET_NAME = env("R2_BUCKET_NAME", default=None)
+R2_ENDPOINT_URL = env("R2_ENDPOINT_URL", default=None)
+R2_PUBLIC_DOMAIN = env("R2_PUBLIC_DOMAIN", default=None)
+
 if USE_S3:
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID", default=None)
     AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY", default=None)
@@ -397,6 +404,8 @@ CSRF_COOKIE_SAMESITE = "Lax"
 
 # Report-only in dev so we can test without breaking pages;
 # in production the policy is enforced (blocks violations).
+_r2_media_src = f" https://{R2_PUBLIC_DOMAIN}" if R2_PUBLIC_DOMAIN else ""
+
 SECURE_CSP_REPORT_ONLY = DEBUG
 SECURE_CSP = {
     "default-src": "'self'",
@@ -421,6 +430,7 @@ SECURE_CSP = {
     "media-src": (
         "'self' "
         "https://fovmqjulcvslfnjnbjoj.supabase.co"
+        f"{_r2_media_src}"
     ),
     "font-src": "'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
     "connect-src": "'self' https://cdn.jsdelivr.net https://unpkg.com",

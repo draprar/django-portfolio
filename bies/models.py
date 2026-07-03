@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 
+from core.storages_backends import get_bies_storage
+
 
 class Swieto(models.Model):
     """
@@ -34,6 +36,7 @@ class Swieto(models.Model):
     # --- image ---
     obraz = models.ImageField(
         upload_to="bies/swieta/",
+        storage=get_bies_storage,
         blank=True,
         null=True,
         verbose_name="Image",
@@ -43,6 +46,7 @@ class Swieto(models.Model):
     # --- video (card + hero background) ---
     wideo = models.FileField(
         upload_to="bies/swieta/video/",
+        storage=get_bies_storage,
         blank=True,
         null=True,
         verbose_name="Video (MP4)",
