@@ -10,6 +10,13 @@
   <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
 </head>
 <body>
+  <div class="site-bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 768px)" srcset="{% static 'bies/img/bg-wyraj-mobile.png' %}">
+      <img src="{% static 'bies/img/bg-wyraj.png' %}" alt="" class="site-bg-img">
+    </picture>
+    <div class="site-bg-veil"></div>
+  </div>
 
   <div id="loader">
     <div class="loader-rune">ᛏ ᛉ ᛟ</div>
