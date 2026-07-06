@@ -702,6 +702,8 @@ a:hover { color: var(--gold); }
   align-items: center;
   gap: 0.35rem;
   width: 6.5rem;
+  height: 5.2rem;   /* fixed — keeps the rune's position constant no matter
+                       how many words/lines the feast name wraps to below it */
   background: transparent;
   border: none;
   padding: 0.3rem;
@@ -713,6 +715,7 @@ a:hover { color: var(--gold); }
 .kolo-nav-next { right: -6.6rem; }
 
 .kolo-nav-arrow {
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -733,6 +736,11 @@ a:hover { color: var(--gold); }
   transform: scale(1.08);
 }
 .kolo-nav-name {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   font-family: 'Playfair Display', serif;
   font-size: 0.92rem;
   line-height: 1.2;
@@ -753,6 +761,7 @@ a:hover { color: var(--gold); }
     bottom: 4%;
     transform: none;
     width: 4.6rem;
+    height: 4.1rem; /* fixed, same reasoning as desktop above */
     gap: 0.2rem;
   }
   .kolo-nav-prev { left: 2%; }

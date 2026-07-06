@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const CX       = 250, CY = 250;
   const isMobile = window.innerWidth < 768;
   const NODE_R   = isMobile ? 130 : 155;
-  const LABEL_R  = isMobile ? 160 : 182;
+  const LABEL_R  = isMobile ? 195 : 210;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     label.setAttribute("text-anchor",
       lx0 < CX - 8 ? "start" : lx0 > CX + 8 ? "end" : "middle");
     label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("font-size", isMobile ? "15" : "17");
+    label.setAttribute("font-size", isMobile ? "24" : "20");
     label.setAttribute("font-family", "'Playfair Display', serif");
     label.setAttribute("fill", "rgba(245,225,164,0.65)");
     label.setAttribute("class", "node-label");
@@ -338,48 +338,39 @@ document.addEventListener("DOMContentLoaded", () => {
     group.style.transformOrigin = `${CX}px ${CY}px`;
     group.style.transform      = `rotate(${deg}deg)`;
 
-    const n = data.length;
 
-    // Fixed angular "slots" for the label cluster near the top — these are
-    // NOT the node's real position on the wheel, they're constant offsets
-    // from top-center. That's what guarantees the 3 labels always sit at
-    // the same clean, non-overlapping spot regardless of how close two
-    // feasts happen to be on the actual calendar/wheel.
-    const SLOT_ANGLE = isMobile ? 21 : 25; // ° either side of top, for prev/next
-    const prevIdx = (activeIdx - 1 + n) % n;
-    const nextIdx = (activeIdx + 1) % n;
+    // Only the active feast gets a label on the wheel now — prev/next
+    // already show under the rune arrows (kolo-nav-prev/next), so showing
+    // them here too was redundant. One fixed spot, dead center at the top.
+    const LINE_Y = CY - LABEL_R;
 
     nodeEls.forEach((entry, i) => {
       const { label } = entry;
+      const active = i === activeIdx;
 
-      let slot = null; // null = hidden, 0 = active/top, -1 = prev, 1 = next
-      if (i === activeIdx) slot = 0;
-      else if (i === prevIdx) slot = -1;
-      else if (i === nextIdx) slot = 1;
+      entry.near = active;
+      label.style.visibility = active ? "visible" : "hidden";
 
-      entry.near = slot !== null;
-      label.style.visibility = slot !== null ? "visible" : "hidden";
-
-      if (slot === null) {
+      if (!active) {
         label.style.opacity = "0";
         return;
       }
 
-      const slotDeg = slot * SLOT_ANGLE; // −SLOT..0..+SLOT
-      const rad = ((slotDeg - 90) * Math.PI) / 180;
-      const lx  = CX + LABEL_R * Math.cos(rad);
-      const ly  = CY + LABEL_R * Math.sin(rad);
+      const lx = CX;
+      const ly = LINE_Y;
       label.setAttribute("x", lx);
       label.setAttribute("y", ly);
-      // Anchor grows the text TOWARD the center rather than outward, so
-      // labels near the left/right edge never run off the wheel.
-      label.setAttribute("text-anchor", lx < CX - 8 ? "start" : lx > CX + 8 ? "end" : "middle");
+      label.setAttribute("text-anchor", "middle");
       label.querySelectorAll("tspan").forEach(ts => ts.setAttribute("x", lx));
 
-      label.style.opacity     = slot === 0 ? "1" : "0.5";
-      label.style.fontSize    = slot === 0 ? (isMobile ? "15px" : "17px") : (isMobile ? "11px" : "12px");
-      label.style.fontWeight  = slot === 0 ? "700" : "400";
-      label.setAttribute("fill", slot === 0 ? "rgba(245,225,164,1)" : "rgba(245,225,164,0.7)");
+      label.style.opacity    = "1";
+      // SVG font-size is in viewBox user-units, which get scaled DOWN by
+      // whatever ratio the 500-unit viewBox is squeezed into on screen —
+      // on a narrow phone that ratio is much less than 1, so this needs to
+      // be noticeably larger than a normal 15px to read as prominent.
+      label.style.fontSize   = isMobile ? "24px" : "20px";
+      label.style.fontWeight = "700";
+      label.setAttribute("fill", "rgba(245,225,164,1)");
     });
   };
 
