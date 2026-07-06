@@ -217,8 +217,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const nodeEls = [];
 
-  data.forEach(s => {
-    const rad0 = ((s.kat - 90) * Math.PI) / 180;
+  // Even spacing: position on the wheel comes from ORDER (index), not from
+  // the real calendar date. The real date still drives the panel subtitle
+  // and the "closest to today" snap on load — it just no longer squeezes
+  // nodes together when two feasts happen to fall close in the calendar.
+  const angleStep = 360 / data.length;
+  const angles    = data.map((_, i) => i * angleStep);
+
+  data.forEach((s, i) => {
+    const rad0 = ((angles[i] - 90) * Math.PI) / 180;
     const x0   = CX + NODE_R  * Math.cos(rad0);
     const y0   = CY + NODE_R  * Math.sin(rad0);
     const lx0  = CX + LABEL_R * Math.cos(rad0);
@@ -286,9 +293,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let dialActive = false;
 
   // snapBase[i]: base angle (−180..180) that puts node i at the top.
-  const snapBase = data.map(s => {
-    let a = ((-s.kat) % 360 + 360) % 360; // 0..360
-    if (a > 180) a -= 360;                 // −180..180
+  const snapBase = angles.map(kat => {
+    let a = ((-kat) % 360 + 360) % 360; // 0..360
+    if (a > 180) a -= 360;               // −180..180
     return a;
   });
 
@@ -313,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     nodeEls.forEach((entry, i) => {
       const { label } = entry;
-      const rad = ((data[i].kat - 90) * Math.PI) / 180 + radOff;
+      const rad = ((angles[i] - 90) * Math.PI) / 180 + radOff;
       const lx  = CX + LABEL_R * Math.cos(rad);
       const ly  = CY + LABEL_R * Math.sin(rad);
       label.setAttribute("x", lx);
