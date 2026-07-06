@@ -692,6 +692,80 @@ a:hover { color: var(--gold); }
 }
 .kolo-tooltip-visible { opacity: 1; }
 
+/* Prev/next navigation flanking the wheel */
+.kolo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 6.5rem;
+  background: transparent;
+  border: none;
+  padding: 0.3rem;
+  cursor: pointer;
+  z-index: 5;
+  font-family: inherit;
+}
+.kolo-nav-prev { left: -6.6rem; }
+.kolo-nav-next { right: -6.6rem; }
+
+.kolo-nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(196,146,42,0.35);
+  background: rgba(15,17,23,0.6);
+  color: var(--gold);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.kolo-nav:hover .kolo-nav-arrow,
+.kolo-nav:focus-visible .kolo-nav-arrow {
+  border-color: var(--gold);
+  background: rgba(196,146,42,0.16);
+  transform: scale(1.08);
+}
+.kolo-nav-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  color: rgba(245,225,164,0.78);
+  text-align: center;
+  transition: color 0.2s ease;
+}
+.kolo-nav:hover .kolo-nav-name,
+.kolo-nav:focus-visible .kolo-nav-name { color: var(--gold); }
+
+/* Below ~1000px the page container doesn't have enough margin beside the
+   wheel to fit the side arrows without page-wrap's overflow:hidden clipping
+   them — so switch to the safer on-wheel diagonal placement earlier than
+   the usual 768px breakpoint. */
+@media (max-width: 1000px) {
+  .kolo-nav {
+    top: auto;
+    bottom: 4%;
+    transform: none;
+    width: 4.6rem;
+    gap: 0.2rem;
+  }
+  .kolo-nav-prev { left: 2%; }
+  .kolo-nav-next { right: 2%; }
+  .kolo-nav-arrow {
+    width: 2.1rem;
+    height: 2.1rem;
+    font-size: 1.1rem;
+    background: rgba(15,17,23,0.82);
+  }
+  .kolo-nav-name { font-size: 0.72rem; }
+}
+
 .kolo-wrap::before {
   content: "▾";
   position: absolute;

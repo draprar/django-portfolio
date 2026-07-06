@@ -168,6 +168,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const panelSub  = panel.querySelector(".kolo-panel-sub");
   const panelBtn  = panel.querySelector(".kolo-panel-btn");
 
+  const navPrev     = document.getElementById("kolo-nav-prev");
+  const navNext     = document.getElementById("kolo-nav-next");
+  const navPrevName = navPrev ? navPrev.querySelector(".kolo-nav-name") : null;
+  const navNextName = navNext ? navNext.querySelector(".kolo-nav-name") : null;
+
+  const updateNavLabels = () => {
+    const lang = currentLang();
+    const prevS = data[(activeIdx - 1 + data.length) % data.length];
+    const nextS = data[(activeIdx + 1) % data.length];
+    if (navPrevName) navPrevName.textContent = lang === "en" ? prevS.tytul_en : prevS.tytul_pl;
+    if (navNextName) navNextName.textContent = lang === "en" ? nextS.tytul_en : nextS.tytul_pl;
+  };
+
+  if (navPrev) navPrev.addEventListener("click", () => goTo(activeIdx - 1));
+  if (navNext) navNext.addEventListener("click", () => goTo(activeIdx + 1));
+
   // ── Tooltip (for nodes whose label is hidden) ───────────────────────────────
   const tooltip      = document.getElementById("kolo-tooltip");
   const tooltipTitle = tooltip ? tooltip.querySelector(".kolo-tooltip-title") : null;
@@ -257,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     label.setAttribute("text-anchor",
       lx0 < CX - 8 ? "start" : lx0 > CX + 8 ? "end" : "middle");
     label.setAttribute("dominant-baseline", "middle");
-    label.setAttribute("font-size", isMobile ? "13" : "14");
+    label.setAttribute("font-size", isMobile ? "15" : "17");
     label.setAttribute("font-family", "'Playfair Display', serif");
     label.setAttribute("fill", "rgba(245,225,164,0.65)");
     label.setAttribute("class", "node-label");
@@ -277,10 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     g.addEventListener("mouseleave", hideTooltip);
     g.addEventListener("click", () => {
       if (didDrag) return;
-      const idx = nodeEls.indexOf(entry);
-      wheelAngle = nearestSnap(idx, wheelAngle);
-      applyRotation(wheelAngle, true);
-      setActiveNode(idx);
+      goTo(nodeEls.indexOf(entry));
     });
   });
 
@@ -307,6 +320,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return base;
   };
 
+  // Single entry point for "make node i the active one" — used by node
+  // clicks, the prev/next arrows, scroll, and keyboard, so they all behave
+  // identically.
+  const goTo = (idx) => {
+    const target = ((idx % data.length) + data.length) % data.length;
+    wheelAngle = nearestSnap(target, wheelAngle);
+    setActiveNode(target);
+    applyRotation(wheelAngle, true);
+  };
+
   // ── Apply rotation ─────────────────────────────────────────────────────────
   // Dots: CSS rotate on group (GPU, smooth).
   // Labels: SVG x/y attributes — zero CSS transform, always upright.
@@ -315,12 +338,35 @@ document.addEventListener("DOMContentLoaded", () => {
     group.style.transformOrigin = `${CX}px ${CY}px`;
     group.style.transform      = `rotate(${deg}deg)`;
 
-    const radOff = (deg * Math.PI) / 180;
-    const n      = data.length;
+    const n = data.length;
+
+    // Fixed angular "slots" for the label cluster near the top — these are
+    // NOT the node's real position on the wheel, they're constant offsets
+    // from top-center. That's what guarantees the 3 labels always sit at
+    // the same clean, non-overlapping spot regardless of how close two
+    // feasts happen to be on the actual calendar/wheel.
+    const SLOT_ANGLE = isMobile ? 21 : 25; // ° either side of top, for prev/next
+    const prevIdx = (activeIdx - 1 + n) % n;
+    const nextIdx = (activeIdx + 1) % n;
 
     nodeEls.forEach((entry, i) => {
       const { label } = entry;
-      const rad = ((angles[i] - 90) * Math.PI) / 180 + radOff;
+
+      let slot = null; // null = hidden, 0 = active/top, -1 = prev, 1 = next
+      if (i === activeIdx) slot = 0;
+      else if (i === prevIdx) slot = -1;
+      else if (i === nextIdx) slot = 1;
+
+      entry.near = slot !== null;
+      label.style.visibility = slot !== null ? "visible" : "hidden";
+
+      if (slot === null) {
+        label.style.opacity = "0";
+        return;
+      }
+
+      const slotDeg = slot * SLOT_ANGLE; // −SLOT..0..+SLOT
+      const rad = ((slotDeg - 90) * Math.PI) / 180;
       const lx  = CX + LABEL_R * Math.cos(rad);
       const ly  = CY + LABEL_R * Math.sin(rad);
       label.setAttribute("x", lx);
@@ -330,18 +376,10 @@ document.addEventListener("DOMContentLoaded", () => {
       label.setAttribute("text-anchor", lx < CX - 8 ? "start" : lx > CX + 8 ? "end" : "middle");
       label.querySelectorAll("tspan").forEach(ts => ts.setAttribute("x", lx));
 
-      // Only the active node and its immediate left/right neighbours ever
-      // show a text label — max 3 labels on screen at any time, regardless
-      // of how many feasts are on the wheel or how they're spaced. This is
-      // what keeps a 20+ item wheel from turning into overlapping text.
-      const idxDist = Math.min(
-        Math.abs(i - activeIdx),
-        n - Math.abs(i - activeIdx)
-      );
-      const near = idxDist <= 1;
-      entry.near = near;
-      label.style.visibility = near ? "visible" : "hidden";
-      label.style.opacity    = idxDist === 0 ? "1" : near ? "0.55" : "0";
+      label.style.opacity     = slot === 0 ? "1" : "0.5";
+      label.style.fontSize    = slot === 0 ? (isMobile ? "15px" : "17px") : (isMobile ? "11px" : "12px");
+      label.style.fontWeight  = slot === 0 ? "700" : "400";
+      label.setAttribute("fill", slot === 0 ? "rgba(245,225,164,1)" : "rgba(245,225,164,0.7)");
     });
   };
 
@@ -364,14 +402,12 @@ document.addEventListener("DOMContentLoaded", () => {
       panel.classList.remove("kolo-panel-changing");
     }, 160);
 
-    nodeEls.forEach(({ halo: h, circle: c, label: l }, i) => {
+    updateNavLabels();
+
+    nodeEls.forEach(({ halo: h, circle: c }, i) => {
       const active = i === activeIdx;
       h.setAttribute("opacity", active ? "0.35" : "0.08");
       c.setAttribute("r",       active ? "14"   : "10");
-      l.setAttribute("fill",    active
-        ? "rgba(245,225,164,1)"
-        : "rgba(245,225,164,0.65)");
-      l.style.fontWeight = active ? "700" : "";
     });
   };
 
@@ -384,8 +420,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (dist < bestDist) { bestDist = dist; bestIdx = i; }
     });
     wheelAngle = nearestSnap(bestIdx, wheelAngle);
-    applyRotation(wheelAngle, true);
     setActiveNode(bestIdx);
+    applyRotation(wheelAngle, true);
   };
 
   // ── Drag / swipe ───────────────────────────────────────────────────────────
@@ -444,8 +480,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (Math.abs(wheelAngle - dragStartWheelAngle) > 2) didDrag = true;
 
-    applyRotation(wheelAngle);
-
     // Live-highlight closest node without snapping the wheel yet.
     let bestIdx = 0, bestDist = Infinity;
     data.forEach((_, i) => {
@@ -454,6 +488,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (dist < bestDist) { bestDist = dist; bestIdx = i; }
     });
     if (bestIdx !== activeIdx) setActiveNode(bestIdx);
+
+    applyRotation(wheelAngle);
   };
 
   const onDragEnd = () => {
@@ -480,11 +516,7 @@ document.addEventListener("DOMContentLoaded", () => {
   svg.addEventListener("wheel", (e) => {
     if (!dialActive) return;
     e.preventDefault();
-    const dir  = e.deltaY > 0 ? 1 : -1;
-    const next = ((activeIdx + dir) + data.length) % data.length;
-    wheelAngle = nearestSnap(next, wheelAngle);
-    applyRotation(wheelAngle, true);
-    setActiveNode(next);
+    goTo(activeIdx + (e.deltaY > 0 ? 1 : -1));
   }, { passive: false });
 
   // Keyboard navigation.
@@ -493,17 +525,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!dialActive) return;
     if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
       e.preventDefault();
-      const next = ((activeIdx - 1) + data.length) % data.length;
-      wheelAngle = nearestSnap(next, wheelAngle);
-      applyRotation(wheelAngle, true);
-      setActiveNode(next);
+      goTo(activeIdx - 1);
     }
     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
       e.preventDefault();
-      const next = (activeIdx + 1) % data.length;
-      wheelAngle = nearestSnap(next, wheelAngle);
-      applyRotation(wheelAngle, true);
-      setActiveNode(next);
+      goTo(activeIdx + 1);
     }
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -539,8 +565,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Snap to the festival closest to today.
     wheelAngle = nearestSnap(closestToToday, 0);
-    applyRotation(wheelAngle, true);
     setActiveNode(closestToToday);
+    applyRotation(wheelAngle, true);
 
     labelGroup.setAttribute("visibility", "visible");
     panel.classList.add("kolo-panel-visible");
@@ -567,6 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
       panelSub.textContent  = lang === "en"
         ? (s.podtytul_en || "")
         : (s.podtytul_pl || "");
+      updateNavLabels();
     }
 
     // Toggle bilingual button/hint labels.
