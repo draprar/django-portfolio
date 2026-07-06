@@ -135,13 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const CX       = 250, CY = 250;
   const isMobile = window.innerWidth < 768;
   const NODE_R   = isMobile ? 130 : 155;
-  const LABEL_R  = isMobile ? 170 : 192;
-
-  // Only nodes within this many degrees of the TOP position show a text
-  // label. Everything further away is just a colored dot — its name shows
-  // in a tooltip on hover/tap instead. This is what keeps a 20+ item wheel
-  // readable instead of a wall of overlapping text.
-  const LABEL_WINDOW = isMobile ? 26 : 38;
+  const LABEL_R  = isMobile ? 160 : 182;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
@@ -254,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     label.setAttribute("x", lx0); label.setAttribute("y", ly0);
     label.setAttribute("text-anchor",
-      lx0 < CX - 8 ? "end" : lx0 > CX + 8 ? "start" : "middle");
+      lx0 < CX - 8 ? "start" : lx0 > CX + 8 ? "end" : "middle");
     label.setAttribute("dominant-baseline", "middle");
     label.setAttribute("font-size", isMobile ? "13" : "14");
     label.setAttribute("font-family", "'Playfair Display', serif");
@@ -315,6 +309,8 @@ document.addEventListener("DOMContentLoaded", () => {
     group.style.transform      = `rotate(${deg}deg)`;
 
     const radOff = (deg * Math.PI) / 180;
+    const n      = data.length;
+
     nodeEls.forEach((entry, i) => {
       const { label } = entry;
       const rad = ((data[i].kat - 90) * Math.PI) / 180 + radOff;
@@ -322,19 +318,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const ly  = CY + LABEL_R * Math.sin(rad);
       label.setAttribute("x", lx);
       label.setAttribute("y", ly);
-      label.setAttribute("text-anchor", lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle");
+      // Anchor grows the text TOWARD the center rather than outward, so
+      // labels near the left/right edge never run off the wheel.
+      label.setAttribute("text-anchor", lx < CX - 8 ? "start" : lx > CX + 8 ? "end" : "middle");
       label.querySelectorAll("tspan").forEach(ts => ts.setAttribute("x", lx));
 
-      // Angular distance of this node from the TOP position (0° = top),
-      // wrapped to −180..180. Only nodes close to the top keep a visible
-      // text label; further away they're just a dot (name on hover/tap).
-      let dist = ((data[i].kat + deg) % 360 + 540) % 360 - 180;
-      dist = Math.abs(dist);
-
-      const near = dist <= LABEL_WINDOW;
+      // Only the active node and its immediate left/right neighbours ever
+      // show a text label — max 3 labels on screen at any time, regardless
+      // of how many feasts are on the wheel or how they're spaced. This is
+      // what keeps a 20+ item wheel from turning into overlapping text.
+      const idxDist = Math.min(
+        Math.abs(i - activeIdx),
+        n - Math.abs(i - activeIdx)
+      );
+      const near = idxDist <= 1;
       entry.near = near;
       label.style.visibility = near ? "visible" : "hidden";
-      label.style.opacity    = near ? String((1 - (dist / LABEL_WINDOW) * 0.55).toFixed(2)) : "0";
+      label.style.opacity    = idxDist === 0 ? "1" : near ? "0.55" : "0";
     });
   };
 
