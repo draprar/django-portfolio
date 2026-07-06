@@ -659,17 +659,38 @@ a:hover { color: var(--gold); }
 
 #kolo-nodes { transition: none; }
 
-.kolo-node  { outline: none; }
+.kolo-node  { outline: none; cursor: pointer; }
+.kolo-node:hover .node-halo { opacity: 0.22; }
 .node-halo  { transition: opacity 0.25s ease, r 0.25s ease; }
 .node-label {
   pointer-events: none;
-  transition: fill 0.25s, font-weight 0.25s;
+  transition: fill 0.25s, font-weight 0.25s, opacity 0.3s ease;
   font-size: 13px;
   paint-order: stroke;
   stroke: rgba(15,17,23,0.98);
   stroke-width: 3px;
   font-weight: 700;
 }
+
+/* Tooltip shown when hovering/tapping a dot whose label is hidden */
+.kolo-tooltip {
+  position: absolute;
+  left: 0; top: 0;
+  transform: translate(-50%, -135%);
+  background: rgba(26,30,39,0.95);
+  border: 1px solid rgba(196,146,42,0.4);
+  border-radius: 6px;
+  padding: 0.32rem 0.7rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.78rem;
+  color: var(--gold);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 6;
+}
+.kolo-tooltip-visible { opacity: 1; }
 
 .kolo-wrap::before {
   content: "▾";

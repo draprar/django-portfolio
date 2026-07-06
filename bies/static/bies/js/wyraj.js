@@ -137,6 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const NODE_R   = isMobile ? 130 : 155;
   const LABEL_R  = isMobile ? 170 : 192;
 
+  // Only nodes within this many degrees of the TOP position show a text
+  // label. Everything further away is just a colored dot — its name shows
+  // in a tooltip on hover/tap instead. This is what keeps a 20+ item wheel
+  // readable instead of a wall of overlapping text.
+  const LABEL_WINDOW = isMobile ? 26 : 38;
+
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
   };
@@ -167,6 +173,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const panelName = panel.querySelector(".kolo-panel-name");
   const panelSub  = panel.querySelector(".kolo-panel-sub");
   const panelBtn  = panel.querySelector(".kolo-panel-btn");
+
+  // ── Tooltip (for nodes whose label is hidden) ───────────────────────────────
+  const tooltip      = document.getElementById("kolo-tooltip");
+  const tooltipTitle = tooltip ? tooltip.querySelector(".kolo-tooltip-title") : null;
+
+  const showTooltip = (targetEl, text) => {
+    if (!tooltip || !tooltipTitle) return;
+    const wrapRect = koloWrap.getBoundingClientRect();
+    const elRect   = targetEl.getBoundingClientRect();
+    tooltipTitle.textContent = text;
+    tooltip.style.left = (elRect.left + elRect.width / 2 - wrapRect.left) + "px";
+    tooltip.style.top  = (elRect.top - wrapRect.top) + "px";
+    tooltip.classList.add("kolo-tooltip-visible");
+    tooltip.setAttribute("aria-hidden", "false");
+  };
+  const hideTooltip = () => {
+    if (!tooltip) return;
+    tooltip.classList.remove("kolo-tooltip-visible");
+    tooltip.setAttribute("aria-hidden", "true");
+  };
 
   // ── Label helpers ──────────────────────────────────────────────────────────
   const buildLabel = (el, title, atX) => {
@@ -207,6 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Dot + halo in the rotating group.
     const g    = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("class", "kolo-node");
+    g.setAttribute("tabindex", "-1"); // focus handled by the SVG root, not per-node
 
     const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     halo.setAttribute("cx", x0); halo.setAttribute("cy", y0); halo.setAttribute("r", "20");
@@ -238,7 +265,22 @@ document.addEventListener("DOMContentLoaded", () => {
     buildLabel(label, s.tytul_pl, lx0);
     labelGroup.appendChild(label);
 
-    nodeEls.push({ g, halo, circle, label, data: s });
+    const entry = { g, halo, circle, label, data: s, near: true };
+    nodeEls.push(entry);
+
+    // Tap/hover a dot directly: show its name if the label is currently
+    // hidden, and jump the wheel to it on click (independent of drag).
+    g.addEventListener("mouseenter", () => {
+      if (!entry.near) showTooltip(circle, currentLang() === "en" ? s.tytul_en : s.tytul_pl);
+    });
+    g.addEventListener("mouseleave", hideTooltip);
+    g.addEventListener("click", () => {
+      if (didDrag) return;
+      const idx = nodeEls.indexOf(entry);
+      wheelAngle = nearestSnap(idx, wheelAngle);
+      applyRotation(wheelAngle, true);
+      setActiveNode(idx);
+    });
   });
 
   // ── State ──────────────────────────────────────────────────────────────────
@@ -273,7 +315,8 @@ document.addEventListener("DOMContentLoaded", () => {
     group.style.transform      = `rotate(${deg}deg)`;
 
     const radOff = (deg * Math.PI) / 180;
-    nodeEls.forEach(({ label }, i) => {
+    nodeEls.forEach((entry, i) => {
+      const { label } = entry;
       const rad = ((data[i].kat - 90) * Math.PI) / 180 + radOff;
       const lx  = CX + LABEL_R * Math.cos(rad);
       const ly  = CY + LABEL_R * Math.sin(rad);
@@ -281,6 +324,17 @@ document.addEventListener("DOMContentLoaded", () => {
       label.setAttribute("y", ly);
       label.setAttribute("text-anchor", lx < CX - 8 ? "end" : lx > CX + 8 ? "start" : "middle");
       label.querySelectorAll("tspan").forEach(ts => ts.setAttribute("x", lx));
+
+      // Angular distance of this node from the TOP position (0° = top),
+      // wrapped to −180..180. Only nodes close to the top keep a visible
+      // text label; further away they're just a dot (name on hover/tap).
+      let dist = ((data[i].kat + deg) % 360 + 540) % 360 - 180;
+      dist = Math.abs(dist);
+
+      const near = dist <= LABEL_WINDOW;
+      entry.near = near;
+      label.style.visibility = near ? "visible" : "hidden";
+      label.style.opacity    = near ? String((1 - (dist / LABEL_WINDOW) * 0.55).toFixed(2)) : "0";
     });
   };
 
@@ -335,6 +389,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let velDeg       = 0;   // degrees/ms
   let prevTime     = 0;
 
+  // Distinguishes a real drag from a tap/click on a node. A tap should
+  // select that node directly; a drag should fall back to snap-to-nearest.
+  let didDrag            = false;
+  let dragStartWheelAngle = 0;
+
   const ptrAngle = (e) => {
     const r  = svg.getBoundingClientRect();
     const cx = r.left + r.width  / 2;
@@ -346,10 +405,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const onDragStart = (e) => {
     if (!dialActive) return;
-    dragging     = true;
-    prevPtrAngle = ptrAngle(e);
-    velDeg       = 0;
-    prevTime     = Date.now();
+    dragging             = true;
+    didDrag              = false;
+    dragStartWheelAngle  = wheelAngle;
+    prevPtrAngle         = ptrAngle(e);
+    velDeg               = 0;
+    prevTime             = Date.now();
     group.style.transition = "none";
     e.preventDefault();
   };
@@ -374,6 +435,8 @@ document.addEventListener("DOMContentLoaded", () => {
     prevPtrAngle = cur;
     prevTime     = now;
 
+    if (Math.abs(wheelAngle - dragStartWheelAngle) > 2) didDrag = true;
+
     applyRotation(wheelAngle);
 
     // Live-highlight closest node without snapping the wheel yet.
@@ -389,6 +452,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const onDragEnd = () => {
     if (!dragging) return;
     dragging = false;
+    // A tap with no real movement is handled by the node's own click
+    // handler instead — avoids fighting over which node to snap to.
+    if (!didDrag) return;
     // Small momentum nudge — capped so it can't spin past 2 nodes.
     const nudge = Math.max(-60, Math.min(60, velDeg * 120));
     wheelAngle += nudge;
