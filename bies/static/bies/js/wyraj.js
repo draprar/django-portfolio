@@ -134,8 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const CX       = 250, CY = 250;
   const isMobile = window.innerWidth < 768;
-  const NODE_R   = isMobile ? 130 : 155;
-  const LABEL_R  = isMobile ? 195 : 210;
+  const NODE_R   = isMobile ? 124 : 148;
+  const LABEL_R  = isMobile ? 182 : 192;
 
   const currentLang = () => {
     try { return localStorage.getItem(LANG_KEY) || "pl"; } catch (_) { return "pl"; }
@@ -156,10 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="kolo-panel-btn-label-pl">Odwiedź</span>
         <span class="kolo-panel-btn-label-en">Visit</span>
       </a>
-    </div>
-    <div class="kolo-panel-hint">
-      <span class="kolo-panel-hint-pl">Obróć koło, by wybrać święto</span>
-      <span class="kolo-panel-hint-en">Spin the wheel to choose a feast</span>
     </div>
   `;
   koloWrap.parentNode.insertBefore(panel, koloWrap);
@@ -575,7 +571,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const centerLabel = document.getElementById("kolo-center-label");
     if (centerLabel) {
-      centerLabel.textContent = lang === "en" ? centerLabel.dataset.en : centerLabel.dataset.pl;
+      const title = lang === "en" ? centerLabel.dataset.en : centerLabel.dataset.pl;
+      buildLabel(centerLabel, title, centerLabel.getAttribute("x"));
     }
 
     if (dialActive) {
@@ -587,15 +584,12 @@ document.addEventListener("DOMContentLoaded", () => {
       updateNavLabels();
     }
 
-    // Toggle bilingual button/hint labels.
-    panel.querySelectorAll(
-      ".kolo-panel-btn-label-pl, .kolo-panel-btn-label-en," +
-      ".kolo-panel-hint-pl, .kolo-panel-hint-en"
-    ).forEach(el => {
-      el.style.display = el.classList.contains(`kolo-panel-btn-label-${lang}`) ||
-                         el.classList.contains(`kolo-panel-hint-${lang}`)
-        ? "inline" : "none";
-    });
+    // Toggle bilingual button labels.
+    panel.querySelectorAll(".kolo-panel-btn-label-pl, .kolo-panel-btn-label-en")
+      .forEach(el => {
+        el.style.display = el.classList.contains(`kolo-panel-btn-label-${lang}`)
+          ? "inline" : "none";
+      });
   });
 });
 
