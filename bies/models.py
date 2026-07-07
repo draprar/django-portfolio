@@ -81,7 +81,26 @@ class Swieto(models.Model):
         help_text=(
             "Approximate calendar day of this festival (Jan 1 = 1, Dec 31 = 365). "
             "Used to auto-highlight the nearest feast on the Wheel of the Year. "
-            "E.g. Noc Kupały ≈ Jun 23 → 174, Szczodre Gody ≈ Dec 21 → 355."
+            "E.g. Noc Kupały ≈ Jun 23 → 174, Szczodre Gody ≈ Dec 21 → 355. "
+            "If 'Day of year — end' below is set, this is the START of a range."
+        ),
+    )
+
+    # --- Optional END day, for festivals spanning a whole range (e.g. all of
+    # January) instead of a single date. Leave blank for single-day feasts —
+    # everything keeps working exactly as before. When set, ANY day inside
+    # [dzien_roku, dzien_roku_koniec] (inclusive) auto-selects this festival
+    # directly, before the "closest single day" fallback is even considered.
+    # A range where the end is SMALLER than the start (e.g. 355 → 10) is
+    # treated as wrapping over New Year's Eve.
+    dzien_roku_koniec = models.PositiveSmallIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Day of year — end (optional)",
+        help_text=(
+            "Only for festivals spanning a range of days, e.g. all of January "
+            "= 1 to 31. Leave BLANK for ordinary single-day festivals — do not "
+            "fill this in unless the festival really covers a whole period."
         ),
     )
 

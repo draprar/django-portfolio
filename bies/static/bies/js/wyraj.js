@@ -530,15 +530,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // Each feast has a `dzien_roku` field (1–365, set in the admin) representing
   // its real calendar position. We compare today's day-of-year against those
   // values. The year is treated as circular so Dec 31 → Jan 1 wraps correctly.
-  // This is fully robust to any number of feasts and any kolo_kat layout.
+  //
+  // Some feasts span a RANGE of days instead of one date (e.g. "all of
+  // January") — those also carry `dzien_roku_koniec`. Any day that falls
+  // inside a feast's range selects it directly, taking priority over the
+  // nearest-single-day fallback used for ordinary point-in-time feasts.
   const closestToToday = (() => {
     const now       = new Date();
     const start     = new Date(now.getFullYear(), 0, 0);
     const todayDoy  = Math.floor((now - start) / 86_400_000); // 1–365
 
+    // 1) Exact range match wins outright, whoever it is.
+    const rangeIdx = data.findIndex(s => {
+      if (s.dzien_roku_koniec == null) return false;
+      const from = s.dzien_roku, to = s.dzien_roku_koniec;
+      return from <= to
+        ? (todayDoy >= from && todayDoy <= to)      // normal range
+        : (todayDoy >= from || todayDoy <= to);     // wraps over New Year
+    });
+    if (rangeIdx !== -1) return rangeIdx;
+
+    // 2) Otherwise, nearest single day wins (unchanged from before). Range
+    // feasts still participate here via their midpoint, purely as a
+    // fallback in case no range actually covers today (e.g. gaps between
+    // configured ranges).
     let bestIdx = 0, bestDist = Infinity;
     data.forEach((s, i) => {
-      let diff = Math.abs(s.dzien_roku - todayDoy);
+      const anchor = s.dzien_roku_koniec != null
+        ? Math.round((s.dzien_roku + s.dzien_roku_koniec) / 2)
+        : s.dzien_roku;
+      let diff = Math.abs(anchor - todayDoy);
       if (diff > 182) diff = 365 - diff; // wrap-aware (circular year)
       if (diff < bestDist) { bestDist = diff; bestIdx = i; }
     });

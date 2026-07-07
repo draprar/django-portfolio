@@ -25,6 +25,7 @@ def wyraj_lista(request):
                 "kat":         s.kolo_kat,
                 "kolor":       s.kolo_kolor,
                 "dzien_roku":  s.dzien_roku,
+                "dzien_roku_koniec": s.dzien_roku_koniec,  # None for ordinary single-day feasts
                 "url":         f"/wyraj/{s.slug}/",
                 "obraz":       s.obraz.url if s.obraz else "",
             }
