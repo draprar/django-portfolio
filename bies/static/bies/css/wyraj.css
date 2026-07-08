@@ -211,6 +211,29 @@ a       { color: var(--gold-dim); text-decoration: underline; }
 a:hover { color: var(--gold); }
 
 /* =============================================
+   WYRAJ INTRO
+   ============================================= */
+.wyraj-intro {
+  max-width: 38rem;
+  margin: 0 auto 0.5rem;
+  text-align: center;
+  animation: fadeIn 1.2s ease both;
+}
+.wyraj-intro p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  font-style: italic;
+  color: var(--text);
+}
+.wyraj-intro p:last-child {
+  font-style: normal;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 1.35rem;
+  color: var(--gold-dim);
+  margin-top: 0.4rem;
+}
+
+/* =============================================
    SECTION TITLE
    ============================================= */
 .section-title {
@@ -501,6 +524,8 @@ a:hover { color: var(--gold); }
   .subtitle         { font-size: 1.35rem; }
   .section-title    { font-size: 1.3rem; }
   p                 { font-size: 1.1rem; line-height: 1.75; }
+  .wyraj-intro p    { font-size: 1.02rem; }
+  .wyraj-intro p:last-child { font-size: 1.2rem; }
   .tresc ul,
   .zrodla ul        { font-size: 1.1rem; }
   .zrodla li        { font-size: 1rem; }
