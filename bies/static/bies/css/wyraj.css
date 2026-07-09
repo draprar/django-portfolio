@@ -897,6 +897,23 @@ button.duch-tag-bostwo:focus-visible {
   object-fit: cover;
   border: 1px solid rgba(196,146,42,0.5);
   flex-shrink: 0;
+  position: relative;
+}
+
+/* Breathing glow — signals "there's more here, tap me" without adding
+   any text clutter. */
+button.duch-tag-bostwo {
+  position: relative;
+}
+button.duch-tag-bostwo .duch-tag-avatar {
+  animation: duchAvatarGlow 3.2s ease-in-out infinite;
+}
+@keyframes duchAvatarGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(196,146,42,0); }
+  50%      { box-shadow: 0 0 9px 2px rgba(196,146,42,0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  button.duch-tag-bostwo .duch-tag-avatar { animation: none; }
 }
 
 /* =============================================
@@ -930,11 +947,37 @@ button.duch-tag-bostwo:focus-visible {
   transform: translateY(24px) scale(0.97);
   opacity: 0;
   transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196,146,42,0.5) transparent;
 }
+.bostwo-panel::-webkit-scrollbar { width: 6px; }
+.bostwo-panel::-webkit-scrollbar-track { background: transparent; }
+.bostwo-panel::-webkit-scrollbar-thumb {
+  background: rgba(196,146,42,0.45);
+  border-radius: 3px;
+}
+.bostwo-panel::-webkit-scrollbar-thumb:hover { background: rgba(196,146,42,0.7); }
+
 .bostwo-overlay.bostwo-visible .bostwo-panel {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
+
+/* Fade hinting there's more content below — hidden once scrolled to the end. */
+.bostwo-panel::before {
+  content: '';
+  position: sticky;
+  display: block;
+  bottom: 0; left: 0;
+  height: 40px;
+  margin-top: -40px;
+  background: linear-gradient(to bottom, transparent, var(--surface));
+  pointer-events: none;
+  z-index: 3;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+.bostwo-panel.bostwo-panel-at-end::before { opacity: 0; }
 
 .bostwo-panel-handle { display: none; }
 
