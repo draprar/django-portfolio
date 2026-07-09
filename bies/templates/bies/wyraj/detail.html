@@ -50,22 +50,20 @@
           <p class="subtitle">{{ swieto.podtytul_pl }}</p>
         {% endif %}
 
-        {% with bostwa=swieto.bostwa.all %}
-        {% if bostwa %}
+        {% with b=swieto.bostwo %}
+        {% if b %}
         <div class="duchy-wrap reveal">
           <span class="duchy-label">Patron / patronka miesiąca:</span>
-          {% for b in bostwa %}
-            <button type="button" class="duch-tag duch-tag-bostwo"
-              data-bostwo-trigger
-              data-imie-pl="{{ b.imie_pl }}" data-imie-en="{{ b.imie_en }}"
-              data-epitet-pl="{{ b.epitet_pl }}" data-epitet-en="{{ b.epitet_en }}"
-              data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
-              data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
-              data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
-              {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
-              <span>{{ b.imie_pl }}</span>
-            </button>
-          {% endfor %}
+          <button type="button" class="duch-tag duch-tag-bostwo"
+            data-bostwo-trigger
+            data-imie-pl="{{ b.imie_pl }}" data-imie-en="{{ b.imie_en }}"
+            data-epitet-pl="{{ b.epitet_pl }}" data-epitet-en="{{ b.epitet_en }}"
+            data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
+            data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
+            data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
+            {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
+            <span>{{ b.imie_pl }}</span>
+          </button>
         </div>
         {% elif duchy_pl_list %}
         <div class="duchy-wrap reveal">
@@ -132,22 +130,20 @@
           <p class="subtitle">{{ swieto.podtytul_en }}</p>
         {% endif %}
 
-        {% with bostwa=swieto.bostwa.all %}
-        {% if bostwa %}
+        {% with b=swieto.bostwo %}
+        {% if b %}
         <div class="duchy-wrap reveal">
           <span class="duchy-label">Patron / patroness of the month:</span>
-          {% for b in bostwa %}
-            <button type="button" class="duch-tag duch-tag-bostwo"
-              data-bostwo-trigger
-              data-imie-pl="{{ b.imie_pl }}" data-imie-en="{{ b.imie_en }}"
-              data-epitet-pl="{{ b.epitet_pl }}" data-epitet-en="{{ b.epitet_en }}"
-              data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
-              data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
-              data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
-              {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
-              <span>{{ b.imie_en }}</span>
-            </button>
-          {% endfor %}
+          <button type="button" class="duch-tag duch-tag-bostwo"
+            data-bostwo-trigger
+            data-imie-pl="{{ b.imie_pl }}" data-imie-en="{{ b.imie_en }}"
+            data-epitet-pl="{{ b.epitet_pl }}" data-epitet-en="{{ b.epitet_en }}"
+            data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
+            data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
+            data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
+            {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
+            <span>{{ b.imie_en }}</span>
+          </button>
         </div>
         {% elif duchy_en_list %}
         <div class="duchy-wrap reveal">

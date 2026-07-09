@@ -48,7 +48,7 @@ def wyraj_lista(request):
 def wyraj_detail(request, slug):
     # Fetch single festival with related sources, or return 404.
     swieto = get_object_or_404(
-        Swieto.objects.prefetch_related("zrodla", "bostwa"),
+        Swieto.objects.select_related("bostwo").prefetch_related("zrodla"),
         slug=slug,
     )
 

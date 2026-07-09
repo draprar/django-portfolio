@@ -6,15 +6,14 @@ from .models import Bostwo, Swieto, ZrodloBibliograficzne
 
 @admin.register(Bostwo)
 class BostwoAdmin(admin.ModelAdmin):
-    list_display = ("imie_pl", "imie_en", "kolejnosc", "podglad_portretu", "lista_swiat")
+    list_display = ("imie_pl", "imie_en", "kolejnosc", "podglad_portretu", "swieto")
     list_editable = ("kolejnosc",)
     ordering = ("kolejnosc", "imie_pl")
     search_fields = ("imie_pl", "imie_en")
-    filter_horizontal = ("swieta",)
     readonly_fields = ("podglad_portretu",)
 
     fieldsets = (
-        ("Identifier", {"fields": ("kolejnosc", "swieta")}),
+        ("Identifier", {"fields": ("kolejnosc", "swieto")}),
         ("Name", {"fields": (("imie_pl", "imie_en"), ("epitet_pl", "epitet_en"))}),
         ("Story", {"fields": ("opis_pl", "opis_en")}),
         ("Trivia", {
@@ -33,10 +32,6 @@ class BostwoAdmin(admin.ModelAdmin):
                 obj.obraz.url,
             )
         return "—"
-
-    @admin.display(description="Linked festivals")
-    def lista_swiat(self, obj):
-        return ", ".join(s.tytul_pl for s in obj.swieta.all()) or "—"
 
 
 class ZrodloInline(admin.TabularInline):
