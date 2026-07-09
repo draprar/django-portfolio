@@ -50,7 +50,24 @@
           <p class="subtitle">{{ swieto.podtytul_pl }}</p>
         {% endif %}
 
-        {% if duchy_pl_list %}
+        {% with bostwa=swieto.bostwa.all %}
+        {% if bostwa %}
+        <div class="duchy-wrap reveal">
+          <span class="duchy-label">Patron / patronka miesiąca:</span>
+          {% for b in bostwa %}
+            <button type="button" class="duch-tag duch-tag-bostwo"
+              data-bostwo-trigger
+              data-imie-pl="{{ b.imie_pl }}" data-imie-en="{{ b.imie_en }}"
+              data-epitet-pl="{{ b.epitet_pl }}" data-epitet-en="{{ b.epitet_en }}"
+              data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
+              data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
+              data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
+              {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
+              <span>{{ b.imie_pl }}</span>
+            </button>
+          {% endfor %}
+        </div>
+        {% elif duchy_pl_list %}
         <div class="duchy-wrap reveal">
           <span class="duchy-label">Patron / patronka miesiąca:</span>
           {% for duch in duchy_pl_list %}
@@ -58,6 +75,7 @@
           {% endfor %}
         </div>
         {% endif %}
+        {% endwith %}
 
         <div class="tresc">
 
@@ -114,7 +132,24 @@
           <p class="subtitle">{{ swieto.podtytul_en }}</p>
         {% endif %}
 
-        {% if duchy_en_list %}
+        {% with bostwa=swieto.bostwa.all %}
+        {% if bostwa %}
+        <div class="duchy-wrap reveal">
+          <span class="duchy-label">Patron / patroness of the month:</span>
+          {% for b in bostwa %}
+            <button type="button" class="duch-tag duch-tag-bostwo"
+              data-bostwo-trigger
+              data-imie-pl="{{ b.imie_pl }}" data-imie-en="{{ b.imie_en }}"
+              data-epitet-pl="{{ b.epitet_pl }}" data-epitet-en="{{ b.epitet_en }}"
+              data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
+              data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
+              data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
+              {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
+              <span>{{ b.imie_en }}</span>
+            </button>
+          {% endfor %}
+        </div>
+        {% elif duchy_en_list %}
         <div class="duchy-wrap reveal">
           <span class="duchy-label">Patron / patroness of the month:</span>
           {% for duch in duchy_en_list %}
@@ -122,6 +157,7 @@
           {% endfor %}
         </div>
         {% endif %}
+        {% endwith %}
 
         <div class="tresc">
 
@@ -240,6 +276,30 @@
     </footer>
 
   </div><!-- /page-wrap -->
+
+  <!-- ═══ PANEL BÓSTWA (modal / bottom-sheet) ═══ -->
+  <div id="bostwo-overlay" class="bostwo-overlay" hidden>
+    <div class="bostwo-panel" role="dialog" aria-modal="true" aria-labelledby="bostwo-imie">
+      <div class="bostwo-panel-handle" aria-hidden="true"></div>
+      <button type="button" class="bostwo-close" id="bostwo-close" aria-label="Zamknij">✕</button>
+
+      <div class="bostwo-portrait-wrap">
+        <img id="bostwo-portret" class="bostwo-portret" src="" alt="">
+      </div>
+
+      <div class="bostwo-panel-body">
+        <h2 id="bostwo-imie" class="bostwo-imie"></h2>
+        <p id="bostwo-epitet" class="bostwo-epitet"></p>
+        <div class="ornament">⸻✦⸻</div>
+        <p id="bostwo-opis" class="bostwo-opis"></p>
+
+        <div id="bostwo-ciekawostka-wrap" class="bostwo-ciekawostka">
+          <span class="bostwo-ciekawostka-label" data-pl="Czy wiedziałeś, że…" data-en="Did you know…">Czy wiedziałeś, że…</span>
+          <p id="bostwo-ciekawostka" class="bostwo-ciekawostka-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="{% static 'bies/js/wyraj.js' %}"></script>
   <script>

@@ -688,3 +688,131 @@ document.addEventListener("keydown", e => {
     }
   }, { passive: true });
 })();
+// ─────────────────────────────────────────────────────────────────────────────
+// PANEL BÓSTWA (patron deity) — modal on desktop, bottom-sheet on mobile.
+// One shared overlay in the DOM; each ".duch-tag-bostwo" button carries the
+// bilingual content as data-* attributes. Re-renders on langchange so a
+// panel left open while switching PL/EN stays in sync.
+// ─────────────────────────────────────────────────────────────────────────────
+(function () {
+  const overlay = document.getElementById("bostwo-overlay");
+  if (!overlay) return;
+
+  const panel        = overlay.querySelector(".bostwo-panel");
+  const closeBtn     = document.getElementById("bostwo-close");
+  const elPortret    = document.getElementById("bostwo-portret");
+  const elImie       = document.getElementById("bostwo-imie");
+  const elEpitet     = document.getElementById("bostwo-epitet");
+  const elOpis       = document.getElementById("bostwo-opis");
+  const elCiekWrap   = document.getElementById("bostwo-ciekawostka-wrap");
+  const elCiek       = document.getElementById("bostwo-ciekawostka");
+
+  let activeTrigger = null;
+  let lastFocused   = null;
+
+  function currentLang() {
+    return document.documentElement.lang === "en" ? "en" : "pl";
+  }
+
+  function render(trigger) {
+    const lang = currentLang();
+    const d = trigger.dataset;
+
+    elImie.textContent   = lang === "en" ? d.imieEn   : d.imiePl;
+    elEpitet.textContent = lang === "en" ? d.epitetEn : d.epitetPl;
+    elEpitet.style.display = (lang === "en" ? d.epitetEn : d.epitetPl) ? "" : "none";
+
+    elOpis.innerHTML = (lang === "en" ? d.opisEn : d.opisPl) || "";
+
+    const ciek = lang === "en" ? d.ciekawostkaEn : d.ciekawostkaPl;
+    if (ciek && ciek.trim()) {
+      elCiek.innerHTML = ciek;
+      elCiekWrap.classList.remove("bostwo-ciekawostka-hidden");
+    } else {
+      elCiekWrap.classList.add("bostwo-ciekawostka-hidden");
+    }
+
+    if (d.obraz) {
+      elPortret.src = d.obraz;
+      elPortret.alt = lang === "en" ? d.imieEn : d.imiePl;
+      elPortret.closest(".bostwo-portrait-wrap").style.display = "";
+    } else {
+      elPortret.closest(".bostwo-portrait-wrap").style.display = "none";
+    }
+  }
+
+  function open(trigger) {
+    activeTrigger = trigger;
+    lastFocused = document.activeElement;
+    render(trigger);
+
+    overlay.hidden = false;
+    document.body.style.overflow = "hidden";
+    // Force reflow so the opacity/transform transition actually plays.
+    void overlay.offsetWidth;
+    overlay.classList.add("bostwo-visible");
+
+    closeBtn.focus();
+  }
+
+  function close() {
+    overlay.classList.remove("bostwo-visible");
+    document.body.style.overflow = "";
+    activeTrigger = null;
+
+    const onEnd = () => {
+      overlay.hidden = true;
+      panel.style.transform = "";
+      panel.removeEventListener("transitionend", onEnd);
+    };
+    panel.addEventListener("transitionend", onEnd, { once: true });
+
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
+  document.addEventListener("click", e => {
+    const trigger = e.target.closest("[data-bostwo-trigger]");
+    if (trigger) { open(trigger); return; }
+    if (e.target === overlay) close();
+  });
+
+  closeBtn.addEventListener("click", close);
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !overlay.hidden) close();
+  });
+
+  document.addEventListener("langchange", () => {
+    if (activeTrigger && !overlay.hidden) render(activeTrigger);
+  });
+
+  // Swipe-down-to-dismiss on the mobile bottom-sheet.
+  let startY = null, currentY = null, dragging = false;
+
+  panel.addEventListener("touchstart", e => {
+    if (window.innerWidth > 640) return;
+    startY = e.touches[0].clientY;
+    dragging = true;
+    panel.style.transition = "none";
+  }, { passive: true });
+
+  panel.addEventListener("touchmove", e => {
+    if (!dragging || startY === null) return;
+    currentY = e.touches[0].clientY;
+    const delta = Math.max(0, currentY - startY);
+    panel.style.transform = `translateY(${delta}px)`;
+  }, { passive: true });
+
+  panel.addEventListener("touchend", () => {
+    if (!dragging) return;
+    dragging = false;
+    panel.style.transition = "";
+    const delta = currentY && startY ? currentY - startY : 0;
+    if (delta > 90) {
+      close();
+    } else {
+      panel.style.transform = "";
+    }
+    startY = currentY = null;
+  });
+})();

@@ -1,7 +1,42 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Swieto, ZrodloBibliograficzne
+from .models import Bostwo, Swieto, ZrodloBibliograficzne
+
+
+@admin.register(Bostwo)
+class BostwoAdmin(admin.ModelAdmin):
+    list_display = ("imie_pl", "imie_en", "kolejnosc", "podglad_portretu", "lista_swiat")
+    list_editable = ("kolejnosc",)
+    ordering = ("kolejnosc", "imie_pl")
+    search_fields = ("imie_pl", "imie_en")
+    filter_horizontal = ("swieta",)
+    readonly_fields = ("podglad_portretu",)
+
+    fieldsets = (
+        ("Identifier", {"fields": ("kolejnosc", "swieta")}),
+        ("Name", {"fields": (("imie_pl", "imie_en"), ("epitet_pl", "epitet_en"))}),
+        ("Story", {"fields": ("opis_pl", "opis_en")}),
+        ("Trivia", {
+            "fields": ("ciekawostka_pl", "ciekawostka_en"),
+            "description": "Shown in its own highlighted box in the patron panel. Leave blank to hide it.",
+        }),
+        ("Portrait", {"fields": ("obraz", "podglad_portretu")}),
+    )
+
+    @admin.display(description="Preview")
+    def podglad_portretu(self, obj):
+        if obj.obraz:
+            return format_html(
+                '<img src="{}" style="max-height:90px;max-width:90px;'
+                'object-fit:cover;border-radius:50%;"/>',
+                obj.obraz.url,
+            )
+        return "—"
+
+    @admin.display(description="Linked festivals")
+    def lista_swiat(self, obj):
+        return ", ".join(s.tytul_pl for s in obj.swieta.all()) or "—"
 
 
 class ZrodloInline(admin.TabularInline):
@@ -67,9 +102,15 @@ class SwietoAdmin(admin.ModelAdmin):
                 "Any day inside that range will auto-select this feast directly."
             ),
         }),
-        ("Spirits and Deities", {
+        ("Spirits and Deities — legacy fallback", {
+            "classes": ("collapse",),
             "fields": (("duchy_pl", "duchy_en"),),
-            "description": "Comma-separated values, e.g. 'Jaryło, Marzanna, Spring'.",
+            "description": (
+                "Old plain-text field, comma-separated. Only used on the page if "
+                "no 'Bostwo' record is linked below. To get the portrait + story "
+                "panel, add/edit the patron in Patrons / deities and attach this "
+                "festival to it there."
+            ),
         }),
         ("SEO", {
             "classes": ("collapse",),

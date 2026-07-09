@@ -875,6 +875,159 @@ a:hover { color: var(--gold); }
   color: var(--gold);
 }
 
+/* Clickable chip variant (linked to a Bostwo record) */
+button.duch-tag-bostwo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+button.duch-tag-bostwo:hover,
+button.duch-tag-bostwo:focus-visible {
+  background: rgba(196,146,42,0.18);
+  border-color: var(--primary);
+  color: var(--gold);
+  outline: none;
+}
+.duch-tag-avatar {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(196,146,42,0.5);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   PANEL BÓSTWA — modal (desktop) / bottom-sheet (mobile)
+   ============================================= */
+.bostwo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(8,10,15,0.72);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.bostwo-overlay[hidden] { display: none; }
+.bostwo-overlay.bostwo-visible { opacity: 1; }
+
+.bostwo-panel {
+  width: min(480px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.85);
+  position: relative;
+  transform: translateY(24px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+}
+.bostwo-overlay.bostwo-visible .bostwo-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.bostwo-panel-handle { display: none; }
+
+.bostwo-close {
+  position: absolute;
+  top: 0.8rem; right: 0.8rem;
+  z-index: 2;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(8,10,15,0.65);
+  color: var(--gold);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.bostwo-close:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: scale(1.06); }
+
+.bostwo-portrait-wrap {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--dark);
+}
+.bostwo-portret {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: brightness(0.88) saturate(0.95);
+}
+
+.bostwo-panel-body { padding: 1.4rem 1.8rem 1.8rem; text-align: center; }
+.bostwo-imie {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem; color: var(--gold);
+  margin: 0.2rem 0 0.15rem; letter-spacing: 0.04em;
+}
+.bostwo-epitet {
+  font-family: 'Kaushan Script', cursive;
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin: 0 0 0.2rem;
+}
+.bostwo-opis {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--text);
+  text-align: left;
+}
+
+.bostwo-ciekawostka {
+  margin-top: 1.4rem;
+  padding: 1rem 1.2rem;
+  border: 1px dashed rgba(196,146,42,0.4);
+  border-radius: 10px;
+  background: rgba(196,146,42,0.06);
+  text-align: left;
+}
+.bostwo-ciekawostka:empty,
+.bostwo-ciekawostka.bostwo-ciekawostka-hidden { display: none; }
+.bostwo-ciekawostka-label {
+  display: block;
+  font-family: 'Kaushan Script', cursive;
+  color: var(--gold-dim);
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+.bostwo-ciekawostka-text { font-size: 0.98rem; color: var(--muted); margin: 0; }
+
+/* Mobile: turn the modal into a bottom sheet */
+@media (max-width: 640px) {
+  .bostwo-overlay { align-items: flex-end; padding: 0; }
+  .bostwo-panel {
+    width: 100%;
+    max-height: 88vh;
+    border-radius: 18px 18px 0 0;
+    transform: translateY(100%);
+  }
+  .bostwo-overlay.bostwo-visible .bostwo-panel { transform: translateY(0); }
+  .bostwo-panel-handle {
+    display: block;
+    width: 40px; height: 4px;
+    border-radius: 3px;
+    background: rgba(196,146,42,0.4);
+    margin: 0.7rem auto 0;
+  }
+  .bostwo-portrait-wrap { aspect-ratio: 16/9; }
+  .bostwo-panel-body { padding: 1.1rem 1.3rem 2rem; }
+  .bostwo-imie { font-size: 1.6rem; }
+}
+
 /* =============================================
    PREV / NEXT NAVIGATION
    ============================================= */

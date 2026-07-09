@@ -108,14 +108,18 @@ class Swieto(models.Model):
     duchy_pl = models.CharField(
         max_length=300,
         blank=True,
-        verbose_name="Spirits / deities (PL)",
-        help_text="E.g. 'Jaryło, Marzanna, Wiosna'. Comma-separated.",
+        verbose_name="Spirits / deities (PL) — legacy",
+        help_text=(
+            "DEPRECATED fallback, comma-separated plain text. "
+            "Prefer linking a proper 'Bostwo' record below instead — that gives "
+            "a portrait, a storytelling description and a trivia box on the page."
+        ),
     )
     duchy_en = models.CharField(
         max_length=300,
         blank=True,
-        verbose_name="Spirits / deities (EN)",
-        help_text="E.g. 'Jaryło, Marzanna, Spring'. Comma-separated.",
+        verbose_name="Spirits / deities (EN) — legacy",
+        help_text="DEPRECATED fallback — see PL field.",
     )
 
     # --- section: About ---
@@ -182,6 +186,79 @@ class Swieto(models.Model):
             .order_by("-kolejnosc")
             .first()
         )
+
+
+class Bostwo(models.Model):
+    """
+    A patron spirit / deity (one per month, in current usage) linked to
+    one or more festivals. Replaces the old free-text 'duchy_pl/en' fields
+    with a real record that can carry a portrait, a storytelling
+    description, and a trivia note.
+    """
+
+    swieta = models.ManyToManyField(
+        Swieto,
+        related_name="bostwa",
+        blank=True,
+        verbose_name="Festivals / months",
+        help_text="Usually just one festival (the month this patron watches over).",
+    )
+
+    kolejnosc = models.PositiveSmallIntegerField(
+        default=0,
+        help_text="Display order, e.g. 1–12 following the months of the year.",
+    )
+
+    imie_pl = models.CharField(max_length=80, verbose_name="Name (PL)")
+    imie_en = models.CharField(max_length=80, verbose_name="Name (EN)")
+
+    epitet_pl = models.CharField(
+        max_length=160, blank=True, verbose_name="Epithet / tagline (PL)",
+        help_text="Short line under the name, e.g. 'Pan przełomu i cieni'.",
+    )
+    epitet_en = models.CharField(
+        max_length=160, blank=True, verbose_name="Epithet / tagline (EN)",
+    )
+
+    opis_pl = models.TextField(
+        verbose_name="Story (PL)",
+        help_text="Longer, narrative description — same storytelling tone as festival sections.",
+    )
+    opis_en = models.TextField(verbose_name="Story (EN)")
+
+    ciekawostka_pl = models.TextField(
+        blank=True, verbose_name="Trivia (PL)",
+        help_text="Short 'did you know' aside shown in its own box in the panel.",
+    )
+    ciekawostka_en = models.TextField(blank=True, verbose_name="Trivia (EN)")
+
+    obraz = models.ImageField(
+        upload_to="bies/bostwa/",
+        storage=get_bies_storage,
+        blank=True,
+        null=True,
+        verbose_name="Portrait",
+    )
+
+    class Meta:
+        verbose_name = "Patron / deity"
+        verbose_name_plural = "Patrons / deities"
+        ordering = ["kolejnosc", "imie_pl"]
+
+    def __str__(self):
+        return self.imie_pl
+
+    def get_imie(self, lang="pl"):
+        return self.imie_en if lang == "en" else self.imie_pl
+
+    def get_epitet(self, lang="pl"):
+        return self.epitet_en if lang == "en" else self.epitet_pl
+
+    def get_opis(self, lang="pl"):
+        return self.opis_en if lang == "en" else self.opis_pl
+
+    def get_ciekawostka(self, lang="pl"):
+        return self.ciekawostka_en if lang == "en" else self.ciekawostka_pl
 
 
 class ZrodloBibliograficzne(models.Model):
