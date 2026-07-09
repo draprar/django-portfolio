@@ -901,19 +901,42 @@ button.duch-tag-bostwo:focus-visible {
 }
 
 /* Breathing glow — signals "there's more here, tap me" without adding
-   any text clutter. */
+   any text clutter. The ring is a ::before on a wrapping <span>, not on the
+   <img> itself: <img> is a replaced element and browsers don't render
+   generated content (::before/::after) on it. Animates opacity/transform
+   (GPU-composited) rather than box-shadow blur/spread, since that tends to
+   get throttled or skipped on mobile browsers and ends up looking static. */
 button.duch-tag-bostwo {
   position: relative;
 }
-button.duch-tag-bostwo .duch-tag-avatar {
-  animation: duchAvatarGlow 3.2s ease-in-out infinite;
+.duch-tag-avatar-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
 }
-@keyframes duchAvatarGlow {
-  0%, 100% { box-shadow: 0 0 0 rgba(196,146,42,0); }
-  50%      { box-shadow: 0 0 9px 2px rgba(196,146,42,0.55); }
+.duch-tag-avatar {
+  box-shadow: 0 0 6px 1px rgba(196,146,42,0.4); /* static base glow, always visible */
+}
+.duch-tag-avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,146,42,0.75);
+  opacity: 0;
+  transform: scale(0.85);
+  animation: duchRingPulse 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes duchRingPulse {
+  0%   { opacity: 0.75; transform: scale(0.85); }
+  70%  { opacity: 0;    transform: scale(1.6);  }
+  100% { opacity: 0;    transform: scale(1.6);  }
 }
 @media (prefers-reduced-motion: reduce) {
-  button.duch-tag-bostwo .duch-tag-avatar { animation: none; }
+  .duch-tag-avatar-wrap::before { animation: none; display: none; }
+  /* keep a static glow so there's still a visible affordance without motion */
+  .duch-tag-avatar { box-shadow: 0 0 8px 2px rgba(196,146,42,0.5); }
 }
 
 /* =============================================

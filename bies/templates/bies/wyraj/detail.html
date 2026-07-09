@@ -61,7 +61,7 @@
             data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
             data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
             data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
-            {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
+            {% if b.obraz %}<span class="duch-tag-avatar-wrap"><img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar"></span>{% endif %}
             <span>{{ b.imie_pl }}</span>
           </button>
         </div>
@@ -141,7 +141,7 @@
             data-opis-pl="{{ b.opis_pl|linebreaksbr }}" data-opis-en="{{ b.opis_en|linebreaksbr }}"
             data-ciekawostka-pl="{{ b.ciekawostka_pl|linebreaksbr }}" data-ciekawostka-en="{{ b.ciekawostka_en|linebreaksbr }}"
             data-obraz="{% if b.obraz %}{{ b.obraz.url }}{% endif %}">
-            {% if b.obraz %}<img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar">{% endif %}
+            {% if b.obraz %}<span class="duch-tag-avatar-wrap"><img src="{{ b.obraz.url }}" alt="" class="duch-tag-avatar"></span>{% endif %}
             <span>{{ b.imie_en }}</span>
           </button>
         </div>
