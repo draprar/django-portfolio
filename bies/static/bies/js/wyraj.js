@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="kolo-panel-name"></span>
         <span class="kolo-panel-sub"></span>
       </div>
-      <a class="kolo-panel-btn" href="#" aria-label="Przejdź do święta">
+      <a class="kolo-panel-btn" href="#">
         <span class="kolo-panel-btn-label-pl">Odwiedź</span>
         <span class="kolo-panel-btn-label-en">Visit</span>
       </a>
@@ -163,6 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const panelName = panel.querySelector(".kolo-panel-name");
   const panelSub  = panel.querySelector(".kolo-panel-sub");
   const panelBtn  = panel.querySelector(".kolo-panel-btn");
+
+  // aria-label follows the active language, same as the visible PL/EN labels above.
+  const PANEL_BTN_ARIA = { pl: "Przejdź do święta", en: "Go to feast" };
+  const updatePanelBtnAria = () => {
+    panelBtn.setAttribute("aria-label", PANEL_BTN_ARIA[currentLang()] || PANEL_BTN_ARIA.pl);
+  };
+  updatePanelBtnAria();
 
   const navPrev     = document.getElementById("kolo-nav-prev");
   const navNext     = document.getElementById("kolo-nav-next");
@@ -605,6 +612,8 @@ document.addEventListener("DOMContentLoaded", () => {
       updateNavLabels();
     }
 
+    updatePanelBtnAria();
+
     // Toggle bilingual button labels.
     panel.querySelectorAll(".kolo-panel-btn-label-pl, .kolo-panel-btn-label-en")
       .forEach(el => {
@@ -689,7 +698,7 @@ document.addEventListener("keydown", e => {
   }, { passive: true });
 })();
 // ─────────────────────────────────────────────────────────────────────────────
-// PANEL BÓSTWA (patron deity) — modal on desktop, bottom-sheet on mobile.
+// DEITY PANEL (patron deity) — modal on desktop, bottom-sheet on mobile.
 // One shared overlay in the DOM; each ".duch-tag-bostwo" button carries the
 // bilingual content as data-* attributes. Re-renders on langchange so a
 // panel left open while switching PL/EN stays in sync.

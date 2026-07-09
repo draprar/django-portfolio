@@ -81,7 +81,7 @@ body {
   inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  /* wycentrowane w pionie i poziomie */
+  /* centered both vertically and horizontally */
   object-position: center center;
   display: block;
   filter: brightness(0.8) saturate(0.92);
@@ -263,11 +263,11 @@ a:hover { color: var(--gold); }
 }
 .tresc li, .zrodla li { margin-bottom: 0.65rem; }
 
-/* ── Box: tylko tekst, bez tła ── */
+/* ── Box: text only, no background ── */
 .box {
   border-radius: 10px;
   padding: 1.2rem 1.6rem; margin: 1.3rem 0;
-  /* Brak background i border — czysty tekst */
+  /* No background and no border — plain text */
   position: relative;
   z-index: 2;
 }
@@ -279,12 +279,12 @@ a:hover { color: var(--gold); }
 
 /* =============================================
    TRESC-WITH-BG
-   Obrazek statyczny za boxami "O święcie" i "Obrzędy"
-   z rozmyciami góra/dół
+   Static image behind the "About the Feast" and "Rites" boxes,
+   with top/bottom fades
    ============================================= */
 .tresc-with-bg {
   position: relative;
-  /* odległość od lewej/prawej krawędzi page-content */
+  /* distance from the left/right edge of page-content */
   margin-left: -2.8rem;
   margin-right: -2.8rem;
   padding-left: 2.8rem;
@@ -293,7 +293,7 @@ a:hover { color: var(--gold); }
   padding-bottom: 0.5rem;
 }
 
-/* Tło: statyczny obrazek z maską tylko na tym elemencie */
+/* Background: static image, masked only on this element */
 .tresc-with-bg::before {
   content: '';
   position: absolute;
@@ -302,9 +302,9 @@ a:hover { color: var(--gold); }
   background-size: cover;
   background-position: center center;
   background-attachment: local;
-  /* mocne przyciemnienie żeby tekst był czytelny */
+  /* strong darkening so the text stays readable */
   filter: brightness(0.22) saturate(0.7);
-  /* maska tylko na tle — tekst w .box nie jest przyciemniany */
+  /* mask applies only to the background — text in .box is not darkened */
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
@@ -322,7 +322,7 @@ a:hover { color: var(--gold); }
   z-index: 0;
 }
 
-/* Rozmycie górne */
+/* Top fade */
 .tresc-with-bg::after {
   content: '';
   position: absolute;
@@ -332,16 +332,16 @@ a:hover { color: var(--gold); }
   pointer-events: none;
 }
 
-/* Pseudo-elementy nie wystarczą do dwóch gradientów — robimy przez box-shadow na ::before */
-/* Gradient góra */
+/* Pseudo-elements aren't enough for two gradients — handled via box-shadow on ::before instead */
+/* Top gradient */
 .tresc-with-bg > .fade-top,
 .tresc-with-bg > .fade-bottom {
-  display: none; /* obsługujemy przez maski CSS */
+  display: none; /* handled via CSS masks instead */
 }
 
-/* Maska rozmywająca krawędzie (góra i dół) — tylko na tle, nie na tekście */
+/* Mask that fades out the edges (top and bottom) — background only, not the text */
 
-/* Gdy brak --bg-img: ukryj pseudo-element */
+/* When --bg-img is missing: hide the pseudo-element */
 .tresc-with-bg:not([style])::before,
 .tresc-with-bg[style="--bg-img: url('');"]::before {
   display: none;
@@ -393,7 +393,7 @@ a:hover { color: var(--gold); }
 }
 .card-img-wrap { overflow: hidden; aspect-ratio: 2/3; position: relative; }
 
-/* Wspólny styl dla img i video w karcie */
+/* Shared style for the img and video inside a card */
 .swieto-card img,
 .card-video {
   width: 100%; height: 100%;
