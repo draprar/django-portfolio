@@ -196,14 +196,16 @@ class Bostwo(models.Model):
     description, and a trivia note.
     """
 
-    swieto = models.OneToOneField(
+    swieta = models.ManyToManyField(
         Swieto,
-        on_delete=models.CASCADE,
-        related_name="bostwo",
+        related_name="bostwa",
         blank=True,
-        null=True,
-        verbose_name="Festival / month",
-        help_text="The one festival (month) this patron watches over.",
+        verbose_name="Festivals / months",
+        help_text=(
+            "All festivals this patron covers — usually the 1 or 2 festivals "
+            "that fall in their month (most months have 2 festivals sharing "
+            "one patron; only Sieczeń/January has just 1)."
+        ),
     )
 
     kolejnosc = models.PositiveSmallIntegerField(

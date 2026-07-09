@@ -50,7 +50,7 @@
           <p class="subtitle">{{ swieto.podtytul_pl }}</p>
         {% endif %}
 
-        {% with b=swieto.bostwo %}
+        {% with b=swieto.bostwa.first %}
         {% if b %}
         <div class="duchy-wrap reveal">
           <span class="duchy-label">Patron / patronka miesiąca:</span>
@@ -130,7 +130,7 @@
           <p class="subtitle">{{ swieto.podtytul_en }}</p>
         {% endif %}
 
-        {% with b=swieto.bostwo %}
+        {% with b=swieto.bostwa.first %}
         {% if b %}
         <div class="duchy-wrap reveal">
           <span class="duchy-label">Patron / patroness of the month:</span>
