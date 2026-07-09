@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.files.storage import default_storage
 from storages.backends.s3boto3 import S3Boto3Storage
 
 
@@ -42,4 +43,4 @@ def get_bies_storage():
     """
     if settings.USE_S3:
         return R2MediaStorage()
-    return None
+    return default_storage
