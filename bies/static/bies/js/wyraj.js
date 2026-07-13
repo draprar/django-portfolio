@@ -256,18 +256,26 @@ document.addEventListener("DOMContentLoaded", () => {
     g.setAttribute("tabindex", "-1"); // focus handled by the SVG root, not per-node
 
     const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    halo.setAttribute("cx", x0); halo.setAttribute("cy", y0); halo.setAttribute("r", "20");
+    halo.setAttribute("cx", x0); halo.setAttribute("cy", y0); halo.setAttribute("r", "15");
     halo.setAttribute("fill", s.kolor); halo.setAttribute("opacity", "0.08");
     halo.setAttribute("class", "node-halo");
 
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("cx", x0); circle.setAttribute("cy", y0); circle.setAttribute("r", "10");
+    circle.setAttribute("cx", x0); circle.setAttribute("cy", y0); circle.setAttribute("r", "8");
     circle.setAttribute("fill", s.kolor);
     circle.setAttribute("stroke", "#0f1117"); circle.setAttribute("stroke-width", "2");
     circle.setAttribute("filter", "url(#glow)");
 
+    // Niewidzialny, większy obszar kliknięcia/dotyku — kropka na oko jest
+    // mniejsza, ale trafienie w nią pozostaje łatwe (ważne na mobile).
+    const hitArea = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    hitArea.setAttribute("cx", x0); hitArea.setAttribute("cy", y0); hitArea.setAttribute("r", "16");
+    hitArea.setAttribute("fill", "transparent");
+    hitArea.setAttribute("class", "node-hit");
+
     g.appendChild(halo);
     g.appendChild(circle);
+    g.appendChild(hitArea);
     group.appendChild(g);
 
     // Label in the STATIC group.
@@ -401,7 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nodeEls.forEach(({ halo: h, circle: c }, i) => {
       const active = i === activeIdx;
       h.setAttribute("opacity", active ? "0.35" : "0.08");
-      c.setAttribute("r",       active ? "14"   : "10");
+      c.setAttribute("r",       active ? "11"   : "8");
     });
   };
 
