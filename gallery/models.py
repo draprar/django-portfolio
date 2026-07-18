@@ -1,3 +1,5 @@
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 
@@ -72,18 +74,37 @@ class InstagramPost(models.Model):
         return f"Post in {self.category.title} - {self.created_at}"
 
 
-class InstagramPostImage(models.Model):
+class InstagramPostMedia(models.Model):
     """
-    A single photo belonging to an InstagramPost. Supports multiple photos
-    per post (carousel-style), ordered by the `order` field.
+    A single piece of media belonging to an InstagramPost: either a photo
+    or a reel (video). A post can have several of these (carousel-style),
+    ordered by the `order` field.
     """
 
-    post = models.ForeignKey(InstagramPost, related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="instagram")
+    post = models.ForeignKey(InstagramPost, related_name="media", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="instagram", blank=True, null=True)
+    video = models.FileField(
+        upload_to="instagram/reels",
+        blank=True,
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=["mp4", "mov", "webm"])],
+        help_text="Upload a reel here instead of an image. Leave the image field empty.",
+    )
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ["order", "id"]
 
+    def clean(self):
+        if not self.image and not self.video:
+            raise ValidationError("Dodaj zdjęcie albo wideo (rolkę).")
+        if self.image and self.video:
+            raise ValidationError("Wybierz tylko jedno: zdjęcie albo wideo, nie oba naraz.")
+
+    @property
+    def is_video(self):
+        return bool(self.video)
+
     def __str__(self):
-        return f"Image #{self.order} for post {self.post_id}"
+        kind = "Video" if self.is_video else "Image"
+        return f"{kind} #{self.order} for post {self.post_id}"

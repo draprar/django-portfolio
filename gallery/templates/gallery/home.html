@@ -66,20 +66,29 @@
                                     <!-- Photo(s): same square size, carousel when there's more than one -->
                                     <div class="ig-post-media" data-carousel>
                                         <div class="ig-post-track">
-                                            {% for img in post.images.all %}
+                                            {% for item in post.media.all %}
                                                 <div class="ig-post-slide">
-                                                    <img src="{{ img.image.url }}"
-                                                         alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
-                                                         loading="lazy">
+                                                    {% if item.is_video %}
+                                                        <video src="{{ item.video.url }}"
+                                                               autoplay
+                                                               muted
+                                                               loop
+                                                               playsinline
+                                                               preload="metadata"></video>
+                                                    {% else %}
+                                                        <img src="{{ item.image.url }}"
+                                                             alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
+                                                             loading="lazy">
+                                                    {% endif %}
                                                 </div>
                                             {% endfor %}
                                         </div>
 
-                                        {% if post.images.all|length > 1 %}
+                                        {% if post.media.all|length > 1 %}
                                             <button class="ig-post-nav ig-post-prev" type="button" aria-label="Poprzednie zdjęcie">&#10094;</button>
                                             <button class="ig-post-nav ig-post-next" type="button" aria-label="Następne zdjęcie">&#10095;</button>
                                             <div class="ig-post-dots">
-                                                {% for img in post.images.all %}
+                                                {% for item in post.media.all %}
                                                     <span class="ig-post-dot{% if forloop.first %} active{% endif %}"></span>
                                                 {% endfor %}
                                             </div>

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ── Instagram-style post carousels (manually added, multi-photo posts) ─
+    // ── Instagram-style post carousels (manually added photos/reels) ──────
     document.querySelectorAll('[data-carousel]').forEach(carousel => {
         const track = carousel.querySelector('.ig-post-track');
         const slides = carousel.querySelectorAll('.ig-post-slide');
@@ -50,7 +50,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const prevBtn = carousel.querySelector('.ig-post-prev');
         const nextBtn = carousel.querySelector('.ig-post-next');
 
-        if (!track || slides.length <= 1) return;
+        // Only the active slide's reel should actually play, others stay paused
+        const syncVideos = (activeIndex) => {
+            slides.forEach((slide, si) => {
+                const video = slide.querySelector('video');
+                if (!video) return;
+                if (si === activeIndex) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        };
+
+        if (!track || slides.length <= 1) {
+            syncVideos(0);
+            return;
+        }
 
         let index = 0;
 
@@ -58,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             index = (i + slides.length) % slides.length;
             track.style.transform = `translateX(-${index * 100}%)`;
             dots.forEach((dot, di) => dot.classList.toggle('active', di === index));
+            syncVideos(index);
         };
 
         prevBtn?.addEventListener('click', () => goTo(index - 1));
@@ -74,5 +91,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const diff = e.changedTouches[0].clientX - startX;
             if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
         });
+
+        syncVideos(0);
+    });
+
+    // Pause reels when their card scrolls out of view, resume when it's back
+    const reelObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('.ig-post-media video').forEach(video => {
+        reelObserver.observe(video);
     });
 });
