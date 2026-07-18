@@ -70,11 +70,12 @@
                                                 <div class="ig-post-slide">
                                                     {% if item.is_video %}
                                                         <video src="{{ item.video.url }}"
-                                                               autoplay
-                                                               muted
                                                                loop
                                                                playsinline
                                                                preload="metadata"></video>
+                                                        <button class="ig-post-play-btn" type="button" aria-label="Odtwórz rolkę">
+                                                            <i class="fa-solid fa-play"></i>
+                                                        </button>
                                                     {% else %}
                                                         <img src="{{ item.image.url }}"
                                                              alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"

@@ -50,23 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const prevBtn = carousel.querySelector('.ig-post-prev');
         const nextBtn = carousel.querySelector('.ig-post-next');
 
-        // Only the active slide's reel should actually play, others stay paused
-        const syncVideos = (activeIndex) => {
+        // Pause any reel that isn't on the currently active slide
+        const pauseInactive = (activeIndex) => {
             slides.forEach((slide, si) => {
+                if (si === activeIndex) return;
                 const video = slide.querySelector('video');
-                if (!video) return;
-                if (si === activeIndex) {
-                    video.play().catch(() => {});
-                } else {
-                    video.pause();
-                }
+                if (video && !video.paused) video.pause();
             });
         };
 
-        if (!track || slides.length <= 1) {
-            syncVideos(0);
-            return;
-        }
+        if (!track || slides.length <= 1) return;
 
         let index = 0;
 
@@ -74,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             index = (i + slides.length) % slides.length;
             track.style.transform = `translateX(-${index * 100}%)`;
             dots.forEach((dot, di) => dot.classList.toggle('active', di === index));
-            syncVideos(index);
+            pauseInactive(index);
         };
 
         prevBtn?.addEventListener('click', () => goTo(index - 1));
@@ -91,21 +84,35 @@ document.addEventListener("DOMContentLoaded", () => {
             const diff = e.changedTouches[0].clientX - startX;
             if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
         });
-
-        syncVideos(0);
     });
 
-    // Pause reels when their card scrolls out of view, resume when it's back
+    // Reels start paused; a click on the play button starts them (with sound)
+    document.querySelectorAll('.ig-post-slide').forEach(slide => {
+        const video = slide.querySelector('video');
+        const playBtn = slide.querySelector('.ig-post-play-btn');
+        if (!video || !playBtn) return;
+
+        playBtn.addEventListener('click', () => {
+            video.play().catch(() => {});
+        });
+
+        video.addEventListener('click', () => {
+            if (!video.paused) video.pause();
+        });
+
+        video.addEventListener('play', () => playBtn.classList.add('hidden'));
+        video.addEventListener('pause', () => playBtn.classList.remove('hidden'));
+    });
+
+    // If a playing reel's card scrolls off screen, pause it (never auto-starts it)
     const reelObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
-            if (entry.isIntersecting) {
-                video.play().catch(() => {});
-            } else {
+            if (!entry.isIntersecting && !video.paused) {
                 video.pause();
             }
         });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.ig-post-media video').forEach(video => {
         reelObserver.observe(video);
