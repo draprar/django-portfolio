@@ -50,13 +50,40 @@ class Contact(models.Model):
 
 class InstagramPost(models.Model):
     """
-    Represents an Instagram post fetched and categorized.
+    Represents a manually added, Instagram-style post. A post can contain
+    one or several photos (like an Instagram carousel) and is displayed
+    with a location header and a caption, in the style of an IG post.
     """
 
-    image_url = models.URLField()
+    category = models.ForeignKey("Category", related_name="instagram_posts", on_delete=models.CASCADE)
+    location = models.CharField(max_length=255, blank=True, null=True)
     caption = models.TextField(blank=True, null=True)
+    permalink = models.URLField(
+        blank=True,
+        null=True,
+        help_text="Optional link to the original Instagram post (shown as a small IG icon).",
+    )
     created_at = models.DateTimeField()
-    category = models.ForeignKey("Category", on_delete=models.CASCADE, default=None)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def __str__(self):
         return f"Post in {self.category.title} - {self.created_at}"
+
+
+class InstagramPostImage(models.Model):
+    """
+    A single photo belonging to an InstagramPost. Supports multiple photos
+    per post (carousel-style), ordered by the `order` field.
+    """
+
+    post = models.ForeignKey(InstagramPost, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="instagram")
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order", "id"]
+
+    def __str__(self):
+        return f"Image #{self.order} for post {self.post_id}"

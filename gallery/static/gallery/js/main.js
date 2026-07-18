@@ -5,12 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-
-                if (entry.target.classList.contains('instagram-section')) {
-                    if (window.instgrm) {
-                        window.instgrm.Embeds.process();
-                    }
-                }
             }
         });
     }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
@@ -48,50 +42,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ── Instagram embeds ────────────────────────────────────────────────
-    const processEmbeds = () => {
-        if (window.instgrm && window.instgrm.Embeds) {
-            window.instgrm.Embeds.process();
-        }
-    };
+    // ── Instagram-style post carousels (manually added, multi-photo posts) ─
+    document.querySelectorAll('[data-carousel]').forEach(carousel => {
+        const track = carousel.querySelector('.ig-post-track');
+        const slides = carousel.querySelectorAll('.ig-post-slide');
+        const dots = carousel.querySelectorAll('.ig-post-dot');
+        const prevBtn = carousel.querySelector('.ig-post-prev');
+        const nextBtn = carousel.querySelector('.ig-post-next');
 
-    processEmbeds();
-    setTimeout(processEmbeds, 1000);
-    setTimeout(processEmbeds, 3000);
-    window.addEventListener('load', processEmbeds);
+        if (!track || slides.length <= 1) return;
 
-    const watchIframes = () => {
-        document.querySelectorAll('.instagram-item').forEach(item => {
-            const iframe = item.querySelector('iframe');
-            if (!iframe || item.dataset.watched) return;
-            item.dataset.watched = '1';
+        let index = 0;
 
-            const syncHeight = () => {
-                const h = iframe.getAttribute('height') || iframe.offsetHeight;
-                if (h && parseInt(h) > 100) {
-                    item.style.minHeight = parseInt(h) + 20 + 'px';
-                }
-            };
+        const goTo = (i) => {
+            index = (i + slides.length) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, di) => dot.classList.toggle('active', di === index));
+        };
 
-            // MutationObserver - height iframe
-            const mo = new MutationObserver(syncHeight);
-            mo.observe(iframe, { attributes: true, attributeFilter: ['height', 'style'] });
+        prevBtn?.addEventListener('click', () => goTo(index - 1));
+        nextBtn?.addEventListener('click', () => goTo(index + 1));
+        dots.forEach((dot, di) => dot.addEventListener('click', () => goTo(di)));
 
-            // ResizeObserver backup
-            if (window.ResizeObserver) {
-                const ro = new ResizeObserver(syncHeight);
-                ro.observe(iframe);
-            }
+        // Swipe support for touch devices
+        let startX = 0;
+        track.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
 
-            syncHeight();
+        track.addEventListener('touchend', e => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
         });
-    };
-
-    // Observe DOM
-    const domObserver = new MutationObserver(() => watchIframes());
-    domObserver.observe(document.body, { childList: true, subtree: true });
-
-    setTimeout(watchIframes, 500);
-    setTimeout(watchIframes, 2000);
-    setTimeout(watchIframes, 5000);
+    });
 });

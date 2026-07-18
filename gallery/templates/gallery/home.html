@@ -41,21 +41,56 @@
                         <div class="instagram-grid">
 
                             {% for post in instagram_posts %}
-                                <div class="instagram-item">
+                                <div class="ig-post-card">
 
-                                    <blockquote class="instagram-media"
-                                                data-instgrm-permalink="{{ post.image_url }}{% if post.image_url|slice:'-1:' != '/' %}/{% endif %}"
-                                                data-instgrm-version="14"
-                                                style="width: 100%; margin: 0 auto;">
+                                    <!-- Header: username / location, same spot as before -->
+                                    <div class="ig-post-header">
+                                        <div class="ig-post-user">
+                                            <span class="ig-post-username">bazgrollin'</span>
+                                            {% if post.location %}
+                                                <span class="ig-post-location">{{ post.location }}</span>
+                                            {% endif %}
+                                        </div>
 
-                                        <a href="{{ post.image_url }}"
-                                           target="_blank"
-                                           rel="noopener noreferrer">
+                                        {% if post.permalink %}
+                                            <a href="{{ post.permalink }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="ig-post-link"
+                                               title="Zobacz na Instagramie">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
 
-                                            View on Instagram
+                                    <!-- Photo(s): same square size, carousel when there's more than one -->
+                                    <div class="ig-post-media" data-carousel>
+                                        <div class="ig-post-track">
+                                            {% for img in post.images.all %}
+                                                <div class="ig-post-slide">
+                                                    <img src="{{ img.image.url }}"
+                                                         alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
+                                                         loading="lazy">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
 
-                                        </a>
-                                    </blockquote>
+                                        {% if post.images.all|length > 1 %}
+                                            <button class="ig-post-nav ig-post-prev" type="button" aria-label="Poprzednie zdjęcie">&#10094;</button>
+                                            <button class="ig-post-nav ig-post-next" type="button" aria-label="Następne zdjęcie">&#10095;</button>
+                                            <div class="ig-post-dots">
+                                                {% for img in post.images.all %}
+                                                    <span class="ig-post-dot{% if forloop.first %} active{% endif %}"></span>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- Caption at the bottom, Instagram-style, no comment field -->
+                                    <div class="ig-post-caption">
+                                        <span class="ig-post-caption-user">bazgrollin'</span>
+                                        {% if post.caption %}{{ post.caption }}{% endif %}
+                                    </div>
 
                                 </div>
                             {% endfor %}
@@ -107,7 +142,5 @@
     {% endfor %}
 
 </section>
-
-<script async src="https://www.instagram.com/embed.js"></script>
 
 {% endblock %}
