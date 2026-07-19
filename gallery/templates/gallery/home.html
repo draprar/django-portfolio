@@ -82,9 +82,13 @@
                                                             <i class="fa-solid fa-play"></i>
                                                         </button>
                                                     {% else %}
-                                                        <img src="{{ item.image.url }}"
-                                                             alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
-                                                             loading="lazy">
+                                                        <a href="{{ item.image.url }}"
+                                                           data-fancybox="ig-post-{{ post.id }}"
+                                                           data-caption="{{ post.location|default:"bazgrollin'" }}">
+                                                            <img src="{{ item.image.url }}"
+                                                                 alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
+                                                                 loading="lazy">
+                                                        </a>
                                                     {% endif %}
                                                 </div>
                                             {% endfor %}
