@@ -12,7 +12,7 @@ from django_ratelimit.decorators import ratelimit
 from rest_framework import filters, generics
 
 from .forms import CategoryForm, ContactForm, GalleryForm
-from .models import Category, Gallery, InstagramPost
+from .models import Category, Gallery
 from .serializers import CategorySerializer, GallerySerializer
 
 # Setup logging for better debugging and monitoring
@@ -41,18 +41,16 @@ class Home(generic.ListView):
 
     def get_context_data(self, **kwargs):
         """
-        Adds categories and Instagram posts to the context.
+        Adds categories to the context. Each category carries its own
+        Gallery images (`category.images`) or, for Instagram-style
+        categories, its own posts (`category.instagram_posts`).
         """
         context = super().get_context_data(**kwargs)
         category = self.request.GET.get("category", None)
         context["selected_category"] = category if category else "All"
-        context["categories"] = Category.objects.all().prefetch_related("images").order_by("id")
-
-        # Include Instagram posts in context
-        if category:
-            context["instagram_posts"] = InstagramPost.objects.filter(category__title=category).order_by("-created_at")
-        else:
-            context["instagram_posts"] = InstagramPost.objects.all().order_by("-created_at")
+        context["categories"] = (
+            Category.objects.all().prefetch_related("images", "instagram_posts__media").order_by("order", "title")
+        )
 
         return context
 

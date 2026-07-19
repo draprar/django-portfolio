@@ -35,5 +35,11 @@ class InstagramPostAdmin(admin.ModelAdmin):
     inlines = [InstagramPostMediaInline]
 
 
-admin.site.register(Category)
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ["title", "order", "is_instagram_category"]
+    list_editable = ["order", "is_instagram_category"]
+    ordering = ["order", "title"]
+
+
 admin.site.register(Gallery)

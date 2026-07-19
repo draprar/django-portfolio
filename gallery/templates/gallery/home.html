@@ -34,13 +34,14 @@
                     {{ category.title }}
                 </h2>
 
-                <!-- Instagram Category -->
-                {% if category.title == 'Instagram' %}
+                <!-- Instagram-style Category -->
+                {% if category.is_instagram_category %}
 
-                    {% if instagram_posts %}
+                    {% with posts=category.instagram_posts.all %}
+                    {% if posts %}
                         <div class="instagram-grid">
 
-                            {% for post in instagram_posts %}
+                            {% for post in posts %}
                                 <div class="ig-post-card">
 
                                     <!-- Header: username / location, same spot as before -->
@@ -105,7 +106,12 @@
                             {% endfor %}
 
                         </div>
+                    {% else %}
+                        <p class="no-images">
+                            Brak postów w tej kategorii.
+                        </p>
                     {% endif %}
+                    {% endwith %}
 
                 <!-- Normal Gallery -->
                 {% else %}
