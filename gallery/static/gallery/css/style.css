@@ -276,6 +276,12 @@ body {
     font-weight: 700;
     color: #e0e0e0;
     font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.ig-post-username:hover {
+    color: #c4922a;
 }
 
 .ig-post-location {
