@@ -5,21 +5,15 @@ from django.db import models
 
 class Category(models.Model):
     """
-    Represents a category to organize gallery images, or an Instagram-style
-    feed of manually added posts when `is_instagram_category` is set.
+    Represents a category to organize gallery images. The category titled
+    "Instagram" is treated specially in the template to show manually added
+    Instagram-style posts (see InstagramPost) instead of a plain gallery grid.
     """
 
     title = models.CharField(max_length=150, unique=True)
     order = models.PositiveIntegerField(
         default=0,
         help_text="Kolejność wyświetlania kategorii (mniejsza liczba = wyżej na liście).",
-    )
-    is_instagram_category = models.BooleanField(
-        default=False,
-        help_text=(
-            "Zaznacz, jeśli ta kategoria ma pokazywać posty w stylu Instagrama "
-            "(ręcznie dodawane zdjęcia/rolki) zamiast zwykłej siatki galerii."
-        ),
     )
 
     class Meta:

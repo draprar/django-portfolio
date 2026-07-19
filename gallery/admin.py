@@ -37,8 +37,8 @@ class InstagramPostAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["title", "order", "is_instagram_category"]
-    list_editable = ["order", "is_instagram_category"]
+    list_display = ["title", "order"]
+    list_editable = ["order"]
     ordering = ["order", "title"]
 
 

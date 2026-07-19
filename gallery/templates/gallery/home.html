@@ -34,19 +34,19 @@
                     {{ category.title }}
                 </h2>
 
-                <!-- Instagram-style Category -->
-                {% if category.is_instagram_category %}
+                <!-- Instagram Category -->
+                {% if category.title == 'Instagram' %}
 
-                    {% with posts=category.instagram_posts.all %}
-                    {% if posts %}
+                    {% if instagram_posts %}
                         <div class="instagram-grid">
 
-                            {% for post in posts %}
+                            {% for post in instagram_posts %}
                                 <div class="ig-post-card">
 
-                                    <!-- Header: username / location, same spot as before -->
+                                    <!-- Header: username + location -->
                                     <div class="ig-post-header">
                                         <div class="ig-post-user">
+                                            <span class="ig-post-username">bazgrollin'</span>
                                             {% if post.location %}
                                                 <span class="ig-post-location">{{ post.location }}</span>
                                             {% endif %}
@@ -96,22 +96,11 @@
                                         {% endif %}
                                     </div>
 
-                                    <!-- Caption at the bottom, Instagram-style, no comment field -->
-                                    <div class="ig-post-caption">
-                                        <span class="ig-post-caption-user">bazgrollin'</span>
-                                        {% if post.caption %}{{ post.caption }}{% endif %}
-                                    </div>
-
                                 </div>
                             {% endfor %}
 
                         </div>
-                    {% else %}
-                        <p class="no-images">
-                            Brak postów w tej kategorii.
-                        </p>
                     {% endif %}
-                    {% endwith %}
 
                 <!-- Normal Gallery -->
                 {% else %}
