@@ -1,0 +1,331 @@
+:root {
+    --ink: #060606;
+    --gold: #c4922a;
+    --gold-2: #a0522d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--ink);
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ── Stage: ambient backdrop the portal sits on ─────────────────────── */
+.stage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+}
+
+/* ── Portal: the rounded frame everything lives inside ──────────────── */
+.portal {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1040px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+.rozdroze-header {
+    text-align: center;
+    padding: 2.6rem 1rem 1.5rem;
+}
+
+.rozdroze-header h1 {
+    font-weight: 300;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    letter-spacing: 2px;
+    margin: 0;
+    color: var(--gold);
+}
+
+.rozdroze-header .underline {
+    width: 60px;
+    height: 4px;
+    margin: 14px auto 0;
+    border-radius: 2px;
+    background: linear-gradient(45deg, var(--gold), var(--gold-2));
+}
+
+/* ── Split layout: two separate cards side by side, always ──────────── */
+.split {
+    display: flex;
+    gap: clamp(14px, 3vw, 32px);
+    padding: 0 clamp(14px, 3vw, 32px) clamp(20px, 3vw, 32px);
+    min-height: 56vh;
+    perspective: 1200px;
+}
+
+.panel {
+    --rx: 0deg;
+    --ry: 0deg;
+    --ty: 0px;
+    --tilt-scale: 1;
+    --mx: 50%;
+    --my: 50%;
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 16px;
+    background: #0d0d0d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty)) scale(var(--tilt-scale));
+    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+.panel:hover,
+.panel:focus-visible {
+    --ty: -6px;
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(196, 146, 42, 0.35),
+        0 0 40px rgba(196, 146, 42, 0.12);
+}
+
+.panel:active {
+    --tilt-scale: 0.97;
+    transition: transform 0.15s ease;
+}
+
+.panel:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -4px;
+}
+
+.split.has-focus .panel:not(.is-active) {
+    filter: brightness(0.6);
+}
+
+.panel-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(ellipse farthest-corner at 50% 50%, black 55%, transparent 92%);
+    mask-image: radial-gradient(ellipse farthest-corner at 50% 50%, black 55%, transparent 92%);
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: blur(2px) brightness(.8) saturate(.85);
+}
+
+.panel:hover .panel-bg,
+.panel:focus-visible .panel-bg {
+    transform: scale(1.08);
+    filter: blur(0) brightness(1) saturate(1);
+}
+
+/* Soft gold sheen that follows the cursor — pure lighting, no motifs */
+.panel-sheen {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: soft-light;
+    background: radial-gradient(circle at var(--mx) var(--my), rgba(212, 165, 53, 0.55), transparent 55%);
+    transition: opacity 0.4s ease;
+}
+
+.panel:hover .panel-sheen,
+.panel:focus-visible .panel-sheen {
+    opacity: 1;
+}
+
+.panel-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.panel-bazg .panel-bg {
+    background: #050505 url('../img/bazgrollin-bg.png') center / cover no-repeat;
+}
+
+.panel-wyraj .panel-bg {
+    background: #050505 url('../img/wyraj-bg.png') center / cover no-repeat;
+}
+
+.panel-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.45) 45%, rgba(0,0,0,.65));
+    pointer-events: none;
+}
+
+.panel-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.panel-title {
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: clamp(1.4rem, 4vw, 2.1rem);
+    margin: 0;
+    color: var(--gold);
+    transition: letter-spacing 0.35s ease;
+}
+
+.panel:hover .panel-title,
+.panel:focus-visible .panel-title {
+    letter-spacing: 5.5px;
+}
+
+.panel-tag {
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: #c4c4c4;
+    opacity: 0.85;
+    margin: 0;
+    max-width: 24ch;
+}
+
+.panel-cta {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(45deg, var(--gold), var(--gold-2));
+    padding: 8px 18px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(196, 146, 42, 0.3);
+    transition: all 0.3s ease;
+}
+
+.panel:hover .panel-cta,
+.panel:focus-visible .panel-cta {
+    background: linear-gradient(45deg, #d4a535, #8b4513);
+    box-shadow: 0 6px 20px rgba(196, 146, 42, 0.5);
+}
+
+.cta-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.panel:hover .cta-arrow,
+.panel:focus-visible .cta-arrow {
+    animation: none;
+    transform: translateX(4px);
+}
+
+/* ── Motion (respect prefers-reduced-motion) ────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+    .rozdroze-header,
+    .panel {
+        animation: fade-up 0.7s ease both;
+    }
+
+    .panel-wyraj {
+        animation-delay: 0.1s;
+    }
+
+    /* Gentle hint that the arrow — and the card — is clickable */
+    .cta-arrow {
+        animation: nudge 2.8s ease-in-out infinite;
+    }
+
+    .panel-wyraj .cta-arrow {
+        animation-delay: 0.4s;
+    }
+}
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+/* ── Mobile: panels always stay side by side, just scale down ───────── */
+@media (max-width: 640px) {
+    .stage {
+        padding: 16px 10px;
+    }
+
+    .portal {
+        border-radius: 18px;
+    }
+
+    .rozdroze-header {
+        padding: 1.8rem 0.8rem 1.1rem;
+    }
+
+    .split {
+        gap: 10px;
+        padding: 0 10px 14px;
+        min-height: 46vh;
+    }
+
+    .panel {
+        border-radius: 12px;
+    }
+
+    .panel-content {
+        padding: 1rem 0.5rem;
+        gap: 0.35rem;
+    }
+
+    .panel-title {
+        font-size: clamp(1rem, 5.5vw, 1.3rem);
+        letter-spacing: 1.5px;
+    }
+
+    .panel:hover .panel-title,
+    .panel:focus-visible .panel-title {
+        letter-spacing: 2.5px;
+    }
+
+    .panel-tag {
+        display: none;
+    }
+
+    .panel-cta {
+        font-size: 0.68rem;
+        padding: 6px 14px;
+    }
+}
+
+
+@media (hover: none) {
+    .panel-bg {
+        filter: brightness(.9) saturate(.95);
+    }
+}

@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jedzien</title>
+  <meta name="description" content="bazgrollin' albo Wyraj — wybierz, dokąd wejść.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <meta property="og:title" content="Jedzien">
+  <meta property="og:description" content="bazgrollin' albo Wyraj — wybierz, dokąd wejść.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'rozdroze/css/wybierz.css' %}">
+
+  <link rel="preload" as="image" href="{% static 'rozdroze/img/bazgrollin-bg.png' %}">
+  <link rel="preload" as="image" href="{% static 'rozdroze/img/wyraj-bg.png' %}">
+  <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon" />
+</head>
+<body>
+
+  <div class="stage">
+    <main class="portal">
+
+      <header class="rozdroze-header">
+        <h1>Se wybierz:</h1>
+        <div class="underline" aria-hidden="true"></div>
+      </header>
+
+      <div class="split">
+
+        <!-- ═══ bazgrollin' ═══ -->
+        <a href="/gallery/" class="panel panel-bazg" data-panel="bazg" aria-label="Wejdź do bazgrollin' — galerii">
+          <div class="panel-bg">
+          </div>
+
+          <div class="panel-veil"></div>
+          <div class="panel-sheen"></div>
+
+          <div class="panel-content">
+            <h2 class="panel-title">bazgrollin'</h2>
+            <p class="panel-tag">Galerija</p>
+            <span class="panel-cta">Wejdź <i class="cta-arrow" aria-hidden="true">→</i></span>
+          </div>
+        </a>
+
+        <!-- ═══ Wyraj ═══ -->
+        <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" aria-label="Wejdź do Wyraju — Słowiańskiego Koła Roku">
+          <div class="panel-bg"></div>
+
+          <div class="panel-veil"></div>
+          <div class="panel-sheen"></div>
+
+          <div class="panel-content">
+            <h2 class="panel-title">Wyraj</h2>
+            <p class="panel-tag">Słowiańskie Koło Roku</p>
+            <span class="panel-cta">Wejdź <i class="cta-arrow" aria-hidden="true">→</i></span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="{% static 'rozdroze/js/wybierz.js' %}"></script>
+</body>
+</html>

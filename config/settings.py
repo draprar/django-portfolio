@@ -129,6 +129,7 @@ INSTALLED_APPS = [
     "bies",
     "docdiff",
     "analytics",
+    "rozdroze",
     # External
     "django_ratelimit",
     "rest_framework",
