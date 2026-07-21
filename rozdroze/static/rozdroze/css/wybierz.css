@@ -130,13 +130,32 @@ a {
     -webkit-mask-image: radial-gradient(ellipse farthest-corner at 50% 50%, black 55%, transparent 92%);
     mask-image: radial-gradient(ellipse farthest-corner at 50% 50%, black 55%, transparent 92%);
     transition: transform 0.6s ease, filter 0.6s ease;
-    filter: blur(2px) brightness(.8) saturate(.85);
+    filter: blur(2px) brightness(.85) saturate(.9);
 }
 
 .panel:hover .panel-bg,
 .panel:focus-visible .panel-bg {
     transform: scale(1.08);
     filter: blur(0) brightness(1) saturate(1);
+}
+
+/* Slow idle drift so the art doesn't sit frozen while waiting for a hover
+   it may never get on touch devices — pure background-position, so it
+   never fights the hover/tilt transform above. */
+@media (prefers-reduced-motion: no-preference) {
+    .panel-bg {
+        animation: slow-pan 20s ease-in-out infinite alternate;
+    }
+
+    .panel-wyraj .panel-bg {
+        animation-duration: 25s;
+        animation-delay: 1s;
+    }
+}
+
+@keyframes slow-pan {
+    from { background-position: 50% 42%; }
+    to   { background-position: 54% 52%; }
 }
 
 /* Soft gold sheen that follows the cursor — pure lighting, no motifs */
@@ -168,7 +187,15 @@ a {
 }
 
 .panel-wyraj .panel-bg {
-    background: #050505 url('../img/wyraj-bg.png') center / cover no-repeat;
+    background: #0a0805 url('../img/wyraj-bg.png') center / cover no-repeat;
+    /* the artwork itself is much darker than bazgrollin's — compensate
+       so it doesn't read as a broken/underexposed image */
+    filter: blur(2px) brightness(1.35) saturate(1.05) contrast(1.05);
+}
+
+.panel-wyraj:hover .panel-bg,
+.panel-wyraj:focus-visible .panel-bg {
+    filter: blur(0) brightness(1.5) saturate(1.1) contrast(1.05);
 }
 
 .panel-veil {
@@ -176,6 +203,11 @@ a {
     inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.45) 45%, rgba(0,0,0,.65));
     pointer-events: none;
+}
+
+.panel-wyraj .panel-veil {
+    /* lighter veil — the source art needs less crushing to stay legible */
+    background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.22) 45%, rgba(0,0,0,.48));
 }
 
 .panel-content {
@@ -214,6 +246,8 @@ a {
 }
 
 .panel-cta {
+    position: relative;
+    overflow: hidden;
     margin-top: 0.6rem;
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -224,6 +258,23 @@ a {
     border-radius: 25px;
     box-shadow: 0 4px 15px rgba(196, 146, 42, 0.3);
     transition: all 0.3s ease;
+}
+
+.panel-cta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+}
+
+.panel:hover .panel-cta::after,
+.panel:focus-visible .panel-cta::after {
+    left: 130%;
 }
 
 .panel:hover .panel-cta,
@@ -325,7 +376,13 @@ a {
 
 
 @media (hover: none) {
+    /* No hover on touch, so the "reveal" state has to be the resting
+       state — nothing should be sitting there blurred and dimmed. */
     .panel-bg {
-        filter: brightness(.9) saturate(.95);
+        filter: brightness(1) saturate(1) blur(0);
+    }
+
+    .panel-wyraj .panel-bg {
+        filter: brightness(1.4) saturate(1.05) contrast(1.05) blur(0);
     }
 }
