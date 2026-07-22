@@ -189,7 +189,7 @@ h1::after {
   background: linear-gradient(90deg, var(--primary), #e0b060);
   margin: 10px auto 0; border-radius: 2px;
 }
-.lista-title::after { width: 80px; }
+.lista-title::after { content: none; }
 
 .subtitle {
   text-align: center;
@@ -1327,4 +1327,109 @@ button.duch-tag-bostwo {
 @media (prefers-reduced-motion: reduce) {
   .site-bg-img,
   .site-bg-video { animation: none; }
+}
+
+
+/* =============================================
+   KOLO JUMP-LINE — the intro's closing line doubles as
+   a "scroll to the wheel" call to action
+   ============================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+.kolo-jump-line {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--gold-dim);
+  text-align: center;
+}
+.kolo-jump-line:hover { color: var(--gold); }
+
+.kolo-jump-chevron {
+  display: block;
+  width: 24px;
+  height: 20px;
+  color: var(--gold);
+  filter: drop-shadow(0 0 8px rgba(196,146,42,0.75));
+  animation: koloJumpBounce 1.8s ease-in-out infinite;
+}
+.kolo-jump-rune {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes koloJumpBounce {
+  0%, 100% { transform: translateY(0);   opacity: 0.55; }
+  50%      { transform: translateY(7px); opacity: 1;    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .kolo-jump-chevron { animation: none; }
+}
+
+/* =============================================
+   KOLO HINT — permanent "drag me" arrows, live inside the wheel's
+   own SVG as true arcs concentric with the r=218 dashed ring, so
+   they always match its curvature exactly. Hands glide along the
+   very same path via native SVG <animateMotion> — no approximated
+   transforms, no separate JS to keep in sync.
+   ============================================= */
+.kolo-hint-arc {
+  stroke: var(--primary);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 5px rgba(196,146,42,0.55));
+  transition: opacity 0.5s ease;
+}
+.kolo-hint-arrowhead-fill { fill: var(--primary); }
+
+/* Hidden for the entire 3.4s spin-in — piggybacks on the "spinning" class
+   the wheel's own JS already toggles, so appearing only once it settles
+   needs no extra JS of its own. */
+#kolo-svg.spinning .kolo-hint-arc,
+#kolo-svg.spinning .kolo-hint-hand {
+  opacity: 0 !important;
+}
+
+.kolo-hint-hand {
+  font-size: 30px;
+  filter: drop-shadow(0 0 7px rgba(196,146,42,0.85));
+  opacity: 0;
+}
+
+/* Once the person actually spins the wheel themselves, the hint has done
+   its job — kolo.js adds this class on the first real interaction. */
+.kolo-wrap.kolo-hints-dismissed .kolo-hint-arc {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.kolo-wrap.kolo-hints-dismissed .kolo-hint-hand {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kolo-hint-hand { display: none; }
+}
+
+/* =============================================
+   PERMANENT PULSE — the "Odwiedź / Visit" button breathes gently
+   at all times, no one-time tutorial needed to notice it.
+   ============================================= */
+.kolo-panel-btn {
+  position: relative;
+  animation: koloBtnPulse 2.6s ease-in-out infinite;
+}
+@keyframes koloBtnPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,146,42,0.35); }
+  50%      { box-shadow: 0 0 0 7px rgba(196,146,42,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kolo-panel-btn { animation: none; }
 }

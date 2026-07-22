@@ -44,6 +44,8 @@
         <p class="subtitle">Slavic Wheel of the Year</p>
       </div>
 
+      <div class="ornament">⸻✦⸻</div>
+
       <!-- WSTĘP -->
       <div class="lang active wyraj-intro reveal" id="pl-intro">
         <p>
@@ -53,7 +55,15 @@
           zimowego się zbudzi, a Koło Roku poczyna swój odwieczny obrót na
           nowo, niosąc święta, obrzędy i pamięć dawnych bogów.
         </p>
-        <p>Obróć Koło, a ujrzysz, jaki czas nastał.</p>
+        <a href="#kolo-anchor" class="kolo-jump-line">
+          Obróć Koło, a ujrzysz, jaki czas nastał.
+          <span class="kolo-jump-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 20" class="kolo-jump-rune">
+              <path d="M2,2 L12,17 L22,2" fill="none" stroke="currentColor"
+                    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
       </div>
       <div class="lang wyraj-intro reveal" id="en-intro">
         <p>
@@ -64,13 +74,21 @@
           Year begins its timeless turning once more, bearing the sacred
           feasts, old rites, and the memory of the ancient gods.
         </p>
-        <p>Turn the Wheel, and behold what season has come.</p>
+        <a href="#kolo-anchor" class="kolo-jump-line">
+          Turn the Wheel, and behold what season has come.
+          <span class="kolo-jump-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 20" class="kolo-jump-rune">
+              <path d="M2,2 L12,17 L22,2" fill="none" stroke="currentColor"
+                    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
       </div>
 
       <div class="ornament">⸻✦⸻</div>
 
       <!-- KOŁO ROKU-->
-      <div class="kolo-wrap reveal">
+      <div class="kolo-wrap reveal" id="kolo-anchor">
 
         <button type="button" id="kolo-nav-prev" class="kolo-nav kolo-nav-prev" aria-label="Poprzednie święto">
           <span class="kolo-nav-arrow" aria-hidden="true">ᛏ</span>
@@ -89,6 +107,10 @@
               <feGaussianBlur stdDeviation="3" result="blur"/>
               <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
+            <marker id="kolo-hint-arrowhead" markerWidth="7" markerHeight="7"
+                    refX="3.6" refY="3.6" orient="auto">
+              <path d="M0,0 L7,3.6 L0,7.2 Z" class="kolo-hint-arrowhead-fill"/>
+            </marker>
           </defs>
 
           <circle cx="250" cy="250" r="248" fill="url(#kolo-bg)"
@@ -96,6 +118,38 @@
 
           <circle cx="250" cy="250" r="218" fill="none"
                   stroke="rgba(196,146,42,0.12)" stroke-width="1" stroke-dasharray="4 6"/>
+
+          <!-- Trwałe podpowiedzi "przeciągnij, by obrócić" — dwa łuki
+               współśrodkowe z powyższym przerywanym okręgiem (r=218),
+               każdy zakończony grotem; łapka faktycznie jedzie po tym
+               samym łuku (natywna animacja SVG po ścieżce, nie
+               przybliżenie transformami). -->
+          <path id="kolo-hint-arc-left" class="kolo-hint-arc"
+                d="M45.15,324.56 A218,218 0 0,1 109.87,83.0"
+                fill="none" marker-end="url(#kolo-hint-arrowhead)"/>
+          <path id="kolo-hint-arc-right" class="kolo-hint-arc"
+                d="M454.85,324.56 A218,218 0 0,0 390.13,83.0"
+                fill="none" marker-end="url(#kolo-hint-arrowhead)"/>
+
+          <text class="kolo-hint-hand" text-anchor="middle" dominant-baseline="middle">
+            🤚
+            <animateMotion dur="2.8s" repeatCount="indefinite"
+                           keyPoints="0;0;1;1" keyTimes="0;0.08;0.85;1" calcMode="linear">
+              <mpath href="#kolo-hint-arc-left" xlink:href="#kolo-hint-arc-left"/>
+            </animateMotion>
+            <animate attributeName="opacity" dur="2.8s" repeatCount="indefinite"
+                     values="0;0.95;0.95;0" keyTimes="0;0.08;0.85;1" calcMode="linear"/>
+          </text>
+          <text class="kolo-hint-hand" text-anchor="middle" dominant-baseline="middle">
+            🤚
+            <animateMotion dur="2.8s" repeatCount="indefinite"
+                           keyPoints="0;0;1;1" keyTimes="0;0.08;0.85;1" calcMode="linear">
+              <mpath href="#kolo-hint-arc-right" xlink:href="#kolo-hint-arc-right"/>
+            </animateMotion>
+            <animate attributeName="opacity" dur="2.8s" repeatCount="indefinite"
+                     values="0;0.95;0.95;0" keyTimes="0;0.08;0.85;1" calcMode="linear"/>
+          </text>
+
           <circle cx="250" cy="250" r="155" fill="none"
                   stroke="rgba(196,146,42,0.08)" stroke-width="1"/>
           <circle cx="250" cy="250" r="60"  fill="none"

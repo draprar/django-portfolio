@@ -539,6 +539,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ── Dismiss the permanent "drag me" hints on first real interaction ────────
+  // Once someone actually spins the wheel (or uses it via keyboard/scroll),
+  // the arrows + hands have done their job and just get in the way.
+  const dismissWheelHints = () => {
+    koloWrap.classList.add("kolo-hints-dismissed");
+    svg.removeEventListener("pointerdown", dismissWheelHints);
+    svg.removeEventListener("touchstart", dismissWheelHints);
+    svg.removeEventListener("wheel", dismissWheelHints);
+    svg.removeEventListener("keydown", dismissWheelHints);
+  };
+  svg.addEventListener("pointerdown", dismissWheelHints, { passive: true });
+  svg.addEventListener("touchstart", dismissWheelHints, { passive: true });
+  svg.addEventListener("wheel", dismissWheelHints, { passive: true });
+  svg.addEventListener("keydown", dismissWheelHints);
+
   // ── Spin-in intro ──────────────────────────────────────────────────────────
   // Find the node closest to today's calendar date and snap to it on load.
   //
