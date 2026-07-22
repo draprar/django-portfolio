@@ -184,8 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navNextName) navNextName.textContent = lang === "en" ? nextS.tytul_en : nextS.tytul_pl;
   };
 
-  if (navPrev) navPrev.addEventListener("click", () => goTo(activeIdx - 1));
-  if (navNext) navNext.addEventListener("click", () => goTo(activeIdx + 1));
+  if (navPrev) navPrev.addEventListener("click", () => { dismissWheelHints(); goTo(activeIdx - 1); });
+  if (navNext) navNext.addEventListener("click", () => { dismissWheelHints(); goTo(activeIdx + 1); });
 
   // ── Tooltip (for nodes whose label is hidden) ───────────────────────────────
   const tooltip      = document.getElementById("kolo-tooltip");
