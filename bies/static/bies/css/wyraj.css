@@ -363,10 +363,20 @@ a:hover { color: var(--gold); }
 /* =============================================
    ORNAMENT
    ============================================= */
+/* Flex + gap instead of text-align:center + letter-spacing. The old
+   letter-spacing approach renders inconsistently off-center across browsers
+   (some count the trailing spacing after the last glyph in the centering
+   math, some don't), which is exactly why the ✦ never quite lined up with
+   .kolo-jump-chevron above it. Flex-centering is exact and matches the same
+   centering method already used for .kolo-jump-line. */
 .ornament {
-  text-align: center; font-size: 1.44rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25em;
+  font-size: 1.44rem;
   margin: 2rem 0; color: var(--primary);
-  opacity: 0.7; letter-spacing: 0.25em;
+  opacity: 0.7;
   animation: pulse 4s ease-in-out infinite;
 }
 
@@ -1349,18 +1359,17 @@ html {
 }
 .kolo-jump-line:hover { color: var(--gold); }
 
+/* Rune glyph (ᛦ / Yr) instead of a plain chevron — reads as a downward
+   arrow while matching the same runic register as the loader ("ᛏ ᛉ ᛟ")
+   and the wheel's nav arrows ("ᛏ"). Color matches --primary (not --gold)
+   so it visually ties to the --primary-colored ✦ in the ornament below it. */
 .kolo-jump-chevron {
   display: block;
-  width: 24px;
-  height: 20px;
-  color: var(--gold);
-  filter: drop-shadow(0 0 8px rgba(196,146,42,0.75));
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(196,146,42,0.75);
   animation: koloJumpBounce 1.8s ease-in-out infinite;
-}
-.kolo-jump-rune {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 @keyframes koloJumpBounce {

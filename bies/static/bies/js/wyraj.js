@@ -480,7 +480,13 @@ document.addEventListener("DOMContentLoaded", () => {
     prevPtrAngle = cur;
     prevTime     = now;
 
-    if (Math.abs(wheelAngle - dragStartWheelAngle) > 2) didDrag = true;
+    if (Math.abs(wheelAngle - dragStartWheelAngle) > 2) {
+      didDrag = true;
+      // A real drag (as opposed to a finger just passing over the wheel
+      // while scrolling past it) is the clearest signal on touch — dismiss
+      // the hints here instead of on bare touchstart.
+      dismissWheelHints();
+    }
 
     // Live-highlight closest node without snapping the wheel yet.
     let bestIdx = 0, bestDist = Infinity;
@@ -544,13 +550,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // the arrows + hands have done their job and just get in the way.
   const dismissWheelHints = () => {
     koloWrap.classList.add("kolo-hints-dismissed");
-    svg.removeEventListener("pointerdown", dismissWheelHints);
-    svg.removeEventListener("touchstart", dismissWheelHints);
     svg.removeEventListener("wheel", dismissWheelHints);
     svg.removeEventListener("keydown", dismissWheelHints);
   };
-  svg.addEventListener("pointerdown", dismissWheelHints, { passive: true });
-  svg.addEventListener("touchstart", dismissWheelHints, { passive: true });
+  // Mouse/pen pointerdown is an unambiguous "I'm interacting with the wheel"
+  // signal, so it can dismiss immediately. Touch pointerdown is NOT — it
+  // fires just as easily from a finger passing over the wheel mid-scroll,
+  // so on touch we wait for onDragMove to confirm a real drag instead
+  // (see dismissWheelHints() call there).
+  svg.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "touch") return;
+    dismissWheelHints();
+  }, { passive: true });
   svg.addEventListener("wheel", dismissWheelHints, { passive: true });
   svg.addEventListener("keydown", dismissWheelHints);
 
