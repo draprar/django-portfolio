@@ -1379,7 +1379,6 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .kolo-jump-chevron { animation: none; }
 }
 
 /* =============================================
@@ -1410,7 +1409,14 @@ html {
 .kolo-hint-hand {
   font-size: 30px;
   filter: drop-shadow(0 0 7px rgba(196,146,42,0.85));
-  opacity: 0;
+  /* No CSS opacity default here on purpose — opacity is fully driven by the
+     SMIL <animate> on the element itself (which already starts at 0 on its
+     first keyframe). A CSS-authored opacity on this property would sit
+     above a SMIL presentation-attribute animation in the cascade per spec,
+     so on spec-compliant engines (mobile Safari) it would permanently win
+     and hide the hand regardless of the animation — which is exactly why
+     this showed up on mobile but not in Chrome (Chrome doesn't enforce
+     that ordering as strictly). */
 }
 
 /* Once the person actually spins the wheel themselves, the hint has done
@@ -1421,10 +1427,6 @@ html {
 }
 .kolo-wrap.kolo-hints-dismissed .kolo-hint-hand {
   display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .kolo-hint-hand { display: none; }
 }
 
 /* =============================================
