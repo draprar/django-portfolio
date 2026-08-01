@@ -410,6 +410,15 @@ img[src*="arrows.svg"] {
 
 #beaver-options { margin-top: 10px; }
 
+/* ── Polish beaver: running "facts seen" counter ────────────────────────────── */
+#polish-beaver-counter {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--light);
+  opacity: 0.75;
+}
+
 /* ── Chat beaver ────────────────────────────────────────────────────────────── */
 #chat-beaver-container {
   position: fixed;

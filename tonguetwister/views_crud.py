@@ -16,241 +16,122 @@ def is_admin(user):
     return user.is_staff or user.is_superuser
 
 
-@user_passes_test(is_admin)
-def articulator_list(request):
-    articulators = Articulator.objects.all()
-    return render(request, "tonguetwister/articulators/articulator_list.html", {"articulators": articulators})
+admin_required = user_passes_test(is_admin)
 
 
-@user_passes_test(is_admin)
-def articulator_add(request):
-    if request.method == "POST":
-        form = ArticulatorForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("articulator_list")
-    else:
-        form = ArticulatorForm()
-    return render(request, "tonguetwister/articulators/articulator_form.html", {"form": form})
+def make_crud_views(*, model, form_class, template_dir, list_context_name, delete_context_name, list_url_name):
+    """
+    Builds the standard list/add/edit/delete view quartet for a simple
+    admin-managed "text" model (Articulator, Exercise, Twister, Trivia,
+    Funfact, OldPolish all follow this exact same shape).
+
+    This replaces ~24 hand-written, near-identical view functions with one
+    factory + a small config table below, while keeping every URL name,
+    template path, context variable name, and redirect target byte-for-byte
+    identical to the views it replaces — existing templates and urls.py
+    keep working completely unchanged.
+    """
+    template_prefix = model.__name__.lower()
+
+    @admin_required
+    def list_view(request):
+        objects = model.objects.all()
+        return render(
+            request,
+            f"tonguetwister/{template_dir}/{template_prefix}_list.html",
+            {list_context_name: objects},
+        )
+
+    @admin_required
+    def add_view(request):
+        if request.method == "POST":
+            form = form_class(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect(list_url_name)
+        else:
+            form = form_class()
+        return render(request, f"tonguetwister/{template_dir}/{template_prefix}_form.html", {"form": form})
+
+    @admin_required
+    def edit_view(request, pk):
+        instance = get_object_or_404(model, pk=pk)
+        if request.method == "POST":
+            form = form_class(request.POST, instance=instance)
+            if form.is_valid():
+                form.save()
+                return redirect(list_url_name)
+        else:
+            form = form_class(instance=instance)
+        return render(request, f"tonguetwister/{template_dir}/{template_prefix}_form.html", {"form": form})
+
+    @admin_required
+    def delete_view(request, pk):
+        instance = get_object_or_404(model, pk=pk)
+        if request.method == "POST":
+            instance.delete()
+            return redirect(list_url_name)
+        return render(
+            request,
+            f"tonguetwister/{template_dir}/{template_prefix}_confirm_delete.html",
+            {delete_context_name: instance},
+        )
+
+    return list_view, add_view, edit_view, delete_view
 
 
-@user_passes_test(is_admin)
-def articulator_edit(request, pk):
-    articulator = get_object_or_404(Articulator, pk=pk)
-    if request.method == "POST":
-        form = ArticulatorForm(request.POST, instance=articulator)
-        if form.is_valid():
-            form.save()
-            return redirect("articulator_list")
-    else:
-        form = ArticulatorForm(instance=articulator)
-    return render(request, "tonguetwister/articulators/articulator_form.html", {"form": form})
+articulator_list, articulator_add, articulator_edit, articulator_delete = make_crud_views(
+    model=Articulator,
+    form_class=ArticulatorForm,
+    template_dir="articulators",
+    list_context_name="articulators",
+    delete_context_name="articulator",
+    list_url_name="articulator_list",
+)
 
+exercise_list, exercise_add, exercise_edit, exercise_delete = make_crud_views(
+    model=Exercise,
+    form_class=ExerciseForm,
+    template_dir="exercises",
+    list_context_name="exercises",
+    delete_context_name="exercise",
+    list_url_name="exercise_list",
+)
 
-@user_passes_test(is_admin)
-def articulator_delete(request, pk):
-    articulator = get_object_or_404(Articulator, pk=pk)
-    if request.method == "POST":
-        articulator.delete()
-        return redirect("articulator_list")
-    return render(request, "tonguetwister/articulators/articulator_confirm_delete.html", {"articulator": articulator})
+twister_list, twister_add, twister_edit, twister_delete = make_crud_views(
+    model=Twister,
+    form_class=TwisterForm,
+    template_dir="twisters",
+    list_context_name="twisters",
+    delete_context_name="twister",
+    list_url_name="twister_list",
+)
 
+trivia_list, trivia_add, trivia_edit, trivia_delete = make_crud_views(
+    model=Trivia,
+    form_class=TriviaForm,
+    template_dir="trivia",
+    list_context_name="trivia",
+    # NOTE: kept as "t" (not "trivia") to match the pre-existing
+    # trivia_confirm_delete.html template, which references {{ t }}.
+    delete_context_name="t",
+    list_url_name="trivia_list",
+)
 
-@user_passes_test(is_admin)
-def exercise_list(request):
-    exercises = Exercise.objects.all()
-    return render(request, "tonguetwister/exercises/exercise_list.html", {"exercises": exercises})
+funfact_list, funfact_add, funfact_edit, funfact_delete = make_crud_views(
+    model=Funfact,
+    form_class=FunfactForm,
+    template_dir="funfacts",
+    list_context_name="funfacts",
+    delete_context_name="funfact",
+    list_url_name="funfact_list",
+)
 
-
-@user_passes_test(is_admin)
-def exercise_add(request):
-    if request.method == "POST":
-        form = ExerciseForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("exercise_list")
-    else:
-        form = ExerciseForm()
-    return render(request, "tonguetwister/exercises/exercise_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def exercise_edit(request, pk):
-    exercise = get_object_or_404(Exercise, pk=pk)
-    if request.method == "POST":
-        form = ExerciseForm(request.POST, instance=exercise)
-        if form.is_valid():
-            form.save()
-            return redirect("exercise_list")
-    else:
-        form = ExerciseForm(instance=exercise)
-    return render(request, "tonguetwister/exercises/exercise_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def exercise_delete(request, pk):
-    exercise = get_object_or_404(Exercise, pk=pk)
-    if request.method == "POST":
-        exercise.delete()
-        return redirect("exercise_list")
-    return render(request, "tonguetwister/exercises/exercise_confirm_delete.html", {"exercise": exercise})
-
-
-@user_passes_test(is_admin)
-def twister_list(request):
-    twisters = Twister.objects.all()
-    return render(request, "tonguetwister/twisters/twister_list.html", {"twisters": twisters})
-
-
-@user_passes_test(is_admin)
-def twister_add(request):
-    if request.method == "POST":
-        form = TwisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("twister_list")
-    else:
-        form = TwisterForm()
-    return render(request, "tonguetwister/twisters/twister_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def twister_edit(request, pk):
-    twister = get_object_or_404(Twister, pk=pk)
-    if request.method == "POST":
-        form = TwisterForm(request.POST, instance=twister)
-        if form.is_valid():
-            form.save()
-            return redirect("twister_list")
-    else:
-        form = TwisterForm(instance=twister)
-    return render(request, "tonguetwister/twisters/twister_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def twister_delete(request, pk):
-    twister = get_object_or_404(Twister, pk=pk)
-    if request.method == "POST":
-        twister.delete()
-        return redirect("twister_list")
-    return render(request, "tonguetwister/twisters/twister_confirm_delete.html", {"twister": twister})
-
-
-@user_passes_test(is_admin)
-def trivia_list(request):
-    trivia = Trivia.objects.all()
-    return render(request, "tonguetwister/trivia/trivia_list.html", {"trivia": trivia})
-
-
-@user_passes_test(is_admin)
-def trivia_add(request):
-    if request.method == "POST":
-        form = TriviaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("trivia_list")
-    else:
-        form = TriviaForm()
-    return render(request, "tonguetwister/trivia/trivia_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def trivia_edit(request, pk):
-    trivia = get_object_or_404(Trivia, pk=pk)
-    if request.method == "POST":
-        form = TriviaForm(request.POST, instance=trivia)
-        if form.is_valid():
-            form.save()
-            return redirect("trivia_list")
-    else:
-        form = TriviaForm(instance=trivia)
-    return render(request, "tonguetwister/trivia/trivia_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def trivia_delete(request, pk):
-    t = get_object_or_404(Trivia, pk=pk)
-    if request.method == "POST":
-        t.delete()
-        return redirect("trivia_list")
-    return render(request, "tonguetwister/trivia/trivia_confirm_delete.html", {"t": t})
-
-
-@user_passes_test(is_admin)
-def funfact_list(request):
-    funfacts = Funfact.objects.all()
-    return render(request, "tonguetwister/funfacts/funfact_list.html", {"funfacts": funfacts})
-
-
-@user_passes_test(is_admin)
-def funfact_add(request):
-    if request.method == "POST":
-        form = FunfactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("funfact_list")
-    else:
-        form = FunfactForm()
-    return render(request, "tonguetwister/funfacts/funfact_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def funfact_edit(request, pk):
-    funfact = get_object_or_404(Funfact, pk=pk)
-    if request.method == "POST":
-        form = FunfactForm(request.POST, instance=funfact)
-        if form.is_valid():
-            form.save()
-            return redirect("funfact_list")
-    else:
-        form = FunfactForm(instance=funfact)
-    return render(request, "tonguetwister/funfacts/funfact_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def funfact_delete(request, pk):
-    funfact = get_object_or_404(Funfact, pk=pk)
-    if request.method == "POST":
-        funfact.delete()
-        return redirect("funfact_list")
-    return render(request, "tonguetwister/funfacts/funfact_confirm_delete.html", {"funfact": funfact})
-
-
-@user_passes_test(is_admin)
-def oldpolish_list(request):
-    oldpolishs = OldPolish.objects.all()
-    return render(request, "tonguetwister/oldpolishs/oldpolish_list.html", {"oldpolishs": oldpolishs})
-
-
-@user_passes_test(is_admin)
-def oldpolish_add(request):
-    if request.method == "POST":
-        form = OldPolishForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("oldpolish_list")
-    else:
-        form = OldPolishForm()
-    return render(request, "tonguetwister/oldpolishs/oldpolish_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def oldpolish_edit(request, pk):
-    oldpolish = get_object_or_404(OldPolish, pk=pk)
-    if request.method == "POST":
-        form = OldPolishForm(request.POST, instance=oldpolish)
-        if form.is_valid():
-            form.save()
-            return redirect("oldpolish_list")
-    else:
-        form = OldPolishForm(instance=oldpolish)
-    return render(request, "tonguetwister/oldpolishs/oldpolish_form.html", {"form": form})
-
-
-@user_passes_test(is_admin)
-def oldpolish_delete(request, pk):
-    oldpolish = get_object_or_404(OldPolish, pk=pk)
-    if request.method == "POST":
-        oldpolish.delete()
-        return redirect("oldpolish_list")
-    return render(request, "tonguetwister/oldpolishs/oldpolish_confirm_delete.html", {"oldpolish": oldpolish})
+oldpolish_list, oldpolish_add, oldpolish_edit, oldpolish_delete = make_crud_views(
+    model=OldPolish,
+    form_class=OldPolishForm,
+    template_dir="oldpolishs",
+    list_context_name="oldpolishs",
+    delete_context_name="oldpolish",
+    list_url_name="oldpolish_list",
+)

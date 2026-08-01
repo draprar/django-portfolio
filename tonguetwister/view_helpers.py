@@ -3,7 +3,6 @@ from django.http import HttpResponse, JsonResponse
 from .models import (
     Articulator,
     Exercise,
-    OldPolish,
     Twister,
     UserProfileArticulator,
     UserProfileExercise,
@@ -47,18 +46,6 @@ def simple_load_more_generic(request, model, limit=1, logger=None):
     except Exception:
         if logger:
             logger.exception("Exception in simple_load_more_generic")
-        return JsonResponse({"error": "Internal Server Error"}, status=500)
-
-
-def load_more_old_polish(request, logger=None):
-    try:
-        random_record = OldPolish.objects.order_by("?").values().first()
-        if random_record:
-            return JsonResponse([random_record], safe=False)
-        return JsonResponse([], safe=False)
-    except Exception:
-        if logger:
-            logger.exception("Exception in load_more_old_polish")
         return JsonResponse({"error": "Internal Server Error"}, status=500)
 
 

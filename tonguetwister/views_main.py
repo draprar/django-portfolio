@@ -33,9 +33,6 @@ from .view_helpers import (
     load_more_generic as _load_more_generic,
 )
 from .view_helpers import (
-    load_more_old_polish as _load_more_old_polish,
-)
-from .view_helpers import (
     simple_load_more_generic as _simple_load_more_generic,
 )
 
@@ -161,10 +158,6 @@ def load_more_trivia(request):
 
 def load_more_funfacts(request):
     return simple_load_more_generic(request, Funfact)
-
-
-def load_more_old_polish(request):
-    return _load_more_old_polish(request, logger=logger)
 
 
 @login_required

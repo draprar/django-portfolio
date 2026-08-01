@@ -70,7 +70,6 @@ from .views_main import (  # noqa: F401
     load_more_articulators,
     load_more_exercises,
     load_more_funfacts,
-    load_more_old_polish,
     load_more_trivia,
     load_more_twisters,
     main,

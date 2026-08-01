@@ -91,7 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (swiperInstance) {
                         swiperInstance.slideTo(0, 500); // Slide to first swiper slide
 
-                        swiperInstance.on('slideChangeTransitionEnd', function () {
+                        // once() (not on()) is critical here: this swiper instance is the
+                        // main content carousel the user keeps swiping for the rest of the
+                        // session. on() would re-fire on every future swipe and re-run
+                        // showPolishBeaver(), stacking duplicate listeners each time.
+                        swiperInstance.once('slideChangeTransitionEnd', function () {
                             closeTutorialAndShowPolishBeaver(); // Close tutorial after sliding
                         });
                     } else {
@@ -117,7 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (swiperInstance) {
                             swiperInstance.slideTo(2, 500); // Slide to swiper slide 2
 
-                            swiperInstance.on('slideChangeTransitionEnd', function () {
+                            // once() auto-detaches after firing so later, unrelated swipes
+                            // don't keep re-triggering this step transition.
+                            swiperInstance.once('slideChangeTransitionEnd', function () {
                                 moveToStep(step + 1); // Move to next step after swiper transition
                             });
                         } else {
@@ -281,11 +287,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const polishSpeechBubble = document.getElementById('polish-beaver-speech-bubble');
         const polishCloseBubble = document.getElementById('polish-close-speech-bubble');
         const polishBeaverText = document.getElementById('polish-beaver-text');
+        const polishBeaverCounter = document.getElementById('polish-beaver-counter');
 
-        let offset = 0;  // Track database offset for fetching new records
+        const FACTS_SEEN_KEY = 'oldPolishFactsSeen';
+
+        // Small, low-commitment gamification: a running count of facts seen,
+        // persisted across visits. No backend/model changes needed for this.
+        function incrementFactsSeenCounter() {
+            const current = parseInt(localStorage.getItem(FACTS_SEEN_KEY), 10) || 0;
+            const next = current + 1;
+            try {
+                localStorage.setItem(FACTS_SEEN_KEY, String(next));
+            } catch (e) {
+                // Storage can fail (private browsing, quota) — degrade silently,
+                // the counter just won't persist between visits.
+            }
+            if (polishBeaverCounter) {
+                polishBeaverCounter.textContent = next === 1
+                    ? 'Twoja 1. ciekawostka!'
+                    : `Ciekawostka nr ${next} 🎉`;
+            }
+        }
+
         let isDragging = false, startX, startY, offsetX, offsetY;
         let moved = false;  // Track if beaver was moved
         let bubbleClosedManually = false;  // Track manual bubble close state
+        let isFetching = false;  // Prevent overlapping fetch requests from stacking replies
 
         // Initialize the beaver size and position once
         if (typeof showPolishBeaver.initialized === 'undefined') {
@@ -362,23 +389,43 @@ document.addEventListener('DOMContentLoaded', () => {
             polishSpeechBubble.style.top = (polishBeaverRect.top - bubbleHeight - BUBBLE_GAP) + 'px';
         }
 
-        // Fetch new Old Polish record and display it in the speech bubble
+        // Fetch new Old Polish record and display it in the speech bubble.
+        // Backed by OldPolishViewSet.random (/api/oldpolish/random/), which
+        // picks one row with a single OFFSET query and avoids repeating the
+        // last fact this session saw — see backend notes in views_api.py.
         function fetchNewRecord() {
-            fetch(`/tonguetwister/load-more-old-polish/`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        var record = data[0];
-                        polishBeaverText.innerHTML = `Czy wiesz, że staropolskie <strong>${record.old_text}</strong> to dziś <strong>${record.new_text}</strong>?`;
-                    } else {
+            // Belt-and-suspenders guard: if a request is already in flight, ignore
+            // this call instead of firing a second one that would race the first
+            // and overwrite the bubble text a moment later.
+            if (isFetching) return;
+            isFetching = true;
+
+            fetch(`/api/oldpolish/random/`)
+                .then(response => {
+                    if (response.status === 404) {
                         polishBeaverText.innerHTML = 'Brawo! Baza danych wyczyszczona 😲';
+                        polishSpeechBubble.style.display = 'block';
+                        updatePolishSpeechBubblePosition();
+                        return null;
                     }
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(record => {
+                    if (!record) return; // 404 branch above already handled display
+                    polishBeaverText.innerHTML = `Czy wiesz, że staropolskie <strong>${record.old_text}</strong> to dziś <strong>${record.new_text}</strong>?`;
                     polishSpeechBubble.style.display = 'block';
                     updatePolishSpeechBubblePosition();
+                    incrementFactsSeenCounter();
                 })
                 .catch(error => {
-                    polishBeaverText.innerHTML = 'Error loading data.';
+                    polishBeaverText.innerHTML = 'Nie udało się wczytać ciekawostki. Spróbuj ponownie 🙁';
                     polishSpeechBubble.style.display = 'block';
+                })
+                .finally(() => {
+                    isFetching = false;
                 });
         }
 
@@ -423,28 +470,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Dragging event listeners for Polish Beaver
-        polishBeaverImg.addEventListener('mousedown', startDrag);  // Mouse drag start
-        document.addEventListener('mousemove', doDrag);  // Mouse drag move
-        document.addEventListener('mouseup', stopDrag);  // Mouse drag stop
-        polishBeaverImg.addEventListener('touchstart', startDrag);  // Touch drag start
-        document.addEventListener('touchmove', doDrag);  // Touch drag move
-        document.addEventListener('touchend', stopDrag);  // Touch drag stop
+        // Guard against duplicate listeners: showPolishBeaver() is meant to run its
+        // setup exactly once per page load. Without this guard, any future code path
+        // that calls it more than once (e.g. a regression reintroducing a leaked
+        // swiper handler) would stack extra mousedown/mouseup/click listeners on the
+        // same elements — which is exactly what caused a single click to fire
+        // fetchNewRecord() multiple times and flash several facts one after another.
+        if (!showPolishBeaver.listenersBound) {
+            // Dragging event listeners for Polish Beaver
+            polishBeaverImg.addEventListener('mousedown', startDrag);  // Mouse drag start
+            document.addEventListener('mousemove', doDrag);  // Mouse drag move
+            document.addEventListener('mouseup', stopDrag);  // Mouse drag stop
+            polishBeaverImg.addEventListener('touchstart', startDrag);  // Touch drag start
+            document.addEventListener('touchmove', doDrag);  // Touch drag move
+            document.addEventListener('touchend', stopDrag);  // Touch drag stop
 
-        // Close the speech bubble and hide beaver image
-        polishCloseBubble.addEventListener('click', function () {
-            polishSpeechBubble.style.display = 'none';
-            polishBeaverImg.style.display = 'none';
-            bubbleClosedManually = true;  // Track manual close
-        });
+            // Close the speech bubble and hide beaver image
+            polishCloseBubble.addEventListener('click', function () {
+                polishSpeechBubble.style.display = 'none';
+                polishBeaverImg.style.display = 'none';
+                bubbleClosedManually = true;  // Track manual close
+            });
 
-        // Re-fetch record if beaver clicked after manually closing bubble
-        polishBeaverImg.addEventListener('click', function () {
-            if (bubbleClosedManually && !moved) {
-                fetchNewRecord();
-                bubbleClosedManually = false;  // Reset manual close flag
+            // Re-fetch record if beaver clicked after manually closing bubble
+            polishBeaverImg.addEventListener('click', function () {
+                if (bubbleClosedManually && !moved) {
+                    fetchNewRecord();
+                    bubbleClosedManually = false;  // Reset manual close flag
+                }
+            });
+
+            showPolishBeaver.listenersBound = true;
+        }
+
+        // Show the running "facts seen" total immediately, even before the
+        // first fetch of this visit (localStorage persists across visits).
+        if (polishBeaverCounter) {
+            const alreadySeen = parseInt(localStorage.getItem(FACTS_SEEN_KEY), 10) || 0;
+            if (alreadySeen > 0) {
+                polishBeaverCounter.textContent = `Ciekawostka nr ${alreadySeen} 🎉`;
             }
-        });
+        }
 
         if (typeof showPolishBeaver.viewportHandler === 'function') {
             window.removeEventListener('resize', showPolishBeaver.viewportHandler);

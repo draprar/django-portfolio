@@ -1,7 +1,10 @@
+import random
+
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from drf_spectacular.utils import OpenApiParameter, extend_schema, inline_serializer
 from rest_framework import filters, serializers, viewsets
+from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -54,6 +57,42 @@ class OldPolishViewSet(_CachedSearchListMixin, viewsets.ReadOnlyModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ["old_text", "new_text"]
     permission_classes = [AllowAny]
+
+    @extend_schema(
+        tags=["Old Polish"],
+        summary="Losowa ciekawostka staropolska",
+        description=(
+            "Zwraca jedną losową ciekawostkę staropolską. W odróżnieniu od `list`, ten "
+            "endpoint nie jest cache'owany (każde wywołanie ma zwrócić inny wynik) i nie "
+            "powtarza tej samej ciekawostki, którą ta sesja przeglądarki właśnie widziała.\n\n"
+            "Permissions: Public (no authentication required)"
+        ),
+    )
+    @action(detail=False, methods=["get"], permission_classes=[AllowAny])
+    def random(self, request):
+        """
+        GET /api/oldpolish/random/
+
+        Picks one random row with a single OFFSET/LIMIT query instead of
+        ``ORDER BY RANDOM()``, which forces a full-table sort on every call
+        and gets slower as the table grows. Also avoids showing the same
+        fact twice in a row for a given session.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        total = queryset.count()
+        if total == 0:
+            return Response({"detail": "No results found"}, status=404)
+
+        last_id = request.session.get("last_old_polish_id")
+        if total > 1 and last_id is not None:
+            queryset = queryset.exclude(pk=last_id)
+            total -= 1
+
+        record = queryset[random.randint(0, total - 1)]
+        request.session["last_old_polish_id"] = record.pk
+
+        serializer = self.get_serializer(record)
+        return Response(serializer.data)
 
 
 class ArticulatorViewSet(_CachedSearchListMixin, viewsets.ReadOnlyModelViewSet):
