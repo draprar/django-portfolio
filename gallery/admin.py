@@ -15,16 +15,19 @@ class InstagramPostMediaInline(admin.TabularInline):
     fields = ["image", "video", "order", "preview"]
     readonly_fields = ["preview"]
 
+    @admin.display(description="Preview")
     def preview(self, obj):
         if obj.pk and obj.video:
             return format_html(
-                '<video src="{}" muted style="height: 80px; border-radius: 6px;"></video>', obj.video.url
+                '<video src="{}" muted style="height: 80px; border-radius: 6px;"></video>',
+                obj.video.url,
             )
         if obj.pk and obj.image:
-            return format_html('<img src="{}" style="height: 80px; border-radius: 6px;" />', obj.image.url)
+            return format_html(
+                '<img src="{}" style="height: 80px; border-radius: 6px;" />',
+                obj.image.url,
+            )
         return "-"
-
-    preview.short_description = "Preview"
 
 
 @admin.register(InstagramPost)
