@@ -287,27 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const polishSpeechBubble = document.getElementById('polish-beaver-speech-bubble');
         const polishCloseBubble = document.getElementById('polish-close-speech-bubble');
         const polishBeaverText = document.getElementById('polish-beaver-text');
-        const polishBeaverCounter = document.getElementById('polish-beaver-counter');
-
-        const FACTS_SEEN_KEY = 'oldPolishFactsSeen';
-
-        // Small, low-commitment gamification: a running count of facts seen,
-        // persisted across visits. No backend/model changes needed for this.
-        function incrementFactsSeenCounter() {
-            const current = parseInt(localStorage.getItem(FACTS_SEEN_KEY), 10) || 0;
-            const next = current + 1;
-            try {
-                localStorage.setItem(FACTS_SEEN_KEY, String(next));
-            } catch (e) {
-                // Storage can fail (private browsing, quota) — degrade silently,
-                // the counter just won't persist between visits.
-            }
-            if (polishBeaverCounter) {
-                polishBeaverCounter.textContent = next === 1
-                    ? 'Twoja 1. ciekawostka!'
-                    : `Ciekawostka nr ${next} 🎉`;
-            }
-        }
 
         let isDragging = false, startX, startY, offsetX, offsetY;
         let moved = false;  // Track if beaver was moved
@@ -338,8 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show the first fact immediately on init, instead of making the user
         // click once "for nothing" just to reveal it. Guarded the same way as
         // the sizing/position setup above, so a hypothetical re-invocation of
-        // showPolishBeaver() can't fire a second fetch and burn through facts
-        // or double-increment the "facts seen" counter.
+        // showPolishBeaver() can't fire a second, redundant fetch.
         if (typeof showPolishBeaver.factsInitialized === 'undefined') {
             showPolishBeaver.factsInitialized = false;
         }
@@ -439,7 +417,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     polishBeaverText.innerHTML = `Czy wiesz, że staropolskie <strong>${record.old_text}</strong> to dziś <strong>${record.new_text}</strong>?`;
                     polishSpeechBubble.style.display = 'block';
                     updatePolishSpeechBubblePosition();
-                    incrementFactsSeenCounter();
                 })
                 .catch(error => {
                     polishBeaverText.innerHTML = 'Nie udało się wczytać ciekawostki. Spróbuj ponownie 🙁';
@@ -522,15 +499,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             showPolishBeaver.listenersBound = true;
-        }
-
-        // Show the running "facts seen" total immediately, even before the
-        // first fetch of this visit (localStorage persists across visits).
-        if (polishBeaverCounter) {
-            const alreadySeen = parseInt(localStorage.getItem(FACTS_SEEN_KEY), 10) || 0;
-            if (alreadySeen > 0) {
-                polishBeaverCounter.textContent = `Ciekawostka nr ${alreadySeen} 🎉`;
-            }
         }
 
         if (typeof showPolishBeaver.viewportHandler === 'function') {
