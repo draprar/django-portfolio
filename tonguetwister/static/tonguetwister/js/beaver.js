@@ -335,6 +335,19 @@ document.addEventListener('DOMContentLoaded', () => {
             showPolishBeaver.initialized = true;
         }
 
+        // Show the first fact immediately on init, instead of making the user
+        // click once "for nothing" just to reveal it. Guarded the same way as
+        // the sizing/position setup above, so a hypothetical re-invocation of
+        // showPolishBeaver() can't fire a second fetch and burn through facts
+        // or double-increment the "facts seen" counter.
+        if (typeof showPolishBeaver.factsInitialized === 'undefined') {
+            showPolishBeaver.factsInitialized = false;
+        }
+        if (!showPolishBeaver.factsInitialized) {
+            fetchNewRecord();
+            showPolishBeaver.factsInitialized = true;
+        }
+
         // Function to randomize position of the Polish Beaver
         function randomizePosition() {
             fitBubbleToViewport(polishSpeechBubble);
@@ -400,7 +413,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isFetching) return;
             isFetching = true;
 
-            fetch(`/api/oldpolish/random/`)
+            // URL pochodzi z window.oldPolishConfig, wstrzykiwanego przez base.html
+            // ({% url 'oldpolish-random' %}) — nie hardkodujemy tu ścieżki, bo
+            // realny prefiks montowania aplikacji tonguetwister może się zmienić
+            // w config/urls.py (patrz notatka w base.html).
+            const oldPolishRandomUrl = (window.oldPolishConfig && window.oldPolishConfig.randomUrl)
+                ? window.oldPolishConfig.randomUrl
+                : '/api/oldpolish/random/'; // fallback na wypadek braku konfiguracji
+
+            fetch(oldPolishRandomUrl)
                 .then(response => {
                     if (response.status === 404) {
                         polishBeaverText.innerHTML = 'Brawo! Baza danych wyczyszczona 😲';
