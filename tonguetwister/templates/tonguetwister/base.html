@@ -32,7 +32,7 @@
 <div id="beaver-container">
     <img src="{% static 'tonguetwister/assets/lingwolamek.png' %}" alt="Beaver" id="beaver-img">
     <div id="beaver-speech-bubble">
-        <span id="beaver-text">Cześć, tu <strong>LingwoŁamek</strong>! Będę Twoim przewodnikiem w codziennej praktyce, dzięki której nabierzesz lekkości w mówieniu. Pokazać Ci, jak to zrobić? 🧐</span>
+        <span id="beaver-text">Serwus, tu <strong>LingwoŁamek</strong>! Miło Cię widzieć w aplikacji do poprawy wymowy z pomocą kilku sekcji szkoleniowych. Chcesz sam je odkryć, czy pokazać Ci, co się tu dzieje? 🧐</span>
         <div id="beaver-options">
             <button id="beaver-yes" class="btn btn-dark">TAK</button>
             <button id="beaver-no" class="btn btn-secondary">NIE</button>
@@ -53,7 +53,7 @@
             ciekawostka jest aktualnie wyświetlana.
         -->
         <small id="polish-beaver-hint" style="display:block; opacity:.7; font-size:.8em; margin-top:4px;">
-            👈 Kliknij LingwoŁamka, aby zobaczyć kolejną ciekawostkę
+            👆 Kliknij bobra, aby zobaczyć kolejną ciekawostkę
         </small>
         <span id="polish-close-speech-bubble">x</span>
     </div>
@@ -68,7 +68,6 @@
       <div class="swiper-slide text-center">{% include 'tonguetwister/partials/gen/third-section.html' %}</div>
       <div class="swiper-slide text-center">{% include 'tonguetwister/partials/gen/fourth-section.html' %}</div>
       <div class="swiper-slide text-center">{% block content %}{% endblock %}</div>
-      <div class="swiper-slide text-center">{% include 'tonguetwister/partials/gen/sixth-section.html' %}</div>
     </div>
     <div class="swiper-pagination"></div>
     <!-- Arrows visible on all screen sizes -->

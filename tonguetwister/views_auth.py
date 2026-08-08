@@ -1,7 +1,6 @@
 import logging
 
 import sentry_sdk
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,7 +8,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.tokens import default_token_generator
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
-from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils.encoding import force_bytes, force_str
@@ -20,7 +18,7 @@ from django_ratelimit.decorators import ratelimit
 
 from core.email import send_brevo_email
 
-from .forms import ContactForm, CustomUserCreationForm
+from .forms import CustomUserCreationForm
 from .tokens import account_activation_token
 
 logger = logging.getLogger(__name__)
@@ -236,35 +234,3 @@ def password_reset_complete_view(request):
 @csrf_protect
 def password_reset_done_view(request):
     return render(request, "tonguetwister/registration/password_reset_done.html")
-
-
-@csrf_protect
-@ratelimit(key="ip", rate="5/m", method="POST", block=True)
-def contact(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-
-        if form.is_valid():
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            message = form.cleaned_data["message"]
-            subject = f"Kontakt od {name}"
-            message_with_email = f"Od: {email}\n\n{message}"
-
-            try:
-                send_mail(
-                    subject=subject,
-                    message=message_with_email,
-                    from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[settings.EMAIL_HOST_USER],
-                    fail_silently=False,
-                )
-                messages.success(request, "Twoja wiadomość została Nam przekazana")
-            except Exception:
-                logger.exception("Blad przy wysylaniu formularza kontaktowego")
-                messages.error(request, "Nie udalo sie wyslac wiadomosci. Sprobuj ponownie pozniej.")
-            return redirect("tw_contact")
-    else:
-        form = ContactForm()
-
-    return render(request, "tonguetwister/partials/static/contact.html", {"form": form})

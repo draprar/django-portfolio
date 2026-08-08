@@ -1,18 +1,12 @@
-import asyncio
-import hashlib
 import logging
 
-import sentry_sdk
-from asgiref.sync import sync_to_async
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.core.cache import cache
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_http_methods
 
-from .chatbot import Chatbot
 from .forms import AvatarUploadForm
 from .models import (
     Articulator,
@@ -79,48 +73,6 @@ def main(request):
     except Exception:
         logger.exception("Exception occurred in main view")
         return HttpResponse("Internal Server Error", status=500)
-
-
-_chatbot_instance = None
-
-
-def get_chatbot():
-    global _chatbot_instance
-    if _chatbot_instance is None:
-        _chatbot_instance = Chatbot()
-    return _chatbot_instance
-
-
-async def chatbot(request):
-    try:
-        if not settings.FEATURE_CHATBOT_ENABLED:
-            return JsonResponse({"detail": "Not found."}, status=404)
-
-        user_input = request.GET.get("message", "").strip()
-        if not user_input:
-            return JsonResponse({"response": "Nie rozumiem."})
-
-        if len(user_input) > settings.CHATBOT_MAX_INPUT_LENGTH:
-            return JsonResponse({"response": "Wiadomość jest za długa."}, status=400)
-
-        cache_key = f"chatbot:view:response:{hashlib.sha256(user_input.encode('utf-8')).hexdigest()}"
-        cached_response = cache.get(cache_key)
-        if cached_response:
-            return JsonResponse({"response": cached_response})
-
-        try:
-            response = await asyncio.wait_for(
-                sync_to_async(get_chatbot().get_response)(user_input),
-                timeout=settings.CHATBOT_RESPONSE_TIMEOUT_SECONDS,
-            )
-        except asyncio.TimeoutError:
-            return JsonResponse({"response": "Przekroczono czas przetwarzania."}, status=503)
-
-        cache.set(cache_key, response, timeout=3600)
-        return JsonResponse({"response": response})
-    except Exception as e:
-        sentry_sdk.capture_exception(e)
-        return JsonResponse({"response": "Wystąpił błąd. Spróbuj ponownie później."})
 
 
 @user_passes_test(is_admin)

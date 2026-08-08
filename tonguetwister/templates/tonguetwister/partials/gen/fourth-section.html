@@ -1,7 +1,8 @@
 {% load static %}
 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 <h1><strong>WŁAŚCIWIE ĆWICZ GŁOS</strong></h1>
-<p class="col-md-16 fs-4">Wypowiadaj każde słowo na głos 🔉 Nie spiesz się. Mów wyraźnie i staraj się nie podnosić swojego głosu. Zachowaj naturalny i lekki ton, pamiętaj, aby otwierać szeroko buzię 😉</p>
+<p class="col-md-16 fs-4">Wypowiadaj każde słowo na głos - nie spiesz się, mów wyraźnie i jednostajnie.</p>
+<p class="col-md-16 fs-4"><strong>Zachowaj naturalny i lekki ton - wszystko z nonszalancją 😉</strong></p>
 <button id="mirror-btn-exercises" class="btn btn-dark text-uppercase fw-bold">💻 Otwórz lusterko</button><br><br>
 <img src="{% static 'tonguetwister/assets/arrows.svg' %}" alt="" width="24" height="24" class="d-inline-block align-text-top"><br>
 <div id="exercises-container">
@@ -22,7 +23,7 @@
 <div id="card-exercises" class="card text-white bg-secondary mt-3 mb-3 w-100 shadow" style="display: none;">
     <audio id="success-sound-exercises" src="{% static 'tonguetwister/sounds/fanfare.mp3' %}" preload="auto"></audio>
     <div class="card-body">
-        <p class="card-text text-center mb-0">Winszujemy! 🎉 Prawdziwe igraszki zaczynają się właśnie teraz 🥳 Czy poradzisz sobie z zemstą logopedy? 👀</p>
+        <p class="card-text text-center mb-0">Winszuję! 🎉 Prawdziwe igraszki zaczynają się właśnie teraz! Czy poradzisz sobie z zemstą logopedy? 👀</p>
     </div>
 </div>
 <div id="video-container-exercises" style="display:none;">

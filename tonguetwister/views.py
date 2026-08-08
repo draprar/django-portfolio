@@ -21,7 +21,6 @@ from .views_api import (  # noqa: F401
 )
 from .views_auth import (  # noqa: F401
     activate,
-    contact,
     login_view,
     password_reset_complete_view,
     password_reset_confirm_view,
@@ -60,13 +59,11 @@ from .views_main import (  # noqa: F401
     add_articulator,
     add_exercise,
     add_twister,
-    chatbot,
     content_management,
     delete_articulator,
     delete_exercise,
     delete_twister,
     error_404_view,
-    get_chatbot,
     load_more_articulators,
     load_more_exercises,
     load_more_funfacts,

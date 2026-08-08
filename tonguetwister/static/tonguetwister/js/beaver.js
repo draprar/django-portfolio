@@ -42,18 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Define tutorial steps with selector and text
         const steps = [
-            { selector: ['#login', '#login-mobile'], text: 'Tu możesz się zarejestrować, aby stworzyć swój profil i spersonalizować swoją naukę 😎' },
-            { selector: ['#contact', '#contact-mobile'], text: 'Tu możesz się z nami skontaktować, a ja zamienię się w chatbota 🧐' },
+            { selector: '#articulators-container', text: 'Zaczynamy od rozgrzewki 🏋️ — tutaj poćwiczysz artykulatory, żeby przygotować język i usta do dalszej pracy.' },
             { selector: ['#mic-btn', '#mic-btn-mobile'], text: 'Jeżeli klikniesz tu - rozpoczniesz nagrywanie swojego głosu 🎤' },
             { selector: '#swiper-button-next', text: 'Aby przejść do następnego ćwiczenia, przesuń palcem lub przeciągnij myszką ➡️' },
             { selector: '#mirror-btn-exercises', text: 'Dzięki tej opcji, możesz odpalić lusterko (kamerę skierowaną na usta) 🎥' },
             { selector: '#load-more-exercises-btn', text: 'A tutaj wygenerujesz nowe ćwiczenie do praktyki 💡' },
-            { selector: 'body', text: 'Zaczynamy? Zamknij tę chmurkę, aby przejść do rozgrzewki 🚀', final: true }
+            { selector: '#mirror-btn-twisters', text: 'Na koniec czekają łamańce językowe — najtrudniejsze wyzwanie, zostawione na deser 😄 Tu też znajdziesz swoje lusterko.' },
+            { selector: ['#login', '#login-mobile'], text: 'Na koniec — tu możesz się zarejestrować, aby stworzyć swój profil i spersonalizować swoją naukę 😎' },
+            { selector: 'body', text: 'To wszystko, co chciałem Ci pokazać! Zamknij tę chmurkę i zacznij od rozgrzewki 🚀', final: true }
         ];
 
-        // Get the target element based on step and screen size (mobile vs desktop)
+        // Get the target element based on step and screen size (mobile vs desktop).
+        // Steps use either a single selector, or a [desktop, mobile] pair for
+        // controls that have separate desktop/mobile markup (login, mic-btn) —
+        // detect this by shape instead of hardcoding which step indices apply,
+        // since that pairing no longer sits at a fixed spot in the sequence.
         const getTargetElement = (step) => {
-            return step <= 2 ? document.querySelector(window.innerWidth <= 991 ? steps[step].selector[1] : steps[step].selector[0]) : document.querySelector(steps[step].selector);
+            const selector = steps[step].selector;
+            return Array.isArray(selector)
+                ? document.querySelector(window.innerWidth <= 991 ? selector[1] : selector[0])
+                : document.querySelector(selector);
         };
 
         // Move to the next tutorial step
@@ -89,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextButton.addEventListener('click', function () {
                     var swiperInstance = document.querySelector('.mySwiper').swiper;
                     if (swiperInstance) {
-                        swiperInstance.slideTo(0, 500); // Slide to first swiper slide
+                        swiperInstance.slideTo(1, 500); // Slide to articulators (rozgrzewka), matching the closing CTA
 
                         // once() (not on()) is critical here: this swiper instance is the
                         // main content carousel the user keeps swiping for the rest of the
@@ -108,14 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextButton.addEventListener('click', function () {
                     var slideArrowContainer = document.getElementById('slide-arrow-container');
 
-                    // Handle step 2 - on desktop highlight the real arrow, no fake arrow on mobile
-                    if (step === 2 && slideArrowContainer) {
+                    // Handle step 1 (mic-btn) - on desktop highlight the real arrow, no fake arrow on mobile
+                    if (step === 1 && slideArrowContainer) {
                         // Never show the fake slide-arrow-container — real arrows are always visible now
                         slideArrowContainer.style.display = 'none';
                         moveToStep(step + 1); // Move to next step
 
-                    // Handle step 3 - hide any arrow container and move swiper
-                    } else if (step === 3 && slideArrowContainer) {
+                    // Handle step 2 (swiper-next) - hide any arrow container and move swiper
+                    } else if (step === 2 && slideArrowContainer) {
                         slideArrowContainer.style.display = 'none';
                         var swiperInstance = document.querySelector('.mySwiper').swiper;
                         if (swiperInstance) {
@@ -128,6 +136,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             });
                         } else {
                             moveToStep(step + 1); // Move to next step if no swiper
+                        }
+
+                    // Handle step 4 (load-more-exercises) - still on the exercises slide,
+                    // move over to the twisters slide before explaining its mirror button.
+                    } else if (step === 4) {
+                        var swiperInstance = document.querySelector('.mySwiper').swiper;
+                        if (swiperInstance) {
+                            swiperInstance.slideTo(3, 500); // Slide to swiper slide 3 (twisters)
+                            swiperInstance.once('slideChangeTransitionEnd', function () {
+                                moveToStep(step + 1);
+                            });
+                        } else {
+                            moveToStep(step + 1);
                         }
                     } else {
                         moveToStep(step + 1); // Default next step
@@ -175,7 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('beaver-no').style.display = 'none'; // Hide 'no' button
 
             screenDim.style.display = 'block'; // Show screen dimming effect
-            moveToStep(0); // Start at the first tutorial step
+
+            // The tutorial's first stop is the articulators (rozgrzewka) slide,
+            // but the swiper opens on the landing slide (index 0) — jump to the
+            // articulators slide (index 1) first, so the highlighted element in
+            // step 0 is actually on screen instead of off in a hidden slide.
+            var swiperInstance = document.querySelector('.mySwiper').swiper;
+            if (swiperInstance) {
+                swiperInstance.slideTo(1, 500);
+                swiperInstance.once('slideChangeTransitionEnd', function () {
+                    moveToStep(0);
+                });
+            } else {
+                moveToStep(0); // Start at the first tutorial step if no swiper found
+            }
             updateSpeechBubblePosition(); // Update speech bubble position
         };
 

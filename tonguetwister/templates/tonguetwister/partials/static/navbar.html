@@ -34,13 +34,6 @@
         <form id="logout-form" method="post" action="{% url 'logout' %}" style="display:none;">
           {% csrf_token %}
         </form>
-        <a class="btn btn-outline-secondary d-none d-lg-inline"
-           href="{% url 'home' %}#contact" style="color: white;">Kontakt</a>
-        <a class="btn btn-outline-secondary d-lg-none"
-           href="{% url 'home' %}#contact" aria-label="contact">
-           <img src="{% static 'tonguetwister/assets/envelope.svg' %}"
-                alt="" width="24" height="24" class="d-inline-block align-text-top">
-        </a>
         {% include 'tonguetwister/partials/static/audio.html' %}
         {% if user.is_superuser %}
         <a class="btn btn-outline-secondary d-none d-lg-inline" href="{% url 'content_management' %}" style="color: white;">Kontent</a>
@@ -52,10 +45,6 @@
         <a class="btn btn-outline-secondary d-none d-lg-inline" href="{% url 'login' %}" style="color: white;" id="login">Logowanie</a>
         <a class="btn btn-outline-secondary d-lg-none" href="{% url 'login' %}" aria-label="login" id="login-mobile">
            <img src="{% static 'tonguetwister/assets/login.svg' %}" alt="" width="24" height="24" class="d-inline-block align-text-top">
-        </a>
-        <a class="btn btn-outline-secondary d-none d-lg-inline" href="{% url 'home' %}#contact" style="color: white;" id="contact">Kontakt</a>
-        <a class="btn btn-outline-secondary d-lg-none" href="{% url 'home' %}#contact" aria-label="contact-mobile" id="contact-mobile">
-           <img src="{% static 'tonguetwister/assets/envelope.svg' %}" alt="" width="24" height="24" class="d-inline-block align-text-top">
         </a>
         {% include 'tonguetwister/partials/static/audio.html' %}
         {% endif %}

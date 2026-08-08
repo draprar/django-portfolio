@@ -122,19 +122,6 @@ class LoginForm(forms.Form):
     )
 
 
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    message = forms.CharField(widget=forms.Textarea)
-    website = forms.CharField(required=False, widget=forms.HiddenInput)
-
-    def clean_website(self):
-        data = self.cleaned_data.get("website")
-        if data:
-            raise forms.ValidationError("Bot detected.")
-        return data
-
-
 # Form for uploading a profile avatar with custom validation
 class AvatarUploadForm(forms.ModelForm):
     class Meta:
