@@ -371,6 +371,7 @@ a {
 
     .split {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, minmax(21vh, 1fr));
         gap: 10px;
         padding: 0 10px 14px;
         min-height: 46vh;
@@ -378,7 +379,6 @@ a {
 
     .panel-lingwo {
         grid-column: 1 / -1;
-        min-height: 34vh;
     }
 
     .panel {
@@ -402,12 +402,6 @@ a {
 
     .panel-tag {
         display: none;
-    }
-
-    /* Full-width row has room this pair doesn't — let its tag show */
-    .panel-lingwo .panel-tag {
-        display: block;
-        font-size: 0.8rem;
     }
 
     .panel-cta {
