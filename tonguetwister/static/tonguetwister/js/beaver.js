@@ -42,13 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Define tutorial steps with selector and text
         const steps = [
-            { selector: '#articulators-container', text: 'Zaczynamy od rozgrzewki 🏋️ — tutaj poćwiczysz artykulatory, żeby przygotować język i usta do dalszej pracy.' },
-            { selector: ['#mic-btn', '#mic-btn-mobile'], text: 'Jeżeli klikniesz tu - rozpoczniesz nagrywanie swojego głosu 🎤' },
-            { selector: '#swiper-button-next', text: 'Aby przejść do następnego ćwiczenia, przesuń palcem lub przeciągnij myszką ➡️' },
-            { selector: '#mirror-btn-exercises', text: 'Dzięki tej opcji, możesz odpalić lusterko (kamerę skierowaną na usta) 🎥' },
-            { selector: '#load-more-exercises-btn', text: 'A tutaj wygenerujesz nowe ćwiczenie do praktyki 💡' },
-            { selector: '#mirror-btn-twisters', text: 'Na koniec czekają łamańce językowe — najtrudniejsze wyzwanie, zostawione na deser 😄 Tu też znajdziesz swoje lusterko.' },
-            { selector: ['#login', '#login-mobile'], text: 'Na koniec — tu możesz się zarejestrować, aby stworzyć swój profil i spersonalizować swoją naukę 😎' },
+            { selector: '#step-1', text: 'Zaczynamy od rozgrzewki - kilka prostych ruchów głową i szczęką. Znajdziesz tu też porady językowe do przeczytania na głos 💡' },
+            { selector: ['#mic-btn', '#mic-btn-mobile'], text: 'Jeżeli klikniesz tutaj - rozpoczniesz nagrywanie swojego głosu (przydatne do śledzenia postępów) 🎤' },
+            { selector: '#swiper-button-next', text: 'Aby przejść do następnej sekcji, przesuń palcem lub przeciągnij myszką ➡️' },
+            { selector: '#mirror-btn-articulators', text: 'Tu rozgrzejesz artykulatory - język, wargi i usta 👄 Włącz lusterko (kamerę na usta), żeby widzieć, jak pracują Twoje wargi' },
+            { selector: '#mirror-btn-exercises', text: 'Tu z kolei właściwie ćwiczysz głos - wypowiadaj słowa głośno i wyraźnie, bez pośpiechu 🎥' },
+            { selector: '#load-more-exercises-btn', text: 'A tutaj wygenerujesz nowe ćwiczenie - pamiętaj o naturalnym, lekkim tonie i szeroko otwartej buzi 💡' },
+            { selector: '#mirror-btn-twisters', text: 'Ostatni przystanek: łamańce językowe - najtrudniejsze zostawione na deser (trzymam kciuki!) 😄' },
+            { selector: ['#login', '#login-mobile'], text: 'Na koniec - tu możesz się zarejestrować, aby stworzyć swój profil i spersonalizować naukę 😎' },
             { selector: 'body', text: 'To wszystko, co chciałem Ci pokazać! Zamknij tę chmurkę i zacznij od rozgrzewki 🚀', final: true }
         ];
 
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextButton.addEventListener('click', function () {
                     var swiperInstance = document.querySelector('.mySwiper').swiper;
                     if (swiperInstance) {
-                        swiperInstance.slideTo(1, 500); // Slide to articulators (rozgrzewka), matching the closing CTA
+                        swiperInstance.slideTo(0, 500); // Slide back to rozgrzewka (second-section), matching the closing CTA
 
                         // once() (not on()) is critical here: this swiper instance is the
                         // main content carousel the user keeps swiping for the rest of the
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         slideArrowContainer.style.display = 'none';
                         var swiperInstance = document.querySelector('.mySwiper').swiper;
                         if (swiperInstance) {
-                            swiperInstance.slideTo(2, 500); // Slide to swiper slide 2
+                            swiperInstance.slideTo(1, 500); // Slide to articulators (slide 1)
 
                             // once() auto-detaches after firing so later, unrelated swipes
                             // don't keep re-triggering this step transition.
@@ -138,12 +139,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             moveToStep(step + 1); // Move to next step if no swiper
                         }
 
-                    // Handle step 4 (load-more-exercises) - still on the exercises slide,
-                    // move over to the twisters slide before explaining its mirror button.
-                    } else if (step === 4) {
+                    // Handle step 3 (articulators) - move over to the exercises slide
+                    // before explaining its mirror button.
+                    } else if (step === 3) {
                         var swiperInstance = document.querySelector('.mySwiper').swiper;
                         if (swiperInstance) {
-                            swiperInstance.slideTo(3, 500); // Slide to swiper slide 3 (twisters)
+                            swiperInstance.slideTo(2, 500); // Slide to exercises (slide 2)
+                            swiperInstance.once('slideChangeTransitionEnd', function () {
+                                moveToStep(step + 1);
+                            });
+                        } else {
+                            moveToStep(step + 1);
+                        }
+
+                    // Handle step 5 (load-more-exercises) - still on the exercises slide,
+                    // move over to the twisters slide before explaining its mirror button.
+                    } else if (step === 5) {
+                        var swiperInstance = document.querySelector('.mySwiper').swiper;
+                        if (swiperInstance) {
+                            swiperInstance.slideTo(3, 500); // Slide to twisters (slide 3)
                             swiperInstance.once('slideChangeTransitionEnd', function () {
                                 moveToStep(step + 1);
                             });
@@ -197,19 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             screenDim.style.display = 'block'; // Show screen dimming effect
 
-            // The tutorial's first stop is the articulators (rozgrzewka) slide,
-            // but the swiper opens on the landing slide (index 0) — jump to the
-            // articulators slide (index 1) first, so the highlighted element in
-            // step 0 is actually on screen instead of off in a hidden slide.
-            var swiperInstance = document.querySelector('.mySwiper').swiper;
-            if (swiperInstance) {
-                swiperInstance.slideTo(1, 500);
-                swiperInstance.once('slideChangeTransitionEnd', function () {
-                    moveToStep(0);
-                });
-            } else {
-                moveToStep(0); // Start at the first tutorial step if no swiper found
-            }
+            // The tutorial's first stop is the rozgrzewka (second-section.html),
+            // which is already the swiper's default active slide (index 0) —
+            // no slideTo() needed before showing step 0.
+            moveToStep(0); // Start at the first tutorial step
             updateSpeechBubblePosition(); // Update speech bubble position
         };
 

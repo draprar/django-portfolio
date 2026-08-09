@@ -32,7 +32,7 @@
 <div id="beaver-container">
     <img src="{% static 'tonguetwister/assets/lingwolamek.png' %}" alt="Beaver" id="beaver-img">
     <div id="beaver-speech-bubble">
-        <span id="beaver-text">Serwus, tu <strong>LingwoŁamek</strong>! Miło Cię widzieć w aplikacji do poprawy wymowy z pomocą kilku sekcji szkoleniowych. Chcesz sam je odkryć, czy pokazać Ci, co się tu dzieje? 🧐</span>
+        <span id="beaver-text">Serwus, tu <strong>LingwoŁamek</strong>! Miło Cię widzieć w aplikacji do poprawy wymowy. Chcesz sam ją odkryć, czy pokazać Ci, co się tu dzieje? 🧐</span>
         <div id="beaver-options">
             <button id="beaver-yes" class="btn btn-dark">TAK</button>
             <button id="beaver-no" class="btn btn-secondary">NIE</button>
@@ -46,12 +46,6 @@
     <div id="polish-beaver-speech-bubble">
         <span id="polish-beaver-text">Szukam dla Ciebie ciekawostki... 🔍</span>
         <br>
-        <!--
-            Trwała, delikatna podpowiedź — beaver.js nigdy jej nie nadpisuje
-            (fetchNewRecord() modyfikuje tylko #polish-beaver-text), więc
-            zostaje widoczna przez cały czas, niezależnie od tego, która
-            ciekawostka jest aktualnie wyświetlana.
-        -->
         <small id="polish-beaver-hint" style="display:block; opacity:.7; font-size:.8em; margin-top:4px;">
             👈 Kliknij LingwoŁamka, aby zobaczyć kolejną ciekawostkę
         </small>
@@ -82,14 +76,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'tonguetwister/js/main.js' %}"></script>
 <script src="{% static 'tonguetwister/js/top.js' %}"></script>
-<!--
-    Wstrzykuje realny, wygenerowany przez Django URL do endpointu "random" Old
-    Polish, żeby beaver.js nigdy nie miał zahardkodowanej ścieżki. Nazwa
-    'oldpolish-random' pochodzi z DRF DefaultRouter: basename="oldpolish"
-    (ustawiony w urls.py) + nazwa akcji "random" -> "{basename}-{url_name}".
-    Dzięki temu, jeśli kiedyś zmieni się prefiks montowania tej aplikacji w
-    config/urls.py, JS i tak trafi w prawidłowy adres.
--->
 <script id="oldpolish-config">
     window.oldPolishConfig = {
         randomUrl: "{% url 'oldpolish-random' %}"
