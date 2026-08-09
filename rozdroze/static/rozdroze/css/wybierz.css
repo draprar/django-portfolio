@@ -70,10 +70,14 @@ a {
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }
 
-/* ── Split layout: two separate cards side by side, always ──────────── */
+/* ── Split layout: N cards, side by side on desktop ──────────────────
+   Grid, not flex: column count is one declaration (repeat(N, 1fr)),
+   so adding a 4th panel later is a one-line change here instead of
+   touching flex-basis math on every breakpoint. */
 .split {
-    display: flex;
-    gap: clamp(14px, 3vw, 32px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(12px, 2.4vw, 32px);
     padding: 0 clamp(14px, 3vw, 32px) clamp(20px, 3vw, 32px);
     min-height: 56vh;
     perspective: 1200px;
@@ -86,7 +90,6 @@ a {
     --tilt-scale: 1;
     --mx: 50%;
     --my: 50%;
-    flex: 1;
     position: relative;
     display: flex;
     align-items: center;
@@ -151,6 +154,11 @@ a {
         animation-duration: 25s;
         animation-delay: 1s;
     }
+
+    .panel-lingwo .panel-bg {
+        animation-duration: 22s;
+        animation-delay: 0.5s;
+    }
 }
 
 @keyframes slow-pan {
@@ -196,6 +204,14 @@ a {
 .panel-wyraj:hover .panel-bg,
 .panel-wyraj:focus-visible .panel-bg {
     filter: blur(0) brightness(1.5) saturate(1.1) contrast(1.05);
+}
+
+/* LingwoŁamek's own art hasn't been dropped in yet — this navy is just
+   a placeholder base color so the panel doesn't look broken while
+   lingwolamek-bg.png is missing. Swap the fallback color once you have
+   real art; keep it dark so the veil/title still read the same way. */
+.panel-lingwo .panel-bg {
+    background: #0a0e18 url('../img/lingwolamek-bg.png') center / cover no-repeat;
 }
 
 .panel-veil {
@@ -305,6 +321,10 @@ a {
         animation-delay: 0.1s;
     }
 
+    .panel-lingwo {
+        animation-delay: 0.2s;
+    }
+
     /* Gentle hint that the arrow — and the card — is clickable */
     .cta-arrow {
         animation: nudge 2.8s ease-in-out infinite;
@@ -312,6 +332,10 @@ a {
 
     .panel-wyraj .cta-arrow {
         animation-delay: 0.4s;
+    }
+
+    .panel-lingwo .cta-arrow {
+        animation-delay: 0.7s;
     }
 }
 
@@ -325,7 +349,13 @@ a {
     50% { transform: translateX(3px); }
 }
 
-/* ── Mobile: panels always stay side by side, just scale down ───────── */
+/* ── Mobile: 2 across, 3rd spans full width below ────────────────────
+   Three columns at once got too narrow to read on real phone widths
+   (titles wrapping, the CTA pill nearly touching the panel edge), so
+   below 640px the grid drops to 2 columns and .panel-lingwo — the most
+   recently added panel — spans both, sitting as its own row underneath.
+   If a 4th panel shows up, this is the spot to revisit (a straight
+   2×2 grid is probably cleaner than a 2-up-then-2-more stack). */
 @media (max-width: 640px) {
     .stage {
         padding: 16px 10px;
@@ -340,9 +370,15 @@ a {
     }
 
     .split {
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         padding: 0 10px 14px;
         min-height: 46vh;
+    }
+
+    .panel-lingwo {
+        grid-column: 1 / -1;
+        min-height: 34vh;
     }
 
     .panel {
@@ -366,6 +402,12 @@ a {
 
     .panel-tag {
         display: none;
+    }
+
+    /* Full-width row has room this pair doesn't — let its tag show */
+    .panel-lingwo .panel-tag {
+        display: block;
+        font-size: 0.8rem;
     }
 
     .panel-cta {
