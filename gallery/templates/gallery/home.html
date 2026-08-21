@@ -77,17 +77,21 @@
                                                         <video src="{{ item.video.url }}"
                                                                loop
                                                                playsinline
-                                                               preload="metadata"></video>
+                                                               preload="metadata"
+                                                               controlsList="nodownload noremoteplayback"
+                                                               disablePictureInPicture></video>
                                                         <button class="ig-post-play-btn" type="button" aria-label="Odtwórz rolkę">
                                                             <i class="fa-solid fa-play"></i>
                                                         </button>
                                                     {% else %}
-                                                        <a href="{{ item.image.url }}"
+                                                        <a href="javascript:;"
                                                            data-fancybox="ig-post-{{ post.id }}"
+                                                           data-src="{{ item.image.url }}"
                                                            data-caption="{{ post.location|default:"bazgrollin'" }}">
                                                             <img src="{{ item.image.url }}"
                                                                  alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
-                                                                 loading="lazy">
+                                                                 loading="lazy"
+                                                                 draggable="false">
                                                         </a>
                                                     {% endif %}
                                                 </div>
@@ -120,13 +124,15 @@
 
                             <div class="gallery-item">
 
-                                <a href="{{ art.image.url }}"
+                                <a href="javascript:;"
                                    data-fancybox="gallery-{{ category.id }}"
+                                   data-src="{{ art.image.url }}"
                                    data-caption="{{ art.title|default:art.description|default:category.title }}">
 
                                     <img src="{{ art.image.url }}"
                                          alt="{{ art.title|default:category.title }}"
-                                         loading="lazy">
+                                         loading="lazy"
+                                         draggable="false">
 
                                     <div class="overlay">
                                         <p>{{ art.title|default:"Untitled" }}</p>

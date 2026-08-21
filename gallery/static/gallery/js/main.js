@@ -42,6 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // ── Basic protection: block right-click and drag on gallery / Instagram
+    // media, in the grid AND inside the open Fancybox lightbox.
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.closest('.gallery-item, .ig-post-media, .fancybox__container')) {
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener('dragstart', (e) => {
+        if (
+            (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') &&
+            e.target.closest('.gallery-item, .ig-post-media, .fancybox__container')
+        ) {
+            e.preventDefault();
+        }
+    });
+
     // ── Instagram-style post carousels (manually added photos/reels) ──────
     document.querySelectorAll('[data-carousel]').forEach(carousel => {
         const track = carousel.querySelector('.ig-post-track');
