@@ -79,7 +79,7 @@ The scope should specify which app or component is affected:
 ### Examples
 
 ```
-feat(tonguetwister): add chatbot feature flag with input limits
+feat(tonguetwister): add email activation with rate limits
 fix(auth): prevent password reset user enumeration
 security(docdiff): validate file signatures and MIME types
 docs(readme): update deployment instructions
@@ -118,10 +118,10 @@ Must pass without errors.
 ```bash
 make test
 # or
-pytest -q --cov=. --cov-report=term-missing --cov-fail-under=60
+pytest -q --cov=. --cov-report=term-missing --cov-fail-under=80
 ```
 
-Must achieve ≥60% coverage.
+Must achieve ≥80% coverage.
 
 ### 4. Code Quality Guidelines
 

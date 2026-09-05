@@ -19,7 +19,6 @@ from tonguetwister.models import (
     UserProfileTwister,
 )
 from tonguetwister.tokens import account_activation_token
-from tonguetwister.views import get_chatbot
 
 
 # Tests for main view responses and context in various states
@@ -292,37 +291,6 @@ class TestSimpleLoadMoreGenerics:
 
 
 @pytest.mark.django_db
-class TestLoadMoreOldPolish:
-    def test_load_more_old_polish(self, client):
-        # Tests load-more view for OldPolish model and verifies JSON output
-        url = reverse("load_more_old_polish")
-
-        # Create a test record for OldPolish model
-        OldPolish.objects.create(old_text="old_text", new_text="new_text")
-
-        response = client.get(url)
-
-        assert response.status_code == 200
-        assert isinstance(response, JsonResponse)
-        assert len(response.json()) == 1
-        assert response.json()[0]["old_text"] == "old_text"
-        assert response.json()[0]["new_text"] == "new_text"
-
-    def test_load_more_old_polish_internal_error(self, client, mocker):
-        # Simulates internal server error on OldPolish load-more view request
-        url = reverse("load_more_old_polish")
-
-        # Mocking order_by method to raise an exception
-        mocker.patch("tonguetwister.models.OldPolish.objects.order_by", side_effect=Exception("Test Exception"))
-
-        response = client.get(url)
-
-        # Assert that the view returns a 500 status code and correct error message
-        assert response.status_code == 500
-        assert response.json() == {"error": "Internal Server Error"}
-
-
-@pytest.mark.django_db
 class TestUserContent:
     @pytest.fixture
     def regular_user_and_profile(self, django_user_model):
@@ -538,17 +506,3 @@ class TestAuthViews:
         )
 
         assert response.status_code == 200
-
-
-@pytest.mark.django_db
-class TestContactViews:
-    @pytest.fixture
-    def url(self):
-        return reverse("tw_contact")
-
-    @pytest.fixture
-    def valid_form_data(self):
-        return {"name": "testuser", "email": "test@example.com", "message": "Test Message"}
-
-
-chatbot_instance = get_chatbot()

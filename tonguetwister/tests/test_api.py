@@ -53,6 +53,21 @@ def test_oldpolish_list_not_found(api_client):
     assert response.data["results"] == []
 
 
+@pytest.mark.django_db
+def test_oldpolish_random_success(api_client):
+    obj = OldPolish.objects.create(old_text="old_text", new_text="new_text")
+    response = api_client.get("/tonguetwister/api/oldpolish/random/")
+    assert response.status_code == 200
+    assert response.data == OldPolishSerializer(obj).data
+
+
+@pytest.mark.django_db
+def test_oldpolish_random_empty_is_404(api_client):
+    response = api_client.get("/tonguetwister/api/oldpolish/random/")
+    assert response.status_code == 404
+    assert response.data["detail"] == "No results found"
+
+
 # --- ARTICULATORS ---
 
 
