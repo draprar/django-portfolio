@@ -132,12 +132,12 @@ class WyrajListaViewTests(TestCase):
         self.assertIn("swieta", r.context)
 
     def test_context_kolo_data_is_json(self):
-        import json
         make_swieto(kolo_kat=90, kolo_kolor="#aabbcc")
         r = self.client.get(reverse("bies:wyraj-lista"))
-        data = json.loads(r.context["kolo_data"])
+        data = r.context["kolo_data"]
         self.assertEqual(data[0]["kat"], 90)
         self.assertEqual(data[0]["kolor"], "#aabbcc")
+        self.assertContains(r, 'id="kolo-data"')
 
     def test_empty_lista_200(self):
         self.assertEqual(

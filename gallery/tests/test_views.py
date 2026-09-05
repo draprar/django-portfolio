@@ -1,18 +1,13 @@
 import tempfile
-from unittest.mock import Mock
 
 import pytest
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
-from django.contrib.messages.storage.fallback import FallbackStorage
-from django.contrib.sessions.middleware import SessionMiddleware
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.core.mail import BadHeaderError
-from django.test import RequestFactory, override_settings
+from django.test import override_settings
 from django.urls import reverse
 
 from gallery.models import Category, Gallery
-from gallery.views import ContactView
 
 
 @pytest.mark.django_db
@@ -141,34 +136,3 @@ class TestGalleryViews:
         payload = response.json()
         assert payload["count"] == 2
         assert {item["category"]["title"] for item in payload["results"]} == {"Nature"}
-
-
-@pytest.mark.django_db
-@override_settings(SECURE_SSL_REDIRECT=False)
-def test_contact_view_handles_bad_header_error(monkeypatch):
-    factory = RequestFactory()
-    request = factory.post("/gallery/contact/", {"name": "A", "email": "a@b.com", "message": "Hi"})
-
-    session_middleware = SessionMiddleware(lambda req: None)
-    session_middleware.process_request(request)
-    request.session.save()
-    request._messages = FallbackStorage(request)
-
-    mock_form = Mock()
-    mock_form.is_valid.return_value = True
-    mock_form.cleaned_data = {"name": "A", "email": "a@b.com", "message": "Hi"}
-    mock_form.save.return_value = None
-
-    monkeypatch.setattr("gallery.views.ContactForm", lambda *args, **kwargs: mock_form)
-
-    def _raise_bad_header(*args, **kwargs):
-        raise BadHeaderError("bad header")
-
-    monkeypatch.setattr("gallery.views.send_mail", _raise_bad_header)
-
-    response = ContactView.as_view()(request)
-
-    assert response.status_code == 302
-    assert response.url == reverse("home")
-    messages = [m.message for m in get_messages(request)]
-    assert any("Invalid header found." in msg for msg in messages)

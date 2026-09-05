@@ -1,22 +1,13 @@
-import logging
-
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.core.mail import BadHeaderError, send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import View, generic
-from django_ratelimit.decorators import ratelimit
+from django.views import generic
 from rest_framework import filters, generics
 
-from .forms import CategoryForm, ContactForm, GalleryForm
+from .forms import CategoryForm, GalleryForm
 from .models import Category, Gallery, InstagramPost
 from .serializers import CategorySerializer, GallerySerializer
-
-# Setup logging for better debugging and monitoring
-logger = logging.getLogger(__name__)
 
 
 class Home(generic.ListView):
@@ -123,53 +114,6 @@ class CreateCategory(AdminOnlyMixin, generic.CreateView):
     template_name = "gallery/create-category.html"
     form_class = CategoryForm
     success_url = reverse_lazy("gallery:upload-image")
-
-
-class ContactView(View):
-    """
-    Handles displaying and processing of the contact form.
-    """
-
-    template_name = "gallery/contact.html"
-
-    @method_decorator(ratelimit(key="ip", rate="5/m", method="POST", block=True))
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
-    def get(self, request):
-        """
-        Renders an empty contact form.
-        """
-        form = ContactForm()
-        return render(request, self.template_name, {"form": form})
-
-    def post(self, request):
-        """
-        Processes the submitted contact form.
-        Sends an email and saves the data to the database.
-        """
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            try:
-                # Save to the database
-                form.save()
-
-                # Send email notification
-                send_mail(
-                    "New Contact Form Submission",
-                    f"Message from {form.cleaned_data['name']} ({form.cleaned_data['email']}):\n\n{form.cleaned_data['message']}",
-                    settings.DEFAULT_FROM_EMAIL,
-                    [settings.EMAIL_HOST_USER],
-                )
-                messages.success(request, "Your message has been sent successfully!")
-            except BadHeaderError as e:
-                logger.error(f"BadHeaderError: {e}")
-                messages.error(request, "Invalid header found.")
-            except Exception as e:
-                logger.error(f"Error sending email: {e}")
-                messages.error(request, "An error occurred while sending the email. Please try again later.")
-            return redirect("home")
-        return render(request, self.template_name, {"form": form})
 
 
 def custom_404(request, exception):

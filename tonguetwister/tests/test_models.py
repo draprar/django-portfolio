@@ -1,8 +1,6 @@
-from datetime import timedelta
-
 import pytest
 from django.contrib.auth.models import User
-from django.utils import timezone
+from django.db import IntegrityError
 
 from tonguetwister.models import (
     Articulator,
@@ -45,15 +43,10 @@ def test_oldpolish_str():
 
 @pytest.mark.django_db
 def test_profile():
-    # Test profile creation, string representation, and login streak update
     user = User.objects.create_user(username="testuser", password="test_password")
     profile, created = Profile.objects.get_or_create(user=user)
     assert str(profile) == "testuser Profile"
-
-    profile.last_login_date = timezone.now().date() - timedelta(days=1)
-    profile.save()
-    profile.update_login_streak()
-    assert profile.login_streak == 1
+    assert profile.email_confirmed is False
 
 
 @pytest.mark.django_db
@@ -78,3 +71,6 @@ def test_user_profile_relationship(model_class, related_field, user_profile_mode
 
     user_profile_model = user_profile_model_class.objects.create(user=user, **{related_field: related_instance})
     assert getattr(user_profile_model, related_field) == related_instance
+
+    with pytest.raises(IntegrityError):
+        user_profile_model_class.objects.create(user=user, **{related_field: related_instance})

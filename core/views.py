@@ -97,11 +97,8 @@ class ContactView(View):
             logger.warning("Invalid contact form from %s. Errors: %s", request.META.get("REMOTE_ADDR"), errors)
             return JsonResponse({"success": False, "message_key": "msg-fail"}, status=400)
 
-        # At this point form is valid. Save and send email.
+        # Mail first; persist only after Brevo accepts the message.
         try:
-            # Persist (but avoid logging saved content)
-            form.save()
-
             subject = "Kontakt"
             # Build email body from cleaned_data. We must include the message in the mail,
             # but do not log the content anywhere.
@@ -122,6 +119,7 @@ class ContactView(View):
             result = send_brevo_email(subject, html_content, recipient_list)
 
             if result:
+                form.save()
                 logger.info("Contact form processed successfully from %s", request.META.get("REMOTE_ADDR"))
                 return JsonResponse({"success": True, "message_key": "msg-success"})
             else:

@@ -92,3 +92,19 @@ def test_password_reset_email_lookup_is_case_insensitive(client):
     assert response.status_code == 302
     assert response.url == reverse("password_reset_done")
     user.refresh_from_db()
+
+
+@pytest.mark.django_db
+def test_password_reset_duplicate_email_does_not_crash(client, monkeypatch):
+    User.objects.create_user(username="dup-a", email="same@example.com", password="OldStrongPass123!")
+    User.objects.create_user(username="dup-b", email="SAME@example.com", password="OldStrongPass123!")
+    sent = {"called": False}
+
+    def _fake_send(*_a, **_k):
+        sent["called"] = True
+
+    monkeypatch.setattr("tonguetwister.views_auth.send_brevo_email", _fake_send)
+    response = client.post(reverse("password_reset"), {"email": "same@example.com"})
+    assert response.status_code == 302
+    assert response.url == reverse("password_reset_done")
+    assert sent["called"] is False

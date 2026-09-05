@@ -150,6 +150,7 @@ def test_contactview_post_success_and_error_paths(monkeypatch):
     assert resp.status_code == 200
     assert json.loads(resp.content)["success"] is True
     assert json.loads(resp.content)["message_key"] == "msg-success"
+    mock_form.save.assert_called_once()
 
     # CASE 2: valid + email raises exception
     def raise_exc(*a, **k):
@@ -162,6 +163,7 @@ def test_contactview_post_success_and_error_paths(monkeypatch):
     body2 = json.loads(resp2.content)
     assert body2["success"] is False
     assert body2["message_key"] == "msg-error"
+    mock_form.save.assert_called_once()
 
     # CASE 3: invalid form
     bad_form = Mock()
@@ -195,6 +197,7 @@ def test_contactview_post_email_returns_none(monkeypatch):
     resp = views_mod.ContactView().post(fake_request)
     assert resp.status_code == 500
     assert json.loads(resp.content)["success"] is False
+    mock_form.save.assert_not_called()
 
 
 def test_contactview_rejects_non_xhr(monkeypatch):

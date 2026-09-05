@@ -256,7 +256,7 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": True,
-    "BLACKLIST_AFTER_ROTATION": True,
+    "BLACKLIST_AFTER_ROTATION": False,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
@@ -381,6 +381,9 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
 EMAIL_TIMEOUT = 10
+
+# DocDiff: cap on uncompressed OOXML/txt payload (zip-bomb guard). Upload cap stays 10 MB.
+DOCDIFF_MAX_UNCOMPRESSED_MB = env.int("DOCDIFF_MAX_UNCOMPRESSED_MB", default=50)
 
 # Logins
 LOGIN_URL = "login"

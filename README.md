@@ -109,7 +109,7 @@ R2_ENDPOINT_URL=<endpoint>
 R2_PUBLIC_DOMAIN=<public-host>
 ```
 
-**DocDiff:** upload cap is 10 MB (extension + MIME + signature) in `docdiff/views.py`. There is no env-based uncompressed-size limit yet.
+**DocDiff:** upload cap is 10 MB (extension + MIME + signature) in `docdiff/views.py`. Uncompressed payload is capped at `DOCDIFF_MAX_UNCOMPRESSED_MB` (default 50) in `docdiff/services.py`.
 
 ## Security features
 

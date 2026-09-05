@@ -1,10 +1,9 @@
-from datetime import datetime
-
 import pytest
 from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from django.utils.timezone import now
 
-from gallery.models import Category, Contact, Gallery, InstagramPost
+from gallery.models import Category, Gallery, InstagramPost, InstagramPostMedia
 
 
 @pytest.mark.django_db
@@ -82,44 +81,6 @@ def test_gallery_deletion_with_category():
 
 
 @pytest.mark.django_db
-def test_contact_creation():
-    # Create a contact message
-    contact = Contact.objects.create(
-        name="John Doe",
-        email="johndoe@example.com",
-        message="Hello, I am interested in your gallery.",
-    )
-
-    # Assert contact fields
-    assert contact.name == "John Doe"
-    assert contact.email == "johndoe@example.com"
-    assert contact.message == "Hello, I am interested in your gallery."
-    assert isinstance(contact.submitted_at, datetime)
-    assert str(contact) == "Message from John Doe"
-
-
-@pytest.mark.django_db
-def test_contact_str_representation():
-    # Create a contact message
-    contact = Contact.objects.create(
-        name="Jane Doe",
-        email="janedoe@example.com",
-        message="I'd like to collaborate.",
-    )
-
-    # Assert string representation
-    assert str(contact) == "Message from Jane Doe"
-
-
-@pytest.mark.django_db
-def test_contact_required_fields():
-    # Attempt to create a Contact with missing required fields
-    contact = Contact(name="", email="", message="")
-    with pytest.raises(ValidationError):
-        contact.full_clean()  # Explicitly validate the model instance
-
-
-@pytest.mark.django_db
 def test_instagram_post_creation():
     category = Category.objects.create(title="Photography")
     post = InstagramPost.objects.create(
@@ -132,3 +93,33 @@ def test_instagram_post_creation():
     assert post.location == "Kraków"
     assert post.category == category
     assert str(post) == f"Post in {category.title} - {post.created_at}"
+
+
+@pytest.mark.django_db
+def test_instagram_media_accepts_image_xor_video():
+    category = Category.objects.create(title="Photography")
+    post = InstagramPost.objects.create(caption="cap", created_at=now(), category=category)
+    media = InstagramPostMedia.objects.create(post=post, image="instagram/photo.jpg")
+    media.full_clean()
+    assert media.is_video is False
+
+    video_media = InstagramPostMedia.objects.create(post=post, video="instagram/reels/clip.mp4", order=1)
+    video_media.full_clean()
+    assert video_media.is_video is True
+
+
+@pytest.mark.django_db
+def test_instagram_media_rejects_both_or_neither():
+    category = Category.objects.create(title="Photography")
+    post = InstagramPost.objects.create(caption="cap", created_at=now(), category=category)
+
+    both = InstagramPostMedia(post=post, image="instagram/photo.jpg", video="instagram/reels/clip.mp4")
+    with pytest.raises(ValidationError):
+        both.full_clean()
+
+    neither = InstagramPostMedia(post=post)
+    with pytest.raises(ValidationError):
+        neither.full_clean()
+
+    with pytest.raises(IntegrityError):
+        InstagramPostMedia.objects.create(post=post, image="instagram/photo.jpg", video="instagram/reels/clip.mp4")

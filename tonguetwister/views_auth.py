@@ -19,6 +19,7 @@ from django_ratelimit.decorators import ratelimit
 from core.email import send_brevo_email
 
 from .forms import CustomUserCreationForm
+from .services import find_unique_user_by_email, is_email_confirmed
 from .tokens import account_activation_token
 
 logger = logging.getLogger(__name__)
@@ -32,7 +33,11 @@ def login_view(request):
 
     if request.method == "POST":
         if form.is_valid():
-            login(request, form.get_user())
+            user = form.get_user()
+            if not is_email_confirmed(user):
+                messages.error(request, "Potwierdź adres e-mail, zanim się zalogujesz.")
+                return render(request, "tonguetwister/registration/login.html", {"form": form})
+            login(request, user)
             return redirect("main")
         messages.error(request, "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie.")
 
@@ -102,7 +107,7 @@ def register_view(request):
             send_activation_email(user, request)
             messages.success(
                 request,
-                "Brawo! Możesz się zalogować. Sprawdź swoją skrzynkę e-mail, aby aktywować konto.",
+                "Brawo! Sprawdź skrzynkę e-mail i aktywuj konto, zanim się zalogujesz.",
             )
             return redirect("login")
 
@@ -144,9 +149,13 @@ def password_reset_view(request):
     if request.method == "POST":
         email = (request.POST.get("email") or "").strip()
 
-        try:
-            user = User.objects.get(email__iexact=email)
-
+        user = find_unique_user_by_email(email)
+        if user is None:
+            sentry_sdk.capture_message(
+                "Nieudana próba resetowania hasła dla nieistniejącego lub niejednoznacznego konta",
+                level="warning",
+            )
+        else:
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
 
@@ -179,9 +188,6 @@ def password_reset_view(request):
             subject = "Resetuj swoje hasło"
             recipient_list = [email]
             send_brevo_email(subject, html_message, recipient_list)
-
-        except User.DoesNotExist:
-            sentry_sdk.capture_message("Nieudana próba resetowania hasła dla nieistniejacego konta", level="warning")
 
         return redirect("password_reset_done")
 

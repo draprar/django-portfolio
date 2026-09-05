@@ -1,5 +1,3 @@
-import json
-
 from django.shortcuts import get_object_or_404, render
 
 from analytics.utils import count_visit
@@ -14,25 +12,23 @@ def wyraj_lista(request):
 
     # Data for the Wheel of the Year SVG.
     # podtytul_* included so the JS panel can show a subtitle per node.
-    kolo_data = json.dumps(
-        [
-            {
-                "slug":        s.slug,
-                "tytul_pl":    s.tytul_pl,
-                "tytul_en":    s.tytul_en,
-                "podtytul_pl": s.podtytul_pl,
-                "podtytul_en": s.podtytul_en,
-                "kat":         s.kolo_kat,
-                "kolor":       s.kolo_kolor,
-                "dzien_roku":  s.dzien_roku,
-                "dzien_roku_koniec": s.dzien_roku_koniec,  # None for ordinary single-day feasts
-                "url":         f"/wyraj/{s.slug}/",
-                "obraz":       s.obraz.url if s.obraz else "",
-            }
-            for s in swieta
-        ],
-        ensure_ascii=False,
-    )
+    # Passed as a Python list; the template serializes via json_script.
+    kolo_data = [
+        {
+            "slug":        s.slug,
+            "tytul_pl":    s.tytul_pl,
+            "tytul_en":    s.tytul_en,
+            "podtytul_pl": s.podtytul_pl,
+            "podtytul_en": s.podtytul_en,
+            "kat":         s.kolo_kat,
+            "kolor":       s.kolo_kolor,
+            "dzien_roku":  s.dzien_roku,
+            "dzien_roku_koniec": s.dzien_roku_koniec,  # None for ordinary single-day feasts
+            "url":         f"/wyraj/{s.slug}/",
+            "obraz":       s.obraz.url if s.obraz else "",
+        }
+        for s in swieta
+    ]
 
     return render(
         request,

@@ -396,10 +396,13 @@ class TestUserObjectViews:
 class TestAuthViews:
     @pytest.fixture
     def regular_user(self, django_user_model):
-        # Fixture for creating an active user
-        return django_user_model.objects.create_user(
+        # Fixture for creating an active user with a confirmed email
+        user = django_user_model.objects.create_user(
             username="user", email="user@example.com", password="testpassword", is_active=True
         )
+        user.profile.email_confirmed = True
+        user.profile.save(update_fields=["email_confirmed"])
+        return user
 
     @pytest.fixture
     def new_user(self):
@@ -457,9 +460,12 @@ class TestAuthViews:
 
         assert response.status_code == 200
 
-    def test_activate_success(self, client, regular_user):
+    def test_activate_success(self, client, django_user_model):
         # Test successful account activation and email confirmation
-        user = regular_user
+        user = django_user_model.objects.create_user(
+            username="pending", email="pending@example.com", password="testpassword"
+        )
+        assert user.profile.email_confirmed is False
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
 
@@ -471,6 +477,20 @@ class TestAuthViews:
         ]
         user.refresh_from_db()
         assert user.profile.email_confirmed is True
+        assert not account_activation_token.check_token(user, token)
+
+    def test_login_view_rejects_unconfirmed_email(self, client, django_user_model):
+        django_user_model.objects.create_user(
+            username="pending-login", email="pending-login@example.com", password="testpassword"
+        )
+        response = client.post(
+            reverse("login"),
+            data={"username": "pending-login", "password": "testpassword"},
+        )
+        assert response.status_code == 200
+        assert "_auth_user_id" not in client.session
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        assert any("Potwierdź adres e-mail" in msg for msg in messages)
 
     def test_activate_token_invalid(self, client, regular_user):
         # Test invalid activation token returns correct response
