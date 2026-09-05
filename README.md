@@ -6,7 +6,7 @@
 
 🌐 Live: [walery.site](https://walery.site)
 
-A full-stack Django portfolio by an engineer-turned-developer — 8 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
+A full-stack Django portfolio by an engineer-turned-developer — 9 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
 
 > Split view architecture · DRF + SimpleJWT · AI heuristics · 80% CI coverage threshold
 
@@ -16,10 +16,11 @@ A full-stack Django portfolio by an engineer-turned-developer — 8 integrated a
 |-------------------|---------|-----------------|
 | **tonguetwister** | Language practice platform | DRF + SimpleJWT · email auth |
 | **docdiff**       | Document comparison engine | AI semantic scoring · MIME/signature validation · HTML reports |
-| **gallery**       | Image gallery with categories | CRUD · DRF · Instagram feed integration |
+| **gallery**       | Image gallery with categories | CRUD · DRF · manual Instagram-style posts in admin |
 | **core**          | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
 | **rugby**         | Rugby team archive | static content |
 | **bies**          | Slavic Wheel of the Year | static content |
+| **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
 | **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
 
@@ -94,25 +95,27 @@ ruff check .
 
 For local development, `.env.example` contains sensible defaults. Optional features:
 
-**S3 storage setup:**
+**S3 / Supabase storage** (and R2 for `bies` media):
 ```
 USE_S3=True
 AWS_ACCESS_KEY_ID=<key>
 AWS_SECRET_ACCESS_KEY=<secret>
 AWS_STORAGE_BUCKET_NAME=<bucket>
+SUPABASE_PROJECT_REF=<project-ref>
+R2_ACCESS_KEY_ID=<key>
+R2_SECRET_ACCESS_KEY=<secret>
+R2_BUCKET_NAME=<bucket>
+R2_ENDPOINT_URL=<endpoint>
+R2_PUBLIC_DOMAIN=<public-host>
 ```
 
-**DocDiff limits:**
-```
-DOCDIFF_MAX_FILE_MB=10
-DOCDIFF_MAX_UNCOMPRESSED_MB=120
-```
+**DocDiff:** upload cap is 10 MB (extension + MIME + signature) in `docdiff/views.py`. There is no env-based uncompressed-size limit yet.
 
 ## Security features
 
 - Rate limiting on contact endpoints + honeypot fields
 - File validation (extension, MIME, signature) in DocDiff
-- JWT token auth with 24h expiry
+- JWT access 30 minutes, refresh 7 days (`SIMPLE_JWT`)
 - CSRF protection + CORS validated
 
 ## License

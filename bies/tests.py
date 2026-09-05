@@ -1,7 +1,9 @@
-from django.test import TestCase
+from django.contrib.admin.sites import AdminSite
+from django.test import RequestFactory, TestCase
 from django.urls import resolve, reverse
 
-from bies.models import Swieto, ZrodloBibliograficzne
+from bies.admin import BostwoAdmin
+from bies.models import Bostwo, Swieto, ZrodloBibliograficzne
 from bies.views import wyraj_lista
 
 
@@ -194,6 +196,14 @@ class WyrajDetailViewTests(TestCase):
 
 
 # ── URL patterns ─────────────────────────────────
+
+class BostwoAdminTests(TestCase):
+
+    def test_changelist_prefetches_swieta(self):
+        request = RequestFactory().get("/admin/bies/bostwo/")
+        queryset = BostwoAdmin(Bostwo, AdminSite()).get_queryset(request)
+        self.assertIn("swieta", queryset._prefetch_related_lookups)
+
 
 class UrlTests(TestCase):
 

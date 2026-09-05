@@ -202,7 +202,7 @@ class GalleryListView(generics.ListAPIView):
     API view to retrieve a list of all gallery items, with optional filtering by category.
     """
 
-    queryset = Gallery.objects.all()
+    queryset = Gallery.objects.select_related("category").all()
     serializer_class = GallerySerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ["category__title", "title"]  # Enable searching by category or image title

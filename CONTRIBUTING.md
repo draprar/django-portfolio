@@ -12,24 +12,12 @@ Thank you for your interest in contributing! This document provides guidelines a
 
 ### Local Setup
 
-**Option 1: Using Make (recommended)**
-
 ```bash
-git clone https://github.com/draprar/django_portfolio-walery.git
-cd django_portfolio-walery
-make setup
-python manage.py createsuperuser
-make serve
-```
-
-**Option 2: Manual setup**
-
-```bash
-git clone https://github.com/draprar/django_portfolio-walery.git
-cd django_portfolio-walery
+git clone https://github.com/draprar/django-portfolio.git
+cd django-portfolio
 python -m venv venv
 source venv/bin/activate  # Windows: .\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 cp .env.example .env
 python manage.py migrate
 python manage.py createsuperuser
@@ -71,6 +59,8 @@ The scope should specify which app or component is affected:
 - `docdiff` - Document comparison
 - `gallery` - Image gallery
 - `rugby` - Blog section
+- `bies` - Slavic Wheel of the Year
+- `rozdroze` - Crossroads landing
 - `config` - Project configuration
 - `analytics` - Analytics module
 - `tests` - Test suite
@@ -95,8 +85,6 @@ Before submitting a pull request, ensure your code meets these standards:
 ### 1. Linting (Ruff)
 
 ```bash
-make lint
-# or
 ruff check .
 ```
 
@@ -105,9 +93,7 @@ Must pass without errors.
 ### 2. Type Checking (MyPy)
 
 ```bash
-make type
-# or
-mypy config core tonguetwister gallery docdiff rugby analytics \
+mypy config core tonguetwister gallery docdiff rugby bies analytics \
   --ignore-missing-imports --disable-error-code=import-untyped
 ```
 
@@ -116,8 +102,6 @@ Must pass without errors.
 ### 3. Testing (Pytest)
 
 ```bash
-make test
-# or
 pytest -q --cov=. --cov-report=term-missing --cov-fail-under=80
 ```
 
@@ -147,7 +131,7 @@ Must achieve ≥80% coverage.
 
 ```bash
 # All tests
-make test
+pytest -q
 
 # Specific app
 pytest tonguetwister/tests/ -v
@@ -223,7 +207,7 @@ Tests are organized by app in `app_name/tests/` directory:
 
 3. **Run quality checks**
    ```bash
-   make lint && make type && make test
+   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics && pytest -q
    ```
 
 4. **Commit with meaningful messages**
@@ -309,7 +293,7 @@ class MyViewSet(viewsets.ModelViewSet):
 
 ## Questions or Issues?
 
-- Check existing [GitHub Issues](https://github.com/draprar/django_portfolio/issues)
+- Check existing [GitHub Issues](https://github.com/draprar/django-portfolio/issues)
 - Review [README.md](README.md) for project overview
 
 ---
