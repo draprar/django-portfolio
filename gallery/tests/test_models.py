@@ -123,12 +123,12 @@ def test_contact_required_fields():
 def test_instagram_post_creation():
     category = Category.objects.create(title="Photography")
     post = InstagramPost.objects.create(
-        image_url="http://example.com/img.jpg",
         caption="Sample caption",
+        location="Kraków",
         created_at=now(),
         category=category,
     )
-    assert post.image_url == "http://example.com/img.jpg"
     assert post.caption == "Sample caption"
+    assert post.location == "Kraków"
     assert post.category == category
     assert str(post) == f"Post in {category.title} - {post.created_at}"

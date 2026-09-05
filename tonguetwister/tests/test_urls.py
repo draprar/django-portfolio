@@ -65,7 +65,6 @@ def test_authenticated_api_access(auth_client):
         ("load_more_twisters", 200, "get"),
         ("load_more_trivia", 200, "get"),
         ("load_more_funfacts", 200, "get"),
-        ("load_more_old_polish", 200, "get"),
         ("articulator_list", 302, "get"),
         ("articulator_add", 302, "get"),
         ("exercise_list", 302, "get"),
