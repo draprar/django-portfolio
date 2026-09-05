@@ -19,7 +19,7 @@ from django_ratelimit.decorators import ratelimit
 from core.email import send_brevo_email
 
 from .forms import CustomUserCreationForm
-from .services import find_unique_user_by_email, is_email_confirmed
+from .services import LOGIN_FAILURE_MESSAGE, find_unique_user_by_email, is_email_confirmed
 from .tokens import account_activation_token
 
 logger = logging.getLogger(__name__)
@@ -35,11 +35,11 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             if not is_email_confirmed(user):
-                messages.error(request, "Potwierdź adres e-mail, zanim się zalogujesz.")
+                messages.error(request, LOGIN_FAILURE_MESSAGE)
                 return render(request, "tonguetwister/registration/login.html", {"form": form})
             login(request, user)
             return redirect("main")
-        messages.error(request, "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie.")
+        messages.error(request, LOGIN_FAILURE_MESSAGE)
 
     return render(request, "tonguetwister/registration/login.html", {"form": form})
 

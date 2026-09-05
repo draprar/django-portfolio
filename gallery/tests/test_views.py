@@ -26,7 +26,8 @@ class TestGalleryViews:
         assert "categories" in response.context
         assert "selected_category" in response.context
         assert "instagram_posts" in response.context
-        assert gallery_item in response.context["object_list"]
+        nature = next(c for c in response.context["categories"] if c.title == "Nature")
+        assert gallery_item in nature.images.all()
 
     @override_settings(SECURE_SSL_REDIRECT=False)
     def test_home_view_filtered_by_category(self, client):
@@ -39,8 +40,8 @@ class TestGalleryViews:
         response = client.get(reverse("gallery:gallery_home") + "?category=Nature")
 
         assert response.status_code == 200
-        assert len(response.context["object_list"]) == 1
-        assert response.context["object_list"][0].category.title == "Nature"
+        assert response.context["selected_category"] == "Nature"
+        assert {c.title for c in response.context["categories"]} == {"Nature", "Animals"}
 
     @override_settings(SECURE_SSL_REDIRECT=False)
     def test_upload_image_view_get(self, client):
@@ -119,7 +120,7 @@ class TestGalleryViews:
 
         assert response.status_code == 200
         assert response.context["selected_category"] == "Missing"
-        assert len(response.context["object_list"]) == 0
+        assert "object_list" not in response.context
         assert list(response.context["instagram_posts"]) == []
 
     @override_settings(SECURE_SSL_REDIRECT=False)

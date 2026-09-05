@@ -110,18 +110,6 @@ class CustomUserCreationForm(UserCreationForm):
         return user
 
 
-# Login form with username and password fields
-class LoginForm(forms.Form):
-    username = forms.CharField(
-        required=True,
-        widget=forms.TextInput(attrs={"class": "form-control", "id": "username", "placeholder": "Nazwa użytkownika"}),
-    )
-    password = forms.CharField(
-        required=True,
-        widget=forms.PasswordInput(attrs={"class": "form-control", "id": "password", "placeholder": "Hasło"}),
-    )
-
-
 # Form for uploading a profile avatar with custom validation
 class AvatarUploadForm(forms.ModelForm):
     class Meta:

@@ -1,5 +1,7 @@
 import pytest
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import IntegrityError
 
 from tonguetwister.models import (
@@ -53,6 +55,18 @@ def test_profile():
 def test_profile_is_created_automatically_for_new_user():
     user = User.objects.create_user(username="signal_user", password="test_password")
     assert Profile.objects.filter(user=user).exists()
+    user.email = "signal@example.com"
+    user.save()
+    assert Profile.objects.filter(user=user).count() == 1
+
+
+@pytest.mark.django_db
+def test_avatar_full_clean_rejects_disallowed_extension():
+    user = User.objects.create_user(username="avatar_user", password="test_password")
+    profile = user.profile
+    profile.avatar = SimpleUploadedFile("evil.exe", b"not-an-image", content_type="application/octet-stream")
+    with pytest.raises(ValidationError):
+        profile.full_clean()
 
 
 @pytest.mark.django_db

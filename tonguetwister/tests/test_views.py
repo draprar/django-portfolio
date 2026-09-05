@@ -490,7 +490,23 @@ class TestAuthViews:
         assert response.status_code == 200
         assert "_auth_user_id" not in client.session
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        assert any("Potwierdź adres e-mail" in msg for msg in messages)
+        assert any("Nie udało się zalogować" in msg for msg in messages)
+
+    def test_login_unconfirmed_matches_invalid_password_message(self, client, django_user_model):
+        django_user_model.objects.create_user(
+            username="pending-enum", email="pending-enum@example.com", password="testpassword"
+        )
+        unconfirmed = client.post(
+            reverse("login"),
+            data={"username": "pending-enum", "password": "testpassword"},
+        )
+        invalid = client.post(
+            reverse("login"),
+            data={"username": "pending-enum", "password": "wrong-password"},
+        )
+        unconfirmed_messages = [m.message for m in get_messages(unconfirmed.wsgi_request)]
+        invalid_messages = [m.message for m in get_messages(invalid.wsgi_request)]
+        assert unconfirmed_messages == invalid_messages
 
     def test_activate_token_invalid(self, client, regular_user):
         # Test invalid activation token returns correct response

@@ -4,7 +4,7 @@ import pytest
 from django.contrib.auth.models import Group, User
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-from tonguetwister.forms import AvatarUploadForm, CustomUserCreationForm, LoginForm
+from tonguetwister.forms import AvatarUploadForm, CustomUserCreationForm
 
 
 @pytest.mark.django_db
@@ -94,23 +94,6 @@ def test_custom_creation_form_rejects_email_case_insensitive_duplicate():
     )
     assert not form.is_valid()
     assert "email" in form.errors
-
-
-@pytest.mark.django_db
-def test_login_form_valid_data():
-    # Test login with valid credentials
-    data = {"username": "testuser", "password": "passwork123!Q"}
-    form = LoginForm(data=data)
-    assert form.is_valid()
-
-
-@pytest.mark.django_db
-def test_login_form_invalid_data():
-    # Test login with missing password
-    data = {"username": "testuser"}
-    form = LoginForm(data=data)
-    assert not form.is_valid()
-    assert "password" in form.errors
 
 
 @pytest.mark.django_db

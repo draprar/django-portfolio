@@ -137,7 +137,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    #'base.middleware.LoginStreakMiddleware',
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -182,10 +181,11 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_THROTTLE_RATES": {
         "anon": "50/hour",
+        "auth_token": "5/min",
     },
     "DEFAULT_RENDERER_CLASSES": [
-        "rest_framework.renderers.JSONRenderer",  # JSON
-        "rest_framework.renderers.BrowsableAPIRenderer",  # UI
+        "rest_framework.renderers.JSONRenderer",
+        *(["rest_framework.renderers.BrowsableAPIRenderer"] if DEBUG else []),
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
@@ -215,7 +215,8 @@ if REDIS_URL:
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
             "LOCATION": REDIS_URL,
-            "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient", "SSL_CERT_REQS": None},
+            # rediss:// uses the default CA bundle; do not disable cert verification.
+            "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
         }
     }
 else:
@@ -387,8 +388,6 @@ if _testing:
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Email backend settings (using SMTP)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 BREVO_API_KEY = env("BREVO_API_KEY", default="")
@@ -479,27 +478,32 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # Leave empty by default in production to keep HTTPS redirect strict.
 SECURE_REDIRECT_EXEMPT = env.list("DJANGO_SECURE_REDIRECT_EXEMPT", default=[])
 
+_log_handlers = {
+    "console": {
+        "class": "logging.StreamHandler",
+    },
+}
+_log_handler_names = ["console"]
+if DEBUG:
+    _log_handlers["file"] = {
+        "level": "WARNING",
+        "class": "logging.FileHandler",
+        "filename": str(BASE_DIR / "django_warnings.log"),
+    }
+    _log_handler_names = ["console", "file"]
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-        },
-        "file": {
-            "level": "WARNING",
-            "class": "logging.FileHandler",
-            "filename": BASE_DIR / "django_warnings.log",
-        },
-    },
+    "handlers": _log_handlers,
     "loggers": {
         "django": {
-            "handlers": ["console", "file"],
+            "handlers": _log_handler_names,
             "level": "WARNING",
             "propagate": True,
         },
         "django.request": {
-            "handlers": ["console", "file"],
+            "handlers": _log_handler_names,
             "level": "ERROR",
             "propagate": False,
         },

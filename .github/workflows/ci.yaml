@@ -56,7 +56,7 @@ jobs:
 
       - name: Type check (mypy, blocking)
         run: |
-          mypy config core tonguetwister gallery docdiff rugby bies analytics \
+          mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze \
             --ignore-missing-imports --disable-error-code=import-untyped
 
       - name: Django system checks
