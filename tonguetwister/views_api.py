@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
 from .serializers import (
@@ -21,6 +21,7 @@ from .serializers import (
     TriviaSerializer,
     TwisterSerializer,
 )
+from .throttling import AuthTokenThrottle
 
 CACHE_TIMEOUT = 60 * 5  # 5 min
 
@@ -229,6 +230,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     """
 
     serializer_class = EmailConfirmedTokenObtainPairSerializer
+    throttle_classes = [AuthTokenThrottle]
 
     @extend_schema(
         tags=["Authentication"],
@@ -237,6 +239,10 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     )
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
+
+
+class CustomTokenRefreshView(TokenRefreshView):
+    throttle_classes = [AuthTokenThrottle]
 
 
 class HealthCheckView(APIView):

@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 
+LOGIN_FAILURE_MESSAGE = "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie."
+
 
 def is_email_confirmed(user) -> bool:
     """Return True only when the user has a profile with a confirmed email."""

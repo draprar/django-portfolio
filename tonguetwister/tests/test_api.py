@@ -12,6 +12,7 @@ from tonguetwister.serializers import (
     TriviaSerializer,
     TwisterSerializer,
 )
+from tonguetwister.throttling import AuthTokenThrottle, CustomAnonThrottle
 
 # --- FIXTURES ---
 
@@ -218,12 +219,18 @@ def test_token_obtain_success(api_client):
 @pytest.mark.django_db
 def test_token_obtain_rejects_unconfirmed_email(api_client):
     User.objects.create_user(username="unconfirmed", password="pass123")
-    response = api_client.post(
+    unconfirmed = api_client.post(
         "/tonguetwister/api/token/",
         data={"username": "unconfirmed", "password": "pass123"},
     )
-    assert response.status_code == 400
-    assert "access" not in response.data
+    invalid = api_client.post(
+        "/tonguetwister/api/token/",
+        data={"username": "missing", "password": "wrong"},
+    )
+    assert unconfirmed.status_code == 401
+    assert invalid.status_code == 401
+    assert unconfirmed.data == invalid.data
+    assert "access" not in unconfirmed.data
 
 
 @pytest.mark.django_db
@@ -234,3 +241,12 @@ def test_token_obtain_fail(api_client):
         data={"username": "wrong", "password": "wrong"},
     )
     assert response.status_code == 401
+
+
+def test_token_views_use_auth_token_throttle():
+    from tonguetwister.views_api import CustomTokenObtainPairView, CustomTokenRefreshView
+
+    assert CustomAnonThrottle().get_rate() == "50/hour"
+    assert AuthTokenThrottle().get_rate() == "5/min"
+    assert CustomTokenObtainPairView.throttle_classes == [AuthTokenThrottle]
+    assert CustomTokenRefreshView.throttle_classes == [AuthTokenThrottle]

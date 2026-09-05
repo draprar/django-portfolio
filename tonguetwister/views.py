@@ -12,6 +12,7 @@ from .models import (  # noqa: F401
 from .views_api import (  # noqa: F401
     ArticulatorViewSet,
     CustomTokenObtainPairView,
+    CustomTokenRefreshView,
     ExerciseViewSet,
     FunfactViewSet,
     HealthCheckView,

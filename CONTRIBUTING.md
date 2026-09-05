@@ -93,7 +93,7 @@ Must pass without errors.
 ### 2. Type Checking (MyPy)
 
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics \
+mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze \
   --ignore-missing-imports --disable-error-code=import-untyped
 ```
 
@@ -207,7 +207,7 @@ Tests are organized by app in `app_name/tests/` directory:
 
 3. **Run quality checks**
    ```bash
-   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics && pytest -q
+   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze && pytest -q --cov=. --cov-fail-under=80
    ```
 
 4. **Commit with meaningful messages**
@@ -288,7 +288,7 @@ class MyViewSet(viewsets.ModelViewSet):
 - Use `prefetch_related()` for reverse relations and M2M
 - Add database indexes for frequently queried fields
 - Cache expensive operations using Redis
-- Profile code before optimizing (use Django Debug Toolbar)
+- Profile code before optimizing
 - Avoid N+1 queries
 
 ## Questions or Issues?

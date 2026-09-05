@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
@@ -45,5 +46,8 @@ class EmailConfirmedTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         if not is_email_confirmed(self.user):
-            raise serializers.ValidationError("Potwierdź adres e-mail, zanim się zalogujesz.")
+            raise AuthenticationFailed(
+                self.error_messages["no_active_account"],
+                "no_active_account",
+            )
         return data

@@ -1,7 +1,6 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import TokenRefreshView
 
 from analytics.utils import count_visit
 
@@ -9,6 +8,7 @@ from . import views
 from .views import (
     ArticulatorViewSet,
     CustomTokenObtainPairView,
+    CustomTokenRefreshView,
     ExerciseViewSet,
     FunfactViewSet,
     HealthCheckView,
@@ -76,6 +76,6 @@ urlpatterns = [
     path("delete-twister/<int:twister_id>/", views.delete_twister, name="delete_twister"),
     path("api/", include(router.urls)),
     path("api/token/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/token/refresh/", CustomTokenRefreshView.as_view(), name="token_refresh"),
     path("api/health/", HealthCheckView.as_view(), name="health-check"),
 ]

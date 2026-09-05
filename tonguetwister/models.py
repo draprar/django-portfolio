@@ -1,5 +1,13 @@
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
 from django.db import models
+
+
+def validate_avatar_size(file):
+    max_mb = 2
+    if file.size > max_mb * 1024 * 1024:
+        raise ValidationError(f"Rozmiar pliku nie może przekroczyć {max_mb} MB.")
 
 
 # Represents a tongue twister
@@ -56,8 +64,15 @@ class OldPolish(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # One-to-one relationship with User model
     avatar = models.ImageField(
-        upload_to="avatars/%Y/%m/%d/", null=True, blank=True
-    )  # Stores user's avatar image by date
+        upload_to="avatars/%Y/%m/%d/",
+        null=True,
+        blank=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "gif"]),
+            validate_avatar_size,
+        ],
+        help_text="Allowed: jpg, jpeg, png, gif. Max 2 MB.",
+    )
     email_confirmed = models.BooleanField(default=False)  # Indicates if the user has confirmed their email
 
     def __str__(self):

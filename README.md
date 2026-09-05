@@ -18,8 +18,8 @@ A full-stack Django portfolio by an engineer-turned-developer — 9 integrated a
 | **docdiff**       | Document comparison engine | AI semantic scoring · MIME/signature validation · HTML reports |
 | **gallery**       | Image gallery with categories | CRUD · DRF · manual Instagram-style posts in admin |
 | **core**          | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
-| **rugby**         | Rugby team archive | static content |
-| **bies**          | Slavic Wheel of the Year | static content |
+| **rugby**         | Rugby team archive | ORM posts, bilingual admin |
+| **bies**          | Slavic Wheel of the Year | festivals, deities, R2 media |
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
 | **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
@@ -70,7 +70,7 @@ pytest -q
 
 **Type checking:**
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics
+mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze
 ```
 
 **Linting:**
@@ -84,7 +84,7 @@ ruff check .
 |------|---------|
 | `requirements.txt` | → Production runtime (→ requirements-prod.txt) |
 | `requirements-dev.txt` | Development: prod + pytest, mypy, ruff, pip-audit |
-| `requirements-prod.lock.txt` | Pinned snapshot for reproducible CI/CD |
+| `requirements-prod.lock.txt` | Pinned snapshot for local installs; CI and Render use `requirements-dev.txt` / `requirements-prod.txt` |
 
 **CI/CD pipeline** (GitHub Actions):
 - Django checks + migrations drift detection

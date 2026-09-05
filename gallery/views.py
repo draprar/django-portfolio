@@ -10,41 +10,20 @@ from .models import Category, Gallery, InstagramPost
 from .serializers import CategorySerializer, GallerySerializer
 
 
-class Home(generic.ListView):
+class Home(generic.TemplateView):
     """
-    Displays the homepage with a list of Gallery images.
-    Allows filtering by category using GET parameters.
+    Gallery homepage. Category filtering happens in the template from
+    `selected_category`; images are loaded via Category.images prefetch.
     """
 
-    model = Gallery
     template_name = "gallery/home.html"
-    queryset = Gallery.objects.all()
-
-    def get_queryset(self):
-        """
-        Optionally filters images by the selected category.
-        """
-        queryset = super().get_queryset()
-        category = self.request.GET.get("category", None)
-        if category:
-            queryset = queryset.filter(category__title=category)
-        return queryset
 
     def get_context_data(self, **kwargs):
-        """
-        Adds categories and Instagram posts to the context. All Instagram
-        posts are shown together under the "Instagram" category, regardless
-        of which Category they're individually tagged with.
-        """
         context = super().get_context_data(**kwargs)
-        category = self.request.GET.get("category", None)
+        category = self.request.GET.get("category") or None
         context["selected_category"] = category if category else "All"
         context["categories"] = Category.objects.all().prefetch_related("images").order_by("order", "title")
-
-        # Include Instagram posts in context — always aggregated, regardless
-        # of which underlying Category individual posts happen to carry.
         context["instagram_posts"] = InstagramPost.objects.all().prefetch_related("media").order_by("-created_at")
-
         return context
 
 
