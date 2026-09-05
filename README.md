@@ -95,7 +95,7 @@ ruff check .
 
 For local development, `.env.example` contains sensible defaults. Optional features:
 
-**S3 / Supabase storage** (and R2 for `bies` media):
+**S3 / Supabase storage** (and R2 for `bies` media). When `USE_S3=True`, missing Supabase or R2 keys fail startup:
 ```
 USE_S3=True
 AWS_ACCESS_KEY_ID=<key>

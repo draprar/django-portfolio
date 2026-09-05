@@ -298,6 +298,34 @@ def test_send_brevo_email_handles_api_exception(monkeypatch):
 
 
 # STORAGE
+def test_require_configured_settings_fails_fast_on_missing_r2():
+    from django.core.exceptions import ImproperlyConfigured
+
+    from config.settings import missing_required_settings, require_configured_settings
+
+    assert missing_required_settings({"R2_BUCKET_NAME": "ok", "R2_ENDPOINT_URL": "https://e"}) == []
+    assert missing_required_settings(
+        {
+            "R2_ACCESS_KEY_ID": "",
+            "R2_SECRET_ACCESS_KEY": None,
+            "R2_BUCKET_NAME": "ok",
+        }
+    ) == ["R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY"]
+
+    complete_r2 = {
+        "R2_ACCESS_KEY_ID": "id",
+        "R2_SECRET_ACCESS_KEY": "secret",
+        "R2_BUCKET_NAME": "bucket",
+        "R2_ENDPOINT_URL": "https://e",
+        "R2_PUBLIC_DOMAIN": "cdn.example",
+    }
+    require_configured_settings(complete_r2, "R2")
+
+    incomplete_r2 = {**complete_r2, "R2_ACCESS_KEY_ID": None}
+    with pytest.raises(ImproperlyConfigured, match="Missing required R2 settings: R2_ACCESS_KEY_ID"):
+        require_configured_settings(incomplete_r2, "R2")
+
+
 def test_supabase_public_storage_url_reads_media_url(monkeypatch):
     from core.storages_backends import SupabasePublicStorage
 
