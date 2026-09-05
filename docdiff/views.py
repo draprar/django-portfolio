@@ -13,6 +13,7 @@ from .extractors.extract_txt import TxtExtractor
 from .extractors.extract_xlsx import XlsxExtractor
 from .heuristics_ai import analyze_change
 from .report_builder import generate_html_report
+from .services import exceeds_uncompressed_limit
 
 # Upload validation parameters
 MAX_FILE_SIZE_MB = 10
@@ -41,6 +42,7 @@ ERROR_CODES = {
     "extract_failed": "extract_failed",
     "empty_documents": "empty_documents",
     "too_many_changes": "too_many_changes",
+    "uncompressed_too_large": "uncompressed_too_large",
 }
 
 
@@ -136,6 +138,16 @@ def docdiff_view(request):
             with open(new_path, "wb") as f:
                 for chunk in file_new.chunks():
                     f.write(chunk)
+
+            try:
+                if exceeds_uncompressed_limit(old_path) or exceeds_uncompressed_limit(new_path):
+                    return render(
+                        request,
+                        "docdiff/upload.html",
+                        {"error_code": ERROR_CODES["uncompressed_too_large"]},
+                    )
+            except Exception:
+                return render(request, "docdiff/upload.html", {"error_code": ERROR_CODES["extract_failed"]})
 
             # Select extractor by extension
             def get_extractor(path: Path):

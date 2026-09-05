@@ -1,6 +1,8 @@
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
+from .services import is_email_confirmed
 
 
 class OldPolishSerializer(serializers.ModelSerializer):
@@ -37,3 +39,11 @@ class TriviaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trivia
         fields = ["id", "text"]
+
+
+class EmailConfirmedTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        if not is_email_confirmed(self.user):
+            raise serializers.ValidationError("Potwierdź adres e-mail, zanim się zalogujesz.")
+        return data

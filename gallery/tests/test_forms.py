@@ -4,7 +4,7 @@ import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 
-from gallery.forms import CategoryForm, ContactForm, GalleryForm
+from gallery.forms import CategoryForm, GalleryForm
 from gallery.models import Category
 
 
@@ -57,26 +57,6 @@ def test_gallery_form(file, is_valid, error, create_test_image):
         assert error in form.errors
 
 
-# Tests for ContactForm
-@pytest.mark.parametrize(
-    "data, is_valid, error_fields",
-    [
-        ({"name": "", "email": "", "message": ""}, False, ["name", "email", "message"]),  # All fields missing
-        ({"name": "John", "email": "", "message": "Hello"}, False, ["email"]),  # Missing email
-        ({"name": "John", "email": "invalid-email", "message": "Hello"}, False, ["email"]),  # Invalid email
-        ({"name": "John", "email": "john@example.com", "message": ""}, False, ["message"]),  # Missing message
-        ({"name": "John", "email": "john@example.com", "message": "Hello"}, True, []),  # Valid form
-    ],
-)
-def test_contact_form(data, is_valid, error_fields):
-    form = ContactForm(data=data)
-    print(form.errors)
-    assert form.is_valid() == is_valid
-    if not is_valid:
-        for field in error_fields:
-            assert field in form.errors
-
-
 # Tests for CategoryForm
 @pytest.mark.django_db
 @pytest.mark.parametrize(
@@ -93,16 +73,3 @@ def test_category_form(data, is_valid, error_fields):
     if not is_valid:
         for field in error_fields:
             assert field in form.errors
-
-
-def test_contact_form_rejects_bot_field():
-    form = ContactForm(
-        data={
-            "name": "Bot",
-            "email": "bot@example.com",
-            "message": "Spam",
-            "website": "http://spam.com",
-        }
-    )
-    assert not form.is_valid()
-    assert "website" in form.errors

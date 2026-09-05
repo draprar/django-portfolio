@@ -9,10 +9,10 @@ class AccountActivationTokenGenerator(PasswordResetTokenGenerator):
 
     def _make_hash_value(self, user, timestamp):
         """
-        Create a secure hash value for the token generation.
+        Include email_confirmed so the token is invalid after activation.
         """
-        return str(user.pk) + str(timestamp) + str(user.is_active)
+        email_confirmed = getattr(getattr(user, "profile", None), "email_confirmed", False)
+        return f"{user.pk}{timestamp}{user.is_active}{email_confirmed}"
 
 
-# Create a global instance of the token generator
 account_activation_token = AccountActivationTokenGenerator()

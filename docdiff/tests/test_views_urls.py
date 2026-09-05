@@ -112,6 +112,15 @@ class TestDocDiffView:
         response = client.post(url, {"file_old": old_file, "file_new": new_file}, **post_kwargs)
         assert response.status_code == 403
 
+    @override_settings(DOCDIFF_MAX_UNCOMPRESSED_MB=0)
+    def test_uncompressed_limit_rejects_txt(self, client):
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"Hello world")
+        new_file = SimpleUploadedFile("new.txt", b"Hello brave new world")
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "uncompressed_too_large" in response.content.decode().lower()
+
     def test_filename_path_traversal_does_not_create_outside_file(self, client, monkeypatch, tmp_path):
         url = reverse("docdiff:compare")
         monkeypatch.setattr("docdiff.views.tempfile.mkdtemp", lambda: str(tmp_path))

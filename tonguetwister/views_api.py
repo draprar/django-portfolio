@@ -14,6 +14,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import Articulator, Exercise, Funfact, OldPolish, Trivia, Twister
 from .serializers import (
     ArticulatorSerializer,
+    EmailConfirmedTokenObtainPairSerializer,
     ExerciseSerializer,
     FunfactSerializer,
     OldPolishSerializer,
@@ -226,6 +227,8 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
     Permissions: Public (no authentication required)
     """
+
+    serializer_class = EmailConfirmedTokenObtainPairSerializer
 
     @extend_schema(
         tags=["Authentication"],

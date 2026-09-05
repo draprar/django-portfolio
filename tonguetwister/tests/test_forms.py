@@ -81,6 +81,22 @@ def test_custom_creation_form_cases(data, error_field):
 
 
 @pytest.mark.django_db
+def test_custom_creation_form_rejects_email_case_insensitive_duplicate():
+    Group.objects.create(name="Regular Users")
+    User.objects.create_user(username="other", email="Taken@Example.com", password="x")
+    form = CustomUserCreationForm(
+        data={
+            "username": "freshuser",
+            "email": "taken@example.com",
+            "password1": "StrongPassword!123",
+            "password2": "StrongPassword!123",
+        }
+    )
+    assert not form.is_valid()
+    assert "email" in form.errors
+
+
+@pytest.mark.django_db
 def test_login_form_valid_data():
     # Test login with valid credentials
     data = {"username": "testuser", "password": "passwork123!Q"}

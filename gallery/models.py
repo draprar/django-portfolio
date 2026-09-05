@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.db.models import Q
 
 
 class Category(models.Model):
@@ -40,20 +41,6 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.image.url
-
-
-class Contact(models.Model):
-    """
-    Represents a contact form submission.
-    """
-
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    message = models.TextField()
-    submitted_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Message from {self.name}"
 
 
 class InstagramPost(models.Model):
@@ -100,6 +87,15 @@ class InstagramPostMedia(models.Model):
 
     class Meta:
         ordering = ["order", "id"]
+        constraints = [
+            models.CheckConstraint(
+                name="instagram_media_xor_image_video",
+                condition=(
+                    (Q(image__gt="") & (Q(video="") | Q(video__isnull=True)))
+                    | ((Q(image="") | Q(image__isnull=True)) & Q(video__gt=""))
+                ),
+            ),
+        ]
 
     def clean(self):
         if not self.image and not self.video:

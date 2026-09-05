@@ -82,7 +82,7 @@ class CustomUserCreationForm(UserCreationForm):
     # Custom validation for the email field
     def clean_email(self):
         email = self.cleaned_data.get("email")
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email__iexact=email).exists():
             raise ValidationError("Konto pod tym adresem email już istnieje :(")  # Error if email exists
         return email
 

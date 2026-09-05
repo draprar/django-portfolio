@@ -255,8 +255,9 @@
     </p>
   </div>
 
+  {{ kolo_data|json_script:"kolo-data" }}
   <script>
-    window.KOLO_DATA = {{ kolo_data|safe }};
+    window.KOLO_DATA = JSON.parse(document.getElementById("kolo-data").textContent);
   </script>
   <script src="{% static 'bies/js/wyraj.js' %}"></script>
 </body>

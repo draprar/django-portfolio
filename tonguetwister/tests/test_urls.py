@@ -15,7 +15,9 @@ def api_client():
 @pytest.fixture
 def auth_client(django_user_model):
     """Create user and return authorized APIClient"""
-    django_user_model.objects.create_user(username="testuser", password="password123")
+    user = django_user_model.objects.create_user(username="testuser", password="password123")
+    user.profile.email_confirmed = True
+    user.profile.save(update_fields=["email_confirmed"])
     client = APIClient()
     response = client.post("/tonguetwister/api/token/", {"username": "testuser", "password": "password123"})
     assert response.status_code in (200, 201), "Token endpoint not reachable"

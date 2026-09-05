@@ -1,8 +1,5 @@
-from datetime import timedelta
-
 from django.contrib.auth.models import User
 from django.db import models
-from django.utils import timezone
 
 
 # Represents a tongue twister
@@ -58,26 +55,10 @@ class OldPolish(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # One-to-one relationship with User model
-    login_streak = models.PositiveIntegerField(default=1)  # Tracks the number of consecutive login days
-    last_login_date = models.DateField(auto_now=True)  # Automatically updates on login
     avatar = models.ImageField(
         upload_to="avatars/%Y/%m/%d/", null=True, blank=True
     )  # Stores user's avatar image by date
     email_confirmed = models.BooleanField(default=False)  # Indicates if the user has confirmed their email
-
-    def update_login_streak(self):
-        """
-        Updates the login streak for the user. If the user logs in consecutively on
-        following days, their streak increases; otherwise, it resets.
-        """
-        today = timezone.now().date()
-        if self.last_login_date != today:
-            if self.last_login_date == today - timedelta(days=1):
-                self.login_streak += 1  # Increment streak if logged in yesterday
-            else:
-                self.login_streak = 1  # Reset streak if the gap is more than 1 day
-            self.last_login_date = today
-            self.save()
 
     def __str__(self):
         return f"{self.user.username} Profile"
@@ -88,14 +69,29 @@ class UserProfileArticulator(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Links to the User model
     articulator = models.ForeignKey(Articulator, on_delete=models.CASCADE)  # Links to an Articulator object
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "articulator"], name="uniq_user_articulator"),
+        ]
+
 
 # Represents the many-to-many relationship between a user and user exercises
 class UserProfileExercise(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Links to the User model
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)  # Links to an Exercise object
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "exercise"], name="uniq_user_exercise"),
+        ]
+
 
 # Represents the many-to-many relationship between a user and user twisters
 class UserProfileTwister(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Links to the User model
     twister = models.ForeignKey(Twister, on_delete=models.CASCADE)  # Links to a Twister object
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "twister"], name="uniq_user_twister"),
+        ]

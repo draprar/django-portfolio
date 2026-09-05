@@ -203,7 +203,9 @@ def test_funfact_list_not_found(auth_client):
 @pytest.mark.django_db
 def test_token_obtain_success(api_client):
     """Should issue JWT access and refresh tokens for valid credentials."""
-    User.objects.create_user(username="testuser", password="pass123")
+    user = User.objects.create_user(username="testuser", password="pass123")
+    user.profile.email_confirmed = True
+    user.profile.save(update_fields=["email_confirmed"])
     response = api_client.post(
         "/tonguetwister/api/token/",
         data={"username": "testuser", "password": "pass123"},
@@ -211,6 +213,17 @@ def test_token_obtain_success(api_client):
     assert response.status_code == 200
     assert "access" in response.data
     assert "refresh" in response.data
+
+
+@pytest.mark.django_db
+def test_token_obtain_rejects_unconfirmed_email(api_client):
+    User.objects.create_user(username="unconfirmed", password="pass123")
+    response = api_client.post(
+        "/tonguetwister/api/token/",
+        data={"username": "unconfirmed", "password": "pass123"},
+    )
+    assert response.status_code == 400
+    assert "access" not in response.data
 
 
 @pytest.mark.django_db
