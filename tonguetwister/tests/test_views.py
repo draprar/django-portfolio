@@ -19,7 +19,6 @@ from tonguetwister.models import (
     UserProfileTwister,
 )
 from tonguetwister.tokens import account_activation_token
-from tonguetwister.views import get_chatbot
 
 
 # Tests for main view responses and context in various states
@@ -538,17 +537,3 @@ class TestAuthViews:
         )
 
         assert response.status_code == 200
-
-
-@pytest.mark.django_db
-class TestContactViews:
-    @pytest.fixture
-    def url(self):
-        return reverse("tw_contact")
-
-    @pytest.fixture
-    def valid_form_data(self):
-        return {"name": "testuser", "email": "test@example.com", "message": "Test Message"}
-
-
-chatbot_instance = get_chatbot()

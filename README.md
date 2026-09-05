@@ -8,13 +8,13 @@
 
 A full-stack Django portfolio by an engineer-turned-developer — 8 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
 
-> Split view architecture · async views · DRF + SimpleJWT · AI heuristics · 94% test coverage
+> Split view architecture · DRF + SimpleJWT · AI heuristics · 80% CI coverage threshold
 
 ## What's inside?
 
 | App               | Purpose | Stack highlights |
 |-------------------|---------|-----------------|
-| **tonguetwister** | Language practice platform | async views · DRF + SimpleJWT · chatbot · email auth |
+| **tonguetwister** | Language practice platform | DRF + SimpleJWT · email auth |
 | **docdiff**       | Document comparison engine | AI semantic scoring · MIME/signature validation · HTML reports |
 | **gallery**       | Image gallery with categories | CRUD · DRF · Instagram feed integration |
 | **core**          | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
@@ -28,13 +28,12 @@ A full-stack Django portfolio by an engineer-turned-developer — 8 integrated a
 | Pattern | Where | Detail                                                   |
 |---------|-------|----------------------------------------------------------|
 | Split view architecture | `tonguetwister/views_*.py` | CRUD · auth · API · main logic in separate modules       |
-| Async views | `tonguetwister/views_main.py` | chatbot with `asyncio.wait_for` timeout + Sentry capture |
 | DRF + SimpleJWT | `tonguetwister/views_api.py` | read-only ViewSets, per-endpoint auth, 5 min cache       |
 | AI heuristics | `docdiff/heuristics_ai.py` | semantic scoring on paragraph-level diffs                |
 | File security | `docdiff/views.py` | extension + MIME + magic-byte signature validation       |
 | Rate limiting | `core/`, `tonguetwister/` | `django-ratelimit` per-IP on all mutation endpoints      |
 | Email auth flow | `tonguetwister/views_auth.py` | token-based activation + password reset via Brevo        |
-| Test coverage | project-wide | 95% — pytest + coverage, CI threshold at 80%             |
+| Test coverage | project-wide | pytest + coverage, CI threshold at 80%                   |
 
 ## Quick start (5 min)
 
@@ -89,7 +88,7 @@ ruff check .
 **CI/CD pipeline** (GitHub Actions):
 - Django checks + migrations drift detection
 - Type checks (mypy), linting (ruff), security audit (pip-audit)
-- Tests with 60% coverage threshold
+- Tests with 80% coverage threshold
 
 ## Environment setup
 
@@ -113,7 +112,6 @@ DOCDIFF_MAX_UNCOMPRESSED_MB=120
 
 - Rate limiting on contact endpoints + honeypot fields
 - File validation (extension, MIME, signature) in DocDiff
-- Chatbot feature-flagged for controlled rollout (disabled by default)
 - JWT token auth with 24h expiry
 - CSRF protection + CORS validated
 

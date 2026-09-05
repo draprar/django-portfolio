@@ -2,7 +2,6 @@
 
 # Testing
 pytest==9.0.3
-pytest-asyncio==1.4.0
 pytest-cov==7.1.0
 pytest-django==4.9.0
 pytest-mock==3.14.0

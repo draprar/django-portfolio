@@ -79,8 +79,6 @@ def test_authenticated_api_access(auth_client):
         ("oldpolish_list", 302, "get"),
         ("oldpolish_add", 302, "get"),
         ("user_content", 302, "get"),
-        # contact disabled — test skipped
-        ("chatbot", 200, "get"),
     ],
 )
 def test_named_urls_no_args(url_name, expected_status, method):
