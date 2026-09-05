@@ -3,14 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.contrib.sessions.middleware import SessionMiddleware
-from django.http import HttpResponse
 from django.test import RequestFactory
 from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
 from tonguetwister.tokens import account_activation_token
-from tonguetwister.views_auth import contact, send_activation_email
+from tonguetwister.views_auth import send_activation_email
 
 
 @pytest.mark.django_db
@@ -133,45 +132,3 @@ def test_password_reset_complete_and_done_views_render(client):
 
     assert complete.status_code == 200
     assert done.status_code == 200
-
-
-@pytest.mark.django_db
-def test_contact_get_renders_form(rf):
-    request = rf.get("/tonguetwister/contact/")
-    session_middleware = SessionMiddleware(lambda req: None)
-    session_middleware.process_request(request)
-    request.session.save()
-    request._messages = FallbackStorage(request)
-
-    response = contact(request)
-    assert response.status_code == 200
-
-
-@pytest.mark.django_db
-def test_contact_post_handles_send_mail_exception(monkeypatch, rf):
-    request = rf.post("/tonguetwister/contact/", {"name": "A", "email": "a@b.com", "message": "Hi"})
-    session_middleware = SessionMiddleware(lambda req: None)
-    session_middleware.process_request(request)
-    request.session.save()
-    request._messages = FallbackStorage(request)
-
-    class DummyForm:
-        cleaned_data = {"name": "A", "email": "a@b.com", "message": "Hi"}
-
-        def __init__(self, *_args, **_kwargs):
-            pass
-
-        def is_valid(self):
-            return True
-
-    monkeypatch.setattr("tonguetwister.views_auth.ContactForm", DummyForm)
-    monkeypatch.setattr(
-        "tonguetwister.views_auth.send_mail", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("smtp"))
-    )
-    monkeypatch.setattr("tonguetwister.views_auth.redirect", lambda _name: HttpResponse(status=302))
-
-    raw_contact = contact.__wrapped__.__wrapped__
-    response = raw_contact(request)
-    assert response.status_code == 302
-    messages = [m.message for m in get_messages(request)]
-    assert any("Nie udalo sie wyslac wiadomosci" in msg for msg in messages)

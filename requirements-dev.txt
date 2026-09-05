@@ -55,7 +55,7 @@ typing-inspection==0.4.1
 # Document/Markdown Processing (dev-oriented)
 markdown-it-py==3.0.0
 mdurl==0.1.2
-mistune==3.3.0
+mistune==3.3.3
 
 # Miscellaneous dev dependencies
 pathspec==1.0.4

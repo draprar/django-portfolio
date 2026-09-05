@@ -4,7 +4,7 @@ import pytest
 from django.contrib.auth.models import Group, User
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-from tonguetwister.forms import AvatarUploadForm, ContactForm, CustomUserCreationForm, LoginForm
+from tonguetwister.forms import AvatarUploadForm, CustomUserCreationForm, LoginForm
 
 
 @pytest.mark.django_db
@@ -95,27 +95,6 @@ def test_login_form_invalid_data():
     form = LoginForm(data=data)
     assert not form.is_valid()
     assert "password" in form.errors
-
-
-@pytest.mark.django_db
-def test_contact_form_valid_data():
-    # Test contact form submission with valid data
-    data = {
-        "name": "test_name",
-        "email": "test@example.com",
-        "message": "test_text",
-    }
-    form = ContactForm(data=data)
-    assert form.is_valid()
-
-
-@pytest.mark.django_db
-def test_contact_form_invalid_data():
-    # Test contact form submission missing email
-    data = {"username": "testuser", "message": "test_text"}
-    form = ContactForm(data=data)
-    assert not form.is_valid()
-    assert "email" in form.errors
 
 
 @pytest.mark.django_db
