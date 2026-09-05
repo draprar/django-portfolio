@@ -304,23 +304,41 @@ R2_ENDPOINT_URL = env("R2_ENDPOINT_URL", default=None)
 R2_PUBLIC_DOMAIN = env("R2_PUBLIC_DOMAIN", default=None)
 SUPABASE_PROJECT_REF = env("SUPABASE_PROJECT_REF", default=None)
 
+def missing_required_settings(values: dict) -> list[str]:
+    """Return keys whose values are empty. Used for S3/R2 fail-fast at startup."""
+    return [key for key, value in values.items() if not value]
+
+
+def require_configured_settings(values: dict, label: str) -> None:
+    missing = missing_required_settings(values)
+    if missing:
+        raise ImproperlyConfigured(f"Missing required {label} settings: {', '.join(missing)}")
+
+
 if USE_S3:
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID", default=None)
     AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY", default=None)
     AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default=None)
 
-    missing = [
-        k
-        for k, v in {
+    require_configured_settings(
+        {
             "AWS_ACCESS_KEY_ID": AWS_ACCESS_KEY_ID,
             "AWS_SECRET_ACCESS_KEY": AWS_SECRET_ACCESS_KEY,
             "AWS_STORAGE_BUCKET_NAME": AWS_STORAGE_BUCKET_NAME,
             "SUPABASE_PROJECT_REF": SUPABASE_PROJECT_REF,
-        }.items()
-        if not v
-    ]
-    if missing:
-        raise ImproperlyConfigured(f"Missing required S3 settings: {', '.join(missing)}")
+        },
+        "S3",
+    )
+    require_configured_settings(
+        {
+            "R2_ACCESS_KEY_ID": R2_ACCESS_KEY_ID,
+            "R2_SECRET_ACCESS_KEY": R2_SECRET_ACCESS_KEY,
+            "R2_BUCKET_NAME": R2_BUCKET_NAME,
+            "R2_ENDPOINT_URL": R2_ENDPOINT_URL,
+            "R2_PUBLIC_DOMAIN": R2_PUBLIC_DOMAIN,
+        },
+        "R2",
+    )
 
     AWS_S3_ENDPOINT_URL = f"https://{SUPABASE_PROJECT_REF}.supabase.co/storage/v1/s3"
     # Public URL for use in templates (Supabase public object URL)
