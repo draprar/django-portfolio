@@ -127,6 +127,21 @@ class TestGalleryViews:
         assert len(response.context["object_list"]) == 0
         assert list(response.context["instagram_posts"]) == []
 
+    @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_gallery_api_list_includes_category_without_n_plus_one(self, client, django_assert_num_queries):
+        category = Category.objects.create(title="Nature")
+        Gallery.objects.create(category=category, image="images/a.jpg")
+        Gallery.objects.create(category=category, image="images/b.jpg")
+
+        # COUNT + SELECT with select_related("category"); extra category hits would fail this.
+        with django_assert_num_queries(2):
+            response = client.get(reverse("gallery:api-gallery"))
+
+        assert response.status_code == 200
+        payload = response.json()
+        assert payload["count"] == 2
+        assert {item["category"]["title"] for item in payload["results"]} == {"Nature"}
+
 
 @pytest.mark.django_db
 @override_settings(SECURE_SSL_REDIRECT=False)

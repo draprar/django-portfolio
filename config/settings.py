@@ -302,12 +302,12 @@ R2_SECRET_ACCESS_KEY = env("R2_SECRET_ACCESS_KEY", default=None)
 R2_BUCKET_NAME = env("R2_BUCKET_NAME", default=None)
 R2_ENDPOINT_URL = env("R2_ENDPOINT_URL", default=None)
 R2_PUBLIC_DOMAIN = env("R2_PUBLIC_DOMAIN", default=None)
+SUPABASE_PROJECT_REF = env("SUPABASE_PROJECT_REF", default=None)
 
 if USE_S3:
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID", default=None)
     AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY", default=None)
     AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default=None)
-    SUPABASE_PROJECT_REF = env("SUPABASE_PROJECT_REF", default=None)
 
     missing = [
         k
@@ -383,7 +383,7 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
 EMAIL_TIMEOUT = 10
 
 # Logins
-LOGIN_URL = f"/{env('DJANGO_ADMIN_URL', default='admin')}/login/"
+LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "main"
 
@@ -394,6 +394,7 @@ CSRF_COOKIE_SAMESITE = "Lax"
 # Report-only in dev so we can test without breaking pages;
 # in production the policy is enforced (blocks violations).
 _r2_media_src = f" https://{R2_PUBLIC_DOMAIN}" if R2_PUBLIC_DOMAIN else ""
+_supabase_media_src = f" https://{SUPABASE_PROJECT_REF}.supabase.co" if SUPABASE_PROJECT_REF else ""
 
 SECURE_CSP_REPORT_ONLY = DEBUG
 SECURE_CSP = {
@@ -416,11 +417,7 @@ SECURE_CSP = {
         "'unsafe-inline'"
     ),
     "img-src": "'self' data: https:",
-    "media-src": (
-        "'self' "
-        "https://fovmqjulcvslfnjnbjoj.supabase.co"
-        f"{_r2_media_src}"
-    ),
+    "media-src": f"'self'{_supabase_media_src}{_r2_media_src}",
     "font-src": "'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
     "connect-src": "'self' https://cdn.jsdelivr.net https://unpkg.com",
     "frame-src": "'self' https://www.youtube.com https://www.instagram.com",

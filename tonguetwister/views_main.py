@@ -117,11 +117,10 @@ def user_content(request):
     profile = request.user.profile
 
     if request.method == "POST":
-        if "action" in request.POST and request.POST["action"] == "delete-avatar":
+        if request.POST.get("action") == "delete-avatar":
             if profile.avatar:
                 profile.avatar.delete(save=True)
-            else:
-                return redirect("user_content")
+            return redirect("user_content")
 
         form = AvatarUploadForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():

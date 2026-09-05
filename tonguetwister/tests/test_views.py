@@ -2,6 +2,7 @@ import pytest
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.messages import get_messages
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.http import JsonResponse
 from django.urls import reverse
 from django.utils.encoding import force_bytes
@@ -311,6 +312,28 @@ class TestUserContent:
         assert "articulators" in response.context
         assert "exercises" in response.context
         assert "twisters" in response.context
+
+    def test_user_content_unauthenticated_redirects_to_app_login(self, client):
+        response = client.get(reverse("user_content"))
+        assert response.status_code == 302
+        assert response.url.startswith(reverse("login"))
+        assert "/admin/" not in response.url
+
+    def test_delete_avatar_redirects_without_requiring_a_new_file(self, client, regular_user_and_profile):
+        user, profile = regular_user_and_profile
+        profile.avatar.save(
+            "old.png",
+            SimpleUploadedFile("old.png", b"\x89PNG\r\n\x1a\n", content_type="image/png"),
+            save=True,
+        )
+        client.login(username="user", password="userpassword")
+
+        response = client.post(reverse("user_content"), {"action": "delete-avatar"})
+
+        assert response.status_code == 302
+        assert response.url == reverse("user_content")
+        profile.refresh_from_db()
+        assert not profile.avatar
 
 
 @pytest.mark.parametrize(

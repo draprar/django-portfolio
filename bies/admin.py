@@ -34,6 +34,9 @@ class BostwoAdmin(admin.ModelAdmin):
             )
         return "—"
 
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related("swieta")
+
     @admin.display(description="Linked festivals")
     def lista_swiat(self, obj):
         return ", ".join(s.tytul_pl for s in obj.swieta.all()) or "—"
