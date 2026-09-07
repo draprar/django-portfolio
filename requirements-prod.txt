@@ -68,7 +68,6 @@ murmurhash==1.0.12
 numpy==2.3.2
 openpyxl==3.1.5
 packaging==24.2
-pl_core_news_md @ https://github.com/explosion/spacy-models/releases/download/pl_core_news_md-3.8.0/pl_core_news_md-3.8.0-py3-none-any.whl#sha256=4f433a556880c0b7ef01970e7c612c0e30103b893e6d26ed54672d8e056ad9b1
 pl_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/pl_core_news_sm-3.8.0/pl_core_news_sm-3.8.0-py3-none-any.whl#sha256=9b536db854b0cdb9132a74f68b392b8112ab6030f971bb03282462362a940dbb
 platformdirs==4.3.7
 preshed==3.0.9

@@ -82,9 +82,10 @@ ruff check .
 
 | File | Purpose |
 |------|---------|
-| `requirements.txt` | → Production runtime (→ requirements-prod.txt) |
-| `requirements-dev.txt` | Development: prod + pytest, mypy, ruff, pip-audit |
-| `requirements-prod.lock.txt` | Pinned snapshot for local installs; CI and Render use `requirements-dev.txt` / `requirements-prod.txt` |
+| `requirements-prod.txt` | Production runtime (Django, DRF, spaCy `pl_core_news_sm`, …) |
+| `requirements.txt` | Alias: `-r requirements-prod.txt` |
+| `requirements-dev.txt` | Prod + pytest, mypy, ruff, pip-audit |
+| `requirements-prod.lock.txt` | Pinned snapshot for reproducible local installs |
 
 **CI/CD pipeline** (GitHub Actions):
 - Django checks + migrations drift detection
@@ -93,7 +94,9 @@ ruff check .
 
 ## Environment setup
 
-For local development, `.env.example` contains sensible defaults. Optional features:
+For local development, `.env.example` contains sensible defaults. Leave `DATABASE_URL` empty to use SQLite; settings already read it when set.
+
+Optional features:
 
 **S3 / Supabase storage** (and R2 for `bies` media). When `USE_S3=True`, missing Supabase or R2 keys fail startup:
 ```

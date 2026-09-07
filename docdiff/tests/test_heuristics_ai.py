@@ -1,3 +1,5 @@
+import builtins
+import logging
 import types
 from unittest.mock import MagicMock
 
@@ -26,6 +28,54 @@ def mock_nlp(monkeypatch):
 # ================================================================
 # extract_labels_spacy
 # ================================================================
+
+
+def test_get_numpy_logs_warning_when_import_fails(monkeypatch, caplog):
+    ai._NP = None
+    real_import = builtins.__import__
+
+    def fake_import(name, *args, **kwargs):
+        if name == "numpy" or name.startswith("numpy."):
+            raise ImportError("numpy missing")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", fake_import)
+    with caplog.at_level(logging.WARNING, logger="docdiff.heuristics_ai"):
+        assert ai.get_numpy() is None
+    assert "NumPy failed to load" in caplog.text
+    ai._NP = None
+
+
+def test_get_kmeans_logs_warning_when_import_fails(monkeypatch, caplog):
+    ai._KMEANS = None
+    real_import = builtins.__import__
+
+    def fake_import(name, *args, **kwargs):
+        if name == "sklearn" or name.startswith("sklearn."):
+            raise ImportError("sklearn missing")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", fake_import)
+    with caplog.at_level(logging.WARNING, logger="docdiff.heuristics_ai"):
+        assert ai.get_kmeans() is None
+    assert "scikit-learn failed to load" in caplog.text
+    ai._KMEANS = None
+
+
+def test_get_nlp_logs_warning_when_model_missing(monkeypatch, caplog):
+    ai._NLP = None
+    real_import = builtins.__import__
+
+    def fake_import(name, *args, **kwargs):
+        if name == "spacy" or name.startswith("spacy."):
+            raise OSError("spaCy model missing")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", fake_import)
+    with caplog.at_level(logging.WARNING, logger="docdiff.heuristics_ai"):
+        assert ai.get_nlp() is None
+    assert "spaCy model failed to load" in caplog.text
+    ai._NLP = None
 
 
 def test_extract_labels_with_entities(monkeypatch):

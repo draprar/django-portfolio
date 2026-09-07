@@ -9,9 +9,12 @@ Block analysis using spaCy (pl_core_news_sm):
  - generates a summary of changes (AI summary)
 """
 
+import logging
 import re
 from difflib import SequenceMatcher
 from typing import Any, Dict, List
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------
 # spaCy loader (singleton)
@@ -33,7 +36,7 @@ def get_numpy():
 
             _NP = np
         except Exception as e:
-            print(f"[WARN] NumPy failed to load: {e}")
+            logger.warning("NumPy failed to load: %s", e)
             _NP = False
     return _NP if _NP is not False else None
 
@@ -46,7 +49,7 @@ def get_kmeans():
 
             _KMEANS = KMeans
         except Exception as e:
-            print(f"[WARN] scikit-learn failed to load: {e}")
+            logger.warning("scikit-learn failed to load: %s", e)
             _KMEANS = False
     return _KMEANS if _KMEANS is not False else None
 
@@ -59,7 +62,7 @@ def get_nlp():
 
             _NLP = spacy.load("pl_core_news_sm")
         except Exception as e:
-            print(f"[WARN] spaCy model failed to load: {e}")
+            logger.warning("spaCy model failed to load: %s", e)
             _NLP = None
     return _NLP
 
