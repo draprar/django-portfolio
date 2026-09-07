@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Contact
+from .models import CONTACT_MESSAGE_MAX_LENGTH, Contact
 
 
 class ContactForm(forms.ModelForm):
@@ -26,6 +26,7 @@ class ContactForm(forms.ModelForm):
             "message": forms.Textarea(attrs={
                 "class": "form-control",
                 "rows": 5,
+                "maxlength": str(CONTACT_MESSAGE_MAX_LENGTH),
                 "placeholder": "",
                 "data-en": "Message",
                 "data-pl": "Wiadomość",

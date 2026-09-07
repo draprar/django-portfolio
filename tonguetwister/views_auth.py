@@ -5,9 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.tokens import default_token_generator
-from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils.encoding import force_bytes, force_str
@@ -18,7 +17,7 @@ from django_ratelimit.decorators import ratelimit
 
 from core.email import send_brevo_email
 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, StrongSetPasswordForm
 from .services import LOGIN_FAILURE_MESSAGE, find_unique_user_by_email, is_email_confirmed
 from .tokens import account_activation_token
 
@@ -120,6 +119,7 @@ def register_view(request):
     return render(request, "tonguetwister/registration/register.html", {"form": form})
 
 
+@ratelimit(key="ip", rate="5/10m", method="GET", block=True)
 def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -195,6 +195,8 @@ def password_reset_view(request):
 
 
 @csrf_protect
+@ratelimit(key="ip", rate="5/10m", method="GET", block=True)
+@ratelimit(key="ip", rate="5/10m", method="POST", block=True)
 def password_reset_confirm_view(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -204,29 +206,19 @@ def password_reset_confirm_view(request, uidb64, token):
 
     if user is not None and default_token_generator.check_token(user, token):
         if request.method == "POST":
-            new_password1 = request.POST.get("new_password1") or ""
-            new_password2 = request.POST.get("new_password2") or ""
-            if not new_password1 or not new_password2:
-                messages.error(request, "Wprowadź oba pola hasła.")
-                return render(request, "tonguetwister/registration/password_reset_confirm.html")
-
-            if new_password1 == new_password2:
-                try:
-                    validate_password(new_password1, user=user)
-                except ValidationError as e:
-                    for msg in e.messages:
-                        messages.error(request, msg)
-                    return render(request, "tonguetwister/registration/password_reset_confirm.html")
-
-                user.set_password(new_password1)
-                user.save()
+            form = StrongSetPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
                 update_session_auth_hash(request, user)
                 messages.success(request, "Twoje hasło zostało zmienione.")
                 return redirect("password_reset_complete")
+            for error_list in form.errors.values():
+                for msg in error_list:
+                    messages.error(request, msg)
+            return render(request, "tonguetwister/registration/password_reset_confirm.html", {"form": form})
 
-            messages.error(request, "Hasła nie są identyczne.")
-
-        return render(request, "tonguetwister/registration/password_reset_confirm.html")
+        form = StrongSetPasswordForm(user)
+        return render(request, "tonguetwister/registration/password_reset_confirm.html", {"form": form})
 
     messages.error(request, "Link resetowania hasła jest nieprawidłowy.")
     return redirect("password_reset")

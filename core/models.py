@@ -3,6 +3,8 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+CONTACT_MESSAGE_MAX_LENGTH = 5000
+
 
 def validate_file_size(file):
     max_mb = 5
@@ -43,7 +45,7 @@ class Contact(models.Model):
 
     name = models.CharField(max_length=255)
     email = models.EmailField()
-    message = models.TextField()
+    message = models.TextField(max_length=CONTACT_MESSAGE_MAX_LENGTH)
     submitted_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:

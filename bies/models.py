@@ -148,8 +148,21 @@ class Swieto(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.tytul_pl)
+            self.slug = self._unique_slug()
         super().save(*args, **kwargs)
+
+    def _unique_slug(self):
+        base = (slugify(self.tytul_pl) or "swieto")[:80]
+        slug = base
+        suffix = 2
+        qs = Swieto.objects.all()
+        if self.pk:
+            qs = qs.exclude(pk=self.pk)
+        while qs.filter(slug=slug).exists():
+            suffix_str = f"-{suffix}"
+            slug = f"{base[: 80 - len(suffix_str)]}{suffix_str}"
+            suffix += 1
+        return slug
 
     # --- language getters ---
     def get_tytul(self, lang="pl"):

@@ -19,6 +19,7 @@ from .models import (
     UserProfileExercise,
     UserProfileTwister,
 )
+from .services import add_user_collection_item, pick_random_row
 from .view_helpers import (
     build_exercises_pdf_response,
     build_user_content_context,
@@ -45,7 +46,7 @@ def main(request):
             "exercises": Exercise.objects.all()[:1],
             "trivia": Trivia.objects.all()[:0],
             "funfacts": Funfact.objects.all()[:0],
-            "old_polish_texts": OldPolish.objects.order_by("?").first(),
+            "old_polish_texts": pick_random_row(OldPolish.objects.all()),
         }
 
         if request.user.is_authenticated:
@@ -141,12 +142,16 @@ def user_content(request):
 @csrf_protect
 @require_http_methods(["POST"])
 def add_articulator(request, articulator_id):
-    user = request.user
     articulator = get_object_or_404(Articulator, id=articulator_id)
-    if UserProfileArticulator.objects.filter(user=user, articulator=articulator).exists():
-        return JsonResponse({"status": "Duplicate articulator"})
-    user_articulator = UserProfileArticulator.objects.create(user=user, articulator=articulator)
-    return JsonResponse({"status": "Articulator added", "userArticulatorId": user_articulator.id})
+    return add_user_collection_item(
+        model=UserProfileArticulator,
+        user=request.user,
+        related=articulator,
+        related_field="articulator",
+        duplicate_status="Duplicate articulator",
+        added_status="Articulator added",
+        id_key="userArticulatorId",
+    )
 
 
 @login_required
@@ -163,12 +168,16 @@ def delete_articulator(request, articulator_id):
 @csrf_protect
 @require_http_methods(["POST"])
 def add_exercise(request, exercise_id):
-    user = request.user
     exercise = get_object_or_404(Exercise, id=exercise_id)
-    if UserProfileExercise.objects.filter(user=user, exercise=exercise).exists():
-        return JsonResponse({"status": "Duplicate exercise"})
-    user_exercise = UserProfileExercise.objects.create(user=user, exercise=exercise)
-    return JsonResponse({"status": "Exercise added", "userExerciseId": user_exercise.id})
+    return add_user_collection_item(
+        model=UserProfileExercise,
+        user=request.user,
+        related=exercise,
+        related_field="exercise",
+        duplicate_status="Duplicate exercise",
+        added_status="Exercise added",
+        id_key="userExerciseId",
+    )
 
 
 @login_required
@@ -184,12 +193,16 @@ def delete_exercise(request, exercise_id):
 @csrf_protect
 @require_http_methods(["POST"])
 def add_twister(request, twister_id):
-    user = request.user
     twister = get_object_or_404(Twister, id=twister_id)
-    if UserProfileTwister.objects.filter(user=user, twister=twister).exists():
-        return JsonResponse({"status": "Duplicate twister"})
-    user_twister = UserProfileTwister.objects.create(user=user, twister=twister)
-    return JsonResponse({"status": "Twister added", "userTwisterId": user_twister.id})
+    return add_user_collection_item(
+        model=UserProfileTwister,
+        user=request.user,
+        related=twister,
+        related_field="twister",
+        duplicate_status="Duplicate twister",
+        added_status="Twister added",
+        id_key="userTwisterId",
+    )
 
 
 @login_required

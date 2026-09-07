@@ -71,6 +71,29 @@ def test_contact_form_valid_calls_save(monkeypatch):
     assert isinstance(result, models.Contact)
 
 
+def test_contact_form_rejects_message_over_max_length():
+    from core.forms import ContactForm
+    from core.models import CONTACT_MESSAGE_MAX_LENGTH
+
+    data = {
+        "name": "Tester",
+        "email": "tester@example.com",
+        "message": "x" * (CONTACT_MESSAGE_MAX_LENGTH + 1),
+        "website": "",
+    }
+    form = ContactForm(data=data)
+    assert not form.is_valid()
+    assert "message" in form.errors
+
+
+def test_contact_message_widget_has_maxlength():
+    from core.forms import ContactForm
+    from core.models import CONTACT_MESSAGE_MAX_LENGTH
+
+    form = ContactForm()
+    assert form.fields["message"].widget.attrs["maxlength"] == str(CONTACT_MESSAGE_MAX_LENGTH)
+
+
 # VIEWS
 def test_health_check_view_returns_ok():
     from core.views import health_check

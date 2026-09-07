@@ -1,9 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 
 from .models import (
-    Articulator,
-    Exercise,
-    Twister,
     UserProfileArticulator,
     UserProfileExercise,
     UserProfileTwister,
@@ -50,28 +47,18 @@ def simple_load_more_generic(request, model, limit=1, logger=None):
 
 
 def build_user_content_context(user, form):
-    user_articulators = UserProfileArticulator.objects.filter(user=user).select_related("articulator")
-    user_articulators_texts = list(
-        UserProfileArticulator.objects.filter(user=user).values_list("articulator__text", flat=True)
-    )
-
-    user_exercises = UserProfileExercise.objects.filter(user=user).select_related("exercise")
-    user_exercises_texts = list(UserProfileExercise.objects.filter(user=user).values_list("exercise__text", flat=True))
-
-    user_twisters = UserProfileTwister.objects.filter(user=user).select_related("twister")
-    user_twisters_texts = list(UserProfileTwister.objects.filter(user=user).values_list("twister__text", flat=True))
+    user_articulators = list(UserProfileArticulator.objects.filter(user=user).select_related("articulator"))
+    user_exercises = list(UserProfileExercise.objects.filter(user=user).select_related("exercise"))
+    user_twisters = list(UserProfileTwister.objects.filter(user=user).select_related("twister"))
 
     return {
         "form": form,
-        "articulators": Articulator.objects.all(),
         "user_articulators": user_articulators,
-        "user_articulators_texts": user_articulators_texts,
-        "exercises": Exercise.objects.all(),
+        "user_articulators_texts": [item.articulator.text for item in user_articulators],
         "user_exercises": user_exercises,
-        "user_exercises_texts": user_exercises_texts,
-        "twisters": Twister.objects.all(),
+        "user_exercises_texts": [item.exercise.text for item in user_exercises],
         "user_twisters": user_twisters,
-        "user_twisters_texts": user_twisters_texts,
+        "user_twisters_texts": [item.twister.text for item in user_twisters],
     }
 
 

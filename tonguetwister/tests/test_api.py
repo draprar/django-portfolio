@@ -265,6 +265,13 @@ def test_token_refresh_success(api_client):
     assert response.status_code == 200
     assert "access" in response.data
 
+    reused = api_client.post(
+        "/tonguetwister/api/token/refresh/",
+        data={"refresh": obtain.data["refresh"]},
+        REMOTE_ADDR="203.0.113.80",
+    )
+    assert reused.status_code == 401
+
 
 @pytest.mark.django_db
 def test_token_refresh_rejects_invalid_token(api_client):

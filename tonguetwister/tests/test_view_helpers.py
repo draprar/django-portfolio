@@ -32,9 +32,9 @@ def test_build_user_content_context_returns_expected_lists():
     assert list(context["user_articulators_texts"]) == ["arta"]
     assert list(context["user_exercises_texts"]) == ["exa"]
     assert list(context["user_twisters_texts"]) == ["twa"]
-    assert context["articulators"].count() == 1
-    assert context["exercises"].count() == 1
-    assert context["twisters"].count() == 1
+    assert "articulators" not in context
+    assert "exercises" not in context
+    assert "twisters" not in context
 
 
 @pytest.mark.django_db

@@ -24,6 +24,35 @@ def test_custom_creation_form_valid_data():
 
 
 @pytest.mark.django_db
+def test_custom_creation_form_hides_username_and_email_enumeration():
+    from tonguetwister.services import REGISTER_FAILURE_MESSAGE
+
+    Group.objects.create(name="Regular Users")
+    User.objects.create_user(username="taken", email="taken@example.com", password="x")
+    username_form = CustomUserCreationForm(
+        data={
+            "username": "taken",
+            "email": "fresh@example.com",
+            "password1": "StrongPassword!123",
+            "password2": "StrongPassword!123",
+        }
+    )
+    email_form = CustomUserCreationForm(
+        data={
+            "username": "freshuser",
+            "email": "taken@example.com",
+            "password1": "StrongPassword!123",
+            "password2": "StrongPassword!123",
+        }
+    )
+    assert not username_form.is_valid()
+    assert not email_form.is_valid()
+    assert username_form.errors["username"][0] == REGISTER_FAILURE_MESSAGE
+    assert email_form.errors["email"][0] == REGISTER_FAILURE_MESSAGE
+    assert username_form.errors["username"][0] == email_form.errors["email"][0]
+
+
+@pytest.mark.django_db
 @pytest.mark.parametrize(
     "data, error_field",
     [
@@ -112,6 +141,7 @@ def test_custom_creation_form_rejects_email_case_insensitive_duplicate():
         ),
         (SimpleUploadedFile("avatar.txt", b"file_content", content_type="text/plain"), False, "avatar"),
         (SimpleUploadedFile("avatar.png", b"x" * 2 * 1024 * 1024 + b"x", content_type="image/png"), False, "avatar"),
+        (SimpleUploadedFile("avatar.png", b"not-an-image", content_type="image/png"), False, "avatar"),
         (None, False, "avatar"),
     ],
 )
