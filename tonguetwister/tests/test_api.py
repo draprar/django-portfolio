@@ -1,5 +1,6 @@
 import pytest
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -241,6 +242,40 @@ def test_token_obtain_fail(api_client):
         data={"username": "wrong", "password": "wrong"},
     )
     assert response.status_code == 401
+
+
+@pytest.mark.django_db
+def test_token_refresh_success(api_client):
+    cache.clear()
+    user = User.objects.create_user(username="refresh-user", password="pass123")
+    user.profile.email_confirmed = True
+    user.profile.save(update_fields=["email_confirmed"])
+    obtain = api_client.post(
+        "/tonguetwister/api/token/",
+        data={"username": "refresh-user", "password": "pass123"},
+        REMOTE_ADDR="203.0.113.80",
+    )
+    assert obtain.status_code == 200
+
+    response = api_client.post(
+        "/tonguetwister/api/token/refresh/",
+        data={"refresh": obtain.data["refresh"]},
+        REMOTE_ADDR="203.0.113.80",
+    )
+    assert response.status_code == 200
+    assert "access" in response.data
+
+
+@pytest.mark.django_db
+def test_token_refresh_rejects_invalid_token(api_client):
+    cache.clear()
+    response = api_client.post(
+        "/tonguetwister/api/token/refresh/",
+        data={"refresh": "not-a-valid-token"},
+        REMOTE_ADDR="203.0.113.81",
+    )
+    assert response.status_code == 401
+    assert "access" not in response.data
 
 
 def test_token_views_use_auth_token_throttle():

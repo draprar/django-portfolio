@@ -59,6 +59,35 @@ class TestDocDiffView:
         html = response.content.decode().lower()
         assert "unsupported_type" in html
 
+    def test_file_too_large_error_code(self, client, monkeypatch):
+        monkeypatch.setattr("docdiff.views.MAX_FILE_SIZE_MB", 0)
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"Hello world")
+        new_file = SimpleUploadedFile("new.txt", b"Hello brave new world")
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "file_too_large" in response.content.decode().lower()
+
+    def test_format_mismatch_error_code(self, client):
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"Hello world", content_type="text/plain")
+        new_file = SimpleUploadedFile(
+            "new.docx",
+            b"PK\x03\x04" + b"x" * 32,
+            content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        )
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "format_mismatch" in response.content.decode().lower()
+
+    def test_empty_documents_error_code(self, client):
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"   \n\n")
+        new_file = SimpleUploadedFile("new.txt", b"")
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "empty_documents" in response.content.decode().lower()
+
     def test_spoofed_docx_signature_rejected(self, client):
         url = reverse("docdiff:compare")
         fake_docx_1 = SimpleUploadedFile(

@@ -52,8 +52,10 @@ Thumbs.db
 *.iml
 # VS Code
 .vscode/
-# Cursor — local only; committed copy lives in .github/.cursor/rules/
-/.cursor/
+# Cursor — keep committed agent rules; ignore the rest of .cursor/
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 
 # === RENDER / DEPLOY ===
 # Node stuff if you ever add frontend tooling

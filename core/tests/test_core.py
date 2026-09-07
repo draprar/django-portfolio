@@ -4,6 +4,7 @@ from unittest.mock import Mock
 import pytest
 from django.core.exceptions import ValidationError
 from django.http import HttpRequest
+from django.test import override_settings
 
 
 # MODELS / VALIDATORS
@@ -231,6 +232,77 @@ def test_contactview_get_returns_405(client):
 
     resp = client.get(reverse("contact"))
     assert resp.status_code == 405
+
+
+CONTACT_POST = {
+    "name": "Walery",
+    "email": "walery@example.com",
+    "message": "Hello from the contact form.",
+    "website": "",
+}
+
+
+@pytest.mark.django_db
+def test_contact_xhr_post_requires_csrf(monkeypatch):
+    from django.test import Client
+    from django.urls import reverse
+
+    monkeypatch.setattr("core.views.send_brevo_email", lambda *a, **k: True)
+    client = Client(enforce_csrf_checks=True)
+    resp = client.post(
+        reverse("contact"),
+        CONTACT_POST,
+        HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+    )
+    assert resp.status_code == 403
+
+
+@pytest.mark.django_db
+def test_contact_xhr_post_with_csrf_succeeds(monkeypatch):
+    from django.test import Client
+    from django.urls import reverse
+
+    from core.models import Contact
+
+    monkeypatch.setattr("core.views.send_brevo_email", lambda *a, **k: True)
+    client = Client(enforce_csrf_checks=True)
+    client.get(reverse("home"))
+    csrf = client.cookies["csrftoken"].value
+    resp = client.post(
+        reverse("contact"),
+        {**CONTACT_POST, "csrfmiddlewaretoken": csrf},
+        HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+    )
+    assert resp.status_code == 200
+    body = json.loads(resp.content)
+    assert body["success"] is True
+    assert body["message_key"] == "msg-success"
+    assert Contact.objects.filter(email="walery@example.com").exists()
+
+
+@pytest.mark.django_db
+@override_settings(RATELIMIT_ENABLE=True)
+def test_contact_xhr_rate_limited_after_five_posts(monkeypatch):
+    from django.core.cache import cache
+    from django.test import Client
+    from django.urls import reverse
+
+    monkeypatch.setattr("core.views.send_brevo_email", lambda *a, **k: True)
+    cache.clear()
+    client = Client(enforce_csrf_checks=True)
+    url = reverse("contact")
+    post_kwargs = {"REMOTE_ADDR": "203.0.113.50", "HTTP_X_REQUESTED_WITH": "XMLHttpRequest"}
+
+    for _ in range(5):
+        client.get(reverse("home"))
+        csrf = client.cookies["csrftoken"].value
+        resp = client.post(url, {**CONTACT_POST, "csrfmiddlewaretoken": csrf}, **post_kwargs)
+        assert resp.status_code == 200
+
+    client.get(reverse("home"))
+    csrf = client.cookies["csrftoken"].value
+    resp = client.post(url, {**CONTACT_POST, "csrfmiddlewaretoken": csrf}, **post_kwargs)
+    assert resp.status_code == 403
 
 
 # EMAIL
