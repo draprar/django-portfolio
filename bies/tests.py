@@ -33,6 +33,12 @@ class SwietoModelTests(TestCase):
         s = make_swieto(slug="moj-slug", tytul_pl="Coś")
         self.assertEqual(s.slug, "moj-slug")
 
+    def test_slug_collision_gets_numeric_suffix(self):
+        first = Swieto.objects.create(tytul_pl="Jare Gody", tytul_en="One")
+        second = Swieto.objects.create(tytul_pl="Jare Gody", tytul_en="Two")
+        self.assertEqual(first.slug, "jare-gody")
+        self.assertEqual(second.slug, "jare-gody-2")
+
     def test_get_tytul_pl(self):
         self.assertEqual(make_swieto().get_tytul("pl"), "Testowe Święto")
 

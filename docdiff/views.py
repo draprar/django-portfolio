@@ -69,7 +69,7 @@ def _mime_allowed(upload, ext: str) -> bool:
     """Allow exact MIME, MIME with parameters and safe generic upload MIME."""
     content_type = getattr(upload, "content_type", None)
     if not content_type:
-        return True
+        return False
 
     normalized = content_type.split(";", 1)[0].strip().lower()
     expected = ALLOWED_MIME.get(ext, "")

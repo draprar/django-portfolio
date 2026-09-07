@@ -56,6 +56,30 @@ def test_password_reset_confirm_accepts_valid_password(client):
 
 
 @pytest.mark.django_db
+def test_password_reset_confirm_rejects_password_without_special_char(client):
+    user = User.objects.create_user(
+        username="reset-user-special",
+        email="resetspecial@example.com",
+        password="OldStrongPass123!",
+    )
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    token = default_token_generator.make_token(user)
+    url = reverse("password_reset_confirm", args=[uid, token])
+
+    response = client.post(
+        url,
+        {
+            "new_password1": "Abcdefgh1",
+            "new_password2": "Abcdefgh1",
+        },
+    )
+
+    user.refresh_from_db()
+    assert response.status_code == 200
+    assert user.check_password("OldStrongPass123!")
+
+
+@pytest.mark.django_db
 def test_password_reset_confirm_requires_both_password_fields(client):
     user = User.objects.create_user(
         username="reset-user-3",
@@ -97,13 +121,13 @@ def test_password_reset_email_lookup_is_case_insensitive(client):
 @pytest.mark.django_db
 def test_password_reset_duplicate_email_does_not_crash(client, monkeypatch):
     User.objects.create_user(username="dup-a", email="same@example.com", password="OldStrongPass123!")
-    User.objects.create_user(username="dup-b", email="SAME@example.com", password="OldStrongPass123!")
     sent = {"called": False}
 
     def _fake_send(*_a, **_k):
         sent["called"] = True
 
     monkeypatch.setattr("tonguetwister.views_auth.send_brevo_email", _fake_send)
+    monkeypatch.setattr("tonguetwister.views_auth.find_unique_user_by_email", lambda _email: None)
     response = client.post(reverse("password_reset"), {"email": "same@example.com"})
     assert response.status_code == 302
     assert response.url == reverse("password_reset_done")

@@ -88,6 +88,14 @@ class TestDocDiffView:
         assert response.status_code == 200
         assert "empty_documents" in response.content.decode().lower()
 
+    def test_missing_content_type_is_rejected(self, client):
+        url = reverse("docdiff:compare")
+        old_file = SimpleUploadedFile("old.txt", b"Hello world", content_type="")
+        new_file = SimpleUploadedFile("new.txt", b"Hello brave new world", content_type="")
+        response = client.post(url, {"file_old": old_file, "file_new": new_file})
+        assert response.status_code == 200
+        assert "mime_invalid" in response.content.decode().lower()
+
     def test_spoofed_docx_signature_rejected(self, client):
         url = reverse("docdiff:compare")
         fake_docx_1 = SimpleUploadedFile(

@@ -1,5 +1,3 @@
-import random
-
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from drf_spectacular.utils import OpenApiParameter, extend_schema, inline_serializer
@@ -21,6 +19,7 @@ from .serializers import (
     TriviaSerializer,
     TwisterSerializer,
 )
+from .services import pick_random_row
 from .throttling import AuthTokenThrottle
 
 CACHE_TIMEOUT = 60 * 5  # 5 min
@@ -81,16 +80,14 @@ class OldPolishViewSet(_CachedSearchListMixin, viewsets.ReadOnlyModelViewSet):
         fact twice in a row for a given session.
         """
         queryset = self.filter_queryset(self.get_queryset())
-        total = queryset.count()
-        if total == 0:
+        last_id = request.session.get("last_old_polish_id")
+        if last_id is not None and queryset.count() > 1:
+            queryset = queryset.exclude(pk=last_id)
+
+        record = pick_random_row(queryset)
+        if record is None:
             return Response({"detail": "No results found"}, status=404)
 
-        last_id = request.session.get("last_old_polish_id")
-        if total > 1 and last_id is not None:
-            queryset = queryset.exclude(pk=last_id)
-            total -= 1
-
-        record = queryset[random.randint(0, total - 1)]
         request.session["last_old_polish_id"] = record.pk
 
         serializer = self.get_serializer(record)

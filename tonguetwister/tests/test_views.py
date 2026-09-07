@@ -309,9 +309,9 @@ class TestUserContent:
 
         assert response.status_code == 200
         assert "tonguetwister/users/user-content.html" in [t.name for t in response.templates]
-        assert "articulators" in response.context
-        assert "exercises" in response.context
-        assert "twisters" in response.context
+        assert "user_articulators" in response.context
+        assert "user_exercises" in response.context
+        assert "user_twisters" in response.context
 
     def test_user_content_unauthenticated_redirects_to_app_login(self, client):
         response = client.get(reverse("user_content"))
@@ -546,12 +546,12 @@ class TestAuthViews:
 
         response = client.post(
             reverse("password_reset_confirm", args=[uid, token]),
-            data={"new_password1": "newstrongpassword123", "new_password2": "newstrongpassword123"},
+            data={"new_password1": "NewStrongPass123!", "new_password2": "NewStrongPass123!"},
         )
 
         assert response.status_code == 302
         user.refresh_from_db()
-        assert user.check_password("newstrongpassword123")
+        assert user.check_password("NewStrongPass123!")
 
     def test_password_reset_confirm_mismatch(self, client, regular_user):
         # Test password reset confirmation with mismatching passwords shows correct response
