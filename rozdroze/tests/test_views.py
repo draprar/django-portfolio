@@ -17,5 +17,6 @@ def test_wybierz_renders_crossroads(client):
     assert "code-bg.gif" in content
     assert 'data-default-lang="pl"' in content
     assert 'class="lang-btn"' in content
-    assert 'class="enter-hint"' in content
+    assert 'panel-code' in content
+    assert 'class="cta-arrow"' in content
     assert "Komputerek" in content
