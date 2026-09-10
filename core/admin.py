@@ -9,6 +9,11 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ("title_en", "title_pl", "github_url", "live_url", "created_at", "admin_image_preview")
     search_fields = ("title_en", "title_pl")
     readonly_fields = ("admin_image_preview",)
+    fieldsets = (
+        (None, {"fields": ("title_en", "title_pl", "github_url", "live_url", "image", "admin_image_preview")}),
+        ("CV descriptions (/)", {"fields": ("desc_en", "desc_pl")}),
+        ("/code/ — short kodzillin' blurbs", {"fields": ("desc_code_en", "desc_code_pl")}),
+    )
 
     @admin.display(description="Preview")
     def admin_image_preview(self, obj):

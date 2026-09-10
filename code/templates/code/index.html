@@ -32,9 +32,9 @@
         <div class="underline" aria-hidden="true"></div>
         <div class="intro">
           <p class="intro-lead"
-             data-en="I'm a data engineer — after years of coding strictly in business, I sometimes deliver a magic tool or two."
-             data-pl="Jestem inżynierem danych, ale że długo kodziłem stricte w biznesie, to se czasem dostarczę jakieś magiczne narzędzie.">
-            I'm a data engineer — after years of coding strictly in business, I sometimes deliver a magic tool or two.
+             data-en="Day to day I'm a data engineer — but I spent a long time coding in business, so I sometimes deliver a magic tool or two."
+             data-pl="Na co dzień jestem inżynierem danych, no, ale długo kodziłem w biznesie, to se czasem dostarczę jakieś magiczne narzędzie.">
+            Day to day I'm a data engineer — but I spent a long time coding in business, so I sometimes deliver a magic tool or two.
           </p>
           <p class="intro-cta">
             <span data-en="Check the areas below — problem, need, or a cool idea? "
@@ -106,8 +106,8 @@
                   {% endif %}
                 </div>
               </div>
-              {% if project.desc_en or project.desc_pl %}
-              <p data-en="{{ project.desc_en }}" data-pl="{{ project.desc_pl }}">{{ project.desc_en }}</p>
+              {% if project.display_desc_en or project.display_desc_pl %}
+              <p data-en="{{ project.display_desc_en }}" data-pl="{{ project.display_desc_pl }}">{{ project.display_desc_en }}</p>
               {% endif %}
             </div>
           </li>
