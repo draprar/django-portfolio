@@ -78,7 +78,7 @@ def main() -> None:
     hist.append((f"{PROMPT} what?", GOLD))
     hist.append(("[", TEXT))
     frames.append(paint(hist, cursor=False))
-    for item in ('  "web",', '  "code",', '  "power BI",', '  "Machine Learning"'):
+    for item in ('  "web",', '  "code",', '  "power bi",', '  "machine learning"'):
         hist.append((item, GREEN))
         frames.extend([paint(hist, cursor=False)] * 4)
     hist.append(("]", TEXT))
