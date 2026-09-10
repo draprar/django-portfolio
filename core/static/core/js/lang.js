@@ -56,10 +56,15 @@
     try { lang = localStorage.getItem('site_lang'); } catch (e) { lang = null; }
 
     if (!lang) {
-      const nav = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || '';
-      if (nav && nav.toLowerCase().startsWith('pl')) lang = 'pl';
-      else if (nav && nav.toLowerCase().startsWith('en')) lang = 'en';
-      else lang = 'en';
+      const pageDefault = document.documentElement.getAttribute('data-default-lang');
+      if (pageDefault === 'pl' || pageDefault === 'en') {
+        lang = pageDefault;
+      } else {
+        const nav = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || '';
+        if (nav && nav.toLowerCase().startsWith('pl')) lang = 'pl';
+        else if (nav && nav.toLowerCase().startsWith('en')) lang = 'en';
+        else lang = 'en';
+      }
     }
 
     // apply immediately

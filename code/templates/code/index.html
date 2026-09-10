@@ -1,5 +1,5 @@
 {% load static %}
-<html lang="en">
+<html lang="pl" data-default-lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +21,10 @@
   <div class="stage">
     <main class="portal">
       <div class="portal-top">
+        <a href="/wybierz/" class="back">
+          <span aria-hidden="true">←</span>
+          <span data-en="Back" data-pl="Wróć">Wróć</span>
+        </a>
         <div class="lang-switcher" role="group" aria-label="Language">
           <button type="button" class="lang-btn" data-lang="en">EN</button>
           <button type="button" class="lang-btn" data-lang="pl">PL</button>
@@ -34,15 +38,15 @@
           <p class="intro-lead"
              data-en="Day to day I'm a data engineer — but I spent a long time coding in business, so I sometimes deliver a magic tool or two."
              data-pl="Na co dzień jestem inżynierem danych, no, ale długo kodziłem w biznesie, to se czasem dostarczę jakieś magiczne narzędzie.">
-            Day to day I'm a data engineer — but I spent a long time coding in business, so I sometimes deliver a magic tool or two.
+            Na co dzień jestem inżynierem danych, no, ale długo kodziłem w biznesie, to se czasem dostarczę jakieś magiczne narzędzie.
           </p>
           <p class="intro-cta">
             <span data-en="Check the areas below — problem, need, or a cool idea? "
                   data-pl="Obczaj obszary niżej, a jak masz problem, potrzebę albo sztos pomysł — ">
-              Check the areas below — problem, need, or a cool idea?
+              Obczaj obszary niżej, a jak masz problem, potrzebę albo sztos pomysł —
             </span><a class="intro-link" href="#contact"
                data-en="drop me a line"
-               data-pl="skrobnij">drop me a line</a><span class="intro-end" data-en="." data-pl="">.</span>
+               data-pl="skrobnij">skrobnij</a><span class="intro-end" data-en="." data-pl="">.</span>
           </p>
         </div>
       </header>
