@@ -17,6 +17,7 @@ urlpatterns = [
     path("docdiff/", include("docdiff.urls")),  # AI Document Diff Tool
     path("analytics/", include("analytics.urls")),  # analytics
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
+    path("code/", include(("code.urls", "code"), namespace="code")),
     # API
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
