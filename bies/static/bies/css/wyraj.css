@@ -479,6 +479,11 @@ a:hover { color: var(--gold); }
   color: var(--gold);
   border-color: var(--gold);
 }
+.footer .back-button {
+  display: inline-block;
+  margin: 0 auto 1.4rem;
+}
+
 .back-button {
   display: inline-block;
   margin-bottom: 1.4rem;

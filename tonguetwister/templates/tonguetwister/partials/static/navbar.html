@@ -2,10 +2,7 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="d-flex align-items-center gap-2">
-        <!-- LingwoŁamki icon — back to /tonguetwister/ -->
-        <a href="/tonguetwister/" class="navbar-tt-home" aria-label="LingwoŁamki">
-          <img src="{% static 'tonguetwister/assets/lingwolamek.png' %}" alt="LingwoŁamki" width="28" height="28" class="tt-logo">
-        </a>
+        <a href="/wybierz/" class="btn btn-outline-secondary btn-sm navbar-tt-back">&larr; Wróć</a>
     </div>
     <div class="ml-auto">
       {% if user.is_authenticated %}

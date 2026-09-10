@@ -362,14 +362,12 @@ textarea.portal-input {
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
     padding: 10px 22px;
     border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(196, 146, 42, 0.3);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .send-btn:hover,
 .send-btn:focus-visible {
     background: linear-gradient(45deg, #d4a535, #8b4513);
-    box-shadow: 0 6px 20px rgba(196, 146, 42, 0.5);
 }
 
 .send-btn:disabled {
