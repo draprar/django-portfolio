@@ -15,7 +15,8 @@ class CodeView(View):
     """
     Instagram-facing kodzillin' page at /code/.
 
-    Same Project rows and CV descriptions (`desc_en` / `desc_pl`) as `/`.
+    Shows all Project rows, prefers short `desc_code_*` blurbs;
+    falls back to CV descriptions (`desc_*`) if code blurbs are empty.
     """
 
     template_name = "code/index.html"

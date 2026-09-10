@@ -23,6 +23,8 @@ def test_code_page_renders_intro_and_project(client):
         title_pl="Przykladowe repo",
         desc_en="Long CV description from the recruiter landing.",
         desc_pl="Dlugi opis CV z landinga rekrutera.",
+        desc_code_en="Short kodzillin blurb for the IG page (EN).",
+        desc_code_pl="Krotki opis kodzillin dla strony IG (PL).",
         github_url="https://github.com/example/sample-repo",
         live_url="https://example.com",
     )
@@ -32,7 +34,7 @@ def test_code_page_renders_intro_and_project(client):
 
     assert response.status_code == 200
     assert "kodzillin'" in content
-    assert "Jestem inżynierem danych" in content
+    assert "Na co dzień jestem inżynierem danych" in content
     assert 'data-pl="Co tam?"' in content
     assert 'data-pl="Reposy"' in content
     assert 'data-pl="skrobnij"' in content
@@ -44,8 +46,9 @@ def test_code_page_renders_intro_and_project(client):
     assert reverse("contact") in content
     assert "Sample Repo" in content
     assert "Przykladowe repo" in content
-    assert "Long CV description from the recruiter landing." in content
-    assert "Dlugi opis CV z landinga rekrutera." in content
+    assert "Short kodzillin blurb for the IG page (EN)." in content
+    assert "Krotki opis kodzillin dla strony IG (PL)." in content
+    assert "Long CV description from the recruiter landing." not in content
     assert 'class="intro-link"' in content
     assert "https://github.com/example/sample-repo" in content
     assert "https://example.com" in content
@@ -73,12 +76,15 @@ def test_code_page_renders_project_thumb(client, settings, tmp_path):
 
 
 @pytest.mark.django_db
-def test_code_page_lists_projects_like_home(client):
+def test_code_page_falls_back_to_cv_desc(client):
+    """When desc_code_* is empty, /code/ should show desc_* (CV description)."""
     Project.objects.create(
         title_en="CV only",
         title_pl="Tylko CV",
         desc_en="Only on the recruiter landing.",
         desc_pl="Tylko na landingu rekrutera.",
+        desc_code_en="",
+        desc_code_pl="",
     )
 
     response = client.get(reverse("code:index"))
