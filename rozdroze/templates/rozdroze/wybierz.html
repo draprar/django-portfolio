@@ -1,5 +1,5 @@
 {% load static %}
-<html lang="pl">
+<html lang="pl" data-default-lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,7 @@
   <link rel="preload" as="image" href="{% static 'rozdroze/img/bazgrollin-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/wyraj-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/lingwolamek-bg.png' %}">
+  <link rel="preload" as="image" href="{% static 'rozdroze/img/code-bg.gif' %}">
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon" />
 </head>
 <body>
@@ -26,15 +27,22 @@
   <div class="stage">
     <main class="portal">
 
+      <div class="portal-top">
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="pl">PL</button>
+        </div>
+      </div>
+
       <header class="rozdroze-header">
-        <h1>Se wybierz:</h1>
+        <h1 data-en="Pick one:" data-pl="Se wybierz:">Se wybierz:</h1>
         <div class="underline" aria-hidden="true"></div>
       </header>
 
       <div class="split">
 
         <!-- ═══ bazgrollin' ═══ -->
-        <a href="/gallery/" class="panel panel-bazg" data-panel="bazg" aria-label="Wejdź do bazgrollin' — galerii">
+        <a href="/gallery/" class="panel panel-bazg" data-panel="bazg" aria-label="bazgrollin'">
           <div class="panel-bg">
           </div>
 
@@ -43,13 +51,16 @@
 
           <div class="panel-content">
             <h2 class="panel-title">bazgrollin'</h2>
-            <p class="panel-tag">Galerija</p>
-            <span class="panel-cta">Wejdź <i class="cta-arrow" aria-hidden="true">→</i></span>
+            <p class="panel-tag" data-en="Gallery" data-pl="Galerija">Galerija</p>
+            <span class="panel-cta">
+              <span data-en="Enter" data-pl="Wejdź">Wejdź</span>
+              <i class="cta-arrow" aria-hidden="true">→</i>
+            </span>
           </div>
         </a>
 
         <!-- ═══ Wyraj ═══ -->
-        <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" aria-label="Wejdź do Wyraju — Słowiańskiego Koła Roku">
+        <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" aria-label="Wyraj">
           <div class="panel-bg"></div>
 
           <div class="panel-veil"></div>
@@ -57,13 +68,16 @@
 
           <div class="panel-content">
             <h2 class="panel-title">Wyraj</h2>
-            <p class="panel-tag">Słowiańskie Koło Roku</p>
-            <span class="panel-cta">Wejdź <i class="cta-arrow" aria-hidden="true">→</i></span>
+            <p class="panel-tag" data-en="Slavic Wheel of the Year" data-pl="Słowiańskie Koło Roku">Słowiańskie Koło Roku</p>
+            <span class="panel-cta">
+              <span data-en="Enter" data-pl="Wejdź">Wejdź</span>
+              <i class="cta-arrow" aria-hidden="true">→</i>
+            </span>
           </div>
         </a>
 
         <!-- ═══ LingwoŁamek ═══ -->
-        <a href="/tonguetwister/" class="panel panel-lingwo" data-panel="lingwo" aria-label="Wejdź do LingwoŁamków — appki do treningu wymowy">
+        <a href="/tonguetwister/" class="panel panel-lingwo" data-panel="lingwo" aria-label="LingwoŁamki">
           <div class="panel-bg"></div>
 
           <div class="panel-veil"></div>
@@ -71,8 +85,28 @@
 
           <div class="panel-content">
             <h2 class="panel-title">LingwoŁamki</h2>
-            <p class="panel-tag">Ćwiczenia wymowy</p>
-            <span class="panel-cta">Wejdź <i class="cta-arrow" aria-hidden="true">→</i></span>
+            <p class="panel-tag" data-en="Pronunciation drills" data-pl="Ćwiczenia wymowy">Ćwiczenia wymowy</p>
+            <span class="panel-cta">
+              <span data-en="Enter" data-pl="Wejdź">Wejdź</span>
+              <i class="cta-arrow" aria-hidden="true">→</i>
+            </span>
+          </div>
+        </a>
+
+        <!-- ═══ kodzillin' ═══ -->
+        <a href="/code/" class="panel panel-code" data-panel="code" aria-label="kodzillin'">
+          <div class="panel-bg"></div>
+
+          <div class="panel-veil"></div>
+          <div class="panel-sheen"></div>
+
+          <div class="panel-content">
+            <h2 class="panel-title">kodzillin'</h2>
+            <p class="panel-tag" data-en="The computer thing" data-pl="Komputerek">Komputerek</p>
+            <span class="panel-cta panel-cta-enter">
+              <kbd class="enter-hint" aria-hidden="true">↵</kbd>
+              <span data-en="Enter" data-pl="Wejdź">Wejdź</span>
+            </span>
           </div>
         </a>
 
@@ -80,6 +114,7 @@
     </main>
   </div>
 
+  <script src="{% static 'core/js/lang.js' %}"></script>
   <script src="{% static 'rozdroze/js/wybierz.js' %}"></script>
 </body>
 </html>

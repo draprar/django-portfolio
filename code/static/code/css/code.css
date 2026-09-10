@@ -8,14 +8,22 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+body {
     margin: 0;
     padding: 0;
     min-height: 100%;
     background: var(--ink);
     color: #e0e0e0;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
 }
 
 a {
@@ -25,6 +33,7 @@ a {
 
 .stage {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -77,12 +86,13 @@ a {
 }
 
 .back {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-weight: 300;
     font-size: 0.85rem;
     color: #c4c4c4;
     letter-spacing: 0.5px;
-    margin-bottom: 0.6rem;
 }
 
 .back:hover,
@@ -293,6 +303,15 @@ h2 {
     }
 }
 
+.contact {
+    padding-bottom: 0.25rem;
+}
+
+#contact-form {
+    position: relative;
+    overflow: hidden;
+}
+
 .contact-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -365,11 +384,18 @@ textarea.portal-input {
 
 .hp-field {
     position: absolute !important;
-    left: -9999px !important;
-    top: -9999px !important;
+    inset: 0 auto auto 0 !important;
     width: 1px !important;
     height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
     overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
 }
 
 #contact-alerts {
@@ -400,12 +426,17 @@ textarea.portal-input {
 
 @media (max-width: 640px) {
     .stage {
-        padding: 16px 10px 32px;
+        padding: 16px 10px 24px;
+        min-height: 0;
     }
 
     .portal {
-        padding: 1.1rem 1rem 1.8rem;
+        padding: 1.1rem 1rem 1.4rem;
         border-radius: 18px;
+    }
+
+    .contact {
+        margin-bottom: 0;
     }
 
     .offer-grid {

@@ -48,10 +48,40 @@ a {
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
+.portal-top {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 1.2rem 0;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.lang-btn {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #c4c4c4;
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    padding: 0.22rem 0.55rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+    color: #fff;
+    border-color: var(--gold);
+    background: rgba(196, 146, 42, 0.18);
+}
+
 /* ── Header ──────────────────────────────────────────────────────────── */
 .rozdroze-header {
     text-align: center;
-    padding: 2.6rem 1rem 1.5rem;
+    padding: 0.6rem 1rem 1.5rem;
 }
 
 .rozdroze-header h1 {
@@ -74,9 +104,10 @@ a {
    Grid, not flex: column count is one declaration (repeat(N, 1fr)),
    so adding a 4th panel later is a one-line change here instead of
    touching flex-basis math on every breakpoint. */
+/* ── Split layout: 2×2 on desktop ─────────────────────────────────── */
 .split {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(12px, 2.4vw, 32px);
     padding: 0 clamp(14px, 3vw, 32px) clamp(20px, 3vw, 32px);
     min-height: 56vh;
@@ -159,6 +190,11 @@ a {
         animation-duration: 22s;
         animation-delay: 0.5s;
     }
+
+    .panel-code .panel-bg {
+        animation-duration: 24s;
+        animation-delay: 0.8s;
+    }
 }
 
 @keyframes slow-pan {
@@ -212,6 +248,16 @@ a {
    real art; keep it dark so the veil/title still read the same way. */
 .panel-lingwo .panel-bg {
     background: #0a0e18 url('../img/lingwolamek-bg.png') center / cover no-repeat;
+}
+
+.panel-code .panel-bg {
+    background: #070b12 url('../img/code-bg.gif') center / cover no-repeat;
+    filter: brightness(0.78) saturate(0.95) blur(0);
+}
+
+.panel-code:hover .panel-bg,
+.panel-code:focus-visible .panel-bg {
+    filter: brightness(1) saturate(1) blur(0);
 }
 
 .panel-veil {
@@ -299,6 +345,30 @@ a {
     box-shadow: 0 6px 20px rgba(196, 146, 42, 0.5);
 }
 
+.panel-cta-enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.enter-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.35rem;
+    height: 1.15rem;
+    padding: 0 0.35rem;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #1a1a1a;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
 .cta-arrow {
     display: inline-block;
     transition: transform 0.3s ease;
@@ -325,6 +395,10 @@ a {
         animation-delay: 0.2s;
     }
 
+    .panel-code {
+        animation-delay: 0.3s;
+    }
+
     /* Gentle hint that the arrow — and the card — is clickable */
     .cta-arrow {
         animation: nudge 2.8s ease-in-out infinite;
@@ -336,6 +410,10 @@ a {
 
     .panel-lingwo .cta-arrow {
         animation-delay: 0.7s;
+    }
+
+    .panel-code .cta-arrow {
+        animation-delay: 1s;
     }
 }
 
@@ -356,6 +434,7 @@ a {
    recently added panel — spans both, sitting as its own row underneath.
    If a 4th panel shows up, this is the spot to revisit (a straight
    2×2 grid is probably cleaner than a 2-up-then-2-more stack). */
+/* ── Mobile: keep the 2×2, just tighten spacing ──────────────────── */
 @media (max-width: 640px) {
     .stage {
         padding: 16px 10px;
@@ -375,10 +454,6 @@ a {
         gap: 10px;
         padding: 0 10px 14px;
         min-height: 46vh;
-    }
-
-    .panel-lingwo {
-        grid-column: 1 / -1;
     }
 
     .panel {
@@ -420,5 +495,9 @@ a {
 
     .panel-wyraj .panel-bg {
         filter: brightness(1.4) saturate(1.05) contrast(1.05) blur(0);
+    }
+
+    .panel-code .panel-bg {
+        filter: brightness(1) saturate(1) blur(0);
     }
 }
