@@ -48,40 +48,10 @@ a {
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
-.portal-top {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem 1.2rem 0;
-}
-
-.lang-switcher {
-    display: flex;
-    gap: 0.35rem;
-}
-
-.lang-btn {
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: #c4c4c4;
-    font-family: inherit;
-    font-size: 0.72rem;
-    letter-spacing: 1px;
-    padding: 0.22rem 0.55rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.lang-btn:hover,
-.lang-btn.active {
-    color: #fff;
-    border-color: var(--gold);
-    background: rgba(196, 146, 42, 0.18);
-}
-
 /* ── Header ──────────────────────────────────────────────────────────── */
 .rozdroze-header {
     text-align: center;
-    padding: 0.6rem 1rem 1.5rem;
+    padding: 2rem 1rem 1.5rem;
 }
 
 .rozdroze-header h1 {
