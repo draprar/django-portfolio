@@ -52,7 +52,7 @@ W kategorii bez uwag: "OK, brak uwag". Nie wymyślaj problemów.
    - Upload: `docdiff/views.py` (ext + MIME + sygnatura); media `core/storages_backends.py`. `|safe`, surowy SQL, `eval`, otwarty CORS — tylko świadomie.
    - Admin: `DJANGO_ADMIN_URL`; kto ma dostęp; PII na liście (`core.ContactAdmin`).
 
-6. **Jakość kodu** — duplikacja, nazwy, martwy kod. Linter jak w CI: `ruff check .` (`ruff.toml`), `mypy config core tonguetwister gallery docdiff rugby bies analytics` (`mypy.ini`).
+6. **Jakość kodu** — duplikacja, nazwy, martwy kod. Linter jak w CI: `ruff check .` (`ruff.toml`), `mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code` (`mypy.ini`).
 
 7. **Testy** — `pytest.ini` (pytest-django, `config.settings`). Testy w `*/tests/` (bies: `bies/tests.py`). Widoki/API/auth, nie sam brak crasha. Marker sieciowy jeśli hit w sieć.
 

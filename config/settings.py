@@ -118,6 +118,7 @@ INSTALLED_APPS = [
     "docdiff",
     "analytics",
     "rozdroze",
+    "code",
     # External
     "django_ratelimit",
     "rest_framework",
@@ -371,10 +372,14 @@ else:
         },
     }
 
-# In tests/CI use local storage and non-manifest static files.
+# In tests/CI and local DEBUG, skip hashed manifest so new app static
+# (e.g. code/css) works without collectstatic. Production still uses
+# CompressedManifestStaticFilesStorage above.
 if _testing:
     MEDIA_ROOT = BASE_DIR / "test_media"
     MEDIA_URL = "/media/"
+
+if DEBUG or _testing:
     STORAGES = {
         "default": {
             "BACKEND": "django.core.files.storage.FileSystemStorage",

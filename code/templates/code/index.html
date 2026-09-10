@@ -1,0 +1,155 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>kodzillin'</title>
+  <meta name="description" content="Inżynier danych — czasem dostarczę magiczne narzędzie.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <meta property="og:title" content="kodzillin'">
+  <meta property="og:description" content="Inżynier danych — czasem dostarczę magiczne narzędzie.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'code/css/code.css' %}">
+  <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+  <div class="stage">
+    <main class="portal">
+      <div class="portal-top">
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="pl">PL</button>
+        </div>
+      </div>
+
+      <header class="code-header">
+        <h1>kodzillin'</h1>
+        <div class="underline" aria-hidden="true"></div>
+        <div class="intro">
+          <p class="intro-lead"
+             data-en="I'm a data engineer — after years of coding strictly in business, I sometimes deliver a magic tool or two."
+             data-pl="Jestem inżynierem danych, ale że długo kodziłem stricte w biznesie, to se czasem dostarczę jakieś magiczne narzędzie.">
+            I'm a data engineer — after years of coding strictly in business, I sometimes deliver a magic tool or two.
+          </p>
+          <p class="intro-cta">
+            <span data-en="Check the areas below — problem, need, or a cool idea? "
+                  data-pl="Obczaj obszary niżej, a jak masz problem, potrzebę albo sztos pomysł — ">
+              Check the areas below — problem, need, or a cool idea?
+            </span><a class="intro-link" href="#contact"
+               data-en="drop me a line"
+               data-pl="skrobnij">drop me a line</a><span class="intro-end" data-en="." data-pl="">.</span>
+          </p>
+        </div>
+      </header>
+
+      <section id="offer" class="offer-section">
+        <h2 data-en="What's there?" data-pl="Co tam?">What's there?</h2>
+        <div class="offer-grid">
+          <article class="offer">
+            <h3>Web</h3>
+            <p data-en="Sites, apps, tools, SEO — send a link and you're done."
+               data-pl="Stronki, aplikacje, narzędzia, SEO i se wyślesz linkiem.">
+              Sites, apps, tools, SEO — send a link and you're done.
+            </p>
+          </article>
+          <article class="offer">
+            <h3>Power BI</h3>
+            <p data-en="Dashboards and visuals (Excel and PowerPoint = sic!)."
+               data-pl="Dashboardy i wizualizacje (excele i powerpointy = sic!).">
+              Dashboards and visuals (Excel and PowerPoint = sic!).
+            </p>
+          </article>
+          <article class="offer">
+            <h3 data-en="Code" data-pl="Kod">Code</h3>
+            <p data-en="Programs, systems, and automation (sounds smart, right?)."
+               data-pl="Programy, systemy i automatyzacja (mądrze brzmi, co?).">
+              Programs, systems, and automation (sounds smart, right?).
+            </p>
+          </article>
+          <article class="offer">
+            <h3 data-en="Machine learning" data-pl="Uczenie maszynowe">Machine learning</h3>
+            <p data-en="Analyses, forecasts, and models (and they actually help decisions)."
+               data-pl="Analizy, prognozy i modele (a to spoko wspomaga decyzje).">
+              Analyses, forecasts, and models (and they actually help decisions).
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="projects-section">
+        <h2 data-en="Repos" data-pl="Reposy">Repos</h2>
+        <ul class="repo-list">
+          {% for project in projects %}
+          <li class="repo">
+            {% if project.image %}
+            <img class="repo-thumb"
+                 src="{{ project.image.url }}"
+                 alt=""
+                 loading="lazy"
+                 decoding="async"
+                 onerror="this.onerror=null; this.style.display='none';">
+            {% endif %}
+            <div class="repo-body">
+              <div class="repo-head">
+                <h3 data-en="{{ project.title_en }}" data-pl="{{ project.title_pl }}">{{ project.title_en }}</h3>
+                <div class="repo-links">
+                  {% if project.github_url %}
+                  <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  {% endif %}
+                  {% if project.live_url %}
+                  <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer">Live</a>
+                  {% endif %}
+                </div>
+              </div>
+              {% if project.desc_en or project.desc_pl %}
+              <p data-en="{{ project.desc_en }}" data-pl="{{ project.desc_pl }}">{{ project.desc_en }}</p>
+              {% endif %}
+            </div>
+          </li>
+          {% empty %}
+          <li class="repo-empty"
+              data-en="Nothing listed yet."
+              data-pl="Na razie pusto.">Nothing listed yet.</li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section id="contact" class="contact">
+        <h2 data-en="Contact" data-pl="Kontakt">Contact</h2>
+
+        <div id="contact-alerts"></div>
+
+        <form method="post" action="{% url 'contact' %}" id="contact-form">
+          {% csrf_token %}
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+          <div class="contact-row">
+            {{ form.name }}
+            {{ form.email }}
+          </div>
+          {{ form.message }}
+          <div class="contact-actions">
+            <button type="submit" class="send-btn">
+              <span data-en="Send Message" data-pl="Wyślij wiadomość">Send Message</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div id="contact-messages" hidden>
+    <span id="msg-success" data-pl="Twoja wiadomość została wysłana pomyślnie!" data-en="Your message has been sent successfully!"></span>
+    <span id="msg-invalid" data-pl="Nieprawidłowa odpowiedź serwera." data-en="Invalid response from server."></span>
+    <span id="msg-error" data-pl="Błąd serwera. Spróbuj ponownie później." data-en="Server error. Please try later."></span>
+    <span id="msg-fail" data-pl="Coś poszło nie tak." data-en="Something went wrong."></span>
+  </div>
+
+  <script src="{% static 'core/js/lang.js' %}"></script>
+  <script src="{% static 'code/js/contact.js' %}"></script>
+</body>
+</html>

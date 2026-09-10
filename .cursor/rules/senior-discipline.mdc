@@ -14,13 +14,13 @@ Komunikuj się z użytkownikiem po polsku. Pracuj jak senior utrzymujący ten ko
 
 ## Wzorce tego projektu
 
-- Apki: `config` (settings/urls/ASGI/WSGI), `core` (landing, kontakt, Brevo, storage), `tonguetwister`, `gallery`, `docdiff`, `rugby`, `bies`, `rozdroze` (TemplateView, bez modeli), `analytics` (tracking wyłączony). Nowa domena = nowa apka; nie wsadzaj jej do `core` i nie ożywiaj `analytics` bez decyzji.
+- Apki: `config` (settings/urls/ASGI/WSGI), `core` (landing, kontakt, Brevo, storage), `tonguetwister`, `gallery`, `docdiff`, `rugby`, `bies`, `rozdroze` (hub `/wybierz/`, bez modeli), `code` (strona IG `/code/`, bez modeli), `analytics` (tracking wyłączony). Nowa domena = nowa apka; nie wsadzaj jej do `core` i nie ożywiaj `analytics` bez decyzji.
 - Nowa lub ruszana logika biznesowa → `app/services.py` (albo pakiet `services/`). Widok / form / serializer = HTTP. Istniejącego splitu `tonguetwister/views_*.py` i pipeline `docdiff` (`extractors/`, `diff_engine.py`, `heuristics_ai.py`, `report_builder.py`) nie przepisuj hurtowo — wyciągaj do serwisu przy zmianie tej logiki. Brak custom Manager/QuerySet. `core`: Form + `core/email.py`. Nie pakuj logiki do szablonu.
 - ORM: filtry i joiny w querysetach widoku. N+1: `select_related` / `prefetch_related` (`bies/views.py`, `gallery/views.py`, `tonguetwister/view_helpers.py`). Surowy SQL tylko gdy ORM nie wystarcza — zawsze parametryzowany. Mutacje wielokrokowe: `transaction.atomic()`.
 - HTTP: Form (HTML) / serializer DRF (API), nie surowy `request.POST`. API: ReadOnly ViewSets w `tonguetwister/views_api.py` (`/tonguetwister/api/`) + ListAPIView w `gallery`; schema spectacular w `config/urls.py`. 4xx = klient, 5xx = awaria.
 - Auth: `auth.User` + `tonguetwister.Profile` (`tonguetwister/signals.py`). HTML: sesja, `login_required` / `user_passes_test(is_admin)` / `UserPassesTestMixin` (staff). DRF: SimpleJWT. Mail: `core.email.send_brevo_email`. Brak allauth.
 - Settings: jeden `config/settings.py` + `django-environ` + `.env` (szablon `.env.example`). Sekrety z env. Dev: SQLite + LocMem. Prod: `DATABASE_URL`, opcjonalnie Redis; media Supabase (`core.storages_backends`), R2 tylko dla `bies`.
-- Migracja w tej samej zmianie co model. `docdiff` i `rozdroze` nie mają modeli — nie twórz pustych migracji. Nie edytuj cudzych migracji. `RunPython`: reverse albo `noop`.
+- Migracja w tej samej zmianie co model. `docdiff`, `rozdroze` i `code` nie mają modeli — nie twórz pustych migracji. Nie edytuj cudzych migracji. `RunPython`: reverse albo `noop`.
 
 ## Testy i jakość
 

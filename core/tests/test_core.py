@@ -429,3 +429,14 @@ def test_supabase_public_storage_url_reads_media_url(monkeypatch):
     monkeypatch.setattr("core.storages_backends.settings", fake_settings)
     inst = object.__new__(SupabasePublicStorage)
     assert inst.url("folder/file.jpg") == "https://cdn.example/folder/file.jpg"
+
+
+def test_portal_contact_form_uses_portal_inputs():
+    from core.forms import portal_contact_form
+
+    form = portal_contact_form()
+    assert form.fields["name"].widget.attrs["class"] == "portal-input"
+    assert form.fields["name"].widget.attrs["data-pl"] == "Imię"
+    assert form.fields["name"].widget.attrs["data-en"] == "Name"
+    assert form.fields["email"].widget.attrs["data-en"] == "Email"
+    assert form.fields["message"].widget.attrs["data-pl"] == "Wiadomość"

@@ -1,0 +1,33 @@
+import logging
+
+from django.db import DatabaseError
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render
+from django.views import View
+
+from core.forms import portal_contact_form
+from core.models import Project
+
+logger = logging.getLogger(__name__)
+
+
+class CodeView(View):
+    """
+    Instagram-facing kodzillin' page at /code/.
+
+    Same Project rows and CV descriptions (`desc_en` / `desc_pl`) as `/`.
+    """
+
+    template_name = "code/index.html"
+
+    def get(self, request: HttpRequest) -> HttpResponse:
+        try:
+            projects = list(Project.objects.all())
+        except DatabaseError:
+            logger.exception("Failed to load projects for code page")
+            projects = []
+        return render(
+            request,
+            self.template_name,
+            {"projects": projects, "form": portal_contact_form()},
+        )

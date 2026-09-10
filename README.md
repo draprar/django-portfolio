@@ -6,7 +6,7 @@
 
 🌐 Live: [walery.site](https://walery.site)
 
-A full-stack Django portfolio by an engineer-turned-developer — 9 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
+A full-stack Django portfolio by an engineer-turned-developer — 10 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
 
 > Split view architecture · DRF + SimpleJWT · AI heuristics · 80% CI coverage threshold
 
@@ -21,6 +21,7 @@ A full-stack Django portfolio by an engineer-turned-developer — 9 integrated a
 | **rugby**         | Rugby team archive | ORM posts, bilingual admin |
 | **bies**          | Slavic Wheel of the Year | festivals, deities, R2 media |
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
+| **code**          | IG programming page (`/code/`) | reads `core.Project`, no models |
 | **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
 
@@ -70,7 +71,7 @@ pytest -q
 
 **Type checking:**
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze
+mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code
 ```
 
 **Linting:**

@@ -38,3 +38,16 @@ class ContactForm(forms.ModelForm):
         if data:
             raise forms.ValidationError("Bot detected.")
         return data
+
+
+def portal_contact_form() -> ContactForm:
+    """ContactForm styled for the kodzillin' page."""
+    form = ContactForm()
+    extras = {
+        "name": {"class": "portal-input", "autocomplete": "name"},
+        "email": {"class": "portal-input", "autocomplete": "email"},
+        "message": {"class": "portal-input", "rows": "4"},
+    }
+    for field, attrs in extras.items():
+        form.fields[field].widget.attrs.update(attrs)
+    return form
