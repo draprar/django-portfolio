@@ -44,8 +44,6 @@ def test_code_page_renders_intro_and_project(client):
     assert 'id="contact"' in content
     assert 'id="contact-form"' in content
     assert reverse("contact") in content
-    assert "/wybierz/" in content
-    assert 'data-pl="Wróć"' in content
     assert "Sample Repo" in content
     assert "Przykladowe repo" in content
     assert "Short kodzillin blurb for the IG page (EN)." in content

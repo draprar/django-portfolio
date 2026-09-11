@@ -1,10 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <div class="d-flex align-items-center gap-2">
-        <a href="/wybierz/" class="btn btn-outline-secondary btn-sm navbar-tt-back">&larr; Wróć</a>
-    </div>
-    <div class="ml-auto">
+    <div class="ms-auto d-flex align-items-center">
       {% if user.is_authenticated %}
         {% if user.profile.avatar %}
           <a class="btn" href="{% url 'user_content' %}" aria-label="user"><img src="{{ user.profile.avatar.url }}" alt="avatar" class="rounded-circle" width="24" height="24"></a>

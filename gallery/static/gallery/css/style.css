@@ -535,7 +535,18 @@ body {
     transform: translateY(0);
 }
 
-@media (max-width: 991px) {
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none !important;
+    }
+
+    .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 640px) {
     .navbar-collapse {
         background: rgba(10, 10, 10, 0.95);
         backdrop-filter: blur(10px);

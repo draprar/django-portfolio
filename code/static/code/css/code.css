@@ -56,7 +56,7 @@ a {
 .portal-top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 1rem;
     margin-bottom: 0.2rem;
 }
@@ -83,26 +83,6 @@ a {
     color: #fff;
     border-color: var(--gold);
     background: rgba(196, 146, 42, 0.18);
-}
-
-.back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-weight: 300;
-    font-size: 0.85rem;
-    color: #c4c4c4;
-    letter-spacing: 0.5px;
-}
-
-.back:hover,
-.back:focus-visible {
-    color: var(--gold);
-}
-
-.back:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 4px;
 }
 
 .code-header {

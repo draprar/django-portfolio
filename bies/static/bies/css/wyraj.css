@@ -479,27 +479,6 @@ a:hover { color: var(--gold); }
   color: var(--gold);
   border-color: var(--gold);
 }
-.footer .back-button {
-  display: inline-block;
-  margin: 0 auto 1.4rem;
-}
-
-.back-button {
-  display: inline-block;
-  margin-bottom: 1.4rem;
-  padding: 0.6rem 1.7rem;
-  border: 1px solid var(--border);
-  color: var(--gold); text-decoration: none;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  font-size: 0.96rem; font-weight: 700;
-  border-radius: 4px;
-  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
-}
-.back-button:hover {
-  background: var(--primary); border-color: var(--primary);
-  color: #fff; transform: scale(1.04);
-}
-
 /* =============================================
    ANIMATIONS
    ============================================= */
@@ -552,7 +531,6 @@ a:hover { color: var(--gold); }
   .swieta-grid      { grid-template-columns: repeat(2,1fr); gap: 0.85rem; }
   .card-title       { font-size: 1.05rem; }
   .ornament         { font-size: 1.2rem; margin: 1.4rem 0; }
-  .back-button      { font-size: 0.85rem; padding: 0.5rem 1.2rem; }
   .footer p         { font-size: 0.9rem; }
 
   .tresc-with-bg {
