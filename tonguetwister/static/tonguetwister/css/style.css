@@ -529,11 +529,6 @@ a.highlight {
   display: block;
 }
 
-.navbar-tt-back {
-  color: var(--light);
-  white-space: nowrap;
-}
-
 /* Portfolio home brand — avatar + "Home" text */
 .navbar-brand {
   display: flex !important;
