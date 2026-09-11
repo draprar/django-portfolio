@@ -34,7 +34,7 @@ def test_code_page_renders_intro_and_project(client):
 
     assert response.status_code == 200
     assert "kodzillin'" in content
-    assert "Na co dzień jestem inżynierem danych" in content
+    assert "Obczaj obszary niżej; jak masz problem, potrzebę albo sztos pomysł" in content
     assert 'data-pl="Co tam?"' in content
     assert 'data-pl="Reposy"' in content
     assert 'data-pl="skrobnij"' in content
