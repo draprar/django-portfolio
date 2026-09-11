@@ -38,7 +38,7 @@ def test_code_page_renders_intro_and_project(client):
     assert 'data-pl="Co tam?"' in content
     assert 'data-pl="Reposy"' in content
     assert 'data-pl="skrobnij"' in content
-    assert 'data-pl="Stronki, aplikacje, narzędzia, SEO i se wyślesz linkiem."' in content
+    assert 'data-pl="Stronki, aplikacje, narzędzia i SEO [i se wyślesz linkiem]."' in content
     assert 'data-pl="Kod"' in content
     assert 'href="#contact"' in content
     assert 'id="contact"' in content
