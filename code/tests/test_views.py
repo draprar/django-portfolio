@@ -60,6 +60,23 @@ def test_code_page_renders_intro_and_project(client):
 
 
 @pytest.mark.django_db
+def test_code_page_keeps_first_party_live_links_on_current_host(client):
+    Project.objects.create(
+        title_en="Django Rugby Gizycko",
+        title_pl="Django Rugby Giżycko",
+        live_url="https://walery.site/rugby/",
+    )
+
+    response = client.get(reverse("code:index"))
+    content = response.content.decode()
+
+    assert response.status_code == 200
+    assert "walery.site" not in content
+    assert "walery.onrender.com" not in content
+    assert 'href="/rugby/"' in content
+
+
+@pytest.mark.django_db
 def test_code_page_renders_project_thumb(client, settings, tmp_path):
     settings.MEDIA_ROOT = tmp_path
     Project.objects.create(

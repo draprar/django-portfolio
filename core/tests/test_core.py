@@ -30,6 +30,32 @@ def test_project_str_returns_combined_titles():
     assert str(p) == "Hello / Cześć"
 
 
+def test_project_public_live_url_strips_first_party_hosts():
+    from core.models import Project
+
+    rugby = Project(live_url="https://walery.site/rugby/")
+    assert rugby.public_live_url == "/rugby/"
+
+    gallery = Project(live_url="https://www.walery.site/gallery/")
+    assert gallery.public_live_url == "/gallery/"
+
+    onrender = Project(live_url="https://walery.onrender.com/docdiff/")
+    assert onrender.public_live_url == "/docdiff/"
+
+    jedzien = Project(live_url="https://jedzien.pl/code/#contact")
+    assert jedzien.public_live_url == "/code/#contact"
+
+
+def test_project_public_live_url_keeps_external_and_empty():
+    from core.models import Project
+
+    external = Project(live_url="https://example.com/demo")
+    assert external.public_live_url == "https://example.com/demo"
+
+    blank = Project(live_url="")
+    assert blank.public_live_url == ""
+
+
 def test_file_extension_validator_rejects_bad_ext():
     from django.core.validators import FileExtensionValidator
 
