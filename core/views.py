@@ -16,6 +16,11 @@ from .models import Project
 logger = logging.getLogger(__name__)
 
 
+def _is_jedzien_host(request) -> bool:
+    host = request.get_host().split(":")[0].lower()
+    return host in {h.lower() for h in getattr(settings, "JEDZIEN_REDIRECT_HOSTS", ())}
+
+
 def health_check(request):
     """
     Health check endpoint for monitoring and deployment verification.
@@ -36,9 +41,8 @@ class HomeView(View):
     """
     Main portfolio page view.
 
-    - Loads all projects from database
-    - Renders contact form for user submissions
-    - Gracefully handles database unavailability to keep homepage online
+    On jedzien.pl / www.jedzien.pl the site root is the hub (Se wybierz).
+    Other hosts keep the portfolio homepage.
 
     Security:
     - Database errors are caught and logged without exposing details to users
@@ -49,6 +53,11 @@ class HomeView(View):
     template_name = "core/index.html"
 
     def get(self, request):
+        if _is_jedzien_host(request):
+            from rozdroze.views import WybierzView
+
+            return WybierzView.as_view()(request)
+
         form = ContactForm()
         # Keep homepage available even if DB is temporarily unavailable.
         try:

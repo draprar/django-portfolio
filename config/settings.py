@@ -50,7 +50,6 @@ if SENTRY_DSN:
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 JEDZIEN_REDIRECT_HOSTS = env.list("JEDZIEN_REDIRECT_HOSTS", default=["jedzien.pl", "www.jedzien.pl"])
-JEDZIEN_REDIRECT_URL = env("JEDZIEN_REDIRECT_URL", default="/wybierz/")
 # In production, require explicit CSRF_TRUSTED_ORIGINS (no default with http://)
 CSRF_TRUSTED_ORIGINS = env.list(
     "DJANGO_CSRF_TRUSTED_ORIGINS", default=[] if not DEBUG else ["http://localhost", "http://127.0.0.1"]
@@ -133,7 +132,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "core.middleware.JedzienRedirectMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

@@ -1,40 +1,39 @@
 import pytest
 from django.test import override_settings
 
-REDIRECT_HOSTS = ["jedzien.pl", "www.jedzien.pl"]
+JEDZIEN_HOSTS = ["jedzien.pl", "www.jedzien.pl"]
 HOST_SETTINGS = {
-    "ALLOWED_HOSTS": [*REDIRECT_HOSTS, "walery.onrender.com", "walery.site", "testserver"],
-    "JEDZIEN_REDIRECT_HOSTS": REDIRECT_HOSTS,
-    "JEDZIEN_REDIRECT_URL": "/wybierz/",
+    "ALLOWED_HOSTS": [*JEDZIEN_HOSTS, "walery.onrender.com", "walery.site", "testserver"],
+    "JEDZIEN_REDIRECT_HOSTS": JEDZIEN_HOSTS,
 }
 
 
-@pytest.mark.parametrize("host", REDIRECT_HOSTS)
+@pytest.mark.django_db
+@pytest.mark.parametrize("host", JEDZIEN_HOSTS)
 @override_settings(**HOST_SETTINGS)
-def test_jedzien_root_stays_on_same_host_wybierz(client, host):
+def test_jedzien_root_serves_hub_without_redirect(client, host):
     response = client.get("/", HTTP_HOST=host)
-    assert response.status_code == 301
-    assert response["Location"] == "/wybierz/"
+    assert response.status_code == 200
+    assert "Location" not in response
+    content = response.content.decode()
+    assert "Se wybierz" in content
+    assert "/gallery/" in content
+    assert "/code/" in content
 
 
-@pytest.mark.parametrize("host", REDIRECT_HOSTS)
+@pytest.mark.parametrize("host", JEDZIEN_HOSTS)
 @override_settings(**HOST_SETTINGS)
-def test_jedzien_other_paths_are_not_bounced_off_host(client, host):
+def test_jedzien_other_paths_stay_on_host(client, host):
     response = client.get("/health/", HTTP_HOST=host)
     assert response.status_code == 200
     assert "Location" not in response
 
 
+@pytest.mark.django_db
 @pytest.mark.parametrize("host", ["walery.onrender.com", "walery.site"])
 @override_settings(**HOST_SETTINGS)
-def test_walery_hosts_are_not_redirected(client, host):
-    response = client.get("/health/", HTTP_HOST=host)
+def test_walery_root_is_portfolio_not_jedzien_hub(client, host):
+    response = client.get("/", HTTP_HOST=host)
     assert response.status_code == 200
     assert "Location" not in response
-
-
-@override_settings(**{**HOST_SETTINGS, "JEDZIEN_REDIRECT_URL": "https://walery.onrender.com/wybierz/"})
-def test_legacy_absolute_redirect_url_is_treated_as_path(client):
-    response = client.get("/", HTTP_HOST="jedzien.pl")
-    assert response.status_code == 301
-    assert response["Location"] == "/wybierz/"
+    assert "Se wybierz" not in response.content.decode()
