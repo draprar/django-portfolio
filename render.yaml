@@ -16,7 +16,7 @@ services:
       - key: DJANGO_DEBUG
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
-        value: "walery.onrender.com,walery.site"
+        value: "walery.onrender.com,walery.site,jedzien.pl,www.jedzien.pl"
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
         value: "https://walery.onrender.com,https://walery.site"
       - key: CORS_ALLOWED_ORIGINS
