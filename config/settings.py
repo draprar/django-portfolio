@@ -55,9 +55,6 @@ FIRST_PARTY_LIVE_HOSTS = frozenset(
         "walery.onrender.com",
         "jedzien.pl",
         "www.jedzien.pl",
-        # leftover Project.live_url hosts — strip so they never appear in HTML
-        "walery.site",
-        "www.walery.site",
     }
 )
 # In production, require explicit CSRF_TRUSTED_ORIGINS (no default with http://)
