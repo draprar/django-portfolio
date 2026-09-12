@@ -101,9 +101,17 @@ a {
 .underline {
     width: 60px;
     height: 4px;
-    margin: 14px auto 1.2rem;
+    margin: 14px auto 14px;
     border-radius: 2px;
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
+}
+
+.code-role {
+    font-weight: 300;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    letter-spacing: 3px;
+    margin: 0 0 1.2rem;
+    color: var(--gold);
 }
 
 .intro {
