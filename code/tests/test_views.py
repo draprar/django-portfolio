@@ -64,14 +64,13 @@ def test_code_page_keeps_first_party_live_links_on_current_host(client):
     Project.objects.create(
         title_en="Django Rugby Gizycko",
         title_pl="Django Rugby Giżycko",
-        live_url="https://walery.site/rugby/",
+        live_url="https://walery.onrender.com/rugby/",
     )
 
     response = client.get(reverse("code:index"))
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "walery.site" not in content
     assert "walery.onrender.com" not in content
     assert 'href="/rugby/"' in content
 
