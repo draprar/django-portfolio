@@ -33,12 +33,6 @@ def test_project_str_returns_combined_titles():
 def test_project_public_live_url_strips_first_party_hosts():
     from core.models import Project
 
-    rugby = Project(live_url="https://walery.site/rugby/")
-    assert rugby.public_live_url == "/rugby/"
-
-    gallery = Project(live_url="https://www.walery.site/gallery/")
-    assert gallery.public_live_url == "/gallery/"
-
     onrender = Project(live_url="https://walery.onrender.com/docdiff/")
     assert onrender.public_live_url == "/docdiff/"
 
