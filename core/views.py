@@ -17,8 +17,10 @@ logger = logging.getLogger(__name__)
 
 
 def _is_jedzien_host(request) -> bool:
-    host = request.get_host().split(":")[0].lower()
-    return host in {h.lower() for h in getattr(settings, "JEDZIEN_REDIRECT_HOSTS", ())}
+    host = request.get_host()
+    if not isinstance(host, str):
+        return False
+    return host.split(":")[0].lower() in {h.lower() for h in getattr(settings, "JEDZIEN_REDIRECT_HOSTS", ())}
 
 
 def health_check(request):
