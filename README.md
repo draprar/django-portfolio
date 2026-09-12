@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Code style](https://img.shields.io/badge/code%20style-ruff-261230)
 
-🌐 Live: [walery.site](https://walery.site)
+🌐 Live: [walery.onrender.com](https://walery.onrender.com) · hub: [jedzien.pl](https://jedzien.pl)
 
 A full-stack Django portfolio by an engineer-turned-developer — 10 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
 

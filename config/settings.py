@@ -52,11 +52,12 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["127.0.0.1", "localhos
 JEDZIEN_REDIRECT_HOSTS = env.list("JEDZIEN_REDIRECT_HOSTS", default=["jedzien.pl", "www.jedzien.pl"])
 FIRST_PARTY_LIVE_HOSTS = frozenset(
     {
-        "walery.site",
-        "www.walery.site",
         "walery.onrender.com",
         "jedzien.pl",
         "www.jedzien.pl",
+        # leftover Project.live_url hosts — strip so they never appear in HTML
+        "walery.site",
+        "www.walery.site",
     }
 )
 # In production, require explicit CSRF_TRUSTED_ORIGINS (no default with http://)

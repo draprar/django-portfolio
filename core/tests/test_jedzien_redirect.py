@@ -3,7 +3,7 @@ from django.test import override_settings
 
 JEDZIEN_HOSTS = ["jedzien.pl", "www.jedzien.pl"]
 HOST_SETTINGS = {
-    "ALLOWED_HOSTS": [*JEDZIEN_HOSTS, "walery.onrender.com", "walery.site", "testserver"],
+    "ALLOWED_HOSTS": [*JEDZIEN_HOSTS, "walery.onrender.com", "testserver"],
     "JEDZIEN_REDIRECT_HOSTS": JEDZIEN_HOSTS,
 }
 
@@ -32,10 +32,9 @@ def test_jedzien_other_paths_stay_on_host(client, host):
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize("host", ["walery.onrender.com", "walery.site"])
 @override_settings(**HOST_SETTINGS)
-def test_walery_root_is_portfolio_not_jedzien_hub(client, host):
-    response = client.get("/", HTTP_HOST=host)
+def test_onrender_root_is_portfolio_not_jedzien_hub(client):
+    response = client.get("/", HTTP_HOST="walery.onrender.com")
     assert response.status_code == 200
     assert "Location" not in response
     assert "Se wybierz" not in response.content.decode()
