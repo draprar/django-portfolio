@@ -1,3 +1,5 @@
+from urllib.parse import urlparse
+
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
@@ -54,6 +56,28 @@ class Project(models.Model):
     def display_desc_pl(self) -> str:
         """Return short code desc if available, else CV desc."""
         return self.desc_code_pl or self.desc_pl
+
+    @property
+    def public_live_url(self) -> str:
+        """Keep first-party demos on the current host instead of walery.site."""
+        from django.conf import settings
+
+        url = (self.live_url or "").strip()
+        if not url:
+            return ""
+        parsed = urlparse(url)
+        if not parsed.netloc:
+            return url
+        host = (parsed.hostname or "").lower()
+        first_party = {h.lower() for h in getattr(settings, "FIRST_PARTY_LIVE_HOSTS", ())}
+        if host not in first_party:
+            return url
+        path = parsed.path or "/"
+        if parsed.query:
+            path = f"{path}?{parsed.query}"
+        if parsed.fragment:
+            path = f"{path}#{parsed.fragment}"
+        return path
 
 
 class Contact(models.Model):
