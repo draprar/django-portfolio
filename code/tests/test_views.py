@@ -39,12 +39,13 @@ def test_code_page_renders_intro_and_project(client):
     assert "Se dowożę, obczaj obszary z oferty, a jak masz problem, potrzebę albo sztos pomysł" in content
     assert 'data-pl="Co tam?"' in content
     assert 'data-pl="Reposy"' in content
-    assert 'data-pl="skrobnij"' in content
+    assert 'data-pl="Puknij w kaloryfer"' in content
     assert 'data-pl="Stronki, aplikacje, narzędzia i SEO [i se wyślesz linkiem]."' in content
     assert 'data-pl="Kod"' in content
-    assert f'href="{reverse("rozdroze:wybierz")}#contact"' in content
-    assert 'id="contact-form"' not in content
-    assert reverse("contact") not in content
+    assert 'href="#contact"' in content
+    assert 'id="contact-form"' in content
+    assert reverse("contact") in content
+    assert "Puknij w kaloryfer" in content
     assert "Sample Repo" in content
     assert "Przykladowe repo" in content
     assert "Short kodzillin blurb for the IG page (EN)." in content
@@ -55,7 +56,7 @@ def test_code_page_renders_intro_and_project(client):
     assert "https://example.com" in content
     assert 'class="lang-btn"' in content
     assert "core/js/lang.js" in content
-    assert "code/js/contact.js" not in content
+    assert "code/js/contact.js" in content
 
 
 @pytest.mark.django_db
@@ -146,4 +147,4 @@ def test_code_view_handles_database_error(monkeypatch):
     assert resp.status_code == 200
     assert resp.context_data["projects"] == []
     assert resp.template_name == "code/index.html"
-    assert "form" not in resp.context_data
+    assert "form" in resp.context_data

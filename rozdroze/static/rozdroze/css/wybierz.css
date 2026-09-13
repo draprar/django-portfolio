@@ -11,8 +11,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
-    min-height: 100dvh;
+    height: 100%;
     background: var(--ink);
     color: #e0e0e0;
     font-family: 'Poppins', sans-serif;
@@ -27,14 +26,12 @@ a {
 /* ── Stage: ambient backdrop the portal sits on ─────────────────────── */
 .stage {
     min-height: 100vh;
-    min-height: 100dvh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 32px 16px;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
 }
 
@@ -386,9 +383,6 @@ a {
 /* ── Mobile: keep the 2×2, just tighten spacing ──────────────────── */
 @media (max-width: 640px) {
     .stage {
-        min-height: 100vh;
-        min-height: 100dvh;
-        justify-content: center;
         padding: 16px 10px;
     }
 
@@ -402,10 +396,10 @@ a {
 
     .split {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, minmax(18vh, 1fr));
+        grid-template-rows: repeat(2, minmax(21vh, 1fr));
         gap: 10px;
         padding: 0 10px 14px;
-        min-height: 0;
+        min-height: 46vh;
     }
 
     .panel {
@@ -451,166 +445,6 @@ a {
 @keyframes slow-pan-code-mobile {
     from { background-position: left 42%; }
     to   { background-position: left 52%; }
-}
-
-.contact {
-    padding: 0 clamp(10px, 2.25vw, 24px) clamp(18px, 2.6vw, 27px);
-}
-
-.contact h2 {
-    font-weight: 300;
-    font-size: 1.15rem;
-    letter-spacing: 2px;
-    color: var(--gold);
-    text-align: center;
-    margin: 0 0 0.75rem;
-}
-
-#contact-alerts,
-#contact-form {
-    width: 75%;
-    margin-inline: auto;
-}
-
-#contact-form {
-    position: relative;
-    overflow: hidden;
-    font-size: 75%;
-}
-
-.contact-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75em;
-}
-
-.portal-input {
-    width: 100%;
-    margin-top: 0.75em;
-    padding: 0.75em 0.875em;
-    border-radius: 0.625em;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #111;
-    color: #e0e0e0;
-    font-family: inherit;
-    font-size: 0.95em;
-}
-
-.contact-row .portal-input {
-    margin-top: 0;
-}
-
-.portal-input:focus {
-    outline: 1px solid var(--gold);
-    border-color: var(--gold);
-}
-
-textarea.portal-input {
-    min-height: 6.875em;
-    resize: vertical;
-    display: block;
-}
-
-.contact-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 0.875em;
-}
-
-.send-btn {
-    border: 0;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    background: linear-gradient(45deg, var(--gold), var(--gold-2));
-    padding: 0.625em 1.375em;
-    border-radius: 1.55em;
-    transition: background 0.3s ease;
-}
-
-.send-btn:hover,
-.send-btn:focus-visible {
-    background: linear-gradient(45deg, #d4a535, #8b4513);
-}
-
-.send-btn:disabled {
-    opacity: 0.65;
-    cursor: wait;
-}
-
-.send-btn:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-}
-
-.hp-field {
-    position: absolute !important;
-    inset: 0 auto auto 0 !important;
-    width: 1px !important;
-    height: 1px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    clip-path: inset(50%) !important;
-    white-space: nowrap !important;
-}
-
-#contact-alerts {
-    min-height: 0;
-    margin-bottom: 0.45rem;
-    font-size: 75%;
-}
-
-.portal-alert {
-    padding: 0.625em 0.875em;
-    border-radius: 0.625em;
-    font-weight: 300;
-    font-size: 0.9em;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.portal-alert-success {
-    color: #d8e8c8;
-    border-color: rgba(196, 146, 42, 0.45);
-    background: rgba(196, 146, 42, 0.08);
-}
-
-.portal-alert-warning,
-.portal-alert-danger {
-    color: #e8d0c8;
-    border-color: rgba(160, 82, 45, 0.5);
-    background: rgba(160, 82, 45, 0.12);
-}
-
-@media (max-width: 640px) {
-    .contact {
-        padding: 0 10px 12px;
-    }
-
-    .contact h2 {
-        margin: 0 0 0.7rem;
-        font-size: 1.15rem;
-    }
-
-    #contact-alerts,
-    #contact-form {
-        width: 100%;
-    }
-
-    textarea.portal-input {
-        min-height: 5.5em;
-    }
-
-    .contact-row {
-        grid-template-columns: 1fr;
-    }
 }
 
 

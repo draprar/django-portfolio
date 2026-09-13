@@ -19,7 +19,7 @@ def test_jedzien_root_serves_hub_without_redirect(client, host):
     assert "Se wybierz" in content
     assert "/gallery/" in content
     assert "/code/" in content
-    assert 'id="contact-form"' in content
+    assert 'id="contact-form"' not in content
 
 
 @pytest.mark.parametrize("host", JEDZIEN_HOSTS)
