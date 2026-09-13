@@ -59,7 +59,7 @@ class Project(models.Model):
 
     @property
     def public_live_url(self) -> str:
-        """Keep first-party demos on the current host instead of walery.site."""
+        """Rewrite first-party live URLs to paths so HTML stays on the current host."""
         from django.conf import settings
 
         url = (self.live_url or "").strip()
