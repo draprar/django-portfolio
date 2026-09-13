@@ -454,7 +454,7 @@ a {
 }
 
 .contact {
-    padding: 0 clamp(14px, 3vw, 32px) clamp(24px, 3.5vw, 36px);
+    padding: 0 clamp(10px, 2.25vw, 24px) clamp(18px, 2.6vw, 27px);
 }
 
 .contact h2 {
@@ -463,30 +463,37 @@ a {
     letter-spacing: 2px;
     color: var(--gold);
     text-align: center;
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
+}
+
+#contact-alerts,
+#contact-form {
+    width: 75%;
+    margin-inline: auto;
 }
 
 #contact-form {
     position: relative;
     overflow: hidden;
+    font-size: 75%;
 }
 
 .contact-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 0.75em;
 }
 
 .portal-input {
     width: 100%;
-    margin-top: 12px;
-    padding: 12px 14px;
-    border-radius: 10px;
+    margin-top: 0.75em;
+    padding: 0.75em 0.875em;
+    border-radius: 0.625em;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: #111;
     color: #e0e0e0;
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: 0.95em;
 }
 
 .contact-row .portal-input {
@@ -499,7 +506,7 @@ a {
 }
 
 textarea.portal-input {
-    min-height: 110px;
+    min-height: 6.875em;
     resize: vertical;
     display: block;
 }
@@ -507,20 +514,20 @@ textarea.portal-input {
 .contact-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 14px;
+    margin-top: 0.875em;
 }
 
 .send-btn {
     border: 0;
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #fff;
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
-    padding: 10px 22px;
-    border-radius: 25px;
+    padding: 0.625em 1.375em;
+    border-radius: 1.55em;
     transition: background 0.3s ease;
 }
 
@@ -557,14 +564,15 @@ textarea.portal-input {
 
 #contact-alerts {
     min-height: 0;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.45rem;
+    font-size: 75%;
 }
 
 .portal-alert {
-    padding: 10px 14px;
-    border-radius: 10px;
+    padding: 0.625em 0.875em;
+    border-radius: 0.625em;
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -583,15 +591,21 @@ textarea.portal-input {
 
 @media (max-width: 640px) {
     .contact {
-        padding: 0 10px 16px;
+        padding: 0 10px 12px;
     }
 
     .contact h2 {
         margin: 0 0 0.7rem;
+        font-size: 1.15rem;
+    }
+
+    #contact-alerts,
+    #contact-form {
+        width: 100%;
     }
 
     textarea.portal-input {
-        min-height: 88px;
+        min-height: 5.5em;
     }
 
     .contact-row {
