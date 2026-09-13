@@ -591,21 +591,33 @@ textarea.portal-input {
 
 @media (max-width: 640px) {
     .contact {
-        padding: 0 10px 12px;
+        padding: 0 8px 10px;
     }
 
     .contact h2 {
-        margin: 0 0 0.7rem;
+        margin: 0 0 0.56rem;
         font-size: 1.15rem;
     }
 
     #contact-alerts,
     #contact-form {
-        width: 100%;
+        width: 80%;
+    }
+
+    #contact-form {
+        font-size: 60%;
+    }
+
+    #contact-alerts {
+        font-size: 60%;
+    }
+
+    .contact-actions {
+        font-size: 125%;
     }
 
     textarea.portal-input {
-        min-height: 5.5em;
+        min-height: 4.4em;
     }
 
     .contact-row {
