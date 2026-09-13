@@ -9,13 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lang = document.documentElement.lang || "pl";
     const el = document.getElementById(id);
     if (!el) return "";
-    return (
-      el.getAttribute(`data-${lang}`) ||
-      el.getAttribute("data-pl") ||
-      el.getAttribute("data-en") ||
-      el.textContent.trim() ||
-      ""
-    );
+    return el.getAttribute(`data-${lang}`) || el.getAttribute("data-pl") || el.getAttribute("data-en") || "";
   }
 
   function showAlert(type, messageId) {
