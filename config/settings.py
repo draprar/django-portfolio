@@ -474,6 +474,11 @@ def csp_headers(get_response):
         csp_policy = "; ".join(f"{k} {v}" for k, v in SECURE_CSP.items())
         header_name = "Content-Security-Policy-Report-Only" if SECURE_CSP_REPORT_ONLY else "Content-Security-Policy"
         response[header_name] = csp_policy
+        content_type = response.get("Content-Type", "")
+        if content_type.startswith("text/html"):
+            # Hashed static files are immutable; HTML must not be, or IG/in-app
+            # browsers keep an old page that points at deleted CSS hashes.
+            response["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
         return response
 
     return middleware

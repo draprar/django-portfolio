@@ -24,6 +24,9 @@ def test_wybierz_renders_crossroads(client):
     assert "Skrobnij" in content
     assert "Wyślij wiadomość" in content
     assert "rozdroze/js/contact.js" in content
+    assert "rozdroze/js/wybierz.js" in content
+    assert "{% static" not in content
+    assert "no-cache" in response["Cache-Control"]
 
 
 @pytest.mark.django_db
