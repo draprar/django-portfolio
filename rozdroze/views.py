@@ -1,14 +1,18 @@
 from django.views.generic import TemplateView
 
+from core.forms import portal_contact_form
+
 
 class WybierzView(TemplateView):
     """
-    A single "crossroads" landing page — the one link you'd put in an
-    Instagram bio — that lets a visitor pick between the two separate
-    apps living in this project (the bazgrollin' gallery and Wyraj).
+    Crossroads landing — tiles into gallery, Wyraj, LingwoŁamki and kodzillin'.
 
-    kodzillin' (/code/) is the fourth tile — still a local experiment
-    until the GIF and copy are signed off.
+    On jedzien.pl this is also the site root. Contact sits under the tiles.
     """
 
     template_name = "rozdroze/wybierz.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = portal_contact_form(bilingual=False)
+        return context

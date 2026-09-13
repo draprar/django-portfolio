@@ -5,7 +5,6 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import View
 
-from core.forms import portal_contact_form
 from core.models import Project
 
 logger = logging.getLogger(__name__)
@@ -30,5 +29,5 @@ class CodeView(View):
         return render(
             request,
             self.template_name,
-            {"projects": projects, "form": portal_contact_form()},
+            {"projects": projects},
         )

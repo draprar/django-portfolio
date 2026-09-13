@@ -19,6 +19,7 @@ def test_jedzien_root_serves_hub_without_redirect(client, host):
     assert "Se wybierz" in content
     assert "/gallery/" in content
     assert "/code/" in content
+    assert 'id="contact-form"' in content
     assert "walery.site" not in content
     assert "walery.onrender.com" not in content
 

@@ -36,7 +36,7 @@
             <span data-en="I deliver stuff, check the offer areas, and if you've got a problem, a need, or a cool idea — "
                   data-pl="Se dowożę, obczaj obszary z oferty, a jak masz problem, potrzebę albo sztos pomysł — ">
               Se dowożę, obczaj obszary z oferty, a jak masz problem, potrzebę albo sztos pomysł —
-            </span><a class="intro-link" href="#contact"
+            </span><a class="intro-link" href="{% url 'rozdroze:wybierz' %}#contact"
                data-en="drop me a line"
                data-pl="skrobnij">skrobnij</a>
           </p>
@@ -114,38 +114,9 @@
           {% endfor %}
         </ul>
       </section>
-
-      <section id="contact" class="contact">
-        <h2 data-en="Contact" data-pl="Kontakt">Contact</h2>
-
-        <div id="contact-alerts"></div>
-
-        <form method="post" action="{% url 'contact' %}" id="contact-form">
-          {% csrf_token %}
-          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
-          <div class="contact-row">
-            {{ form.name }}
-            {{ form.email }}
-          </div>
-          {{ form.message }}
-          <div class="contact-actions">
-            <button type="submit" class="send-btn">
-              <span data-en="Send Message" data-pl="Wyślij wiadomość">Send Message</span>
-            </button>
-          </div>
-        </form>
-      </section>
     </main>
   </div>
 
-  <div id="contact-messages" hidden>
-    <span id="msg-success" data-pl="Twoja wiadomość została wysłana pomyślnie!" data-en="Your message has been sent successfully!"></span>
-    <span id="msg-invalid" data-pl="Nieprawidłowa odpowiedź serwera." data-en="Invalid response from server."></span>
-    <span id="msg-error" data-pl="Błąd serwera. Spróbuj ponownie później." data-en="Server error. Please try later."></span>
-    <span id="msg-fail" data-pl="Coś poszło nie tak." data-en="Something went wrong."></span>
-  </div>
-
   <script src="{% static 'core/js/lang.js' %}"></script>
-  <script src="{% static 'code/js/contact.js' %}"></script>
 </body>
 </html>

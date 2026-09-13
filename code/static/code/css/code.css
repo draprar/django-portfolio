@@ -151,8 +151,7 @@ h2 {
 }
 
 .offer-section,
-.projects-section,
-.contact {
+.projects-section {
     margin-top: 2.4rem;
 }
 
@@ -287,125 +286,6 @@ h2 {
     }
 }
 
-.contact {
-    padding-bottom: 0.25rem;
-}
-
-#contact-form {
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.portal-input {
-    width: 100%;
-    margin-top: 12px;
-    padding: 12px 14px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #111;
-    color: #e0e0e0;
-    font-family: inherit;
-    font-size: 0.95rem;
-}
-
-.contact-row .portal-input {
-    margin-top: 0;
-}
-
-.portal-input:focus {
-    outline: 1px solid var(--gold);
-    border-color: var(--gold);
-}
-
-textarea.portal-input {
-    min-height: 110px;
-    resize: vertical;
-    display: block;
-}
-
-.contact-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 14px;
-}
-
-.send-btn {
-    border: 0;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    background: linear-gradient(45deg, var(--gold), var(--gold-2));
-    padding: 10px 22px;
-    border-radius: 25px;
-    transition: background 0.3s ease;
-}
-
-.send-btn:hover,
-.send-btn:focus-visible {
-    background: linear-gradient(45deg, #d4a535, #8b4513);
-}
-
-.send-btn:disabled {
-    opacity: 0.65;
-    cursor: wait;
-}
-
-.send-btn:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-}
-
-.hp-field {
-    position: absolute !important;
-    inset: 0 auto auto 0 !important;
-    width: 1px !important;
-    height: 1px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    clip-path: inset(50%) !important;
-    white-space: nowrap !important;
-}
-
-#contact-alerts {
-    min-height: 0;
-    margin-bottom: 0.6rem;
-}
-
-.portal-alert {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-weight: 300;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.portal-alert-success {
-    color: #d8e8c8;
-    border-color: rgba(196, 146, 42, 0.45);
-    background: rgba(196, 146, 42, 0.08);
-}
-
-.portal-alert-warning,
-.portal-alert-danger {
-    color: #e8d0c8;
-    border-color: rgba(160, 82, 45, 0.5);
-    background: rgba(160, 82, 45, 0.12);
-}
-
 @media (max-width: 640px) {
     .stage {
         padding: 16px 10px 24px;
@@ -417,15 +297,7 @@ textarea.portal-input {
         border-radius: 18px;
     }
 
-    .contact {
-        margin-bottom: 0;
-    }
-
     .offer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-row {
         grid-template-columns: 1fr;
     }
 }

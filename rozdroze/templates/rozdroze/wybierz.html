@@ -104,9 +104,34 @@
         </a>
 
       </div>
+
+      <section id="contact" class="contact">
+        <h2>Skrobnij</h2>
+        <div id="contact-alerts"></div>
+        <form method="post" action="{% url 'contact' %}" id="contact-form">
+          {% csrf_token %}
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+          <div class="contact-row">
+            {{ form.name }}
+            {{ form.email }}
+          </div>
+          {{ form.message }}
+          <div class="contact-actions">
+            <button type="submit" class="send-btn">Wyślij wiadomość</button>
+          </div>
+        </form>
+      </section>
     </main>
   </div>
 
-  <script src="{% static 'rozdroze/js/wybierz.js' %}"></script>
+  <div id="contact-messages" hidden>
+    <span id="msg-success">Twoja wiadomość została wysłana pomyślnie!</span>
+    <span id="msg-invalid">Nieprawidłowa odpowiedź serwera.</span>
+    <span id="msg-error">Błąd serwera. Spróbuj ponownie później.</span>
+    <span id="msg-fail">Coś poszło nie tak.</span>
+  </div>
+
+  <script src="{% static 'rozdroze/js/wybierz.js' }}"></script>
+  <script src="{% static 'rozdroze/js/contact.js' %}"></script>
 </body>
 </html>
