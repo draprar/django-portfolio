@@ -612,6 +612,10 @@ textarea.portal-input {
         font-size: 60%;
     }
 
+    .contact-actions {
+        font-size: 125%;
+    }
+
     textarea.portal-input {
         min-height: 4.4em;
     }
