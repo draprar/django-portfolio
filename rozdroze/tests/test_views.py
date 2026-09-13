@@ -18,6 +18,12 @@ def test_wybierz_renders_crossroads(client):
     assert 'panel-code' in content
     assert 'class="cta-arrow"' in content
     assert "Komputerek" in content
+    assert 'id="contact"' in content
+    assert 'id="contact-form"' in content
+    assert reverse("contact") in content
+    assert "Skrobnij" in content
+    assert "Wyślij wiadomość" in content
+    assert "rozdroze/js/contact.js" in content
 
 
 @pytest.mark.django_db

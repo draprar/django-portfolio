@@ -466,3 +466,13 @@ def test_portal_contact_form_uses_portal_inputs():
     assert form.fields["name"].widget.attrs["data-en"] == "Name"
     assert form.fields["email"].widget.attrs["data-en"] == "Email"
     assert form.fields["message"].widget.attrs["data-pl"] == "Wiadomość"
+
+
+def test_portal_contact_form_polish_only_drops_english_attrs():
+    from core.forms import portal_contact_form
+
+    form = portal_contact_form(bilingual=False)
+    assert "data-en" not in form.fields["name"].widget.attrs
+    assert "data-pl" not in form.fields["name"].widget.attrs
+    assert form.fields["name"].widget.attrs["placeholder"] == "Imię"
+    assert form.fields["message"].widget.attrs["placeholder"] == "Wiadomość"

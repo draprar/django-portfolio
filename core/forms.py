@@ -40,8 +40,8 @@ class ContactForm(forms.ModelForm):
         return data
 
 
-def portal_contact_form() -> ContactForm:
-    """ContactForm styled for the kodzillin' page."""
+def portal_contact_form(*, bilingual: bool = True) -> ContactForm:
+    """ContactForm styled for portal pages (kodzillin' / hub)."""
     form = ContactForm()
     extras = {
         "name": {"class": "portal-input", "autocomplete": "name"},
@@ -50,4 +50,10 @@ def portal_contact_form() -> ContactForm:
     }
     for field, attrs in extras.items():
         form.fields[field].widget.attrs.update(attrs)
+        if not bilingual:
+            widget = form.fields[field].widget
+            widget.attrs.pop("data-en", None)
+            pl_label = widget.attrs.pop("data-pl", None)
+            if pl_label:
+                widget.attrs["placeholder"] = pl_label
     return form
