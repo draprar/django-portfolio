@@ -127,6 +127,7 @@ INSTALLED_APPS = [
     "analytics",
     "rozdroze",
     "code",
+    "poligon",
     # External
     "django_ratelimit",
     "rest_framework",
@@ -147,6 +148,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "poligon.middleware.GuestLearnerCookieMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -163,6 +165,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "gallery.context_processors.categories",
+                "poligon.context_processors.nav",
             ],
         },
     },

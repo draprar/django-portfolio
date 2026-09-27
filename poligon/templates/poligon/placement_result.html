@@ -1,0 +1,35 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header">
+  <p class="poligon-eyebrow" data-en="Suggested level" data-pl="Proponowany poziom">Proponowany poziom</p>
+  <h1 class="poligon-title">{{ suggested }}</h1>
+  <p class="poligon-subtitle" data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</p>
+  <p class="poligon-subtitle"
+     data-en="{{ correct }} of {{ total }} right. This is a starting point, not a verdict — you can move it any time."
+     data-pl="{{ correct }} z {{ total }} dobrze. To punkt startu, nie wyrok — możesz go zmienić, kiedy chcesz.">
+    {{ correct }} z {{ total }} dobrze. To punkt startu, nie wyrok — możesz go zmienić, kiedy chcesz.
+  </p>
+</header>
+
+<section class="poligon-card">
+  <div class="poligon-actions">
+    <form method="post" action="{% url 'poligon:settings' %}">
+      {% csrf_token %}
+      <input type="hidden" name="practice_level" value="{{ suggested }}">
+      <input type="hidden" name="daily_minutes" value="{{ state.daily_minutes }}">
+      <input type="hidden" name="target_date" value="{{ state.target_date|date:'Y-m-d' }}">
+      <button class="poligon-btn" type="submit" data-en="Start here" data-pl="Zaczynam od tego">Zaczynam od tego</button>
+    </form>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:settings' %}"
+       data-en="I will choose the level" data-pl="Wybiorę samodzielnie">Wybiorę samodzielnie</a>
+  </div>
+  <p class="poligon-muted"
+     data-en="If the material feels too easy or too hard after a few exercises, change the level. That is what it is for."
+     data-pl="Jeśli po kilku ćwiczeniach materiał okaże się za łatwy albo za trudny, zmień poziom. Właśnie po to jest.">
+    Jeśli po kilku ćwiczeniach materiał okaże się za łatwy albo za trudny, zmień poziom. Właśnie po to jest.
+  </p>
+</section>
+{% endblock %}

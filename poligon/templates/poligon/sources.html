@@ -1,0 +1,77 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <h1 class="poligon-title" data-en="Where the content comes from" data-pl="Skąd są treści">Skąd są treści</h1>
+  <p class="poligon-subtitle"
+     data-en="Most of Ćwiczba is written for Ćwiczba. Whatever comes from somewhere else says so on the card, with the licence."
+     data-pl="Większość Ćwiczby jest napisana na potrzeby Ćwiczby. Co pochodzi skądinąd, ma to napisane na karcie razem z licencją.">
+    Większość Ćwiczby jest napisana na potrzeby Ćwiczby. Co pochodzi skądinąd, ma to napisane na karcie razem z licencją.
+  </p>
+</header>
+
+<section class="poligon-card">
+  <div class="poligon-table-scroll">
+    <table class="poligon-table">
+      <thead>
+        <tr>
+          <th scope="col" data-en="Source" data-pl="Źródło">Źródło</th>
+          <th scope="col" data-en="Role" data-pl="Rola">Rola</th>
+          <th scope="col" data-en="How Ćwiczba treats it" data-pl="Jak to traktujemy">Jak to traktujemy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for source in sources %}
+        <tr>
+          <td>
+            {% if source.url %}
+            <a href="{{ source.url }}" rel="nofollow noopener" data-en="{{ source.name_en }}" data-pl="{{ source.name_pl }}">{{ source.name_pl }}</a>
+            {% else %}
+            <span data-en="{{ source.name_en }}" data-pl="{{ source.name_pl }}">{{ source.name_pl }}</span>
+            {% endif %}
+          </td>
+          <td data-en="{{ source.role_en }}" data-pl="{{ source.role_pl }}">{{ source.role_pl }}</td>
+          <td data-en="{{ source.treatment_en }}" data-pl="{{ source.treatment_pl }}">{{ source.treatment_pl }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="poligon-card">
+  <h2 data-en="What is still simplified" data-pl="Co jest jeszcze uproszczone">Co jest jeszcze uproszczone</h2>
+  <p data-en="Listening is read by the browser's speech engine, not by a recorded voice, so the accent and the rhythm are artificial. Real recordings need licensed audio."
+     data-pl="Słuchanie odtwarza silnik mowy w przeglądarce, nie nagranie lektora, więc akcent i rytm są sztuczne. Prawdziwe nagrania wymagają licencjonowanego audio.">
+    Słuchanie odtwarza silnik mowy w przeglądarce, nie nagranie lektora, więc akcent i rytm są sztuczne. Prawdziwe nagrania wymagają licencjonowanego audio.
+  </p>
+  <p data-en="Speaking records the answer so it can be played back. The recording stays on the device and is not graded. Feedback reads the text written below, so pronunciation is not checked."
+     data-pl="Mówienie nagrywa odpowiedź, żeby można było ją odsłuchać. Nagranie zostaje na urządzeniu i nie jest oceniane. Ocena czyta tekst wpisany poniżej, więc wymowa nie jest sprawdzana.">
+    Mówienie nagrywa odpowiedź, żeby można było ją odsłuchać. Nagranie zostaje na urządzeniu i nie jest oceniane. Ocena czyta tekst wpisany poniżej, więc wymowa nie jest sprawdzana.
+  </p>
+  <p data-en="The speaking and writing score counts words, sentences, fillers, linkers and repetition. It does not judge the content. Treat it as a hint, not a grade."
+     data-pl="Wynik za mówienie i pisanie liczy słowa, zdania, wypełniacze, łączniki i powtórzenia. Nie ocenia treści. Traktuj go jako wskazówkę, nie jako ocenę.">
+    Wynik za mówienie i pisanie liczy słowa, zdania, wypełniacze, łączniki i powtórzenia. Nie ocenia treści. Traktuj go jako wskazówkę, nie jako ocenę.
+  </p>
+</section>
+
+<section class="poligon-card">
+  <h2 data-en="In short" data-pl="W skrócie">W skrócie</h2>
+  <p data-en="Ćwiczba is a self-study trainer. The levels are our own names for how hard the material is, and the score is a study hint. It is not an official result and this page is not legal advice."
+     data-pl="Ćwiczba to trener do samodzielnej nauki. Poziomy to nasze nazwy na trudność materiału, a wynik jest podpowiedzią do nauki. To nie jest oficjalny wynik, a ta strona nie jest poradą prawną.">
+    Ćwiczba to trener do samodzielnej nauki. Poziomy to nasze nazwy na trudność materiału, a wynik jest podpowiedzią do nauki. To nie jest oficjalny wynik, a ta strona nie jest poradą prawną.
+  </p>
+  <p class="poligon-links">
+    <a href="https://www.natobilc.org/files/file/6001EFed05.pdf" rel="nofollow noopener">STANAG 6001 (BILC)</a>
+    <a href="https://natobilc.org/files/ATrainP-5%20EDA%20V2%20E.pdf" rel="nofollow noopener">ATrainP-5</a>
+    <a href="https://www.nato.int/en/about-us/official-texts-and-resources/use-of-nato-content-and-brand" rel="nofollow noopener" data-en="Content and brand" data-pl="Treść i znak">Treść i znak</a>
+    <a href="https://www.wikidata.org/wiki/Wikidata:Licensing" rel="nofollow noopener">Wikidata</a>
+    <a href="https://en.wiktionary.org/wiki/Wiktionary:Copyrights" rel="nofollow noopener">Wiktionary</a>
+    <a href="https://en.wikipedia.org/wiki/Wikipedia:Copyrights" rel="nofollow noopener">Wikipedia</a>
+    <a href="https://tatoeba.org/en/terms_of_use" rel="nofollow noopener">Tatoeba</a>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow noopener">CC BY-SA 4.0</a>
+  </p>
+</section>
+{% endblock %}

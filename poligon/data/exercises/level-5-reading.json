@@ -1,0 +1,2452 @@
+[
+  {
+    "slug": "l5-r-wiki-00",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Occupational_safety_and_health",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Occupational safety and health”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Occupational safety and health”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Occupational safety and health",
+    "title_pl": "Occupational safety and health",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Occupational safety and health (OSH) or occupational health and safety (OHS) is a multidisciplinary field concerned with the safety, health, and welfare of people at work. OSH is related to the fields of occupational medicine and occupational hygiene and aligns with workplace health promotion initiatives. OSH also protects all the general public who may be affected by the occupational environment.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about safety at work.",
+        "text_pl": "Chodzi o bezpieczeństwo w pracy.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-wiki-01",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Emergency_management",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Emergency management”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Emergency management”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Emergency management",
+    "title_pl": "Emergency management",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Disaster management is the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about handling an emergency.",
+        "text_pl": "Chodzi o działanie w sytuacji nagłej.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-02-radio",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Ethics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Ethics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Ethics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "category_en": "communications",
+    "category_pl": "łączność",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Ethics",
+    "title_pl": "Ethics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Ethics is the philosophical study of moral phenomena. Also called moral philosophy, it investigates normative questions about what people ought to do or which behavior is morally right. Its main branches include normative ethics, applied ethics, and metaethics.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about ethics.",
+        "text_pl": "Chodzi o: ethics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-03-meal",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Aesthetics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Aesthetics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Aesthetics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Aesthetics",
+    "title_pl": "Aesthetics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Aesthetics is the branch of philosophy that studies beauty, taste, and related phenomena. In a broad sense, it includes the philosophy of art, which examines the nature of art, artistic creativity, the meanings of artworks, and audience appreciation.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about aesthetics.",
+        "text_pl": "Chodzi o: aesthetics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x000-apple",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Epistemology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Epistemology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Epistemology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Epistemology",
+    "title_pl": "Epistemology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Epistemology is the branch of philosophy that examines the nature, origin, and limits of knowledge. Also called the theory of knowledge, it explores different types of knowledge, such as propositional knowledge about facts, practical knowledge in the form of skills, and knowledge by acquaintance as a familiarity through experience. Epistemologists study the concepts of belief, truth, and justification to understand the nature of knowledge. To discover how knowledge arises, they investigate…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about epistemology.",
+        "text_pl": "Chodzi o: epistemology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x001-ticket",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Metaphysics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Metaphysics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Metaphysics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Metaphysics",
+    "title_pl": "Metaphysics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Metaphysics is the branch of philosophy that examines the basic nature or most fundamental structure of reality. It is traditionally seen as the study of mind-independent features of the world, but some theorists view it as an inquiry into the conceptual framework of human understanding. Some philosophers, including Aristotle, designate metaphysics as the first philosophy to suggest that it is more fundamental than other forms of philosophical inquiry.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about metaphysics.",
+        "text_pl": "Chodzi o: metaphysics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x002-bridge",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Logic",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Logic”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Logic”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Logic",
+    "title_pl": "Logic",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Logic is the study of correct reasoning. It includes both formal and informal logic. Formal logic is the study of deductively valid inferences or logical truths. It examines how conclusions follow from premises based on the structure of arguments alone, independent of their topic and content. Informal logic is associated with informal fallacies, critical thinking, and argumentation theory. Informal logic examines arguments expressed in natural language whereas formal logic uses formal language.…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about logic.",
+        "text_pl": "Chodzi o: logic.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x003-clinic",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Rhetoric",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Rhetoric”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Rhetoric”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Rhetoric",
+    "title_pl": "Rhetoric",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Rhetoric is the art of persuasion. It is one of the three ancient arts of discourse (trivium) of classical antiquity, along with grammar and logic/dialectic. As an academic discipline within the humanities, rhetoric aims to study the techniques that speakers or writers use to inform, persuade, and motivate their audiences. Rhetoric also provides heuristics for understanding, discovering, and developing arguments for particular situations.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about rhetoric.",
+        "text_pl": "Chodzi o: rhetoric.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x004-office",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Semantics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Semantics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Semantics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Semantics",
+    "title_pl": "Semantics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Semantics is the study of linguistic meaning. It examines what meaning is, how words get their meaning, and how the meaning of a complex expression depends on its parts. Part of this process involves the distinction between sense and reference. Sense is given by the ideas and concepts associated with an expression while reference is the object to which an expression points. Semantics contrasts with syntax, which studies the rules that dictate how to create grammatically correct sentences, and…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about semantics.",
+        "text_pl": "Chodzi o: semantics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x005-market",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Pragmatics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Pragmatics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Pragmatics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Pragmatics",
+    "title_pl": "Pragmatics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "In linguistics and the philosophy of language, pragmatics is the study of how context contributes to meaning. This field of study evaluates how human language is utilized in social interactions, as well as the relationship between the interpreter and the interpreted. Linguists who specialize in pragmatics are called pragmaticians. The field has been represented since 1986 by the International Pragmatics Association (IPrA).",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about pragmatics.",
+        "text_pl": "Chodzi o: pragmatics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x006-river",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Linguistics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Linguistics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Linguistics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Linguistics",
+    "title_pl": "Linguistics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Linguistics is the scientific study of language. Specific areas of linguistic description and analysis are syntax, semantics (meaning), morphology, phonetics, phonology, and pragmatics. Subdisciplines such as biolinguistics and psycholinguistics bridge many of these divisions.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about linguistics.",
+        "text_pl": "Chodzi o: linguistics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x007-teacher",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Translation",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Translation”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Translation”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Translation",
+    "title_pl": "Translation",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Translation, in reference to language, is the communication of the meaning of a source-language text by means of an equivalent target-language text. The English language draws a terminological distinction between translating written texts and interpreting oral or signed communications between languages.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about translation.",
+        "text_pl": "Chodzi o: translation.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x008-engine",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Archaeology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Archaeology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Archaeology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Archaeology",
+    "title_pl": "Archaeology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Archaeology or archeology is the study of human activity through the recovery and analysis of material culture. The archaeological record consists of artifacts, architecture, biofacts or ecofacts, sites, and cultural landscapes. Archaeology can be considered both a social science and a branch of the humanities. It is usually considered an independent academic discipline, but may also be classified as part of anthropology, history or geography. The discipline involves surveying, excavation, and…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about archaeology.",
+        "text_pl": "Chodzi o: archaeology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x009-passport",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Anthropology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Anthropology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Anthropology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Anthropology",
+    "title_pl": "Anthropology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Anthropology is the scientific study of humanity that crosses biology and sociology, concerned with human behavior, human biology, cultures, societies, and linguistics, in both the present and past, including archaic humans. Social anthropology studies patterns of behavior, while cultural anthropology studies cultural meaning, including norms and values. The term sociocultural anthropology is commonly used today. Linguistic anthropology studies how language influences social life. Biological…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about anthropology.",
+        "text_pl": "Chodzi o: anthropology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x010-garden",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Demography",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Demography”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Demography”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Demography",
+    "title_pl": "Demography",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Demography is the statistical study of human populations: their size, composition, and how they change through the interplay of fertility (births), mortality (deaths), and migration.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about demography.",
+        "text_pl": "Chodzi o: demography.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x011-storm",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Macroeconomics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Macroeconomics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Macroeconomics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Macroeconomics",
+    "title_pl": "Macroeconomics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Macroeconomics is a branch of economics that deals with the performance, structure, behavior, and decision-making of an economy as a whole. This includes regional, national, and global economies. Macroeconomists study aggregate measures of the economy, such as output or gross domestic product (GDP), national income, unemployment, inflation, consumption, saving, investment, or trade. Macroeconomics is primarily focused on questions that help to understand aggregate variables in relation to…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about macroeconomics.",
+        "text_pl": "Chodzi o: macroeconomics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x012-library",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Microeconomics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Microeconomics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Microeconomics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Microeconomics",
+    "title_pl": "Microeconomics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Microeconomics is a branch of economics that studies the behavior of individuals and firms in making decisions regarding the allocation of scarce resources and the interactions among these individuals and firms. Microeconomics focuses on the study of individual markets, sectors, or industries as opposed to the economy as a whole, which is studied in macroeconomics.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about microeconomics.",
+        "text_pl": "Chodzi o: microeconomics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x013-salary",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Behavioral_economics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Behavioral economics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Behavioral economics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Behavioral economics",
+    "title_pl": "Behavioral economics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Behavioral economics is the study of the psychological factors involved in the decisions of individuals or institutions, and how these decisions deviate from those implied by traditional economic theory.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about behavioral economics.",
+        "text_pl": "Chodzi o: behavioral economics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x014-vaccine",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Jurisprudence",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Jurisprudence”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Jurisprudence”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Jurisprudence",
+    "title_pl": "Jurisprudence",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Jurisprudence, also known as legal theory or legal science, is the philosophy of law. As a field of knowledge, it applies philosophical methods to legal questions, such as what the law is or how it ought to be.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about jurisprudence.",
+        "text_pl": "Chodzi o: jurisprudence.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x015-harbor",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Constitutional_law",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Constitutional law”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Constitutional law”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Constitutional law",
+    "title_pl": "Constitutional law",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Constitutional law is a body of law which defines the role, powers, and structure of different entities within a state, namely, the executive, the parliament or legislature, and the judiciary; as well as the basic rights of citizens and their relationship with their governments, and in federal countries such as the United States and Canada, the relationship between the central government and state, provincial, or territorial governments.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about constitutional law.",
+        "text_pl": "Chodzi o: constitutional law.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x016-battery",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Evolution",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Evolution”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Evolution”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Evolution",
+    "title_pl": "Evolution",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Evolution is the change in the heritable characteristics of biological populations over successive generations. It occurs when evolutionary processes such as genetic drift and natural selection act on genetic variation, resulting in certain characteristics becoming more or less common within a population over successive generations. The process of evolution has given rise to biodiversity at every level of biological organisation.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about evolution.",
+        "text_pl": "Chodzi o: evolution.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x017-museum",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Plate_tectonics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Plate tectonics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Plate tectonics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Plate tectonics",
+    "title_pl": "Plate tectonics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Plate tectonics is the scientific theory that Earth's lithosphere comprises a number of large tectonic plates, which have been slowly moving since 3–4 billion years ago. The model builds on the concept of continental drift, an idea developed during the first decades of the 20th century. Plate tectonics came to be accepted by geoscientists after seafloor spreading was validated in the mid- to late 1960s. The processes that result in plates and shape Earth's crust are called tectonics.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about plate tectonics.",
+        "text_pl": "Chodzi o: plate tectonics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x018-budget",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Quantum mechanics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Quantum mechanics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Quantum mechanics",
+    "title_pl": "Quantum mechanics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Quantum mechanics, also known as quantum physics, is the fundamental physical theory that describes the behavior of matter and of light; the behaviors it models typically occur at and below the scale of atoms, and have often been described as counterintuitive. Its concepts and methods have been applied across many disciplines, including quantum chemistry, quantum biology, quantum field theory, quantum technology, and quantum information science.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about quantum mechanics.",
+        "text_pl": "Chodzi o: quantum mechanics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x019-island",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Optics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Optics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Optics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Optics",
+    "title_pl": "Optics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Optics is the branch of physics that studies the behaviour, manipulation, and detection of electromagnetic radiation, including its interactions with matter and instruments that use or detect it. Optics usually describes the behaviour of visible, ultraviolet, and infrared light. The study of optics extends to other forms of electromagnetic radiation, including radio waves, microwaves, \nand X-rays. The term optics is also applied to technology for manipulating beams of elementary charged…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about optics.",
+        "text_pl": "Chodzi o: optics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x020-apple",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Zoology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Zoology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Zoology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Zoology",
+    "title_pl": "Zoology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Zoology is the scientific study of animals. Its studies include the structure, embryology, classification, habits, and distribution of all animals, both living and extinct, and how they interact with their ecosystems. Zoology is one of the primary branches of biology. The term is derived from Ancient Greek  ζῷον (zôion) 'animal' and  λόγος (lógos) 'study of'.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about zoology.",
+        "text_pl": "Chodzi o: zoology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x021-ticket",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Pharmacology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Pharmacology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Pharmacology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Pharmacology",
+    "title_pl": "Pharmacology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Pharmacology is the science of drugs and medications, including a substance's origin, composition and interaction with biological systems; specifically through pharmacokinetics, pharmacodynamics, therapeutic use, and toxicology. The discipline examines these interactions through pharmacokinetics and pharmacodynamics, both of which determine how a substance alters normal or abnormal biochemical function. Substances with medicinal properties are classified as pharmaceuticals, while the term drug…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about pharmacology.",
+        "text_pl": "Chodzi o: pharmacology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x022-bridge",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Historiography",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Historiography”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Historiography”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Historiography",
+    "title_pl": "Historiography",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Historiography is the study of the methods used by historians in developing history as an academic discipline. By extension, the term historiography is any body of historical work on a particular subject. The historiography of a specific topic covers how historians have studied that topic by using particular sources, techniques of research, and theoretical approaches to the interpretation of documentary sources. Scholars discuss historiography by topic—such as the historiography of the United…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about historiography.",
+        "text_pl": "Chodzi o: historiography.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x023-clinic",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Tort",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Tort”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Tort”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Tort",
+    "title_pl": "Tort",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A tort is a civil wrong, other than breach of contract, that causes a claimant to suffer loss or harm, resulting in legal liability for the person who commits the tortious act. Tort law can be contrasted with criminal law, which deals with criminal wrongs that are punishable by the state. While criminal law aims to punish individuals who commit crimes, tort law aims to compensate individuals who suffer harm as a result of the actions of others. Some wrongful acts, such as assault and battery…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about tort.",
+        "text_pl": "Chodzi o: tort.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x024-office",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Logic_gate",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Logic gate”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Logic gate”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Logic gate",
+    "title_pl": "Logic gate",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A logic gate is a device that performs a Boolean function, a logical operation performed on one or more binary inputs that produces a single binary output. Depending on the context, the term may refer to an ideal logic gate, one that has, for instance, zero rise time and unlimited fan-out, or it may refer to a non-ideal physical device.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about logic gate.",
+        "text_pl": "Chodzi o: logic gate.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x025-market",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Ontology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Ontology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Ontology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Ontology",
+    "title_pl": "Ontology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Ontology is the philosophical study of being. It is traditionally understood as the subdiscipline of metaphysics focused on the most general features of reality. As one of the most fundamental concepts, being encompasses all of reality and every entity within it. To articulate the basic structure of being, ontology examines the shared characteristics among all things and investigates their classification into basic types, such as the categories of particulars and universals. Particulars are…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about ontology.",
+        "text_pl": "Chodzi o: ontology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x026-river",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Stoicism",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Stoicism”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Stoicism”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Stoicism",
+    "title_pl": "Stoicism",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Stoicism is a philosophical movement and practical guide to living, emphasizing daily self-discipline and moral improvement, which originated in the Hellenistic period of ancient Greece and continued well into the Roman Imperial period. The ancient Stoics believed that the universe operated according to reason, or logos, providing a unified account of the world, constructed from ideals of rational discourse, monistic physics, and naturalistic ethics. These ideals constitute virtue, which is…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about stoicism.",
+        "text_pl": "Chodzi o: stoicism.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x027-teacher",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Rationalism",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Rationalism”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Rationalism”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Rationalism",
+    "title_pl": "Rationalism",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "In philosophy, rationalism is the epistemological view that \"regards reason as the chief source and test of knowledge\" or \"the position that reason has precedence over other ways of acquiring knowledge\", often in contrast to other possible sources of knowledge such as faith, tradition, or sensory experience. More formally, rationalism is defined as a methodology or a theory \"in which the criterion of truth is not sensory but intellectual and deductive\".",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about rationalism.",
+        "text_pl": "Chodzi o: rationalism.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x028-engine",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Ethics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Ethics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Ethics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Ethics",
+    "title_pl": "Ethics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Ethics is the philosophical study of moral phenomena. Also called moral philosophy, it investigates normative questions about what people ought to do or which behavior is morally right. Its main branches include normative ethics, applied ethics, and metaethics.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about ethics.",
+        "text_pl": "Chodzi o: ethics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x029-passport",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Aesthetics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Aesthetics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Aesthetics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Aesthetics",
+    "title_pl": "Aesthetics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Aesthetics is the branch of philosophy that studies beauty, taste, and related phenomena. In a broad sense, it includes the philosophy of art, which examines the nature of art, artistic creativity, the meanings of artworks, and audience appreciation.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about aesthetics.",
+        "text_pl": "Chodzi o: aesthetics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x030-garden",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Epistemology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Epistemology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Epistemology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Epistemology",
+    "title_pl": "Epistemology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Epistemology is the branch of philosophy that examines the nature, origin, and limits of knowledge. Also called the theory of knowledge, it explores different types of knowledge, such as propositional knowledge about facts, practical knowledge in the form of skills, and knowledge by acquaintance as a familiarity through experience. Epistemologists study the concepts of belief, truth, and justification to understand the nature of knowledge. To discover how knowledge arises, they investigate…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about epistemology.",
+        "text_pl": "Chodzi o: epistemology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x031-storm",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Metaphysics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Metaphysics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Metaphysics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Metaphysics",
+    "title_pl": "Metaphysics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Metaphysics is the branch of philosophy that examines the basic nature or most fundamental structure of reality. It is traditionally seen as the study of mind-independent features of the world, but some theorists view it as an inquiry into the conceptual framework of human understanding. Some philosophers, including Aristotle, designate metaphysics as the first philosophy to suggest that it is more fundamental than other forms of philosophical inquiry.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about metaphysics.",
+        "text_pl": "Chodzi o: metaphysics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x032-library",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Logic",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Logic”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Logic”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Logic",
+    "title_pl": "Logic",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Logic is the study of correct reasoning. It includes both formal and informal logic. Formal logic is the study of deductively valid inferences or logical truths. It examines how conclusions follow from premises based on the structure of arguments alone, independent of their topic and content. Informal logic is associated with informal fallacies, critical thinking, and argumentation theory. Informal logic examines arguments expressed in natural language whereas formal logic uses formal language.…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about logic.",
+        "text_pl": "Chodzi o: logic.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x033-salary",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Rhetoric",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Rhetoric”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Rhetoric”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Rhetoric",
+    "title_pl": "Rhetoric",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Rhetoric is the art of persuasion. It is one of the three ancient arts of discourse (trivium) of classical antiquity, along with grammar and logic/dialectic. As an academic discipline within the humanities, rhetoric aims to study the techniques that speakers or writers use to inform, persuade, and motivate their audiences. Rhetoric also provides heuristics for understanding, discovering, and developing arguments for particular situations.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about rhetoric.",
+        "text_pl": "Chodzi o: rhetoric.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x034-vaccine",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Semantics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Semantics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Semantics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Semantics",
+    "title_pl": "Semantics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Semantics is the study of linguistic meaning. It examines what meaning is, how words get their meaning, and how the meaning of a complex expression depends on its parts. Part of this process involves the distinction between sense and reference. Sense is given by the ideas and concepts associated with an expression while reference is the object to which an expression points. Semantics contrasts with syntax, which studies the rules that dictate how to create grammatically correct sentences, and…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about semantics.",
+        "text_pl": "Chodzi o: semantics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x035-harbor",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Pragmatics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Pragmatics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Pragmatics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Pragmatics",
+    "title_pl": "Pragmatics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "In linguistics and the philosophy of language, pragmatics is the study of how context contributes to meaning. This field of study evaluates how human language is utilized in social interactions, as well as the relationship between the interpreter and the interpreted. Linguists who specialize in pragmatics are called pragmaticians. The field has been represented since 1986 by the International Pragmatics Association (IPrA).",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about pragmatics.",
+        "text_pl": "Chodzi o: pragmatics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x036-battery",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Linguistics",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Linguistics”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Linguistics”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Linguistics",
+    "title_pl": "Linguistics",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Linguistics is the scientific study of language. Specific areas of linguistic description and analysis are syntax, semantics (meaning), morphology, phonetics, phonology, and pragmatics. Subdisciplines such as biolinguistics and psycholinguistics bridge many of these divisions.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about linguistics.",
+        "text_pl": "Chodzi o: linguistics.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x037-museum",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Translation",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Translation”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Translation”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Translation",
+    "title_pl": "Translation",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Translation, in reference to language, is the communication of the meaning of a source-language text by means of an equivalent target-language text. The English language draws a terminological distinction between translating written texts and interpreting oral or signed communications between languages.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about translation.",
+        "text_pl": "Chodzi o: translation.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x038-budget",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Archaeology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Archaeology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Archaeology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Archaeology",
+    "title_pl": "Archaeology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Archaeology or archeology is the study of human activity through the recovery and analysis of material culture. The archaeological record consists of artifacts, architecture, biofacts or ecofacts, sites, and cultural landscapes. Archaeology can be considered both a social science and a branch of the humanities. It is usually considered an independent academic discipline, but may also be classified as part of anthropology, history or geography. The discipline involves surveying, excavation, and…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about archaeology.",
+        "text_pl": "Chodzi o: archaeology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x039-island",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Anthropology",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Anthropology”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Anthropology”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Anthropology",
+    "title_pl": "Anthropology",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Anthropology is the scientific study of humanity that crosses biology and sociology, concerned with human behavior, human biology, cultures, societies, and linguistics, in both the present and past, including archaic humans. Social anthropology studies patterns of behavior, while cultural anthropology studies cultural meaning, including norms and values. The term sociocultural anthropology is commonly used today. Linguistic anthropology studies how language influences social life. Biological…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about anthropology.",
+        "text_pl": "Chodzi o: anthropology.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x040-apple",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Demography",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Demography”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Demography”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Demography",
+    "title_pl": "Demography",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Demography is the statistical study of human populations: their size, composition, and how they change through the interplay of fertility (births), mortality (deaths), and migration.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about demography.",
+        "text_pl": "Chodzi o: demography.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x041-ticket",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: ticket office",
+    "title_pl": "Przeczytaj notatkę: kasa",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the ticket office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: kasa. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x042-bridge",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: bridge",
+    "title_pl": "Przeczytaj notatkę: most",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the bridge is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: most. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the bridge.",
+        "text_pl": "Chodzi o: most.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x043-clinic",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: clinic",
+    "title_pl": "Przeczytaj notatkę: przychodnia",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the clinic is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: przychodnia. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the clinic.",
+        "text_pl": "Chodzi o: przychodnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x044-office",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: office",
+    "title_pl": "Przeczytaj notatkę: biuro",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: biuro. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the office.",
+        "text_pl": "Chodzi o: biuro.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l5-r-x045-market",
+    "skill": "R",
+    "level": 5,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: market",
+    "title_pl": "Przeczytaj notatkę: targ",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the market is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: targ. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the market.",
+        "text_pl": "Chodzi o: targ.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  }
+]

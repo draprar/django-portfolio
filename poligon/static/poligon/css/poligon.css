@@ -1,0 +1,580 @@
+body {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+  color: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  padding-top: 88px;
+}
+
+.poligon-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+  background: #c4922a;
+  color: #1a140c;
+  font-weight: 600;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0 0 12px 0;
+  text-decoration: none;
+}
+
+.poligon-skip:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #f0c46a;
+  outline-offset: 2px;
+}
+
+.poligon-option:focus-within {
+  border-color: #f0c46a;
+}
+
+.navbar {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 0;
+}
+
+.poligon-brand {
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #c4922a;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.poligon-brand:hover {
+  color: #c4922a;
+  letter-spacing: 6px;
+}
+
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #e0e0e0;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  min-height: 44px;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #c4922a;
+}
+
+.navbar-toggler {
+  border: none;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(224,224,224,0.9)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.poligon-lang {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: 1rem;
+}
+
+.lang-btn {
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  min-height: 36px;
+}
+
+.lang-btn.active {
+  color: #1a140c;
+  background: #c4922a;
+}
+
+.poligon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: #c4922a;
+  color: #1a140c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.footer {
+  background: rgba(10, 10, 10, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c9ccd3;
+  padding: 28px 16px 36px;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: #c4922a;
+  text-decoration: none;
+}
+
+main.container {
+  padding-bottom: 2rem;
+}
+
+.poligon-messages {
+  margin-bottom: 1.4rem;
+}
+
+.poligon-message {
+  background: #1a1e27;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.poligon-message-error {
+  border-color: rgba(220, 38, 38, 0.45);
+  color: #fca5a5;
+}
+
+.poligon-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border-color: rgba(196, 146, 42, 0.45);
+}
+
+.poligon-banner p {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.poligon-header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.poligon-header-left {
+  text-align: left;
+}
+
+.poligon-eyebrow,
+.poligon-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c4922a;
+}
+
+.poligon-section-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c4922a;
+  margin: 0 0 0.9rem;
+}
+
+.poligon-title {
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0.2rem 0 0;
+}
+
+.poligon-header .poligon-title::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(45deg, #c4922a, #a0522d);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+.poligon-header-left .poligon-title::after {
+  margin-left: 0;
+}
+
+.poligon-subtitle,
+.poligon-muted {
+  color: #a8adb8;
+  line-height: 1.7;
+}
+
+.poligon-subtitle {
+  max-width: 640px;
+  margin: 1.2rem auto 0;
+}
+
+.poligon-header-left .poligon-subtitle {
+  margin-left: 0;
+}
+
+.poligon-actions,
+.poligon-grades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+.poligon-header-left .poligon-actions,
+.poligon-form .poligon-btn,
+.poligon-grades {
+  justify-content: flex-start;
+}
+
+.poligon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.3rem;
+  background: linear-gradient(45deg, #c4922a, #a0522d);
+  color: #1a140c;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.poligon-btn-quiet {
+  background: transparent;
+  color: #e8e8e8;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+}
+
+.poligon-btn:hover {
+  transform: translateY(-2px);
+}
+
+.poligon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.poligon-stats,
+.poligon-split,
+.poligon-metrics {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.poligon-stats {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.poligon-split,
+.poligon-metrics {
+  grid-template-columns: 1fr 1fr;
+}
+
+.poligon-card {
+  background: #1a1e27;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.poligon-card:hover {
+  border-color: rgba(196, 146, 42, 0.45);
+}
+
+.poligon-stat {
+  text-align: center;
+}
+
+a.poligon-stat {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.poligon-stat .poligon-label,
+.poligon-stat .poligon-big,
+.poligon-stat .poligon-bar {
+  display: block;
+}
+
+a.poligon-stat:hover .poligon-big {
+  color: #c4922a;
+}
+
+.poligon-big {
+  font-weight: 300;
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  color: #e0e0e0;
+}
+
+.poligon-bar {
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.poligon-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(45deg, #c4922a, #a0522d);
+}
+
+.poligon-card-head,
+.poligon-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.poligon-card h2,
+.poligon-term {
+  color: #e0e0e0;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.poligon-row {
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.poligon-row a,
+.poligon-card-head a,
+.poligon-links a {
+  color: #c4922a;
+  text-decoration: none;
+}
+
+.poligon-verdict {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.poligon-table-scroll {
+  overflow-x: auto;
+}
+
+.poligon-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.poligon-table th,
+.poligon-table td {
+  text-align: left;
+  padding: 0.7rem 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: top;
+}
+
+.poligon-table th {
+  color: #c4922a;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.poligon-prompt,
+.poligon-task textarea,
+.poligon-form input,
+.poligon-form select {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  color: #e8e8e8;
+}
+
+.poligon-prompt {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.poligon-task textarea,
+.poligon-form input,
+.poligon-form select {
+  background: #0f1117;
+  border: 1px solid rgba(196, 146, 42, 0.28);
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+}
+
+.poligon-form input,
+.poligon-form select {
+  margin-bottom: 1.2rem;
+}
+
+.poligon-form label,
+.poligon-answer-label {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.poligon-form label span,
+.poligon-answer-label span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c4922a;
+}
+
+.poligon-reveal {
+  margin: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.poligon-reveal summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  color: #c4922a;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.poligon-reveal blockquote {
+  border-left: 2px solid rgba(196, 146, 42, 0.45);
+  padding-left: 0.9rem;
+  margin: 0.6rem 0;
+  color: #cfd3db;
+}
+
+.poligon-options {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.poligon-option {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  background: #0f1117;
+  border: 1px solid rgba(196, 146, 42, 0.28);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+}
+
+.poligon-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  color: #a8adb8;
+}
+
+.poligon-form-error {
+  background: rgba(127, 29, 29, 0.35);
+  border: 1px solid rgba(220, 38, 38, 0.45);
+  color: #fca5a5;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.poligon-listen,
+.poligon-recorder,
+.poligon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.poligon-links-center {
+  justify-content: center;
+}
+
+.poligon-shortcut {
+  font-size: 0.8rem;
+  margin: 1rem 0 0;
+}
+
+.poligon-result .poligon-metrics {
+  margin-top: 1rem;
+}
+
+@media (max-width: 991.98px) {
+  .poligon-lang {
+    margin-left: 0.7rem;
+  }
+
+  .navbar-collapse {
+    padding-top: 0.5rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .poligon-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .poligon-split,
+  .poligon-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .poligon-grades .poligon-btn {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 460px) {
+  .poligon-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .poligon-btn:hover {
+    transform: none;
+  }
+
+  .poligon-brand:hover {
+    letter-spacing: 4px;
+  }
+}

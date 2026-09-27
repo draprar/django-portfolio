@@ -1,0 +1,50 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <h1 class="poligon-title" data-en="Create an account" data-pl="Załóż konto">Załóż konto</h1>
+  <p class="poligon-subtitle"
+     data-en="One account for the whole site. Here it keeps your level, your flashcard schedule and your history."
+     data-pl="Jedno konto na całą stronę. Tutaj trzyma Twój poziom, harmonogram fiszek i historię.">
+    Jedno konto na całą stronę. Tutaj trzyma Twój poziom, harmonogram fiszek i historię.
+  </p>
+</header>
+
+<section class="poligon-card poligon-form">
+  <form method="post">
+    {% csrf_token %}
+    <label for="{{ form.username.id_for_label }}">
+      <span data-en="Username" data-pl="Nazwa użytkownika">Nazwa użytkownika</span>
+    </label>
+    {{ form.username }}
+    <label for="{{ form.email.id_for_label }}">
+      <span data-en="Email" data-pl="E-mail">E-mail</span>
+    </label>
+    {{ form.email }}
+    <label for="{{ form.password1.id_for_label }}">
+      <span data-en="Password" data-pl="Hasło">Hasło</span>
+    </label>
+    {{ form.password1 }}
+    <p class="poligon-muted"
+       data-en="At least 8 characters, with upper and lower case, a digit and a special character."
+       data-pl="Minimum 8 znaków: duże i małe litery, cyfra i znak specjalny.">
+      Minimum 8 znaków: duże i małe litery, cyfra i znak specjalny.
+    </p>
+    <label for="{{ form.password2.id_for_label }}">
+      <span data-en="Repeat the password" data-pl="Powtórz hasło">Powtórz hasło</span>
+    </label>
+    {{ form.password2 }}
+    <button class="poligon-btn" type="submit" data-en="Register" data-pl="Zarejestruj">Zarejestruj</button>
+  </form>
+  <p class="poligon-muted"
+     data-en="We send one email to confirm the address. Nothing else."
+     data-pl="Wyślemy jeden e-mail, żeby potwierdzić adres. Nic więcej.">
+    Wyślemy jeden e-mail, żeby potwierdzić adres. Nic więcej.
+  </p>
+  <p class="poligon-links">
+    <a href="{% url 'poligon:login' %}" data-en="I already have an account" data-pl="Mam już konto">Mam już konto</a>
+  </p>
+</section>
+{% endblock %}

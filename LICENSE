@@ -20,3 +20,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+Third-party training text is not covered by the MIT license above.
+
+English definitions from Wiktionary, shortened excerpts from Wikipedia, and
+example sentences from Tatoeba stored under poligon/data/ remain under the
+license named on each row (source_license). That is CC BY-SA 4.0 or
+CC BY 2.0 FR. See poligon/data/NOTICE. Prompts, questions, and answer choices
+written for this project stay under the MIT license.
+

@@ -1,0 +1,43 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <h1 class="poligon-title" data-en="Sign in" data-pl="Zaloguj się">Zaloguj się</h1>
+  <p class="poligon-subtitle"
+     data-en="Practice so far moves onto the account."
+     data-pl="Dotychczasowy trening przeniesie się na konto.">
+    Dotychczasowy trening przeniesie się na konto.
+  </p>
+</header>
+
+<section class="poligon-card poligon-form">
+  <form method="post">
+    {% csrf_token %}
+    <label for="{{ form.username.id_for_label }}">
+      <span data-en="Username" data-pl="Nazwa użytkownika">Nazwa użytkownika</span>
+    </label>
+    {{ form.username }}
+    <label for="{{ form.password.id_for_label }}">
+      <span data-en="Password" data-pl="Hasło">Hasło</span>
+    </label>
+    {{ form.password }}
+    <button class="poligon-btn" type="submit" data-en="Sign in" data-pl="Zaloguj">Zaloguj</button>
+  </form>
+  <p class="poligon-links">
+    <a href="{% url 'poligon:register' %}" data-en="I need an account" data-pl="Nie mam jeszcze konta">Nie mam jeszcze konta</a>
+    <a href="{% url 'poligon:password' %}" data-en="Forgot the password" data-pl="Nie pamiętam hasła">Nie pamiętam hasła</a>
+  </p>
+</section>
+
+<section class="poligon-card">
+  <p class="poligon-muted"
+     data-en="You do not need an account to practise. Go straight in, the account is only for keeping the progress."
+     data-pl="Do ćwiczenia konto nie jest potrzebne. Możesz wejść od razu — konto służy tylko do zachowania postępu.">
+    Do ćwiczenia konto nie jest potrzebne. Możesz wejść od razu — konto służy tylko do zachowania postępu.
+  </p>
+  <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:practice' %}"
+     data-en="Practise without an account" data-pl="Ćwicz bez konta">Ćwicz bez konta</a>
+</section>
+{% endblock %}

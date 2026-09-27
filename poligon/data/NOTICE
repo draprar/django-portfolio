@@ -1,0 +1,15 @@
+Third-party text in this catalog is not under the MIT license of the repository.
+
+Wiktionary definitions and Wikipedia excerpts are CC BY-SA 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+A Wikipedia excerpt is a shortened lead of the named article, not the full page.
+The question and the answer choices on that card are original.
+
+A Tatoeba sentence is included only when the API stated a license, a sentence id,
+and an author. Those sentences are CC BY 2.0 FR:
+https://creativecommons.org/licenses/by/2.0/fr/
+https://tatoeba.org/en/terms_of_use
+
+Each public card keeps the source address, the license name, and an attribution line.
+Polish glosses, original prompts, and original questions are not part of this notice.

@@ -1,0 +1,72 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}{{ exercise.title_pl }} | Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <p class="poligon-meta">
+    {% include "poligon/partials/skill.html" with skill=exercise.skill %}
+    <span data-en="level {{ exercise.level }}" data-pl="poziom {{ exercise.level }}">poziom {{ exercise.level }}</span>
+    <span data-en="{{ exercise.category_en }}" data-pl="{{ exercise.category_pl }}">{{ exercise.category_pl }}</span>
+  </p>
+  <h1 class="poligon-title" data-en="{{ exercise.title_en }}" data-pl="{{ exercise.title_pl }}">{{ exercise.title_pl }}</h1>
+</header>
+
+<section class="poligon-card poligon-result">
+  <div class="poligon-big">{{ submission.score|floatformat:0 }}%</div>
+
+  {% if feedback.choice_result %}
+    {% if feedback.correct %}
+    <p class="poligon-verdict" data-en="Correct." data-pl="Dobrze.">Dobrze.</p>
+    {% else %}
+    <p class="poligon-verdict" data-en="Not this time." data-pl="Tym razem nie.">Tym razem nie.</p>
+    {% if selected_option %}
+    <p class="poligon-muted">
+      <span data-en="Selected answer" data-pl="Wybrana odpowiedź">Wybrana odpowiedź</span>:
+      <span lang="en">{{ selected_option.text_en }}</span>
+    </p>
+    {% endif %}
+    {% if correct_option %}
+    <p>
+      <span data-en="The right answer" data-pl="Poprawna odpowiedź">Poprawna odpowiedź</span>:
+      <strong lang="en">{{ correct_option.text_en }}</strong>
+    </p>
+    {% endif %}
+    {% if explanation %}
+    <p class="poligon-muted" data-en="{{ exercise.explanation_en }}" data-pl="{{ exercise.explanation_pl }}">{{ explanation }}</p>
+    {% endif %}
+    {% endif %}
+  {% else %}
+  <div class="poligon-metrics">
+    <div><span data-en="Structure" data-pl="Budowa zdań">Budowa zdań</span><strong>{{ feedback.structure }}%</strong></div>
+    <div><span data-en="Vocabulary" data-pl="Słownictwo">Słownictwo</span><strong>{{ feedback.vocabulary }}%</strong></div>
+    <div><span data-en="Fluency" data-pl="Płynność">Płynność</span><strong>{{ feedback.fluency }}%</strong></div>
+    <div><span data-en="Clarity" data-pl="Jasność">Jasność</span><strong>{{ feedback.clarity }}%</strong></div>
+  </div>
+  {% if hint_pl %}
+  <p class="poligon-verdict" data-en="{{ hint_en }}" data-pl="{{ hint_pl }}">{{ hint_pl }}</p>
+  {% endif %}
+  <p class="poligon-muted"
+     data-en="This is a rule-based hint, not an exam mark."
+     data-pl="To podpowiedź z reguł, nie ocena z egzaminu.">
+    To podpowiedź z reguł, nie ocena z egzaminu.
+  </p>
+  {% endif %}
+
+  <div class="poligon-actions">
+    <a class="poligon-btn" href="{% url 'poligon:practice' %}?skill={{ exercise.skill }}"
+       data-en="Next exercise" data-pl="Następne ćwiczenie">Następne ćwiczenie</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}"
+       data-en="Another skill" data-pl="Inna sprawność">Inna sprawność</a>
+  </div>
+</section>
+
+{% if submission.answer_text %}
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="Your answer" data-pl="Twoja odpowiedź">Twoja odpowiedź</h2>
+  </div>
+  <p class="poligon-prompt" lang="en">{{ submission.answer_text }}</p>
+</section>
+{% endif %}
+{% endblock %}

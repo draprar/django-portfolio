@@ -1,0 +1,2452 @@
+[
+  {
+    "slug": "l0-r-00-water",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: water",
+    "title_pl": "Przeczytaj słowo: woda",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "water",
+    "prompt_pl": "woda",
+    "options": [
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": true
+      },
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": false
+      },
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": false
+      },
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says water — woda. The others mean something else: gate (brama), radio (radiostacja), meal (posiłek).",
+    "explanation_pl": "W notatce stoi: water — woda. Pozostałe znaczą co innego: gate to brama, radio to radiostacja, meal to posiłek."
+  },
+  {
+    "slug": "l0-r-01-gate",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: gate",
+    "title_pl": "Przeczytaj słowo: brama",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "gate",
+    "prompt_pl": "brama",
+    "options": [
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": true
+      },
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": false
+      },
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": false
+      },
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says gate — brama. The others mean something else: radio (radiostacja), meal (posiłek), map (mapa).",
+    "explanation_pl": "W notatce stoi: gate — brama. Pozostałe znaczą co innego: radio to radiostacja, meal to posiłek, map to mapa."
+  },
+  {
+    "slug": "l0-r-02-radio",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "communications",
+    "category_pl": "łączność",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: radio",
+    "title_pl": "Przeczytaj słowo: radiostacja",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "radio",
+    "prompt_pl": "radiostacja",
+    "options": [
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": true
+      },
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": false
+      },
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": false
+      },
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says radio — radiostacja. The others mean something else: meal (posiłek), map (mapa), bus (autobus).",
+    "explanation_pl": "W notatce stoi: radio — radiostacja. Pozostałe znaczą co innego: meal to posiłek, map to mapa, bus to autobus."
+  },
+  {
+    "slug": "l0-r-03-meal",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: meal",
+    "title_pl": "Przeczytaj słowo: posiłek",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "meal",
+    "prompt_pl": "posiłek",
+    "options": [
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": true
+      },
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": false
+      },
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": false
+      },
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says meal — posiłek. The others mean something else: map (mapa), bus (autobus), rain (deszcz).",
+    "explanation_pl": "W notatce stoi: meal — posiłek. Pozostałe znaczą co innego: map to mapa, bus to autobus, rain to deszcz."
+  },
+  {
+    "slug": "l0-r-04-map",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: map",
+    "title_pl": "Przeczytaj słowo: mapa",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "map",
+    "prompt_pl": "mapa",
+    "options": [
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": true
+      },
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": false
+      },
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": false
+      },
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says map — mapa. The others mean something else: bus (autobus), rain (deszcz), tent (namiot).",
+    "explanation_pl": "W notatce stoi: map — mapa. Pozostałe znaczą co innego: bus to autobus, rain to deszcz, tent to namiot."
+  },
+  {
+    "slug": "l0-r-05-bus",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: bus",
+    "title_pl": "Przeczytaj słowo: autobus",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "bus",
+    "prompt_pl": "autobus",
+    "options": [
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": true
+      },
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": false
+      },
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": false
+      },
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says bus — autobus. The others mean something else: rain (deszcz), tent (namiot), water (woda).",
+    "explanation_pl": "W notatce stoi: bus — autobus. Pozostałe znaczą co innego: rain to deszcz, tent to namiot, water to woda."
+  },
+  {
+    "slug": "l0-r-06-rain",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: rain",
+    "title_pl": "Przeczytaj słowo: deszcz",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "rain",
+    "prompt_pl": "deszcz",
+    "options": [
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": true
+      },
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": false
+      },
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": false
+      },
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says rain — deszcz. The others mean something else: tent (namiot), water (woda), gate (brama).",
+    "explanation_pl": "W notatce stoi: rain — deszcz. Pozostałe znaczą co innego: tent to namiot, water to woda, gate to brama."
+  },
+  {
+    "slug": "l0-r-07-tent",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "title_en": "Read the word: tent",
+    "title_pl": "Przeczytaj słowo: namiot",
+    "instructions_en": "Which word is written in the note?",
+    "instructions_pl": "Które słowo jest zapisane w notatce?",
+    "prompt_en": "tent",
+    "prompt_pl": "namiot",
+    "options": [
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": true
+      },
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": false
+      },
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": false
+      },
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The note says tent — namiot. The others mean something else: water (woda), gate (brama), radio (radiostacja).",
+    "explanation_pl": "W notatce stoi: tent — namiot. Pozostałe znaczą co innego: water to woda, gate to brama, radio to radiostacja."
+  },
+  {
+    "slug": "l0-r-x000-apple",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: apple",
+    "title_pl": "Przeczytaj notatkę: jabłko",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the apple is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: jabłko. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the apple.",
+        "text_pl": "Chodzi o: jabłko.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x001-ticket",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: ticket office",
+    "title_pl": "Przeczytaj notatkę: kasa",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the ticket office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: kasa. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x002-bridge",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: bridge",
+    "title_pl": "Przeczytaj notatkę: most",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the bridge is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: most. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the bridge.",
+        "text_pl": "Chodzi o: most.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x003-clinic",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: clinic",
+    "title_pl": "Przeczytaj notatkę: przychodnia",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the clinic is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: przychodnia. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the clinic.",
+        "text_pl": "Chodzi o: przychodnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x004-office",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: office",
+    "title_pl": "Przeczytaj notatkę: biuro",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: biuro. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the office.",
+        "text_pl": "Chodzi o: biuro.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x005-market",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: market",
+    "title_pl": "Przeczytaj notatkę: targ",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the market is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: targ. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the market.",
+        "text_pl": "Chodzi o: targ.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x006-river",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: river",
+    "title_pl": "Przeczytaj notatkę: rzeka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the river is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: rzeka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the river.",
+        "text_pl": "Chodzi o: rzeka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x007-teacher",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: teacher",
+    "title_pl": "Przeczytaj notatkę: nauczyciel",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the teacher is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: nauczyciel. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the teacher.",
+        "text_pl": "Chodzi o: nauczyciel.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x008-engine",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: engine",
+    "title_pl": "Przeczytaj notatkę: silnik",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the engine is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: silnik. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the engine.",
+        "text_pl": "Chodzi o: silnik.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x009-passport",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: passport",
+    "title_pl": "Przeczytaj notatkę: paszport",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the passport is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: paszport. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the passport.",
+        "text_pl": "Chodzi o: paszport.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x010-garden",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: garden",
+    "title_pl": "Przeczytaj notatkę: ogród",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the garden is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: ogród. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the garden.",
+        "text_pl": "Chodzi o: ogród.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x011-storm",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: storm",
+    "title_pl": "Przeczytaj notatkę: burza",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the storm is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: burza. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the storm.",
+        "text_pl": "Chodzi o: burza.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x012-library",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: library",
+    "title_pl": "Przeczytaj notatkę: biblioteka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the library is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: biblioteka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the library.",
+        "text_pl": "Chodzi o: biblioteka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x013-salary",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: salary",
+    "title_pl": "Przeczytaj notatkę: pensja",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the salary is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: pensja. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the salary.",
+        "text_pl": "Chodzi o: pensja.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x014-vaccine",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: vaccine",
+    "title_pl": "Przeczytaj notatkę: szczepionka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the vaccine is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: szczepionka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the vaccine.",
+        "text_pl": "Chodzi o: szczepionka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x015-harbor",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: harbor",
+    "title_pl": "Przeczytaj notatkę: port",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the harbor is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: port. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the harbor.",
+        "text_pl": "Chodzi o: port.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x016-battery",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: battery",
+    "title_pl": "Przeczytaj notatkę: akumulator",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the battery is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: akumulator. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the battery.",
+        "text_pl": "Chodzi o: akumulator.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x017-museum",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: museum",
+    "title_pl": "Przeczytaj notatkę: muzeum",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the museum is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: muzeum. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the museum.",
+        "text_pl": "Chodzi o: muzeum.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x018-budget",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: budget",
+    "title_pl": "Przeczytaj notatkę: budżet",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the budget is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: budżet. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the budget.",
+        "text_pl": "Chodzi o: budżet.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x019-island",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: island",
+    "title_pl": "Przeczytaj notatkę: wyspa",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the island is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: wyspa. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the island.",
+        "text_pl": "Chodzi o: wyspa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x020-apple",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: apple",
+    "title_pl": "Przeczytaj notatkę: jabłko",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the apple is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: jabłko. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the apple.",
+        "text_pl": "Chodzi o: jabłko.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x021-ticket",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: ticket office",
+    "title_pl": "Przeczytaj notatkę: kasa",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the ticket office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: kasa. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x022-bridge",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: bridge",
+    "title_pl": "Przeczytaj notatkę: most",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the bridge is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: most. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the bridge.",
+        "text_pl": "Chodzi o: most.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x023-clinic",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: clinic",
+    "title_pl": "Przeczytaj notatkę: przychodnia",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the clinic is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: przychodnia. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the clinic.",
+        "text_pl": "Chodzi o: przychodnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x024-office",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: office",
+    "title_pl": "Przeczytaj notatkę: biuro",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: biuro. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the office.",
+        "text_pl": "Chodzi o: biuro.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x025-market",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: market",
+    "title_pl": "Przeczytaj notatkę: targ",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the market is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: targ. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the market.",
+        "text_pl": "Chodzi o: targ.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x026-river",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: river",
+    "title_pl": "Przeczytaj notatkę: rzeka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the river is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: rzeka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the river.",
+        "text_pl": "Chodzi o: rzeka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x027-teacher",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: teacher",
+    "title_pl": "Przeczytaj notatkę: nauczyciel",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the teacher is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: nauczyciel. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the teacher.",
+        "text_pl": "Chodzi o: nauczyciel.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x028-engine",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: engine",
+    "title_pl": "Przeczytaj notatkę: silnik",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the engine is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: silnik. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the engine.",
+        "text_pl": "Chodzi o: silnik.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x029-passport",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: passport",
+    "title_pl": "Przeczytaj notatkę: paszport",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the passport is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: paszport. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the passport.",
+        "text_pl": "Chodzi o: paszport.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x030-garden",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: garden",
+    "title_pl": "Przeczytaj notatkę: ogród",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the garden is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: ogród. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the garden.",
+        "text_pl": "Chodzi o: ogród.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x031-storm",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: storm",
+    "title_pl": "Przeczytaj notatkę: burza",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the storm is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: burza. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the storm.",
+        "text_pl": "Chodzi o: burza.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x032-library",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: library",
+    "title_pl": "Przeczytaj notatkę: biblioteka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the library is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: biblioteka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the library.",
+        "text_pl": "Chodzi o: biblioteka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x033-salary",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: salary",
+    "title_pl": "Przeczytaj notatkę: pensja",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the salary is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: pensja. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the salary.",
+        "text_pl": "Chodzi o: pensja.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x034-vaccine",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: vaccine",
+    "title_pl": "Przeczytaj notatkę: szczepionka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the vaccine is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: szczepionka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the vaccine.",
+        "text_pl": "Chodzi o: szczepionka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x035-harbor",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: harbor",
+    "title_pl": "Przeczytaj notatkę: port",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the harbor is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: port. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the harbor.",
+        "text_pl": "Chodzi o: port.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x036-battery",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: battery",
+    "title_pl": "Przeczytaj notatkę: akumulator",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the battery is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: akumulator. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the battery.",
+        "text_pl": "Chodzi o: akumulator.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x037-museum",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: museum",
+    "title_pl": "Przeczytaj notatkę: muzeum",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the museum is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: muzeum. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the museum.",
+        "text_pl": "Chodzi o: muzeum.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x038-budget",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: budget",
+    "title_pl": "Przeczytaj notatkę: budżet",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the budget is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: budżet. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the budget.",
+        "text_pl": "Chodzi o: budżet.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x039-island",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: island",
+    "title_pl": "Przeczytaj notatkę: wyspa",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the island is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: wyspa. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the island.",
+        "text_pl": "Chodzi o: wyspa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x040-apple",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: apple",
+    "title_pl": "Przeczytaj notatkę: jabłko",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the apple is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: jabłko. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the apple.",
+        "text_pl": "Chodzi o: jabłko.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l0-r-x041-ticket",
+    "skill": "R",
+    "level": 0,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: ticket office",
+    "title_pl": "Przeczytaj notatkę: kasa",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the ticket office is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: kasa. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  }
+]

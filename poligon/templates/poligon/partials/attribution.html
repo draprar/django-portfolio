@@ -1,0 +1,20 @@
+{% load poligon_rights %}
+<p class="poligon-muted" data-en="{{ attribution_en }}" data-pl="{{ attribution_pl }}">{{ attribution_pl }}</p>
+<p class="poligon-links">
+  {% if source_url %}
+  <a href="{{ source_url }}" rel="nofollow noopener" data-en="Source" data-pl="Źródło">Źródło</a>
+  {% endif %}
+  {% with deed=source_license|license_href %}
+  {% if deed %}
+  <a href="{{ deed }}" rel="nofollow noopener">{{ source_license }}</a>
+  {% endif %}
+  {% endwith %}
+  {% if "CC BY 2.0 FR" in attribution_en and source_license != "CC BY 2.0 FR" %}
+  <a href="https://creativecommons.org/licenses/by/2.0/fr/" rel="nofollow noopener">CC BY 2.0 FR</a>
+  {% endif %}
+  {% with sentence=attribution_en|tatoeba_sentence_url %}
+  {% if sentence %}
+  <a href="{{ sentence }}" rel="nofollow noopener" data-en="Tatoeba sentence" data-pl="Zdanie w Tatoebie">Zdanie w Tatoebie</a>
+  {% endif %}
+  {% endwith %}
+</p>

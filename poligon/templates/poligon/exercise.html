@@ -1,0 +1,150 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}{{ exercise.title_pl }} | Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <p class="poligon-meta">
+    {% include "poligon/partials/skill.html" with skill=exercise.skill %}
+    <span data-en="level {{ exercise.level }}" data-pl="poziom {{ exercise.level }}">poziom {{ exercise.level }}</span>
+    <span>{{ exercise.expected_minutes }} min</span>
+    <span data-en="{{ exercise.category_en }}" data-pl="{{ exercise.category_pl }}">{{ exercise.category_pl }}</span>
+  </p>
+  <h1 class="poligon-title" data-en="{{ exercise.title_en }}" data-pl="{{ exercise.title_pl }}">{{ exercise.title_pl }}</h1>
+  <p class="poligon-subtitle" data-en="{{ exercise.instructions_en }}" data-pl="{{ exercise.instructions_pl }}">{{ exercise.instructions_pl }}</p>
+</header>
+
+<form method="post" class="poligon-card poligon-task">
+  {% csrf_token %}
+
+  {% if exercise.exercise_type == "listening" %}
+  <div class="poligon-listen">
+    <button type="button" class="poligon-btn poligon-btn-quiet" id="speakBtn"
+            data-en="Play" data-pl="Odtwórz"
+            data-script="{{ script }}">Odtwórz</button>
+    <span class="poligon-muted"
+          data-en="Your browser reads it out loud. It is not a voice actor recording."
+          data-pl="Czyta Ci to przeglądarka. To nie nagranie lektora.">
+      Czyta Ci to przeglądarka. To nie nagranie lektora.
+    </span>
+  </div>
+  <details class="poligon-reveal">
+    <summary data-en="Show the text" data-pl="Pokaż tekst">Pokaż tekst</summary>
+    <p class="poligon-prompt" lang="en">{{ script }}</p>
+  </details>
+  {% else %}
+  <p class="poligon-prompt" lang="en">{{ exercise.prompt_en }}</p>
+  {% endif %}
+
+  {% if exercise.exercise_type == "mcq" or exercise.exercise_type == "listening" %}
+  <div class="poligon-options">
+    {% for option in exercise.options.all %}
+    <label class="poligon-option">
+      <input type="radio" name="option_id" value="{{ option.id }}" required>
+      <span lang="en">{{ option.text_en }}</span>
+    </label>
+    {% endfor %}
+  </div>
+  {% else %}
+  {% if exercise.prompt_pl %}
+  <details class="poligon-reveal">
+    <summary data-en="Show the task in Polish" data-pl="Nie rozumiem — pokaż po polsku">Nie rozumiem — pokaż po polsku</summary>
+    <p>{{ exercise.prompt_pl }}</p>
+  </details>
+  {% endif %}
+
+  {% if exercise.exercise_type == "speaking" %}
+  <div class="poligon-recorder">
+    <button type="button" class="poligon-btn poligon-btn-quiet" id="recordBtn" data-en="Start recording" data-pl="Nagraj się">Nagraj się</button>
+    <button type="button" class="poligon-btn poligon-btn-quiet" id="stopBtn" disabled data-en="Stop" data-pl="Stop">Stop</button>
+    <audio id="playback" controls></audio>
+    <p id="recordStatus" class="poligon-muted" role="status"></p>
+  </div>
+  <p class="poligon-muted"
+     data-en="The recording stays on the device and is not sent. Say the answer out loud, then write the same thing below. Feedback reads the text."
+     data-pl="Nagranie zostaje na urządzeniu i nie jest wysyłane. Powiedz odpowiedź na głos, potem zapisz to samo poniżej. Ocena czyta tekst.">
+    Nagranie zostaje na urządzeniu i nie jest wysyłane. Powiedz odpowiedź na głos, potem zapisz to samo poniżej. Ocena czyta tekst.
+  </p>
+  {% endif %}
+
+  <label class="poligon-answer-label" for="poligon-answer">
+    <span data-en="Your answer in English" data-pl="Twoja odpowiedź po angielsku">Twoja odpowiedź po angielsku</span>
+  </label>
+  <textarea id="poligon-answer" name="answer" rows="12" required lang="en"
+            placeholder="Write your answer in English."
+            data-en="Write your answer in English."
+            data-pl="Pisz po angielsku — tylko angielski jest oceniany."></textarea>
+  {% endif %}
+
+  <button class="poligon-btn" type="submit" data-en="Check it" data-pl="Sprawdź">Sprawdź</button>
+</form>
+
+{% if exercise.content_source != "original" %}
+{% include "poligon/partials/attribution.html" with attribution_en=exercise.attribution_en attribution_pl=exercise.attribution_pl source_url=exercise.source_url source_license=exercise.source_license %}
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{% if exercise.exercise_type == "speaking" or exercise.exercise_type == "listening" %}
+<script>
+(function () {
+  const speakBtn = document.getElementById("speakBtn");
+  if (speakBtn && window.speechSynthesis) {
+    speakBtn.addEventListener("click", function () {
+      // The material is English, so the voice stays English whatever the interface language is.
+      const utterance = new SpeechSynthesisUtterance(speakBtn.dataset.script || "");
+      utterance.lang = "en-US";
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    });
+  }
+
+  const recordBtn = document.getElementById("recordBtn");
+  const stopBtn = document.getElementById("stopBtn");
+  const playback = document.getElementById("playback");
+  const status = document.getElementById("recordStatus");
+  const isPolish = function () { return document.documentElement.lang !== "en"; };
+
+  if (recordBtn) {
+    if (!navigator.mediaDevices || !window.MediaRecorder) {
+      recordBtn.disabled = true;
+      status.textContent = isPolish()
+        ? "Ta przeglądarka nie nagrywa dźwięku. Powiedz odpowiedź na głos i zapisz ją poniżej."
+        : "This browser cannot record audio. Say your answer out loud and write it below.";
+      return;
+    }
+
+    let recorder;
+    let chunks = [];
+    recordBtn.addEventListener("click", async function () {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        chunks = [];
+        recorder = new MediaRecorder(stream);
+        recorder.ondataavailable = function (event) { chunks.push(event.data); };
+        recorder.onstop = function () {
+          playback.src = URL.createObjectURL(new Blob(chunks, { type: "audio/webm" }));
+          stream.getTracks().forEach(function (track) { track.stop(); });
+          status.textContent = isPolish()
+            ? "Nagranie gotowe. Odsłuchaj siebie, potem zapisz to samo poniżej."
+            : "Recording ready. Listen to yourself, then write the same thing below.";
+        };
+        recorder.start();
+        recordBtn.disabled = true;
+        stopBtn.disabled = false;
+      } catch (error) {
+        status.textContent = isPolish()
+          ? "Nie mam dostępu do mikrofonu. Sprawdź zgodę w przeglądarce albo po prostu napisz odpowiedź."
+          : "No microphone access. Check the browser permission, or just write your answer.";
+      }
+    });
+    stopBtn.addEventListener("click", function () {
+      if (recorder && recorder.state !== "inactive") recorder.stop();
+      recordBtn.disabled = false;
+      stopBtn.disabled = true;
+    });
+  }
+})();
+</script>
+{% endif %}
+{% endblock %}

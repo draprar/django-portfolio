@@ -1,0 +1,38 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <h1 class="poligon-title" data-en="Which level?" data-pl="Jaki poziom?">Jaki poziom?</h1>
+  <p class="poligon-subtitle"
+     data-en="Ten English questions, from easy to hard. Every two right answers move the suggestion one level up. Guessing is fine, skipping is fine too."
+     data-pl="Dziesięć pytań po angielsku, od łatwych do trudnych. Za każde dwie dobre odpowiedzi propozycja idzie o poziom wyżej. Możesz zgadywać, możesz też opuścić pytanie.">
+    Dziesięć pytań po angielsku, od łatwych do trudnych. Za każde dwie dobre odpowiedzi propozycja idzie o poziom wyżej. Możesz zgadywać, możesz też opuścić pytanie.
+  </p>
+  <p class="poligon-muted"
+     data-en="It is a reading check only, and nothing here counts as practice."
+     data-pl="To sprawdzenie samego czytania i nie liczy się jako trening.">
+    To sprawdzenie samego czytania i nie liczy się jako trening.
+  </p>
+</header>
+
+<form method="post">
+  {% csrf_token %}
+  {% for question in questions %}
+  <section class="poligon-card">
+    <p class="poligon-label">{{ forloop.counter }}/{{ questions|length }}</p>
+    <p class="poligon-prompt" lang="en">{{ question.prompt_en }}</p>
+    <div class="poligon-options">
+      {% for option in question.options.all %}
+      <label class="poligon-option">
+        <input type="radio" name="q{{ question.pk }}" value="{{ option.pk }}">
+        <span lang="en">{{ option.text_en }}</span>
+      </label>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+  <button class="poligon-btn" type="submit" data-en="Check the result" data-pl="Sprawdź wynik">Sprawdź wynik</button>
+</form>
+{% endblock %}

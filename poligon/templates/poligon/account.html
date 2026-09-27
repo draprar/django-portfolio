@@ -1,0 +1,73 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <h1 class="poligon-title" data-en="Account" data-pl="Konto">Konto</h1>
+  {% if user.is_authenticated %}
+  <p class="poligon-subtitle"
+     data-en="Signed in as {{ user.username }}. Progress is available in any browser."
+     data-pl="Zalogowano jako {{ user.username }}. Postęp jest dostępny w każdej przeglądarce.">
+    Zalogowano jako {{ user.username }}. Postęp jest dostępny w każdej przeglądarce.
+  </p>
+  {% else %}
+  <p class="poligon-subtitle"
+     data-en="Progress is stored in this browser only. Clearing cookies removes it."
+     data-pl="Postęp jest zapisany tylko w tej przeglądarce. Usunięcie ciasteczek go kasuje.">
+    Postęp jest zapisany tylko w tej przeglądarce. Usunięcie ciasteczek go kasuje.
+  </p>
+  {% endif %}
+</header>
+
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="What you have so far" data-pl="Co już masz">Co już masz</h2>
+    <a href="{% url 'poligon:settings' %}" data-en="Change the plan" data-pl="Zmień plan">Zmień plan</a>
+  </div>
+  <div class="poligon-row">
+    <span data-en="Level" data-pl="Poziom">Poziom</span>
+    <span>{{ state.practice_level }}</span>
+  </div>
+  <div class="poligon-row">
+    <span data-en="Exercises done" data-pl="Zrobionych ćwiczeń">Zrobionych ćwiczeń</span>
+    <span>{{ done }}</span>
+  </div>
+  <div class="poligon-row">
+    <span data-en="Flashcards waiting" data-pl="Fiszki do powtórki">Fiszki do powtórki</span>
+    <span>{{ due_reviews }}</span>
+  </div>
+</section>
+
+{% if user.is_authenticated %}
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="Sign out" data-pl="Wyloguj się">Wyloguj się</h2>
+  </div>
+  <p class="poligon-muted"
+     data-en="Your progress stays on the account. Sign in again whenever you want."
+     data-pl="Postęp zostaje na koncie. Zalogujesz się, kiedy chcesz.">
+    Postęp zostaje na koncie. Zalogujesz się, kiedy chcesz.
+  </p>
+  <form method="post" action="{% url 'poligon:logout' %}">
+    {% csrf_token %}
+    <button class="poligon-btn poligon-btn-quiet" type="submit" data-en="Sign out" data-pl="Wyloguj">Wyloguj</button>
+  </form>
+</section>
+{% else %}
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="Keep the progress" data-pl="Zachowaj postęp">Zachowaj postęp</h2>
+  </div>
+  <p class="poligon-muted"
+     data-en="An account takes a minute and keeps the work done so far."
+     data-pl="Konto zajmuje minutę i zachowuje dotychczasową pracę.">
+    Konto zajmuje minutę i zachowuje dotychczasową pracę.
+  </p>
+  <div class="poligon-actions">
+    <a class="poligon-btn" href="{% url 'poligon:register' %}" data-en="Create an account" data-pl="Załóż konto">Załóż konto</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:login' %}" data-en="I have one" data-pl="Mam konto">Mam konto</a>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
