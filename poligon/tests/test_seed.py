@@ -42,3 +42,36 @@ def test_seed_poligon_is_bilingual_and_safe_to_repeat():
     assert not Exercise.objects.exclude(content_source="original").filter(attribution_en="").exists()
     assert VocabularyItem.objects.filter(content_source="wiktionary").exclude(attribution_en="").count() >= 108
     assert Submission.objects.filter(learner=learner, exercise__slug="read-001-route").count() == 1
+
+
+def test_catalog_migration_does_not_seed_the_test_database(monkeypatch):
+    import importlib
+
+    migration = importlib.import_module("poligon.migrations.0006_seed_catalog")
+    called = []
+    monkeypatch.setattr(
+        "django.core.management.call_command",
+        lambda *args, **kwargs: called.append(args),
+    )
+    migration.seed_catalog(None, None)
+    assert called == []
+
+
+def test_catalog_migration_seeds_when_migrate_runs_against_the_app_database(monkeypatch):
+    import importlib
+    import sys
+
+    from django.conf import settings
+
+    migration = importlib.import_module("poligon.migrations.0006_seed_catalog")
+    monkeypatch.setattr(sys, "argv", ["manage.py", "migrate", "--noinput"])
+    monkeypatch.delenv("PYTEST_CURRENT_TEST", raising=False)
+    monkeypatch.delenv("DJANGO_TESTING", raising=False)
+    monkeypatch.setitem(settings.DATABASES["default"], "NAME", "postgres")
+    called = []
+    monkeypatch.setattr(
+        "django.core.management.call_command",
+        lambda *args, **kwargs: called.append(args),
+    )
+    migration.seed_catalog(None, None)
+    assert called == [("seed_poligon",)]
