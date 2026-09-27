@@ -1,83 +1,38 @@
 [
   {
-    "name_en": "STANAG 6001 Ed. 5",
-    "name_pl": "STANAG 6001, wydanie 5",
-    "role_en": "Reference standard",
-    "role_pl": "Norma referencyjna",
-    "treatment_en": "Link only. No text imported.",
-    "treatment_pl": "Tylko odnośnik. Żaden tekst nie został zaimportowany.",
-    "url": "https://www.natobilc.org/files/file/6001EFed05.pdf"
-  },
-  {
-    "name_en": "ATrainP-5 Ed. A, V2",
-    "name_pl": "ATrainP-5, wydanie A, wersja 2",
-    "role_en": "Reference standard",
-    "role_pl": "Norma referencyjna",
-    "treatment_en": "Link only. No text imported.",
-    "treatment_pl": "Tylko odnośnik. Żaden tekst nie został zaimportowany.",
-    "url": "https://natobilc.org/files/ATrainP-5%20EDA%20V2%20E.pdf"
-  },
-  {
-    "name_en": "Content and brand guidance",
-    "name_pl": "Zasady treści i znaku",
-    "role_en": "Publishing hygiene",
-    "role_pl": "Higiena publikacji",
-    "treatment_en": "No official logo or brand asset is shipped.",
-    "treatment_pl": "Nie ma tu oficjalnego logo ani znaku.",
-    "url": "https://www.nato.int/en/about-us/official-texts-and-resources/use-of-nato-content-and-brand"
-  },
-  {
-    "name_en": "Decision 73/MON",
-    "name_pl": "Decyzja 73/MON",
-    "role_en": "National context",
-    "role_pl": "Kontekst krajowy",
-    "treatment_en": "Reference only. Check the current official text before relying on it.",
-    "treatment_pl": "Tylko odniesienie. Przed użyciem sprawdź aktualny tekst urzędowy.",
-    "url": "https://www.sejm.gov.pl/sejm9.nsf/InterpelacjaTresc.xsp?key=CJ4E5R"
-  },
-  {
-    "name_en": "Wikidata",
-    "name_pl": "Wikidata",
-    "role_en": "Open structured data",
-    "role_pl": "Otwarte dane strukturalne",
-    "treatment_en": "Not imported yet. A future layer would stay under CC0.",
-    "treatment_pl": "Jeszcze niezaimportowane. Przyszła warstwa zostałaby przy CC0.",
-    "url": "https://www.wikidata.org/wiki/Wikidata:Licensing"
+    "name_en": "Original Ćwiczba exercises",
+    "name_pl": "Nasze zadania",
+    "role_en": "Exercises",
+    "role_pl": "Ćwiczenia",
+    "treatment_en": "We wrote the tasks, the questions and the answers.",
+    "treatment_pl": "Zadania, pytania i odpowiedzi napisaliśmy sami.",
+    "url": ""
   },
   {
     "name_en": "Wiktionary",
     "name_pl": "Wiktionary",
-    "role_en": "Lexical layer",
-    "role_pl": "Warstwa leksykalna",
-    "treatment_en": "English definitions are stored with CC BY-SA attribution. A Tatoeba example is added only when that sentence advertises a CC BY license.",
-    "treatment_pl": "Angielskie definicje są zapisane z atrybucją CC BY-SA. Przykład z Tatoeby dochodzi tylko wtedy, gdy zdanie ma jawną licencję CC BY.",
+    "role_en": "Definitions on flashcards",
+    "role_pl": "Definicje na fiszkach",
+    "treatment_en": "The English definition is from Wiktionary, licence CC BY-SA 4.0. The Polish meaning is ours. The card says so.",
+    "treatment_pl": "Angielska definicja jest z Wiktionary, licencja CC BY-SA 4.0. Polskie znaczenie jest nasze. Karta to pokazuje.",
     "url": "https://en.wiktionary.org/wiki/Wiktionary:Copyrights"
   },
   {
     "name_en": "Wikipedia",
     "name_pl": "Wikipedia",
-    "role_en": "Short reading stimulus",
-    "role_pl": "Krótki tekst do czytania",
-    "treatment_en": "A shortened English summary, with the page URL and CC BY-SA 4.0. The question and choices are original. Whole articles and standards texts are not stored.",
-    "treatment_pl": "Skrócone angielskie streszczenie, z adresem strony i CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne. Całe artykuły i teksty norm nie są zapisywane.",
+    "role_en": "A text to read",
+    "role_pl": "Tekst do czytania",
+    "treatment_en": "Some reading tasks use a short paragraph from Wikipedia, licence CC BY-SA 4.0. The question and the answers are ours.",
+    "treatment_pl": "Część czytanek to krótki akapit z Wikipedii, licencja CC BY-SA 4.0. Pytanie i odpowiedzi są nasze.",
     "url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights"
   },
   {
     "name_en": "Tatoeba",
     "name_pl": "Tatoeba",
-    "role_en": "Example sentence",
+    "role_en": "An example sentence",
     "role_pl": "Zdanie przykładowe",
-    "treatment_en": "One English sentence per card, and only when the API returns a CC BY license, sentence id, and author.",
-    "treatment_pl": "Jedno angielskie zdanie na kartę, i tylko gdy API zwraca licencję CC BY, identyfikator zdania i autora.",
+    "treatment_en": "Some flashcards include one English sentence from Tatoeba, with the author and a CC BY licence.",
+    "treatment_pl": "Na części fiszek jest jedno angielskie zdanie z Tatoeby, z autorem i licencją CC BY.",
     "url": "https://tatoeba.org/en/terms_of_use"
-  },
-  {
-    "name_en": "Original Ćwiczba exercises",
-    "name_pl": "Oryginalne ćwiczenia Ćwiczby",
-    "role_en": "Training content",
-    "role_pl": "Treść treningowa",
-    "treatment_en": "Written for this project. No restricted test items are included.",
-    "treatment_pl": "Napisane na potrzeby tego projektu. Nie ma tu zastrzeżonych zadań egzaminacyjnych.",
-    "url": ""
   }
 ]
