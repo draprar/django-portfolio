@@ -1,0 +1,2452 @@
+[
+  {
+    "slug": "l0-l-00-water",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "content_en": "water",
+    "content_pl": "woda",
+    "title_en": "Hear the word: water",
+    "title_pl": "Usłysz słowo: woda",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": true
+      },
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": false
+      },
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": false
+      },
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was water — woda. The others mean something else: gate (brama), radio (radiostacja), meal (posiłek).",
+    "explanation_pl": "Słowo, które padło, to: water — woda. Pozostałe znaczą co innego: gate to brama, radio to radiostacja, meal to posiłek."
+  },
+  {
+    "slug": "l0-l-01-gate",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "content_en": "gate",
+    "content_pl": "brama",
+    "title_en": "Hear the word: gate",
+    "title_pl": "Usłysz słowo: brama",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": true
+      },
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": false
+      },
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": false
+      },
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was gate — brama. The others mean something else: radio (radiostacja), meal (posiłek), map (mapa).",
+    "explanation_pl": "Słowo, które padło, to: gate — brama. Pozostałe znaczą co innego: radio to radiostacja, meal to posiłek, map to mapa."
+  },
+  {
+    "slug": "l0-l-02-radio",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "communications",
+    "category_pl": "łączność",
+    "content_en": "radio",
+    "content_pl": "radiostacja",
+    "title_en": "Hear the word: radio",
+    "title_pl": "Usłysz słowo: radiostacja",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": true
+      },
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": false
+      },
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": false
+      },
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was radio — radiostacja. The others mean something else: meal (posiłek), map (mapa), bus (autobus).",
+    "explanation_pl": "Słowo, które padło, to: radio — radiostacja. Pozostałe znaczą co innego: meal to posiłek, map to mapa, bus to autobus."
+  },
+  {
+    "slug": "l0-l-03-meal",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "content_en": "meal",
+    "content_pl": "posiłek",
+    "title_en": "Hear the word: meal",
+    "title_pl": "Usłysz słowo: posiłek",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "meal",
+        "text_pl": "posiłek",
+        "is_correct": true
+      },
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": false
+      },
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": false
+      },
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was meal — posiłek. The others mean something else: map (mapa), bus (autobus), rain (deszcz).",
+    "explanation_pl": "Słowo, które padło, to: meal — posiłek. Pozostałe znaczą co innego: map to mapa, bus to autobus, rain to deszcz."
+  },
+  {
+    "slug": "l0-l-04-map",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "map",
+    "content_pl": "mapa",
+    "title_en": "Hear the word: map",
+    "title_pl": "Usłysz słowo: mapa",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "map",
+        "text_pl": "mapa",
+        "is_correct": true
+      },
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": false
+      },
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": false
+      },
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was map — mapa. The others mean something else: bus (autobus), rain (deszcz), tent (namiot).",
+    "explanation_pl": "Słowo, które padło, to: map — mapa. Pozostałe znaczą co innego: bus to autobus, rain to deszcz, tent to namiot."
+  },
+  {
+    "slug": "l0-l-05-bus",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "bus",
+    "content_pl": "autobus",
+    "title_en": "Hear the word: bus",
+    "title_pl": "Usłysz słowo: autobus",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "bus",
+        "text_pl": "autobus",
+        "is_correct": true
+      },
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": false
+      },
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": false
+      },
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was bus — autobus. The others mean something else: rain (deszcz), tent (namiot), water (woda).",
+    "explanation_pl": "Słowo, które padło, to: bus — autobus. Pozostałe znaczą co innego: rain to deszcz, tent to namiot, water to woda."
+  },
+  {
+    "slug": "l0-l-06-rain",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "rain",
+    "content_pl": "deszcz",
+    "title_en": "Hear the word: rain",
+    "title_pl": "Usłysz słowo: deszcz",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "rain",
+        "text_pl": "deszcz",
+        "is_correct": true
+      },
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": false
+      },
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": false
+      },
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was rain — deszcz. The others mean something else: tent (namiot), water (woda), gate (brama).",
+    "explanation_pl": "Słowo, które padło, to: rain — deszcz. Pozostałe znaczą co innego: tent to namiot, water to woda, gate to brama."
+  },
+  {
+    "slug": "l0-l-07-tent",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 7,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "tent",
+    "content_pl": "namiot",
+    "title_en": "Hear the word: tent",
+    "title_pl": "Usłysz słowo: namiot",
+    "instructions_en": "Listen once. Which word was it?",
+    "instructions_pl": "Posłuchaj raz. Które to było słowo?",
+    "prompt_en": "Which word was said?",
+    "prompt_pl": "Które słowo padło?",
+    "options": [
+      {
+        "text_en": "tent",
+        "text_pl": "namiot",
+        "is_correct": true
+      },
+      {
+        "text_en": "water",
+        "text_pl": "woda",
+        "is_correct": false
+      },
+      {
+        "text_en": "gate",
+        "text_pl": "brama",
+        "is_correct": false
+      },
+      {
+        "text_en": "radio",
+        "text_pl": "radiostacja",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "The word was tent — namiot. The others mean something else: water (woda), gate (brama), radio (radiostacja).",
+    "explanation_pl": "Słowo, które padło, to: tent — namiot. Pozostałe znaczą co innego: water to woda, gate to brama, radio to radiostacja."
+  },
+  {
+    "slug": "l0-l-x000-apple",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "The apple is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Jabłko jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: apple",
+    "title_pl": "Usłysz notatkę: jabłko",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the apple.",
+        "text_pl": "Chodzi o: jabłko.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x001-ticket",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "The ticket office is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Kasa jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: ticket office",
+    "title_pl": "Usłysz notatkę: kasa",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x002-bridge",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "The bridge is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Most jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: bridge",
+    "title_pl": "Usłysz notatkę: most",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the bridge.",
+        "text_pl": "Chodzi o: most.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x003-clinic",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "The clinic is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Przychodnia jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: clinic",
+    "title_pl": "Usłysz notatkę: przychodnia",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the clinic.",
+        "text_pl": "Chodzi o: przychodnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x004-office",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "The office is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Biuro jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: office",
+    "title_pl": "Usłysz notatkę: biuro",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the office.",
+        "text_pl": "Chodzi o: biuro.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x005-market",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "The market is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Targ jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: market",
+    "title_pl": "Usłysz notatkę: targ",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the market.",
+        "text_pl": "Chodzi o: targ.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x006-river",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "The river is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Rzeka jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: river",
+    "title_pl": "Usłysz notatkę: rzeka",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the river.",
+        "text_pl": "Chodzi o: rzeka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x007-teacher",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "The teacher is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Nauczyciel jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: teacher",
+    "title_pl": "Usłysz notatkę: nauczyciel",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the teacher.",
+        "text_pl": "Chodzi o: nauczyciel.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x008-engine",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "The engine is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Silnik jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: engine",
+    "title_pl": "Usłysz notatkę: silnik",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the engine.",
+        "text_pl": "Chodzi o: silnik.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x009-passport",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "The passport is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Paszport jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: passport",
+    "title_pl": "Usłysz notatkę: paszport",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the passport.",
+        "text_pl": "Chodzi o: paszport.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x010-garden",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "The garden is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Ogród jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: garden",
+    "title_pl": "Usłysz notatkę: ogród",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the garden.",
+        "text_pl": "Chodzi o: ogród.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x011-storm",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "The storm is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Burza jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: storm",
+    "title_pl": "Usłysz notatkę: burza",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the storm.",
+        "text_pl": "Chodzi o: burza.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x012-library",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "The library is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Biblioteka jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: library",
+    "title_pl": "Usłysz notatkę: biblioteka",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the library.",
+        "text_pl": "Chodzi o: biblioteka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x013-salary",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "The salary is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Pensja jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: salary",
+    "title_pl": "Usłysz notatkę: pensja",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the salary.",
+        "text_pl": "Chodzi o: pensja.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x014-vaccine",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "The vaccine is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Szczepionka jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: vaccine",
+    "title_pl": "Usłysz notatkę: szczepionka",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the vaccine.",
+        "text_pl": "Chodzi o: szczepionka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x015-harbor",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "The harbor is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Port jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: harbor",
+    "title_pl": "Usłysz notatkę: port",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the harbor.",
+        "text_pl": "Chodzi o: port.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x016-battery",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "The battery is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Akumulator jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: battery",
+    "title_pl": "Usłysz notatkę: akumulator",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the battery.",
+        "text_pl": "Chodzi o: akumulator.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x017-museum",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "The museum is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Muzeum jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: museum",
+    "title_pl": "Usłysz notatkę: muzeum",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the museum.",
+        "text_pl": "Chodzi o: muzeum.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x018-budget",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "The budget is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Budżet jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: budget",
+    "title_pl": "Usłysz notatkę: budżet",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the budget.",
+        "text_pl": "Chodzi o: budżet.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x019-island",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "The island is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Wyspa jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: island",
+    "title_pl": "Usłysz notatkę: wyspa",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the island.",
+        "text_pl": "Chodzi o: wyspa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x020-apple",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "The apple is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Jabłko jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: apple",
+    "title_pl": "Usłysz notatkę: jabłko",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the apple.",
+        "text_pl": "Chodzi o: jabłko.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x021-ticket",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "The ticket office is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Kasa jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: ticket office",
+    "title_pl": "Usłysz notatkę: kasa",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x022-bridge",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "The bridge is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Most jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: bridge",
+    "title_pl": "Usłysz notatkę: most",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the bridge.",
+        "text_pl": "Chodzi o: most.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x023-clinic",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "The clinic is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Przychodnia jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: clinic",
+    "title_pl": "Usłysz notatkę: przychodnia",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the clinic.",
+        "text_pl": "Chodzi o: przychodnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x024-office",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "The office is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Biuro jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: office",
+    "title_pl": "Usłysz notatkę: biuro",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the office.",
+        "text_pl": "Chodzi o: biuro.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x025-market",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "The market is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Targ jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: market",
+    "title_pl": "Usłysz notatkę: targ",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the market.",
+        "text_pl": "Chodzi o: targ.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x026-river",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "The river is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Rzeka jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: river",
+    "title_pl": "Usłysz notatkę: rzeka",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the river.",
+        "text_pl": "Chodzi o: rzeka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x027-teacher",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "The teacher is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Nauczyciel jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: teacher",
+    "title_pl": "Usłysz notatkę: nauczyciel",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the teacher.",
+        "text_pl": "Chodzi o: nauczyciel.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x028-engine",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "The engine is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Silnik jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: engine",
+    "title_pl": "Usłysz notatkę: silnik",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the engine.",
+        "text_pl": "Chodzi o: silnik.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x029-passport",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "The passport is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Paszport jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: passport",
+    "title_pl": "Usłysz notatkę: paszport",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the passport.",
+        "text_pl": "Chodzi o: paszport.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x030-garden",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "The garden is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Ogród jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: garden",
+    "title_pl": "Usłysz notatkę: ogród",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the garden.",
+        "text_pl": "Chodzi o: ogród.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x031-storm",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "The storm is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Burza jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: storm",
+    "title_pl": "Usłysz notatkę: burza",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the storm.",
+        "text_pl": "Chodzi o: burza.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x032-library",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "The library is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Biblioteka jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: library",
+    "title_pl": "Usłysz notatkę: biblioteka",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the library.",
+        "text_pl": "Chodzi o: biblioteka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x033-salary",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "The salary is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Pensja jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: salary",
+    "title_pl": "Usłysz notatkę: pensja",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the salary.",
+        "text_pl": "Chodzi o: pensja.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x034-vaccine",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "The vaccine is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Szczepionka jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: vaccine",
+    "title_pl": "Usłysz notatkę: szczepionka",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the vaccine.",
+        "text_pl": "Chodzi o: szczepionka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x035-harbor",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "The harbor is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Port jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: harbor",
+    "title_pl": "Usłysz notatkę: port",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the harbor.",
+        "text_pl": "Chodzi o: port.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x036-battery",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "The battery is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Akumulator jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: battery",
+    "title_pl": "Usłysz notatkę: akumulator",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the battery.",
+        "text_pl": "Chodzi o: akumulator.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x037-museum",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "The museum is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Muzeum jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: museum",
+    "title_pl": "Usłysz notatkę: muzeum",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the museum.",
+        "text_pl": "Chodzi o: muzeum.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x038-budget",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "The budget is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Budżet jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: budget",
+    "title_pl": "Usłysz notatkę: budżet",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the budget.",
+        "text_pl": "Chodzi o: budżet.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x039-island",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "The island is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Wyspa jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: island",
+    "title_pl": "Usłysz notatkę: wyspa",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the island.",
+        "text_pl": "Chodzi o: wyspa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x040-apple",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "The apple is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Jabłko jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: apple",
+    "title_pl": "Usłysz notatkę: jabłko",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the apple.",
+        "text_pl": "Chodzi o: jabłko.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  },
+  {
+    "slug": "l0-l-x041-ticket",
+    "skill": "L",
+    "level": 0,
+    "exercise_type": "listening",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "The ticket office is ready at seven. Tell the shift leader if it is late.",
+    "content_pl": "Kasa jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia.",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Hear the note: ticket office",
+    "title_pl": "Usłysz notatkę: kasa",
+    "instructions_en": "Listen once, then pick the answer that fits.",
+    "instructions_pl": "Posłuchaj raz, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "What is the note about?",
+    "prompt_pl": "O czym jest notatka?",
+    "options": [
+      {
+        "text_en": "It is about the ticket office.",
+        "text_pl": "Chodzi o: kasa.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+  }
+]

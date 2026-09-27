@@ -4,11 +4,16 @@
     document.documentElement.setAttribute('lang', lang);
   };
 
-  function applyTextToElement(el, text) {
+  function applyTextToElement(el, text, plainOnly) {
     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
       // if placeholder/value
       if ('placeholder' in el) el.placeholder = text;
       if ('value' in el && (el.type === 'button' || el.type === 'submit')) el.value = text;
+      return;
+    }
+
+    if (plainOnly) {
+      el.textContent = text;
       return;
     }
 
@@ -19,10 +24,13 @@
     if (!lang) return;
     setDocumentLang(lang);
 
+    // Pages that put database content in data-* attributes opt out of markup.
+    const plainOnly = document.documentElement.hasAttribute('data-lang-plain');
+
     // all elements with both attributes
     document.querySelectorAll('[data-en][data-pl]').forEach(el => {
       const text = el.getAttribute(`data-${lang}`) || el.getAttribute('data-en') || '';
-      applyTextToElement(el, text);
+      applyTextToElement(el, text, plainOnly);
     });
 
     // all .lang-btn

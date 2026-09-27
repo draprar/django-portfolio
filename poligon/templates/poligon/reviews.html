@@ -1,0 +1,76 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}{% if review %}{{ review.item.term }} | {% endif %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <p class="poligon-eyebrow" data-en="Flashcards" data-pl="Fiszki">Fiszki</p>
+  <h1 class="poligon-title" data-en="One word at a time" data-pl="Słówko po słówku">Słówko po słówku</h1>
+  <p class="poligon-subtitle"
+     data-en="Answer honestly. A card you find hard comes back sooner, an easy one much later."
+     data-pl="Oceniaj się szczerze. Trudna fiszka wróci szybciej, łatwa dopiero za długi czas.">
+    Oceniaj się szczerze. Trudna fiszka wróci szybciej, łatwa dopiero za długi czas.
+  </p>
+</header>
+
+{% if review %}
+<section class="poligon-card">
+  <p class="poligon-label" data-en="{{ review.item.category_en }}" data-pl="{{ review.item.category_pl }}">{{ review.item.category_pl }}</p>
+  <h2 class="poligon-term" lang="en">{{ review.item.term }}</h2>
+  <p class="poligon-muted"
+     data-en="Say the Polish meaning and one real sentence in your head. Then check."
+     data-pl="Powiedz sobie w głowie polskie znaczenie i jedno prawdziwe zdanie. Potem sprawdź.">
+    Powiedz sobie w głowie polskie znaczenie i jedno prawdziwe zdanie. Potem sprawdź.
+  </p>
+  <details class="poligon-reveal">
+    <summary data-en="Check the card" data-pl="Sprawdź">Sprawdź</summary>
+    <p><strong>{{ review.item.translation }}</strong></p>
+    <p data-en="{{ review.item.explanation_en }}" data-pl="{{ review.item.explanation_pl }}">{{ review.item.explanation_pl }}</p>
+    <blockquote lang="en">{{ review.item.example_en }}</blockquote>
+    {% if review.item.content_source != "original" %}
+    {% include "poligon/partials/attribution.html" with attribution_en=review.item.attribution_en attribution_pl=review.item.attribution_pl source_url=review.item.source_url source_license=review.item.source_license %}
+    {% endif %}
+  </details>
+  <form method="post" action="{% url 'poligon:grade_review' review.id %}" class="poligon-grades">
+    {% csrf_token %}
+    <button name="grade" value="0" class="poligon-btn poligon-btn-quiet" data-en="No idea" data-pl="Nie pamiętam">Nie pamiętam</button>
+    <button name="grade" value="3" class="poligon-btn poligon-btn-quiet" data-en="Hard" data-pl="Z trudem">Z trudem</button>
+    <button name="grade" value="4" class="poligon-btn" data-en="I remember" data-pl="Pamiętam">Pamiętam</button>
+    <button name="grade" value="5" class="poligon-btn poligon-btn-quiet" data-en="Too easy" data-pl="Za łatwe">Za łatwe</button>
+  </form>
+  <p class="poligon-muted poligon-shortcut"
+     data-en="Keyboard: 1, 2, 3, 4 from left to right."
+     data-pl="Z klawiatury: 1, 2, 3, 4 od lewej do prawej.">
+    Z klawiatury: 1, 2, 3, 4 od lewej do prawej.
+  </p>
+</section>
+{% else %}
+<section class="poligon-card poligon-caught-up">
+  <h2 data-en="All done for now" data-pl="Fiszki na dziś zrobione">Fiszki na dziś zrobione</h2>
+  <p class="poligon-muted"
+     data-en="No flashcards are due. Practise a skill, or come back tomorrow."
+     data-pl="Nie ma fiszek do powtórki. Zrób ćwiczenie albo wróć jutro.">
+    Nie ma fiszek do powtórki. Zrób ćwiczenie albo wróć jutro.
+  </p>
+  <div class="poligon-actions">
+    <a class="poligon-btn" href="{% url 'poligon:practice' %}" data-en="Practise" data-pl="Ćwicz">Ćwicz</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}" data-en="Back" data-pl="Wróć">Wróć</a>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  const keys = { "1": "0", "2": "3", "3": "4", "4": "5" };
+  document.addEventListener("keydown", function (event) {
+    if (event.target.closest("input, textarea, summary")) return;
+    const grade = keys[event.key];
+    if (!grade) return;
+    const button = document.querySelector('button[name="grade"][value="' + grade + '"]');
+    if (button) button.click();
+  });
+})();
+</script>
+{% endblock %}

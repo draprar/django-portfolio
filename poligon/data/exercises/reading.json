@@ -1,0 +1,2412 @@
+[
+  {
+    "slug": "read-001-route",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Route briefing note",
+    "title_pl": "Notatka z odprawy o trasie",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "instructions_en": "Read the short note. What is the one fact that matters?",
+    "instructions_pl": "Przeczytaj krótką notatkę. Który fakt jest tu najważniejszy?",
+    "prompt_en": "The unit is moving to a new training area. The main road is open, but a bridge on the northern route is restricted to light vehicles. Heavy vehicles must use the western access road and may arrive ten minutes later.",
+    "prompt_pl": "Pododdział przenosi się na nowy plac ćwiczeń. Główna droga jest otwarta, ale most na trasie północnej jest ograniczony do lekkich pojazdów. Ciężkie pojazdy muszą jechać zachodnią drogą dojazdową i mogą dotrzeć dziesięć minut później.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Heavy vehicles should use the western access road.",
+        "text_pl": "Ciężkie pojazdy powinny jechać zachodnią drogą dojazdową.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The main road is closed to all traffic.",
+        "text_pl": "Główna droga jest zamknięta dla całego ruchu.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Only light vehicles can enter the training area.",
+        "text_pl": "Tylko lekkie pojazdy mogą wjechać na plac ćwiczeń.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The northern bridge is closed permanently.",
+        "text_pl": "Most północny jest zamknięty na stałe.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-002-maintenance",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Vehicle maintenance message",
+    "title_pl": "Komunikat o obsłudze pojazdu",
+    "category_en": "maintenance",
+    "category_pl": "obsługa",
+    "instructions_en": "Read it, then work out what has to be done.",
+    "instructions_pl": "Przeczytaj i wywnioskuj, co trzeba zrobić.",
+    "prompt_en": "The workshop reports that the vehicle can be returned to service after the battery is replaced and the communication equipment is tested. The inspection is planned for Friday morning.",
+    "prompt_pl": "Warsztat informuje, że pojazd może wrócić do służby po wymianie akumulatora i sprawdzeniu sprzętu łączności. Kontrola jest planowana na piątek rano.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "The vehicle still needs two checks before returning to service.",
+        "text_pl": "Pojazd nadal wymaga dwóch sprawdzeń przed powrotem do służby.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The vehicle is ready immediately.",
+        "text_pl": "Pojazd jest gotowy od razu.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Only the tyres need inspection.",
+        "text_pl": "Trzeba sprawdzić tylko opony.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The workshop will cancel the inspection.",
+        "text_pl": "Warsztat odwoła kontrolę.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-003-comparison",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Two transport options",
+    "title_pl": "Dwie opcje transportu",
+    "category_en": "comparison",
+    "category_pl": "porównanie",
+    "instructions_en": "Read the note. What is being compared with what?",
+    "instructions_pl": "Przeczytaj notatkę. Co jest z czym porównane?",
+    "prompt_en": "The bus is slower but can carry the whole group together. The two minibuses are faster and more flexible, but the group must be split between vehicles and the equipment has to be loaded separately.",
+    "prompt_pl": "Autobus jest wolniejszy, ale może zabrać całą grupę razem. Dwa minibusy są szybsze i bardziej elastyczne, ale grupę trzeba podzielić między pojazdy, a wyposażenie załadować osobno.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "The bus is slower but keeps the group together.",
+        "text_pl": "Autobus jest wolniejszy, ale trzyma grupę razem.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The minibuses carry more equipment than the bus.",
+        "text_pl": "Minibusy zabierają więcej wyposażenia niż autobus.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The bus is faster than the minibuses.",
+        "text_pl": "Autobus jest szybszy niż minibusy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The group cannot use the minibuses.",
+        "text_pl": "Grupa nie może użyć minibusów.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-004-duty-note",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Duty note",
+    "title_pl": "Notatka o dyżurze",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "The night duty starts at twenty hundred and ends at six. The person on duty keeps the radio on and writes every visitor in the book. Breakfast is not part of the duty.",
+    "prompt_pl": "Dyżur nocny zaczyna się o dwudziestej i kończy o szóstej. Osoba na dyżurze trzyma włączoną radiostację i wpisuje każdego gościa do książki. Śniadanie nie należy do dyżuru.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "The duty includes the radio and the visitor book.",
+        "text_pl": "Dyżur obejmuje radiostację i książkę gości.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The duty ends at twenty hundred.",
+        "text_pl": "Dyżur kończy się o dwudziestej.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Breakfast is served by the person on duty.",
+        "text_pl": "Śniadanie wydaje osoba na dyżurze.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Visitors are not recorded.",
+        "text_pl": "Gości się nie zapisuje.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-005-tool-issue",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Tool issue",
+    "title_pl": "Wydanie narzędzi",
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Tools leave the workshop only with a signature. Return them by sixteen hundred the same day. A lost tool must be reported before the end of the shift.",
+    "prompt_pl": "Narzędzia wychodzą z warsztatu tylko za podpisem. Trzeba je oddać do szesnastej tego samego dnia. Zgubione narzędzie trzeba zgłosić przed końcem zmiany.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "A signature is required to take a tool.",
+        "text_pl": "Do zabrania narzędzia potrzebny jest podpis.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Tools may leave without any record.",
+        "text_pl": "Narzędzia mogą wyjść bez zapisu.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Return is due the next morning.",
+        "text_pl": "Zwrot jest należny następnego ranka.",
+        "is_correct": false
+      },
+      {
+        "text_en": "A lost tool can wait until next week.",
+        "text_pl": "Zgubione narzędzie może poczekać do przyszłego tygodnia.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-006-water-point",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Water point",
+    "title_pl": "Punkt wody",
+    "category_en": "logistics",
+    "category_pl": "logistyka",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "The water point is open from seven to nine and again from sixteen to eighteen. Bottles are filled there. The point does not issue fuel.",
+    "prompt_pl": "Punkt wody jest otwarty od siódmej do dziewiątej i znowu od szesnastej do osiemnastej. Butelki napełnia się tam. Punkt nie wydaje paliwa.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "It issues water at two times of day.",
+        "text_pl": "Wydaje wodę w dwóch porach dnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is open all day.",
+        "text_pl": "Jest otwarty cały dzień.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It issues fuel in the evening.",
+        "text_pl": "Wieczorem wydaje paliwo.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Bottles cannot be filled there.",
+        "text_pl": "Nie można tam napełniać butelek.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-007-class-rules",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Classroom rules",
+    "title_pl": "Zasady w sali",
+    "category_en": "training",
+    "category_pl": "szkolenie",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Phones stay silent in the classroom. Questions are welcome after each short section. Food is not allowed, but water bottles are.",
+    "prompt_pl": "Telefony w sali mają być wyciszone. Pytania są mile widziane po każdej krótkiej części. Jedzenie jest zabronione, ale butelki z wodą są dozwolone.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Water is allowed, food is not.",
+        "text_pl": "Woda jest dozwolona, jedzenie nie.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Phones may ring during the class.",
+        "text_pl": "Telefony mogą dzwonić w trakcie zajęć.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Questions are not allowed.",
+        "text_pl": "Pytania są zabronione.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Food and water are both banned.",
+        "text_pl": "Jedzenie i woda są zakazane.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-008-bus-seats",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Bus seats",
+    "title_pl": "Miejsca w autobusie",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "The first four seats are for the instructors. Everyone else sits from row three back. Bags go under the seat, not in the aisle.",
+    "prompt_pl": "Pierwsze cztery miejsca są dla instruktorów. Reszta siada od trzeciego rzędu w tył. Torby idą pod siedzenie, nie w przejście.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Bags must not block the aisle.",
+        "text_pl": "Torby nie mogą blokować przejścia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Instructors sit at the back.",
+        "text_pl": "Instruktorzy siedzą z tyłu.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Everyone may choose any seat.",
+        "text_pl": "Każdy może wybrać dowolne miejsce.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Bags stay in the aisle.",
+        "text_pl": "Torby zostają w przejściu.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-009-laundry",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Laundry hours",
+    "title_pl": "Godziny pralni",
+    "category_en": "workplace",
+    "category_pl": "praca",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "The laundry accepts field uniforms on Monday and Thursday morning. It returns them the next working day. Helmets and boots are not accepted.",
+    "prompt_pl": "Pralnia przyjmuje mundury polowe w poniedziałek i czwartek rano. Oddaje je następnego dnia roboczego. Hełmów i butów nie przyjmuje.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Only field uniforms are accepted.",
+        "text_pl": "Przyjmowane są tylko mundury polowe.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Helmets can be cleaned there.",
+        "text_pl": "Można tam czyścić hełmy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Uniforms come back the same hour.",
+        "text_pl": "Mundury wracają tej samej godziny.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The laundry is open only on Friday.",
+        "text_pl": "Pralnia jest otwarta tylko w piątek.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-010-gate-hours",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Gate hours",
+    "title_pl": "Godziny bramy",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "The vehicle gate is open from six to twenty-two hundred. After that, only people with a night permit may enter, and they use the pedestrian door.",
+    "prompt_pl": "Brama dla pojazdów jest otwarta od szóstej do dwudziestej drugiej. Potem wejść mogą tylko osoby z nocną przepustką i korzystają z drzwi dla pieszych.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Late entry is on foot and needs a night permit.",
+        "text_pl": "Późne wejście jest pieszo i wymaga nocnej przepustki.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The vehicle gate stays open all night.",
+        "text_pl": "Brama dla pojazdów jest otwarta całą noc.",
+        "is_correct": false
+      },
+      {
+        "text_en": "No one may enter after twenty-two hundred.",
+        "text_pl": "Po dwudziestej drugiej nikt nie może wejść.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The pedestrian door is closed all day.",
+        "text_pl": "Drzwi dla pieszych są zamknięte cały dzień.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-011-report-format",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Short report format",
+    "title_pl": "Format krótkiego meldunku",
+    "category_en": "communications",
+    "category_pl": "łączność",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "A short report needs three lines: who is reporting, what happened, and what help is needed. Do not add a long story. Send it on the assigned channel.",
+    "prompt_pl": "Krótki meldunek ma trzy linie: kto melduje, co się stało i jakiej pomocy trzeba. Nie dodawaj długiej historii. Wyślij go na przydzielonym kanale.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Three lines are enough.",
+        "text_pl": "Wystarczą trzy linie.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The report must be a long story.",
+        "text_pl": "Meldunek musi być długą historią.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Any channel is acceptable.",
+        "text_pl": "Każdy kanał jest dopuszczalny.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Help needed is left out.",
+        "text_pl": "Potrzebną pomoc się pomija.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-012-heat",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Heat warning",
+    "title_pl": "Ostrzeżenie przed upałem",
+    "category_en": "safety",
+    "category_pl": "bezpieczeństwo",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "When the temperature is above thirty degrees, outdoor work stops for ten minutes every hour. Drink water even if you are not thirsty. Heavy runs are postponed.",
+    "prompt_pl": "Gdy temperatura przekracza trzydzieści stopni, praca na zewnątrz przerywa się na dziesięć minut co godzinę. Pij wodę nawet wtedy, gdy nie czujesz pragnienia. Ciężkie biegi są przesunięte.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Take a short break every hour.",
+        "text_pl": "Rób krótką przerwę co godzinę.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Keep working without breaks.",
+        "text_pl": "Pracuj bez przerw.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Drink water only when you feel thirsty.",
+        "text_pl": "Pij wodę tylko wtedy, gdy czujesz pragnienie.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Heavy runs continue as planned.",
+        "text_pl": "Ciężkie biegi idą zgodnie z planem.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-013-lost-property",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Lost property",
+    "title_pl": "Rzeczy znalezione",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Found items go to the duty desk the same day. Describe the place and the time. Do not keep a found radio overnight.",
+    "prompt_pl": "Znalezione rzeczy trafiają na dyżurkę tego samego dnia. Opisz miejsce i godzinę. Nie trzymaj znalezionej radiostacji przez noc.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Hand found items in on the same day.",
+        "text_pl": "Oddaj znalezione rzeczy tego samego dnia.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Keep a found radio until morning.",
+        "text_pl": "Trzymaj znalezioną radiostację do rana.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The place does not matter.",
+        "text_pl": "Miejsce nie ma znaczenia.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Only helmets are accepted.",
+        "text_pl": "Przyjmowane są tylko hełmy.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-014-two-routes",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Wet route",
+    "title_pl": "Mokra trasa",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "The forest track is shorter but muddy after rain. The main road is longer and firm. Heavy vehicles must use the main road today.",
+    "prompt_pl": "Leśna ścieżka jest krótsza, ale błotnista po deszczu. Główna droga jest dłuższa i twarda. Ciężkie pojazdy mają dziś jechać główną drogą.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Heavy vehicles take the longer firm road.",
+        "text_pl": "Ciężkie pojazdy jadą dłuższą, twardą drogą.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Heavy vehicles take the muddy track.",
+        "text_pl": "Ciężkie pojazdy jadą błotnistą ścieżką.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Both routes are closed.",
+        "text_pl": "Obie trasy są zamknięte.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The forest track is firm today.",
+        "text_pl": "Leśna ścieżka jest dziś twarda.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-015-kit-list",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Kit list",
+    "title_pl": "Lista wyposażenia",
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "For the day in the field, bring water, a notebook, and a rain jacket. Leave the laptop in the classroom. A compass is useful but not required.",
+    "prompt_pl": "Na dzień w terenie weź wodę, notes i kurtkę przeciwdeszczową. Laptop zostaw w sali. Kompas jest przydatny, ale nieobowiązkowy.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "A laptop stays in the classroom.",
+        "text_pl": "Laptop zostaje w sali.",
+        "is_correct": true
+      },
+      {
+        "text_en": "A compass is required.",
+        "text_pl": "Kompas jest obowiązkowy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "A rain jacket is forbidden.",
+        "text_pl": "Kurtka przeciwdeszczowa jest zabroniona.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Water is optional.",
+        "text_pl": "Woda jest opcjonalna.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-016-noise",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Quiet hours",
+    "title_pl": "Godziny ciszy",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Quiet hours are from twenty-three hundred to six. Radios used for duty stay on low volume. Music is not allowed in the tents during those hours.",
+    "prompt_pl": "Cisza nocna trwa od dwudziestej trzeciej do szóstej. Radiostacje dyżurne zostają wyciszone. Muzyka w namiotach jest wtedy zabroniona.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Music is not allowed during quiet hours.",
+        "text_pl": "W godzinach ciszy muzyka jest zabroniona.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Duty radios must be switched off.",
+        "text_pl": "Radiostacje dyżurne trzeba wyłączyć.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Quiet hours start at six.",
+        "text_pl": "Cisza zaczyna się o szóstej.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Music is required in every tent.",
+        "text_pl": "Muzyka jest wymagana w każdym namiocie.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-017-parking",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Parking note",
+    "title_pl": "Notatka o parkowaniu",
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Park facing the exit so the convoy can leave quickly. Leave a gap wide enough for a person with a stretcher. Do not block the fuel pump.",
+    "prompt_pl": "Parkuj przodem do wyjazdu, żeby kolumna mogła szybko ruszyć. Zostaw odstęp na osobę z noszami. Nie zastawiaj dystrybutora.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "Do not block the fuel pump.",
+        "text_pl": "Nie zastawiaj dystrybutora.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Park facing the fence.",
+        "text_pl": "Parkuj przodem do ogrodzenia.",
+        "is_correct": false
+      },
+      {
+        "text_en": "No gap is needed between vehicles.",
+        "text_pl": "Między pojazdami nie trzeba odstępu.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The fuel pump is the best parking spot.",
+        "text_pl": "Dystrybutor to najlepsze miejsce parkingowe.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-018-visitor-badge",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Visitor badge",
+    "title_pl": "Identyfikator gościa",
+    "category_en": "procedures",
+    "category_pl": "procedury",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Visitors wear a red badge and stay with their host. The badge is returned at the gate. A visitor without a host waits at the duty desk.",
+    "prompt_pl": "Goście noszą czerwony identyfikator i zostają ze swoim opiekunem. Identyfikator oddaje się przy bramie. Gość bez opiekuna czeka na dyżurce.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "A visitor without a host waits at the duty desk.",
+        "text_pl": "Gość bez opiekuna czeka na dyżurce.",
+        "is_correct": true
+      },
+      {
+        "text_en": "Visitors may walk alone anywhere.",
+        "text_pl": "Goście mogą chodzić sami wszędzie.",
+        "is_correct": false
+      },
+      {
+        "text_en": "The badge is kept after the visit.",
+        "text_pl": "Identyfikator zostaje po wizycie.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Badges are blue.",
+        "text_pl": "Identyfikatory są niebieskie.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-019-email-rule",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Email rule",
+    "title_pl": "Zasada mailowa",
+    "category_en": "workplace",
+    "category_pl": "praca",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "Put the date and the new time in the first sentence of a coordination email. Ask for a reply. Do not hide the change in a long attachment.",
+    "prompt_pl": "W pierwszym zdaniu maila koordynacyjnego podaj datę i nową godzinę. Poproś o odpowiedź. Nie chowaj zmiany w długim załączniku.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "The change belongs in the first sentence.",
+        "text_pl": "Zmiana ma być w pierwszym zdaniu.",
+        "is_correct": true
+      },
+      {
+        "text_en": "The change belongs only in an attachment.",
+        "text_pl": "Zmiana ma być tylko w załączniku.",
+        "is_correct": false
+      },
+      {
+        "text_en": "A reply is not needed.",
+        "text_pl": "Odpowiedź nie jest potrzebna.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Dates are left out of emails.",
+        "text_pl": "Dat w mailach się nie podaje.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "read-020-light-discipline",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "title_en": "Light discipline",
+    "title_pl": "Dyscyplina światła",
+    "category_en": "safety",
+    "category_pl": "bezpieczeństwo",
+    "instructions_en": "Read the short note. Pick the sentence that matches it.",
+    "instructions_pl": "Przeczytaj krótką notatkę. Wybierz zdanie, które do niej pasuje.",
+    "prompt_en": "After last light, use a red filter on flashlights near the tents. White light is allowed only at the medical tent. Vehicle lights stay off unless the vehicle is moving on the main road.",
+    "prompt_pl": "Po zmroku używaj czerwonego filtra w latarkach przy namiotach. Białe światło jest dozwolone tylko przy namiocie medycznym. Światła pojazdów są zgaszone, chyba że pojazd jedzie główną drogą.",
+    "content_en": "",
+    "content_pl": "",
+    "options": [
+      {
+        "text_en": "White light is limited to the medical tent.",
+        "text_pl": "Białe światło jest ograniczone do namiotu medycznego.",
+        "is_correct": true
+      },
+      {
+        "text_en": "White light is required near every tent.",
+        "text_pl": "Białe światło jest wymagane przy każdym namiocie.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Vehicle lights stay on while parked.",
+        "text_pl": "Światła pojazdów są włączone na postoju.",
+        "is_correct": false
+      },
+      {
+        "text_en": "Flashlights are banned.",
+        "text_pl": "Latarki są zakazane.",
+        "is_correct": false
+      }
+    ],
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": ""
+  },
+  {
+    "slug": "l2-r-x000-apple",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Coffee",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Coffee”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Coffee”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Coffee",
+    "title_pl": "Coffee",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Coffee is a beverage brewed from roasted, ground coffee beans. Dark-colored and bitter, coffee has a stimulating effect on humans due to its caffeine content; however decaffeinated coffee is also commercially available. There are also various coffee substitutes.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about coffee.",
+        "text_pl": "Chodzi o: coffee.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x001-ticket",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Tea",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Tea”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Tea”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Tea",
+    "title_pl": "Tea",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Tea is an aromatic beverage prepared by infusion of hot or boiling fresh water with fresh or cured leaves of Camellia sinensis, an evergreen shrub native to East Asia that originated in the borderlands of southwestern China, northeast India and northern Myanmar. Tea has a stimulant effect in humans primarily due to its caffeine content.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about tea.",
+        "text_pl": "Chodzi o: tea.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x002-bridge",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Restaurant",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Restaurant”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Restaurant”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Restaurant",
+    "title_pl": "Restaurant",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A restaurant is a business that prepares and serves food and beverages to customers. Meals are generally served and eaten on the premises, but many restaurants also offer take-out and food delivery services. Restaurants vary greatly in appearance and offerings, featuring a wide variety of cuisines and service models — ranging from inexpensive fast-food restaurants and cafeterias to mid-priced family restaurants to high-priced luxury establishments.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about restaurant.",
+        "text_pl": "Chodzi o: restaurant.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x003-clinic",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Newspaper",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Newspaper”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Newspaper”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Newspaper",
+    "title_pl": "Newspaper",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A newspaper is a periodical publication containing written information about current events and is often typed in black ink with a white or gray background. Newspapers can cover a wide variety of fields such as politics, business, sports, art, science, and religions. They often include materials such as opinion columns, weather forecasts, reviews of local services, obituaries, birth notices, crosswords, sudoku puzzles, editorial cartoons, comic strips, and advice columns.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about newspaper.",
+        "text_pl": "Chodzi o: newspaper.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x004-office",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Telephone",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Telephone”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Telephone”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Telephone",
+    "title_pl": "Telephone",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A telephone, commonly shortened to phone, is a telecommunications device that enables two or more users to conduct a conversation when they are too far apart to be easily heard directly. A telephone converts sound, typically and most efficiently the human voice, into electronic signals that are transmitted via cables and other communication channels to another telephone which reproduces the sound to the receiving user. The term is derived from Ancient Greek: τῆλε, romanized: tēle, lit. 'far'…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about telephone.",
+        "text_pl": "Chodzi o: telephone.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x005-market",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Camera",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Camera”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Camera”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Camera",
+    "title_pl": "Camera",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A camera is an instrument used to capture and store images and videos, either digitally via an electronic image sensor, or chemically via a light-sensitive material such as photographic film. As a pivotal technology in the fields of photography and videography, cameras have played a significant role in the progression of visual arts, media, entertainment, surveillance, and scientific research. The invention of the camera dates back to the 19th century and has since evolved with advancements in…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about camera.",
+        "text_pl": "Chodzi o: camera.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x006-river",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Agriculture",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Agriculture”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Agriculture”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Agriculture",
+    "title_pl": "Agriculture",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Agriculture is the practice of cultivating the soil, planting, raising, and harvesting both food and non-food crops, as well as livestock production. Broader definitions also include forestry and aquaculture. Agriculture was a key factor in the rise of sedentary human civilization, whereby farming of domesticated plants and animals created food surpluses that enabled people to live in the cities. While humans started gathering grains at least 105,000 years ago, nascent farmers only began…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about agriculture.",
+        "text_pl": "Chodzi o: agriculture.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x007-teacher",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Passport",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Passport”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Passport”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Passport",
+    "title_pl": "Passport",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A passport is a formal travel document issued by a government that certifies a person's identity and nationality for international travel. A passport allows its bearer to enter and temporarily reside in a foreign country, access local aid and protection, and obtain consular assistance from their government. In addition to facilitating travel, passports are a key mechanism for border security and regulating migration; they may also serve as identity documents for various domestic purposes.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about passport.",
+        "text_pl": "Chodzi o: passport.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x008-engine",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Pollution",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Pollution”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Pollution”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Pollution",
+    "title_pl": "Pollution",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Pollution is the introduction of contaminants into the natural environment that cause harm. Pollution can take the form of any substance or energy. Pollutants, the components of pollution, can be either foreign substances/energies or naturally occurring contaminants.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about pollution.",
+        "text_pl": "Chodzi o: pollution.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x009-passport",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Vaccine",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Vaccine”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Vaccine”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Vaccine",
+    "title_pl": "Vaccine",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A vaccine is a biological preparation that provides active acquired immunity to a particular infectious or malignant disease. The safety and effectiveness of vaccines has been widely studied and verified. A vaccine typically contains an agent that resembles a disease-causing microorganism and is often made from weakened or killed forms of the microbe, its toxins, or one of its surface proteins. The agent stimulates the immune system to recognize the agent as a threat, destroy it, and recognize…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about vaccine.",
+        "text_pl": "Chodzi o: vaccine.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x010-garden",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "home",
+    "category_pl": "dom",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Earthquake",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Earthquake”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Earthquake”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Earthquake",
+    "title_pl": "Earthquake",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "An earthquake, also called a quake, tremor, or temblor, is the shaking of the Earth's surface resulting from a sudden release of energy in the lithosphere that creates seismic waves. Earthquakes can range in intensity, from those so weak they cannot be felt, to those violent enough to propel objects and people into the air, damage critical infrastructure, and wreak destruction across entire cities. The seismic activity of an area is the frequency, type, and size of earthquakes experienced over…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about earthquake.",
+        "text_pl": "Chodzi o: earthquake.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x011-storm",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "weather",
+    "category_pl": "pogoda",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Volcano",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Volcano”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Volcano”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Volcano",
+    "title_pl": "Volcano",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A volcano is a vent or fissure in the crust of a planetary-mass object that allows hot lava, volcanic ash, and gases to escape from a magma chamber below the surface. On Earth, volcanoes are most often found where tectonic plates are diverging or converging, and because most of Earth's plate boundaries are underwater, most volcanoes are found underwater. For example, a mid-ocean ridge, such as the Mid-Atlantic Ridge, has volcanoes caused by divergent tectonic plates whereas the Pacific Ring of…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about volcano.",
+        "text_pl": "Chodzi o: volcano.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x012-library",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Climate",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Climate”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Climate”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Climate",
+    "title_pl": "Climate",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Climate is the long-term weather pattern in a region, typically averaged over 30 years. More rigorously, it is the mean and variability of meteorological variables over a time spanning from months to millions of years. Some of the meteorological variables that are commonly measured are temperature, humidity, atmospheric pressure, wind, and precipitation. In a broader sense, climate is the state of the components of the climate system, including the atmosphere, hydrosphere, cryosphere…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about climate.",
+        "text_pl": "Chodzi o: climate.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x013-salary",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Island",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Island”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Island”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Island",
+    "title_pl": "Island",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "An island or isle is a piece of land, distinct from a continent, completely surrounded by water. There are continental islands, which were formed by being split from a continent by plate tectonics, and oceanic islands, which have never been part of a continent. Oceanic islands can be formed from volcanic activity, grow into atolls from coral reefs, and form from sediment along shorelines, creating barrier islands. River islands can also form from sediment and debris in rivers. Artificial…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about island.",
+        "text_pl": "Chodzi o: island.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x014-vaccine",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Village",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Village”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Village”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Village",
+    "title_pl": "Village",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A village is a human settlement or a residential community, larger than a hamlet but smaller than a town; some geographers describe villages as having between 500 and 2,500 inhabitants. Although villages are often located in rural areas, the term urban village is also applied to certain urban neighborhoods. Villages are normally permanent, with fixed dwellings, however, transient villages also exist. Further, the dwellings of a village are fairly close to one another, not scattered broadly over…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about village.",
+        "text_pl": "Chodzi o: village.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x015-harbor",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Coffee",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Coffee”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Coffee”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Coffee",
+    "title_pl": "Coffee",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Coffee is a beverage brewed from roasted, ground coffee beans. Dark-colored and bitter, coffee has a stimulating effect on humans due to its caffeine content; however decaffeinated coffee is also commercially available. There are also various coffee substitutes.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about coffee.",
+        "text_pl": "Chodzi o: coffee.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x016-battery",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Tea",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Tea”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Tea”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Tea",
+    "title_pl": "Tea",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Tea is an aromatic beverage prepared by infusion of hot or boiling fresh water with fresh or cured leaves of Camellia sinensis, an evergreen shrub native to East Asia that originated in the borderlands of southwestern China, northeast India and northern Myanmar. Tea has a stimulant effect in humans primarily due to its caffeine content.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about tea.",
+        "text_pl": "Chodzi o: tea.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x017-museum",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Restaurant",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Restaurant”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Restaurant”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Restaurant",
+    "title_pl": "Restaurant",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A restaurant is a business that prepares and serves food and beverages to customers. Meals are generally served and eaten on the premises, but many restaurants also offer take-out and food delivery services. Restaurants vary greatly in appearance and offerings, featuring a wide variety of cuisines and service models — ranging from inexpensive fast-food restaurants and cafeterias to mid-priced family restaurants to high-priced luxury establishments.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about restaurant.",
+        "text_pl": "Chodzi o: restaurant.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x018-budget",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Newspaper",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Newspaper”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Newspaper”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Newspaper",
+    "title_pl": "Newspaper",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A newspaper is a periodical publication containing written information about current events and is often typed in black ink with a white or gray background. Newspapers can cover a wide variety of fields such as politics, business, sports, art, science, and religions. They often include materials such as opinion columns, weather forecasts, reviews of local services, obituaries, birth notices, crosswords, sudoku puzzles, editorial cartoons, comic strips, and advice columns.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about newspaper.",
+        "text_pl": "Chodzi o: newspaper.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x019-island",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Telephone",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Telephone”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Telephone”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Telephone",
+    "title_pl": "Telephone",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A telephone, commonly shortened to phone, is a telecommunications device that enables two or more users to conduct a conversation when they are too far apart to be easily heard directly. A telephone converts sound, typically and most efficiently the human voice, into electronic signals that are transmitted via cables and other communication channels to another telephone which reproduces the sound to the receiving user. The term is derived from Ancient Greek: τῆλε, romanized: tēle, lit. 'far'…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about telephone.",
+        "text_pl": "Chodzi o: telephone.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x020-apple",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "food",
+    "category_pl": "jedzenie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Camera",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Camera”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Camera”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Camera",
+    "title_pl": "Camera",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A camera is an instrument used to capture and store images and videos, either digitally via an electronic image sensor, or chemically via a light-sensitive material such as photographic film. As a pivotal technology in the fields of photography and videography, cameras have played a significant role in the progression of visual arts, media, entertainment, surveillance, and scientific research. The invention of the camera dates back to the 19th century and has since evolved with advancements in…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about camera.",
+        "text_pl": "Chodzi o: camera.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x021-ticket",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Electricity",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Electricity”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Electricity”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Electricity",
+    "title_pl": "Electricity",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Electricity is the set of physical phenomena associated with the presence and motion of matter possessing an electric charge. Electricity is related to magnetism, both being part of the phenomenon of electromagnetism, as described by Maxwell's equations. Common phenomena are related to electricity, including lightning, static electricity, electric heating, electric discharges and many others.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about electricity.",
+        "text_pl": "Chodzi o: electricity.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x022-bridge",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "movement",
+    "category_pl": "przemieszczanie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Agriculture",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Agriculture”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Agriculture”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Agriculture",
+    "title_pl": "Agriculture",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "Agriculture is the practice of cultivating the soil, planting, raising, and harvesting both food and non-food crops, as well as livestock production. Broader definitions also include forestry and aquaculture. Agriculture was a key factor in the rise of sedentary human civilization, whereby farming of domesticated plants and animals created food surpluses that enabled people to live in the cities. While humans started gathering grains at least 105,000 years ago, nascent farmers only began…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about agriculture.",
+        "text_pl": "Chodzi o: agriculture.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x023-clinic",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "health",
+    "category_pl": "zdrowie",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/University",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “University”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „University”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "University",
+    "title_pl": "University",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A university is an institution of tertiary education and research which awards academic degrees in several academic disciplines. University is derived from the Latin phrase universitas magistrorum et scholarium, which roughly means \"community of teachers and scholars\". Universities typically offer both undergraduate and postgraduate programs.",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about university.",
+        "text_pl": "Chodzi o: university.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x024-office",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "work",
+    "category_pl": "praca",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": false,
+    "source_note": "English stimulus from Wikipedia. Question and choices are original.",
+    "content_source": "wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Museum",
+    "source_license": "CC BY-SA 4.0",
+    "retrieved_at": "2026-09-26",
+    "attribution_en": "English text from the Wikipedia article “Museum”, CC BY-SA 4.0. Question and choices are original.",
+    "attribution_pl": "Angielski tekst z artykułu Wikipedii „Museum”, CC BY-SA 4.0. Pytanie i odpowiedzi są oryginalne.",
+    "title_en": "Museum",
+    "title_pl": "Museum",
+    "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
+    "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
+    "prompt_en": "A museum is an institution dedicated to displaying and preserving culturally or scientifically significant objects. Many museums have exhibitions of these objects on public display, and some have non-exhibited collections that are used by researchers and specialists. Museums hold a wide range of objects and often focus on a particular theme, such as the arts, science, natural history, or local history. Museums that host exhibitions and interactive demonstrations are often tourist attractions…",
+    "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
+    "options": [
+      {
+        "text_en": "It is about museum.",
+        "text_pl": "Chodzi o: museum.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x025-market",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "town",
+    "category_pl": "miasto",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: market",
+    "title_pl": "Przeczytaj notatkę: targ",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the market is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: targ. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the market.",
+        "text_pl": "Chodzi o: targ.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x026-river",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "place",
+    "category_pl": "miejsce",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: river",
+    "title_pl": "Przeczytaj notatkę: rzeka",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the river is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: rzeka. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the river.",
+        "text_pl": "Chodzi o: rzeka.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x027-teacher",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "school",
+    "category_pl": "szkoła",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: teacher",
+    "title_pl": "Przeczytaj notatkę: nauczyciel",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the teacher is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: nauczyciel. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the teacher.",
+        "text_pl": "Chodzi o: nauczyciel.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x028-engine",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "equipment",
+    "category_pl": "sprzęt",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: engine",
+    "title_pl": "Przeczytaj notatkę: silnik",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the engine is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: silnik. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the engine.",
+        "text_pl": "Chodzi o: silnik.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  },
+  {
+    "slug": "l2-r-x029-passport",
+    "skill": "R",
+    "level": 2,
+    "exercise_type": "mcq",
+    "expected_minutes": 6,
+    "category_en": "travel",
+    "category_pl": "podróż",
+    "content_en": "",
+    "content_pl": "",
+    "original_content": true,
+    "source_note": "Original Poligon text",
+    "content_source": "original",
+    "source_url": "",
+    "source_license": "",
+    "retrieved_at": null,
+    "attribution_en": "",
+    "attribution_pl": "",
+    "title_en": "Read the note: passport",
+    "title_pl": "Przeczytaj notatkę: paszport",
+    "instructions_en": "Read the note, then pick the answer that fits.",
+    "instructions_pl": "Przeczytaj notatkę, potem wybierz odpowiedź, która pasuje.",
+    "prompt_en": "The team cannot start until the passport is confirmed. If it is late, use the backup and tell the shift leader.",
+    "prompt_pl": "Zespół nie zaczyna, dopóki nie ma potwierdzenia: paszport. Jeśli to się spóźnia, użyj zapasu i powiedz dowódcy zmiany.",
+    "options": [
+      {
+        "text_en": "It is about the passport.",
+        "text_pl": "Chodzi o: paszport.",
+        "is_correct": true
+      },
+      {
+        "text_en": "It is about a spare tyre.",
+        "text_pl": "Chodzi o zapasową oponę.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a radio call sign.",
+        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "is_correct": false
+      },
+      {
+        "text_en": "It is about a night shift roster.",
+        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "is_correct": false
+      }
+    ],
+    "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+  }
+]

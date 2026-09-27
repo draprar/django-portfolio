@@ -94,7 +94,7 @@ Must pass without errors.
 ### 2. Type Checking (MyPy)
 
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code \
+mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon \
   --ignore-missing-imports --disable-error-code=import-untyped
 ```
 
@@ -208,7 +208,7 @@ Tests are organized by app in `app_name/tests/` directory:
 
 3. **Run quality checks**
    ```bash
-   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code && pytest -q --cov=. --cov-fail-under=80
+   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon && pytest -q --cov=. --cov-fail-under=80
    ```
 
 4. **Commit with meaningful messages**

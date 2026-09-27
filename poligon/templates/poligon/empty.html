@@ -1,0 +1,32 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<section class="poligon-card poligon-empty">
+  <h1 class="poligon-title"
+      data-en="No exercises on this level" data-pl="Brak ćwiczeń na tym poziomie">Brak ćwiczeń na tym poziomie</h1>
+  {% if skill_label_pl %}
+  <p class="poligon-muted"
+     data-en="No {{ skill_label_en }} exercise is waiting on level {{ level }} right now."
+     data-pl="Nie ma teraz ćwiczenia „{{ skill_label_pl }}” na poziomie {{ level }}.">
+    Nie ma teraz ćwiczenia „{{ skill_label_pl }}” na poziomie {{ level }}.
+  </p>
+  {% else %}
+  <p class="poligon-muted"
+     data-en="No exercise is waiting on level {{ level }} right now."
+     data-pl="Nie ma teraz żadnego ćwiczenia na poziomie {{ level }}.">
+    Nie ma teraz żadnego ćwiczenia na poziomie {{ level }}.
+  </p>
+  {% endif %}
+  <p class="poligon-muted"
+     data-en="Try another skill, or change the level in your plan."
+     data-pl="Spróbuj innej sprawności albo zmień poziom w swoim planie.">
+    Spróbuj innej sprawności albo zmień poziom w swoim planie.
+  </p>
+  <div class="poligon-actions">
+    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}" data-en="Pick a skill" data-pl="Wybierz sprawność">Wybierz sprawność</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:settings' %}" data-en="Change the level" data-pl="Zmień poziom">Zmień poziom</a>
+  </div>
+</section>
+{% endblock %}

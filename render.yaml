@@ -10,7 +10,7 @@ services:
       pip install -r requirements.txt
       python manage.py check --deploy
       python manage.py collectstatic --noinput --clear
-    preDeployCommand: python manage.py migrate --noinput
+    preDeployCommand: python manage.py migrate --noinput && python manage.py seed_poligon
     startCommand: gunicorn config.wsgi:application --workers 1 --timeout 120 --graceful-timeout 30 --keep-alive 5 --log-file -
     envVars:
       - key: DJANGO_DEBUG

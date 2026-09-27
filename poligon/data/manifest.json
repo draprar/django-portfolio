@@ -1,0 +1,38 @@
+{
+  "exercises": [
+    "exercises/listening.json",
+    "exercises/reading.json",
+    "exercises/speaking.json",
+    "exercises/writing.json",
+    "exercises/level-0-listening.json",
+    "exercises/level-0-reading.json",
+    "exercises/level-0-speaking.json",
+    "exercises/level-0-writing.json",
+    "exercises/level-1-listening.json",
+    "exercises/level-1-reading.json",
+    "exercises/level-1-speaking.json",
+    "exercises/level-1-writing.json",
+    "exercises/level-3-listening.json",
+    "exercises/level-3-reading.json",
+    "exercises/level-3-speaking.json",
+    "exercises/level-3-writing.json",
+    "exercises/level-4-listening.json",
+    "exercises/level-4-reading.json",
+    "exercises/level-4-speaking.json",
+    "exercises/level-4-writing.json",
+    "exercises/level-5-listening.json",
+    "exercises/level-5-reading.json",
+    "exercises/level-5-speaking.json",
+    "exercises/level-5-writing.json"
+  ],
+  "vocabulary": [
+    "vocabulary/original.json",
+    "vocabulary/wiktionary.json",
+    "vocabulary/level-0.json",
+    "vocabulary/level-1.json",
+    "vocabulary/level-2.json",
+    "vocabulary/level-3.json",
+    "vocabulary/level-4.json",
+    "vocabulary/level-5.json"
+  ]
+}

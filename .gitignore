@@ -66,3 +66,8 @@ yarn-error.log
 # Build artifacts
 build/
 dist/
+
+# Poligon offline fetch caches (builders only; catalog JSON is committed)
+poligon/data/_wiktionary_cache*.json
+poligon/data/_wikipedia_cache.json
+poligon/data/_tatoeba_cache.json

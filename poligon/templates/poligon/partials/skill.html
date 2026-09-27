@@ -1,0 +1,5 @@
+{% if skill == "L" %}<span data-en="Listening" data-pl="Słuchanie">Słuchanie</span>
+{% elif skill == "S" %}<span data-en="Speaking" data-pl="Mówienie">Mówienie</span>
+{% elif skill == "R" %}<span data-en="Reading" data-pl="Czytanie">Czytanie</span>
+{% elif skill == "W" %}<span data-en="Writing" data-pl="Pisanie">Pisanie</span>
+{% else %}<span>{{ skill }}</span>{% endif %}
