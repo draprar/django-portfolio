@@ -529,6 +529,101 @@ a.poligon-stat:hover .poligon-big {
   margin-top: 1rem;
 }
 
+.poligon-title-wide {
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.poligon-level-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+}
+
+.poligon-level {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(196, 146, 42, 0.28);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.poligon-level:hover {
+  border-color: #f0c46a;
+  background: rgba(196, 146, 42, 0.12);
+}
+
+.poligon-level-current {
+  border-color: #c4922a;
+  background: rgba(196, 146, 42, 0.16);
+}
+
+.poligon-level-number {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #f0c46a;
+}
+
+.poligon-level-name {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.poligon-level-hint {
+  color: #a8adb8;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* A nudge, not a wall: it never covers the content or traps the keyboard. */
+.poligon-nudge {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1080;
+  max-width: 24rem;
+  background: #16130d;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  padding: 1.2rem 1.4rem 1.3rem;
+}
+
+.poligon-nudge-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #f0c46a;
+  margin: 0 0 0.5rem;
+}
+
+.poligon-nudge p {
+  color: #a8adb8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.poligon-nudge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+}
+
 @media (max-width: 991.98px) {
   .poligon-lang {
     margin-left: 0.7rem;
@@ -554,10 +649,22 @@ a.poligon-stat:hover .poligon-big {
   .poligon-grades .poligon-btn {
     flex: 1 1 45%;
   }
+
+  .poligon-level-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .poligon-nudge {
+    right: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
 }
 
 @media (max-width: 460px) {
-  .poligon-stats {
+  .poligon-stats,
+  .poligon-level-list {
     grid-template-columns: 1fr;
   }
 }

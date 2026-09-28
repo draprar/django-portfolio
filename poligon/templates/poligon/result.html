@@ -47,19 +47,21 @@
   <p class="poligon-verdict" data-en="{{ hint_en }}" data-pl="{{ hint_pl }}">{{ hint_pl }}</p>
   {% endif %}
   <p class="poligon-muted"
-     data-en="This is a rule-based hint, not an exam mark."
-     data-pl="To podpowiedź z reguł, nie ocena z egzaminu.">
-    To podpowiedź z reguł, nie ocena z egzaminu.
+     data-en="This is a rule-based hint, not an official assessment."
+     data-pl="To podpowiedź z reguł, nie oficjalna ocena.">
+    To podpowiedź z reguł, nie oficjalna ocena.
   </p>
   {% endif %}
 
   <div class="poligon-actions">
-    <a class="poligon-btn" href="{% url 'poligon:practice' %}?skill={{ exercise.skill }}"
-       data-en="Next exercise" data-pl="Następne ćwiczenie">Następne ćwiczenie</a>
-    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}"
-       data-en="Another skill" data-pl="Inna sprawność">Inna sprawność</a>
+    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}"
+       data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:practice' %}?skill={{ exercise.skill }}"
+       data-en="One more of these" data-pl="Jeszcze jedno takie">Jeszcze jedno takie</a>
   </div>
 </section>
+
+{% if show_account_hint %}{% include "poligon/partials/account_nudge.html" %}{% endif %}
 
 {% if submission.answer_text %}
 <section class="poligon-card">

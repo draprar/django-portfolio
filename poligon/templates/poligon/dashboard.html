@@ -7,24 +7,11 @@
 <section class="poligon-card poligon-banner">
   <p>
     <span data-en="First time here?" data-pl="Pierwszy raz tutaj?">Pierwszy raz tutaj?</span>
-    <span data-en="The default level is 2. Ten questions suggest another one."
-          data-pl="Domyślny poziom to 2. Dziesięć pytań pozwala dobrać inny.">Domyślny poziom to 2. Dziesięć pytań pozwala dobrać inny.</span>
+    <span data-en="You start at level 2. Ten questions will suggest a better one."
+          data-pl="Startujesz z poziomu 2. Dziesięć pytań podpowie trafniejszy.">Startujesz z poziomu 2. Dziesięć pytań podpowie trafniejszy.</span>
   </p>
   <a class="poligon-btn" href="{% url 'poligon:placement' %}"
      data-en="Check my level" data-pl="Sprawdź mój poziom">Sprawdź mój poziom</a>
-</section>
-{% endif %}
-
-{% if show_guest_banner %}
-<section class="poligon-card poligon-banner">
-  <p>
-    <span data-en="Your progress is saved in this browser only."
-          data-pl="Twój postęp jest zapisany tylko w tej przeglądarce.">Twój postęp jest zapisany tylko w tej przeglądarce.</span>
-    <span data-en="Create an account if you want to come back to it next week or on your phone."
-          data-pl="Załóż konto, jeśli chcesz do niego wrócić za tydzień albo z telefonu.">Załóż konto, jeśli chcesz do niego wrócić za tydzień albo z telefonu.</span>
-  </p>
-  <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:account' %}"
-     data-en="Save my progress" data-pl="Zapisz mój postęp">Zapisz mój postęp</a>
 </section>
 {% endif %}
 
@@ -33,20 +20,13 @@
   <h1 class="poligon-title">{{ state.practice_level }}</h1>
   <p class="poligon-subtitle" data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</p>
   <p class="poligon-subtitle"
-     data-en="Four skills, short sessions. Here you see how it goes. This is not an exam."
-     data-pl="Cztery sprawności, krótkie sesje. Tu widzisz, jak Ci idzie — to nie egzamin.">
-    Cztery sprawności, krótkie sesje. Tu widzisz, jak Ci idzie — to nie egzamin.
+     data-en="Radio, orders, logistics, reports — here you see how it goes. Field training, not an official exam."
+     data-pl="Łączność, rozkazy, logistyka, meldunki — tu widzisz, jak Ci idzie. Trening polowy, nie oficjalny egzamin.">
+    Łączność, rozkazy, logistyka, meldunki — tu widzisz, jak Ci idzie. Trening polowy, nie oficjalny egzamin.
   </p>
-  <div class="poligon-actions">
-    <a class="poligon-btn" href="{% url 'poligon:practice' %}" data-en="Practise" data-pl="Ćwicz">Ćwicz</a>
-    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:reviews' %}">
-      <span data-en="Flashcards" data-pl="Fiszki">Fiszki</span>
-      {% if due_reviews %}<span class="poligon-badge">{{ due_reviews }}</span>{% endif %}
-    </a>
-  </div>
 </header>
 
-<h2 class="poligon-section-title" data-en="Pick a skill" data-pl="Wybierz sprawność">Wybierz sprawność</h2>
+<h2 class="poligon-section-title" data-en="Pick a skill to start" data-pl="Wybierz sprawność i zaczynaj">Wybierz sprawność i zaczynaj</h2>
 <div class="poligon-stats">
   <a class="poligon-card poligon-stat" href="{% url 'poligon:practice' %}?skill=L">
     <span class="poligon-label" data-en="Listening" data-pl="Słuchanie">Słuchanie</span>
@@ -71,6 +51,7 @@
 </div>
 
 <div class="poligon-split">
+  {% if user.is_authenticated %}
   <section class="poligon-card">
     <div class="poligon-card-head">
       <h2 data-en="Today" data-pl="Dziś">Dziś</h2>
@@ -79,15 +60,15 @@
     <div class="poligon-bar"><i style="width:{{ today_progress }}%"></i></div>
     {% if minutes_left %}
     <p class="poligon-muted"
-       data-en="{{ minutes_left }} min left today. A short exercise is enough."
+       data-en="{{ minutes_left }} min left today. One short exercise is enough."
        data-pl="Zostało {{ minutes_left }} min na dziś. Jedno krótkie ćwiczenie wystarczy.">
       Zostało {{ minutes_left }} min na dziś. Jedno krótkie ćwiczenie wystarczy.
     </p>
     {% else %}
     <p class="poligon-muted"
-       data-en="Today's goal is done. Further practice is extra."
-       data-pl="Cel na dziś jest wykonany. Dalsze ćwiczenia są dodatkiem.">
-      Cel na dziś jest wykonany. Dalsze ćwiczenia są dodatkiem.
+       data-en="Today's goal is done. Anything further is a bonus."
+       data-pl="Cel na dziś jest wykonany. Wszystko dalej to już nadprogram.">
+      Cel na dziś jest wykonany. Wszystko dalej to już nadprogram.
     </p>
     {% endif %}
     <div class="poligon-row">
@@ -95,16 +76,42 @@
       <a href="{% url 'poligon:reviews' %}">{{ due_reviews }} →</a>
     </div>
   </section>
+  {% else %}
+  <section class="poligon-card">
+    <div class="poligon-card-head">
+      <h2 data-en="Practising as a guest" data-pl="Ćwiczysz bez konta">Ćwiczysz bez konta</h2>
+    </div>
+    <p class="poligon-muted"
+       data-en="Nothing about this visit is stored, so the results vanish when you close the browser."
+       data-pl="Nic z tej wizyty nie jest zapisywane, więc wyniki znikną po zamknięciu przeglądarki.">
+      Nic z tej wizyty nie jest zapisywane, więc wyniki znikną po zamknięciu przeglądarki.
+    </p>
+    <p class="poligon-muted"
+       data-en="An account keeps the level, the exercise history and the tactical vocabulary cards."
+       data-pl="Konto zachowuje poziom, historię ćwiczeń i fiszki ze słownictwa taktycznego.">
+      Konto zachowuje poziom, historię ćwiczeń i fiszki ze słownictwa taktycznego.
+    </p>
+    <div class="poligon-actions">
+      <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:register' %}"
+         data-en="Create an account" data-pl="Załóż konto">Załóż konto</a>
+    </div>
+  </section>
+  {% endif %}
 
   <section class="poligon-card">
     <div class="poligon-card-head">
-      <h2 data-en="Your plan" data-pl="Twój plan">Twój plan</h2>
+      <h2 data-en="Your training plan" data-pl="Twój plan przygotowania">Twój plan przygotowania</h2>
+      {% if user.is_authenticated %}
       <a href="{% url 'poligon:settings' %}" data-en="Change" data-pl="Zmień">Zmień</a>
+      {% else %}
+      <a href="{% url 'poligon:start' %}" data-en="Change the level" data-pl="Zmień poziom">Zmień poziom</a>
+      {% endif %}
     </div>
     <div class="poligon-row">
       <span data-en="Level" data-pl="Poziom">Poziom</span>
       <span>{{ state.practice_level }} · <span data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</span></span>
     </div>
+    {% if user.is_authenticated %}
     <div class="poligon-row">
       <span data-en="Daily goal" data-pl="Cel na dzień">Cel na dzień</span>
       <span>{{ state.daily_minutes }} min</span>
@@ -114,16 +121,18 @@
       <span>{% if state.target_date %}{{ state.target_date|date:"j E Y" }}{% else %}<span data-en="not set" data-pl="nieustawiona">nieustawiona</span>{% endif %}</span>
     </div>
     <div class="poligon-row">
-      <span data-en="Exercises on this level" data-pl="Ćwiczeń na tym poziomie">Ćwiczeń na tym poziomie</span>
-      <span>{{ exercise_count }}</span>
-    </div>
-    <div class="poligon-row">
       <span data-en="This week" data-pl="W tym tygodniu">W tym tygodniu</span>
       <span data-en="{{ studied }} sessions" data-pl="{{ studied }} sesji">{{ studied }} sesji</span>
+    </div>
+    {% endif %}
+    <div class="poligon-row">
+      <span data-en="Exercises still ahead" data-pl="Ćwiczeń przed Tobą">Ćwiczeń przed Tobą</span>
+      <span>{{ left }}</span>
     </div>
   </section>
 </div>
 
+{% if user.is_authenticated %}
 <section class="poligon-card">
   <div class="poligon-card-head">
     <h2 data-en="Recent exercises" data-pl="Ostatnie ćwiczenia">Ostatnie ćwiczenia</h2>
@@ -153,11 +162,11 @@
   </div>
   {% else %}
   <p class="poligon-muted"
-     data-en="No history yet. Start with one short exercise."
-     data-pl="Nie ma jeszcze historii. Zacznij od jednego krótkiego ćwiczenia.">
-    Nie ma jeszcze historii. Zacznij od jednego krótkiego ćwiczenia.
+     data-en="No history yet. Pick a skill above and do one short exercise."
+     data-pl="Nie ma jeszcze historii. Wybierz sprawność powyżej i zrób jedno krótkie ćwiczenie.">
+    Nie ma jeszcze historii. Wybierz sprawność powyżej i zrób jedno krótkie ćwiczenie.
   </p>
-  <a class="poligon-btn" href="{% url 'poligon:practice' %}" data-en="Practise" data-pl="Ćwicz">Ćwicz</a>
   {% endif %}
 </section>
+{% endif %}
 {% endblock %}

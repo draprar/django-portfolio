@@ -1,9 +1,9 @@
-"""Optional accounts for Poligon.
+"""Optional accounts for Ćwiczba.
 
-Practice never needs one. An account exists so a learner keeps their level,
-flashcard schedule and history when the guest cookie goes away or they open
-Poligon somewhere else. It is the project-wide ``django.contrib.auth`` user, so
-one account works across the whole portfolio, but every page here is Poligon's.
+Practice never needs one. Without an account nothing is stored at all, so the
+work ends with the visit. An account is what keeps the level, the history and
+the flashcard schedule. It is the project-wide ``django.contrib.auth`` user, so
+one account works across the whole portfolio, but every page here is Ćwiczba's.
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ from tonguetwister.services import (
 )
 from tonguetwister.tokens import account_activation_token
 
-from .identity import adopt_guest_progress, learner_state
+from .identity import account_state, adopt_guest_level
 from .models import Submission
 from .services import due_review_count
 
@@ -44,21 +44,21 @@ logger = logging.getLogger(__name__)
 SIGNED_UP = "Konto jest prawie gotowe. Sprawdź skrzynkę i kliknij link, żeby je potwierdzić."
 ACTIVATED = "Konto potwierdzone. Możesz się zalogować."
 ACTIVATION_BROKEN = "Ten link już nie działa. Zarejestruj się jeszcze raz albo napisz do nas."
-PROGRESS_MOVED = "Twój dotychczasowy postęp jest już na koncie."
+LEVEL_MOVED = "Ustawiliśmy na koncie poziom, który przed chwilą wybrałeś."
 PASSWORD_SENT = "Jeśli konto istnieje, wyślemy link do zmiany hasła."
 PASSWORD_CHANGED = "Hasło zmienione. Zaloguj się nowym hasłem."
 PASSWORD_LINK_BROKEN = "Ten link do zmiany hasła już nie działa. Poproś o nowy."
 
 
 def account(request: HttpRequest) -> HttpResponse:
-    state = learner_state(request)
+    state = account_state(request)
     return render(
         request,
         "poligon/account.html",
         {
             "state": state,
-            "done": Submission.objects.filter(learner=state).count(),
-            "due_reviews": due_review_count(state),
+            "done": Submission.objects.filter(learner=state).count() if state else 0,
+            "due_reviews": due_review_count(state) if state else 0,
         },
     )
 
@@ -74,8 +74,9 @@ def login_view(request: HttpRequest) -> HttpResponse:
                 messages.error(request, LOGIN_FAILURE_MESSAGE)
                 return render(request, "poligon/auth_login.html", {"form": form})
             login(request, user)
-            if adopt_guest_progress(request, learner_state(request)):
-                messages.success(request, PROGRESS_MOVED)
+            state = account_state(request)
+            if state is not None and adopt_guest_level(request, state):
+                messages.success(request, LEVEL_MOVED)
             return redirect("poligon:dashboard")
         messages.error(request, LOGIN_FAILURE_MESSAGE)
     return render(request, "poligon/auth_login.html", {"form": form})

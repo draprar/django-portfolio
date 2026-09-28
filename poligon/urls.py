@@ -6,16 +6,19 @@ app_name = "poligon"
 
 urlpatterns = [
     path("", views_main.home, name="home"),
+    path("start/", views_main.start, name="start"),
     path("dashboard/", views_main.dashboard, name="dashboard"),
     path("practice/", views_main.practice, name="practice"),
     path("exercise/<slug:slug>/", views_main.exercise, name="exercise"),
+    path("result/", views_main.last_result, name="last_result"),
     path("result/<int:submission_id>/", views_main.result, name="result"),
     path("reviews/", views_main.reviews, name="reviews"),
     path("reviews/<int:review_id>/grade/", views_main.grade_review, name="grade_review"),
+    path("tablice/", views_main.tables, name="tables"),
     path("settings/", views_main.settings_view, name="settings"),
     path("poziom/", views_main.placement, name="placement"),
-    path("sources/", views_main.sources, name="sources"),
-    # Account: optional, only to keep progress
+    path("polityka/", views_main.policy, name="policy"),
+    # Account: optional, and the only way progress outlives a visit
     path("konto/", views_auth.account, name="account"),
     path("konto/logowanie/", views_auth.login_view, name="login"),
     path("konto/wyloguj/", views_auth.logout_view, name="logout"),

@@ -1,5 +1,3 @@
-import uuid
-
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -9,19 +7,15 @@ from django.utils.translation import gettext_lazy as _
 class LearnerState(models.Model):
     """One learner's plan and progress.
 
-    Practice never requires an account: a visitor gets a ``guest_token`` in a
-    long-lived cookie. Signing in attaches the same row to a ``User`` so the
-    work survives a cleared cookie or another device.
+    Only an account gets a row here. Practising without one leaves nothing
+    behind: the level lives in the session and goes away with the visit.
     """
 
     user = models.OneToOneField(
         User,
-        null=True,
-        blank=True,
         on_delete=models.CASCADE,
         related_name="poligon_state",
     )
-    guest_token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     practice_level = models.PositiveSmallIntegerField(
         default=2,
         validators=[MinValueValidator(0), MaxValueValidator(5)],
@@ -37,8 +31,7 @@ class LearnerState(models.Model):
         verbose_name_plural = "Learner states"
 
     def __str__(self) -> str:
-        who = self.user.username if self.user_id else f"guest {self.guest_token}"
-        return f"{who} / {self.target_profile}"
+        return f"{self.user.username} / {self.target_profile}"
 
 
 class Exercise(models.Model):

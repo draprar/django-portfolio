@@ -38,7 +38,7 @@
 
   {% if exercise.exercise_type == "mcq" or exercise.exercise_type == "listening" %}
   <div class="poligon-options">
-    {% for option in exercise.options.all %}
+    {% for option in options %}
     <label class="poligon-option">
       <input type="radio" name="option_id" value="{{ option.id }}" required>
       <span lang="en">{{ option.text_en }}</span>

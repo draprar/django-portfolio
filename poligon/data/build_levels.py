@@ -20,8 +20,8 @@ from fetch_wikipedia import fetch_summary  # noqa: E402
 
 COUNTS = {0: 8, 1: 8, 3: 8, 4: 4, 5: 4}
 WIKI_TITLES = {
-    1: ["Weather", "Breakfast"],
-    3: ["Public_transport", "First_aid"],
+    1: ["First_aid"],
+    3: ["First_aid"],
     4: ["Logistics", "Navigation"],
     5: ["Occupational_safety_and_health", "Emergency_management"],
 }
@@ -37,7 +37,7 @@ TOPICS = [
 ]
 WORDS = {
     0: ["yes", "no", "hello", "stop", "go", "left", "right", "one", "two", "help", "please", "name", "door", "bed", "day", "night", "hot", "cold", "open", "close"],
-    1: ["ticket", "station", "breakfast", "doctor", "hotel", "key", "bag", "train", "street", "shop", "price", "today", "tomorrow", "late", "early", "phone", "number", "room", "bus stop", "rainy"],
+    1: ["key", "bag", "street", "today", "tomorrow", "late", "early", "phone", "number", "room", "bus stop", "rainy"],
     3: ["milestone", "handover", "estimate", "priority", "constraint", "debrief", "outcome", "resource", "stakeholder", "mitigation", "compliance", "workload", "itinerary", "contingency", "liaison", "protocol", "capacity", "surplus", "shortage", "timeline"],
     4: ["assumption", "implication", "criterion", "discrepancy", "feasibility", "oversight", "rationale", "scope", "threshold", "trade-off", "accountability", "benchmark", "escalation", "procurement", "resilience", "ambiguity", "bottleneck", "justification", "provision", "sustainment"],
     5: ["nuance", "caveat", "corollary", "precedent", "inference", "synthesis", "discretion", "mandate", "jurisdiction", "liability", "proportionality", "stake", "contention", "qualification", "attribution", "coherence", "premise", "rebuttal", "stipulation", "viability"],

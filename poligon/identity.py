@@ -1,88 +1,116 @@
 """Who is practising right now.
 
-Practice is open to anyone: a visitor gets a long-lived ``poligon_lid`` cookie
-pointing at their own :class:`~poligon.models.LearnerState`. Signing in is only
-about keeping that work when the cookie goes away.
+Practice never needs an account and never leaves anything behind. A guest keeps
+the chosen level in the Django session, which lasts as long as the visit, and
+nothing about that guest reaches the database. An account exists so the level,
+the history and the flashcard schedule survive the visit.
 """
 
 from __future__ import annotations
 
-import uuid
+import secrets
+from dataclasses import dataclass
+from datetime import date
 
 from django.http import HttpRequest
 
-from .models import LearnerState, Review, StudyEvent, Submission
+from .models import LearnerState
 
-GUEST_COOKIE = "poligon_lid"
-GUEST_COOKIE_MAX_AGE = 60 * 60 * 24 * 90
+LEVEL_KEY = "poligon_level"
+SEEN_KEY = "poligon_seen"
+ATTEMPT_KEY = "poligon_attempt"
+ACCOUNT_HINT_KEY = "poligon_account_hint"
+SHUFFLE_KEY = "poligon_shuffle"
+
+MIN_LEVEL = 0
+MAX_LEVEL = 5
+DEFAULT_DAILY_MINUTES = 35
+# Enough to cover one level and skill without letting the session cookie grow.
+SEEN_LIMIT = 40
 
 
-def _cookie_token(request: HttpRequest) -> uuid.UUID | None:
-    try:
-        return uuid.UUID(request.COOKIES.get(GUEST_COOKIE, ""))
-    except ValueError:
+@dataclass(frozen=True)
+class GuestPlan:
+    """What a guest has for the length of one visit. Never saved."""
+
+    practice_level: int
+    daily_minutes: int = DEFAULT_DAILY_MINUTES
+    target_date: date | None = None
+
+    @property
+    def target_profile(self) -> str:
+        return str(self.practice_level) * 4
+
+
+def account_state(request: HttpRequest) -> LearnerState | None:
+    """The row to read and write. ``None`` for everyone without an account."""
+    if not request.user.is_authenticated:
         return None
-
-
-def guest_state(request: HttpRequest) -> LearnerState | None:
-    token = _cookie_token(request)
-    if token is None:
-        return None
-    return LearnerState.objects.filter(guest_token=token, user__isnull=True).first()
-
-
-def learner_state(request: HttpRequest) -> LearnerState:
-    """The state to write to. Creates one on first practice."""
-    if request.user.is_authenticated:
-        state, _created = LearnerState.objects.get_or_create(user=request.user)
-        return state
-    state = guest_state(request) or LearnerState.objects.create()
-    # Refresh the cookie on every visit so an active guest never expires.
-    request.poligon_guest_token = state.guest_token
+    state, _created = LearnerState.objects.get_or_create(user=request.user)
     return state
 
 
-def current_state(request: HttpRequest) -> LearnerState | None:
-    """The state to read from. Never creates anything."""
-    if request.user.is_authenticated:
-        return LearnerState.objects.filter(user=request.user).first()
-    return guest_state(request)
+def guest_level(request: HttpRequest) -> int | None:
+    raw = request.session.get(LEVEL_KEY)
+    if isinstance(raw, int) and MIN_LEVEL <= raw <= MAX_LEVEL:
+        return raw
+    return None
 
 
-def adopt_guest_progress(request: HttpRequest, account: LearnerState) -> bool:
-    """Move whatever the guest did onto the account they just signed in to."""
-    state = guest_state(request)
-    if state is None or state.pk == account.pk:
+def set_guest_level(request: HttpRequest, level: int) -> None:
+    request.session[LEVEL_KEY] = int(level)
+    # A new level means a new pool, so nothing carries over from the old one.
+    request.session.pop(SEEN_KEY, None)
+
+
+def current_plan(request: HttpRequest) -> LearnerState | GuestPlan | None:
+    """Level and goals to read from. ``None`` when a guest has not chosen yet."""
+    state = account_state(request)
+    if state is not None:
+        return state
+    level = guest_level(request)
+    if level is None:
+        return None
+    return GuestPlan(practice_level=level)
+
+
+def adopt_guest_level(request: HttpRequest, account: LearnerState) -> bool:
+    """Carry the level a guest just picked onto a brand-new account."""
+    level = guest_level(request)
+    request.session.pop(LEVEL_KEY, None)
+    request.session.pop(SEEN_KEY, None)
+    request.session.pop(ATTEMPT_KEY, None)
+    if level is None or account.practice_level == level:
         return False
-
-    # Checked before the move, so a brand-new account row is not mistaken for history.
-    account_has_history = (
-        Submission.objects.filter(learner=account).exists() or Review.objects.filter(learner=account).exists()
-    )
-    Submission.objects.filter(learner=state).update(learner=account)
-    StudyEvent.objects.filter(learner=state).update(learner=account)
-    # The account keeps its own card when both sides reviewed the same word.
-    known = Review.objects.filter(learner=account).values_list("item_id", flat=True)
-    Review.objects.filter(learner=state).exclude(item_id__in=known).update(learner=account)
-    Review.objects.filter(learner=state).delete()
-
-    _merge_plan(state, account, account_has_history)
-    state.delete()
-    request.poligon_drop_guest_cookie = True
+    if account.submissions.exists() or account.reviews.exists():
+        return False
+    account.practice_level = level
+    account.target_profile = str(level) * 4
+    account.save(update_fields=["practice_level", "target_profile", "updated_at"])
     return True
 
 
-def _merge_plan(guest: LearnerState, account: LearnerState, account_has_history: bool) -> None:
-    """A fresh account takes the guest's plan. An account with history keeps the harder level."""
-    fields = ["practice_level", "target_profile", "daily_minutes", "target_date", "updated_at"]
-    if not account_has_history:
-        account.practice_level = guest.practice_level
-        account.daily_minutes = guest.daily_minutes
-        account.target_date = guest.target_date
-    else:
-        account.practice_level = max(guest.practice_level, account.practice_level)
-        if guest.updated_at > account.updated_at:
-            account.daily_minutes = guest.daily_minutes
-            account.target_date = guest.target_date
-    account.target_profile = str(account.practice_level) * 4
-    account.save(update_fields=fields)
+def shuffle_seed(request: HttpRequest) -> str:
+    """A salt for the answer order, so a reload does not reshuffle the choices."""
+    if request.user.is_authenticated:
+        return f"user-{request.user.pk}"
+    seed = request.session.get(SHUFFLE_KEY)
+    if not isinstance(seed, str):
+        seed = secrets.token_hex(8)
+        request.session[SHUFFLE_KEY] = seed
+    return seed
+
+
+def seen_slugs(request: HttpRequest) -> list[str]:
+    raw = request.session.get(SEEN_KEY)
+    return [item for item in raw if isinstance(item, str)] if isinstance(raw, list) else []
+
+
+def remember_seen(request: HttpRequest, slug: str) -> None:
+    seen = [item for item in seen_slugs(request) if item != slug]
+    seen.append(slug)
+    request.session[SEEN_KEY] = seen[-SEEN_LIMIT:]
+
+
+def clear_seen(request: HttpRequest) -> None:
+    request.session.pop(SEEN_KEY, None)

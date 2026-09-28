@@ -1,7 +1,16 @@
+import itertools
+
+from django.contrib.auth.models import User
+
 from poligon.models import ChoiceOption, Exercise, LearnerState, VocabularyItem
+
+_learner_numbers = itertools.count(1)
 
 
 def make_learner(**overrides) -> LearnerState:
+    """A learner always has an account: nothing is stored for a guest."""
+    if "user" not in overrides:
+        overrides["user"] = User.objects.create_user(username=f"kursant{next(_learner_numbers)}")
     return LearnerState.objects.create(**overrides)
 
 

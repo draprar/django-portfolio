@@ -26,19 +26,27 @@
     <div class="collapse navbar-collapse" id="poligonNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'practice' or request.resolver_match.url_name == 'exercise' or request.resolver_match.url_name == 'result' %}active{% endif %}" href="{% url 'poligon:practice' %}" data-en="Practice" data-pl="Ćwicz">Ćwicz</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'reviews' %}active{% endif %}" href="{% url 'poligon:reviews' %}">
+          {% if request.resolver_match.url_name == 'reviews' %}
+          <a class="nav-link active" aria-current="page" href="{% url 'poligon:reviews' %}">
+          {% else %}
+          <a class="nav-link" href="{% url 'poligon:reviews' %}">
+          {% endif %}
             <span data-en="Flashcards" data-pl="Fiszki">Fiszki</span>
             {% if poligon_due_reviews %}<span class="poligon-badge">{{ poligon_due_reviews }}</span>{% endif %}
           </a>
         </li>
         <li class="nav-item">
+          {% if request.resolver_match.url_name == 'tables' %}
+          <a class="nav-link active" aria-current="page" href="{% url 'poligon:tables' %}" data-en="Reference" data-pl="Tablice">Tablice</a>
+          {% else %}
+          <a class="nav-link" href="{% url 'poligon:tables' %}" data-en="Reference" data-pl="Tablice">Tablice</a>
+          {% endif %}
+        </li>
+        <li class="nav-item">
           {% if user.is_authenticated %}
           <a class="nav-link {% if request.resolver_match.url_name == 'account' %}active{% endif %}" href="{% url 'poligon:account' %}" data-en="Account" data-pl="Konto">Konto</a>
           {% else %}
-          <a class="nav-link" href="{% url 'poligon:account' %}" data-en="Save progress" data-pl="Zapisz postęp">Zapisz postęp</a>
+          <a class="nav-link" href="{% url 'poligon:login' %}" data-en="Sign in" data-pl="Zaloguj">Zaloguj</a>
           {% endif %}
         </li>
       </ul>
@@ -58,14 +66,15 @@
 </main>
 
 <footer class="footer text-center">
-  <p data-en="Ćwiczba is training, not an exam. The score is a study hint."
-     data-pl="Ćwiczba to trening, nie egzamin. Wynik jest podpowiedzią do nauki.">
-    Ćwiczba to trening, nie egzamin. Wynik jest podpowiedzią do nauki.
+  <p data-en="Ćwiczba is field training, not an official exam. The score is a study hint."
+     data-pl="Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki.">
+    Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki.
   </p>
   <p class="poligon-links poligon-links-center">
+    {% if user.is_authenticated %}
     <a href="{% url 'poligon:settings' %}" data-en="Settings" data-pl="Ustawienia">Ustawienia</a>
-    <a href="{% url 'poligon:sources' %}" data-en="Where the content comes from" data-pl="Skąd są treści">Skąd są treści</a>
-    <a href="/wybierz/" data-en="Back to the crossroads" data-pl="Wróć na rozdroże">Wróć na rozdroże</a>
+    {% endif %}
+    <a href="{% url 'poligon:policy' %}" data-en="Your data" data-pl="Twoje dane">Twoje dane</a>
   </p>
 </footer>
 

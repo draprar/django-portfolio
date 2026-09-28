@@ -1,0 +1,59 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Tablice | Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <p class="poligon-eyebrow" data-en="Reference" data-pl="Tablice">Tablice</p>
+  <h1 class="poligon-title" data-en="What you need on duty" data-pl="To warto znać na służbie">To warto znać na służbie</h1>
+  <p class="poligon-subtitle"
+     data-en="Three sheets for the radio, the field and the briefing room. Nothing here is graded and nothing is stored."
+     data-pl="Trzy ściągi na łączność, w terenie i na odprawę. Nic tutaj nie jest oceniane ani zapisywane.">
+    Trzy ściągi na łączność, w terenie i na odprawę. Nic tutaj nie jest oceniane ani zapisywane.
+  </p>
+  <p class="poligon-links">
+    {% for table in tables %}
+    <a href="#{{ table.anchor }}" data-en="{{ table.title_en }}" data-pl="{{ table.title_pl }}">{{ table.title_pl }}</a>
+    {% endfor %}
+  </p>
+</header>
+
+{% for table in tables %}
+<section class="poligon-card" id="{{ table.anchor }}">
+  <div class="poligon-card-head">
+    <h2 data-en="{{ table.title_en }}" data-pl="{{ table.title_pl }}">{{ table.title_pl }}</h2>
+  </div>
+  <p class="poligon-muted" data-en="{{ table.lead_en }}" data-pl="{{ table.lead_pl }}">{{ table.lead_pl }}</p>
+  <div class="poligon-table-scroll">
+    <table class="poligon-table">
+      <thead>
+        <tr>
+          {% for column in table.columns %}
+          <th scope="col" data-en="{{ column.en }}" data-pl="{{ column.pl }}">{{ column.pl }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in table.rows %}
+        <tr>
+          {% for cell in row %}
+          <td>
+            {% if cell.english_only %}<span lang="en">{{ cell.text }}</span>
+            {% else %}<span data-en="{{ cell.en }}" data-pl="{{ cell.pl }}">{{ cell.pl }}</span>{% endif %}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endfor %}
+
+<section class="poligon-card">
+  <div class="poligon-actions">
+    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}"
+       data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+  </div>
+</section>
+{% endblock %}

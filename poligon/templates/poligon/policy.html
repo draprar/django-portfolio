@@ -1,0 +1,113 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Twoje dane | Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header poligon-header-left">
+  <p class="poligon-eyebrow" data-en="Your data" data-pl="Twoje dane">Twoje dane</p>
+  <h1 class="poligon-title" data-en="What we store, and when" data-pl="Co zapisujemy i kiedy">Co zapisujemy i kiedy</h1>
+  <p class="poligon-subtitle"
+     data-en="Short version: as a guest, nothing. With an account, only what the account needs in order to be useful."
+     data-pl="Krótko: jako gość — nic. Z kontem — tylko to, co jest potrzebne, żeby konto miało sens.">
+    Krótko: jako gość — nic. Z kontem — tylko to, co jest potrzebne, żeby konto miało sens.
+  </p>
+</header>
+
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="Practising without an account" data-pl="Ćwiczenie bez konta">Ćwiczenie bez konta</h2>
+  </div>
+  <p data-en="The chosen level and the answer you have just checked live in the session on the server, for the length of the visit. They are not written to the database and nothing identifies you."
+     data-pl="Wybrany poziom i właśnie sprawdzona odpowiedź żyją w sesji na serwerze, przez czas wizyty. Nie trafiają do bazy i nic Cię nie identyfikuje.">
+    Wybrany poziom i właśnie sprawdzona odpowiedź żyją w sesji na serwerze, przez czas wizyty. Nie trafiają do bazy i nic Cię nie identyfikuje.
+  </p>
+  <p data-en="Close the browser and it is gone. That is also why a guest has no flashcards: a card can only come back on the right day if its history is kept somewhere."
+     data-pl="Zamykasz przeglądarkę i tego nie ma. Dlatego gość nie ma też fiszek: fiszka wróci w odpowiednim dniu tylko wtedy, gdy jej historia jest gdzieś zapisana.">
+    Zamykasz przeglądarkę i tego nie ma. Dlatego gość nie ma też fiszek: fiszka wróci w odpowiednim dniu tylko wtedy, gdy jej historia jest gdzieś zapisana.
+  </p>
+</section>
+
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="Cookies and local storage" data-pl="Ciasteczka i pamięć przeglądarki">Ciasteczka i pamięć przeglądarki</h2>
+  </div>
+  <p data-en="We use two cookies, both strictly necessary for the service to work at all. Neither is used for analytics, profiling or advertising, and we do not share them with anyone."
+     data-pl="Używamy dwóch ciasteczek i oba są niezbędne, żeby serwis w ogóle działał. Żadne nie służy do analityki, profilowania ani reklamy i z nikim ich nie dzielimy.">
+    Używamy dwóch ciasteczek i oba są niezbędne, żeby serwis w ogóle działał. Żadne nie służy do analityki, profilowania ani reklamy i z nikim ich nie dzielimy.
+  </p>
+  <div class="poligon-table-scroll">
+    <table class="poligon-table">
+      <thead>
+        <tr>
+          <th scope="col" data-en="Name" data-pl="Nazwa">Nazwa</th>
+          <th scope="col" data-en="What it is for" data-pl="Do czego służy">Do czego służy</th>
+          <th scope="col" data-en="How long" data-pl="Jak długo">Jak długo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sessionid</code></td>
+          <td data-en="Holds the session: the chosen level, the last checked answer and, for an account, the fact that you are signed in."
+              data-pl="Trzyma sesję: wybrany poziom, ostatnio sprawdzoną odpowiedź, a dla konta — to, że jesteś zalogowany.">
+            Trzyma sesję: wybrany poziom, ostatnio sprawdzoną odpowiedź, a dla konta — to, że jesteś zalogowany.
+          </td>
+          <td data-en="2 hours, or until the browser is closed" data-pl="2 godziny albo do zamknięcia przeglądarki">2 godziny albo do zamknięcia przeglądarki</td>
+        </tr>
+        <tr>
+          <td><code>csrftoken</code></td>
+          <td data-en="Protects forms against being submitted from another site."
+              data-pl="Chroni formularze przed wysłaniem z obcej strony.">
+            Chroni formularze przed wysłaniem z obcej strony.
+          </td>
+          <td data-en="1 year" data-pl="1 rok">1 rok</td>
+        </tr>
+        <tr>
+          <td><code>site_lang</code></td>
+          <td data-en="Local storage, not a cookie. Written only when you click PL or EN, so the choice holds on the next page."
+              data-pl="Pamięć przeglądarki, nie ciasteczko. Zapisujemy dopiero, gdy klikniesz PL albo EN, żeby wybór trzymał się na następnej stronie.">
+            Pamięć przeglądarki, nie ciasteczko. Zapisujemy dopiero, gdy klikniesz PL albo EN, żeby wybór trzymał się na następnej stronie.
+          </td>
+          <td data-en="Until you clear the browser data" data-pl="Do wyczyszczenia danych przeglądarki">Do wyczyszczenia danych przeglądarki</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="With an account" data-pl="Z kontem">Z kontem</h2>
+  </div>
+  <p data-en="An account stores your username, your e-mail address, a password hash — never the password itself — and your training data: the level, the daily goal, the answers you have submitted and the flashcard schedule."
+     data-pl="Konto przechowuje nazwę użytkownika, adres e-mail, skrót hasła — nigdy samego hasła — oraz dane treningowe: poziom, cel na dzień, wysłane odpowiedzi i terminy fiszek.">
+    Konto przechowuje nazwę użytkownika, adres e-mail, skrót hasła — nigdy samego hasła — oraz dane treningowe: poziom, cel na dzień, wysłane odpowiedzi i terminy fiszek.
+  </p>
+  <p data-en="We need the e-mail address to confirm the account and to let you reset a forgotten password. We do not send anything else to it."
+     data-pl="Adres e-mail potrzebny jest do potwierdzenia konta i do odzyskania zapomnianego hasła. Nic innego na niego nie wysyłamy.">
+    Adres e-mail potrzebny jest do potwierdzenia konta i do odzyskania zapomnianego hasła. Nic innego na niego nie wysyłamy.
+  </p>
+  <p data-en="The basis is simple: you asked for an account, so we keep what the account is made of. You can ask us to delete it, and then it is gone along with the training data."
+     data-pl="Podstawa jest prosta: poprosiłeś o konto, więc trzymamy to, z czego konto się składa. Możesz poprosić o jego usunięcie — wtedy znika razem z danymi treningowymi.">
+    Podstawa jest prosta: poprosiłeś o konto, więc trzymamy to, z czego konto się składa. Możesz poprosić o jego usunięcie — wtedy znika razem z danymi treningowymi.
+  </p>
+  <p class="poligon-muted"
+     data-en="Speech recognition and recording happen in your browser. A recording never leaves the device and is never sent to us."
+     data-pl="Rozpoznawanie mowy i nagrywanie dzieją się w Twojej przeglądarce. Nagranie nie opuszcza urządzenia i nigdy do nas nie trafia.">
+    Rozpoznawanie mowy i nagrywanie dzieją się w Twojej przeglądarce. Nagranie nie opuszcza urządzenia i nigdy do nas nie trafia.
+  </p>
+</section>
+
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2 data-en="Getting in touch" data-pl="Kontakt">Kontakt</h2>
+  </div>
+  <p data-en="Write to us about access to your data, a correction or a deletion, and we will handle it."
+     data-pl="Napisz do nas w sprawie dostępu do swoich danych, poprawienia ich albo usunięcia — zajmiemy się tym.">
+    Napisz do nas w sprawie dostępu do swoich danych, poprawienia ich albo usunięcia — zajmiemy się tym.
+  </p>
+  <p class="poligon-links">
+    <a href="{% url 'contact' %}" data-en="Contact" data-pl="Formularz kontaktowy">Formularz kontaktowy</a>
+    <a href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+  </p>
+</section>
+{% endblock %}
