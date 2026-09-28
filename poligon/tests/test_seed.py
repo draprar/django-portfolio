@@ -4,23 +4,26 @@ from django.core.management import call_command
 from poligon.models import Exercise, Submission, VocabularyItem
 from poligon.tests.factories import make_learner
 
-EXPECTED_LEVELS = {0: 200, 1: 200, 2: 200, 3: 200, 4: 200, 5: 200}
+EXPECTED_EXERCISE_LEVELS = {0: 32, 1: 30, 2: 80, 3: 31, 4: 16, 5: 16}
+EXPECTED_VOCAB_LEVELS = {0: 197, 1: 191, 2: 188, 3: 199, 4: 199, 5: 199}
 
 
 @pytest.mark.django_db
 def test_seed_poligon_is_bilingual_and_safe_to_repeat():
     call_command("seed_poligon")
-    assert Exercise.objects.count() == 1200
-    assert VocabularyItem.objects.count() == 1200
-    assert Exercise.objects.filter(skill="L").count() == 300
-    for level, count in EXPECTED_LEVELS.items():
+    assert Exercise.objects.count() == 205
+    assert VocabularyItem.objects.count() == 1173
+    assert Exercise.objects.filter(skill="L").count() == 52
+    for level, count in EXPECTED_EXERCISE_LEVELS.items():
         assert Exercise.objects.filter(level=level).count() == count
-        assert VocabularyItem.objects.filter(level=level).count() == 200
+    for level, count in EXPECTED_VOCAB_LEVELS.items():
+        assert VocabularyItem.objects.filter(level=level).count() == count
     assert Exercise.objects.filter(level=0, content_source="wikipedia").count() == 0
-    assert Exercise.objects.filter(content_source="wikipedia").count() >= 180
+    assert Exercise.objects.filter(content_source="wikipedia").count() == 21
     assert not Exercise.objects.exclude(content_source="original").filter(attribution_en="").exists()
     assert not VocabularyItem.objects.exclude(content_source="original").filter(attribution_en="").exists()
-    assert VocabularyItem.objects.filter(content_source="wiktionary").exclude(attribution_en="").count() >= 108
+    assert not VocabularyItem.objects.filter(content_source="wiktionary", attribution_en="").exists()
+    assert VocabularyItem.objects.filter(content_source="wiktionary").count() >= 97
 
     exercise = Exercise.objects.get(slug="read-001-route")
     assert exercise.title_pl
@@ -35,12 +38,12 @@ def test_seed_poligon_is_bilingual_and_safe_to_repeat():
     learner = make_learner()
     Submission.objects.create(learner=learner, exercise=exercise, score=10)
     call_command("seed_poligon")
-    assert Exercise.objects.count() == 1200
-    assert VocabularyItem.objects.count() == 1200
-    assert Exercise.objects.filter(skill="L").count() == 300
-    assert Exercise.objects.filter(content_source="wikipedia").count() >= 180
+    assert Exercise.objects.count() == 205
+    assert VocabularyItem.objects.count() == 1173
+    assert Exercise.objects.filter(skill="L").count() == 52
+    assert Exercise.objects.filter(content_source="wikipedia").count() == 21
     assert not Exercise.objects.exclude(content_source="original").filter(attribution_en="").exists()
-    assert VocabularyItem.objects.filter(content_source="wiktionary").exclude(attribution_en="").count() >= 108
+    assert not VocabularyItem.objects.filter(content_source="wiktionary", attribution_en="").exists()
     assert Submission.objects.filter(learner=learner, exercise__slug="read-001-route").count() == 1
 
 

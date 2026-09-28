@@ -7,19 +7,20 @@
   <h1 class="poligon-title" data-en="Account" data-pl="Konto">Konto</h1>
   {% if user.is_authenticated %}
   <p class="poligon-subtitle"
-     data-en="Signed in as {{ user.username }}. Progress is available in any browser."
-     data-pl="Zalogowano jako {{ user.username }}. Postęp jest dostępny w każdej przeglądarce.">
-    Zalogowano jako {{ user.username }}. Postęp jest dostępny w każdej przeglądarce.
+     data-en="Signed in as {{ user.username }}. Your progress follows the account, in any browser."
+     data-pl="Zalogowano jako {{ user.username }}. Postęp chodzi za kontem, w każdej przeglądarce.">
+    Zalogowano jako {{ user.username }}. Postęp chodzi za kontem, w każdej przeglądarce.
   </p>
   {% else %}
   <p class="poligon-subtitle"
-     data-en="Progress is stored in this browser only. Clearing cookies removes it."
-     data-pl="Postęp jest zapisany tylko w tej przeglądarce. Usunięcie ciasteczek go kasuje.">
-    Postęp jest zapisany tylko w tej przeglądarce. Usunięcie ciasteczek go kasuje.
+     data-en="You are practising as a guest, so nothing is being stored."
+     data-pl="Ćwiczysz jako gość, więc nic nie jest zapisywane.">
+    Ćwiczysz jako gość, więc nic nie jest zapisywane.
   </p>
   {% endif %}
 </header>
 
+{% if user.is_authenticated %}
 <section class="poligon-card">
   <div class="poligon-card-head">
     <h2 data-en="What you have so far" data-pl="Co już masz">Co już masz</h2>
@@ -39,7 +40,6 @@
   </div>
 </section>
 
-{% if user.is_authenticated %}
 <section class="poligon-card">
   <div class="poligon-card-head">
     <h2 data-en="Sign out" data-pl="Wyloguj się">Wyloguj się</h2>
@@ -57,16 +57,22 @@
 {% else %}
 <section class="poligon-card">
   <div class="poligon-card-head">
-    <h2 data-en="Keep the progress" data-pl="Zachowaj postęp">Zachowaj postęp</h2>
+    <h2 data-en="What an account changes" data-pl="Co daje konto">Co daje konto</h2>
   </div>
   <p class="poligon-muted"
-     data-en="An account takes a minute and keeps the work done so far."
-     data-pl="Konto zajmuje minutę i zachowuje dotychczasową pracę.">
-    Konto zajmuje minutę i zachowuje dotychczasową pracę.
+     data-en="The level, the history of exercises and the flashcard schedule are kept, so you can come back to them next week or from another device."
+     data-pl="Zachowujemy poziom, historię ćwiczeń i terminy fiszek taktycznych, więc wrócisz do nich za tydzień albo z innego urządzenia.">
+    Zachowujemy poziom, historię ćwiczeń i terminy fiszek taktycznych, więc wrócisz do nich za tydzień albo z innego urządzenia.
+  </p>
+  <p class="poligon-muted"
+     data-en="We ask for a username, an e-mail address and a password. Nothing else."
+     data-pl="Prosimy o nazwę użytkownika, adres e-mail i hasło. Nic więcej.">
+    Prosimy o nazwę użytkownika, adres e-mail i hasło. Nic więcej.
   </p>
   <div class="poligon-actions">
     <a class="poligon-btn" href="{% url 'poligon:register' %}" data-en="Create an account" data-pl="Załóż konto">Załóż konto</a>
     <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:login' %}" data-en="I have one" data-pl="Mam konto">Mam konto</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:policy' %}" data-en="Your data" data-pl="Twoje dane">Twoje dane</a>
   </div>
 </section>
 {% endif %}

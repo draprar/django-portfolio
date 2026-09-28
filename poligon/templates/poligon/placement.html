@@ -11,9 +11,9 @@
     Dziesięć pytań po angielsku, od łatwych do trudnych. Za każde dwie dobre odpowiedzi propozycja idzie o poziom wyżej. Możesz zgadywać, możesz też opuścić pytanie.
   </p>
   <p class="poligon-muted"
-     data-en="It is a reading check only, and nothing here counts as practice."
-     data-pl="To sprawdzenie samego czytania i nie liczy się jako trening.">
-    To sprawdzenie samego czytania i nie liczy się jako trening.
+     data-en="It is a reading check only, and nothing here counts as field training."
+     data-pl="To sprawdzenie samego czytania i nie liczy się jako trening polowy.">
+    To sprawdzenie samego czytania i nie liczy się jako trening polowy.
   </p>
 </header>
 
@@ -21,12 +21,12 @@
   {% csrf_token %}
   {% for question in questions %}
   <section class="poligon-card">
-    <p class="poligon-label">{{ forloop.counter }}/{{ questions|length }}</p>
-    <p class="poligon-prompt" lang="en">{{ question.prompt_en }}</p>
+    <p class="poligon-label">{{ forloop.counter }}/{{ total }}</p>
+    <p class="poligon-prompt" lang="en">{{ question.item.prompt_en }}</p>
     <div class="poligon-options">
-      {% for option in question.options.all %}
+      {% for option in question.options %}
       <label class="poligon-option">
-        <input type="radio" name="q{{ question.pk }}" value="{{ option.pk }}">
+        <input type="radio" name="q{{ question.item.pk }}" value="{{ option.pk }}">
         <span lang="en">{{ option.text_en }}</span>
       </label>
       {% endfor %}

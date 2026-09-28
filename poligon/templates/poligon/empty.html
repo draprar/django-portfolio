@@ -4,6 +4,28 @@
 
 {% block poligon %}
 <section class="poligon-card poligon-empty">
+  {% if finished %}
+  <h1 class="poligon-title"
+      data-en="You have done them all" data-pl="Zrobiłeś już wszystkie">Zrobiłeś już wszystkie</h1>
+  {% if skill_label_pl %}
+  <p class="poligon-muted"
+     data-en="No {{ skill_label_en }} exercise on level {{ level }} is left for you. Nothing here repeats — repetition is what the flashcards are for."
+     data-pl="Nie został Ci żaden „{{ skill_label_pl }}” na poziomie {{ level }}. Tu nic się nie powtarza — do powtarzania są fiszki.">
+    Nie został Ci żaden „{{ skill_label_pl }}” na poziomie {{ level }}. Tu nic się nie powtarza — do powtarzania są fiszki.
+  </p>
+  {% else %}
+  <p class="poligon-muted"
+     data-en="Nothing is left for you on level {{ level }}. Nothing here repeats — repetition is what the flashcards are for."
+     data-pl="Na poziomie {{ level }} nie zostało Ci nic. Tu nic się nie powtarza — do powtarzania są fiszki.">
+    Na poziomie {{ level }} nie zostało Ci nic. Tu nic się nie powtarza — do powtarzania są fiszki.
+  </p>
+  {% endif %}
+  <p class="poligon-muted"
+     data-en="Take another skill, go up a level, or review the flashcards."
+     data-pl="Weź inną sprawność, podnieś poziom albo powtórz słownictwo taktyczne.">
+    Weź inną sprawność, podnieś poziom albo powtórz słownictwo taktyczne.
+  </p>
+  {% else %}
   <h1 class="poligon-title"
       data-en="No exercises on this level" data-pl="Brak ćwiczeń na tym poziomie">Brak ćwiczeń na tym poziomie</h1>
   {% if skill_label_pl %}
@@ -20,13 +42,19 @@
   </p>
   {% endif %}
   <p class="poligon-muted"
-     data-en="Try another skill, or change the level in your plan."
-     data-pl="Spróbuj innej sprawności albo zmień poziom w swoim planie.">
-    Spróbuj innej sprawności albo zmień poziom w swoim planie.
+     data-en="Try another skill, or change the level."
+     data-pl="Spróbuj innej sprawności albo zmień poziom.">
+    Spróbuj innej sprawności albo zmień poziom.
   </p>
+  {% endif %}
   <div class="poligon-actions">
-    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}" data-en="Pick a skill" data-pl="Wybierz sprawność">Wybierz sprawność</a>
+    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+    {% if user.is_authenticated %}
     <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:settings' %}" data-en="Change the level" data-pl="Zmień poziom">Zmień poziom</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:reviews' %}" data-en="Flashcards" data-pl="Fiszki">Fiszki</a>
+    {% else %}
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:start' %}" data-en="Change the level" data-pl="Zmień poziom">Zmień poziom</a>
+    {% endif %}
   </div>
 </section>
 {% endblock %}

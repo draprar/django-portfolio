@@ -1,0 +1,67 @@
+{% extends "poligon/base.html" %}
+
+{% block title %}Ćwiczba{% endblock %}
+
+{% block poligon %}
+<header class="poligon-header">
+  <h1 class="poligon-title poligon-title-wide"
+      data-en="English for military service" data-pl="Angielski na służbie wojskowej">Angielski na służbie wojskowej</h1>
+  <p class="poligon-subtitle"
+     data-en="Four skills — radio, briefings, orders and reports — in short sessions you can finish in one sitting."
+     data-pl="Cztery sprawności — łączność, odprawy, rozkazy i meldunki — w krótkich sesjach do zrobienia za jednym razem.">
+    Cztery sprawności — łączność, odprawy, rozkazy i meldunki — w krótkich sesjach do zrobienia za jednym razem.
+  </p>
+  <p class="poligon-subtitle"
+     data-en="It is field training, not an official exam. Nothing here counts as a formal result."
+     data-pl="To trening polowy, nie oficjalny egzamin. Nic tutaj nie liczy się jako formalny wynik.">
+    To trening polowy, nie oficjalny egzamin. Nic tutaj nie liczy się jako formalny wynik.
+  </p>
+</header>
+
+<section class="poligon-card">
+  <h2 class="poligon-section-title" id="poligon-level-heading"
+      data-en="Choose where to start" data-pl="Wybierz, od czego zaczniesz">Wybierz, od czego zaczniesz</h2>
+  <p class="poligon-muted"
+     data-en="Pick the level that matches the material — from single words to a full briefing — not your ambition. You can change it at any time."
+     data-pl="Wybierz poziom pasujący do materiału — od pojedynczych słów po pełną odprawę — nie do ambicji. Możesz go zmienić w każdej chwili.">
+    Wybierz poziom pasujący do materiału — od pojedynczych słów po pełną odprawę — nie do ambicji. Możesz go zmienić w każdej chwili.
+  </p>
+
+  {% if form_error %}
+  <p class="poligon-form-error" role="alert"
+     data-en="Choose one of the six levels."
+     data-pl="Wybierz jeden z sześciu poziomów.">
+    Wybierz jeden z sześciu poziomów.
+  </p>
+  {% endif %}
+
+  <form method="post" class="poligon-levels">
+    {% csrf_token %}
+    <ul class="poligon-level-list" aria-labelledby="poligon-level-heading">
+      {% for level in levels %}
+      <li>
+        <button class="poligon-level {% if current_level == level.value %}poligon-level-current{% endif %}"
+                type="submit" name="practice_level" value="{{ level.value }}">
+          <span class="poligon-level-number">{{ level.value }}</span>
+          <span class="poligon-level-name" data-en="{{ level.name_en }}" data-pl="{{ level.name_pl }}">{{ level.name_pl }}</span>
+          <span class="poligon-level-hint" data-en="{{ level.hint_en }}" data-pl="{{ level.hint_pl }}">{{ level.hint_pl }}</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+  </form>
+</section>
+
+<section class="poligon-card">
+  <p class="poligon-muted"
+     data-en="You can train without an account. Then the session ends with the visit, because nothing about a guest is stored."
+     data-pl="Możesz ćwiczyć bez konta. Wtedy sesja kończy się razem z wizytą, bo o gościu nic nie zapisujemy.">
+    Możesz ćwiczyć bez konta. Wtedy sesja kończy się razem z wizytą, bo o gościu nic nie zapisujemy.
+  </p>
+  <p class="poligon-links">
+    <a href="{% url 'poligon:login' %}" data-en="Sign in" data-pl="Zaloguj się">Zaloguj się</a>
+    <a href="{% url 'poligon:register' %}" data-en="Create an account" data-pl="Załóż konto">Załóż konto</a>
+    <a href="{% url 'poligon:policy' %}" data-en="Your data" data-pl="Twoje dane">Twoje dane</a>
+  </p>
+</section>
+{% endblock %}

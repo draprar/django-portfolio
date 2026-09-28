@@ -24,7 +24,7 @@ def test_bilingual_getters_follow_the_requested_language():
     assert item.get_explanation("pl") == "Krótkie spotkanie."
     assert item.get_example("en").startswith("The commander")
     assert item.get_category("en") == "command"
-    assert str(state) == f"guest {state.guest_token} / 2222"
+    assert str(state) == f"{state.user.username} / 2222"
     assert str(review)
     assert str(event) == f"{state.pk} / L"
     assert str(option) == "Correct choice"

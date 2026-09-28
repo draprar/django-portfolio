@@ -68,7 +68,7 @@ class VocabularyItemAdmin(admin.ModelAdmin):
 class LearnerStateAdmin(admin.ModelAdmin):
     list_display = ("__str__", "user", "practice_level", "target_profile", "daily_minutes", "target_date", "updated_at")
     list_filter = ("practice_level",)
-    search_fields = ("user__username", "guest_token", "target_profile")
+    search_fields = ("user__username", "target_profile")
 
 
 @admin.register(Submission)

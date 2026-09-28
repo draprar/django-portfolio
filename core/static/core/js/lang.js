@@ -20,7 +20,7 @@
     el.innerHTML = text;
   }
 
-  function switchLang(lang) {
+  function switchLang(lang, persist) {
     if (!lang) return;
     setDocumentLang(lang);
 
@@ -40,8 +40,12 @@
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
-    // save choice
-    try { localStorage.setItem('site_lang', lang); } catch (e) { /* ignore */ }
+    // Only an explicit click is a choice worth keeping in the browser.
+    // Storing it on every page load would mean writing to someone's device
+    // without them ever asking for it.
+    if (persist) {
+      try { localStorage.setItem('site_lang', lang); } catch (e) { /* ignore */ }
+    }
   }
 
   // CSP buttons
@@ -51,7 +55,7 @@
 
       btn.addEventListener('click', (e) => {
         const lang = btn.dataset.lang;
-        switchLang(lang);
+        switchLang(lang, true);
       }, { passive: true });
     });
   }
@@ -75,8 +79,8 @@
       }
     }
 
-    // apply immediately
-    switchLang(lang);
+    // apply immediately, without writing anything back
+    switchLang(lang, false);
 
     // hide loader after init
     window.addEventListener('load', () => {
@@ -92,5 +96,6 @@
     init();
   }
 
-  window.switchLang = switchLang;
+  // Templates that call this from an onclick are reacting to a click too.
+  window.switchLang = (lang) => switchLang(lang, true);
 })();

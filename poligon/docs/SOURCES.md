@@ -14,4 +14,6 @@ These are **reference sources**, not copied content repositories.
 
 The practice level shown in the app is a study setting, not an official proficiency result.
 
-**Engineering rule:** if a source has unclear licensing, it is not promoted into public training content. The learner page at `/cwiczba/sources/` lists only what is actually in the catalog.
+**Engineering rule:** if a source has unclear licensing, it is not promoted into public training content.
+
+Attribution is shown where the borrowed text actually is: under the exercise or on the flashcard, from the item's own `attribution_*`, `source_url` and `source_license` fields. There is no separate learner-facing sources page, and this file is an internal record.

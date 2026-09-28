@@ -1,0 +1,30 @@
+{# Shown once per visit, right after the first checked answer. Never blocks the page. #}
+<aside class="poligon-nudge" id="poligon-nudge" role="dialog" aria-labelledby="poligon-nudge-title" aria-describedby="poligon-nudge-text">
+  <h2 class="poligon-nudge-title" id="poligon-nudge-title"
+      data-en="This result will not be here tomorrow" data-pl="Tego wyniku nie będzie tu jutro">Tego wyniku nie będzie tu jutro</h2>
+  <p id="poligon-nudge-text"
+     data-en="Without an account nothing is stored, so what you have just done ends with the visit. An account remembers the level, keeps the flashcards and never gives you the same exercise twice."
+     data-pl="Bez konta nic nie zapisujemy, więc meldunek, który przed chwilą sprawdziłeś, zniknie z końcem wizyty. Konto pamięta poziom, prowadzi fiszki taktyczne i nie poda Ci dwa razy tego samego zadania.">
+    Bez konta nic nie zapisujemy, więc meldunek, który przed chwilą sprawdziłeś, zniknie z końcem wizyty. Konto pamięta poziom, prowadzi fiszki taktyczne i nie poda Ci dwa razy tego samego zadania.
+  </p>
+  <div class="poligon-nudge-actions">
+    <a class="poligon-btn" href="{% url 'poligon:register' %}" data-en="Create an account" data-pl="Zakładam konto">Zakładam konto</a>
+    <button type="button" class="poligon-btn poligon-btn-quiet" id="poligon-nudge-close"
+            data-en="I will stay like this" data-pl="Zostaję tak">Zostaję tak</button>
+  </div>
+</aside>
+<script>
+(function () {
+  const nudge = document.getElementById("poligon-nudge");
+  if (!nudge) return;
+  const close = function () { nudge.remove(); };
+  document.getElementById("poligon-nudge-close").addEventListener("click", close);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") close();
+  });
+  // A click anywhere else means the learner is busy with the page, not with us.
+  document.addEventListener("click", function (event) {
+    if (!nudge.contains(event.target)) close();
+  }, { capture: true });
+})();
+</script>

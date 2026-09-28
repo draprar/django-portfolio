@@ -5,22 +5,36 @@
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
   <p class="poligon-eyebrow" data-en="Flashcards" data-pl="Fiszki">Fiszki</p>
-  <h1 class="poligon-title" data-en="One word at a time" data-pl="Słówko po słówku">Słówko po słówku</h1>
+  <h1 class="poligon-title" data-en="Tactical vocabulary" data-pl="Słownictwo taktyczne">Słownictwo taktyczne</h1>
   <p class="poligon-subtitle"
-     data-en="Answer honestly. A card you find hard comes back sooner, an easy one much later."
-     data-pl="Oceniaj się szczerze. Trudna fiszka wróci szybciej, łatwa dopiero za długi czas.">
-    Oceniaj się szczerze. Trudna fiszka wróci szybciej, łatwa dopiero za długi czas.
+     data-en="Answer honestly. A word you stumble on comes back sooner; one you know cold, much later."
+     data-pl="Oceniaj się szczerze. Słowo, na którym się zacinasz, wróci szybciej; to, które znasz na pamięć, dopiero za długi czas.">
+    Oceniaj się szczerze. Słowo, na którym się zacinasz, wróci szybciej; to, które znasz na pamięć, dopiero za długi czas.
   </p>
 </header>
 
-{% if review %}
+{% if needs_account %}
+<section class="poligon-card poligon-caught-up">
+  <h2 data-en="Flashcards need an account" data-pl="Fiszki wymagają konta">Fiszki wymagają konta</h2>
+  <p class="poligon-muted"
+     data-en="A card comes back on the right day only if we remember how it went. That needs somewhere to keep it, and a guest leaves nothing behind."
+     data-pl="Fiszka wraca w odpowiednim dniu tylko wtedy, gdy pamiętamy, jak Ci poszła. To trzeba gdzieś zapisać, a o gościu nic nie zostaje.">
+    Fiszka wraca w odpowiednim dniu tylko wtedy, gdy pamiętamy, jak Ci poszła. To trzeba gdzieś zapisać, a o gościu nic nie zostaje.
+  </p>
+  <div class="poligon-actions">
+    <a class="poligon-btn" href="{% url 'poligon:register' %}" data-en="Create an account" data-pl="Załóż konto">Załóż konto</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:login' %}" data-en="Sign in" data-pl="Zaloguj się">Zaloguj się</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+  </div>
+</section>
+{% elif review %}
 <section class="poligon-card">
   <p class="poligon-label" data-en="{{ review.item.category_en }}" data-pl="{{ review.item.category_pl }}">{{ review.item.category_pl }}</p>
   <h2 class="poligon-term" lang="en">{{ review.item.term }}</h2>
   <p class="poligon-muted"
      data-en="Say the Polish meaning and one real sentence in your head. Then check."
-     data-pl="Powiedz sobie w głowie polskie znaczenie i jedno prawdziwe zdanie. Potem sprawdź.">
-    Powiedz sobie w głowie polskie znaczenie i jedno prawdziwe zdanie. Potem sprawdź.
+     data-pl="Powiedz sobie w głowie polskie znaczenie i jedno zdanie z służby. Potem sprawdź.">
+    Powiedz sobie w głowie polskie znaczenie i jedno zdanie z służby. Potem sprawdź.
   </p>
   <details class="poligon-reveal">
     <summary data-en="Check the card" data-pl="Sprawdź">Sprawdź</summary>
@@ -53,8 +67,8 @@
     Nie ma fiszek do powtórki. Zrób ćwiczenie albo wróć jutro.
   </p>
   <div class="poligon-actions">
-    <a class="poligon-btn" href="{% url 'poligon:practice' %}" data-en="Practise" data-pl="Ćwicz">Ćwicz</a>
-    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}" data-en="Back" data-pl="Wróć">Wróć</a>
+    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}"
+       data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
   </div>
 </section>
 {% endif %}
