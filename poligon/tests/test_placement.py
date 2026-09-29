@@ -26,8 +26,9 @@ def answers(questions, right_count):
 def test_placement_asks_ten_questions_in_english(member_client):
     build_quiz()
     content = member_client.get(reverse("poligon:placement")).content.decode()
-    assert "10/10" in content
-    assert "Question in English." in content
+    assert "Pytanie 1 z 10" in content
+    assert "10/10" not in content
+    assert content.count("Question in English.") == 10
     assert "Pytanie po polsku." not in content
 
 
@@ -67,6 +68,40 @@ def test_placement_does_not_count_as_practice(member_client):
 
 
 @pytest.mark.django_db
+def test_placement_does_not_always_lead_with_the_right_answer(member_client):
+    questions = build_quiz()
+    content = member_client.get(reverse("poligon:placement")).content.decode()
+    first_is_correct = 0
+    for question in questions:
+        correct_id = str(question.options.get(is_correct=True).pk)
+        marker = f'name="q{question.pk}" value="'
+        first = content.split(marker)[1].split('"')[0]
+        if first == correct_id:
+            first_is_correct += 1
+    assert 0 < first_is_correct < len(questions)
+
+
+@pytest.mark.django_db
+def test_placement_prefers_original_notes_on_the_easy_levels(member_client):
+    make_mcq(slug="wiki-easy", level=1, content_source="wikipedia", prompt_en="A long Wikipedia lead about logistics.")
+    make_mcq(slug="note-a", level=1, content_source="original", prompt_en="The gate opens at seven.")
+    make_mcq(slug="note-b", level=1, content_source="original", prompt_en="The meal is ready at noon.")
+    content = member_client.get(reverse("poligon:placement")).content.decode()
+    assert "The gate opens at seven." in content
+    assert "The meal is ready at noon." in content
+    assert "A long Wikipedia lead about logistics." not in content
+
+
+@pytest.mark.django_db
+def test_placement_shortens_a_wikipedia_lead_when_nothing_original_exists(member_client):
+    lead = "Weather changes every hour. " + ("Storms follow the coast. " * 40)
+    make_mcq(slug="wiki-only", level=1, content_source="wikipedia", prompt_en=lead)
+    content = member_client.get(reverse("poligon:placement")).content.decode()
+    assert "Weather changes every hour." in content
+    assert "Storms follow the coast. " * 20 not in content
+
+
+@pytest.mark.django_db
 def test_placement_without_a_catalog_falls_back_to_the_empty_state(member_client):
     response = member_client.get(reverse("poligon:placement"))
     assert response.status_code == 200
@@ -78,6 +113,8 @@ def test_a_new_account_is_offered_the_level_check(member_client):
     make_mcq()
     fresh = member_client.get(reverse("poligon:dashboard")).content.decode()
     assert reverse("poligon:placement") in fresh
+    assert "średnia trafność" in fresh
+    assert "0%" in fresh
 
     exercise = make_mcq(slug="done-one")
     member_client.post(

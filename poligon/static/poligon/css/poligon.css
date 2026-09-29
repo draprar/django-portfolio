@@ -54,8 +54,10 @@ summary:focus-visible {
 }
 
 .poligon-brand:hover {
-  color: #c4922a;
-  letter-spacing: 6px;
+  color: #f0c46a;
+  letter-spacing: 4px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .navbar .nav-link {
@@ -99,7 +101,7 @@ summary:focus-visible {
   padding: 0.3rem 0.7rem;
   font-size: 0.75rem;
   letter-spacing: 1px;
-  min-height: 36px;
+  min-height: 44px;
 }
 
 .lang-btn.active {
@@ -244,7 +246,6 @@ main.container {
 }
 
 .poligon-header-left .poligon-actions,
-.poligon-form .poligon-btn,
 .poligon-grades {
   justify-content: flex-start;
 }
@@ -258,7 +259,7 @@ main.container {
   border: 0;
   border-radius: 999px;
   padding: 0.75rem 1.3rem;
-  background: linear-gradient(45deg, #c4922a, #a0522d);
+  background: linear-gradient(45deg, #e8c56a, #c4922a);
   color: #1a140c;
   font-weight: 600;
   text-decoration: none;
@@ -306,7 +307,7 @@ main.container {
   margin-bottom: 1rem;
 }
 
-.poligon-card:hover {
+a.poligon-stat:hover {
   border-color: rgba(196, 146, 42, 0.45);
 }
 
@@ -663,10 +664,44 @@ a.poligon-stat:hover .poligon-big {
 }
 
 @media (max-width: 460px) {
-  .poligon-stats,
   .poligon-level-list {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 360px) {
+  .poligon-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .poligon-brand {
+    letter-spacing: 2px;
+    font-size: 1.05rem;
+  }
+}
+
+.poligon-progress {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 20;
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: #16130d;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  color: #f0c46a;
+  font-weight: 600;
+}
+
+.poligon-scale {
+  font-size: 0.45em;
+  letter-spacing: 0;
+  color: #a8adb8;
+  font-weight: 400;
+}
+
+main:has(.poligon-nudge) {
+  padding-bottom: 11rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -9,6 +9,22 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+
+def clip_at_sentence(text: str, limit: int) -> str:
+    """Keep a whole sentence. Never stop mid-clause with an ellipsis."""
+    text = text.strip()
+    if len(text) <= limit:
+        return text
+    window = text[:limit]
+    best = max(window.rfind(". "), window.rfind("! "), window.rfind("? "), window.rfind(".\n"))
+    if best >= 40:
+        return window[: best + 1].rstrip()
+    cut = window.rfind(" ")
+    if cut >= 40:
+        return window[:cut].rstrip(" ,;")
+    return window.rstrip(" ,;")
+
+
 USER_AGENT = "PoligonPortfolio/1.0 (study catalog; one-shot build)"
 MAX_CHARS = 500
 HOSTS = {"en": "en.wikipedia.org", "simple": "simple.wikipedia.org"}
@@ -64,7 +80,7 @@ def fetch_summary(title: str, wiki: str = "en", cache: dict[str, dict | None] | 
             save_cache(cache)
         return None
     if len(extract) > MAX_CHARS:
-        extract = extract[:MAX_CHARS].rsplit(" ", 1)[0].rstrip(" ,;") + "…"
+        extract = clip_at_sentence(extract, MAX_CHARS)
     row = {
         "extract": extract,
         "url": page,

@@ -481,7 +481,12 @@ def placement(request: HttpRequest) -> HttpResponse:
         "poligon/placement.html",
         {
             "questions": [
-                {"item": question, "options": _shuffled_options(question, seed)} for question in questions
+                {
+                    "item": question,
+                    "options": _shuffled_options(question, seed),
+                    "prompt": _placement_prompt(question),
+                }
+                for question in questions
             ],
             "total": len(questions),
         },
@@ -491,12 +496,35 @@ def placement(request: HttpRequest) -> HttpResponse:
 def _placement_questions() -> list[Exercise]:
     questions: list[Exercise] = []
     for level in PLACEMENT_LEVELS:
-        questions += list(
-            Exercise.objects.filter(active=True, exercise_type="mcq", level=level)
-            .prefetch_related("options")
-            .order_by("id")[:PLACEMENT_PER_LEVEL]
-        )
+        base = Exercise.objects.filter(active=True, exercise_type="mcq", level=level)
+        # Levels 1–2 should be short original notes, not Wikipedia leads.
+        if level <= 2:
+            original = base.filter(content_source="original")
+            pool = original if original.exists() else base
+        else:
+            pool = base
+        questions += list(pool.prefetch_related("options").order_by("id")[:PLACEMENT_PER_LEVEL])
     return questions
+
+
+def _placement_prompt(exercise: Exercise) -> str:
+    text = (exercise.prompt_en or "").strip()
+    if exercise.level > 2 or exercise.content_source != "wikipedia":
+        return text
+    return _short_lead(text)
+
+
+def _short_lead(text: str, limit: int = 280) -> str:
+    if len(text) <= limit:
+        return text
+    window = text[:limit]
+    best = max(window.rfind(". "), window.rfind("! "), window.rfind("? "))
+    if best >= 40:
+        return window[: best + 1].rstrip()
+    cut = window.rfind(" ")
+    if cut >= 40:
+        return window[:cut].rstrip(" ,;")
+    return window.rstrip(" ,;")
 
 
 def _is_answer_correct(question: Exercise, posted) -> bool:

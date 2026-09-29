@@ -97,6 +97,7 @@
   </p>
 </section>
 
+{% if user.is_authenticated %}
 <section class="poligon-card">
   <div class="poligon-card-head">
     <h2 data-en="Getting in touch" data-pl="Kontakt">Kontakt</h2>
@@ -110,4 +111,5 @@
     <a href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
   </p>
 </section>
+{% endif %}
 {% endblock %}

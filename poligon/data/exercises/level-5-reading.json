@@ -30,18 +30,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about handling an emergency.",
+        "text_pl": "Chodzi o działanie w sytuacji nagłej.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about ethics.",
+        "text_pl": "Chodzi o: ethics.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about aesthetics.",
+        "text_pl": "Chodzi o: aesthetics.",
         "is_correct": false
       }
     ],
@@ -70,7 +70,7 @@
     "title_pl": "Emergency management",
     "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
     "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
-    "prompt_en": "Disaster management is the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The…",
+    "prompt_en": "Disaster management is the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts.",
     "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
     "options": [
       {
@@ -79,18 +79,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about ethics.",
+        "text_pl": "Chodzi o: ethics.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about aesthetics.",
+        "text_pl": "Chodzi o: aesthetics.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about weather.",
+        "text_pl": "Chodzi o: weather.",
         "is_correct": false
       }
     ],
@@ -128,18 +128,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about aesthetics.",
+        "text_pl": "Chodzi o: aesthetics.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about weather.",
+        "text_pl": "Chodzi o: weather.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about breakfast.",
+        "text_pl": "Chodzi o: breakfast.",
         "is_correct": false
       }
     ],
@@ -177,18 +177,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about weather.",
+        "text_pl": "Chodzi o: weather.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about breakfast.",
+        "text_pl": "Chodzi o: breakfast.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about bus.",
+        "text_pl": "Chodzi o: bus.",
         "is_correct": false
       }
     ],

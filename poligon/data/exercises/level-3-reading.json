@@ -21,7 +21,7 @@
     "title_pl": "First aid",
     "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
     "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
-    "prompt_en": "First aid is the first and immediate assistance given to any person with a medical emergency, with care provided to preserve life, prevent the condition from worsening, or to promote recovery until medical services arrive. First aid is generally performed by someone with basic medical or first response training. Mental health first aid is an extension of the concept of first aid to cover mental health, while psychological first aid is used as early treatment of people who are at risk for…",
+    "prompt_en": "First aid is the first and immediate assistance given to any person with a medical emergency, with care provided to preserve life, prevent the condition from worsening, or to promote recovery until medical services arrive. First aid is generally performed by someone with basic medical or first response training.",
     "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
     "options": [
       {
@@ -30,18 +30,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about public transport.",
+        "text_pl": "Chodzi o: public transport.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about constitution.",
+        "text_pl": "Chodzi o: constitution.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about journalism.",
+        "text_pl": "Chodzi o: journalism.",
         "is_correct": false
       }
     ],
@@ -79,18 +79,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about first aid.",
+        "text_pl": "Chodzi o: first aid.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about constitution.",
+        "text_pl": "Chodzi o: constitution.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about journalism.",
+        "text_pl": "Chodzi o: journalism.",
         "is_correct": false
       }
     ],
@@ -119,7 +119,7 @@
     "title_pl": "First aid",
     "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
     "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
-    "prompt_en": "First aid is the first and immediate assistance given to any person with a medical emergency, with care provided to preserve life, prevent the condition from worsening, or to promote recovery until medical services arrive. First aid is generally performed by someone with basic medical or first response training. Mental health first aid is an extension of the concept of first aid to cover mental health, while psychological first aid is used as early treatment of people who are at risk for…",
+    "prompt_en": "First aid is the first and immediate assistance given to any person with a medical emergency, with care provided to preserve life, prevent the condition from worsening, or to promote recovery until medical services arrive. First aid is generally performed by someone with basic medical or first response training.",
     "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
     "options": [
       {
@@ -128,18 +128,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about constitution.",
+        "text_pl": "Chodzi o: constitution.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about journalism.",
+        "text_pl": "Chodzi o: journalism.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about photography.",
+        "text_pl": "Chodzi o: photography.",
         "is_correct": false
       }
     ],
@@ -177,18 +177,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about journalism.",
+        "text_pl": "Chodzi o: journalism.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about photography.",
+        "text_pl": "Chodzi o: photography.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about architecture.",
+        "text_pl": "Chodzi o: architecture.",
         "is_correct": false
       }
     ],
@@ -226,18 +226,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about photography.",
+        "text_pl": "Chodzi o: photography.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about architecture.",
+        "text_pl": "Chodzi o: architecture.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about moving supplies.",
+        "text_pl": "Chodzi o przemieszczanie zaopatrzenia.",
         "is_correct": false
       }
     ],
@@ -266,7 +266,7 @@
     "title_pl": "Photography",
     "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
     "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
-    "prompt_en": "Photography is the art, application, and practice of creating images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It is employed in many fields of science, manufacturing, and business, as well as its more direct uses for art, film and video production, recreational purposes, hobby, and mass communication. A person who operates a camera to capture or take photographs is called a…",
+    "prompt_en": "Photography is the art, application, and practice of creating images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It is employed in many fields of science, manufacturing, and business, as well as its more direct uses for art, film and video production, recreational purposes, hobby, and mass communication.",
     "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
     "options": [
       {
@@ -275,18 +275,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about architecture.",
+        "text_pl": "Chodzi o: architecture.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about moving supplies.",
+        "text_pl": "Chodzi o przemieszczanie zaopatrzenia.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about finding the way.",
+        "text_pl": "Chodzi o odnajdywanie drogi.",
         "is_correct": false
       }
     ],
@@ -315,7 +315,7 @@
     "title_pl": "Architecture",
     "instructions_en": "Read the English paragraph. Pick the sentence that says what it is about.",
     "instructions_pl": "Przeczytaj angielski akapit. Wybierz zdanie, które mówi, o co w nim chodzi.",
-    "prompt_en": "Architecture is the study and practice of designing structures, especially habitable ones. It utilizes civil engineering techniques, but is considered a visual art. It is both the process and the product of sketching, conceiving, planning, designing, and constructing buildings or other structures. The term comes from Latin  architectura; from Ancient Greek  ἀρχιτέκτων (arkhitéktōn) 'architect'; from  ἀρχι- (arkhi-) 'chief' and  τέκτων (téktōn) 'creator'. Architectural works, in the material…",
+    "prompt_en": "Architecture is the study and practice of designing structures, especially habitable ones. It utilizes civil engineering techniques, but is considered a visual art. It is both the process and the product of sketching, conceiving, planning, designing, and constructing buildings or other structures. The term comes from Latin  architectura; from Ancient Greek  ἀρχιτέκτων (arkhitéktōn) 'architect'; from  ἀρχι- (arkhi-) 'chief' and  τέκτων (téktōn) 'creator'.",
     "prompt_pl": "Przeczytaj angielski akapit. Pytanie i odpowiedzi są oryginalne.",
     "options": [
       {
@@ -324,18 +324,18 @@
         "is_correct": true
       },
       {
-        "text_en": "It is about a spare tyre.",
-        "text_pl": "Chodzi o zapasową oponę.",
+        "text_en": "It is about moving supplies.",
+        "text_pl": "Chodzi o przemieszczanie zaopatrzenia.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a radio call sign.",
-        "text_pl": "Chodzi o sygnał wywoławczy.",
+        "text_en": "It is about finding the way.",
+        "text_pl": "Chodzi o odnajdywanie drogi.",
         "is_correct": false
       },
       {
-        "text_en": "It is about a night shift roster.",
-        "text_pl": "Chodzi o grafik nocnej zmiany.",
+        "text_en": "It is about logistics.",
+        "text_pl": "Chodzi o: logistics.",
         "is_correct": false
       }
     ],
