@@ -1,0 +1,7 @@
+{% if user.is_authenticated %}
+<span class="poligon-big">{{ score }}%</span>
+<span class="poligon-muted" data-en="average accuracy" data-pl="średnia trafność">średnia trafność</span>
+<span class="poligon-bar"><i style="width:{{ score }}%"></i></span>
+{% else %}
+<span class="poligon-big" data-en="Start" data-pl="Start">Start</span>
+{% endif %}

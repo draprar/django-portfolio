@@ -32,7 +32,12 @@ def test_choosing_a_level_opens_the_dashboard(client):
     assert chosen.status_code == 302
     assert chosen.url == reverse("poligon:dashboard")
     assert client.session[LEVEL_KEY] == 4
-    assert '<h1 class="poligon-title">4</h1>' in client.get(reverse("poligon:dashboard")).content.decode()
+    page = client.get(reverse("poligon:dashboard")).content.decode()
+    assert 'class="poligon-title">4 ' in page
+    assert "z 5" in page
+    assert ">Start<" in page
+    assert "0%" not in page
+    assert "Ćwiczysz bez konta" in page
 
 
 @pytest.mark.django_db

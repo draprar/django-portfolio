@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 
 from build_catalog import ATTR_EN, ATTR_PL, LICENSE, RETRIEVED, fetch_definition, load_cache  # noqa: E402
 from fetch_tatoeba import fetch_sentence  # noqa: E402
-from fetch_wikipedia import fetch_summary  # noqa: E402
+from fetch_wikipedia import clip_at_sentence, fetch_summary  # noqa: E402
 
 COUNTS = {0: 8, 1: 8, 3: 8, 4: 4, 5: 4}
 WIKI_TITLES = {
@@ -52,11 +52,22 @@ WIKI_CHOICES = {
     "Occupational_safety_and_health": ("It is about safety at work.", "Chodzi o bezpieczeństwo w pracy."),
     "Emergency_management": ("It is about handling an emergency.", "Chodzi o działanie w sytuacji nagłej."),
 }
-WIKI_WRONGS = [
-    ("It is about a spare tyre.", "Chodzi o zapasową oponę."),
-    ("It is about a radio call sign.", "Chodzi o sygnał wywoławczy."),
-    ("It is about a night shift roster.", "Chodzi o grafik nocnej zmiany."),
-]
+
+
+def wiki_wrongs(title: str) -> list[tuple[str, str]]:
+    """Wrong answers come from other articles, so the same three never repeat."""
+    keys = [key for key in WIKI_CHOICES if key != title]
+    if not keys:
+        return []
+    start = list(WIKI_CHOICES).index(title) if title in WIKI_CHOICES else 0
+    picked: list[tuple[str, str]] = []
+    for offset in range(len(keys)):
+        picked.append(WIKI_CHOICES[keys[(start + offset) % len(keys)]])
+        if len(picked) == 3:
+            break
+    return picked
+
+
 GLOSSES = {
     "yes": "tak", "no": "nie", "hello": "cześć", "stop": "stop", "go": "idź", "left": "lewo", "right": "prawo",
     "one": "jeden", "two": "dwa", "help": "pomoc", "please": "proszę", "name": "imię", "door": "drzwi",
@@ -87,9 +98,7 @@ GLOSSES = {
 
 
 def clip(text: str, limit: int) -> str:
-    if len(text) <= limit:
-        return text
-    return text[: limit - 1].rstrip() + "…"
+    return clip_at_sentence(text, limit)
 
 
 def write_json(path: Path, payload: object) -> None:
@@ -234,7 +243,7 @@ def apply_wikipedia(level: int, rows: list[dict]) -> None:
             "Pytanie i odpowiedzi są oryginalne.",
             300,
         )
-        row["options"] = options(choice, WIKI_WRONGS)
+        row["options"] = options(choice, wiki_wrongs(title))
         print("wiki", title)
         time.sleep(0.6)
 
@@ -294,7 +303,7 @@ def vocabulary_for(level: int, cache: dict[str, str]) -> list[dict]:
             "term": term,
             "translation": gloss,
             "explanation_en": definition or f"A useful word at this practice level: {term}.",
-            "explanation_pl": f"W tym zestawie: {gloss}.",
+            "explanation_pl": "",
             "example_en": sentence["text"] if sentence else example_en,
             "example_pl": example_pl,
             "category_en": "general",

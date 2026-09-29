@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Ćwiczba{% endblock %}</title>
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'poligon/css/poligon.css' %}">
 </head>
@@ -17,7 +17,7 @@
   <div class="container">
     <a class="poligon-brand" href="{% url 'poligon:dashboard' %}">Ćwiczba</a>
     <div class="poligon-lang" role="group" aria-label="Język / Language">
-      <button type="button" class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
+      <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
       <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
     </div>
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#poligonNav" aria-controls="poligonNav" aria-expanded="false" aria-label="Menu">

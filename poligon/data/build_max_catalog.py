@@ -21,7 +21,7 @@ from build_catalog import ATTR_EN, ATTR_PL, LICENSE, RETRIEVED, _choose_definiti
 from build_catalog import CACHE as WIKT_CACHE_PATH  # noqa: E402
 from fetch_tatoeba import fetch_sentence  # noqa: E402
 from fetch_tatoeba import load_cache as load_tatoeba_cache  # noqa: E402
-from fetch_wikipedia import fetch_summary  # noqa: E402
+from fetch_wikipedia import clip_at_sentence, fetch_summary  # noqa: E402
 from fetch_wikipedia import load_cache as load_wiki_cache  # noqa: E402
 
 PER_SKILL = 50
@@ -33,11 +33,36 @@ LEVEL2_FILES = {
     "S": "exercises/speaking.json",
     "W": "exercises/writing.json",
 }
-WRONGS = [
-    ("It is about a spare tyre.", "Chodzi o zapasową oponę."),
-    ("It is about a radio call sign.", "Chodzi o sygnał wywoławczy."),
-    ("It is about a night shift roster.", "Chodzi o grafik nocnej zmiany."),
-]
+
+
+def topic_wrongs(index: int) -> list[tuple[str, str]]:
+    wrongs = []
+    for shift in (1, 2, 3):
+        other = TOPICS[(index + shift) % len(TOPICS)]
+        wrongs.append((f"It is about the {other[1]}.", f"Chodzi o: {other[2]}."))
+    return wrongs
+
+
+def wiki_wrongs(level: int, title: str) -> list[tuple[str, str]]:
+    titles = [name for _wiki, name in CURRICULUM[level] if name != title]
+    if not titles:
+        return []
+    start = 0
+    for index, (_wiki, name) in enumerate(CURRICULUM[level]):
+        if name == title:
+            start = index
+            break
+    picked: list[tuple[str, str]] = []
+    for offset in range(len(titles)):
+        label = titles[(start + offset) % len(titles)].replace("_", " ").lower()
+        pair = (f"It is about {label}.", f"Chodzi o: {label}.")
+        if pair not in picked:
+            picked.append(pair)
+        if len(picked) == 3:
+            break
+    return picked
+
+
 TOPICS = [
     ("apple", "apple", "jabłko", "food", "jedzenie"),
     ("ticket", "ticket office", "kasa", "travel", "podróż"),
@@ -108,9 +133,7 @@ CURRICULUM: dict[int, list[tuple[str, str]]] = {
 
 
 def clip(text: str, limit: int) -> str:
-    if len(text) <= limit:
-        return text
-    return text[: limit - 1].rstrip() + "…"
+    return clip_at_sentence(text, limit)
 
 
 def write_json(path: Path, payload: object) -> None:
@@ -182,7 +205,7 @@ def make_original(level: int, skill: str, index: int, used: set[str]) -> dict:
         row["content_pl"] = f"{word_pl[:1].upper()}{word_pl[1:]} jest gotowe o siódmej. Powiedz dowódcy zmiany, jeśli to się spóźnia."
         row["options"] = options(
             (f"It is about the {word_en}.", f"Chodzi o: {word_pl}."),
-            WRONGS,
+            topic_wrongs(index),
         )
     elif skill == "R":
         row["title_en"] = f"Read the note: {word_en}"
@@ -199,7 +222,7 @@ def make_original(level: int, skill: str, index: int, used: set[str]) -> dict:
         )
         row["options"] = options(
             (f"It is about the {word_en}.", f"Chodzi o: {word_pl}."),
-            WRONGS,
+            topic_wrongs(index),
         )
     elif skill == "S":
         row["title_en"] = f"Say something about {word_en}"
@@ -252,7 +275,7 @@ def apply_wiki(row: dict, summary: dict, title: str) -> None:
         300,
     )
     choice = (f"It is about {title.replace('_', ' ').lower()}.", f"Chodzi o: {title.replace('_', ' ').lower()}.")
-    row["options"] = options(choice, WRONGS)
+    row["options"] = options(choice, wiki_wrongs(row["level"], title))
 
 
 def expand_exercises(wiki_cache: dict) -> int:
@@ -358,7 +381,7 @@ def card_for(level: int, term: str, gloss: str, definition: str, sentence: dict 
         "term": term,
         "translation": gloss,
         "explanation_en": definition or f"A useful word at this practice level: {term}.",
-        "explanation_pl": f"W tym zestawie: {gloss}.",
+        "explanation_pl": "",
         "example_en": sentence["text"] if sentence else f"Please check the {term} before you leave.",
         "example_pl": f"Sprawdź proszę ({gloss}), zanim wyjdziesz.",
         "category_en": "general",

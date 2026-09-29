@@ -22,9 +22,11 @@
     <button type="button" class="poligon-btn poligon-btn-quiet" id="speakBtn"
             data-en="Play" data-pl="Odtwórz"
             data-script="{{ script }}">Odtwórz</button>
-    <span class="poligon-muted"
+    <span class="poligon-muted" id="speakHint"
           data-en="Your browser reads it out loud. It is not a voice actor recording."
-          data-pl="Czyta Ci to przeglądarka. To nie nagranie lektora.">
+          data-pl="Czyta Ci to przeglądarka. To nie nagranie lektora."
+          data-missing-en="This browser has no English voice, so playback stays silent. Open “Show the text” and read it."
+          data-missing-pl="Ta przeglądarka nie ma angielskiego głosu, więc odtwarzanie będzie ciche. Otwórz „Pokaż tekst” i przeczytaj.">
       Czyta Ci to przeglądarka. To nie nagranie lektora.
     </span>
   </div>
@@ -32,6 +34,9 @@
     <summary data-en="Show the text" data-pl="Pokaż tekst">Pokaż tekst</summary>
     <p class="poligon-prompt" lang="en">{{ script }}</p>
   </details>
+  {% if exercise.prompt_en %}
+  <p class="poligon-prompt" lang="en">{{ exercise.prompt_en }}</p>
+  {% endif %}
   {% else %}
   <p class="poligon-prompt" lang="en">{{ exercise.prompt_en }}</p>
   {% endif %}
@@ -89,14 +94,41 @@
 <script>
 (function () {
   const speakBtn = document.getElementById("speakBtn");
+  const speakHint = document.getElementById("speakHint");
+  const englishVoiceState = function () {
+    if (!window.speechSynthesis || !window.speechSynthesis.getVoices) return false;
+    const voices = window.speechSynthesis.getVoices();
+    if (!voices.length) return null;
+    return voices.some(function (voice) {
+      return (voice.lang || "").toLowerCase().indexOf("en") === 0;
+    });
+  };
+  const warnNoVoice = function () {
+    if (!speakBtn || !speakHint) return;
+    speakBtn.disabled = true;
+    const polish = document.documentElement.lang !== "en";
+    speakHint.textContent = polish ? speakHint.dataset.missingPl : speakHint.dataset.missingEn;
+  };
   if (speakBtn && window.speechSynthesis) {
+    const checkVoices = function () {
+      if (englishVoiceState() === false) warnNoVoice();
+    };
+    if (window.speechSynthesis.addEventListener) {
+      window.speechSynthesis.addEventListener("voiceschanged", checkVoices);
+    }
+    checkVoices();
     speakBtn.addEventListener("click", function () {
-      // The material is English, so the voice stays English whatever the interface language is.
+      if (englishVoiceState() === false) {
+        warnNoVoice();
+        return;
+      }
       const utterance = new SpeechSynthesisUtterance(speakBtn.dataset.script || "");
       utterance.lang = "en-US";
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(utterance);
     });
+  } else if (speakBtn) {
+    warnNoVoice();
   }
 
   const recordBtn = document.getElementById("recordBtn");

@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
+{% load poligon_rights %}
 
-{% block title %}{% if review %}{{ review.item.term }} | {% endif %}Ćwiczba{% endblock %}
+{% block title %}{% if review %}{{ review.item.term }} | {% endif %}Fiszki | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -39,11 +40,10 @@
   <details class="poligon-reveal">
     <summary data-en="Check the card" data-pl="Sprawdź">Sprawdź</summary>
     <p><strong>{{ review.item.translation }}</strong></p>
+    {% if review.item.explanation_pl or review.item.explanation_en %}
     <p data-en="{{ review.item.explanation_en }}" data-pl="{{ review.item.explanation_pl }}">{{ review.item.explanation_pl }}</p>
-    <blockquote lang="en">{{ review.item.example_en }}</blockquote>
-    {% if review.item.content_source != "original" %}
-    {% include "poligon/partials/attribution.html" with attribution_en=review.item.attribution_en attribution_pl=review.item.attribution_pl source_url=review.item.source_url source_license=review.item.source_license %}
     {% endif %}
+    <blockquote lang="en">{{ review.item.example_en }}</blockquote>
   </details>
   <form method="post" action="{% url 'poligon:grade_review' review.id %}" class="poligon-grades">
     {% csrf_token %}
@@ -52,6 +52,17 @@
     <button name="grade" value="4" class="poligon-btn" data-en="I remember" data-pl="Pamiętam">Pamiętam</button>
     <button name="grade" value="5" class="poligon-btn poligon-btn-quiet" data-en="Too easy" data-pl="Za łatwe">Za łatwe</button>
   </form>
+  {% if review.item.content_source != "original" %}
+  <p class="poligon-links">
+    {% with deed=review.item.source_license|license_href %}
+    {% if deed %}<a href="{{ deed }}" rel="nofollow noopener">{{ review.item.source_license }}</a>{% endif %}
+    {% endwith %}
+  </p>
+  <details class="poligon-reveal">
+    <summary data-en="Source" data-pl="Źródło">Źródło</summary>
+    {% include "poligon/partials/attribution.html" with attribution_en=review.item.attribution_en attribution_pl=review.item.attribution_pl source_url=review.item.source_url source_license=review.item.source_license %}
+  </details>
+  {% endif %}
   <p class="poligon-muted poligon-shortcut"
      data-en="Keyboard: 1, 2, 3, 4 from left to right."
      data-pl="Z klawiatury: 1, 2, 3, 4 od lewej do prawej.">

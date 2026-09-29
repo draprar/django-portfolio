@@ -1,6 +1,6 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Ćwiczba{% endblock %}
+{% block title %}Pulpit | Ćwiczba{% endblock %}
 
 {% block poligon %}
 {% if show_onboarding %}
@@ -17,12 +17,12 @@
 
 <header class="poligon-header">
   <p class="poligon-eyebrow" data-en="Your level" data-pl="Twój poziom">Twój poziom</p>
-  <h1 class="poligon-title">{{ state.practice_level }}</h1>
+  <h1 class="poligon-title">{{ state.practice_level }} <span class="poligon-scale" data-en="of 5" data-pl="z 5">z 5</span></h1>
   <p class="poligon-subtitle" data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</p>
   <p class="poligon-subtitle"
-     data-en="Radio, orders, logistics, reports — here you see how it goes. Field training, not an official exam."
-     data-pl="Łączność, rozkazy, logistyka, meldunki — tu widzisz, jak Ci idzie. Trening polowy, nie oficjalny egzamin.">
-    Łączność, rozkazy, logistyka, meldunki — tu widzisz, jak Ci idzie. Trening polowy, nie oficjalny egzamin.
+     data-en="Radio, orders, logistics, reports — practice for a STANAG-style scale, not the exam itself."
+     data-pl="Łączność, rozkazy, logistyka, meldunki — trening na skali w stylu STANAG, nie sam egzamin.">
+    Łączność, rozkazy, logistyka, meldunki — trening na skali w stylu STANAG, nie sam egzamin.
   </p>
 </header>
 
@@ -30,23 +30,19 @@
 <div class="poligon-stats">
   <a class="poligon-card poligon-stat" href="{% url 'poligon:practice' %}?skill=L">
     <span class="poligon-label" data-en="Listening" data-pl="Słuchanie">Słuchanie</span>
-    <span class="poligon-big">{{ scores.L }}%</span>
-    <span class="poligon-bar"><i style="width:{{ scores.L }}%"></i></span>
+    {% include "poligon/partials/skill_score.html" with score=scores.L %}
   </a>
   <a class="poligon-card poligon-stat" href="{% url 'poligon:practice' %}?skill=S">
     <span class="poligon-label" data-en="Speaking" data-pl="Mówienie">Mówienie</span>
-    <span class="poligon-big">{{ scores.S }}%</span>
-    <span class="poligon-bar"><i style="width:{{ scores.S }}%"></i></span>
+    {% include "poligon/partials/skill_score.html" with score=scores.S %}
   </a>
   <a class="poligon-card poligon-stat" href="{% url 'poligon:practice' %}?skill=R">
     <span class="poligon-label" data-en="Reading" data-pl="Czytanie">Czytanie</span>
-    <span class="poligon-big">{{ scores.R }}%</span>
-    <span class="poligon-bar"><i style="width:{{ scores.R }}%"></i></span>
+    {% include "poligon/partials/skill_score.html" with score=scores.R %}
   </a>
   <a class="poligon-card poligon-stat" href="{% url 'poligon:practice' %}?skill=W">
     <span class="poligon-label" data-en="Writing" data-pl="Pisanie">Pisanie</span>
-    <span class="poligon-big">{{ scores.W }}%</span>
-    <span class="poligon-bar"><i style="width:{{ scores.W }}%"></i></span>
+    {% include "poligon/partials/skill_score.html" with score=scores.W %}
   </a>
 </div>
 
@@ -60,9 +56,9 @@
     <div class="poligon-bar"><i style="width:{{ today_progress }}%"></i></div>
     {% if minutes_left %}
     <p class="poligon-muted"
-       data-en="{{ minutes_left }} min left today. One short exercise is enough."
-       data-pl="Zostało {{ minutes_left }} min na dziś. Jedno krótkie ćwiczenie wystarczy.">
-      Zostało {{ minutes_left }} min na dziś. Jedno krótkie ćwiczenie wystarczy.
+       data-en="{{ minutes_left }} min left today. One exercise is about 7 minutes."
+       data-pl="Zostało {{ minutes_left }} min na dziś. Jedno ćwiczenie to około 7 minut.">
+      Zostało {{ minutes_left }} min na dziś. Jedno ćwiczenie to około 7 minut.
     </p>
     {% else %}
     <p class="poligon-muted"
@@ -106,10 +102,6 @@
       {% else %}
       <a href="{% url 'poligon:start' %}" data-en="Change the level" data-pl="Zmień poziom">Zmień poziom</a>
       {% endif %}
-    </div>
-    <div class="poligon-row">
-      <span data-en="Level" data-pl="Poziom">Poziom</span>
-      <span>{{ state.practice_level }} · <span data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</span></span>
     </div>
     {% if user.is_authenticated %}
     <div class="poligon-row">

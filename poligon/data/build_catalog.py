@@ -260,7 +260,7 @@ def wiktionary_vocabulary() -> list[dict]:
                 "term": term,
                 "translation": translation,
                 "explanation_en": definition,
-                "explanation_pl": f"W tym zestawie: {translation}.",
+                "explanation_pl": "",
                 "example_en": example_en,
                 "example_pl": example_pl,
                 "category_en": cat_en,

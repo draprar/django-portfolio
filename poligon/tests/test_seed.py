@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 import pytest
 from django.core.management import call_command
 
@@ -78,3 +81,32 @@ def test_catalog_migration_seeds_when_migrate_runs_against_the_app_database(monk
     )
     migration.seed_catalog(None, None)
     assert called == [("seed_poligon",)]
+
+
+OLD_WIKI_TRIO = {
+    "It is about a spare tyre.",
+    "It is about a radio call sign.",
+    "It is about a night shift roster.",
+}
+
+
+def test_wikipedia_items_do_not_share_one_distractor_trio():
+    data = Path(__file__).resolve().parents[1] / "data"
+    triples = []
+    for path in (data / "exercises").glob("*.json"):
+        for row in json.loads(path.read_text(encoding="utf-8")):
+            prompt = row.get("prompt_en") or ""
+            assert not prompt.endswith("…"), row.get("slug")
+            wrongs = tuple(
+                sorted(option["text_en"] for option in row.get("options") or [] if not option.get("is_correct"))
+            )
+            assert not OLD_WIKI_TRIO <= set(wrongs), row.get("slug")
+            if row.get("content_source") == "wikipedia" and len(wrongs) == 3:
+                triples.append(wrongs)
+    assert triples
+    assert len(triples) == len(set(triples))
+
+    for path in (data / "vocabulary").glob("*.json"):
+        for row in json.loads(path.read_text(encoding="utf-8")):
+            explanation = row.get("explanation_pl") or ""
+            assert not explanation.startswith("W tym zestawie:"), row.get("term")

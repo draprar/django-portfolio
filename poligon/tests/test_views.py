@@ -262,8 +262,10 @@ def test_a_listening_script_is_spoken_in_english_and_hidden_by_default(guest_cli
     content = guest_client.get(reverse("poligon:exercise", args=[exercise.slug])).content.decode()
     assert 'data-pl="Pokaż tekst"' in content
     assert exercise.content_en in content
+    assert exercise.prompt_en in content
     assert exercise.content_pl not in content
     assert '"en-US"' in content
+    assert "getVoices" in content
 
 
 @pytest.mark.django_db
@@ -281,6 +283,7 @@ def test_reviews_and_grade_update_the_schedule(member_client):
     assert page.status_code == 200
     assert "briefing" in content
     assert "Pamiętam" in content
+    assert content.index("Pamiętam") < content.index("Z klawiatury")
     assert "1, 2, 3, 4" in content
     review = Review.objects.get()
 
@@ -294,6 +297,23 @@ def test_reviews_and_grade_update_the_schedule(member_client):
     assert ignored.status_code == 302
     review.refresh_from_db()
     assert review.last_grade == 4
+
+
+@pytest.mark.django_db
+@pytest.mark.django_db
+def test_a_flashcard_puts_the_grade_before_the_licence(member_client):
+    make_vocabulary(
+        term="convoy",
+        content_source="wiktionary",
+        attribution_en="Definition from Wiktionary, CC BY-SA 4.0.",
+        attribution_pl="Definicja z Wiktionary, CC BY-SA 4.0.",
+        source_license="CC BY-SA 4.0",
+        source_url="https://en.wiktionary.org/wiki/convoy",
+        explanation_pl="",
+    )
+    content = member_client.get(reverse("poligon:reviews")).content.decode()
+    assert content.index("Pamiętam") < content.index("CC BY-SA 4.0")
+    assert "W tym zestawie" not in content
 
 
 @pytest.mark.django_db
@@ -318,7 +338,8 @@ def test_settings_save_and_reject_bad_input(member_client):
     assert state.practice_level == 3
     assert state.target_profile == "3333"
     state_page = member_client.get(reverse("poligon:dashboard"))
-    assert '<h1 class="poligon-title">3</h1>' in state_page.content.decode()
+    assert 'class="poligon-title">3 ' in state_page.content.decode()
+    assert "z 5" in state_page.content.decode()
 
     for bad in (
         {"practice_level": "9", "daily_minutes": "35", "target_date": ""},
@@ -373,6 +394,14 @@ def test_the_data_page_lists_every_cookie_we_set(guest_client):
         assert name in content
     assert "niezbędne" in content
     assert "Nagranie nie opuszcza urządzenia" in content
+    assert "Formularz kontaktowy" not in content
+
+
+@pytest.mark.django_db
+def test_an_account_can_ask_for_its_data(member_client):
+    content = member_client.get(reverse("poligon:policy")).content.decode()
+    assert "Formularz kontaktowy" in content
+    assert reverse("contact") in content
 
 
 @pytest.mark.django_db

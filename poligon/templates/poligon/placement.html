@@ -1,6 +1,6 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Ćwiczba{% endblock %}
+{% block title %}Jaki poziom? | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -11,18 +11,20 @@
     Dziesięć pytań po angielsku, od łatwych do trudnych. Za każde dwie dobre odpowiedzi propozycja idzie o poziom wyżej. Możesz zgadywać, możesz też opuścić pytanie.
   </p>
   <p class="poligon-muted"
-     data-en="It is a reading check only, and nothing here counts as field training."
-     data-pl="To sprawdzenie samego czytania i nie liczy się jako trening polowy.">
-    To sprawdzenie samego czytania i nie liczy się jako trening polowy.
+     data-en="It is a reading check only, and nothing here counts as field training. It is not a STANAG or CEFR exam."
+     data-pl="To sprawdzenie samego czytania i nie liczy się jako trening polowy. To nie egzamin STANAG ani CEFR.">
+    To sprawdzenie samego czytania i nie liczy się jako trening polowy. To nie egzamin STANAG ani CEFR.
   </p>
 </header>
+
+<p class="poligon-progress" id="placement-progress" role="status"
+   data-en="Question 1 of {{ total }}" data-pl="Pytanie 1 z {{ total }}">Pytanie 1 z {{ total }}</p>
 
 <form method="post">
   {% csrf_token %}
   {% for question in questions %}
-  <section class="poligon-card">
-    <p class="poligon-label">{{ forloop.counter }}/{{ total }}</p>
-    <p class="poligon-prompt" lang="en">{{ question.item.prompt_en }}</p>
+  <section class="poligon-card" data-placement-index="{{ forloop.counter }}" {% if forloop.first %}aria-current="true"{% endif %}>
+    <p class="poligon-prompt" lang="en">{{ question.prompt }}</p>
     <div class="poligon-options">
       {% for option in question.options %}
       <label class="poligon-option">
@@ -35,4 +37,32 @@
   {% endfor %}
   <button class="poligon-btn" type="submit" data-en="Check the result" data-pl="Sprawdź wynik">Sprawdź wynik</button>
 </form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  const bar = document.getElementById("placement-progress");
+  const sections = document.querySelectorAll("[data-placement-index]");
+  if (!bar || !sections.length || !("IntersectionObserver" in window)) return;
+  const total = sections.length;
+  const paint = function (index) {
+    sections.forEach(function (section) { section.removeAttribute("aria-current"); });
+    const current = sections[index - 1];
+    if (current) current.setAttribute("aria-current", "true");
+    const english = document.documentElement.lang === "en";
+    const text = english ? "Question " + index + " of " + total : "Pytanie " + index + " z " + total;
+    bar.textContent = text;
+    bar.setAttribute("data-en", "Question " + index + " of " + total);
+    bar.setAttribute("data-pl", "Pytanie " + index + " z " + total);
+  };
+  const observer = new IntersectionObserver(function (entries) {
+    const visible = entries.filter(function (entry) { return entry.isIntersecting; });
+    if (!visible.length) return;
+    visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+    paint(Number(visible[0].target.getAttribute("data-placement-index")));
+  }, { rootMargin: "-30% 0px -55% 0px", threshold: 0.15 });
+  sections.forEach(function (section) { observer.observe(section); });
+})();
+</script>
 {% endblock %}
