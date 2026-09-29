@@ -10,6 +10,9 @@ def drop_guest_rows(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
+    # PostgreSQL cannot ALTER TABLE in the same transaction as DML that
+    # fired triggers on that table (ObjectInUse: pending trigger events).
+    atomic = False
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
