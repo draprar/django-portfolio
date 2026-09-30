@@ -19,6 +19,7 @@ urlpatterns = [
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
     path("code/", include(("code.urls", "code"), namespace="code")),
     path("cwiczba/", include(("poligon.urls", "poligon"), namespace="poligon")),
+    path("walczak/", include(("walczak.urls", "walczak"), namespace="walczak")),
     # API
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),

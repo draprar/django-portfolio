@@ -1,0 +1,43 @@
+<div>
+  <h3 data-en="{{ side.name_en }}" data-pl="{{ side.name_pl }}">{{ side.name_pl }}</h3>
+  {% if quick.types %}
+  <p>
+    {% for item in quick.types %}
+    <span data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</span>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </p>
+  {% endif %}
+  {% if quick.contact %}
+  <p>
+    <span data-en="Contact" data-pl="Kontakt">Kontakt</span>:
+    <span data-en="{{ quick.contact.1 }}" data-pl="{{ quick.contact.0 }}">{{ quick.contact.0 }}</span>
+  </p>
+  {% endif %}
+  {% if quick.character %}
+  <p>
+    <span data-en="Main character" data-pl="Główny charakter">Główny charakter</span>:
+    <span data-en="{{ quick.character.1 }}" data-pl="{{ quick.character.0 }}">{{ quick.character.0 }}</span>
+  </p>
+  {% endif %}
+  {% if quick.competition.0 %}
+  <p>
+    <span data-en="Competition" data-pl="Zawody">Zawody</span>:
+    <span data-en="{{ quick.competition.1 }}" data-pl="{{ quick.competition.0 }}">{{ quick.competition.0 }}</span>
+  </p>
+  {% endif %}
+  {% if quick.weapon.0 %}
+  <p>
+    <span data-en="Weapons" data-pl="Broń">Broń</span>:
+    <span data-en="{{ quick.weapon.1 }}" data-pl="{{ quick.weapon.0 }}">{{ quick.weapon.0 }}</span>
+  </p>
+  {% endif %}
+  {% if quick.solo or quick.partner %}
+  <p>
+    <span data-en="Solo" data-pl="Solo">Solo</span>:
+    {% if quick.solo %}<span data-en="{{ quick.solo.1 }}" data-pl="{{ quick.solo.0 }}">{{ quick.solo.0 }}</span>{% endif %}
+    /
+    <span data-en="Partner" data-pl="Partner">Partner</span>:
+    {% if quick.partner %}<span data-en="{{ quick.partner.1 }}" data-pl="{{ quick.partner.0 }}">{{ quick.partner.0 }}</span>{% endif %}
+  </p>
+  {% endif %}
+</div>

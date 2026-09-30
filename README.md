@@ -6,7 +6,7 @@
 
 🌐 Live: [walery.onrender.com](https://walery.onrender.com) · hub: [jedzien.pl](https://jedzien.pl)
 
-A full-stack Django portfolio by an engineer-turned-developer — 11 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
+A full-stack Django portfolio by an engineer-turned-developer — 12 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
 
 > Split view architecture · DRF + SimpleJWT · AI heuristics · 80% CI coverage threshold
 
@@ -23,6 +23,7 @@ A full-stack Django portfolio by an engineer-turned-developer — 11 integrated 
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
 | **code**          | IG programming page (`/code/`) | reads `core.Project`, no models |
 | **poligon**       | Ćwiczba, unofficial four-skill trainer, practice levels 0–5 (`/cwiczba/`) | ~1200 exercises · ~1200 cards · Wiktionary / Wikipedia / Tatoeba with attribution · SM-2 · heuristic scoring |
+| **walczak**       | Martial-arts catalog (`/walczak/`) | styles, preference list, comparison, joke, personality sketch |
 | **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
 

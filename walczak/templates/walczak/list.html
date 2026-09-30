@@ -1,0 +1,67 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Poznaj | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Poznaj | Walczak" data-en="Discover | Walczak"{% endblock %}
+{% block description %}Trzydzieści głównych dyscyplin i sztuk walki oraz osobny zestaw mniej oczywistych.{% endblock %}
+
+{% block nav_extra %}
+<li class="nav-item">
+  <a class="nav-link{% if not selected_family %} active{% endif %}"
+     href="{% url 'walczak:list' %}"
+     data-en="All" data-pl="Wszystkie">Wszystkie</a>
+</li>
+{% for family in families %}
+<li class="nav-item">
+  <a class="nav-link{% if selected_family == family.value %} active{% endif %}"
+     {% if selected_family == family.value %}aria-current="page"{% endif %}
+     href="{% url 'walczak:list' %}?rodzina={{ family.value }}"
+     data-en="{{ family.en }}" data-pl="{{ family.pl }}">{{ family.pl }}</a>
+</li>
+{% endfor %}
+{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header walczak-header-left">
+  <h1 class="walczak-title" data-en="Discover" data-pl="Poznaj">Poznaj</h1>
+  <p class="walczak-subtitle"
+     data-en="Thirty core disciplines and martial arts, plus a separate set of less obvious ones."
+     data-pl="Trzydzieści głównych dyscyplin i sztuk walki oraz osobny zestaw mniej oczywistych.">
+    Trzydzieści głównych dyscyplin i sztuk walki oraz osobny zestaw mniej oczywistych.
+  </p>
+  <p class="walczak-links">
+    <a href="{% url 'walczak:golden' %}" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</a>
+    <a href="{% url 'walczak:fact' %}" data-en="Random fact" data-pl="Losowy fakt">Losowy fakt</a>
+  </p>
+  {% if tags %}
+  <div class="walczak-tags" role="navigation" aria-label="Tagi">
+    <a class="{% if not selected_tag %}is-current{% endif %}"
+       href="{% url 'walczak:list' %}{% if selected_family %}?rodzina={{ selected_family }}{% endif %}"
+       data-en="All tags" data-pl="Wszystkie tagi">Wszystkie tagi</a>
+    {% for tag in tags %}
+    <a class="{% if selected_tag == tag.slug %}is-current{% endif %}"
+       href="{% url 'walczak:list' %}?tag={{ tag.slug }}{% if selected_family %}&amp;rodzina={{ selected_family }}{% endif %}"
+       data-en="{{ tag.name_en }}" data-pl="{{ tag.name_pl }}">{{ tag.name_pl }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</header>
+
+{% if styles %}
+<div class="walczak-grid">
+  {% for style in styles %}
+  <a class="walczak-card" href="{% url 'walczak:detail' style.slug %}">
+    <p class="walczak-eyebrow" data-en="{{ style.family_en }}" data-pl="{{ style.get_family_display }}">{{ style.get_family_display }}</p>
+    <h2 data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</h2>
+    <p class="walczak-muted" data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<section class="walczak-card">
+  <h2 data-en="No styles in this family" data-pl="Brak stylów w tej rodzinie">Brak stylów w tej rodzinie</h2>
+  <p class="walczak-links">
+    <a href="{% url 'walczak:list' %}" data-en="Show all" data-pl="Pokaż wszystkie">Pokaż wszystkie</a>
+  </p>
+</section>
+{% endif %}
+{% endblock %}

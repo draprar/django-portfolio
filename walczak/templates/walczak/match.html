@@ -1,0 +1,41 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Do poczytania | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Do poczytania | Walczak" data-en="To read | Walczak"{% endblock %}
+{% block robots %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header walczak-header-left">
+  <p class="walczak-eyebrow" data-en="The training you want" data-pl="Jaki trening">Jaki trening</p>
+  <h1 class="walczak-title" data-en="To read" data-pl="Do poczytania" aria-live="polite">Do poczytania</h1>
+  <p class="walczak-muted" data-en="Five styles ordered by how well they match what you marked. The list uses only the axes these questions ask about; a style profile has 22 axes and is wider than this test." data-pl="Pięć stylów uporządkowanych według zgodności z tym, co zaznaczyłeś. Lista uwzględnia tylko te osie, o które pytamy; profil stylu ma 22 osie i jest szerszy niż ten test.">Pięć stylów uporządkowanych według zgodności z tym, co zaznaczyłeś. Lista uwzględnia tylko te osie, o które pytamy; profil stylu ma 22 osie i jest szerszy niż ten test.</p>
+</header>
+
+{% for row in rows %}
+<section class="walczak-card">
+  {% if row.style.is_umbrella %}
+  <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.">Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.</p>
+  {% endif %}
+  {% if row.style.catalog_set == "golden" %}
+  <p class="walczak-eyebrow" data-en="Less obvious" data-pl="Mniej znany">Mniej znany</p>
+  {% endif %}
+  <h2>
+    <a href="{% url 'walczak:detail' row.style.slug %}" data-en="{{ row.style.name_en }}" data-pl="{{ row.style.name_pl }}">{{ row.style.name_pl }}</a>
+  </h2>
+  {% for line in row.plus %}
+  <p data-en="{{ line.en }}" data-pl="{{ line.pl }}">{{ line.pl }}</p>
+  {% endfor %}
+  {% for line in row.minus %}
+  <p class="walczak-muted" data-en="{{ line.en }}" data-pl="{{ line.pl }}">{{ line.pl }}</p>
+  {% endfor %}
+  {% for other in row.beside %}
+  <p>
+    <span data-en="Next to this sits" data-pl="Obok tego leży">Obok tego leży</span>
+    <a href="{% url 'walczak:detail' other.slug %}" data-en="{{ other.name_en }}" data-pl="{{ other.name_pl }}">{{ other.name_pl }}</a>.
+  </p>
+  {% endfor %}
+</section>
+{% endfor %}
+
+<p class="walczak-muted" data-en="The levels on the cards are an editorial judgment, not a measure of strength." data-pl="Poziomy na kartach są oceną redakcji, nie pomiarem siły.">Poziomy na kartach są oceną redakcji, nie pomiarem siły.</p>
+{% endblock %}

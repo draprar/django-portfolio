@@ -1,0 +1,21 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Walczak{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header">
+  <h1 class="walczak-title">Walczak</h1>
+  <p class="walczak-subtitle"
+     data-en="A catalog of combat sports and martial arts, a preference check, a comparison, and a joke."
+     data-pl="Katalog sportów i sztuk walki, sprawdzenie preferencji, porównanie i żart.">
+    Katalog sportów i sztuk walki, sprawdzenie preferencji, porównanie i żart.
+  </p>
+</header>
+
+<div class="walczak-actions">
+  <a class="walczak-btn" href="{% url 'walczak:list' %}" data-en="Discover" data-pl="Poznaj">Poznaj</a>
+  <a class="walczak-btn" href="{% url 'walczak:test' %}" data-en="The training you want" data-pl="Jaki trening">Jaki trening</a>
+  <a class="walczak-btn" href="{% url 'walczak:compare_form' %}" data-en="Compare" data-pl="Porównaj">Porównaj</a>
+  <a class="walczak-btn walczak-btn-quiet" href="{% url 'walczak:quiz' %}" data-en="A joke" data-pl="Żart">Żart</a>
+</div>
+{% endblock %}
