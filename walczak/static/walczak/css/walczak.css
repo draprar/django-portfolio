@@ -1,0 +1,494 @@
+/* Tokens match poligon/static/poligon/css/poligon.css.
+   Same sizes, colors, and radii as Ćwiczba. */
+
+body {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+  color: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  padding-top: 88px;
+}
+
+.walczak-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+  background: #c4922a;
+  color: #1a140c;
+  font-weight: 600;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0 0 12px 0;
+  text-decoration: none;
+}
+
+.walczak-skip:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #f0c46a;
+  outline-offset: 2px;
+}
+
+.walczak-option:focus-within {
+  border-color: #f0c46a;
+}
+
+.navbar {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 0;
+}
+
+.walczak-brand {
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #c4922a;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.walczak-brand:hover {
+  color: #f0c46a;
+  letter-spacing: 4px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #e0e0e0;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  min-height: 44px;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #c4922a;
+}
+
+.navbar-toggler {
+  border: none;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(224,224,224,0.9)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.walczak-lang {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: 1rem;
+}
+
+.lang-btn {
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  min-height: 44px;
+}
+
+.lang-btn.active {
+  color: #1a140c;
+  background: #c4922a;
+}
+
+.footer {
+  background: rgba(10, 10, 10, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c9ccd3;
+  padding: 28px 16px 36px;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: #c4922a;
+  text-decoration: none;
+}
+
+main.container {
+  padding-bottom: 2rem;
+}
+
+.walczak-messages {
+  margin-bottom: 1.4rem;
+}
+
+.walczak-message {
+  background: #1a1e27;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.walczak-header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.walczak-header-left {
+  text-align: left;
+}
+
+.walczak-eyebrow,
+.walczak-section-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c4922a;
+  margin: 0 0 0.9rem;
+}
+
+.walczak-title {
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0.2rem 0 0;
+}
+
+.walczak-header .walczak-title::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(45deg, #c4922a, #a0522d);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+.walczak-header-left .walczak-title::after {
+  margin-left: 0;
+}
+
+.walczak-subtitle,
+.walczak-muted {
+  color: #a8adb8;
+  line-height: 1.7;
+}
+
+.walczak-subtitle {
+  max-width: 640px;
+  margin: 1.2rem auto 0;
+}
+
+.walczak-header-left .walczak-subtitle,
+.walczak-header-left .walczak-muted {
+  margin-left: 0;
+}
+
+.walczak-actions,
+.walczak-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.walczak-actions {
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+.walczak-header-left .walczak-actions {
+  justify-content: flex-start;
+}
+
+.walczak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.3rem;
+  background: linear-gradient(45deg, #e8c56a, #c4922a);
+  color: #1a140c;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.walczak-btn-quiet {
+  background: transparent;
+  color: #e8e8e8;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+}
+
+.walczak-btn:hover {
+  transform: translateY(-2px);
+}
+
+.walczak-card {
+  background: #1a1e27;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+fieldset.walczak-card {
+  min-inline-size: 0;
+}
+
+fieldset.walczak-card legend {
+  float: none;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.walczak-message:focus {
+  outline: 3px solid #f0c46a;
+  outline-offset: 2px;
+}
+
+a.walczak-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.walczak-card:hover {
+  border-color: rgba(196, 146, 42, 0.45);
+}
+
+.walczak-card h2,
+.walczak-card p {
+  margin-top: 0;
+}
+
+.walczak-card h2 {
+  color: #e0e0e0;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.walczak-card p:last-child {
+  margin-bottom: 0;
+}
+
+.walczak-links a,
+.walczak-sources a {
+  color: #c4922a;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.walczak-prompt {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  color: #e8e8e8;
+}
+
+.walczak-options {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.walczak-option {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  background: #0f1117;
+  border: 1px solid rgba(196, 146, 42, 0.28);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+}
+
+.walczak-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.walczak-grid .walczak-card {
+  margin-bottom: 0;
+}
+
+.walczak-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.walczak-sources li {
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.walczak-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.walczak-tags a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 146, 42, 0.35);
+  color: #e8e8e8;
+  text-decoration: none;
+}
+
+.walczak-tags a.is-current {
+  border-color: #c4922a;
+  color: #f0c46a;
+}
+
+.walczak-details {
+  margin-top: 0.8rem;
+}
+
+.walczak-details summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #f0c46a;
+}
+
+.walczak-details summary:focus-visible {
+  outline: 2px solid #f0c46a;
+  outline-offset: 3px;
+}
+
+.walczak-progress {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 20;
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: #16130d;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  color: #f0c46a;
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .walczak-lang {
+    margin-left: 0.7rem;
+  }
+
+  .navbar-collapse {
+    padding-top: 0.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .walczak-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.walczak-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.walczak-field select {
+  min-height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(196, 146, 42, 0.28);
+  background: #0f1117;
+  color: #e0e0e0;
+  padding: 0.4rem 0.7rem;
+}
+
+.walczak-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.walczak-scale {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.walczak-message {
+  background: #16130d;
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+}
+
+@media (max-width: 430px) {
+  .walczak-compare {
+    grid-template-columns: 1fr;
+  }
+
+  .walczak-title {
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .walczak-brand {
+    letter-spacing: 2px;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .walczak-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .walczak-btn:hover {
+    transform: none;
+  }
+
+  .walczak-brand:hover {
+    letter-spacing: 4px;
+  }
+}

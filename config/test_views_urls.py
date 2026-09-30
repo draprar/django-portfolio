@@ -24,6 +24,18 @@ def test_custom_404_view_returns_404_and_logs_request(rf, caplog):
     assert any("ip=203.0.113.42" in rec.message for rec in caplog.records)
 
 
+@pytest.mark.django_db
+def test_walczak_missing_path_uses_the_app_page(rf):
+    request = rf.get("/walczak/nie-ma/")
+    response = custom_404_view(request, Exception("missing"))
+    body = response.content.decode()
+
+    assert response.status_code == 404
+    assert "Tej strony nie ma." in body
+    assert 'data-en="This page is not here."' in body
+    assert reverse("walczak:list") in body
+
+
 def test_handler404_points_to_project_custom_view():
     # Ensure Django uses the project's custom 404 handler.
     assert handler404 == "config.views.custom_404_view"

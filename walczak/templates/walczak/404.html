@@ -1,0 +1,20 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Nie ma tej strony | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Nie ma tej strony | Walczak" data-en="This page is not here | Walczak"{% endblock %}
+{% block robots %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header walczak-header-left">
+  <h1 class="walczak-title" data-en="This page is not here." data-pl="Tej strony nie ma.">Tej strony nie ma.</h1>
+  <p class="walczak-subtitle"
+     data-en="The address does not match a page in Walczak. Go back to the start or open the catalog."
+     data-pl="Adres nie pasuje do żadnej strony Walczaka. Wróć na start albo otwórz katalog.">
+    Adres nie pasuje do żadnej strony Walczaka. Wróć na start albo otwórz katalog.
+  </p>
+</header>
+<div class="walczak-actions">
+  <a class="walczak-btn" href="{% url 'walczak:home' %}" data-en="Start" data-pl="Start">Start</a>
+  <a class="walczak-btn walczak-btn-quiet" href="{% url 'walczak:list' %}" data-en="Discover" data-pl="Poznaj">Poznaj</a>
+</div>
+{% endblock %}

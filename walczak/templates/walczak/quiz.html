@@ -1,0 +1,76 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Żart | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Żart | Walczak" data-en="A joke | Walczak"{% endblock %}
+{% block robots %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block footer_note %}
+<p data-en="This is a joke, not a diagnosis and not a training recommendation."
+   data-pl="To żart, nie diagnoza i nie rekomendacja treningu.">
+  To żart, nie diagnoza i nie rekomendacja treningu.
+</p>
+{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header walczak-header-left">
+  <h1 class="walczak-title">Walczak</h1>
+  <p class="walczak-subtitle"
+     data-en="A few questions and an archetype. It does not measure anything."
+     data-pl="Kilka pytań i archetyp. To niczego nie mierzy.">
+    Kilka pytań i archetyp. To niczego nie mierzy.
+  </p>
+</header>
+
+{% if error %}
+<p class="walczak-message" role="alert" tabindex="-1" data-walczak-error data-en="Answer the questions." data-pl="Zaznacz odpowiedzi.">Zaznacz odpowiedzi.</p>
+{% endif %}
+
+<p class="walczak-progress" id="walczak-progress" role="status"
+   data-en="Question 1 of {{ total }}" data-pl="Pytanie 1 z {{ total }}">Pytanie 1 z {{ total }}</p>
+
+<form method="post">
+  {% csrf_token %}
+  {% for question in questions %}
+  <fieldset class="walczak-card" data-walczak-index="{{ forloop.counter }}" {% if forloop.first %}aria-current="true"{% endif %}>
+    <legend class="walczak-prompt"><span data-en="{{ question.text_en }}" data-pl="{{ question.text_pl }}">{{ question.text_pl }}</span><span class="visually-hidden" data-en=" Required." data-pl=" Wymagane."> Wymagane.</span></legend>
+    <div class="walczak-options">
+      {% for choice in question.choices.all %}
+      <label class="walczak-option">
+        <input type="radio" name="q{{ question.pk }}" value="{{ choice.pk }}">
+        <span data-en="{{ choice.text_en }}" data-pl="{{ choice.text_pl }}">{{ choice.text_pl }}</span>
+      </label>
+      {% endfor %}
+    </div>
+  </fieldset>
+  {% endfor %}
+  <button class="walczak-btn" type="submit" data-en="Show the archetype" data-pl="Pokaż archetyp">Pokaż archetyp</button>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  const bar = document.getElementById("walczak-progress");
+  const sections = document.querySelectorAll("[data-walczak-index]");
+  if (!bar || !sections.length || !("IntersectionObserver" in window)) return;
+  const total = sections.length;
+  const paint = function (index) {
+    sections.forEach(function (section) { section.removeAttribute("aria-current"); });
+    const current = sections[index - 1];
+    if (current) current.setAttribute("aria-current", "true");
+    const english = document.documentElement.lang === "en";
+    const text = english ? "Question " + index + " of " + total : "Pytanie " + index + " z " + total;
+    bar.textContent = text;
+    bar.setAttribute("data-en", "Question " + index + " of " + total);
+    bar.setAttribute("data-pl", "Pytanie " + index + " z " + total);
+  };
+  const observer = new IntersectionObserver(function (entries) {
+    const visible = entries.filter(function (entry) { return entry.isIntersecting; });
+    if (!visible.length) return;
+    visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+    paint(Number(visible[0].target.getAttribute("data-walczak-index")));
+  }, { rootMargin: "-30% 0px -55% 0px", threshold: 0.15 });
+  sections.forEach(function (section) { observer.observe(section); });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Mniej oczywiste | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Mniej oczywiste | Walczak" data-en="Less obvious | Walczak"{% endblock %}
+{% block description %}Ciekawe i mniej oczywiste. Nie lepsze.{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header walczak-header-left">
+  <h1 class="walczak-title" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</h1>
+  <p class="walczak-subtitle"
+     data-en="Interesting and less obvious. Not better."
+     data-pl="Ciekawe i mniej oczywiste. Nie lepsze.">
+    Ciekawe i mniej oczywiste. Nie lepsze.
+  </p>
+</header>
+
+{% if styles %}
+<div class="walczak-grid">
+  {% for style in styles %}
+  <a class="walczak-card" href="{% url 'walczak:detail' style.slug %}">
+    <p class="walczak-eyebrow">{{ style.region }}</p>
+    <h2 data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</h2>
+    <p class="walczak-muted" data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<section class="walczak-card">
+  <h2 data-en="The less obvious set is not loaded yet." data-pl="Zestaw mniej oczywistych nie jest jeszcze wgrany.">Zestaw mniej oczywistych nie jest jeszcze wgrany.</h2>
+</section>
+{% endif %}
+{% endblock %}

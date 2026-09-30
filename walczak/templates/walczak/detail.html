@@ -1,0 +1,132 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}{{ style.name_pl }} | Walczak{% endblock %}
+{% block title_i18n %}data-pl="{{ style.name_pl }} | Walczak" data-en="{{ style.name_en }} | Walczak"{% endblock %}
+{% block description %}{{ style.summary_pl }}{% endblock %}
+
+{% block walczak %}
+<header class="walczak-header walczak-header-left">
+  <p class="walczak-eyebrow" data-en="{{ style.family_en }}" data-pl="{{ style.get_family_display }}">{{ style.get_family_display }}</p>
+  <h1 class="walczak-title" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</h1>
+</header>
+
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="About" data-pl="O stylu">O stylu</h2>
+  <p data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
+  {% if style.is_umbrella %}
+  <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.">Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.</p>
+  {% endif %}
+  {% if style.style_types.all %}
+  <p class="walczak-muted">
+    {% for item in style.style_types.all %}
+    <span data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</span>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </p>
+  {% endif %}
+  {% if style.origin_pl %}
+  <p>
+    <span data-en="Origin" data-pl="Pochodzenie">Pochodzenie</span>:
+    <span data-en="{{ style.origin_en }}" data-pl="{{ style.origin_pl }}">{{ style.origin_pl }}</span>
+  </p>
+  {% endif %}
+  {% if style.period_pl %}
+  <p>
+    <span data-en="Period" data-pl="Okres">Okres</span>:
+    <span data-en="{{ style.period_en }}" data-pl="{{ style.period_pl }}">{{ style.period_pl }}</span>
+  </p>
+  {% endif %}
+  {% if style.region %}
+  <p><span data-en="Region" data-pl="Region">Region</span>: {{ style.region }}</p>
+  {% endif %}
+</section>
+
+{% if style.history_pl or style.history_en %}
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="History" data-pl="Historia">Historia</h2>
+  {% if style.sources_disagree %}
+  <p class="walczak-muted" data-en="The sources do not agree." data-pl="Źródła nie są zgodne.">Źródła nie są zgodne.</p>
+  {% endif %}
+  {% if thin_sources %}
+  <p class="walczak-muted" data-en="The description is thinner: the second source only points at the topic." data-pl="Opis jest cieńszy: drugie źródło tylko wskazuje temat.">Opis jest cieńszy: drugie źródło tylko wskazuje temat.</p>
+  {% endif %}
+  <p data-en="{{ style.history_en }}" data-pl="{{ style.history_pl }}">{{ style.history_pl }}</p>
+</section>
+{% endif %}
+
+{% if style.practice_pl or style.practice_en %}
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="How it is fought" data-pl="Jak się walczy">Jak się walczy</h2>
+  <p data-en="{{ style.practice_en }}" data-pl="{{ style.practice_pl }}">{{ style.practice_pl }}</p>
+</section>
+{% endif %}
+
+{% if headline %}
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="Training character" data-pl="Charakter treningu">Charakter treningu</h2>
+  <p class="walczak-muted" data-en="Low, medium, or high. An editorial judgment, not a measure of strength." data-pl="Nisko, średnio albo wysoko. Ocena redakcji, nie pomiar siły.">Nisko, średnio albo wysoko. Ocena redakcji, nie pomiar siły.</p>
+  <ul class="walczak-sources">
+    {% for row in headline %}
+    <li><span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span> — <span data-en="{{ row.word_en }}" data-pl="{{ row.word_pl }}">{{ row.word_pl }}</span></li>
+    {% endfor %}
+  </ul>
+  {% if rest %}
+  <details class="walczak-details">
+    <summary data-en="Show the full profile" data-pl="Pokaż pełny profil">Pokaż pełny profil</summary>
+    {% for group in rest %}
+    <h3 data-en="{{ group.en }}" data-pl="{{ group.pl }}">{{ group.pl }}</h3>
+    <ul class="walczak-sources">
+      {% for row in group.rows %}
+      <li><span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span> — <span data-en="{{ row.word_en }}" data-pl="{{ row.word_pl }}">{{ row.word_pl }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </details>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if relations %}
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="Relations" data-pl="Relacje">Relacje</h2>
+  <ul class="walczak-sources">
+    {% for relation in relations %}
+    <li>
+      <a href="{% url 'walczak:detail' relation.to_style.slug %}" data-en="{{ relation.to_style.name_en }}" data-pl="{{ relation.to_style.name_pl }}">{{ relation.to_style.name_pl }}</a>
+      <span class="walczak-muted" data-en="{{ relation.note_en }}" data-pl="{{ relation.note_pl }}">{{ relation.note_pl }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if style.facts.all %}
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="Facts" data-pl="Fakty">Fakty</h2>
+  {% for fact in style.facts.all %}
+  <p data-en="{{ fact.text_en }}" data-pl="{{ fact.text_pl }}">{{ fact.text_pl }}</p>
+  {% if fact.is_legend %}
+  <p class="walczak-muted" data-en="Later tradition / legend." data-pl="Późniejsza tradycja / legenda.">Późniejsza tradycja / legenda.</p>
+  {% endif %}
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if style.sources.all %}
+<section class="walczak-card">
+  <h2 class="walczak-section-title" data-en="Sources" data-pl="Źródła">Źródła</h2>
+  <ul class="walczak-sources">
+    {% for source in style.sources.all %}
+    <li>
+      {% if source.url %}
+      <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
+      {% else %}
+      {{ source.title }}
+      {% endif %}
+      {% if source.author %}<span class="walczak-muted"> — {{ source.author }}</span>{% endif %}
+      {% if source.license %}<span class="walczak-muted"> — {{ source.license }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

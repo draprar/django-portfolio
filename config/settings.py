@@ -128,6 +128,7 @@ INSTALLED_APPS = [
     "rozdroze",
     "code",
     "poligon",
+    "walczak",
     # External
     "django_ratelimit",
     "rest_framework",

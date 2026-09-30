@@ -1,0 +1,19 @@
+{% extends "walczak/base.html" %}
+
+{% block title %}Brak pytań | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Brak pytań | Walczak" data-en="No questions | Walczak"{% endblock %}
+{% block robots %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block walczak %}
+<section class="walczak-card">
+  <h1 class="walczak-title" data-en="No questions" data-pl="Brak pytań">Brak pytań</h1>
+  <p class="walczak-muted"
+     data-en="The quiz has nothing to ask right now. Discover is still there."
+     data-pl="Quiz nie ma teraz o co pytać. Poznaj dalej jest.">
+    Quiz nie ma teraz o co pytać. Poznaj dalej jest.
+  </p>
+  <p class="walczak-links">
+    <a href="{% url 'walczak:list' %}" data-en="Discover" data-pl="Poznaj">Poznaj</a>
+  </p>
+</section>
+{% endblock %}
