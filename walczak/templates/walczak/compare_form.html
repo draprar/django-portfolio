@@ -2,7 +2,17 @@
 
 {% block title %}Porównaj | Walczak{% endblock %}
 {% block title_i18n %}data-pl="Porównaj | Walczak" data-en="Compare | Walczak"{% endblock %}
-{% block description %}Dwa style z zestawu głównego, obok siebie.{% endblock %}
+{% block og_title %}Porównaj | Walczak{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="Dwa style z zestawu głównego, obok siebie."
+      data-en="Two core styles, side by side."
+      content="Dwa style z zestawu głównego, obok siebie.">
+<meta property="og:description"
+      data-pl="Dwa style z zestawu głównego, obok siebie."
+      data-en="Two core styles, side by side."
+      content="Dwa style z zestawu głównego, obok siebie.">
+{% endblock %}
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">

@@ -13,9 +13,14 @@
 </header>
 
 <div class="walczak-actions">
-  <a class="walczak-btn" href="{% url 'walczak:list' %}" data-en="Discover" data-pl="Poznaj">Poznaj</a>
+  <a class="walczak-btn" href="{% url 'walczak:list' %}" data-en="Browse" data-pl="Poznaj">Poznaj</a>
   <a class="walczak-btn" href="{% url 'walczak:test' %}" data-en="The training you want" data-pl="Jaki trening">Jaki trening</a>
   <a class="walczak-btn" href="{% url 'walczak:compare_form' %}" data-en="Compare" data-pl="Porównaj">Porównaj</a>
   <a class="walczak-btn walczak-btn-quiet" href="{% url 'walczak:quiz' %}" data-en="A joke" data-pl="Żart">Żart</a>
 </div>
+<p class="walczak-muted walczak-home-note"
+   data-en="The personality sketch is in the menu. It counts five numbers and does not pick a style."
+   data-pl="Szkic osobowości jest w menu. Liczy pięć liczb i nie wybiera stylu.">
+  Szkic osobowości jest w menu. Liczy pięć liczb i nie wybiera stylu.
+</p>
 {% endblock %}

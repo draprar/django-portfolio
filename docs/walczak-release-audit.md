@@ -2,6 +2,8 @@
 
 Data: 2026-09-30.
 
+Późniejsza decyzja, opisana w `docs/walczak-release-notes.md`: angielskie „Discover” przy „Poznaj” to „Browse”. Etykieta zestawu to „Mniej oczywiste”, nie „Mniej znany”. Opis w `meta` przełącza się razem z językiem. Ten plik zostaje zapisem tamtego przebiegu.
+
 ## Werdykt
 
 **READY FOR USER TESTING**

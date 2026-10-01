@@ -2,7 +2,17 @@
 
 {% block title %}{{ style.name_pl }} | Walczak{% endblock %}
 {% block title_i18n %}data-pl="{{ style.name_pl }} | Walczak" data-en="{{ style.name_en }} | Walczak"{% endblock %}
-{% block description %}{{ style.summary_pl }}{% endblock %}
+{% block og_title %}{{ style.name_pl }} | Walczak{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="{{ style.summary_pl }}"
+      data-en="{{ style.summary_en }}"
+      content="{{ style.summary_pl }}">
+<meta property="og:description"
+      data-pl="{{ style.summary_pl }}"
+      data-en="{{ style.summary_en }}"
+      content="{{ style.summary_pl }}">
+{% endblock %}
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">

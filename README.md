@@ -73,7 +73,7 @@ pytest -q
 
 **Type checking:**
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon
+mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon walczak
 ```
 
 **Linting:**

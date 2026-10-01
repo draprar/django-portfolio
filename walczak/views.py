@@ -1,5 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.utils.html import escape
 from django.views.decorators.http import require_http_methods
 from django_ratelimit.decorators import ratelimit
 
@@ -269,6 +271,30 @@ def compare(request: HttpRequest, a: str, b: str) -> HttpResponse:
 def golden(request: HttpRequest) -> HttpResponse:
     styles = Style.objects.filter(active=True, catalog_set="golden").prefetch_related("sources")
     return render(request, "walczak/golden.html", {"styles": styles})
+
+
+@require_http_methods(["GET"])
+def sitemap(request: HttpRequest) -> HttpResponse:
+    """Public pages only. Session screens stay out of the index."""
+    paths = [
+        reverse("walczak:home"),
+        reverse("walczak:list"),
+        reverse("walczak:golden"),
+        reverse("walczak:compare_form"),
+    ]
+    paths.extend(
+        reverse("walczak:detail", args=[slug])
+        for slug in Style.objects.filter(active=True).order_by("slug").values_list("slug", flat=True)
+    )
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for path in paths:
+        loc = escape(request.build_absolute_uri(path))
+        lines.append(f"<url><loc>{loc}</loc></url>")
+    lines.append("</urlset>")
+    return HttpResponse("\n".join(lines), content_type="application/xml")
 
 
 @require_http_methods(["GET"])

@@ -4,7 +4,7 @@ from django.core.cache import cache
 from django.test import override_settings
 from django.urls import reverse
 
-from walczak.models import Archetype, HumorChoice, HumorQuestion, Question, Style
+from walczak.models import Archetype, HumorChoice, HumorQuestion, Question, Style, Tag
 
 
 @pytest.mark.django_db
@@ -15,7 +15,10 @@ def test_home_is_bilingual(client):
     assert response.status_code == 200
     assert "Walczak" in content
     assert 'data-pl="Poznaj"' in content
-    assert 'data-en="Discover"' in content
+    assert 'data-en="Browse"' in content
+    assert "nie wybiera stylu" in content
+    assert 'property="og:title"' in content
+    assert 'data-en="A catalog of combat sports and martial arts, a preference check, a comparison, and a joke."' in content
     assert 'data-pl="Jaki trening"' in content
     assert 'data-pl="Żart"' in content
     assert 'data-pl="Szkic"' in content
@@ -276,3 +279,50 @@ def test_blank_quiz_after_a_result_drops_the_old_archetype(client, humor_ready):
 def test_styles_are_in_the_admin():
     assert Style in admin.site._registry
     assert Question in admin.site._registry
+
+
+@pytest.mark.django_db
+def test_catalog_copy_says_style_not_discipline(client):
+    response = client.get(reverse("walczak:list"))
+    content = response.content.decode()
+
+    assert "Trzydzieści głównych stylów" in content
+    assert "dyscyplin" not in content
+    assert 'data-en="Browse"' in content
+
+
+@pytest.mark.django_db
+def test_empty_tag_does_not_blame_the_family(client):
+    Tag.objects.create(slug="pusty", name_pl="Pusty", name_en="Empty")
+    response = client.get(reverse("walczak:list"), {"tag": "pusty"})
+    content = response.content.decode()
+
+    assert "Żaden styl nie ma tego tagu." in content
+    assert "Brak stylów w tej rodzinie" not in content
+
+
+@pytest.mark.django_db
+def test_sitemap_lists_public_pages_only(client):
+    response = client.get(reverse("walczak:sitemap"))
+    body = response.content.decode()
+
+    assert response.status_code == 200
+    assert response["Content-Type"].startswith("application/xml")
+    assert reverse("walczak:detail", args=["boks"]) in body
+    assert reverse("walczak:golden") in body
+    assert reverse("walczak:quiz") not in body
+    assert reverse("walczak:test") not in body
+    assert reverse("walczak:match") not in body
+    assert reverse("walczak:fact") not in body
+    assert reverse("walczak:personality") not in body
+    assert reverse("walczak:result") not in body
+
+
+@pytest.mark.django_db
+def test_api_cache_headers(client):
+    listing = client.get(reverse("walczak:api-styles"))
+    fact = client.get(reverse("walczak:api-fact"))
+
+    assert "public" in listing["Cache-Control"]
+    assert "max-age=300" in listing["Cache-Control"]
+    assert "no-store" in fact["Cache-Control"]

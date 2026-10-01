@@ -1,8 +1,18 @@
 {% extends "walczak/base.html" %}
 
 {% block title %}Poznaj | Walczak{% endblock %}
-{% block title_i18n %}data-pl="Poznaj | Walczak" data-en="Discover | Walczak"{% endblock %}
-{% block description %}Trzydzieści głównych dyscyplin i sztuk walki oraz osobny zestaw mniej oczywistych.{% endblock %}
+{% block title_i18n %}data-pl="Poznaj | Walczak" data-en="Browse | Walczak"{% endblock %}
+{% block og_title %}Poznaj | Walczak{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych."
+      data-en="Thirty core styles, and a separate set of less obvious ones."
+      content="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.">
+<meta property="og:description"
+      data-pl="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych."
+      data-en="Thirty core styles, and a separate set of less obvious ones."
+      content="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.">
+{% endblock %}
 
 {% block nav_extra %}
 <li class="nav-item">
@@ -22,11 +32,11 @@
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">
-  <h1 class="walczak-title" data-en="Discover" data-pl="Poznaj">Poznaj</h1>
+  <h1 class="walczak-title" data-en="Browse" data-pl="Poznaj">Poznaj</h1>
   <p class="walczak-subtitle"
-     data-en="Thirty core disciplines and martial arts, plus a separate set of less obvious ones."
-     data-pl="Trzydzieści głównych dyscyplin i sztuk walki oraz osobny zestaw mniej oczywistych.">
-    Trzydzieści głównych dyscyplin i sztuk walki oraz osobny zestaw mniej oczywistych.
+     data-en="Thirty core styles, and a separate set of less obvious ones."
+     data-pl="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.">
+    Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.
   </p>
   <p class="walczak-links">
     <a href="{% url 'walczak:golden' %}" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</a>
@@ -58,7 +68,13 @@
 </div>
 {% else %}
 <section class="walczak-card">
-  <h2 data-en="No styles in this family" data-pl="Brak stylów w tej rodzinie">Brak stylów w tej rodzinie</h2>
+  {% if selected_tag and selected_family %}
+  <h2 data-en="No style in this family carries this tag." data-pl="Żaden styl z tej rodziny nie ma tego tagu.">Żaden styl z tej rodziny nie ma tego tagu.</h2>
+  {% elif selected_tag %}
+  <h2 data-en="No style carries this tag." data-pl="Żaden styl nie ma tego tagu.">Żaden styl nie ma tego tagu.</h2>
+  {% else %}
+  <h2 data-en="No styles in this family." data-pl="Brak stylów w tej rodzinie.">Brak stylów w tej rodzinie.</h2>
+  {% endif %}
   <p class="walczak-links">
     <a href="{% url 'walczak:list' %}" data-en="Show all" data-pl="Pokaż wszystkie">Pokaż wszystkie</a>
   </p>

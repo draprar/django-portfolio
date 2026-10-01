@@ -1,5 +1,7 @@
 # Przegląd treści Walczaka
 
+Słownik interfejsu (styl, rodzina, zestaw główny, mniej oczywiste) jest w `docs/walczak-copy-style-guide.md`. Ten plik zostaje przy kartach i źródłach.
+
 Status dotyczy karty w katalogu, nie rankingu skuteczności. `VERIFIED` jest tylko przy claimie, który da się oprzeć na podpiętym źródle. Reszta kart to `PARTIAL` (jest źródło o praktyce, zdań nie przepisano ze stron) albo `REVIEW` (źródła się rozjeżdżają albo drugie źródło tylko znajduje temat).
 
 Psychologia jest pusta. W bazie nie ma rekordu `Study`. To stan poprawny, nie brak do uzupełnienia „żeby nie było pusto”.
