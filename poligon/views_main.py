@@ -209,8 +209,8 @@ def _focus_skill(scores: dict[str, int], remaining: dict[str, Exercise | None]) 
 def _daily_tasks(remaining: dict[str, Exercise | None], focus: str | None, minutes: int, has_account: bool) -> list[dict]:
     """Two or three tasks for the day, taken from the plan the learner already set."""
     tasks: list[dict] = []
-    if focus and remaining.get(focus) is not None:
-        item = remaining[focus]
+    item = remaining.get(focus) if focus else None
+    if item is not None and focus:
         tasks.append(
             {
                 "kind": "exercise",

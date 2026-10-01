@@ -146,7 +146,8 @@ def _validate_one(
         report.errors.append(f"{slug}: missing publication status")
         status = "draft"
     else:
-        status = item.get("publication_status")
+        raw_status = item["publication_status"]
+        status = raw_status if isinstance(raw_status, str) else ""
     if status not in PUBLICATION_STATUSES:
         report.errors.append(f"{slug}: unknown publication status {status!r}")
     if not str(item.get("prompt_en") or "").strip():
@@ -162,8 +163,9 @@ def _validate_one(
         if texts != {"true", "false"}:
             report.errors.append(f"{slug}: a true/false item must offer True and False")
 
-    published = status == "published" and isinstance(level, int) and skill in SKILLS
-    if published:
+    published = False
+    if status == "published" and isinstance(level, int) and isinstance(skill, str) and skill in SKILLS:
+        published = True
         report.counts[level][skill] += 1
         if item.get("quality_status") != "legacy":
             report.strict_counts[level][skill] += 1
@@ -214,7 +216,10 @@ def _validate_published(slug: str, item: dict, report: ContentReport, *, as_erro
     scenario = str(item.get("scenario") or "").strip()
     if profile is not None and scenario not in profile.scenarios:
         _note(report, f"{slug}: scenario {scenario or '(empty)'} is not allowed at level {level}", as_error=as_error)
-    expected = competency_for(level, skill) if profile is not None and isinstance(skill, str) else None
+    if profile is not None and isinstance(level, int) and isinstance(skill, str):
+        expected = competency_for(level, skill)
+    else:
+        expected = None
     if expected is not None and item.get("competency") != expected.id:
         _note(
             report,
@@ -270,5 +275,8 @@ def published_counts() -> Counter[tuple[int, str]]:
     counts: Counter[tuple[int, str]] = Counter()
     for item in load_exercises():
         if item.get("publication_status") == "published":
-            counts[(item.get("level"), item.get("skill"))] += 1
+            level = item.get("level")
+            skill = item.get("skill")
+            if isinstance(level, int) and isinstance(skill, str):
+                counts[(level, skill)] += 1
     return counts

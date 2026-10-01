@@ -214,7 +214,7 @@ def test_compare_without_a_study_says_there_is_no_data(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "Nie porównujemy stylów pod kątem osobowości ani badań, bo takich danych tu nie ma." in content
+    assert "Nie zestawiamy stylów pod kątem osobowości ani badań. Takich danych tu nie ma." in content
     assert "ocena redakcji" in content
     assert "Historia i typ" in content
     assert "Psychologia / badania" not in content

@@ -2,6 +2,7 @@ import pytest
 from django.urls import reverse
 from django.utils import translation
 
+
 @pytest.mark.django_db
 def test_the_english_interface_translates_the_title_and_the_navigation(client):
     switched = client.post(
