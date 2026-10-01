@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Wybierz poziom | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Wybierz poziom" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header">
@@ -8,13 +9,13 @@
       data-en="English for military service" data-pl="Angielski na służbie wojskowej">Angielski na służbie wojskowej</h1>
   <p class="poligon-subtitle"
      data-en="Four skills — radio, briefings, orders and reports — in short sessions you can finish in one sitting."
-     data-pl="Cztery sprawności — łączność, odprawy, rozkazy i meldunki — w krótkich sesjach do zrobienia za jednym razem.">
-    Cztery sprawności — łączność, odprawy, rozkazy i meldunki — w krótkich sesjach do zrobienia za jednym razem.
+     data-pl="Cztery sprawności: łączność, odprawy, rozkazy i meldunki. Sesje są krótkie i da się je skończyć za jednym razem.">
+    Cztery sprawności: łączność, odprawy, rozkazy i meldunki. Sesje są krótkie i da się je skończyć za jednym razem.
   </p>
   <p class="poligon-subtitle"
      data-en="It is field training, not an official exam. Nothing here counts as a formal result."
-     data-pl="To trening polowy, nie oficjalny egzamin. Nic tutaj nie liczy się jako formalny wynik.">
-    To trening polowy, nie oficjalny egzamin. Nic tutaj nie liczy się jako formalny wynik.
+     data-pl="To trening polowy. Wynik nie jest oficjalnym egzaminem.">
+    To trening polowy. Wynik nie jest oficjalnym egzaminem.
   </p>
 </header>
 
@@ -23,15 +24,15 @@
       data-en="Choose where to start" data-pl="Wybierz, od czego zaczniesz">Wybierz, od czego zaczniesz</h2>
   <p class="poligon-muted"
      data-en="Pick the level that matches the material — from single words to a full briefing — not your ambition. You can change it at any time."
-     data-pl="Wybierz poziom pasujący do materiału — od pojedynczych słów po pełną odprawę — nie do ambicji. Możesz go zmienić w każdej chwili.">
-    Wybierz poziom pasujący do materiału — od pojedynczych słów po pełną odprawę — nie do ambicji. Możesz go zmienić w każdej chwili.
+     data-pl="Wybierz poziom, który pasuje do materiału: od pojedynczych słów po pełną odprawę. Możesz go zmienić w każdej chwili.">
+    Wybierz poziom, który pasuje do materiału: od pojedynczych słów po pełną odprawę. Możesz go zmienić w każdej chwili.
   </p>
 
   {% if form_error %}
   <p class="poligon-form-error" role="alert"
-     data-en="Choose one of the six levels."
-     data-pl="Wybierz jeden z sześciu poziomów.">
-    Wybierz jeden z sześciu poziomów.
+     data-en="Choose one of the five levels."
+     data-pl="Wybierz jeden z pięciu poziomów.">
+    Wybierz jeden z pięciu poziomów.
   </p>
   {% endif %}
 

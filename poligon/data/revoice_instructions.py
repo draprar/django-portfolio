@@ -1,6 +1,6 @@
 """Rewrite exercise instructions in Poligon's own voice.
 
-The catalog reuses a handful of instruction strings across all 1200 exercises,
+The catalog reuses a handful of instruction strings across the exercise files,
 so the whole set can be re-voiced from one mapping instead of item by item.
 The instructions talk to the learner ("you"), and they stop repeating the word
 "heuristic" — the result page says what the score is.

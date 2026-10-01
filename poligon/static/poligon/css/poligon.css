@@ -373,10 +373,22 @@ a.poligon-stat:hover .poligon-big {
 }
 
 .poligon-row a,
+.poligon-row a:visited,
 .poligon-card-head a,
-.poligon-links a {
+.poligon-card-head a:visited,
+.poligon-links a,
+.poligon-links a:visited,
+.poligon-plan a,
+.poligon-plan a:visited {
   color: #c4922a;
   text-decoration: none;
+}
+
+.poligon-row a:hover,
+.poligon-card-head a:hover,
+.poligon-links a:hover,
+.poligon-plan a:hover {
+  color: #f0c46a;
 }
 
 .poligon-verdict {
@@ -666,6 +678,19 @@ a.poligon-stat:hover .poligon-big {
 @media (max-width: 460px) {
   .poligon-level-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 390px) {
+  #poligon-main.container {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .poligon-btn,
+  .poligon-title,
+  .poligon-option {
+    overflow-wrap: anywhere;
   }
 }
 

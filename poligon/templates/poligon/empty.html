@@ -1,38 +1,40 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Brak ćwiczeń | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Brak ćwiczeń" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <section class="poligon-card poligon-empty">
   {% if finished %}
   <h1 class="poligon-title"
-      data-en="You have done them all" data-pl="Zrobiłeś już wszystkie">Zrobiłeś już wszystkie</h1>
-  {% if skill_label_pl %}
+      data-en="Every available exercise at this level for this skill is done"
+      data-pl="To już wszystkie ćwiczenia z tej sprawności na tym poziomie">To już wszystkie ćwiczenia z tej sprawności na tym poziomie.</h1>
+  {% if skill_of %}
   <p class="poligon-muted"
      data-en="No {{ skill_label_en }} exercise on level {{ level }} is left for you. Nothing here repeats — repetition is what the flashcards are for."
-     data-pl="Nie został Ci żaden „{{ skill_label_pl }}” na poziomie {{ level }}. Tu nic się nie powtarza — do powtarzania są fiszki.">
-    Nie został Ci żaden „{{ skill_label_pl }}” na poziomie {{ level }}. Tu nic się nie powtarza — do powtarzania są fiszki.
+     data-pl="Na poziomie {{ level }} nie zostało już ćwiczeń {{ skill_of }}. Ćwiczenia się tu nie powtarzają. Do powtórek są fiszki.">
+    Na poziomie {{ level }} nie zostało już ćwiczeń {{ skill_of }}. Ćwiczenia się tu nie powtarzają. Do powtórek są fiszki.
   </p>
   {% else %}
   <p class="poligon-muted"
      data-en="Nothing is left for you on level {{ level }}. Nothing here repeats — repetition is what the flashcards are for."
-     data-pl="Na poziomie {{ level }} nie zostało Ci nic. Tu nic się nie powtarza — do powtarzania są fiszki.">
-    Na poziomie {{ level }} nie zostało Ci nic. Tu nic się nie powtarza — do powtarzania są fiszki.
+     data-pl="Na poziomie {{ level }} nie zostało już nic. Ćwiczenia się tu nie powtarzają. Do powtórek są fiszki.">
+    Na poziomie {{ level }} nie zostało już nic. Ćwiczenia się tu nie powtarzają. Do powtórek są fiszki.
   </p>
   {% endif %}
   <p class="poligon-muted"
-     data-en="Take another skill, go up a level, or review the flashcards."
-     data-pl="Weź inną sprawność, podnieś poziom albo powtórz słownictwo taktyczne.">
-    Weź inną sprawność, podnieś poziom albo powtórz słownictwo taktyczne.
+     data-en="Choose another skill, a higher level, or the flashcards."
+     data-pl="Wybierz inną sprawność, wyższy poziom albo fiszki.">
+    Wybierz inną sprawność, wyższy poziom albo fiszki.
   </p>
   {% else %}
   <h1 class="poligon-title"
       data-en="No exercises on this level" data-pl="Brak ćwiczeń na tym poziomie">Brak ćwiczeń na tym poziomie</h1>
-  {% if skill_label_pl %}
+  {% if skill_of %}
   <p class="poligon-muted"
      data-en="No {{ skill_label_en }} exercise is waiting on level {{ level }} right now."
-     data-pl="Nie ma teraz ćwiczenia „{{ skill_label_pl }}” na poziomie {{ level }}.">
-    Nie ma teraz ćwiczenia „{{ skill_label_pl }}” na poziomie {{ level }}.
+     data-pl="Nie ma teraz ćwiczenia {{ skill_of }} na poziomie {{ level }}.">
+    Nie ma teraz ćwiczenia {{ skill_of }} na poziomie {{ level }}.
   </p>
   {% else %}
   <p class="poligon-muted"
@@ -48,7 +50,7 @@
   </p>
   {% endif %}
   <div class="poligon-actions">
-    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć do ćwiczeń">Wróć do ćwiczeń</a>
     {% if user.is_authenticated %}
     <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:settings' %}" data-en="Change the level" data-pl="Zmień poziom">Zmień poziom</a>
     <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:reviews' %}" data-en="Flashcards" data-pl="Fiszki">Fiszki</a>

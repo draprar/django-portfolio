@@ -21,9 +21,9 @@
     /
     <span data-en="{{ right.name_en }}" data-pl="{{ right.name_pl }}">{{ right.name_pl }}</span>
   </h1>
-  <p class="walczak-muted" data-en="Low, medium, and high are an editorial judgment, not a measure of strength." data-pl="Poziomy nisko, średnio i wysoko to ocena redakcji, nie pomiar siły.">Poziomy nisko, średnio i wysoko to ocena redakcji, nie pomiar siły.</p>
+  <p class="walczak-muted" data-en="Low, medium, and high are an editorial judgment, not a measure of strength." data-pl="Poziomy nisko, średnio i wysoko to ocena redakcji. Nie mierzymy nimi siły.">Poziomy nisko, średnio i wysoko to ocena redakcji. Nie mierzymy nimi siły.</p>
   {% if not studies %}
-  <p class="walczak-muted" data-en="We do not compare styles on personality or research, because that data is not here." data-pl="Nie porównujemy stylów pod kątem osobowości ani badań, bo takich danych tu nie ma.">Nie porównujemy stylów pod kątem osobowości ani badań, bo takich danych tu nie ma.</p>
+  <p class="walczak-muted" data-en="We do not compare styles on personality or research, because that data is not here." data-pl="Nie zestawiamy stylów pod kątem osobowości ani badań. Takich danych tu nie ma.">Nie zestawiamy stylów pod kątem osobowości ani badań. Takich danych tu nie ma.</p>
   {% endif %}
 </header>
 
@@ -33,7 +33,7 @@
     <div>
       <h3 data-en="{{ left.name_en }}" data-pl="{{ left.name_pl }}">{{ left.name_pl }}</h3>
       {% if left.is_umbrella %}
-      <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.">Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.</p>
+      <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.">To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.</p>
       {% endif %}
       {% for item in left.style_types.all %}
       <p data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</p>
@@ -44,7 +44,7 @@
     <div>
       <h3 data-en="{{ right.name_en }}" data-pl="{{ right.name_pl }}">{{ right.name_pl }}</h3>
       {% if right.is_umbrella %}
-      <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.">Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.</p>
+      <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.">To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.</p>
       {% endif %}
       {% for item in right.style_types.all %}
       <p data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</p>

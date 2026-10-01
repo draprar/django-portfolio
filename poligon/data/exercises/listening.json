@@ -44,7 +44,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-002-logistics",
@@ -91,7 +101,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-003-checkpoint",
@@ -138,7 +158,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-004-weather-delay",
@@ -185,7 +215,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-005-radio-check",
@@ -232,7 +272,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-006-meal-times",
@@ -279,7 +329,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-007-medical",
@@ -326,7 +386,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-008-coordinates",
@@ -373,7 +443,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-009-uniform",
@@ -420,7 +500,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-010-duty-roster",
@@ -467,7 +557,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-011-fuel-stop",
@@ -514,7 +614,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-012-visitor",
@@ -561,7 +671,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-013-lost-kit",
@@ -608,7 +728,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-014-range-safety",
@@ -655,7 +785,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-015-room-change",
@@ -702,7 +842,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-016-night-march",
@@ -749,7 +899,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-017-spare-part",
@@ -796,7 +956,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-018-roll-call",
@@ -843,7 +1013,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-019-river-plan",
@@ -890,7 +1070,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "listen-020-phone-message",
@@ -937,6 +1127,16 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

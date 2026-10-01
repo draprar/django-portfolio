@@ -46,7 +46,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "external"
   },
   {
     "slug": "l1-r-03-meal",
@@ -95,7 +105,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "external"
   },
   {
     "slug": "l1-r-04-map",
@@ -144,7 +164,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "external"
   },
   {
     "slug": "l1-r-05-bus",
@@ -193,7 +223,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "external"
   },
   {
     "slug": "l1-r-06-rain",
@@ -242,7 +282,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "external"
   },
   {
     "slug": "l1-r-07-tent",
@@ -285,12 +335,22 @@
         "is_correct": false
       },
       {
-        "text_en": "It is about first aid.",
-        "text_pl": "Chodzi o: first aid.",
+        "text_en": "It is about a radio check.",
+        "text_pl": "Chodzi o sprawdzenie łączności.",
         "is_correct": false
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up the whole text; the others name things the text never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza cały tekst — pozostałe mówią o rzeczach, których w nim nie ma.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "external"
   }
 ]

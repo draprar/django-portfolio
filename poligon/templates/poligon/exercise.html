@@ -1,12 +1,13 @@
 {% extends "poligon/base.html" %}
+{% load i18n %}
 
-{% block title %}{{ exercise.title_pl }} | Ćwiczba{% endblock %}
+{% block title %}{% if poligon_lang == "en" %}{{ exercise.title_en }}{% else %}{{ exercise.title_pl }}{% endif %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
   <p class="poligon-meta">
     {% include "poligon/partials/skill.html" with skill=exercise.skill %}
-    <span data-en="level {{ exercise.level }}" data-pl="poziom {{ exercise.level }}">poziom {{ exercise.level }}</span>
+    <span data-en="level {{ exercise.level }} — {{ level_en }}" data-pl="poziom {{ exercise.level }} — {{ level_pl }}">poziom {{ exercise.level }} — {{ level_pl }}</span>
     <span>{{ exercise.expected_minutes }} min</span>
     <span data-en="{{ exercise.category_en }}" data-pl="{{ exercise.category_pl }}">{{ exercise.category_pl }}</span>
   </p>
@@ -14,21 +15,33 @@
   <p class="poligon-subtitle" data-en="{{ exercise.instructions_en }}" data-pl="{{ exercise.instructions_pl }}">{{ exercise.instructions_pl }}</p>
 </header>
 
-<form method="post" class="poligon-card poligon-task">
+<form method="post" class="poligon-card poligon-task" novalidate>
   {% csrf_token %}
+  {% if choice_error %}
+  <p class="poligon-form-error" role="alert">{% trans "Wybierz jedną odpowiedź, potem wyślij." %}</p>
+  {% endif %}
+  {% if answer_error %}
+  <p class="poligon-form-error" role="alert">{% trans "Wpisz odpowiedź po angielsku, potem wyślij." %}</p>
+  {% endif %}
 
   {% if exercise.exercise_type == "listening" %}
   <div class="poligon-listen">
+    {% if delivery.audio_url %}
+    <audio controls src="{{ delivery.audio_url }}"></audio>
+    <p class="poligon-muted">{% trans "Nagranie" %}: {{ delivery.speaker }} · {% trans "Tempo" %}: {{ delivery.tempo }}</p>
+    {% else %}
     <button type="button" class="poligon-btn poligon-btn-quiet" id="speakBtn"
             data-en="Play" data-pl="Odtwórz"
             data-script="{{ script }}">Odtwórz</button>
     <span class="poligon-muted" id="speakHint"
-          data-en="Your browser reads it out loud. It is not a voice actor recording."
-          data-pl="Czyta Ci to przeglądarka. To nie nagranie lektora."
           data-missing-en="This browser has no English voice, so playback stays silent. Open “Show the text” and read it."
           data-missing-pl="Ta przeglądarka nie ma angielskiego głosu, więc odtwarzanie będzie ciche. Otwórz „Pokaż tekst” i przeczytaj.">
-      Czyta Ci to przeglądarka. To nie nagranie lektora.
+      {% trans "To jest zapasowa synteza mowy, nie nagranie lektora." %}
     </span>
+    {% if delivery.speaker %}
+    <p class="poligon-muted">{% trans "Mówca" %}: {{ delivery.speaker }} · {% trans "Tempo" %}: {{ delivery.tempo }}</p>
+    {% endif %}
+    {% endif %}
   </div>
   <details class="poligon-reveal">
     <summary data-en="Show the text" data-pl="Pokaż tekst">Pokaż tekst</summary>
@@ -41,11 +54,11 @@
   <p class="poligon-prompt" lang="en">{{ exercise.prompt_en }}</p>
   {% endif %}
 
-  {% if exercise.exercise_type == "mcq" or exercise.exercise_type == "listening" %}
+  {% if exercise.exercise_type == "mcq" or exercise.exercise_type == "listening" or exercise.exercise_type == "true_false" %}
   <div class="poligon-options">
     {% for option in options %}
     <label class="poligon-option">
-      <input type="radio" name="option_id" value="{{ option.id }}" required>
+      <input type="radio" name="option_id" value="{{ option.id }}">
       <span lang="en">{{ option.text_en }}</span>
     </label>
     {% endfor %}
@@ -53,7 +66,7 @@
   {% else %}
   {% if exercise.prompt_pl %}
   <details class="poligon-reveal">
-    <summary data-en="Show the task in Polish" data-pl="Nie rozumiem — pokaż po polsku">Nie rozumiem — pokaż po polsku</summary>
+    <summary data-en="Show the task in Polish" data-pl="Nie rozumiem. Pokaż po polsku">Nie rozumiem. Pokaż po polsku</summary>
     <p>{{ exercise.prompt_pl }}</p>
   </details>
   {% endif %}
@@ -66,19 +79,19 @@
     <p id="recordStatus" class="poligon-muted" role="status"></p>
   </div>
   <p class="poligon-muted"
-     data-en="The recording stays on the device and is not sent. Say the answer out loud, then write the same thing below. Feedback reads the text."
-     data-pl="Nagranie zostaje na urządzeniu i nie jest wysyłane. Powiedz odpowiedź na głos, potem zapisz to samo poniżej. Ocena czyta tekst.">
-    Nagranie zostaje na urządzeniu i nie jest wysyłane. Powiedz odpowiedź na głos, potem zapisz to samo poniżej. Ocena czyta tekst.
+     data-en="The check uses only the text you type. The recording stays on this device."
+     data-pl="Ocena dotyczy wyłącznie wpisanego tekstu. Nagranie pozostaje na urządzeniu.">
+    Ocena dotyczy wyłącznie wpisanego tekstu. Nagranie pozostaje na urządzeniu.
   </p>
   {% endif %}
 
   <label class="poligon-answer-label" for="poligon-answer">
     <span data-en="Your answer in English" data-pl="Twoja odpowiedź po angielsku">Twoja odpowiedź po angielsku</span>
   </label>
-  <textarea id="poligon-answer" name="answer" rows="12" required lang="en"
+  <textarea id="poligon-answer" name="answer" rows="12" lang="en"
             placeholder="Write your answer in English."
             data-en="Write your answer in English."
-            data-pl="Pisz po angielsku — tylko angielski jest oceniany."></textarea>
+            data-pl="Pisz po angielsku. Oceniamy tylko angielski."></textarea>
   {% endif %}
 
   <button class="poligon-btn" type="submit" data-en="Check it" data-pl="Sprawdź">Sprawdź</button>

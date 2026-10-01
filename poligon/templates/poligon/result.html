@@ -1,25 +1,48 @@
 {% extends "poligon/base.html" %}
+{% load i18n %}
 
-{% block title %}{{ exercise.title_pl }} | Ćwiczba{% endblock %}
+{% block title %}{% if poligon_lang == "en" %}{{ exercise.title_en }}{% else %}{{ exercise.title_pl }}{% endif %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
   <p class="poligon-meta">
     {% include "poligon/partials/skill.html" with skill=exercise.skill %}
-    <span data-en="level {{ exercise.level }}" data-pl="poziom {{ exercise.level }}">poziom {{ exercise.level }}</span>
+    <span data-en="level {{ exercise.level }} — {{ level_en }}" data-pl="poziom {{ exercise.level }} — {{ level_pl }}">poziom {{ exercise.level }} — {{ level_pl }}</span>
     <span data-en="{{ exercise.category_en }}" data-pl="{{ exercise.category_pl }}">{{ exercise.category_pl }}</span>
   </p>
   <h1 class="poligon-title" data-en="{{ exercise.title_en }}" data-pl="{{ exercise.title_pl }}">{{ exercise.title_pl }}</h1>
 </header>
 
 <section class="poligon-card poligon-result">
+  {% if feedback.evaluator_version != "writing_eval_v2" %}
   <div class="poligon-big">{{ submission.score|floatformat:0 }}%</div>
+  {% endif %}
 
-  {% if feedback.choice_result %}
+  {% if feedback.evaluator_version == "writing_eval_v2" %}
+    <p class="poligon-verdict">
+      {% if feedback.overall_band == "strong" %}{% trans "Pewnie" %}
+      {% elif feedback.overall_band == "developing" %}{% trans "W rozwoju" %}
+      {% else %}{% trans "Do poprawy" %}
+      {% endif %}
+    </p>
+    <div class="poligon-metrics">
+      {% for name, band in feedback.bands.items %}
+      <div><span>{{ name }}</span><strong>
+        {% if band == "strong" %}{% trans "Pewnie" %}
+        {% elif band == "developing" %}{% trans "W rozwoju" %}
+        {% else %}{% trans "Do poprawy" %}
+        {% endif %}
+      </strong></div>
+      {% endfor %}
+    </div>
+    {% if hint_pl %}
+    <p class="poligon-verdict" data-en="{{ hint_en }}" data-pl="{{ hint_pl }}">{{ hint_pl }}</p>
+    {% endif %}
+  {% elif feedback.choice_result %}
     {% if feedback.correct %}
     <p class="poligon-verdict" data-en="Correct." data-pl="Dobrze.">Dobrze.</p>
     {% else %}
-    <p class="poligon-verdict" data-en="Not this time." data-pl="Tym razem nie.">Tym razem nie.</p>
+    <p class="poligon-verdict" data-en="Incorrect answer." data-pl="Niepoprawna odpowiedź.">Niepoprawna odpowiedź.</p>
     {% if selected_option %}
     <p class="poligon-muted">
       <span data-en="Selected answer" data-pl="Wybrana odpowiedź">Wybrana odpowiedź</span>:
@@ -38,26 +61,26 @@
     {% endif %}
   {% else %}
   <div class="poligon-metrics">
-    <div><span data-en="Structure" data-pl="Budowa zdań">Budowa zdań</span><strong>{{ feedback.structure }}%</strong></div>
-    <div><span data-en="Vocabulary" data-pl="Słownictwo">Słownictwo</span><strong>{{ feedback.vocabulary }}%</strong></div>
-    <div><span data-en="Fluency" data-pl="Płynność">Płynność</span><strong>{{ feedback.fluency }}%</strong></div>
-    <div><span data-en="Clarity" data-pl="Jasność">Jasność</span><strong>{{ feedback.clarity }}%</strong></div>
+    <div><span data-en="Words" data-pl="Słów">Słów</span><strong>{{ feedback.word_count }}</strong></div>
+    <div><span data-en="Sentences" data-pl="Zdań">Zdań</span><strong>{{ feedback.sentence_count }}</strong></div>
   </div>
   {% if hint_pl %}
   <p class="poligon-verdict" data-en="{{ hint_en }}" data-pl="{{ hint_pl }}">{{ hint_pl }}</p>
   {% endif %}
   <p class="poligon-muted"
-     data-en="This is a rule-based hint, not an official assessment."
-     data-pl="To podpowiedź z reguł, nie oficjalna ocena.">
-    To podpowiedź z reguł, nie oficjalna ocena.
+     data-en="This describes the shape of the text you typed. It does not check whether the answer does the task."
+     data-pl="To tylko opis długości odpowiedzi. Nie sprawdzamy, czy pasuje do polecenia.">
+    To tylko opis długości odpowiedzi. Nie sprawdzamy, czy pasuje do polecenia.
   </p>
   {% endif %}
 
+  <h2>{% trans "Następny krok" %}</h2>
+  <p data-en="{{ next_en }}" data-pl="{{ next_pl }}">{{ next_pl }}</p>
   <div class="poligon-actions">
-    <a class="poligon-btn" href="{% url 'poligon:dashboard' %}"
-       data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
-    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:practice' %}?skill={{ exercise.skill }}"
-       data-en="One more of these" data-pl="Jeszcze jedno takie">Jeszcze jedno takie</a>
+    <a class="poligon-btn" href="{{ next_url }}"
+       data-en="{{ next_label_en }}" data-pl="{{ next_label_pl }}">{{ next_label_pl }}</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}"
+       data-en="Back to the dashboard" data-pl="Wróć do ćwiczeń">Wróć do ćwiczeń</a>
   </div>
 </section>
 

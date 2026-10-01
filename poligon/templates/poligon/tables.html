@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Tablice | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Tablice" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -53,7 +54,7 @@
 <section class="poligon-card">
   <div class="poligon-actions">
     <a class="poligon-btn" href="{% url 'poligon:dashboard' %}"
-       data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+       data-en="Back to the dashboard" data-pl="Wróć do ćwiczeń">Wróć do ćwiczeń</a>
   </div>
 </section>
 {% endblock %}

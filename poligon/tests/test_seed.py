@@ -7,22 +7,43 @@ from django.core.management import call_command
 from poligon.models import Exercise, Submission, VocabularyItem
 from poligon.tests.factories import make_learner
 
-EXPECTED_EXERCISE_LEVELS = {0: 32, 1: 30, 2: 80, 3: 31, 4: 16, 5: 16}
-EXPECTED_VOCAB_LEVELS = {0: 197, 1: 191, 2: 188, 3: 199, 4: 199, 5: 199}
+EXPECTED_EXERCISE_LEVELS = {1: 73, 2: 87, 3: 40, 4: 25, 5: 27}
+EXPECTED_EXERCISE_COUNT = 252
+EXPECTED_VOCAB_LEVELS = {1: 388, 2: 188, 3: 199, 4: 199, 5: 199}
 
 
 @pytest.mark.django_db
 def test_seed_poligon_is_bilingual_and_safe_to_repeat():
     call_command("seed_poligon")
-    assert Exercise.objects.count() == 205
+    assert Exercise.objects.count() == EXPECTED_EXERCISE_COUNT
     assert VocabularyItem.objects.count() == 1173
-    assert Exercise.objects.filter(skill="L").count() == 52
+    assert Exercise.objects.filter(skill="L").count() == 61
     for level, count in EXPECTED_EXERCISE_LEVELS.items():
         assert Exercise.objects.filter(level=level).count() == count
     for level, count in EXPECTED_VOCAB_LEVELS.items():
         assert VocabularyItem.objects.filter(level=level).count() == count
+    assert Exercise.objects.filter(level=0).count() == 0
+    assert VocabularyItem.objects.filter(level=0).count() == 0
     assert Exercise.objects.filter(level=0, content_source="wikipedia").count() == 0
     assert Exercise.objects.filter(content_source="wikipedia").count() == 21
+    from poligon.content_validation import load_exercises
+
+    published = {item["slug"] for item in load_exercises() if item.get("publication_status") == "published"}
+    legacy = {
+        item["slug"]
+        for item in load_exercises()
+        if item.get("publication_status") == "published" and item.get("quality_status") == "legacy"
+    }
+    active = set(Exercise.objects.filter(active=True).values_list("slug", flat=True))
+    assert active == published
+    assert Exercise.objects.filter(publication_status="published", quality_status="legacy").count() == len(legacy)
+    assert len(published - legacy) == 20
+    for item in Exercise.objects.filter(active=True, exercise_type__in=("mcq", "listening")):
+        options = list(item.options.all())
+        assert len(options) == 4, item.slug
+        assert sum(option.is_correct for option in options) == 1, item.slug
+        assert all(option.text_en.strip() for option in options), item.slug
+        assert not all(option.text_en.startswith("It is about") for option in options), item.slug
     assert not Exercise.objects.exclude(content_source="original").filter(attribution_en="").exists()
     assert not VocabularyItem.objects.exclude(content_source="original").filter(attribution_en="").exists()
     assert not VocabularyItem.objects.filter(content_source="wiktionary", attribution_en="").exists()
@@ -41,9 +62,9 @@ def test_seed_poligon_is_bilingual_and_safe_to_repeat():
     learner = make_learner()
     Submission.objects.create(learner=learner, exercise=exercise, score=10)
     call_command("seed_poligon")
-    assert Exercise.objects.count() == 205
+    assert Exercise.objects.count() == EXPECTED_EXERCISE_COUNT
     assert VocabularyItem.objects.count() == 1173
-    assert Exercise.objects.filter(skill="L").count() == 52
+    assert Exercise.objects.filter(skill="L").count() == 61
     assert Exercise.objects.filter(content_source="wikipedia").count() == 21
     assert not Exercise.objects.exclude(content_source="original").filter(attribution_en="").exists()
     assert not VocabularyItem.objects.filter(content_source="wiktionary", attribution_en="").exists()

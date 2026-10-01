@@ -22,7 +22,17 @@
     "instructions_en": "Say it out loud in English. Write down the same thing so you get feedback.",
     "instructions_pl": "Powiedz to na głos po angielsku. Zapisz to samo, żeby dostać informację zwrotną.",
     "prompt_en": "In a few connected sentences, explain when you need water and what you do if it is missing. Give a reason and a backup plan.",
-    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: woda, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy."
+    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: woda, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-s-01-gate",
@@ -47,7 +57,17 @@
     "instructions_en": "Say it out loud in English. Write down the same thing so you get feedback.",
     "instructions_pl": "Powiedz to na głos po angielsku. Zapisz to samo, żeby dostać informację zwrotną.",
     "prompt_en": "In a few connected sentences, explain when you need gate and what you do if it is missing. Give a reason and a backup plan.",
-    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: brama, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy."
+    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: brama, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-s-02-radio",
@@ -72,7 +92,17 @@
     "instructions_en": "Say it out loud in English. Write down the same thing so you get feedback.",
     "instructions_pl": "Powiedz to na głos po angielsku. Zapisz to samo, żeby dostać informację zwrotną.",
     "prompt_en": "In a few connected sentences, explain when you need radio and what you do if it is missing. Give a reason and a backup plan.",
-    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: radiostacja, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy."
+    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: radiostacja, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-s-03-meal",
@@ -97,6 +127,16 @@
     "instructions_en": "Say it out loud in English. Write down the same thing so you get feedback.",
     "instructions_pl": "Powiedz to na głos po angielsku. Zapisz to samo, żeby dostać informację zwrotną.",
     "prompt_en": "In a few connected sentences, explain when you need meal and what you do if it is missing. Give a reason and a backup plan.",
-    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: posiłek, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy."
+    "prompt_pl": "W kilku powiązanych zdaniach wyjaśnij, kiedy potrzebujesz: posiłek, i co robisz, gdy tego brakuje. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

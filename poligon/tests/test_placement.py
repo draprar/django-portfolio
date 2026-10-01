@@ -1,54 +1,63 @@
 import pytest
+from django.core.management import call_command
 from django.urls import reverse
 
-from poligon.models import LearnerState, Submission
+from poligon.models import Exercise, LearnerState, PlacementAttempt, Submission
 from poligon.tests.factories import make_mcq
 
 
-def build_quiz():
-    """Two reading questions per level, the way placement picks them."""
-    questions = []
-    for level in (1, 2, 3, 4, 5):
-        for index in range(2):
-            questions.append(make_mcq(slug=f"p-{level}-{index}", skill="R", level=level))
-    return questions
+def load_bank():
+    call_command("seed_poligon", "--placement-only")
+    return list(Exercise.objects.filter(catalog_role="placement").order_by("level", "slug"))
 
 
 def answers(questions, right_count):
     posted = {}
     for position, question in enumerate(questions):
-        option = question.options.get(is_correct=position < right_count)
+        if position < right_count:
+            option = question.options.get(is_correct=True)
+        else:
+            option = question.options.filter(is_correct=False).first()
         posted[f"q{question.pk}"] = option.pk
     return posted
 
 
 @pytest.mark.django_db
-def test_placement_asks_ten_questions_in_english(member_client):
-    build_quiz()
+def test_placement_asks_fifteen_questions_from_the_bank(member_client):
+    load_bank()
+    make_mcq(slug="practice-note", prompt_en="This practice item is not a placement question.")
     content = member_client.get(reverse("poligon:placement")).content.decode()
-    assert "Pytanie 1 z 10" in content
-    assert "10/10" not in content
-    assert content.count("Question in English.") == 10
+    assert "Pytanie 1 z 15" in content
+    assert "STANAG" not in content
+    assert "The vehicle gate opens at seven thirty." in content
+    assert "This practice item is not a placement question." not in content
     assert "Pytanie po polsku." not in content
 
 
 @pytest.mark.django_db
 @pytest.mark.parametrize(
     ("right", "expected"),
-    [(0, 0), (1, 0), (2, 1), (5, 2), (8, 4), (10, 5)],
+    [(0, 1), (3, 1), (4, 2), (6, 2), (7, 3), (9, 3), (10, 4), (12, 4), (13, 5), (15, 5)],
 )
-def test_two_right_answers_are_worth_one_level(member_client, right, expected):
-    questions = build_quiz()
+def test_placement_v1_suggests_a_level_from_fifteen_answers(member_client, right, expected):
+    questions = load_bank()
     response = member_client.post(reverse("poligon:placement"), answers(questions, right))
     content = response.content.decode()
     assert response.status_code == 200
     assert f'<h1 class="poligon-title">{expected}</h1>' in content
-    assert f"{right} z 10 dobrze" in content
+    assert f"proponujemy poziom {expected}" in content
+    assert "oficjalna ocena" in content
+    assert "Twój angielski to poziom" not in content
+    attempt = PlacementAttempt.objects.get()
+    assert attempt.algorithm_version == "placement_v1"
+    assert attempt.correct_count == right
+    assert attempt.suggested_level == expected
+    assert attempt.question_count == 15
 
 
 @pytest.mark.django_db
 def test_placement_is_a_suggestion_until_the_learner_accepts_it(member_client):
-    questions = build_quiz()
+    questions = load_bank()
     member_client.post(reverse("poligon:placement"), answers(questions, 8))
     assert LearnerState.objects.get().practice_level == 2
 
@@ -62,14 +71,14 @@ def test_placement_is_a_suggestion_until_the_learner_accepts_it(member_client):
 
 @pytest.mark.django_db
 def test_placement_does_not_count_as_practice(member_client):
-    questions = build_quiz()
+    questions = load_bank()
     member_client.post(reverse("poligon:placement"), answers(questions, 10))
     assert Submission.objects.count() == 0
 
 
 @pytest.mark.django_db
 def test_placement_does_not_always_lead_with_the_right_answer(member_client):
-    questions = build_quiz()
+    questions = load_bank()
     content = member_client.get(reverse("poligon:placement")).content.decode()
     first_is_correct = 0
     for question in questions:
@@ -82,23 +91,39 @@ def test_placement_does_not_always_lead_with_the_right_answer(member_client):
 
 
 @pytest.mark.django_db
-def test_placement_prefers_original_notes_on_the_easy_levels(member_client):
+def test_placement_ignores_the_practice_catalog(member_client):
+    load_bank()
     make_mcq(slug="wiki-easy", level=1, content_source="wikipedia", prompt_en="A long Wikipedia lead about logistics.")
     make_mcq(slug="note-a", level=1, content_source="original", prompt_en="The gate opens at seven.")
-    make_mcq(slug="note-b", level=1, content_source="original", prompt_en="The meal is ready at noon.")
     content = member_client.get(reverse("poligon:placement")).content.decode()
-    assert "The gate opens at seven." in content
-    assert "The meal is ready at noon." in content
+    assert "The vehicle gate opens at seven thirty." in content
+    assert "The gate opens at seven." not in content
     assert "A long Wikipedia lead about logistics." not in content
 
 
 @pytest.mark.django_db
-def test_placement_shortens_a_wikipedia_lead_when_nothing_original_exists(member_client):
+def test_placement_is_empty_when_only_a_wikipedia_lead_exists(member_client):
     lead = "Weather changes every hour. " + ("Storms follow the coast. " * 40)
     make_mcq(slug="wiki-only", level=1, content_source="wikipedia", prompt_en=lead)
     content = member_client.get(reverse("poligon:placement")).content.decode()
-    assert "Weather changes every hour." in content
-    assert "Storms follow the coast. " * 20 not in content
+    assert "poligon-empty" in content
+    assert "Weather changes every hour." not in content
+
+
+@pytest.mark.django_db
+def test_placement_skips_an_inactive_gist_and_a_wikipedia_item(member_client):
+    load_bank()
+    make_mcq(slug="gist-off", level=2, active=False, prompt_en="It is about the water.")
+    make_mcq(
+        slug="wiki-on",
+        level=2,
+        content_source="wikipedia",
+        prompt_en="A Wikipedia lead about a bridge.",
+    )
+    content = member_client.get(reverse("poligon:placement")).content.decode()
+    assert "The vehicle gate opens at seven thirty." in content
+    assert "It is about the water." not in content
+    assert "A Wikipedia lead about a bridge." not in content
 
 
 @pytest.mark.django_db

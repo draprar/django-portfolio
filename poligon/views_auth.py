@@ -8,10 +8,12 @@ one account works across the whole portfolio, but every page here is Ćwiczba's.
 
 from __future__ import annotations
 
+import json
 import logging
 
 from django.contrib import messages
 from django.contrib.auth import login, logout, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
@@ -22,6 +24,7 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.html import escape
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.translation import gettext as _
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from django_ratelimit.decorators import ratelimit
@@ -35,8 +38,10 @@ from tonguetwister.services import (
 )
 from tonguetwister.tokens import account_activation_token
 
+from .events import record_event
 from .identity import account_state, adopt_guest_level
-from .models import Submission
+from .levels import level_names
+from .models import PlacementAttempt, ProductEvent, Review, Submission
 from .services import due_review_count
 
 logger = logging.getLogger(__name__)
@@ -44,7 +49,7 @@ logger = logging.getLogger(__name__)
 SIGNED_UP = "Konto jest prawie gotowe. Sprawdź skrzynkę i kliknij link, żeby je potwierdzić."
 ACTIVATED = "Konto potwierdzone. Możesz się zalogować."
 ACTIVATION_BROKEN = "Ten link już nie działa. Zarejestruj się jeszcze raz albo napisz do nas."
-LEVEL_MOVED = "Ustawiliśmy na koncie poziom, który przed chwilą wybrałeś."
+LEVEL_MOVED = "Na koncie ustawiliśmy poziom wybrany przed chwilą."
 PASSWORD_SENT = "Jeśli konto istnieje, wyślemy link do zmiany hasła."
 PASSWORD_CHANGED = "Hasło zmienione. Zaloguj się nowym hasłem."
 PASSWORD_LINK_BROKEN = "Ten link do zmiany hasła już nie działa. Poproś o nowy."
@@ -52,6 +57,7 @@ PASSWORD_LINK_BROKEN = "Ten link do zmiany hasła już nie działa. Poproś o no
 
 def account(request: HttpRequest) -> HttpResponse:
     state = account_state(request)
+    names = level_names(state.practice_level) if state is not None else ("", "")
     return render(
         request,
         "poligon/account.html",
@@ -59,6 +65,8 @@ def account(request: HttpRequest) -> HttpResponse:
             "state": state,
             "done": Submission.objects.filter(learner=state).count() if state else 0,
             "due_reviews": due_review_count(state) if state else 0,
+            "level_en": names[0],
+            "level_pl": names[1],
         },
     )
 
@@ -71,14 +79,15 @@ def login_view(request: HttpRequest) -> HttpResponse:
         if form.is_valid():
             user = form.get_user()
             if not is_email_confirmed(user):
-                messages.error(request, LOGIN_FAILURE_MESSAGE)
+                messages.error(request, _(LOGIN_FAILURE_MESSAGE))
                 return render(request, "poligon/auth_login.html", {"form": form})
             login(request, user)
             state = account_state(request)
             if state is not None and adopt_guest_level(request, state):
-                messages.success(request, LEVEL_MOVED)
+                messages.success(request, _(LEVEL_MOVED))
             return redirect("poligon:dashboard")
-        messages.error(request, LOGIN_FAILURE_MESSAGE)
+        if form.non_field_errors():
+            messages.error(request, _(LOGIN_FAILURE_MESSAGE))
     return render(request, "poligon/auth_login.html", {"form": form})
 
 
@@ -94,8 +103,9 @@ def register_view(request: HttpRequest) -> HttpResponse:
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            record_event(request, "account_created", {"user_id": user.pk})
             _send_activation_email(user, request)
-            messages.success(request, SIGNED_UP)
+            messages.success(request, _(SIGNED_UP))
             return redirect("poligon:login")
         for errors in form.errors.values():
             for error in errors:
@@ -112,13 +122,13 @@ def activate(request: HttpRequest, uidb64: str, token: str) -> HttpResponse:
             profile = user.profile
         except ObjectDoesNotExist:
             logger.warning("Poligon activation without a profile for user_id=%s", user.pk)
-            messages.error(request, ACTIVATION_BROKEN)
+            messages.error(request, _(ACTIVATION_BROKEN))
             return redirect("poligon:register")
         profile.email_confirmed = True
         profile.save(update_fields=["email_confirmed"])
-        messages.success(request, ACTIVATED)
+        messages.success(request, _(ACTIVATED))
         return redirect("poligon:login")
-    messages.error(request, ACTIVATION_BROKEN)
+    messages.error(request, _(ACTIVATION_BROKEN))
     return redirect("poligon:register")
 
 
@@ -130,7 +140,7 @@ def password_view(request: HttpRequest) -> HttpResponse:
         if user is not None:
             _send_password_email(user, request)
         # Same answer either way, so the form never confirms who has an account.
-        messages.success(request, PASSWORD_SENT)
+        messages.success(request, _(PASSWORD_SENT))
         return redirect("poligon:login")
     return render(request, "poligon/auth_password.html")
 
@@ -141,7 +151,7 @@ def password_view(request: HttpRequest) -> HttpResponse:
 def password_set_view(request: HttpRequest, uidb64: str, token: str) -> HttpResponse:
     user = _user_from_uid(uidb64)
     if user is None or not default_token_generator.check_token(user, token):
-        messages.error(request, PASSWORD_LINK_BROKEN)
+        messages.error(request, _(PASSWORD_LINK_BROKEN))
         return redirect("poligon:password")
 
     if request.method == "POST":
@@ -149,7 +159,7 @@ def password_set_view(request: HttpRequest, uidb64: str, token: str) -> HttpResp
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, PASSWORD_CHANGED)
+            messages.success(request, _(PASSWORD_CHANGED))
             return redirect("poligon:login")
         for errors in form.errors.values():
             for error in errors:
@@ -176,14 +186,16 @@ def _send_activation_email(user: User, request: HttpRequest) -> None:
         )
     )
     safe_link = escape(link)
-    html = f"""
-    <p><strong>Cześć, {escape(user.username)}!</strong></p>
-    <p>Potwierdź konto w Ćwiczbie, a Twój poziom i fiszki przestaną zależeć od jednej przeglądarki.</p>
-    <p><a href="{safe_link}">Potwierdzam konto</a></p>
-    <p>Jeśli link nie działa, wklej go do przeglądarki:<br>{safe_link}</p>
-    <p>Do zobaczenia na treningu<br><strong>Ćwiczba</strong></p>
-    """
-    _send(user, "Potwierdź konto w Ćwiczbie", html)
+    intro = _("Potwierdź konto w Ćwiczbie, a Twój poziom i fiszki przestaną zależeć od jednej przeglądarki.")
+    action = _("Potwierdzam konto")
+    html = (
+        f"<p><strong>{escape(user.username)}</strong></p>"
+        f"<p>{intro}</p>"
+        f'<p><a href="{safe_link}">{action}</a></p>'
+        f"<p>{safe_link}</p>"
+    )
+    text = f"{user.username}\n{intro}\n{action}: {link}\n"
+    _send(user, _("Potwierdź konto w Ćwiczbie"), html, text)
 
 
 def _send_password_email(user: User, request: HttpRequest) -> None:
@@ -194,18 +206,88 @@ def _send_password_email(user: User, request: HttpRequest) -> None:
         )
     )
     safe_link = escape(link)
-    html = f"""
-    <p><strong>Cześć, {escape(user.username)}!</strong></p>
-    <p>Ktoś poprosił o nowe hasło do konta w Ćwiczbie. Jeśli to Ty, ustaw je tutaj:</p>
-    <p><a href="{safe_link}">Ustawiam nowe hasło</a></p>
-    <p>Jeśli to nie Ty, zignoruj tę wiadomość. Hasło zostaje bez zmian.</p>
-    <p>Ćwiczba</p>
-    """
-    _send(user, "Nowe hasło do Ćwiczby", html)
+    intro = _("Ktoś poprosił o nowe hasło do konta w Ćwiczbie. Jeśli to Ty, ustaw je tutaj:")
+    action = _("Ustawiam nowe hasło")
+    ignore = _("Jeśli to nie Ty, zignoruj tę wiadomość. Hasło zostaje bez zmian.")
+    html = (
+        f"<p><strong>{escape(user.username)}</strong></p>"
+        f"<p>{intro}</p>"
+        f'<p><a href="{safe_link}">{action}</a></p>'
+        f"<p>{ignore}</p>"
+        f"<p>{safe_link}</p>"
+    )
+    text = f"{user.username}\n{intro}\n{action}: {link}\n{ignore}\n"
+    _send(user, _("Nowe hasło do Ćwiczby"), html, text)
 
 
-def _send(user: User, subject: str, html: str) -> None:
+@login_required(login_url="poligon:login")
+def export_account(request: HttpRequest) -> HttpResponse:
+    """A file the learner can keep. It does not include the password."""
+    state = account_state(request)
+    if state is None:
+        return redirect("poligon:account")
+    payload = {
+        "username": request.user.username,
+        "email": request.user.email,
+        "practice_level": state.practice_level,
+        "daily_minutes": state.daily_minutes,
+        "target_date": state.target_date.isoformat() if state.target_date else None,
+        "submissions": [
+            {
+                "slug": row.exercise.slug,
+                "score": row.score,
+                "answer_text": row.answer_text,
+                "completed_at": row.completed_at.isoformat(),
+                "feedback": row.feedback,
+            }
+            for row in Submission.objects.filter(learner=state).select_related("exercise")
+        ],
+        "reviews": [
+            {
+                "term": row.item.term,
+                "due_at": row.due_at.isoformat(),
+                "interval_days": row.interval_days,
+                "last_grade": row.last_grade,
+            }
+            for row in Review.objects.filter(learner=state).select_related("item")
+        ],
+        "placement": [
+            {
+                "algorithm_version": row.algorithm_version,
+                "correct_count": row.correct_count,
+                "suggested_level": row.suggested_level,
+                "created_at": row.created_at.isoformat(),
+            }
+            for row in PlacementAttempt.objects.filter(learner=state)
+        ],
+        "events": [
+            {"name": row.name, "payload": row.payload, "created_at": row.created_at.isoformat()}
+            for row in ProductEvent.objects.filter(learner=state)
+        ],
+    }
+    body = json.dumps(payload, ensure_ascii=False, indent=2)
+    response = HttpResponse(body, content_type="application/json")
+    response["Content-Disposition"] = 'attachment; filename="cwiczba-export.json"'
+    return response
+
+
+@login_required(login_url="poligon:login")
+@require_POST
+def delete_account(request: HttpRequest) -> HttpResponse:
+    """Remove the account and the training stored on it."""
+    if request.POST.get("confirm") != "usuń":
+        messages.error(request, _("Wpisz usuń, jeśli chcesz skasować konto i trening."))
+        return redirect("poligon:account")
+    user = request.user
+    ProductEvent.objects.filter(payload__user_id=user.pk).delete()
+    logout(request)
+    user.delete()
+    messages.success(request, _("Konto i trening zostały usunięte."))
+    return redirect("poligon:start")
+
+
+def _send(user: User, subject: str, html: str, text: str) -> None:
     try:
-        send_brevo_email(subject, html, [user.email])
+        send_brevo_email(subject, html, [user.email], text_content=text)
     except Exception:
         logger.exception("Failed to send a Poligon account email to user_id=%s", user.pk)

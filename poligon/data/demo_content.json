@@ -153,7 +153,7 @@
       "instructions_en": "Write 100–140 words. Use simple paragraphs and clear sequencing. The heuristic scores English.",
       "instructions_pl": "Napisz 100–140 słów. Użyj prostych akapitów i jasnej kolejności. Heurystyka ocenia tekst po angielsku.",
       "prompt_en": "Write an email to a colleague explaining that a training meeting has moved from Tuesday morning to Tuesday afternoon. Give the new time, explain the reason briefly, and ask the colleague to confirm availability.",
-      "prompt_pl": "Napisz e-mail do kolegi z informacją, że odprawa szkoleniowa przeniosła się z wtorkowego poranka na wtorkowe popołudnie. Podaj nową godzinę, krótko wyjaśnij powód i poproś o potwierdzenie dostępności.",
+      "prompt_pl": "Napisz e-mail do osoby z zespołu z informacją, że odprawa szkoleniowa przeniosła się z wtorkowego poranka na wtorkowe popołudnie. Podaj nową godzinę, krótko wyjaśnij powód i poproś o potwierdzenie dostępności.",
       "content_en": "",
       "content_pl": ""
     },

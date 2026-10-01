@@ -22,7 +22,17 @@
     "instructions_en": "Write your answer in English. Full sentences work better than notes.",
     "instructions_pl": "Napisz odpowiedź po angielsku. Całe zdania działają lepiej niż notatki.",
     "prompt_en": "Write a short note. Mention water, one time, and one person who should confirm it. Give a reason and a backup plan.",
-    "prompt_pl": "Napisz krótką notatkę. Wspomnij: woda, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy."
+    "prompt_pl": "Napisz krótką notatkę. Wspomnij: woda, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-w-01-gate",
@@ -47,7 +57,17 @@
     "instructions_en": "Write your answer in English. Full sentences work better than notes.",
     "instructions_pl": "Napisz odpowiedź po angielsku. Całe zdania działają lepiej niż notatki.",
     "prompt_en": "Write a short note. Mention gate, one time, and one person who should confirm it. Give a reason and a backup plan.",
-    "prompt_pl": "Napisz krótką notatkę. Wspomnij: brama, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy."
+    "prompt_pl": "Napisz krótką notatkę. Wspomnij: brama, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-w-02-radio",
@@ -72,7 +92,17 @@
     "instructions_en": "Write your answer in English. Full sentences work better than notes.",
     "instructions_pl": "Napisz odpowiedź po angielsku. Całe zdania działają lepiej niż notatki.",
     "prompt_en": "Write a short note. Mention radio, one time, and one person who should confirm it. Give a reason and a backup plan.",
-    "prompt_pl": "Napisz krótką notatkę. Wspomnij: radiostacja, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy."
+    "prompt_pl": "Napisz krótką notatkę. Wspomnij: radiostacja, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-w-03-meal",
@@ -97,6 +127,16 @@
     "instructions_en": "Write your answer in English. Full sentences work better than notes.",
     "instructions_pl": "Napisz odpowiedź po angielsku. Całe zdania działają lepiej niż notatki.",
     "prompt_en": "Write a short note. Mention meal, one time, and one person who should confirm it. Give a reason and a backup plan.",
-    "prompt_pl": "Napisz krótką notatkę. Wspomnij: posiłek, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy."
+    "prompt_pl": "Napisz krótką notatkę. Wspomnij: posiłek, jedną godzinę i jedną osobę, która ma to potwierdzić. Podaj powód i plan zastępczy.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

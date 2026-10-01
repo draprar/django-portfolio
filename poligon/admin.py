@@ -1,6 +1,16 @@
 from django.contrib import admin
 
-from .models import ChoiceOption, Exercise, LearnerState, Review, StudyEvent, Submission, VocabularyItem
+from .models import (
+    ChoiceOption,
+    Exercise,
+    LearnerState,
+    PlacementAttempt,
+    ProductEvent,
+    Review,
+    StudyEvent,
+    Submission,
+    VocabularyItem,
+)
 
 
 class ChoiceOptionInline(admin.TabularInline):
@@ -12,13 +22,54 @@ class ChoiceOptionInline(admin.TabularInline):
 
 @admin.register(Exercise)
 class ExerciseAdmin(admin.ModelAdmin):
-    list_display = ("title_pl", "title_en", "skill", "level", "content_source", "exercise_type", "active")
-    list_filter = ("skill", "level", "content_source", "exercise_type", "active")
+    list_display = (
+        "title_en",
+        "skill",
+        "level",
+        "scenario",
+        "publication_status",
+        "quality_status",
+        "exercise_type",
+        "catalog_role",
+        "active",
+    )
+    list_filter = ("publication_status", "quality_status", "skill", "level", "scenario", "exercise_type", "active")
     search_fields = ("title_pl", "title_en", "prompt_pl", "prompt_en", "category_pl", "category_en")
     prepopulated_fields = {"slug": ("title_en",)}
     inlines = [ChoiceOptionInline]
     fieldsets = (
-        ("Identifier", {"fields": ("slug", "skill", "level", "exercise_type", "expected_minutes", "active")}),
+        (
+            "Identifier",
+            {
+                "fields": (
+                    "slug",
+                    "skill",
+                    "level",
+                    "scenario",
+                    "subskill",
+                    "competency",
+                    "exercise_type",
+                    "expected_minutes",
+                    "active",
+                )
+            },
+        ),
+        (
+            "Publication",
+            {
+                "fields": (
+                    "publication_status",
+                    "quality_status",
+                    "learning_objective",
+                    "success_criteria",
+                    "review_status",
+                    "reviewed_by",
+                    "reviewed_at",
+                    "source_type",
+                    "delivery",
+                )
+            },
+        ),
         (
             "Provenance",
             {
@@ -36,12 +87,28 @@ class ExerciseAdmin(admin.ModelAdmin):
         ),
         (
             "🇵🇱 Polska wersja",
-            {"fields": ("title_pl", "category_pl", "instructions_pl", "prompt_pl", "content_pl")},
+            {
+                "fields": (
+                    "title_pl",
+                    "category_pl",
+                    "instructions_pl",
+                    "prompt_pl",
+                    "content_pl",
+                    "explanation_pl",
+                )
+            },
         ),
         (
             "🇬🇧 English version",
             {
-                "fields": ("title_en", "category_en", "instructions_en", "prompt_en", "content_en"),
+                "fields": (
+                    "title_en",
+                    "category_en",
+                    "instructions_en",
+                    "prompt_en",
+                    "content_en",
+                    "explanation_en",
+                ),
                 "description": "Leave blank only if the Polish text is enough for this field.",
             },
         ),
@@ -50,11 +117,11 @@ class ExerciseAdmin(admin.ModelAdmin):
 
 @admin.register(VocabularyItem)
 class VocabularyItemAdmin(admin.ModelAdmin):
-    list_display = ("term", "translation", "content_source", "category_en", "level", "active")
-    list_filter = ("content_source", "level", "active")
+    list_display = ("term", "translation", "content_source", "category_en", "level", "publication_status", "active")
+    list_filter = ("publication_status", "content_source", "level", "active")
     search_fields = ("term", "translation", "explanation_pl", "explanation_en")
     fieldsets = (
-        ("Card", {"fields": ("term", "translation", "level", "active")}),
+        ("Card", {"fields": ("term", "translation", "level", "publication_status", "active")}),
         ("🇵🇱 Polska wersja", {"fields": ("category_pl", "explanation_pl", "example_pl", "attribution_pl")}),
         ("🇬🇧 English version", {"fields": ("category_en", "explanation_en", "example_en", "attribution_en")}),
         (
@@ -82,6 +149,26 @@ class SubmissionAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ("learner", "item", "due_at", "interval_days", "ease", "last_grade")
     search_fields = ("learner__user__username", "item__term")
+
+
+@admin.register(PlacementAttempt)
+class PlacementAttemptAdmin(admin.ModelAdmin):
+    list_display = (
+        "learner",
+        "suggested_level",
+        "correct_count",
+        "question_count",
+        "algorithm_version",
+        "created_at",
+    )
+    list_filter = ("algorithm_version", "suggested_level")
+
+
+@admin.register(ProductEvent)
+class ProductEventAdmin(admin.ModelAdmin):
+    list_display = ("name", "learner", "created_at")
+    list_filter = ("name",)
+    search_fields = ("name",)
 
 
 @admin.register(StudyEvent)

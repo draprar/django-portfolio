@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Konto | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Konto" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -8,8 +9,8 @@
   {% if user.is_authenticated %}
   <p class="poligon-subtitle"
      data-en="Signed in as {{ user.username }}. Your progress follows the account, in any browser."
-     data-pl="Zalogowano jako {{ user.username }}. Postęp chodzi za kontem, w każdej przeglądarce.">
-    Zalogowano jako {{ user.username }}. Postęp chodzi za kontem, w każdej przeglądarce.
+     data-pl="Konto: {{ user.username }}. Postęp jest zapisany, więc zobaczysz go w każdej przeglądarce.">
+    Konto: {{ user.username }}. Postęp jest zapisany, więc zobaczysz go w każdej przeglądarce.
   </p>
   {% else %}
   <p class="poligon-subtitle"
@@ -28,7 +29,7 @@
   </div>
   <div class="poligon-row">
     <span data-en="Level" data-pl="Poziom">Poziom</span>
-    <span>{{ state.practice_level }}</span>
+    <span>{{ state.practice_level }} — <span data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</span></span>
   </div>
   <div class="poligon-row">
     <span data-en="Exercises done" data-pl="Zrobionych ćwiczeń">Zrobionych ćwiczeń</span>
@@ -38,6 +39,22 @@
     <span data-en="Flashcards waiting" data-pl="Fiszki do powtórki">Fiszki do powtórki</span>
     <span>{{ due_reviews }}</span>
   </div>
+</section>
+
+<section class="poligon-card">
+  <div class="poligon-card-head">
+    <h2>{% trans "Twoje dane" %}</h2>
+  </div>
+  <p class="poligon-muted">{% trans "Możesz pobrać swoje dane albo usunąć konto. W pliku nie ma hasła." %}</p>
+  <div class="poligon-actions">
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:export' %}">{% trans "Pobierz moje dane" %}</a>
+  </div>
+  <form method="post" action="{% url 'poligon:delete_account' %}">
+    {% csrf_token %}
+    <label for="poligon-delete">{% trans "Wpisz usuń, jeśli chcesz skasować konto i trening." %}</label>
+    <input id="poligon-delete" name="confirm" autocomplete="off">
+    <button class="poligon-btn poligon-btn-quiet" type="submit">{% trans "Usuń konto" %}</button>
+  </form>
 </section>
 
 <section class="poligon-card">

@@ -1,14 +1,15 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Pulpit | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Pulpit" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 {% if show_onboarding %}
 <section class="poligon-card poligon-banner">
   <p>
     <span data-en="First time here?" data-pl="Pierwszy raz tutaj?">Pierwszy raz tutaj?</span>
-    <span data-en="You start at level 2. Ten questions will suggest a better one."
-          data-pl="Startujesz z poziomu 2. Dziesięć pytań podpowie trafniejszy.">Startujesz z poziomu 2. Dziesięć pytań podpowie trafniejszy.</span>
+    <span data-en="You start at level 2. A short reading check will suggest another if this one does not fit."
+          data-pl="Zaczynasz od poziomu 2. Krótki test z czytania wskaże inny poziom, jeśli ten nie pasuje.">Zaczynasz od poziomu 2. Krótki test z czytania wskaże inny poziom, jeśli ten nie pasuje.</span>
   </p>
   <a class="poligon-btn" href="{% url 'poligon:placement' %}"
      data-en="Check my level" data-pl="Sprawdź mój poziom">Sprawdź mój poziom</a>
@@ -20,13 +21,49 @@
   <h1 class="poligon-title">{{ state.practice_level }} <span class="poligon-scale" data-en="of 5" data-pl="z 5">z 5</span></h1>
   <p class="poligon-subtitle" data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</p>
   <p class="poligon-subtitle"
-     data-en="Radio, orders, logistics, reports — practice for a STANAG-style scale, not the exam itself."
-     data-pl="Łączność, rozkazy, logistyka, meldunki — trening na skali w stylu STANAG, nie sam egzamin.">
-    Łączność, rozkazy, logistyka, meldunki — trening na skali w stylu STANAG, nie sam egzamin.
+     data-en="Radio, orders, logistics, reports. Our own English practice, not an official exam."
+     data-pl="Łączność, rozkazy, logistyka i meldunki. To trening angielskiego. Wynik nie jest oficjalnym egzaminem.">
+    Łączność, rozkazy, logistyka i meldunki. To trening angielskiego. Wynik nie jest oficjalnym egzaminem.
   </p>
 </header>
 
-<h2 class="poligon-section-title" data-en="Pick a skill to start" data-pl="Wybierz sprawność i zaczynaj">Wybierz sprawność i zaczynaj</h2>
+<section class="poligon-card">
+  <h2>{% trans "Co teraz" %}</h2>
+  {% if now %}
+  <p>{% trans "Zrób teraz jedno krótkie ćwiczenie." %}</p>
+  <a class="poligon-btn" href="{% url 'poligon:exercise' now.slug %}">{{ now.title_pl }}</a>
+  {% else %}
+  <p>{% trans "Na tym poziomie nie ma już ćwiczeń. Zmień poziom albo otwórz fiszki." %}</p>
+  {% endif %}
+</section>
+
+<section class="poligon-card">
+  <h2>{% trans "Nad czym pracować" %}</h2>
+  {% if focus %}
+  <p>{{ focus_pl }}</p>
+  {% else %}
+  <p>{% trans "Na tym poziomie nie zostało już żadnych ćwiczeń." %}</p>
+  {% endif %}
+</section>
+
+{% if daily_plan %}
+<section class="poligon-card poligon-plan">
+  <h2>{% trans "Plan na dziś" %}</h2>
+  <ol>
+    {% for task in daily_plan %}
+    <li>
+      {% if task.kind == "flashcards" %}
+      <a href="{% url 'poligon:reviews' %}">{{ task.pl }}</a>
+      {% else %}
+      <a href="{% url 'poligon:exercise' task.slug %}">{{ task.pl }}</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+<h2 class="poligon-section-title" data-en="Pick a skill" data-pl="Wybierz sprawność">Wybierz sprawność</h2>
 <div class="poligon-stats">
   <a class="poligon-card poligon-stat" href="{% url 'poligon:practice' %}?skill=L">
     <span class="poligon-label" data-en="Listening" data-pl="Słuchanie">Słuchanie</span>
@@ -51,20 +88,20 @@
   <section class="poligon-card">
     <div class="poligon-card-head">
       <h2 data-en="Today" data-pl="Dziś">Dziś</h2>
-      <span>{{ today_minutes }}/{{ state.daily_minutes }} min</span>
+      <span>{% trans "Minuty z planu" %}: {{ today_minutes }}/{{ state.daily_minutes }}</span>
     </div>
     <div class="poligon-bar"><i style="width:{{ today_progress }}%"></i></div>
     {% if minutes_left %}
     <p class="poligon-muted"
-       data-en="{{ minutes_left }} min left today. One exercise is about 7 minutes."
-       data-pl="Zostało {{ minutes_left }} min na dziś. Jedno ćwiczenie to około 7 minut.">
-      Zostało {{ minutes_left }} min na dziś. Jedno ćwiczenie to około 7 minut.
+       data-en="{{ minutes_left }} minutes left in today's plan. One exercise takes about 7 minutes."
+       data-pl="W dzisiejszym planie zostało {{ minutes_left }} min. Jedno ćwiczenie zajmuje około 7 minut.">
+      W dzisiejszym planie zostało {{ minutes_left }} min. Jedno ćwiczenie zajmuje około 7 minut.
     </p>
     {% else %}
     <p class="poligon-muted"
-       data-en="Today's goal is done. Anything further is a bonus."
-       data-pl="Cel na dziś jest wykonany. Wszystko dalej to już nadprogram.">
-      Cel na dziś jest wykonany. Wszystko dalej to już nadprogram.
+       data-en="Today's plan is done. You can keep going, but you do not have to."
+       data-pl="Plan na dziś jest już zrobiony. Możesz ćwiczyć dalej, ale nie musisz.">
+      Plan na dziś jest już zrobiony. Możesz ćwiczyć dalej, ale nie musisz.
     </p>
     {% endif %}
     <div class="poligon-row">
@@ -96,7 +133,7 @@
 
   <section class="poligon-card">
     <div class="poligon-card-head">
-      <h2 data-en="Your training plan" data-pl="Twój plan przygotowania">Twój plan przygotowania</h2>
+      <h2 data-en="Your training plan" data-pl="Twój plan">Twój plan</h2>
       {% if user.is_authenticated %}
       <a href="{% url 'poligon:settings' %}" data-en="Change" data-pl="Zmień">Zmień</a>
       {% else %}
@@ -109,16 +146,16 @@
       <span>{{ state.daily_minutes }} min</span>
     </div>
     <div class="poligon-row">
-      <span data-en="Target date" data-pl="Data celu">Data celu</span>
-      <span>{% if state.target_date %}{{ state.target_date|date:"j E Y" }}{% else %}<span data-en="not set" data-pl="nieustawiona">nieustawiona</span>{% endif %}</span>
+      <span data-en="Target date" data-pl="Termin">Termin</span>
+      <span>{% if state.target_date %}{{ state.target_date|date:"j E Y" }}{% else %}<span data-en="not set" data-pl="brak">brak</span>{% endif %}</span>
     </div>
     <div class="poligon-row">
       <span data-en="This week" data-pl="W tym tygodniu">W tym tygodniu</span>
-      <span data-en="{{ studied }} sessions" data-pl="{{ studied }} sesji">{{ studied }} sesji</span>
+      <span data-en="{{ studied }} sessions" data-pl="{{ studied_pl }}">{{ studied_pl }}</span>
     </div>
     {% endif %}
     <div class="poligon-row">
-      <span data-en="Exercises still ahead" data-pl="Ćwiczeń przed Tobą">Ćwiczeń przed Tobą</span>
+      <span data-en="Exercises still ahead" data-pl="Zostało ćwiczeń">Zostało ćwiczeń</span>
       <span>{{ left }}</span>
     </div>
   </section>
@@ -127,7 +164,7 @@
 {% if user.is_authenticated %}
 <section class="poligon-card">
   <div class="poligon-card-head">
-    <h2 data-en="Recent exercises" data-pl="Ostatnie ćwiczenia">Ostatnie ćwiczenia</h2>
+    <h2>{% trans "Ostatnie ćwiczenia" %}</h2>
   </div>
   {% if recent %}
   <div class="poligon-table-scroll">

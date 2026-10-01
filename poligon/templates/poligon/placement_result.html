@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Wynik poziomu | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Wynik poziomu" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header">
@@ -8,9 +9,9 @@
   <h1 class="poligon-title">{{ suggested }}</h1>
   <p class="poligon-subtitle" data-en="{{ level_en }}" data-pl="{{ level_pl }}">{{ level_pl }}</p>
   <p class="poligon-subtitle"
-     data-en="{{ correct }} of {{ total }} right. This is a starting level for training, not an official qualification — you can move it any time."
-     data-pl="{{ correct }} z {{ total }} dobrze. To poziom startowy do treningu, nie oficjalna kwalifikacja — możesz go zmienić, kiedy chcesz.">
-    {{ correct }} z {{ total }} dobrze. To poziom startowy do treningu, nie oficjalna kwalifikacja — możesz go zmienić, kiedy chcesz.
+     data-en="On the basis of this short test, we suggest starting at level {{ suggested }}. This is not an official assessment of your English. {{ correct }} of {{ total }} were right."
+     data-pl="Po tym krótkim teście proponujemy poziom {{ suggested }}. To nie jest oficjalna ocena Twojego angielskiego. Poprawnych odpowiedzi: {{ correct }} z {{ total }}.">
+    Po tym krótkim teście proponujemy poziom {{ suggested }}. To nie jest oficjalna ocena Twojego angielskiego. Poprawnych odpowiedzi: {{ correct }} z {{ total }}.
   </p>
 </header>
 
@@ -21,10 +22,10 @@
       <input type="hidden" name="practice_level" value="{{ suggested }}">
       <input type="hidden" name="daily_minutes" value="{{ state.daily_minutes }}">
       <input type="hidden" name="target_date" value="{{ state.target_date|date:'Y-m-d' }}">
-      <button class="poligon-btn" type="submit" data-en="Start here" data-pl="Zaczynam od tego">Zaczynam od tego</button>
+      <button class="poligon-btn" type="submit" data-en="Start at this level" data-pl="Zacznij od tego poziomu">Zacznij od tego poziomu</button>
     </form>
     <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:settings' %}"
-       data-en="I will choose the level" data-pl="Wybiorę samodzielnie">Wybiorę samodzielnie</a>
+       data-en="I will choose the level" data-pl="Wolę wybrać poziom">Wolę wybrać poziom</a>
   </div>
   <p class="poligon-muted"
      data-en="If the material feels too easy or too hard after a few exercises, change the level. That is what it is for."

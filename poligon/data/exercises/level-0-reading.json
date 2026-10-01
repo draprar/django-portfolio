@@ -2,7 +2,7 @@
   {
     "slug": "l0-r-00-water",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -46,12 +46,22 @@
       }
     ],
     "explanation_en": "The note says water — woda. The others mean something else: gate (brama), radio (radiostacja), meal (posiłek).",
-    "explanation_pl": "W notatce stoi: water — woda. Pozostałe znaczą co innego: gate to brama, radio to radiostacja, meal to posiłek."
+    "explanation_pl": "W notatce stoi: water — woda. Pozostałe znaczą co innego: gate to brama, radio to radiostacja, meal to posiłek.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-01-gate",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -95,12 +105,22 @@
       }
     ],
     "explanation_en": "The note says gate — brama. The others mean something else: radio (radiostacja), meal (posiłek), map (mapa).",
-    "explanation_pl": "W notatce stoi: gate — brama. Pozostałe znaczą co innego: radio to radiostacja, meal to posiłek, map to mapa."
+    "explanation_pl": "W notatce stoi: gate — brama. Pozostałe znaczą co innego: radio to radiostacja, meal to posiłek, map to mapa.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-02-radio",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -144,12 +164,22 @@
       }
     ],
     "explanation_en": "The note says radio — radiostacja. The others mean something else: meal (posiłek), map (mapa), bus (autobus).",
-    "explanation_pl": "W notatce stoi: radio — radiostacja. Pozostałe znaczą co innego: meal to posiłek, map to mapa, bus to autobus."
+    "explanation_pl": "W notatce stoi: radio — radiostacja. Pozostałe znaczą co innego: meal to posiłek, map to mapa, bus to autobus.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-03-meal",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -193,12 +223,22 @@
       }
     ],
     "explanation_en": "The note says meal — posiłek. The others mean something else: map (mapa), bus (autobus), rain (deszcz).",
-    "explanation_pl": "W notatce stoi: meal — posiłek. Pozostałe znaczą co innego: map to mapa, bus to autobus, rain to deszcz."
+    "explanation_pl": "W notatce stoi: meal — posiłek. Pozostałe znaczą co innego: map to mapa, bus to autobus, rain to deszcz.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-04-map",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -242,12 +282,22 @@
       }
     ],
     "explanation_en": "The note says map — mapa. The others mean something else: bus (autobus), rain (deszcz), tent (namiot).",
-    "explanation_pl": "W notatce stoi: map — mapa. Pozostałe znaczą co innego: bus to autobus, rain to deszcz, tent to namiot."
+    "explanation_pl": "W notatce stoi: map — mapa. Pozostałe znaczą co innego: bus to autobus, rain to deszcz, tent to namiot.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-05-bus",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -291,12 +341,22 @@
       }
     ],
     "explanation_en": "The note says bus — autobus. The others mean something else: rain (deszcz), tent (namiot), water (woda).",
-    "explanation_pl": "W notatce stoi: bus — autobus. Pozostałe znaczą co innego: rain to deszcz, tent to namiot, water to woda."
+    "explanation_pl": "W notatce stoi: bus — autobus. Pozostałe znaczą co innego: rain to deszcz, tent to namiot, water to woda.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-06-rain",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -340,12 +400,22 @@
       }
     ],
     "explanation_en": "The note says rain — deszcz. The others mean something else: tent (namiot), water (woda), gate (brama).",
-    "explanation_pl": "W notatce stoi: rain — deszcz. Pozostałe znaczą co innego: tent to namiot, water to woda, gate to brama."
+    "explanation_pl": "W notatce stoi: rain — deszcz. Pozostałe znaczą co innego: tent to namiot, water to woda, gate to brama.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-r-07-tent",
     "skill": "R",
-    "level": 0,
+    "level": 1,
     "exercise_type": "mcq",
     "expected_minutes": 6,
     "original_content": true,
@@ -389,6 +459,16 @@
       }
     ],
     "explanation_en": "The note says tent — namiot. The others mean something else: water (woda), gate (brama), radio (radiostacja).",
-    "explanation_pl": "W notatce stoi: tent — namiot. Pozostałe znaczą co innego: water to woda, gate to brama, radio to radiostacja."
+    "explanation_pl": "W notatce stoi: tent — namiot. Pozostałe znaczą co innego: water to woda, gate to brama, radio to radiostacja.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

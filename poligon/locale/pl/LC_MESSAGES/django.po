@@ -1,0 +1,175 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: pl\n"
+
+msgid "Przejdź do treści"
+msgstr "Przejdź do treści"
+
+msgid "Język"
+msgstr "Język"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Fiszki"
+msgstr "Fiszki"
+
+msgid "Tablice"
+msgstr "Tablice"
+
+msgid "Konto"
+msgstr "Konto"
+
+msgid "Zaloguj"
+msgstr "Zaloguj"
+
+msgid "Ustawienia"
+msgstr "Ustawienia"
+
+msgid "Twoje dane"
+msgstr "Twoje dane"
+
+msgid "Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki."
+msgstr "Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki."
+
+msgid "Wybierz poziom"
+msgstr "Wybierz poziom"
+
+msgid "Pulpit"
+msgstr "Pulpit"
+
+msgid "Brak ćwiczeń"
+msgstr "Brak ćwiczeń"
+
+msgid "Załóż konto"
+msgstr "Załóż konto"
+
+msgid "Hasło"
+msgstr "Hasło"
+
+msgid "Nowe hasło"
+msgstr "Nowe hasło"
+
+msgid "Jaki poziom?"
+msgstr "Jaki poziom?"
+
+msgid "Wynik poziomu"
+msgstr "Wynik poziomu"
+
+msgid "Konto jest prawie gotowe. Sprawdź skrzynkę i kliknij link, żeby je potwierdzić."
+msgstr "Konto jest prawie gotowe. Sprawdź skrzynkę i kliknij link, żeby je potwierdzić."
+
+msgid "Konto potwierdzone. Możesz się zalogować."
+msgstr "Konto potwierdzone. Możesz się zalogować."
+
+msgid "Ten link już nie działa. Zarejestruj się jeszcze raz albo napisz do nas."
+msgstr "Ten link już nie działa. Zarejestruj się jeszcze raz albo napisz do nas."
+
+msgid "Ustawiliśmy na koncie poziom, który przed chwilą wybrałeś."
+msgstr "Ustawiliśmy na koncie poziom, który przed chwilą wybrałeś."
+
+msgid "Jeśli konto istnieje, wyślemy link do zmiany hasła."
+msgstr "Jeśli konto istnieje, wyślemy link do zmiany hasła."
+
+msgid "Hasło zmienione. Zaloguj się nowym hasłem."
+msgstr "Hasło zmienione. Zaloguj się nowym hasłem."
+
+msgid "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie."
+msgstr "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie."
+
+msgid "Potwierdź konto w Ćwiczbie"
+msgstr "Potwierdź konto w Ćwiczbie"
+
+msgid "Nowe hasło do Ćwiczby"
+msgstr "Nowe hasło do Ćwiczby"
+
+msgid "Potwierdź konto w Ćwiczbie, a Twój poziom i fiszki przestaną zależeć od jednej przeglądarki."
+msgstr "Potwierdź konto w Ćwiczbie, a Twój poziom i fiszki przestaną zależeć od jednej przeglądarki."
+
+msgid "Potwierdzam konto"
+msgstr "Potwierdzam konto"
+
+msgid "Ktoś poprosił o nowe hasło do konta w Ćwiczbie. Jeśli to Ty, ustaw je tutaj:"
+msgstr "Ktoś poprosił o nowe hasło do konta w Ćwiczbie. Jeśli to Ty, ustaw je tutaj:"
+
+msgid "Ustawiam nowe hasło"
+msgstr "Ustawiam nowe hasło"
+
+msgid "Jeśli to nie Ty, zignoruj tę wiadomość. Hasło zostaje bez zmian."
+msgstr "Jeśli to nie Ty, zignoruj tę wiadomość. Hasło zostaje bez zmian."
+
+msgid "Ten link do zmiany hasła już nie działa. Poproś o nowy."
+msgstr "Ten link do zmiany hasła już nie działa. Poproś o nowy."
+
+msgid "Uzupełnij nazwę i hasło, potem spróbuj ponownie."
+msgstr "Uzupełnij nazwę i hasło, potem spróbuj ponownie."
+
+msgid "Wpisz odpowiedź po angielsku, potem wyślij."
+msgstr "Wpisz odpowiedź po angielsku, potem wyślij."
+
+msgid "Wybierz jedną odpowiedź, potem wyślij."
+msgstr "Wybierz jedną odpowiedź, potem wyślij."
+
+msgid "To jest zapasowa synteza mowy, nie nagranie lektora."
+msgstr "To jest zapasowa synteza mowy, nie nagranie lektora."
+
+msgid "Nagranie"
+msgstr "Nagranie"
+
+msgid "Mówca"
+msgstr "Mówca"
+
+msgid "Tempo"
+msgstr "Tempo"
+
+msgid "Następny krok"
+msgstr "Następny krok"
+
+msgid "Pewnie"
+msgstr "Pewnie"
+
+msgid "W rozwoju"
+msgstr "W rozwoju"
+
+msgid "Do poprawy"
+msgstr "Do poprawy"
+
+msgid "Co teraz"
+msgstr "Co teraz"
+
+msgid "Zrób teraz jedno krótkie ćwiczenie."
+msgstr "Zrób teraz jedno krótkie ćwiczenie."
+
+msgid "Na tym poziomie nie ma już ćwiczeń. Zmień poziom albo otwórz fiszki."
+msgstr "Na tym poziomie nie ma już ćwiczeń. Zmień poziom albo otwórz fiszki."
+
+msgid "Nad czym pracować"
+msgstr "Nad czym pracować"
+
+msgid "Na tym poziomie nie zostało już żadnych ćwiczeń."
+msgstr "Na tym poziomie nie zostało już żadnych ćwiczeń."
+
+msgid "Plan na dziś"
+msgstr "Plan na dziś"
+
+msgid "Minuty z planu"
+msgstr "Minuty z planu"
+
+msgid "Ostatnie ćwiczenia"
+msgstr "Ostatnie ćwiczenia"
+
+msgid "Możesz pobrać swoje dane albo usunąć konto. W pliku nie ma hasła."
+msgstr "Możesz pobrać swoje dane albo usunąć konto. W pliku nie ma hasła."
+
+msgid "Pobierz moje dane"
+msgstr "Pobierz moje dane"
+
+msgid "Wpisz usuń, jeśli chcesz skasować konto i trening."
+msgstr "Wpisz usuń, jeśli chcesz skasować konto i trening."
+
+msgid "Usuń konto"
+msgstr "Usuń konto"
+
+msgid "Konto i trening zostały usunięte."
+msgstr "Konto i trening zostały usunięte."
