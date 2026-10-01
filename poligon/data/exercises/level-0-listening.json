@@ -2,7 +2,7 @@
   {
     "slug": "l0-l-00-water",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -46,12 +46,22 @@
       }
     ],
     "explanation_en": "The word was water — woda. The others mean something else: gate (brama), radio (radiostacja), meal (posiłek).",
-    "explanation_pl": "Słowo, które padło, to: water — woda. Pozostałe znaczą co innego: gate to brama, radio to radiostacja, meal to posiłek."
+    "explanation_pl": "Słowo, które padło, to: water — woda. Pozostałe znaczą co innego: gate to brama, radio to radiostacja, meal to posiłek.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-01-gate",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -95,12 +105,22 @@
       }
     ],
     "explanation_en": "The word was gate — brama. The others mean something else: radio (radiostacja), meal (posiłek), map (mapa).",
-    "explanation_pl": "Słowo, które padło, to: gate — brama. Pozostałe znaczą co innego: radio to radiostacja, meal to posiłek, map to mapa."
+    "explanation_pl": "Słowo, które padło, to: gate — brama. Pozostałe znaczą co innego: radio to radiostacja, meal to posiłek, map to mapa.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-02-radio",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -144,12 +164,22 @@
       }
     ],
     "explanation_en": "The word was radio — radiostacja. The others mean something else: meal (posiłek), map (mapa), bus (autobus).",
-    "explanation_pl": "Słowo, które padło, to: radio — radiostacja. Pozostałe znaczą co innego: meal to posiłek, map to mapa, bus to autobus."
+    "explanation_pl": "Słowo, które padło, to: radio — radiostacja. Pozostałe znaczą co innego: meal to posiłek, map to mapa, bus to autobus.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-03-meal",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -193,12 +223,22 @@
       }
     ],
     "explanation_en": "The word was meal — posiłek. The others mean something else: map (mapa), bus (autobus), rain (deszcz).",
-    "explanation_pl": "Słowo, które padło, to: meal — posiłek. Pozostałe znaczą co innego: map to mapa, bus to autobus, rain to deszcz."
+    "explanation_pl": "Słowo, które padło, to: meal — posiłek. Pozostałe znaczą co innego: map to mapa, bus to autobus, rain to deszcz.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-04-map",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -242,12 +282,22 @@
       }
     ],
     "explanation_en": "The word was map — mapa. The others mean something else: bus (autobus), rain (deszcz), tent (namiot).",
-    "explanation_pl": "Słowo, które padło, to: map — mapa. Pozostałe znaczą co innego: bus to autobus, rain to deszcz, tent to namiot."
+    "explanation_pl": "Słowo, które padło, to: map — mapa. Pozostałe znaczą co innego: bus to autobus, rain to deszcz, tent to namiot.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-05-bus",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -291,12 +341,22 @@
       }
     ],
     "explanation_en": "The word was bus — autobus. The others mean something else: rain (deszcz), tent (namiot), water (woda).",
-    "explanation_pl": "Słowo, które padło, to: bus — autobus. Pozostałe znaczą co innego: rain to deszcz, tent to namiot, water to woda."
+    "explanation_pl": "Słowo, które padło, to: bus — autobus. Pozostałe znaczą co innego: rain to deszcz, tent to namiot, water to woda.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-06-rain",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -340,12 +400,22 @@
       }
     ],
     "explanation_en": "The word was rain — deszcz. The others mean something else: tent (namiot), water (woda), gate (brama).",
-    "explanation_pl": "Słowo, które padło, to: rain — deszcz. Pozostałe znaczą co innego: tent to namiot, water to woda, gate to brama."
+    "explanation_pl": "Słowo, które padło, to: rain — deszcz. Pozostałe znaczą co innego: tent to namiot, water to woda, gate to brama.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l0-l-07-tent",
     "skill": "L",
-    "level": 0,
+    "level": 1,
     "exercise_type": "listening",
     "expected_minutes": 7,
     "original_content": true,
@@ -389,6 +459,16 @@
       }
     ],
     "explanation_en": "The word was tent — namiot. The others mean something else: water (woda), gate (brama), radio (radiostacja).",
-    "explanation_pl": "Słowo, które padło, to: tent — namiot. Pozostałe znaczą co innego: water to woda, gate to brama, radio to radiostacja."
+    "explanation_pl": "Słowo, które padło, to: tent — namiot. Pozostałe znaczą co innego: water to woda, gate to brama, radio to radiostacja.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

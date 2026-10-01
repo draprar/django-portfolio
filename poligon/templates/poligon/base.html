@@ -1,9 +1,12 @@
-{% load static %}
+{% load i18n static %}
 <!DOCTYPE html>
-<html lang="pl" data-default-lang="pl" data-lang-plain>
+<html lang="{{ poligon_lang|default:'pl' }}" data-default-lang="{{ poligon_lang|default:'pl' }}" data-lang-plain>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    try { localStorage.setItem("site_lang", document.documentElement.getAttribute("data-default-lang")); } catch (e) {}
+  </script>
   <title>{% block title %}Ćwiczba{% endblock %}</title>
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
@@ -11,16 +14,20 @@
   <link rel="stylesheet" href="{% static 'poligon/css/poligon.css' %}">
 </head>
 <body>
-<a class="poligon-skip" href="#poligon-main" data-en="Skip to content" data-pl="Przejdź do treści">Przejdź do treści</a>
+<a class="poligon-skip" href="#poligon-main">{% trans "Przejdź do treści" %}</a>
 
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a class="poligon-brand" href="{% url 'poligon:dashboard' %}">Ćwiczba</a>
-    <div class="poligon-lang" role="group" aria-label="Język / Language">
-      <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
-      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    <div class="poligon-lang" role="group" aria-label="{% trans 'Język' %}">
+      <form method="post" action="{% url 'poligon:language' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" class="lang-btn" name="lang" value="pl" data-lang="pl" aria-pressed="{% if poligon_lang != 'en' %}true{% else %}false{% endif %}">PL</button>
+        <button type="submit" class="lang-btn" name="lang" value="en" data-lang="en" aria-pressed="{% if poligon_lang == 'en' %}true{% else %}false{% endif %}">EN</button>
+      </form>
     </div>
-    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#poligonNav" aria-controls="poligonNav" aria-expanded="false" aria-label="Menu">
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#poligonNav" aria-controls="poligonNav" aria-expanded="false" aria-label="{% trans 'Menu' %}">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="poligonNav">
@@ -31,22 +38,22 @@
           {% else %}
           <a class="nav-link" href="{% url 'poligon:reviews' %}">
           {% endif %}
-            <span data-en="Flashcards" data-pl="Fiszki">Fiszki</span>
+            <span data-en="Flashcards" data-pl="Fiszki">{% trans "Fiszki" %}</span>
             {% if poligon_due_reviews %}<span class="poligon-badge">{{ poligon_due_reviews }}</span>{% endif %}
           </a>
         </li>
         <li class="nav-item">
           {% if request.resolver_match.url_name == 'tables' %}
-          <a class="nav-link active" aria-current="page" href="{% url 'poligon:tables' %}" data-en="Reference" data-pl="Tablice">Tablice</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'poligon:tables' %}" data-en="Reference" data-pl="Tablice">{% trans "Tablice" %}</a>
           {% else %}
-          <a class="nav-link" href="{% url 'poligon:tables' %}" data-en="Reference" data-pl="Tablice">Tablice</a>
+          <a class="nav-link" href="{% url 'poligon:tables' %}" data-en="Reference" data-pl="Tablice">{% trans "Tablice" %}</a>
           {% endif %}
         </li>
         <li class="nav-item">
           {% if user.is_authenticated %}
-          <a class="nav-link {% if request.resolver_match.url_name == 'account' %}active{% endif %}" href="{% url 'poligon:account' %}" data-en="Account" data-pl="Konto">Konto</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'account' %}active{% endif %}" href="{% url 'poligon:account' %}">{% trans "Konto" %}</a>
           {% else %}
-          <a class="nav-link" href="{% url 'poligon:login' %}" data-en="Sign in" data-pl="Zaloguj">Zaloguj</a>
+          <a class="nav-link" href="{% url 'poligon:login' %}">{% trans "Zaloguj" %}</a>
           {% endif %}
         </li>
       </ul>
@@ -66,15 +73,12 @@
 </main>
 
 <footer class="footer text-center">
-  <p data-en="Ćwiczba is field training, not an official exam. The score is a study hint."
-     data-pl="Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki.">
-    Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki.
-  </p>
+  <p>{% trans "Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki." %}</p>
   <p class="poligon-links poligon-links-center">
     {% if user.is_authenticated %}
-    <a href="{% url 'poligon:settings' %}" data-en="Settings" data-pl="Ustawienia">Ustawienia</a>
+    <a href="{% url 'poligon:settings' %}">{% trans "Ustawienia" %}</a>
     {% endif %}
-    <a href="{% url 'poligon:policy' %}" data-en="Your data" data-pl="Twoje dane">Twoje dane</a>
+    <a href="{% url 'poligon:policy' %}">{% trans "Twoje dane" %}</a>
   </p>
 </footer>
 

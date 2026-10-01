@@ -1,7 +1,8 @@
 {% extends "poligon/base.html" %}
 {% load poligon_rights %}
 
-{% block title %}{% if review %}{{ review.item.term }} | {% endif %}Fiszki | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% if review %}{{ review.item.term }} | {% endif %}{% trans "Fiszki" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -25,7 +26,7 @@
   <div class="poligon-actions">
     <a class="poligon-btn" href="{% url 'poligon:register' %}" data-en="Create an account" data-pl="Załóż konto">Załóż konto</a>
     <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:login' %}" data-en="Sign in" data-pl="Zaloguj się">Zaloguj się</a>
-    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+    <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć do ćwiczeń">Wróć do ćwiczeń</a>
   </div>
 </section>
 {% elif review %}
@@ -33,9 +34,9 @@
   <p class="poligon-label" data-en="{{ review.item.category_en }}" data-pl="{{ review.item.category_pl }}">{{ review.item.category_pl }}</p>
   <h2 class="poligon-term" lang="en">{{ review.item.term }}</h2>
   <p class="poligon-muted"
-     data-en="Say the Polish meaning and one real sentence in your head. Then check."
-     data-pl="Powiedz sobie w głowie polskie znaczenie i jedno zdanie z służby. Potem sprawdź.">
-    Powiedz sobie w głowie polskie znaczenie i jedno zdanie z służby. Potem sprawdź.
+     data-en="Say the Polish meaning in your head and make one sentence about duty. Then check."
+     data-pl="Powiedz w myślach polskie znaczenie i ułóż jedno zdanie związane ze służbą. Potem sprawdź.">
+    Powiedz w myślach polskie znaczenie i ułóż jedno zdanie związane ze służbą. Potem sprawdź.
   </p>
   <details class="poligon-reveal">
     <summary data-en="Check the card" data-pl="Sprawdź">Sprawdź</summary>
@@ -79,7 +80,7 @@
   </p>
   <div class="poligon-actions">
     <a class="poligon-btn" href="{% url 'poligon:dashboard' %}"
-       data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+       data-en="Back to the dashboard" data-pl="Wróć do ćwiczeń">Wróć do ćwiczeń</a>
   </div>
 </section>
 {% endif %}

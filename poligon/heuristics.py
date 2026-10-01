@@ -31,6 +31,7 @@ LINKERS = {
 }
 
 HEURISTIC_NOTE = "Training heuristic only; not an official proficiency score."
+EVALUATOR_VERSION = "writing_eval_v1"
 
 
 def tokenize(text: str) -> list[str]:
@@ -70,47 +71,41 @@ def assess_language_sample(text: str, minutes: float | None = None) -> dict[str,
         "clarity": clarity,
         "overall": overall,
         "note": HEURISTIC_NOTE,
+        "evaluator_version": EVALUATOR_VERSION,
     }
 
 
-def coaching_hint(feedback: dict) -> tuple[str, str]:
+def recorded_evaluator_version(feedback: dict) -> str:
+    """Rows saved before the version was stored are still this heuristic."""
+    value = feedback.get("evaluator_version") if isinstance(feedback, dict) else None
+    return value if isinstance(value, str) and value else EVALUATOR_VERSION
+
+
+def coaching_hint(feedback: dict, level: int = 2) -> tuple[str, str]:
     """The single most useful thing to change next, as (English, Polish).
 
-    A bare percentage does not tell anyone what to do, so the weakest signal is
-    turned into one concrete instruction.
+    A bare percentage does not tell anyone what to do. The check is the shape
+    of the typed text: how many words, how many sentences. It does not decide
+    whether the answer did the task, and repeating a precise term is not a fault.
     """
     words = int(feedback.get("word_count") or 0)
     sentences = int(feedback.get("sentence_count") or 0)
-    fillers = int(feedback.get("fillers") or 0)
-    linkers = int(feedback.get("linkers") or 0)
-    diversity = float(feedback.get("lexical_diversity") or 0)
-
-    if words < 25:
+    if words < _min_words(level):
         return (
             "That is too short to judge. Aim for a few full sentences.",
-            "To za krótko, żeby cokolwiek ocenić. Celuj w kilka pełnych zdań.",
-        )
-    if fillers >= 3:
-        return (
-            "Plenty of fillers there (um, like, you know). Say the same thing without them.",
-            "Dużo wypełniaczy (um, like, you know). Powiedz to samo bez nich.",
-        )
-    if linkers == 0:
-        return (
-            "Nothing joins your sentences. Try because, then, however, although.",
-            "Nic nie łączy Twoich zdań. Spróbuj: because, then, however, although.",
+            "To za krótko, żeby cokolwiek ocenić. Napisz kilka pełnych zdań.",
         )
     if sentences <= 1:
         return (
             "This is one long sentence. Cut it into two or three.",
             "To jedno długie zdanie. Podziel je na dwa albo trzy.",
         )
-    if diversity < 0.45:
-        return (
-            "The same words keep coming back. Reach for a synonym next time.",
-            "Te same słowa ciągle wracają. Następnym razem poszukaj synonimu.",
-        )
     return (
-        "Clear shape: connected sentences and varied words. Keep this length.",
-        "Jasna forma: zdania są połączone, słowa się nie powtarzają. Zachowaj tę długość.",
+        "The shape of the text is fine. Whether it does the task is not checked automatically.",
+        "Forma tekstu jest w porządku. Zgodność z poleceniem nie jest sprawdzana automatycznie.",
     )
+
+
+def _min_words(level: int) -> int:
+    """How many words a sample needs before the shape can be described at all."""
+    return {1: 12, 2: 40, 3: 50, 4: 70, 5: 90}.get(level, 40)

@@ -44,7 +44,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-002-maintenance",
@@ -91,7 +101,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-003-comparison",
@@ -138,7 +158,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-004-duty-note",
@@ -185,7 +215,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-005-tool-issue",
@@ -232,7 +272,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-006-water-point",
@@ -279,7 +329,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-007-class-rules",
@@ -326,7 +386,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-008-bus-seats",
@@ -373,7 +443,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-009-laundry",
@@ -420,7 +500,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-010-gate-hours",
@@ -467,7 +557,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-011-report-format",
@@ -514,7 +614,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-012-heat",
@@ -561,7 +671,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-013-lost-property",
@@ -608,7 +728,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-014-two-routes",
@@ -655,7 +785,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-015-kit-list",
@@ -702,7 +842,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-016-noise",
@@ -749,7 +899,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-017-parking",
@@ -796,7 +956,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-018-visitor-badge",
@@ -843,7 +1013,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-019-email-rule",
@@ -890,7 +1070,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "read-020-light-discipline",
@@ -937,6 +1127,16 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

@@ -46,7 +46,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-l-01-gate",
@@ -95,7 +105,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-l-02-radio",
@@ -144,7 +164,17 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "l4-l-03-meal",
@@ -193,6 +223,16 @@
       }
     ],
     "explanation_en": "This asks for the general topic. The right answer sums up what you heard; the others name things the message never mentions.",
-    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa."
+    "explanation_pl": "To pytanie o ogólny temat. Dobra odpowiedź streszcza to, co usłyszałeś — pozostałe mówią o rzeczach, o których w nagraniu nie ma ani słowa.",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

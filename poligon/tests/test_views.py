@@ -34,6 +34,7 @@ def test_dashboard_is_polish_first_and_shows_a_score(member_client):
     assert 'lang="pl"' in content
     assert 'data-default-lang="pl"' in content
     assert "nie oficjalny egzamin" in content
+    assert "STANAG" not in content
     assert "100%" in content
     assert 'href="/#about"' not in content
     assert 'href="/gallery/"' not in content
@@ -119,7 +120,7 @@ def test_empty_state_talks_to_the_learner_not_the_admin(guest_client):
     content = response.content.decode()
     assert response.status_code == 200
     assert "poligon-empty" in content
-    assert "Pisanie" in content
+    assert "z pisania" in content
     assert "admin" not in content
     assert reverse("poligon:start") in content
 
@@ -138,12 +139,12 @@ def test_mcq_submission_redirects_to_its_own_result_page(member_client):
 
     content = member_client.get(posted.url).content.decode()
     assert "0%" in content
-    assert "Tym razem nie" in content
+    assert "Niepoprawna odpowiedź" in content
     assert "Correct choice" in content
-    assert "<form" not in content
-    # The way on from here is the dashboard, and it comes first.
+    assert "poligon-task" not in content
     actions = content.split("poligon-actions")[1].split("</div>")[0]
-    assert actions.index("Wróć na pulpit") < actions.index("Jeszcze jedno takie")
+    assert "Następny krok" in content
+    assert "Wróć do ćwiczeń" in actions
 
 
 @pytest.mark.django_db
@@ -201,9 +202,12 @@ def test_writing_result_shows_the_heuristic_as_a_hint(member_client):
     )
     assert posted.status_code == 302
     content = member_client.get(posted.url).content.decode()
-    assert "nie oficjalna ocena" in content
-    assert "Budowa zdań" in content
-    assert Submission.objects.get().score > 0
+    assert "To za krótko" in content
+    assert "Nie sprawdzamy, czy odpowiedź realizuje polecenie" not in content
+    assert "Następny krok" in content
+    saved = Submission.objects.get()
+    assert saved.score > 0
+    assert saved.feedback["evaluator_version"] == "writing_eval_v2"
 
 
 @pytest.mark.django_db
@@ -342,6 +346,7 @@ def test_settings_save_and_reject_bad_input(member_client):
     assert "z 5" in state_page.content.decode()
 
     for bad in (
+        {"practice_level": "0", "daily_minutes": "35", "target_date": ""},
         {"practice_level": "9", "daily_minutes": "35", "target_date": ""},
         {"practice_level": "2", "daily_minutes": "soon", "target_date": ""},
         {"practice_level": "2", "daily_minutes": "35", "target_date": "yesterday"},
@@ -380,7 +385,7 @@ def test_the_reference_tab_is_a_cheat_sheet_and_not_a_test(guest_client):
     assert "Zulu" in content
     assert "Could you spell that, please?" in content
     assert "na łączność, w terenie i na odprawę" in content
-    assert "<form" not in content
+    assert "poligon-task" not in content
     assert "STANAG" not in content
     assert "NATO" not in content
 
@@ -393,7 +398,7 @@ def test_the_data_page_lists_every_cookie_we_set(guest_client):
     for name in ("sessionid", "csrftoken", "site_lang"):
         assert name in content
     assert "niezbędne" in content
-    assert "Nagranie nie opuszcza urządzenia" in content
+    assert "Nagranie zostaje w przeglądarce" in content
     assert "Formularz kontaktowy" not in content
 
 
@@ -452,14 +457,35 @@ def test_a_flashcard_links_the_tatoeba_sentence_as_well_as_the_definition(member
 def test_a_listening_task_says_it_is_not_a_voice_recording(guest_client):
     exercise = make_mcq(slug="listen-honest", skill="L", exercise_type="listening", content_en="Water.")
     content = guest_client.get(reverse("poligon:exercise", args=[exercise.slug])).content.decode()
-    assert "nie nagranie lektora" in content
+    assert "synteza mowy" in content
+    assert "data-missing-pl" in content
 
 
 @pytest.mark.django_db
-def test_a_speaking_task_says_the_grade_is_not_official(member_client):
+def test_a_speaking_task_says_the_check_reads_the_typed_text(member_client):
     exercise = make_exercise(slug="speak-honest", skill="S", exercise_type="speaking")
+    page = member_client.get(reverse("poligon:exercise", args=[exercise.slug])).content.decode()
+    assert "Ocena dotyczy wyłącznie wpisanego tekstu" in page
     posted = member_client.post(
         reverse("poligon:exercise", args=[exercise.slug]),
         {"answer": "We move at first light and confirm the route on arrival."},
     )
-    assert "nie oficjalna ocena" in member_client.get(posted.url).content.decode()
+    result = member_client.get(posted.url).content.decode()
+    assert "To za krótko" in result
+    assert "Płynność" not in result
+    assert "writing_eval_v2" == Submission.objects.get().feedback["evaluator_version"]
+
+
+@pytest.mark.django_db
+def test_a_card_lifted_to_level_one_shows_only_there(member_client):
+    make_vocabulary(term="canteen", translation="manierka", level=1)
+    hidden = member_client.get(reverse("poligon:reviews")).content.decode()
+    assert "canteen" not in hidden
+
+    shown = member_client.post(
+        reverse("poligon:settings"),
+        {"practice_level": "1", "daily_minutes": "35", "target_date": ""},
+    )
+    assert shown.status_code == 302
+    page = member_client.get(reverse("poligon:reviews")).content.decode()
+    assert "canteen" in page

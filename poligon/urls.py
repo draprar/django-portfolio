@@ -20,6 +20,8 @@ urlpatterns = [
     path("polityka/", views_main.policy, name="policy"),
     # Account: optional, and the only way progress outlives a visit
     path("konto/", views_auth.account, name="account"),
+    path("konto/eksport/", views_auth.export_account, name="export"),
+    path("konto/usun/", views_auth.delete_account, name="delete_account"),
     path("konto/logowanie/", views_auth.login_view, name="login"),
     path("konto/wyloguj/", views_auth.logout_view, name="logout"),
     path("konto/rejestracja/", views_auth.register_view, name="register"),
@@ -27,4 +29,5 @@ urlpatterns = [
     path("konto/haslo/", views_auth.password_view, name="password"),
     path("konto/haslo/<uidb64>/<token>/", views_auth.password_set_view, name="password_set"),
     path("api/progress/", views_api.ProgressView.as_view(), name="api_progress"),
+    path("jezyk/", views_main.set_language, name="language"),
 ]

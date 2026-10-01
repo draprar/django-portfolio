@@ -1,0 +1,175 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+
+msgid "Przejdź do treści"
+msgstr "Skip to content"
+
+msgid "Język"
+msgstr "Language"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Fiszki"
+msgstr "Flashcards"
+
+msgid "Tablice"
+msgstr "Reference"
+
+msgid "Konto"
+msgstr "Account"
+
+msgid "Zaloguj"
+msgstr "Sign in"
+
+msgid "Ustawienia"
+msgstr "Settings"
+
+msgid "Twoje dane"
+msgstr "Your data"
+
+msgid "Ćwiczba to trening polowy, nie oficjalny egzamin. Wynik jest podpowiedzią do nauki."
+msgstr "Ćwiczba is field training, not an official exam. The score is a study hint."
+
+msgid "Wybierz poziom"
+msgstr "Choose a level"
+
+msgid "Pulpit"
+msgstr "Dashboard"
+
+msgid "Brak ćwiczeń"
+msgstr "No exercises"
+
+msgid "Załóż konto"
+msgstr "Create an account"
+
+msgid "Hasło"
+msgstr "Password"
+
+msgid "Nowe hasło"
+msgstr "New password"
+
+msgid "Jaki poziom?"
+msgstr "Which level?"
+
+msgid "Wynik poziomu"
+msgstr "Level result"
+
+msgid "Konto jest prawie gotowe. Sprawdź skrzynkę i kliknij link, żeby je potwierdzić."
+msgstr "The account is almost ready. Check your inbox and click the link to confirm it."
+
+msgid "Konto potwierdzone. Możesz się zalogować."
+msgstr "Account confirmed. You can sign in."
+
+msgid "Ten link już nie działa. Zarejestruj się jeszcze raz albo napisz do nas."
+msgstr "This link no longer works. Register again, or write to us."
+
+msgid "Ustawiliśmy na koncie poziom, który przed chwilą wybrałeś."
+msgstr "We set the account to the level you just chose."
+
+msgid "Jeśli konto istnieje, wyślemy link do zmiany hasła."
+msgstr "If the account exists, we will send a link to change the password."
+
+msgid "Hasło zmienione. Zaloguj się nowym hasłem."
+msgstr "Password changed. Sign in with the new password."
+
+msgid "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie."
+msgstr "Sign-in failed. Check the details and try again."
+
+msgid "Potwierdź konto w Ćwiczbie"
+msgstr "Confirm your Ćwiczba account"
+
+msgid "Nowe hasło do Ćwiczby"
+msgstr "A new password for Ćwiczba"
+
+msgid "Potwierdź konto w Ćwiczbie, a Twój poziom i fiszki przestaną zależeć od jednej przeglądarki."
+msgstr "Confirm the account and your level and flashcards will no longer depend on one browser."
+
+msgid "Potwierdzam konto"
+msgstr "Confirm the account"
+
+msgid "Ktoś poprosił o nowe hasło do konta w Ćwiczbie. Jeśli to Ty, ustaw je tutaj:"
+msgstr "Someone asked for a new password for this Ćwiczba account. If it was you, set it here:"
+
+msgid "Ustawiam nowe hasło"
+msgstr "Set a new password"
+
+msgid "Jeśli to nie Ty, zignoruj tę wiadomość. Hasło zostaje bez zmian."
+msgstr "If it was not you, ignore this message. The password stays as it is."
+
+msgid "Ten link do zmiany hasła już nie działa. Poproś o nowy."
+msgstr "This password link no longer works. Ask for a new one."
+
+msgid "Uzupełnij nazwę i hasło, potem spróbuj ponownie."
+msgstr "Enter the username and the password, then try again."
+
+msgid "Wpisz odpowiedź po angielsku, potem wyślij."
+msgstr "Write the answer in English, then send it."
+
+msgid "Wybierz jedną odpowiedź, potem wyślij."
+msgstr "Pick one answer, then send it."
+
+msgid "To jest zapasowa synteza mowy, nie nagranie lektora."
+msgstr "This is fallback speech synthesis, not a studio recording."
+
+msgid "Nagranie"
+msgstr "Recording"
+
+msgid "Mówca"
+msgstr "Speaker"
+
+msgid "Tempo"
+msgstr "Pace"
+
+msgid "Następny krok"
+msgstr "Next step"
+
+msgid "Pewnie"
+msgstr "Strong"
+
+msgid "W rozwoju"
+msgstr "Developing"
+
+msgid "Do poprawy"
+msgstr "Needs work"
+
+msgid "Co teraz"
+msgstr "What now"
+
+msgid "Zrób teraz jedno krótkie ćwiczenie."
+msgstr "Do one short exercise now."
+
+msgid "Na tym poziomie nie ma już ćwiczeń. Zmień poziom albo otwórz fiszki."
+msgstr "Nothing is left at this level. Change the level or open the flashcards."
+
+msgid "Nad czym pracować"
+msgstr "What to work on"
+
+msgid "Na tym poziomie nie zostało już żadnych ćwiczeń."
+msgstr "Nothing is left at this level."
+
+msgid "Plan na dziś"
+msgstr "Plan for today"
+
+msgid "Minuty z planu"
+msgstr "Minutes in the plan"
+
+msgid "Ostatnie ćwiczenia"
+msgstr "Recent exercises"
+
+msgid "Możesz pobrać swoje dane albo usunąć konto. W pliku nie ma hasła."
+msgstr "You can download your data or delete the account. The file has no password."
+
+msgid "Pobierz moje dane"
+msgstr "Download my data"
+
+msgid "Wpisz usuń, jeśli chcesz skasować konto i trening."
+msgstr "Type usuń to delete the account and the training."
+
+msgid "Usuń konto"
+msgstr "Delete the account"
+
+msgid "Konto i trening zostały usunięte."
+msgstr "The account and the training have been deleted."

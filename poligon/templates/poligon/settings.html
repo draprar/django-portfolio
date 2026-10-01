@@ -1,23 +1,24 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Ustawienia | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Ustawienia" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
-  <h1 class="poligon-title" data-en="Your training plan" data-pl="Twój plan przygotowania">Twój plan przygotowania</h1>
+  <h1 class="poligon-title" data-en="Your training plan" data-pl="Twój plan">Twój plan</h1>
   <p class="poligon-subtitle"
      data-en="Set the material level and how many minutes a day you can train."
-     data-pl="Ustaw poziom materiału i ile minut dziennie możesz poświęcić na przygotowanie.">
-    Ustaw poziom materiału i ile minut dziennie możesz poświęcić na przygotowanie.
+     data-pl="Ustaw poziom materiału i ile minut dziennie chcesz ćwiczyć.">
+    Ustaw poziom materiału i ile minut dziennie chcesz ćwiczyć.
   </p>
 </header>
 
 <section class="poligon-card poligon-form">
   {% if form_error %}
   <p class="poligon-form-error" role="alert"
-     data-en="Check the form: level 0 to 5, between 10 and 180 minutes a day, and a real date or no date at all."
-     data-pl="Sprawdź formularz: poziom od 0 do 5, od 10 do 180 minut dziennie, i prawdziwa data albo żadna.">
-    Sprawdź formularz: poziom od 0 do 5, od 10 do 180 minut dziennie, i prawdziwa data albo żadna.
+     data-en="Check the form: level 1 to 5, between 10 and 180 minutes a day, and a real date or no date at all."
+     data-pl="Sprawdź formularz: poziom od 1 do 5, od 10 do 180 minut dziennie, oraz prawdziwa data albo puste pole.">
+    Sprawdź formularz: poziom od 1 do 5, od 10 do 180 minut dziennie, oraz prawdziwa data albo puste pole.
   </p>
   {% endif %}
   <form method="post">
@@ -43,7 +44,7 @@
     <input id="poligon-minutes" type="number" name="daily_minutes" min="10" max="180" value="{{ state.daily_minutes }}">
 
     <label for="poligon-target-date">
-      <span data-en="Target date (optional)" data-pl="Data celu (opcjonalnie)">Data celu (opcjonalnie)</span>
+      <span data-en="Target date (optional)" data-pl="Termin (opcjonalnie)">Termin (opcjonalnie)</span>
     </label>
     <input id="poligon-target-date" type="date" name="target_date" value="{{ state.target_date|date:'Y-m-d' }}">
 
@@ -56,9 +57,9 @@
     <h2 data-en="Not sure which level?" data-pl="Nie wiesz, jaki poziom?">Nie wiesz, jaki poziom?</h2>
   </div>
   <p class="poligon-muted"
-     data-en="Answer ten questions and Ćwiczba suggests one. About two minutes."
-     data-pl="Odpowiedz na dziesięć pytań, a Ćwiczba podpowie. Około dwóch minut.">
-    Odpowiedz na dziesięć pytań, a Ćwiczba podpowie. Około dwóch minut.
+     data-en="A short reading check suggests a level. About two minutes."
+     data-pl="Krótki sprawdzian czytania podpowie poziom. Około dwóch minut.">
+    Krótki sprawdzian czytania podpowie poziom. Około dwóch minut.
   </p>
   <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:placement' %}"
      data-en="Check my level" data-pl="Sprawdź mój poziom">Sprawdź mój poziom</a>

@@ -22,7 +22,7 @@ ATTEMPT_KEY = "poligon_attempt"
 ACCOUNT_HINT_KEY = "poligon_account_hint"
 SHUFFLE_KEY = "poligon_shuffle"
 
-MIN_LEVEL = 0
+MIN_LEVEL = 1
 MAX_LEVEL = 5
 DEFAULT_DAILY_MINUTES = 35
 # Enough to cover one level and skill without letting the session cookie grow.
@@ -52,6 +52,11 @@ def account_state(request: HttpRequest) -> LearnerState | None:
 
 def guest_level(request: HttpRequest) -> int | None:
     raw = request.session.get(LEVEL_KEY)
+    # A visit that still has the old floor (level 0) continues at level 1.
+    # Clearing the seen list here is what set_guest_level does on any change.
+    if raw == 0:
+        set_guest_level(request, MIN_LEVEL)
+        return MIN_LEVEL
     if isinstance(raw, int) and MIN_LEVEL <= raw <= MAX_LEVEL:
         return raw
     return None
@@ -59,8 +64,9 @@ def guest_level(request: HttpRequest) -> int | None:
 
 def set_guest_level(request: HttpRequest, level: int) -> None:
     request.session[LEVEL_KEY] = int(level)
-    # A new level means a new pool, so nothing carries over from the old one.
+    # A new level means a new pool. The previous result is not the current one.
     request.session.pop(SEEN_KEY, None)
+    request.session.pop(ATTEMPT_KEY, None)
 
 
 def current_plan(request: HttpRequest) -> LearnerState | GuestPlan | None:
@@ -75,19 +81,58 @@ def current_plan(request: HttpRequest) -> LearnerState | GuestPlan | None:
 
 
 def adopt_guest_level(request: HttpRequest, account: LearnerState) -> bool:
-    """Carry the level a guest just picked onto a brand-new account."""
+    """Copy a guest visit onto an account that has no history yet.
+
+    The copy is the level, the finished slugs, and the last result. Placement
+    stays on the account because a guest cannot take it. Returns True only when
+    the level itself changed, which is what the confirmation message talks about.
+    """
     level = guest_level(request)
+    seen = list(seen_slugs(request))
+    attempt = request.session.get(ATTEMPT_KEY)
     request.session.pop(LEVEL_KEY, None)
     request.session.pop(SEEN_KEY, None)
     request.session.pop(ATTEMPT_KEY, None)
-    if level is None or account.practice_level == level:
-        return False
-    if account.submissions.exists() or account.reviews.exists():
+    fresh = not account.submissions.exists() and not account.reviews.exists()
+    if fresh:
+        _import_guest_slugs(account, seen, attempt if isinstance(attempt, dict) else None)
+    if not fresh or level is None or account.practice_level == level:
         return False
     account.practice_level = level
     account.target_profile = str(level) * 4
     account.save(update_fields=["practice_level", "target_profile", "updated_at"])
     return True
+
+
+def _import_guest_slugs(account: LearnerState, slugs: list[str], attempt: dict | None) -> None:
+    """Mark the guest's finished exercises as done so the queue does not repeat them."""
+    from .models import Exercise, Submission
+
+    attempt = attempt or {}
+    for slug in slugs:
+        exercise = Exercise.objects.filter(slug=slug).first()
+        if exercise is None or Submission.objects.filter(learner=account, exercise=exercise).exists():
+            continue
+        feedback: dict = {"imported_from_guest": True}
+        answer = ""
+        score = None
+        selected_id = None
+        if attempt.get("exercise_id") == exercise.pk:
+            raw = attempt.get("feedback")
+            if isinstance(raw, dict):
+                feedback = {**raw, "imported_from_guest": True}
+            answer = str(attempt.get("answer") or "")
+            if attempt.get("score") is not None:
+                score = float(attempt["score"])
+            selected_id = attempt.get("selected_option_id")
+        Submission.objects.create(
+            learner=account,
+            exercise=exercise,
+            answer_text=answer,
+            selected_option_id=selected_id,
+            score=score,
+            feedback=feedback,
+        )
 
 
 def shuffle_seed(request: HttpRequest) -> str:

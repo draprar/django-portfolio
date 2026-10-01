@@ -1,0 +1,20 @@
+[
+  {"id": "gate", "en": "gate", "pl": "brama", "context": "movement"},
+  {"id": "north-gate", "en": "north gate", "pl": "brama północna", "context": "movement"},
+  {"id": "vehicle", "en": "vehicle", "pl": "pojazd", "context": "movement"},
+  {"id": "checkpoint", "en": "checkpoint", "pl": "punkt kontrolny", "context": "movement"},
+  {"id": "route", "en": "route", "pl": "trasa", "context": "movement"},
+  {"id": "proceed", "en": "proceed", "pl": "udać się", "context": "orders"},
+  {"id": "hold-position", "en": "hold position", "pl": "utrzymać pozycję", "context": "orders"},
+  {"id": "report", "en": "report", "pl": "meldunek", "context": "communications"},
+  {"id": "radio", "en": "radio", "pl": "radiostacja", "context": "communications"},
+  {"id": "briefing", "en": "briefing", "pl": "odprawa", "context": "general"},
+  {"id": "duty-desk", "en": "duty desk", "pl": "dyżurka", "context": "general"},
+  {"id": "delay", "en": "delay", "pl": "opóźnienie", "context": "logistics"},
+  {"id": "fuel", "en": "fuel", "pl": "paliwo", "context": "logistics"},
+  {"id": "water", "en": "water", "pl": "woda", "context": "logistics"},
+  {"id": "weather", "en": "weather", "pl": "pogoda", "context": "weather"},
+  {"id": "maintenance", "en": "maintenance", "pl": "obsługa techniczna", "context": "equipment"},
+  {"id": "first-aid", "en": "first aid", "pl": "pierwsza pomoc", "context": "medical"},
+  {"id": "handover", "en": "handover", "pl": "przekazanie", "context": "general"}
+]

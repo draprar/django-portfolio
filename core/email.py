@@ -8,7 +8,7 @@ from sib_api_v3_sdk.rest import ApiException
 logger = logging.getLogger(__name__)
 
 
-def send_brevo_email(subject, html_content, recipient_list):
+def send_brevo_email(subject, html_content, recipient_list, text_content=None):
     configuration = sib_api_v3_sdk.Configuration()
     configuration.api_key["api-key"] = settings.BREVO_API_KEY
 
@@ -25,7 +25,10 @@ def send_brevo_email(subject, html_content, recipient_list):
     sender = {"name": "Walery", "email": settings.DEFAULT_FROM_EMAIL}
     to = [{"email": email} for email in recipient_list]
 
-    send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(to=to, sender=sender, subject=subject, html_content=html_content)
+    payload = {"to": to, "sender": sender, "subject": subject, "html_content": html_content}
+    if text_content:
+        payload["text_content"] = bleach.clean(text_content, tags=[], strip=True)
+    send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(**payload)
 
     try:
         response = api_instance.send_transac_email(send_smtp_email)

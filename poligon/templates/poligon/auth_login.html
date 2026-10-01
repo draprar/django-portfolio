@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Zaloguj | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Zaloguj" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -13,8 +14,13 @@
 </header>
 
 <section class="poligon-card poligon-form">
-  <form method="post">
+  <form method="post" novalidate>
     {% csrf_token %}
+    {% if form.username.errors or form.password.errors %}
+    {% if not form.non_field_errors %}
+    <p class="poligon-form-error" role="alert">{% trans "Uzupełnij nazwę i hasło, potem spróbuj ponownie." %}</p>
+    {% endif %}
+    {% endif %}
     <label for="{{ form.username.id_for_label }}">
       <span data-en="Username" data-pl="Nazwa użytkownika">Nazwa użytkownika</span>
     </label>
@@ -34,8 +40,8 @@
 <section class="poligon-card">
   <p class="poligon-muted"
      data-en="You do not need an account to train. Go straight in — the account only keeps your level and history."
-     data-pl="Do treningu konto nie jest potrzebne. Możesz wejść od razu — konto służy tylko do zachowania poziomu i historii.">
-    Do treningu konto nie jest potrzebne. Możesz wejść od razu — konto służy tylko do zachowania poziomu i historii.
+     data-pl="Do treningu konto nie jest potrzebne. Możesz wejść od razu. Konto służy tylko do tego, żeby zachować poziom i historię.">
+    Do treningu konto nie jest potrzebne. Możesz wejść od razu. Konto służy tylko do tego, żeby zachować poziom i historię.
   </p>
   <a class="poligon-btn poligon-btn-quiet" href="{% url 'poligon:practice' %}"
      data-en="Practise without an account" data-pl="Ćwicz bez konta">Ćwicz bez konta</a>

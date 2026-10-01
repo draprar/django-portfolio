@@ -3,6 +3,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from .framework import CATALOG_ROLES, PUBLICATION_STATUSES, SOURCE_TYPES
+
 
 class LearnerState(models.Model):
     """One learner's plan and progress.
@@ -18,7 +20,7 @@ class LearnerState(models.Model):
     )
     practice_level = models.PositiveSmallIntegerField(
         default=2,
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
     target_profile = models.CharField(max_length=8, default="2222")
     target_date = models.DateField(null=True, blank=True)
@@ -29,6 +31,12 @@ class LearnerState(models.Model):
     class Meta:
         verbose_name = "Learner state"
         verbose_name_plural = "Learner states"
+        constraints = [
+            models.CheckConstraint(
+                name="poligon_learner_level_1_5",
+                condition=models.Q(practice_level__gte=1, practice_level__lte=5),
+            ),
+        ]
 
     def __str__(self) -> str:
         return f"{self.user.username} / {self.target_profile}"
@@ -46,6 +54,7 @@ class Exercise(models.Model):
         ("listening", "Listening"),
         ("speaking", "Speaking"),
         ("writing", "Writing"),
+        ("true_false", "True or false"),
     ]
     SOURCES = [
         ("original", "Original"),
@@ -57,7 +66,10 @@ class Exercise(models.Model):
 
     slug = models.SlugField(unique=True)
     skill = models.CharField(max_length=1, choices=SKILLS)
-    level = models.PositiveSmallIntegerField(default=2)
+    level = models.PositiveSmallIntegerField(
+        default=2,
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+    )
     exercise_type = models.CharField(max_length=20, choices=TYPES)
     expected_minutes = models.PositiveSmallIntegerField(default=7)
     original_content = models.BooleanField(default=True)
@@ -83,11 +95,42 @@ class Exercise(models.Model):
     retrieved_at = models.DateField(null=True, blank=True)
     attribution_en = models.CharField(max_length=300, blank=True)
     attribution_pl = models.CharField(max_length=300, blank=True)
+    publication_status = models.CharField(
+        max_length=16,
+        choices=[(item, item) for item in PUBLICATION_STATUSES],
+        default="draft",
+    )
+    quality_status = models.CharField(max_length=16, blank=True, default="")
+    scenario = models.CharField(max_length=40, blank=True, default="")
+    subskill = models.CharField(max_length=80, blank=True, default="")
+    learning_objective = models.TextField(blank=True, default="")
+    competency = models.CharField(max_length=64, blank=True, default="")
+    success_criteria = models.JSONField(default=list, blank=True)
+    review_status = models.CharField(max_length=16, blank=True, default="")
+    reviewed_by = models.CharField(max_length=80, blank=True, default="")
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    source_type = models.CharField(
+        max_length=16,
+        choices=[(item, item) for item in SOURCE_TYPES],
+        default="original",
+    )
+    catalog_role = models.CharField(
+        max_length=16,
+        choices=[(item, item) for item in CATALOG_ROLES],
+        default="practice",
+    )
+    delivery = models.JSONField(default=dict, blank=True)
 
     class Meta:
         verbose_name = "Exercise"
         verbose_name_plural = "Exercises"
         ordering = ["id"]
+        constraints = [
+            models.CheckConstraint(
+                name="poligon_exercise_level_1_5",
+                condition=models.Q(level__gte=1, level__lte=5),
+            ),
+        ]
 
     def __str__(self) -> str:
         return self.title_en
@@ -165,7 +208,10 @@ class VocabularyItem(models.Model):
     example_en = models.TextField(verbose_name=_("Example (EN)"))
     category_pl = models.CharField(max_length=80, default="ogólny", verbose_name=_("Category (PL)"))
     category_en = models.CharField(max_length=80, default="general", verbose_name=_("Category (EN)"))
-    level = models.PositiveSmallIntegerField(default=2)
+    level = models.PositiveSmallIntegerField(
+        default=2,
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+    )
     active = models.BooleanField(default=True)
     content_source = models.CharField(max_length=20, choices=SOURCES, default="original")
     source_url = models.URLField(blank=True)
@@ -173,11 +219,22 @@ class VocabularyItem(models.Model):
     retrieved_at = models.DateField(null=True, blank=True)
     attribution_en = models.CharField(max_length=240, blank=True)
     attribution_pl = models.CharField(max_length=240, blank=True)
+    publication_status = models.CharField(
+        max_length=16,
+        choices=[(item, item) for item in PUBLICATION_STATUSES],
+        default="published",
+    )
 
     class Meta:
         verbose_name = "Vocabulary item"
         verbose_name_plural = "Vocabulary items"
         ordering = ["term"]
+        constraints = [
+            models.CheckConstraint(
+                name="poligon_vocab_level_1_5",
+                condition=models.Q(level__gte=1, level__lte=5),
+            ),
+        ]
 
     def __str__(self) -> str:
         return self.term
@@ -212,6 +269,49 @@ class Review(models.Model):
 
     def __str__(self) -> str:
         return f"{self.learner_id} / {self.item_id}"
+
+
+class PlacementAttempt(models.Model):
+    """One placement result. The suggested level is not applied until the learner accepts it."""
+
+    learner = models.ForeignKey(LearnerState, on_delete=models.CASCADE, related_name="placement_attempts")
+    algorithm_version = models.CharField(max_length=32, default="placement_v1")
+    correct_count = models.PositiveSmallIntegerField()
+    question_count = models.PositiveSmallIntegerField()
+    suggested_level = models.PositiveSmallIntegerField()
+    answers = models.JSONField(default=list, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Placement attempt"
+        verbose_name_plural = "Placement attempts"
+
+    def __str__(self) -> str:
+        return f"{self.learner_id} / {self.suggested_level} ({self.algorithm_version})"
+
+
+class ProductEvent(models.Model):
+    """A product action. Guests are not written here."""
+
+    name = models.CharField(max_length=40)
+    learner = models.ForeignKey(
+        LearnerState,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="product_events",
+    )
+    payload = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Product event"
+        verbose_name_plural = "Product events"
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class StudyEvent(models.Model):

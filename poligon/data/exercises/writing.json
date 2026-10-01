@@ -14,7 +14,7 @@
     "instructions_en": "Write 100 to 140 words. Short paragraphs, clear order.",
     "instructions_pl": "Napisz 100–140 słów. Krótkie akapity, jasna kolejność.",
     "prompt_en": "Write an email to a colleague explaining that a training meeting has moved from Tuesday morning to Tuesday afternoon. Give the new time, explain the reason briefly, and ask the colleague to confirm availability.",
-    "prompt_pl": "Napisz e-mail do kolegi z informacją, że odprawa szkoleniowa przeniosła się z wtorkowego poranka na wtorkowe popołudnie. Podaj nową godzinę, krótko wyjaśnij powód i poproś o potwierdzenie dostępności.",
+    "prompt_pl": "Napisz e-mail do osoby z zespołu z informacją, że odprawa szkoleniowa przeniosła się z wtorkowego poranka na wtorkowe popołudnie. Podaj nową godzinę, krótko wyjaśnij powód i poproś o potwierdzenie dostępności.",
     "content_en": "",
     "content_pl": "",
     "content_source": "original",
@@ -22,7 +22,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-002-instructions",
@@ -47,7 +57,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-003-delay-email",
@@ -72,7 +92,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-004-gate-instructions",
@@ -97,7 +127,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-005-lost-radio",
@@ -122,7 +162,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-006-weather-move",
@@ -147,7 +197,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-007-visitor",
@@ -172,7 +232,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-008-compare",
@@ -183,13 +253,13 @@
     "original_content": true,
     "source_note": "Original Poligon prompt",
     "title_en": "Recommend transport",
-    "title_pl": "Zarekomenduj transport",
+    "title_pl": "Poleć transport",
     "category_en": "comparison",
     "category_pl": "porównanie",
     "instructions_en": "Write 100 to 140 words in English.",
     "instructions_pl": "Napisz 100–140 słów po angielsku.",
     "prompt_en": "Write a short recommendation. Twenty people can use one bus or two minibuses. Choose one option and give two reasons.",
-    "prompt_pl": "Napisz krótką rekomendację. Dwadzieścia osób może jechać jednym autobusem albo dwoma minibusami. Wybierz jedną opcję i podaj dwa powody.",
+    "prompt_pl": "Napisz, co polecasz. Dwadzieścia osób może jechać jednym autobusem albo dwoma minibusami. Wybierz jedną opcję i podaj dwa powody.",
     "content_en": "",
     "content_pl": "",
     "content_source": "original",
@@ -197,7 +267,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-009-roster",
@@ -222,7 +302,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-010-maintenance",
@@ -247,7 +337,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-011-safety-brief",
@@ -272,7 +372,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-012-apology",
@@ -297,7 +407,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-013-handover",
@@ -322,7 +442,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-014-meal",
@@ -347,7 +477,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-015-route-warning",
@@ -372,7 +512,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-016-request-help",
@@ -389,7 +539,7 @@
     "instructions_en": "Write 100 to 140 words in English.",
     "instructions_pl": "Napisz 100–140 słów po angielsku.",
     "prompt_en": "Write to a colleague. You need help carrying a crate of radio batteries to classroom one before nine.",
-    "prompt_pl": "Napisz do kolegi. Potrzebujesz pomocy w zaniesieniu skrzyni z bateriami do radiostacji do sali pierwszej przed dziewiątą.",
+    "prompt_pl": "Napisz do osoby z zespołu. Potrzebujesz pomocy w zaniesieniu skrzyni z bateriami do radiostacji do sali pierwszej przed dziewiątą.",
     "content_en": "",
     "content_pl": "",
     "content_source": "original",
@@ -397,7 +547,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-017-drill",
@@ -422,7 +582,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-018-medical",
@@ -447,7 +617,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-019-quiet-hours",
@@ -472,7 +652,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "write-020-thanks",
@@ -497,6 +687,16 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]

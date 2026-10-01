@@ -6,8 +6,8 @@
 
 {% block footer_note %}
 <p data-en="This is a joke, not a diagnosis and not a training recommendation."
-   data-pl="To żart, nie diagnoza i nie rekomendacja treningu.">
-  To żart, nie diagnoza i nie rekomendacja treningu.
+   data-pl="To żart. To nie jest diagnoza ani rekomendacja treningu.">
+  To żart. To nie jest diagnoza ani rekomendacja treningu.
 </p>
 {% endblock %}
 
@@ -29,17 +29,17 @@
   <p class="walczak-subtitle" data-en="{{ card.archetype.description_en }}" data-pl="{{ card.archetype.description_pl }}">{{ card.archetype.description_pl }}</p>
   <p class="walczak-muted"
      data-en="These styles are an association, not a psychological result."
-     data-pl="Te style są skojarzeniem, nie wynikiem psychologicznym.">
-    Te style są skojarzeniem, nie wynikiem psychologicznym.
+     data-pl="Te style pasują do żartu. Nie wynikają z testu psychologicznego.">
+    Te style pasują do żartu. Nie wynikają z testu psychologicznego.
   </p>
 </header>
 
 {% if card.styles %}
 <section class="walczak-card">
   {% if tied %}
-  <h3 class="walczak-section-title" data-en="A flavour, not a verdict" data-pl="Smak, nie wyrok">Smak, nie wyrok</h3>
+  <h3 class="walczak-section-title" data-en="A flavour, not a verdict" data-pl="Klimat, nie wyrok">Klimat, nie wyrok</h3>
   {% else %}
-  <h2 class="walczak-section-title" data-en="A flavour, not a verdict" data-pl="Smak, nie wyrok">Smak, nie wyrok</h2>
+  <h2 class="walczak-section-title" data-en="A flavour, not a verdict" data-pl="Klimat, nie wyrok">Klimat, nie wyrok</h2>
   {% endif %}
   <ul class="walczak-sources">
     {% for style in card.styles %}

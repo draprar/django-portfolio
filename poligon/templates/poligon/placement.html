@@ -1,19 +1,20 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Jaki poziom? | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Jaki poziom?" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
   <h1 class="poligon-title" data-en="Which level?" data-pl="Jaki poziom?">Jaki poziom?</h1>
   <p class="poligon-subtitle"
-     data-en="Ten English questions, from easy to hard. Every two right answers move the suggestion one level up. Guessing is fine, skipping is fine too."
-     data-pl="Dziesięć pytań po angielsku, od łatwych do trudnych. Za każde dwie dobre odpowiedzi propozycja idzie o poziom wyżej. Możesz zgadywać, możesz też opuścić pytanie.">
-    Dziesięć pytań po angielsku, od łatwych do trudnych. Za każde dwie dobre odpowiedzi propozycja idzie o poziom wyżej. Możesz zgadywać, możesz też opuścić pytanie.
+     data-en="English questions, from easy to hard. Every two right answers move the suggestion one level up. Guessing is fine, skipping is fine too."
+     data-pl="Pytania są po angielsku, od łatwych do trudnych. Im więcej dobrych odpowiedzi, tym wyższy proponowany poziom. Możesz zgadywać albo pominąć pytanie.">
+    Pytania są po angielsku, od łatwych do trudnych. Im więcej dobrych odpowiedzi, tym wyższy proponowany poziom. Możesz zgadywać albo pominąć pytanie.
   </p>
   <p class="poligon-muted"
-     data-en="It is a reading check only, and nothing here counts as field training. It is not a STANAG or CEFR exam."
-     data-pl="To sprawdzenie samego czytania i nie liczy się jako trening polowy. To nie egzamin STANAG ani CEFR.">
-    To sprawdzenie samego czytania i nie liczy się jako trening polowy. To nie egzamin STANAG ani CEFR.
+     data-en="This checks reading only and does not count as practice. It is not an official exam."
+     data-pl="Sprawdzamy tylko czytanie. To nie liczy się jako trening i nie jest oficjalnym egzaminem.">
+    Sprawdzamy tylko czytanie. To nie liczy się jako trening i nie jest oficjalnym egzaminem.
   </p>
 </header>
 

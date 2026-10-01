@@ -24,7 +24,7 @@
   <h2 class="walczak-section-title" data-en="About" data-pl="O stylu">O stylu</h2>
   <p data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
   {% if style.is_umbrella %}
-  <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.">Parasol, nie jeden regulamin. Jeden profil nie opisuje każdej sali.</p>
+  <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.">To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.</p>
   {% endif %}
   {% if style.style_types.all %}
   <p class="walczak-muted">
@@ -57,7 +57,7 @@
   <p class="walczak-muted" data-en="The sources do not agree." data-pl="Źródła nie są zgodne.">Źródła nie są zgodne.</p>
   {% endif %}
   {% if thin_sources %}
-  <p class="walczak-muted" data-en="The description is thinner: the second source only points at the topic." data-pl="Opis jest cieńszy: drugie źródło tylko wskazuje temat.">Opis jest cieńszy: drugie źródło tylko wskazuje temat.</p>
+  <p class="walczak-muted" data-en="The description is thinner: the second source only points at the topic." data-pl="Opis jest krótszy, bo drugie źródło tylko wskazuje temat.">Opis jest krótszy, bo drugie źródło tylko wskazuje temat.</p>
   {% endif %}
   <p data-en="{{ style.history_en }}" data-pl="{{ style.history_pl }}">{{ style.history_pl }}</p>
 </section>
@@ -73,7 +73,7 @@
 {% if headline %}
 <section class="walczak-card">
   <h2 class="walczak-section-title" data-en="Training character" data-pl="Charakter treningu">Charakter treningu</h2>
-  <p class="walczak-muted" data-en="Low, medium, or high. An editorial judgment, not a measure of strength." data-pl="Nisko, średnio albo wysoko. Ocena redakcji, nie pomiar siły.">Nisko, średnio albo wysoko. Ocena redakcji, nie pomiar siły.</p>
+  <p class="walczak-muted" data-en="Low, medium, or high. An editorial judgment, not a measure of strength." data-pl="Nisko, średnio albo wysoko. To ocena redakcji. Nie mierzymy nią siły.">Nisko, średnio albo wysoko. To ocena redakcji. Nie mierzymy nią siły.</p>
   <ul class="walczak-sources">
     {% for row in headline %}
     <li><span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span> — <span data-en="{{ row.word_en }}" data-pl="{{ row.word_pl }}">{{ row.word_pl }}</span></li>

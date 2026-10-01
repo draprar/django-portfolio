@@ -23,7 +23,9 @@
     "exercises/level-5-listening.json",
     "exercises/level-5-reading.json",
     "exercises/level-5-speaking.json",
-    "exercises/level-5-writing.json"
+    "exercises/level-5-writing.json",
+    "exercises/curated.json",
+    "exercises/matrix-v1.json"
   ],
   "vocabulary": [
     "vocabulary/original.json",

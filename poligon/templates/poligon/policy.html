@@ -1,6 +1,7 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Twoje dane | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Twoje dane" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
@@ -8,8 +9,8 @@
   <h1 class="poligon-title" data-en="What we store, and when" data-pl="Co zapisujemy i kiedy">Co zapisujemy i kiedy</h1>
   <p class="poligon-subtitle"
      data-en="Short version: as a guest, nothing. With an account, only what the account needs in order to be useful."
-     data-pl="Krótko: jako gość — nic. Z kontem — tylko to, co jest potrzebne, żeby konto miało sens.">
-    Krótko: jako gość — nic. Z kontem — tylko to, co jest potrzebne, żeby konto miało sens.
+     data-pl="Krótko: gość nie zostawia u nas nic. Konto trzyma tylko to, bez czego nie miałoby sensu.">
+    Krótko: gość nie zostawia u nas nic. Konto trzyma tylko to, bez czego nie miałoby sensu.
   </p>
 </header>
 
@@ -18,8 +19,8 @@
     <h2 data-en="Practising without an account" data-pl="Ćwiczenie bez konta">Ćwiczenie bez konta</h2>
   </div>
   <p data-en="The chosen level and the answer you have just checked live in the session on the server, for the length of the visit. They are not written to the database and nothing identifies you."
-     data-pl="Wybrany poziom i właśnie sprawdzona odpowiedź żyją w sesji na serwerze, przez czas wizyty. Nie trafiają do bazy i nic Cię nie identyfikuje.">
-    Wybrany poziom i właśnie sprawdzona odpowiedź żyją w sesji na serwerze, przez czas wizyty. Nie trafiają do bazy i nic Cię nie identyfikuje.
+     data-pl="Wybrany poziom i ostatnia odpowiedź zostają w sesji na serwerze, tylko na czas wizyty. Nie trafiają do bazy i nic Cię nie identyfikuje.">
+    Wybrany poziom i ostatnia odpowiedź zostają w sesji na serwerze, tylko na czas wizyty. Nie trafiają do bazy i nic Cię nie identyfikuje.
   </p>
   <p data-en="Close the browser and it is gone. That is also why a guest has no flashcards: a card can only come back on the right day if its history is kept somewhere."
      data-pl="Zamykasz przeglądarkę i tego nie ma. Dlatego gość nie ma też fiszek: fiszka wróci w odpowiednim dniu tylko wtedy, gdy jej historia jest gdzieś zapisana.">
@@ -48,8 +49,8 @@
         <tr>
           <td><code>sessionid</code></td>
           <td data-en="Holds the session: the chosen level, the last checked answer and, for an account, the fact that you are signed in."
-              data-pl="Trzyma sesję: wybrany poziom, ostatnio sprawdzoną odpowiedź, a dla konta — to, że jesteś zalogowany.">
-            Trzyma sesję: wybrany poziom, ostatnio sprawdzoną odpowiedź, a dla konta — to, że jesteś zalogowany.
+              data-pl="Trzyma sesję: wybrany poziom, ostatnią odpowiedź, a przy koncie sam fakt, że logowanie trwa.">
+            Trzyma sesję: wybrany poziom, ostatnią odpowiedź, a przy koncie sam fakt, że logowanie trwa.
           </td>
           <td data-en="2 hours, or until the browser is closed" data-pl="2 godziny albo do zamknięcia przeglądarki">2 godziny albo do zamknięcia przeglądarki</td>
         </tr>
@@ -79,21 +80,21 @@
     <h2 data-en="With an account" data-pl="Z kontem">Z kontem</h2>
   </div>
   <p data-en="An account stores your username, your e-mail address, a password hash — never the password itself — and your training data: the level, the daily goal, the answers you have submitted and the flashcard schedule."
-     data-pl="Konto przechowuje nazwę użytkownika, adres e-mail, skrót hasła — nigdy samego hasła — oraz dane treningowe: poziom, cel na dzień, wysłane odpowiedzi i terminy fiszek.">
-    Konto przechowuje nazwę użytkownika, adres e-mail, skrót hasła — nigdy samego hasła — oraz dane treningowe: poziom, cel na dzień, wysłane odpowiedzi i terminy fiszek.
+     data-pl="Konto trzyma nazwę, adres e-mail i skrót hasła. Samego hasła nie zapisujemy. Z treningu zostają poziom, dzienny cel, wysłane odpowiedzi i terminy fiszek.">
+    Konto trzyma nazwę, adres e-mail i skrót hasła. Samego hasła nie zapisujemy. Z treningu zostają poziom, dzienny cel, wysłane odpowiedzi i terminy fiszek.
   </p>
   <p data-en="We need the e-mail address to confirm the account and to let you reset a forgotten password. We do not send anything else to it."
-     data-pl="Adres e-mail potrzebny jest do potwierdzenia konta i do odzyskania zapomnianego hasła. Nic innego na niego nie wysyłamy.">
-    Adres e-mail potrzebny jest do potwierdzenia konta i do odzyskania zapomnianego hasła. Nic innego na niego nie wysyłamy.
+     data-pl="Adres e-mail służy do potwierdzenia konta i do odzyskania hasła. Nic innego na niego nie wysyłamy.">
+    Adres e-mail służy do potwierdzenia konta i do odzyskania hasła. Nic innego na niego nie wysyłamy.
   </p>
   <p data-en="The basis is simple: you asked for an account, so we keep what the account is made of. You can ask us to delete it, and then it is gone along with the training data."
-     data-pl="Podstawa jest prosta: poprosiłeś o konto, więc trzymamy to, z czego konto się składa. Możesz poprosić o jego usunięcie — wtedy znika razem z danymi treningowymi.">
-    Podstawa jest prosta: poprosiłeś o konto, więc trzymamy to, z czego konto się składa. Możesz poprosić o jego usunięcie — wtedy znika razem z danymi treningowymi.
+     data-pl="Konto powstało na Twoją prośbę, więc trzymamy to, z czego się składa. Gdy je usuniesz, znikają też dane treningu.">
+    Konto powstało na Twoją prośbę, więc trzymamy to, z czego się składa. Gdy je usuniesz, znikają też dane treningu.
   </p>
   <p class="poligon-muted"
-     data-en="Speech recognition and recording happen in your browser. A recording never leaves the device and is never sent to us."
-     data-pl="Rozpoznawanie mowy i nagrywanie dzieją się w Twojej przeglądarce. Nagranie nie opuszcza urządzenia i nigdy do nas nie trafia.">
-    Rozpoznawanie mowy i nagrywanie dzieją się w Twojej przeglądarce. Nagranie nie opuszcza urządzenia i nigdy do nas nie trafia.
+     data-en="A recording stays in the browser. We do not upload it and we do not transcribe it. The check uses the text you type."
+     data-pl="Nagranie zostaje w przeglądarce. Nie wgrywamy go i nie zamieniamy na tekst. Ocena dotyczy wpisanego tekstu.">
+    Nagranie zostaje w przeglądarce. Nie wgrywamy go i nie zamieniamy na tekst. Ocena dotyczy wpisanego tekstu.
   </p>
 </section>
 
@@ -102,13 +103,13 @@
   <div class="poligon-card-head">
     <h2 data-en="Getting in touch" data-pl="Kontakt">Kontakt</h2>
   </div>
-  <p data-en="Write to us about access to your data, a correction or a deletion, and we will handle it."
-     data-pl="Napisz do nas w sprawie dostępu do swoich danych, poprawienia ich albo usunięcia — zajmiemy się tym.">
-    Napisz do nas w sprawie dostępu do swoich danych, poprawienia ich albo usunięcia — zajmiemy się tym.
+  <p data-en="On the account page you can download your training or delete the account yourself. You can still write to us about a correction."
+     data-pl="Na stronie konta pobierzesz swoje dane albo usuniesz konto. Gdyby coś było nie tak, napisz.">
+    Na stronie konta pobierzesz swoje dane albo usuniesz konto. Gdyby coś było nie tak, napisz.
   </p>
   <p class="poligon-links">
     <a href="{% url 'contact' %}" data-en="Contact" data-pl="Formularz kontaktowy">Formularz kontaktowy</a>
-    <a href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć na pulpit">Wróć na pulpit</a>
+    <a href="{% url 'poligon:dashboard' %}" data-en="Back to the dashboard" data-pl="Wróć do ćwiczeń">Wróć do ćwiczeń</a>
   </p>
 </section>
 {% endif %}

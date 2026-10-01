@@ -1,14 +1,15 @@
 {% extends "poligon/base.html" %}
 
-{% block title %}Załóż konto | Ćwiczba{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Załóż konto" %} | Ćwiczba{% endblock %}
 
 {% block poligon %}
 <header class="poligon-header poligon-header-left">
   <h1 class="poligon-title" data-en="Create an account" data-pl="Załóż konto">Załóż konto</h1>
   <p class="poligon-subtitle"
      data-en="One account for the whole site. Here it keeps your level, your tactical vocabulary and your training history."
-     data-pl="Jedno konto na całą stronę. Tutaj trzyma Twój poziom, słownictwo taktyczne i historię treningu.">
-    Jedno konto na całą stronę. Tutaj trzyma Twój poziom, słownictwo taktyczne i historię treningu.
+     data-pl="Jedno konto na całą stronę. Zapisujemy w nim poziom, słownictwo taktyczne i historię treningu.">
+    Jedno konto na całą stronę. Zapisujemy w nim poziom, słownictwo taktyczne i historię treningu.
   </p>
 </header>
 

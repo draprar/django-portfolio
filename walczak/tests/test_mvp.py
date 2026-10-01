@@ -214,7 +214,7 @@ def test_compare_without_a_study_says_there_is_no_data(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "Nie porównujemy stylów pod kątem osobowości ani badań, bo takich danych tu nie ma." in content
+    assert "Nie zestawiamy stylów pod kątem osobowości ani badań. Takich danych tu nie ma." in content
     assert "ocena redakcji" in content
     assert "Historia i typ" in content
     assert "Psychologia / badania" not in content
@@ -311,9 +311,9 @@ def test_tag_filter_and_umbrella_label(client):
 
     karate = client.get(reverse("walczak:detail", args=["karate"]))
     karate_page = karate.content.decode()
-    assert "Parasol, nie jeden regulamin." in karate_page
-    assert "Jeden profil nie opisuje każdej sali." in karate_page
-    assert "Ocena redakcji, nie pomiar siły." in karate_page
+    assert "To nazwa zbiorcza, nie jeden regulamin." in karate_page
+    assert "Jeden opis nie pasuje do każdej sali." in karate_page
+    assert "To ocena redakcji." in karate_page
     assert "Pokaż pełny profil" in karate.content.decode()
 
 
@@ -345,10 +345,10 @@ def test_fact_draw_skips_the_previous_one(client):
 def test_serious_pages_do_not_call_the_catalog_a_joke(client):
     load_catalog()
     home = client.get(reverse("walczak:home")).content.decode()
-    assert "To żart, nie diagnoza" not in home
-    assert "nie jest diagnoza" in home
+    assert "To żart" not in home
+    assert "ani diagnoza" in home
     quiz = client.get(reverse("walczak:quiz")).content.decode()
-    assert "To żart, nie diagnoza" in quiz
+    assert "To żart." in quiz
 
 
 @pytest.mark.django_db
@@ -357,7 +357,7 @@ def test_incomplete_preference_does_not_open_a_list(client):
     questions = list(PreferenceQuestion.objects.filter(active=True).prefetch_related("options__weights"))
     empty = client.post(reverse("walczak:test"), {})
     assert empty.status_code == 200
-    assert "Lista powstaje dopiero wtedy." in empty.content.decode()
+    assert "Dopiero wtedy powstanie lista." in empty.content.decode()
     assert "walczak_preference" not in client.session
 
     scale = next(question for question in questions if question.kind == "scale")
@@ -388,7 +388,7 @@ def test_low_agreement_and_striking_copy_do_not_say_stance():
     plus_pl, _, _, _ = _reasons({"weapons": 0.0}, {"weapons": 0}, ["weapons"])
     striking, _, _, _ = _reasons({"striking": 5.0}, {"striking": 5}, ["striking"])
 
-    assert plus_pl == ["Broni tu prawie nie ma, i tego właśnie szukasz."]
+    assert plus_pl == ["Broni tu prawie nie ma. Właśnie tego szukasz."]
     assert "uderz" in striking[0].lower()
     assert "stój" not in striking[0]
 
@@ -458,10 +458,11 @@ def test_list_hides_the_second_person_joke_and_names_the_thin_source(client):
     done = client.post(reverse("walczak:personality"), {f"i{item.pk}": "3" for item in items})
     assert done.status_code == 302
     scored = client.get(reverse("walczak:personality")).content.decode()
-    assert "krótkiego kwestionariusza w skali od 1 do 5" in scored
-    assert "norma populacyjna" in scored
+    assert "krótkiego kwestionariusza" in scored
+    assert "w skali od 1 do 5" in scored
+    assert "To nie jest norma" in scored
     missing = client.post(reverse("walczak:personality"), {})
     assert missing.status_code == 200
-    assert "Zaznacz każdą pozycję." in missing.content.decode()
+    assert "Zaznacz każdą linijkę." in missing.content.decode()
     assert "walczak_ipip" not in client.session
     assert "Twoje pięć liczb" not in client.get(reverse("walczak:personality")).content.decode()

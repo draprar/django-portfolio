@@ -22,7 +22,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-002-change",
@@ -47,7 +57,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-003-route",
@@ -72,7 +92,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-004-delay",
@@ -97,7 +127,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-005-compare-transport",
@@ -122,7 +162,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "published",
+    "quality_status": "legacy",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-006-request",
@@ -147,7 +197,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-007-instructions",
@@ -172,7 +232,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-008-weather",
@@ -197,7 +267,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-009-equipment",
@@ -222,7 +302,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-010-team",
@@ -247,7 +337,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-011-safety",
@@ -272,7 +372,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-012-phone",
@@ -297,7 +407,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-013-preference",
@@ -308,13 +428,13 @@
     "original_content": true,
     "source_note": "Original Poligon prompt",
     "title_en": "Recommend a choice",
-    "title_pl": "Zarekomenduj wybór",
+    "title_pl": "Poleć wybór",
     "category_en": "comparison",
     "category_pl": "porównanie",
     "instructions_en": "Speak for about 90 seconds in English, then write down the same thing.",
     "instructions_pl": "Mów około 90 sekund po angielsku, potem zapisz to samo.",
     "prompt_en": "The class can stay outdoors or move indoors. Recommend one option and give two reasons.",
-    "prompt_pl": "Zajęcia mogą zostać na zewnątrz albo przenieść się do środka. Zarekomenduj jedną opcję i podaj dwa powody.",
+    "prompt_pl": "Zajęcia mogą zostać na zewnątrz albo przenieść się do środka. Poleć jedną opcję i podaj dwa powody.",
     "content_en": "",
     "content_pl": "",
     "content_source": "original",
@@ -322,7 +442,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-014-day",
@@ -347,7 +477,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-015-problem",
@@ -372,7 +512,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-016-visitor",
@@ -397,7 +547,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-017-map",
@@ -422,7 +582,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-018-apology",
@@ -447,7 +617,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-019-handover",
@@ -472,7 +652,17 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   },
   {
     "slug": "speak-020-plan-b",
@@ -497,6 +687,16 @@
     "source_license": "",
     "retrieved_at": null,
     "attribution_en": "",
-    "attribution_pl": ""
+    "attribution_pl": "",
+    "publication_status": "draft",
+    "quality_status": "",
+    "scenario": "",
+    "subskill": "",
+    "learning_objective": "",
+    "competency": "",
+    "success_criteria": [],
+    "review_status": "",
+    "reviewed_by": "",
+    "source_type": "original"
   }
 ]
