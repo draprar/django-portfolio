@@ -5,6 +5,11 @@
   };
 
   function applyTextToElement(el, text, plainOnly) {
+    if (el.tagName === 'META') {
+      el.setAttribute('content', text);
+      return;
+    }
+
     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
       // if placeholder/value
       if ('placeholder' in el) el.placeholder = text;

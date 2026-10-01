@@ -217,6 +217,12 @@ main.container {
   justify-content: flex-start;
 }
 
+.walczak-home-note {
+  max-width: 36rem;
+  margin: 0.2rem auto 0;
+  text-align: center;
+}
+
 .walczak-btn {
   display: inline-flex;
   align-items: center;

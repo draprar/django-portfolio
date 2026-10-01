@@ -2,7 +2,17 @@
 
 {% block title %}{{ left.name_pl }} / {{ right.name_pl }} | Walczak{% endblock %}
 {% block title_i18n %}data-pl="{{ left.name_pl }} / {{ right.name_pl }} | Walczak" data-en="{{ left.name_en }} / {{ right.name_en }} | Walczak"{% endblock %}
-{% block description %}Porównanie: {{ left.summary_pl }}{% endblock %}
+{% block og_title %}{{ left.name_pl }} / {{ right.name_pl }} | Walczak{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="{{ left.name_pl }} i {{ right.name_pl }}, obok siebie."
+      data-en="{{ left.name_en }} and {{ right.name_en }}, side by side."
+      content="{{ left.name_pl }} i {{ right.name_pl }}, obok siebie.">
+<meta property="og:description"
+      data-pl="{{ left.name_pl }} i {{ right.name_pl }}, obok siebie."
+      data-en="{{ left.name_en }} and {{ right.name_en }}, side by side."
+      content="{{ left.name_pl }} i {{ right.name_pl }}, obok siebie.">
+{% endblock %}
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">

@@ -16,6 +16,7 @@ urlpatterns = [
     path("porownaj/<slug:a>/<slug:b>/", views.compare, name="compare"),
     path("zlote/", views.golden, name="golden"),
     path("fakt/", views.fact, name="fact"),
+    path("sitemap.xml", views.sitemap, name="sitemap"),
     path("osobowosc/", views.personality, name="personality"),
     path("api/martial-arts/", views_api.MartialArtListView.as_view(), name="api-styles"),
     path("api/martial-arts/<slug:slug>/", views_api.MartialArtDetailView.as_view(), name="api-style"),
