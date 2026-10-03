@@ -210,6 +210,8 @@ def test_compare_without_a_study_says_there_is_no_data(client):
     content = response.content.decode()
 
     assert response.status_code == 200
+    assert "walczak-scale-legend" in content
+    assert "prawie nie występuje albo niewielkie nastawienie" in content
     assert "Historia i typ" in content
     assert "Psychologia / badania" not in content
     assert "Szybki profil" not in content

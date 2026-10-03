@@ -13,11 +13,19 @@ def test_wybierz_renders_crossroads(client):
     assert "/wyraj/" in content
     assert "/tonguetwister/" in content
     assert "/code/" in content
+    assert "/walczak/" in content
     assert "kodzillin'" in content
+    assert "Walczak" in content
     assert "code-bg.gif" in content
+    assert "walczak-bg.jpg" in content
     assert 'panel-code' in content
+    assert 'panel-walczak' in content
+    assert 'portal-featured' in content
+    assert 'code-hero' in content
+    assert 'stage-stack' in content
+    assert 'panel-wide' in content
     assert 'class="cta-arrow"' in content
-    assert "Komputerek" in content
+    assert "Komputerek" not in content
     assert 'id="contact-form"' not in content
     assert "rozdroze/js/wybierz.js" in content
     assert "{% static" not in content

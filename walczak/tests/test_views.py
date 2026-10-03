@@ -39,7 +39,7 @@ def test_list_ignores_family_query(client):
     assert response.status_code == 200
     assert "Judo" in content
     assert "Boks" in content
-    assert "se porównaj:" in content
+    assert "Se porównaj:" in content
     assert reverse("walczak:compare_form") in content
     assert 'name="a"' in content
     assert 'data-pl="Katalog"' in content
@@ -67,6 +67,17 @@ def test_detail_shows_history_and_source(client):
     assert "Jak się walczy" in content
     assert "https://www.britannica.com/sports/boxing" in content
     assert 'data-en="Boxing"' in content
+
+
+@pytest.mark.django_db
+def test_unclear_sources_copy(client):
+    Style.objects.filter(slug="boks").update(sources_disagree=True)
+    response = client.get(reverse("walczak:detail", args=["boks"]))
+    content = response.content.decode()
+
+    assert response.status_code == 200
+    assert "Nie da się uczciwie podać jednej wersji, źródła są niejasne." in content
+    assert "Źródła się nie zgadzają." not in content
 
 
 @pytest.mark.django_db

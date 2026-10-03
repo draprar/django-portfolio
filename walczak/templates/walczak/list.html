@@ -19,13 +19,11 @@
   <h1 class="walczak-title" data-en="Catalog" data-pl="Katalog">Katalog</h1>
   <p class="walczak-subtitle"
      data-en="Check out all kinds of combat sports and martial arts — you can compare them too."
-     data-pl="Obczaj różne sporty i sztuki walki — możesz je też porównywać.">
-    Obczaj różne sporty i sztuki walki — możesz je też porównywać.
-  </p>
+     data-pl="Obczaj różne sporty i sztuki walki — możesz je też porównywać.">Obczaj różne sporty i sztuki walki — możesz je też porównywać.</p>
   {% if compare_styles %}
   <form method="post" action="{% url 'walczak:compare_form' %}" class="walczak-card walczak-compare-inline" id="porownaj">
     {% csrf_token %}
-    <p class="walczak-compare-label" data-en="Go on, compare:" data-pl="se porównaj:">se porównaj:</p>
+    <p class="walczak-compare-label" data-en="Go on, compare:" data-pl="Se porównaj:">Se porównaj:</p>
     <div class="walczak-compare-row">
       <label class="walczak-field">
         <span class="visually-hidden" data-en="First" data-pl="Pierwszy">Pierwszy</span>

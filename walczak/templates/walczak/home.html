@@ -3,25 +3,35 @@
 {% block title %}Walczak{% endblock %}
 
 {% block walczak %}
+<div class="walczak-home">
 <header class="walczak-header walczak-home-header">
   <h1 class="walczak-title" data-en="Hey, welcome to Walczak, check it out below." data-pl="Siemasz na Walczaku, obczaj niżej.">Siemasz na Walczaku, obczaj niżej.</h1>
 </header>
 
-<section class="walczak-card walczak-home-intro">
-  <ul>
-    <li data-en="Catalog: check out all kinds of combat sports and martial arts. You can compare them too."
-        data-pl="Katalog: obczaj różne sporty i sztuki walki. Możesz je też porównywać.">
-      Katalog: obczaj różne sporty i sztuki walki. Możesz je też porównywać.
-    </li>
-    <li data-en="Quizmatch: click around and you get a short list of styles matched to your answers."
-        data-pl="Quizopasowanie: se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.">
-      Quizopasowanie: se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
-    </li>
-  </ul>
-</section>
+<section class="walczak-home-features" aria-label="Opcje">
+  <article class="walczak-home-feature walczak-card">
+    <h2 class="walczak-home-feature-title" data-en="Catalog" data-pl="Katalog">Katalog</h2>
+    <p class="walczak-home-feature-text"
+       data-en="Check out all kinds of combat sports and martial arts. You can compare them too."
+       data-pl="Obczaj różne sporty i sztuki walki. Możesz je też porównywać.">
+      Obczaj różne sporty i sztuki walki. Możesz je też porównywać.
+    </p>
+    <div class="walczak-home-feature-action">
+      <a class="walczak-btn" href="{% url 'walczak:list' %}" data-en="Catalog" data-pl="Katalog">Katalog</a>
+    </div>
+  </article>
 
-<div class="walczak-actions">
-  <a class="walczak-btn" href="{% url 'walczak:list' %}" data-en="Catalog" data-pl="Katalog">Katalog</a>
-  <a class="walczak-btn" href="{% url 'walczak:test' %}" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</a>
+  <article class="walczak-home-feature walczak-card">
+    <h2 class="walczak-home-feature-title" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</h2>
+    <p class="walczak-home-feature-text"
+       data-en="Click around and you get a short list of styles matched to your answers."
+       data-pl="Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.">
+      Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
+    </p>
+    <div class="walczak-home-feature-action">
+      <a class="walczak-btn" href="{% url 'walczak:test' %}" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</a>
+    </div>
+  </article>
+</section>
 </div>
 {% endblock %}
