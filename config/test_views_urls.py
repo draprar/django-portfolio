@@ -31,8 +31,8 @@ def test_walczak_missing_path_uses_the_app_page(rf):
     body = response.content.decode()
 
     assert response.status_code == 404
-    assert "Tej strony nie ma." in body
-    assert 'data-en="This page is not here."' in body
+    assert "Tu nic nie ma." in body
+    assert 'data-en="There\'s nothing here."' in body
     assert reverse("walczak:list") in body
 
 

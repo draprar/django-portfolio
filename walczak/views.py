@@ -13,22 +13,10 @@ from walczak.display import (
     profile_groups,
     split_profile,
 )
-from walczak.humor import choose_archetypes
-from walczak.models import Archetype, Fact, HumorQuestion, IPIPItem, PreferenceQuestion, Study, Style, Tag
+from walczak.models import PreferenceQuestion, Study, Style, Tag
 from walczak.preference import answers_complete, rank_styles
-from walczak.psychology import score_ipip
 
-RESULT_KEY = "walczak_result"
 PREFERENCE_KEY = "walczak_preference"
-IPIP_KEY = "walczak_ipip"
-FACT_KEY = "walczak_facts"
-
-
-def family_options() -> list[dict[str, str]]:
-    return [
-        {"value": value, "pl": label, "en": Style.FAMILY_EN[value]}
-        for value, label in Style.FAMILY_CHOICES
-    ]
 
 
 @require_http_methods(["GET"])
@@ -38,16 +26,11 @@ def home(request: HttpRequest) -> HttpResponse:
 
 @require_http_methods(["GET"])
 def style_list(request: HttpRequest) -> HttpResponse:
-    raw = request.GET.get("rodzina") or ""
-    known = {value for value, _label in Style.FAMILY_CHOICES}
-    selected = raw if raw in known else ""
     tag_raw = request.GET.get("tag") or ""
     tags = list(Tag.objects.all())
     known_tags = {tag.slug for tag in tags}
     selected_tag = tag_raw if tag_raw in known_tags else ""
     styles = Style.objects.filter(active=True)
-    if selected:
-        styles = styles.filter(family=selected)
     if selected_tag:
         styles = styles.filter(tags__slug=selected_tag).distinct()
     return render(
@@ -55,10 +38,9 @@ def style_list(request: HttpRequest) -> HttpResponse:
         "walczak/list.html",
         {
             "styles": styles,
-            "families": family_options(),
             "tags": tags,
-            "selected_family": selected,
             "selected_tag": selected_tag,
+            "compare_styles": Style.objects.filter(active=True, catalog_set="core").order_by("name_pl"),
         },
     )
 
@@ -90,55 +72,6 @@ def style_detail(request: HttpRequest, slug: str) -> HttpResponse:
             "rest": rest,
             "thin_sources": description_is_thin(style),
         },
-    )
-
-
-@require_http_methods(["GET", "POST"])
-@ratelimit(key="ip", rate="10/m", method="POST", block=True)
-def quiz(request: HttpRequest) -> HttpResponse:
-    questions = list(
-        HumorQuestion.objects.filter(active=True).prefetch_related("choices").order_by("sort_order", "pk")
-    )
-    if not questions:
-        return render(request, "walczak/empty.html")
-    if request.method == "POST":
-        archetypes = choose_archetypes(questions, request.POST)
-        if not archetypes:
-            _forget(request, RESULT_KEY)
-            return render(
-                request,
-                "walczak/quiz.html",
-                {"questions": questions, "total": len(questions), "error": True},
-            )
-        request.session[RESULT_KEY] = {"archetype_slugs": [item.slug for item in archetypes]}
-        return redirect("walczak:result")
-    return render(request, "walczak/quiz.html", {"questions": questions, "total": len(questions)})
-
-
-@require_http_methods(["GET"])
-def result(request: HttpRequest) -> HttpResponse:
-    payload = request.session.get(RESULT_KEY)
-    slugs = payload.get("archetype_slugs") if isinstance(payload, dict) else None
-    if not isinstance(slugs, list) or not all(isinstance(item, str) and item for item in slugs):
-        return redirect("walczak:quiz")
-    found = {
-        item.slug: item
-        for item in Archetype.objects.filter(slug__in=slugs).prefetch_related("styles")
-    }
-    archetypes = [found[slug] for slug in slugs if slug in found]
-    if not archetypes:
-        return redirect("walczak:quiz")
-    cards = [
-        {
-            "archetype": archetype,
-            "styles": list(archetype.styles.filter(active=True).order_by("slug")[:3]),
-        }
-        for archetype in archetypes
-    ]
-    return render(
-        request,
-        "walczak/result.html",
-        {"cards": cards, "tied": len(cards) > 1},
     )
 
 
@@ -186,48 +119,6 @@ def preference_result(request: HttpRequest) -> HttpResponse:
 
 
 @require_http_methods(["GET", "POST"])
-@ratelimit(key="ip", rate="10/m", method="POST", block=True)
-def personality(request: HttpRequest) -> HttpResponse:
-    items = list(IPIPItem.objects.select_related("scale").order_by("sort_order", "pk"))
-    if request.method == "POST" and items:
-        answers: dict[int, int] = {}
-        for item in items:
-            raw = request.POST.get(f"i{item.pk}")
-            value: int | None = None
-            if isinstance(raw, str):
-                try:
-                    parsed = int(raw)
-                except ValueError:
-                    parsed = None
-                if parsed is not None and 1 <= parsed <= 5:
-                    value = parsed
-            if value is None:
-                _forget(request, IPIP_KEY)
-                return render(
-                    request,
-                    "walczak/personality.html",
-                    {
-                        "items": items,
-                        "scores": None,
-                        "error": True,
-                        "attribution": items[0].attribution if items else "",
-                    },
-                )
-            answers[item.pk] = value
-        request.session[IPIP_KEY] = score_ipip(items, answers)
-        return redirect("walczak:personality")
-    payload = request.session.get(IPIP_KEY)
-    shown: dict[str, float] | None = None
-    if isinstance(payload, dict):
-        shown = {str(key): float(value) for key, value in payload.items()}
-    return render(
-        request,
-        "walczak/personality.html",
-        {"items": items, "scores": shown, "attribution": items[0].attribution if items else ""},
-    )
-
-
-@require_http_methods(["GET", "POST"])
 def compare_form(request: HttpRequest) -> HttpResponse:
     styles = Style.objects.filter(active=True, catalog_set="core").order_by("name_pl")
     if request.method == "POST":
@@ -268,18 +159,11 @@ def compare(request: HttpRequest, a: str, b: str) -> HttpResponse:
 
 
 @require_http_methods(["GET"])
-def golden(request: HttpRequest) -> HttpResponse:
-    styles = Style.objects.filter(active=True, catalog_set="golden").prefetch_related("sources")
-    return render(request, "walczak/golden.html", {"styles": styles})
-
-
-@require_http_methods(["GET"])
 def sitemap(request: HttpRequest) -> HttpResponse:
     """Public pages only. Session screens stay out of the index."""
     paths = [
         reverse("walczak:home"),
         reverse("walczak:list"),
-        reverse("walczak:golden"),
         reverse("walczak:compare_form"),
     ]
     paths.extend(
@@ -295,17 +179,6 @@ def sitemap(request: HttpRequest) -> HttpResponse:
         lines.append(f"<url><loc>{loc}</loc></url>")
     lines.append("</urlset>")
     return HttpResponse("\n".join(lines), content_type="application/xml")
-
-
-@require_http_methods(["GET"])
-def fact(request: HttpRequest) -> HttpResponse:
-    recent = request.session.get(FACT_KEY)
-    recent_ids = [item for item in recent if isinstance(item, int)] if isinstance(recent, list) else []
-    pool = Fact.objects.prefetch_related("styles", "sources").exclude(pk__in=recent_ids)
-    picked = pool.order_by("?").first() or Fact.objects.prefetch_related("styles", "sources").order_by("?").first()
-    if picked is not None:
-        request.session[FACT_KEY] = [picked.pk, *[pk for pk in recent_ids if pk != picked.pk]][:5]
-    return render(request, "walczak/fact.html", {"fact": picked})
 
 
 def _forget(request: HttpRequest, key: str) -> None:

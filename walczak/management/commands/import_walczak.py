@@ -118,6 +118,7 @@ class Command(BaseCommand):
             relation.sources.set(Source.objects.filter(url__in=row["source_urls"], style__in=[left, right]))
 
     def _facts(self) -> None:
+        keep: list[int] = []
         for row in FACTS:
             fact, _created = Fact.objects.update_or_create(
                 text_pl=row["text_pl"],
@@ -126,6 +127,8 @@ class Command(BaseCommand):
             styles = list(Style.objects.filter(slug__in=row["styles"]))
             fact.styles.set(styles)
             fact.sources.set(Source.objects.filter(url__in=row["source_urls"], style__in=styles))
+            keep.append(fact.pk)
+        Fact.objects.exclude(pk__in=keep).delete()
 
     def _preference(self) -> None:
         for row in PREFERENCE:
