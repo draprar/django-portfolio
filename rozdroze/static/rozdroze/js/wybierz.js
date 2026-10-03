@@ -68,4 +68,92 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ── Live terminal for kodzillin' (replaces code-bg.gif)
+    // Always ≤2 lines: current command + one output — left-aligned,
+    // vertically centered so they stay visible in the short hero strip.
+    const termRoot = document.querySelector('.panel-code .code-terminal-lines');
+    if (termRoot) {
+        const PROMPT = '>>>';
+        const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+        const esc = (s) => s
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+
+        const paint = (cmdHtml, outHtml) => {
+            let html = cmdHtml || '';
+            if (outHtml) html += `\n${outHtml}`;
+            termRoot.innerHTML = `${html}<span class="code-terminal-cursor">█</span>`;
+        };
+
+        const span = (text, cls) =>
+            `<span class="${cls}">${esc(text)}</span>`;
+
+        const typeCmd = async (cmd, charMs = 55) => {
+            let shown = '';
+            for (const ch of cmd) {
+                shown += ch;
+                paint(span(`${PROMPT} ${shown}`, 't-gold'), null);
+                await sleep(charMs);
+            }
+            return span(`${PROMPT} ${cmd}`, 't-gold');
+        };
+
+        const beat = async (cmd, outputs, opts = {}) => {
+            const cmdHtml = await typeCmd(cmd);
+            paint(cmdHtml, null);
+            await sleep(120);
+
+            for (const [text, cls] of outputs) {
+                paint(cmdHtml, span(text, cls));
+                await sleep(opts.outMs ?? 320);
+            }
+            await sleep(opts.hold ?? 850);
+            termRoot.innerHTML = '';
+            await sleep(200);
+        };
+
+        const flash = async (text, cls, ms = 700) => {
+            paint(span(text, cls), null);
+            await sleep(ms);
+            termRoot.innerHTML = '';
+            await sleep(180);
+        };
+
+        const runScript = async () => {
+            await flash('walery@code:~$ python', 't-dim', 650);
+
+            await beat('who?', [['"kodzillin\'"', 't-green']], { hold: 950 });
+
+            await beat('what?', [
+                ['[', 't-text'],
+                ['  "web",', 't-green'],
+                ['  "code",', 't-green'],
+                ['  "power bi",', 't-green'],
+                ['  "machine learning"', 't-green'],
+                [']', 't-text'],
+            ], { outMs: 300, hold: 700 });
+
+            await beat('uuu', [['"nom"', 't-green']], { hold: 1100 });
+        };
+
+        const staticFrame = () => {
+            paint(
+                span(`${PROMPT} what?`, 't-gold'),
+                span('  "machine learning"', 't-green'),
+            );
+        };
+
+        if (reducedMotion) {
+            staticFrame();
+        } else {
+            (async () => {
+                for (;;) {
+                    await runScript();
+                }
+            })();
+        }
+    }
 });

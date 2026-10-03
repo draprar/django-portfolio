@@ -8,7 +8,8 @@ def test_wybierz_renders_crossroads(client):
 
     assert response.status_code == 200
     content = response.content.decode()
-    assert "Se wybierz" in content
+    assert "Se kliknij" in content
+    assert "Se wybierz" not in content
     assert "/gallery/" in content
     assert "/wyraj/" in content
     assert "/tonguetwister/" in content
@@ -16,7 +17,7 @@ def test_wybierz_renders_crossroads(client):
     assert "/walczak/" in content
     assert "kodzillin'" in content
     assert "Walczak" in content
-    assert "code-bg.gif" in content
+    assert "code-terminal" in content
     assert "walczak-bg.jpg" in content
     assert 'panel-code' in content
     assert 'panel-walczak' in content
@@ -24,7 +25,9 @@ def test_wybierz_renders_crossroads(client):
     assert 'code-hero' in content
     assert 'stage-stack' in content
     assert 'panel-wide' in content
-    assert 'class="cta-arrow"' in content
+    assert "Wejdź" not in content
+    assert 'class="cta-arrow"' not in content
+    assert 'panel-cta' not in content
     assert "Komputerek" not in content
     assert 'id="contact-form"' not in content
     assert "rozdroze/js/wybierz.js" in content
