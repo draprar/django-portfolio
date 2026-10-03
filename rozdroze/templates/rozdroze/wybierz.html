@@ -19,7 +19,6 @@
   <link rel="preload" as="image" href="{% static 'rozdroze/img/bazgrollin-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/wyraj-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/lingwolamek-bg.png' %}">
-  <link rel="preload" as="image" href="{% static 'rozdroze/img/code-bg.gif' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/walczak-bg.jpg' %}">
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon" />
 </head>
@@ -29,15 +28,13 @@
     <div class="stage-stack">
       <div class="code-hero portal-featured">
         <a href="/code/" class="panel panel-code panel-wide" data-panel="code" aria-label="kodzillin'">
-          <div class="panel-bg"></div>
+          <div class="panel-bg" aria-hidden="true">
+            <pre class="code-terminal"><code class="code-terminal-lines"></code></pre>
+          </div>
           <div class="panel-veil"></div>
           <div class="panel-sheen"></div>
           <div class="panel-content">
             <h2 class="panel-title">kodzillin'</h2>
-            <span class="panel-cta">
-              <span>Wejdź</span>
-              <i class="cta-arrow" aria-hidden="true">→</i>
-            </span>
           </div>
         </a>
       </div>
@@ -45,7 +42,7 @@
     <main class="portal portal-chooser">
 
       <header class="rozdroze-header">
-        <h1>Se wybierz:</h1>
+        <h1>Se kliknij:</h1>
         <div class="underline" aria-hidden="true"></div>
       </header>
 
@@ -63,10 +60,6 @@
           <div class="panel-content">
             <h2 class="panel-title">bazgrollin'</h2>
             <p class="panel-tag">Galerija</p>
-            <span class="panel-cta">
-              <span>Wejdź</span>
-              <i class="cta-arrow" aria-hidden="true">→</i>
-            </span>
           </div>
         </a>
 
@@ -80,10 +73,6 @@
           <div class="panel-content">
             <h2 class="panel-title">Wyraj</h2>
             <p class="panel-tag">Słowiańskie Koło Roku</p>
-            <span class="panel-cta">
-              <span>Wejdź</span>
-              <i class="cta-arrow" aria-hidden="true">→</i>
-            </span>
           </div>
         </a>
 
@@ -97,10 +86,6 @@
           <div class="panel-content">
             <h2 class="panel-title">LingwoŁamki</h2>
             <p class="panel-tag">Ćwiczenia wymowy</p>
-            <span class="panel-cta">
-              <span>Wejdź</span>
-              <i class="cta-arrow" aria-hidden="true">→</i>
-            </span>
           </div>
         </a>
 
@@ -114,10 +99,6 @@
           <div class="panel-content">
             <h2 class="panel-title">Walczak</h2>
             <p class="panel-tag">Sporty i sztuki walki</p>
-            <span class="panel-cta">
-              <span>Wejdź</span>
-              <i class="cta-arrow" aria-hidden="true">→</i>
-            </span>
           </div>
         </a>
 

@@ -16,7 +16,7 @@ def test_jedzien_root_serves_hub_without_redirect(client, host):
     assert response.status_code == 200
     assert "Location" not in response
     content = response.content.decode()
-    assert "Se wybierz" in content
+    assert "Se kliknij" in content
     assert "/gallery/" in content
     assert "/code/" in content
     assert 'id="contact-form"' not in content
@@ -36,4 +36,5 @@ def test_onrender_root_is_portfolio_not_jedzien_hub(client):
     response = client.get("/", HTTP_HOST="walery.onrender.com")
     assert response.status_code == 200
     assert "Location" not in response
+    assert "Se kliknij" not in response.content.decode()
     assert "Se wybierz" not in response.content.decode()

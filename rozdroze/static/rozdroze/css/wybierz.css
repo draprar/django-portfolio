@@ -66,11 +66,6 @@ a {
     gap: 0.35rem;
 }
 
-.code-hero .panel-wide .panel-title {
-    font-size: clamp(1.15rem, 3.2vw, 1.55rem);
-    letter-spacing: 3px;
-}
-
 /* ── Portal: the rounded frame everything lives inside ──────────────── */
 .portal {
     position: relative;
@@ -202,25 +197,20 @@ a {
         animation-delay: 0.5s;
     }
 
-    .panel-code .panel-bg {
-        animation: code-terminal-pan 10s linear infinite alternate;
-        animation-delay: 0;
-    }
-
     .panel-walczak .panel-bg {
         animation-duration: 23s;
         animation-delay: 0.6s;
+    }
+
+    /* Code hero: typing supplies motion — skip background pan. */
+    .panel-code .panel-bg {
+        animation: none;
     }
 }
 
 @keyframes slow-pan {
     from { background-position: 50% 42%; }
     to   { background-position: 54% 52%; }
-}
-
-@keyframes code-terminal-pan {
-    from { background-position: left top; }
-    to   { background-position: left 22%; }
 }
 
 /* Soft gold sheen that follows the cursor — pure lighting, no motifs */
@@ -273,16 +263,63 @@ a {
 
 .panel-code .panel-bg {
     background-color: #070b12;
-    background-image: url('../img/code-bg.gif');
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-size: cover;
     filter: brightness(0.78) saturate(0.95) blur(0);
 }
 
 .panel-code:hover .panel-bg,
 .panel-code:focus-visible .panel-bg {
     filter: brightness(1) saturate(1) blur(0);
+}
+
+/* Live terminal behind kodzillin' — decorative, mirrors old code-bg.gif */
+.code-terminal {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: clamp(0.8rem, 1.75vw, 1.05rem);
+    line-height: 1.4;
+    color: #e2e2d6;
+    white-space: pre;
+    pointer-events: none;
+    user-select: none;
+}
+
+.code-terminal-lines {
+    display: block;
+    font: inherit;
+    max-width: 100%;
+    text-align: left;
+}
+
+.code-terminal .t-dim { color: #5a626e; }
+.code-terminal .t-gold { color: #d4a535; }
+.code-terminal .t-green { color: #9ed684; }
+.code-terminal .t-text { color: #e2e2d6; }
+.code-terminal .t-cyan { color: #78bed2; }
+
+.code-terminal-cursor {
+    display: inline;
+    color: #d4a535;
+    font-weight: 700;
+    animation: code-cursor-blink 1s steps(1) infinite;
+}
+
+@keyframes code-cursor-blink {
+    0%, 45% { opacity: 1; }
+    46%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .code-terminal-cursor {
+        animation: none;
+        opacity: 1;
+    }
 }
 
 .panel-walczak .panel-bg {
@@ -516,27 +553,12 @@ a {
     }
 
     .panel-tag {
-        display: none;
-    }
-
-    .panel-cta {
-        font-size: 0.68rem;
-        padding: 6px 14px;
-    }
-
-    .panel-code .panel-bg {
-        background-position: left top;
-        background-size: cover;
+        display: block;
+        font-size: 0.72rem;
+        line-height: 1.25;
+        max-width: 18ch;
     }
 }
-
-@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
-    .panel-code .panel-bg {
-        animation: code-terminal-pan 10s linear infinite alternate;
-        animation-delay: 0;
-    }
-}
-
 
 @media (hover: none) {
     /* No hover on touch, so the "reveal" state has to be the resting
