@@ -6,15 +6,15 @@
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">
-  <p class="walczak-eyebrow" data-en="The training you want" data-pl="Jaki trening">Jaki trening</p>
+  <p class="walczak-eyebrow" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</p>
   <h1 class="walczak-title" data-en="To read" data-pl="Do poczytania" aria-live="polite">Do poczytania</h1>
-  <p class="walczak-muted" data-en="Five styles ordered by how well they match what you marked. The list uses only the axes these questions ask about; a style profile has 22 axes and is wider than this test." data-pl="Pięć stylów, od tego, który najlepiej pasuje do Twoich odpowiedzi. Lista patrzy tylko na to, o co pytaliśmy. Pełny opis ma 22 osie i jest szerszy niż ten test.">Pięć stylów, od tego, który najlepiej pasuje do Twoich odpowiedzi. Lista patrzy tylko na to, o co pytaliśmy. Pełny opis ma 22 osie i jest szerszy niż ten test.</p>
+  <p class="walczak-muted" data-en="Five styles to read about — starting with the one that best matches your answers." data-pl="Pięć stylów do poczytania — od tego, który najbardziej pasuje do Twoich odpowiedzi.">Pięć stylów do poczytania — od tego, który najbardziej pasuje do Twoich odpowiedzi.</p>
 </header>
 
 {% for row in rows %}
 <section class="walczak-card">
   {% if row.style.is_umbrella %}
-  <p class="walczak-muted" data-en="An umbrella, not one rule set. One profile does not describe every hall." data-pl="To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.">To nazwa zbiorcza, nie jeden regulamin. Jeden opis nie pasuje do każdej sali.</p>
+  <p class="walczak-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
   {% endif %}
   {% if row.style.catalog_set == "golden" %}
   <p class="walczak-eyebrow" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</p>
@@ -36,6 +36,4 @@
   {% endfor %}
 </section>
 {% endfor %}
-
-<p class="walczak-muted" data-en="The levels on the cards are an editorial judgment, not a measure of strength." data-pl="Poziomy na kartach są oceną redakcji. Nie mierzymy nimi siły.">Poziomy na kartach są oceną redakcji. Nie mierzymy nimi siły.</p>
 {% endblock %}

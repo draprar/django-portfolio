@@ -7,13 +7,13 @@
   <title {% block title_i18n %}data-pl="Walczak" data-en="Walczak"{% endblock %}>{% block title %}Walczak{% endblock %}</title>
   {% block meta_description %}
   <meta name="description"
-        data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego chcesz od treningu, porównanie i żart."
-        data-en="A catalog of combat sports and martial arts, a preference check, a comparison, and a joke."
-        content="Katalog sportów i sztuk walki, sprawdzenie, czego chcesz od treningu, porównanie i żart.">
+        data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki."
+        data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."
+        content="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.">
   <meta property="og:description"
-        data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego chcesz od treningu, porównanie i żart."
-        data-en="A catalog of combat sports and martial arts, a preference check, a comparison, and a joke."
-        content="Katalog sportów i sztuk walki, sprawdzenie, czego chcesz od treningu, porównanie i żart.">
+        data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki."
+        data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."
+        content="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.">
   {% endblock %}
   <meta property="og:title" content="{% block og_title %}Walczak{% endblock %}">
   <meta property="og:type" content="website">
@@ -35,44 +35,6 @@
       <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
       <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#walczakNav" aria-controls="walczakNav" aria-expanded="false" aria-label="Menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="walczakNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'list' or request.resolver_match.url_name == 'detail' or request.resolver_match.url_name == 'golden' %} active{% endif %}"
-             {% if request.resolver_match.url_name == 'list' or request.resolver_match.url_name == 'detail' %}aria-current="page"{% endif %}
-             href="{% url 'walczak:list' %}"
-             data-en="Browse" data-pl="Poznaj">Poznaj</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'test' or request.resolver_match.url_name == 'match' %} active{% endif %}"
-             {% if request.resolver_match.url_name == 'test' or request.resolver_match.url_name == 'match' %}aria-current="page"{% endif %}
-             href="{% url 'walczak:test' %}"
-             data-en="The training you want" data-pl="Jaki trening">Jaki trening</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'compare_form' or request.resolver_match.url_name == 'compare' %} active{% endif %}"
-             {% if request.resolver_match.url_name == 'compare_form' or request.resolver_match.url_name == 'compare' %}aria-current="page"{% endif %}
-             href="{% url 'walczak:compare_form' %}"
-             data-en="Compare" data-pl="Porównaj">Porównaj</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'quiz' or request.resolver_match.url_name == 'result' %} active{% endif %}"
-             {% if request.resolver_match.url_name == 'quiz' or request.resolver_match.url_name == 'result' %}aria-current="page"{% endif %}
-             href="{% url 'walczak:quiz' %}"
-             data-en="A joke" data-pl="Żart">Żart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'personality' %} active{% endif %}"
-             {% if request.resolver_match.url_name == 'personality' %}aria-current="page"{% endif %}
-             href="{% url 'walczak:personality' %}"
-             data-en="Sketch" data-pl="Szkic">Szkic</a>
-        </li>
-        {% block nav_extra %}{% endblock %}
-      </ul>
-    </div>
   </div>
 </nav>
 
@@ -89,9 +51,9 @@
 
 <footer class="footer text-center">
   {% block footer_note %}
-  <p data-en="This is not a training recommendation and not a diagnosis."
-     data-pl="To nie jest rekomendacja treningu ani diagnoza.">
-    To nie jest rekomendacja treningu ani diagnoza.
+  <p data-en="Take it with a pinch of salt, pal. Sport's good — get moving."
+     data-pl="Potraktuj to z dystansem, mordko. Sport jest spoko — rusz dupkę.">
+    Potraktuj to z dystansem, mordko. Sport jest spoko — rusz dupkę.
   </p>
   {% endblock %}
 </footer>

@@ -1,20 +1,20 @@
 {% extends "walczak/base.html" %}
 
-{% block title %}Nie ma tej strony | Walczak{% endblock %}
-{% block title_i18n %}data-pl="Nie ma tej strony | Walczak" data-en="This page is not here | Walczak"{% endblock %}
+{% block title %}Nie ma takiej strony | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Nie ma takiej strony | Walczak" data-en="This page is not here | Walczak"{% endblock %}
 {% block robots %}<meta name="robots" content="noindex">{% endblock %}
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">
-  <h1 class="walczak-title" data-en="This page is not here." data-pl="Tej strony nie ma.">Tej strony nie ma.</h1>
+  <h1 class="walczak-title" data-en="There's nothing here." data-pl="Tu nic nie ma.">Tu nic nie ma.</h1>
   <p class="walczak-subtitle"
-     data-en="The address does not match a page in Walczak. Go back to the start or open the catalog."
-     data-pl="Adres nie pasuje do żadnej strony Walczaka. Wróć na start albo otwórz katalog.">
-    Adres nie pasuje do żadnej strony Walczaka. Wróć na start albo otwórz katalog.
+     data-en="The address doesn't match any page in Walczak. Go back to the start or check out the catalog."
+     data-pl="Adres nie pasuje do żadnej strony w Walczaku. Wróć na start albo obczaj katalog.">
+    Adres nie pasuje do żadnej strony w Walczaku. Wróć na start albo obczaj katalog.
   </p>
 </header>
 <div class="walczak-actions">
   <a class="walczak-btn" href="{% url 'walczak:home' %}" data-en="Start" data-pl="Start">Start</a>
-  <a class="walczak-btn walczak-btn-quiet" href="{% url 'walczak:list' %}" data-en="Browse" data-pl="Poznaj">Poznaj</a>
+  <a class="walczak-btn walczak-btn-quiet" href="{% url 'walczak:list' %}" data-en="Catalog" data-pl="Katalog">Katalog</a>
 </div>
 {% endblock %}

@@ -1,55 +1,60 @@
 {% extends "walczak/base.html" %}
 
-{% block title %}Poznaj | Walczak{% endblock %}
-{% block title_i18n %}data-pl="Poznaj | Walczak" data-en="Browse | Walczak"{% endblock %}
-{% block og_title %}Poznaj | Walczak{% endblock %}
+{% block title %}Katalog | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Katalog | Walczak" data-en="Catalog | Walczak"{% endblock %}
+{% block og_title %}Katalog | Walczak{% endblock %}
 {% block meta_description %}
 <meta name="description"
-      data-pl="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych."
-      data-en="Thirty core styles, and a separate set of less obvious ones."
-      content="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.">
+      data-pl="Obczaj różne sporty i sztuki walki — możesz je też porównywać."
+      data-en="Check out all kinds of combat sports and martial arts — you can compare them too."
+      content="Obczaj różne sporty i sztuki walki — możesz je też porównywać.">
 <meta property="og:description"
-      data-pl="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych."
-      data-en="Thirty core styles, and a separate set of less obvious ones."
-      content="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.">
-{% endblock %}
-
-{% block nav_extra %}
-<li class="nav-item">
-  <a class="nav-link{% if not selected_family %} active{% endif %}"
-     href="{% url 'walczak:list' %}"
-     data-en="All" data-pl="Wszystkie">Wszystkie</a>
-</li>
-{% for family in families %}
-<li class="nav-item">
-  <a class="nav-link{% if selected_family == family.value %} active{% endif %}"
-     {% if selected_family == family.value %}aria-current="page"{% endif %}
-     href="{% url 'walczak:list' %}?rodzina={{ family.value }}"
-     data-en="{{ family.en }}" data-pl="{{ family.pl }}">{{ family.pl }}</a>
-</li>
-{% endfor %}
+      data-pl="Obczaj różne sporty i sztuki walki — możesz je też porównywać."
+      data-en="Check out all kinds of combat sports and martial arts — you can compare them too."
+      content="Obczaj różne sporty i sztuki walki — możesz je też porównywać.">
 {% endblock %}
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">
-  <h1 class="walczak-title" data-en="Browse" data-pl="Poznaj">Poznaj</h1>
+  <h1 class="walczak-title" data-en="Catalog" data-pl="Katalog">Katalog</h1>
   <p class="walczak-subtitle"
-     data-en="Thirty core styles, and a separate set of less obvious ones."
-     data-pl="Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.">
-    Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.
+     data-en="Check out all kinds of combat sports and martial arts — you can compare them too."
+     data-pl="Obczaj różne sporty i sztuki walki — możesz je też porównywać.">
+    Obczaj różne sporty i sztuki walki — możesz je też porównywać.
   </p>
-  <p class="walczak-links">
-    <a href="{% url 'walczak:golden' %}" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</a>
-    <a href="{% url 'walczak:fact' %}" data-en="Random fact" data-pl="Losowy fakt">Losowy fakt</a>
-  </p>
+  {% if compare_styles %}
+  <form method="post" action="{% url 'walczak:compare_form' %}" class="walczak-card walczak-compare-inline" id="porownaj">
+    {% csrf_token %}
+    <p class="walczak-compare-label" data-en="Go on, compare:" data-pl="se porównaj:">se porównaj:</p>
+    <div class="walczak-compare-row">
+      <label class="walczak-field">
+        <span class="visually-hidden" data-en="First" data-pl="Pierwszy">Pierwszy</span>
+        <select name="a">
+          {% for style in compare_styles %}
+          <option value="{{ style.slug }}" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="walczak-field">
+        <span class="visually-hidden" data-en="Second" data-pl="Drugi">Drugi</span>
+        <select name="b">
+          {% for style in compare_styles %}
+          <option value="{{ style.slug }}" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+    <button class="walczak-btn" type="submit" data-en="Compare" data-pl="Porównaj">Porównaj</button>
+  </form>
+  {% endif %}
   {% if tags %}
   <div class="walczak-tags" role="navigation" aria-label="Tagi">
     <a class="{% if not selected_tag %}is-current{% endif %}"
-       href="{% url 'walczak:list' %}{% if selected_family %}?rodzina={{ selected_family }}{% endif %}"
+       href="{% url 'walczak:list' %}"
        data-en="All tags" data-pl="Wszystkie tagi">Wszystkie tagi</a>
     {% for tag in tags %}
     <a class="{% if selected_tag == tag.slug %}is-current{% endif %}"
-       href="{% url 'walczak:list' %}?tag={{ tag.slug }}{% if selected_family %}&amp;rodzina={{ selected_family }}{% endif %}"
+       href="{% url 'walczak:list' %}?tag={{ tag.slug }}"
        data-en="{{ tag.name_en }}" data-pl="{{ tag.name_pl }}">{{ tag.name_pl }}</a>
     {% endfor %}
   </div>
@@ -68,13 +73,7 @@
 </div>
 {% else %}
 <section class="walczak-card">
-  {% if selected_tag and selected_family %}
-  <h2 data-en="No style in this family carries this tag." data-pl="Żaden styl z tej rodziny nie ma tego tagu.">Żaden styl z tej rodziny nie ma tego tagu.</h2>
-  {% elif selected_tag %}
-  <h2 data-en="No style carries this tag." data-pl="Żaden styl nie ma tego tagu.">Żaden styl nie ma tego tagu.</h2>
-  {% else %}
-  <h2 data-en="No styles in this family." data-pl="Brak stylów w tej rodzinie.">Brak stylów w tej rodzinie.</h2>
-  {% endif %}
+  <h2 data-en="No style has this tag." data-pl="Żaden styl nie ma tego tagu.">Żaden styl nie ma tego tagu.</h2>
   <p class="walczak-links">
     <a href="{% url 'walczak:list' %}" data-en="Show all" data-pl="Pokaż wszystkie">Pokaż wszystkie</a>
   </p>

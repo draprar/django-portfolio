@@ -1,24 +1,24 @@
 {% extends "walczak/base.html" %}
 
-{% block title %}Jaki trening | Walczak{% endblock %}
-{% block title_i18n %}data-pl="Jaki trening | Walczak" data-en="The training you want | Walczak"{% endblock %}
+{% block title %}Quizopasowanie | Walczak{% endblock %}
+{% block title_i18n %}data-pl="Quizopasowanie | Walczak" data-en="Quizmatch | Walczak"{% endblock %}
 {% block robots %}<meta name="robots" content="noindex">{% endblock %}
 
 {% block walczak %}
 <header class="walczak-header walczak-header-left">
-  <h1 class="walczak-title" data-en="The training you want" data-pl="Jaki trening">Jaki trening</h1>
+  <h1 class="walczak-title" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</h1>
   <p class="walczak-subtitle"
-     data-en="Questions about the kind of training you want. No style is named here."
-     data-pl="Pytania o to, jakiego treningu chcesz. Żaden styl nie jest tu nazwany.">
-    Pytania o to, jakiego treningu chcesz. Żaden styl nie jest tu nazwany.
+     data-en="Click around and you get a short list of styles matched to your answers."
+     data-pl="Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.">
+    Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
   </p>
 </header>
 
 {% if error %}
 <p class="walczak-message" role="alert" tabindex="-1" data-walczak-error
-   data-en="Mark every scale, both choices, and the situation. The list comes after that."
-   data-pl="Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy powstanie lista.">
-  Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy powstanie lista.
+   data-en="Mark every scale, both choices and the situation. Only then does the list show up."
+   data-pl="Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy pokaże się lista.">
+  Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy pokaże się lista.
 </p>
 {% endif %}
 
@@ -39,7 +39,7 @@
       </label>
       {% endfor %}
     </div>
-    <p class="walczak-muted" data-en="1 — not at all. 5 — very much." data-pl="1 to wcale, 5 to bardzo.">1 to wcale, 5 to bardzo.</p>
+    <p class="walczak-muted" data-en="1 means not at all, 5 — very much." data-pl="1 oznacza wcale, 5 — bardzo.">1 oznacza wcale, 5 — bardzo.</p>
     {% elif question.kind == "multi" %}
     <div class="walczak-options">
       {% for option in question.options.all %}
@@ -63,7 +63,6 @@
   {% endfor %}
   <button class="walczak-btn" type="submit" data-en="Show the list" data-pl="Pokaż listę">Pokaż listę</button>
 </form>
-<p class="walczak-links"><a href="{% url 'walczak:personality' %}" data-en="A separate personality sketch" data-pl="Osobny szkic osobowości">Osobny szkic osobowości</a></p>
 {% endblock %}
 
 {% block extra_js %}

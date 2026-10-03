@@ -7,9 +7,11 @@ from django.core.management import call_command
 from django.db import IntegrityError, transaction
 from django.urls import reverse
 
+from walczak.data.styles import FACTS
 from walczak.dimensions import DIMENSION_LABELS
 from walczak.humor import choose_archetypes
 from walczak.models import (
+    Fact,
     HumorQuestion,
     IPIPItem,
     PreferenceQuestion,
@@ -98,6 +100,8 @@ def test_import_is_stable_and_validation_passes():
     assert StyleRelation.objects.filter(from_style__slug="sanda", kind="modern_form").exists()
     assert not StyleRelation.objects.filter(from_style__slug="sanda", kind="subset").exists()
     assert StyleRelation.objects.filter(from_style__slug="bjj", kind="influenced").exists()
+    assert Fact.objects.count() == len(FACTS)
+    assert Style.objects.get(slug="boks").facts.count() == 1
     capoeira = Style.objects.get(slug="capoeira")
     assert set(capoeira.tags.values_list("slug", flat=True)) >= {"striking", "traditional", "solo"}
     hema = Style.objects.get(slug="hema")
@@ -176,7 +180,7 @@ def test_striking_preference_ranks_boxing_above_judo():
 
 
 @pytest.mark.django_db
-def test_personality_score_does_not_change_the_preference_rank(client):
+def test_personality_score_does_not_change_the_preference_rank():
     load_catalog()
     questions = list(PreferenceQuestion.objects.filter(active=True).prefetch_related("options__weights"))
     posted = answered(questions, {"striking", "grappling", "contact_level"})
@@ -185,14 +189,6 @@ def test_personality_score_does_not_change_the_preference_rank(client):
     items = list(IPIPItem.objects.select_related("scale"))
     answers = {item.pk: 5 for item in items}
     assert score_ipip(items, answers) == score_ipip(items, answers)
-
-    response = client.post(reverse("walczak:test"), posted)
-    assert response.status_code == 302
-    stored = client.session["walczak_preference"]["picks"]
-    ipip_post = {f"i{item.pk}": "1" for item in items}
-    personality = client.post(reverse("walczak:personality"), ipip_post)
-    assert personality.status_code == 302
-    assert client.session["walczak_preference"]["picks"] == stored
     after = [row["slug"] for row in rank_styles(questions, posted)["picks"]]
     assert before == after
 
@@ -214,8 +210,6 @@ def test_compare_without_a_study_says_there_is_no_data(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "Nie zestawiamy stylów pod kątem osobowości ani badań. Takich danych tu nie ma." in content
-    assert "ocena redakcji" in content
     assert "Historia i typ" in content
     assert "Psychologia / badania" not in content
     assert "Szybki profil" not in content
@@ -260,15 +254,10 @@ def test_cards_golden_and_fact(client):
     assert "Karate" in content
     assert "https://en.wikipedia.org/wiki/Kyokushin" in content
 
-    golden = client.get(reverse("walczak:golden"))
-    assert "Bökh" in golden.content.decode()
-    assert "Mniej oczywiste" in golden.content.decode()
-    assert "Nie lepsze" in golden.content.decode()
-
-    fact = client.get(reverse("walczak:fact"))
-    page = fact.content.decode()
-    assert fact.status_code == 200
-    assert "Nie ma jeszcze faktów" not in page
+    golden = client.get("/walczak/zlote/")
+    fact = client.get("/walczak/fakt/")
+    assert golden.status_code == 404
+    assert fact.status_code == 404
 
 
 @pytest.mark.django_db
@@ -307,13 +296,13 @@ def test_tag_filter_and_umbrella_label(client):
     page = listed.content.decode()
     assert listed.status_code == 200
     assert "HEMA" in page
-    assert "Boks" not in page
+    assert reverse("walczak:detail", args=["hema"]) in page
+    assert reverse("walczak:detail", args=["boks"]) not in page
 
     karate = client.get(reverse("walczak:detail", args=["karate"]))
     karate_page = karate.content.decode()
-    assert "To nazwa zbiorcza, nie jeden regulamin." in karate_page
-    assert "Jeden opis nie pasuje do każdej sali." in karate_page
-    assert "To ocena redakcji." in karate_page
+    assert "To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali." in karate_page
+    assert "To moja ocena" not in karate_page
     assert "Pokaż pełny profil" in karate.content.decode()
 
 
@@ -334,11 +323,10 @@ def test_every_core_style_can_be_either_side_of_a_comparison(client):
 @pytest.mark.django_db
 def test_fact_draw_skips_the_previous_one(client):
     load_catalog()
-    first = client.get(reverse("walczak:fact"))
-    second = client.get(reverse("walczak:fact"))
-    assert first.status_code == 200
-    assert second.status_code == 200
-    assert first.content != second.content
+    first = client.get("/walczak/fakt/")
+    second = client.get("/walczak/fakt/")
+    assert first.status_code == 404
+    assert second.status_code == 404
 
 
 @pytest.mark.django_db
@@ -346,9 +334,9 @@ def test_serious_pages_do_not_call_the_catalog_a_joke(client):
     load_catalog()
     home = client.get(reverse("walczak:home")).content.decode()
     assert "To żart" not in home
-    assert "ani diagnoza" in home
-    quiz = client.get(reverse("walczak:quiz")).content.decode()
-    assert "To żart." in quiz
+    assert "Siemasz na Walczaku, obczaj niżej." in home
+    assert "Archetyp" not in home
+    assert "Quizopasowanie" in home
 
 
 @pytest.mark.django_db
@@ -357,7 +345,7 @@ def test_incomplete_preference_does_not_open_a_list(client):
     questions = list(PreferenceQuestion.objects.filter(active=True).prefetch_related("options__weights"))
     empty = client.post(reverse("walczak:test"), {})
     assert empty.status_code == 200
-    assert "Dopiero wtedy powstanie lista." in empty.content.decode()
+    assert "Dopiero wtedy pokaże się lista." in empty.content.decode()
     assert "walczak_preference" not in client.session
 
     scale = next(question for question in questions if question.kind == "scale")
@@ -371,9 +359,10 @@ def test_incomplete_preference_does_not_open_a_list(client):
     assert opened.status_code == 302
     page = client.get(reverse("walczak:match")).content.decode()
     assert "Do poczytania" in page
-    assert "22 osie" in page
+    assert "22 osie" not in page
     assert "Wysokie dopasowanie" not in page
-    assert "oceną redakcji" in page
+    assert "moja ocena" not in page
+    assert "Quizopasowanie" in page
     assert 'name="robots" content="noindex"' in page
     forgotten = client.post(reverse("walczak:test"), {})
     assert forgotten.status_code == 200
@@ -388,7 +377,7 @@ def test_low_agreement_and_striking_copy_do_not_say_stance():
     plus_pl, _, _, _ = _reasons({"weapons": 0.0}, {"weapons": 0}, ["weapons"])
     striking, _, _, _ = _reasons({"striking": 5.0}, {"striking": 5}, ["striking"])
 
-    assert plus_pl == ["Broni tu prawie nie ma. Właśnie tego szukasz."]
+    assert plus_pl == ["Broni jest tu prawie nie ma — i dobrze, bo właśnie tego szukasz."]
     assert "uderz" in striking[0].lower()
     assert "stój" not in striking[0]
 
@@ -439,30 +428,15 @@ def test_related_style_becomes_a_link_not_a_second_card():
 def test_list_hides_the_second_person_joke_and_names_the_thin_source(client):
     load_catalog()
     listed = client.get(reverse("walczak:list")).content.decode()
-    assert "Masz sprawę do załatwienia" not in listed
-    assert "sport pięści" in listed
-    assert "Mniej oczywiste" in listed
+    assert "nie lubisz zostawiać spraw niedokończonych" not in listed
+    assert "sport walki na pięści" in listed
+    assert "Mniej oczywiste" not in listed
+    assert "Losowy fakt" not in listed
+    assert "Bökh" in listed
 
     muay = client.get(reverse("walczak:detail", args=["muay-thai"])).content.decode()
-    assert "osiem kończyn" in muay
+    assert "ośmiu kończyn" in muay
     assert "ośmiu broni" not in muay
 
     krav = client.get(reverse("walczak:detail", args=["krav-maga"])).content.decode()
-    assert "drugie źródło tylko wskazuje temat" in krav
-
-    sketch = client.get(reverse("walczak:personality")).content.decode()
-    assert "zdecydowanie nie" in sketch
-    assert "średnia zgody od 1 do 5" not in sketch
-    assert "<fieldset" in sketch
-    items = list(IPIPItem.objects.all())
-    done = client.post(reverse("walczak:personality"), {f"i{item.pk}": "3" for item in items})
-    assert done.status_code == 302
-    scored = client.get(reverse("walczak:personality")).content.decode()
-    assert "krótkiego kwestionariusza" in scored
-    assert "w skali od 1 do 5" in scored
-    assert "To nie jest norma" in scored
-    missing = client.post(reverse("walczak:personality"), {})
-    assert missing.status_code == 200
-    assert "Zaznacz każdą linijkę." in missing.content.decode()
-    assert "walczak_ipip" not in client.session
-    assert "Twoje pięć liczb" not in client.get(reverse("walczak:personality")).content.decode()
+    assert "drugie źródło tylko wspomina o tym temacie" in krav
