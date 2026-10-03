@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const focus = (side) => {
         panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === side));
-        split.classList.add('has-focus');
+        if (split) split.classList.add('has-focus');
     };
 
     const reset = () => {
-        split.classList.remove('has-focus');
+        if (split) split.classList.remove('has-focus');
     };
 
     panels.forEach(panel => {
@@ -71,11 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Live terminal for kodzillin' (replaces code-bg.gif)
     // Always ≤2 lines: current command + one output — left-aligned,
-    // vertically centered so they stay visible in the short hero strip.
+    // vertically centered so they stay visible in the short strip.
     const termRoot = document.querySelector('.panel-code .code-terminal-lines');
     if (termRoot) {
         const PROMPT = '>>>';
-        const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
         const esc = (s) => s
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
@@ -151,7 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             (async () => {
                 for (;;) {
-                    await runScript();
+                    try {
+                        await runScript();
+                    } catch (err) {
+                        staticFrame();
+                        await sleep(1500);
+                    }
                 }
             })();
         }
