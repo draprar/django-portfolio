@@ -66,11 +66,6 @@ a {
     gap: 0.35rem;
 }
 
-.code-hero .panel-wide .panel-title {
-    font-size: clamp(1.15rem, 3.2vw, 1.55rem);
-    letter-spacing: 3px;
-}
-
 /* ── Portal: the rounded frame everything lives inside ──────────────── */
 .portal {
     position: relative;
@@ -558,12 +553,10 @@ a {
     }
 
     .panel-tag {
-        display: none;
-    }
-
-    .panel-cta {
-        font-size: 0.68rem;
-        padding: 6px 14px;
+        display: block;
+        font-size: 0.72rem;
+        line-height: 1.25;
+        max-width: 18ch;
     }
 }
 
