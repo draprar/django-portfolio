@@ -63,15 +63,16 @@
 {% if pairs %}
 <section class="walczak-card">
   <h2 class="walczak-section-title" data-en="Technique and training" data-pl="Techniki i trening">Techniki i trening</h2>
+  {% include "walczak/_profile_scale_legend.html" %}
   {% for group in pairs %}
   <h3 data-en="{{ group.en }}" data-pl="{{ group.pl }}">{{ group.pl }}</h3>
   <ul class="walczak-sources">
     {% for row in group.rows %}
     <li>
       <span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span>:
-      <span data-en="{{ row.left_en }}" data-pl="{{ row.left_pl }}">{{ row.left_pl }}</span>
+      <span class="walczak-meta-value" data-en="{{ row.left_en }}" data-pl="{{ row.left_pl }}">{{ row.left_pl }}</span>
       /
-      <span data-en="{{ row.right_en }}" data-pl="{{ row.right_pl }}">{{ row.right_pl }}</span>
+      <span class="walczak-meta-value" data-en="{{ row.right_en }}" data-pl="{{ row.right_pl }}">{{ row.right_pl }}</span>
     </li>
     {% endfor %}
     </ul>

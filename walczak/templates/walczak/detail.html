@@ -36,17 +36,17 @@
   {% if style.origin_pl %}
   <p>
     <span data-en="Origin" data-pl="Pochodzenie">Pochodzenie</span>:
-    <span data-en="{{ style.origin_en }}" data-pl="{{ style.origin_pl }}">{{ style.origin_pl }}</span>
+    <span class="walczak-meta-value" data-en="{{ style.origin_en }}" data-pl="{{ style.origin_pl }}">{{ style.origin_pl }}</span>
   </p>
   {% endif %}
   {% if style.period_pl %}
   <p>
     <span data-en="Period" data-pl="Okres">Okres</span>:
-    <span data-en="{{ style.period_en }}" data-pl="{{ style.period_pl }}">{{ style.period_pl }}</span>
+    <span class="walczak-meta-value" data-en="{{ style.period_en }}" data-pl="{{ style.period_pl }}">{{ style.period_pl }}</span>
   </p>
   {% endif %}
   {% if style.region %}
-  <p><span data-en="Region" data-pl="Region">Region</span>: {{ style.region }}</p>
+  <p><span data-en="Region" data-pl="Region">Region</span>: <span class="walczak-meta-value">{{ style.region }}</span></p>
   {% endif %}
 </section>
 
@@ -54,7 +54,7 @@
 <section class="walczak-card">
   <h2 class="walczak-section-title" data-en="History" data-pl="Historia">Historia</h2>
   {% if style.sources_disagree %}
-  <p class="walczak-muted" data-en="The sources don't agree." data-pl="Źródła się nie zgadzają.">Źródła się nie zgadzają.</p>
+  <p class="walczak-muted" data-en="There's no honest single version — the sources are unclear." data-pl="Nie da się uczciwie podać jednej wersji, źródła są niejasne.">Nie da się uczciwie podać jednej wersji, źródła są niejasne.</p>
   {% endif %}
   {% if thin_sources %}
   <p class="walczak-muted" data-en="The description is shorter because the second source only mentions this topic." data-pl="Opis jest krótszy, bo drugie źródło tylko wspomina o tym temacie.">Opis jest krótszy, bo drugie źródło tylko wspomina o tym temacie.</p>
@@ -73,6 +73,7 @@
 {% if headline %}
 <section class="walczak-card">
   <h2 class="walczak-section-title" data-en="Training character" data-pl="Charakter treningu">Charakter treningu</h2>
+  {% include "walczak/_profile_scale_legend.html" %}
   <ul class="walczak-sources">
     {% for row in headline %}
     <li><span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span> — <span data-en="{{ row.word_en }}" data-pl="{{ row.word_pl }}">{{ row.word_pl }}</span></li>
