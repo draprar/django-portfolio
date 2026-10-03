@@ -302,7 +302,7 @@ a {
     justify-content: flex-start;
     overflow: hidden;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-    font-size: clamp(0.85rem, 2.6vw, 1.1rem);
+    font-size: calc(0.95rem - 2px);
     line-height: 1.4;
     color: #e2e2d6;
     white-space: pre;
@@ -539,7 +539,7 @@ a {
     }
 
     .code-terminal {
-        font-size: clamp(0.78rem, 3.4vw, 0.95rem);
+        font-size: calc(0.72rem - 2px);
         padding: 0.4rem 0.7rem;
     }
 
