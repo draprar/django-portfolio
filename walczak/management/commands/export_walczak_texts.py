@@ -126,9 +126,9 @@ def _page_visible_fragment(name: str) -> str:
             flags=re.DOTALL,
         )
 
-    block = BLOCK_WALCZAK_RE.search(text)
+    match = BLOCK_WALCZAK_RE.search(text)
 
-    fragment = block.group(1) if block else text
+    fragment = match.group(1) if match else text
 
     return _strip_scripts(fragment)
 
