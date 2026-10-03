@@ -140,26 +140,20 @@ document.addEventListener('DOMContentLoaded', () => {
             await beat('uuu', [['"nom"', 't-green']], { hold: 1100 });
         };
 
-        const staticFrame = () => {
-            paint(
-                span(`${PROMPT} what?`, 't-gold'),
-                span('  "machine learning"', 't-green'),
-            );
-        };
-
-        if (reducedMotion) {
-            staticFrame();
-        } else {
-            (async () => {
-                for (;;) {
-                    try {
-                        await runScript();
-                    } catch (err) {
-                        staticFrame();
-                        await sleep(1500);
-                    }
+        // Always animate — iOS "Reduce Motion" would otherwise freeze on the
+        // static what?/ML frame and look broken. Cursor blink stays CSS-gated.
+        (async () => {
+            for (;;) {
+                try {
+                    await runScript();
+                } catch (err) {
+                    paint(
+                        span(`${PROMPT} who?`, 't-gold'),
+                        span('"kodzillin\'"', 't-green'),
+                    );
+                    await sleep(1500);
                 }
-            })();
-        }
+            }
+        })();
     }
 });
