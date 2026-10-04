@@ -12,7 +12,7 @@ def test_home_is_bilingual(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "Walczak" in content
+    assert ">walczak</a>" in content
     assert 'data-pl="Katalog"' in content
     assert 'data-en="Catalog"' in content
     assert "Siemasz na Walczaku, obczaj niżej." in content
@@ -23,6 +23,10 @@ def test_home_is_bilingual(client):
     assert 'data-pl="Archetyp"' not in content
     assert "karuzela śmiechu" not in content
     assert "navbar-toggler" not in content
+    assert "navbar navbar-expand" not in content
+    assert "bootstrap" not in content
+    assert "walczak-stage" in content
+    assert "walczak-portal" in content
     assert 'data-pl="Szkic"' not in content
     assert 'data-pl="Poznaj"' not in content
     assert 'data-pl="Jaki trening"' not in content
