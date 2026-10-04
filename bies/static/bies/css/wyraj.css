@@ -1,26 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --primary:   #c4922a;
-  --dark:      #0f1117;
-  --surface:   #1a1e27;
-  --muted:     #8a8f9a;
-  --gold:      #f5e1a4;
-  --gold-dim:  #c9a84c;
-  --text:      #e2d5a8;
-  --radius:    12px;
-  --border:    rgba(196,146,42,0.28);
+  /* Shared with kodzillin' / Walczak / bazgrollin' */
+  --ink: #060606;
+  --gold: #c4922a;
+  --gold-2: #a0522d;
+  --gold-hover: #d4a535;
+  --muted: #c4c4c4;
+  --panel: rgba(10, 10, 10, 0.95);
+  --card: #0d0d0d;
+  --input: #111;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-quiet: rgba(255, 255, 255, 0.14);
+  /* Local aliases used across this stylesheet */
+  --primary: var(--gold);
+  --dark: var(--ink);
+  --surface: var(--card);
+  --gold-dim: var(--gold-2);
+  --text: #e0e0e0;
+  --radius: 16px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Playfair Display', Georgia, serif;
-  background-color: var(--dark);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+  background-color: var(--ink);
   color: var(--text);
   overflow-x: hidden;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.wyraj-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0 0 12px 0;
+  text-decoration: none;
+}
+
+.wyraj-skip:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+.swieto-card:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.wyraj-brand {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-decoration: none;
+  margin: 0 0 0.6rem;
+}
+
+.wyraj-brand:hover {
+  color: var(--gold-hover);
+  text-decoration: none;
+}
+
+.wyraj-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+  min-height: 2.2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.wyraj-topbar .switch {
+  position: static;
+  top: auto;
+  right: auto;
 }
 
 /* =============================================
@@ -96,8 +167,8 @@ body {
   bottom: 0; left: 0; right: 0; height: 68%;
   background: linear-gradient(to bottom,
     transparent 0%,
-    rgba(15,17,23,0.55) 55%,
-    var(--dark) 100%);
+    rgba(6, 6, 6, 0.55) 55%,
+    var(--ink) 100%);
 }
 
 /* =============================================
@@ -107,13 +178,10 @@ body {
   width: 92%;
   max-width: 960px;
   margin: -4rem auto 0;
-  background: rgba(15,17,23,0.97);
+  background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: var(--radius) var(--radius) 0 0;
-  box-shadow:
-    0 -4px 40px rgba(0,0,0,0.5),
-    0 24px 70px rgba(0,0,0,0.85),
-    inset 0 1px 0 rgba(196,146,42,0.08);
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -137,25 +205,27 @@ body {
 .switch {
   position: absolute;
   top: 1rem; right: 1.5rem;
-  display: flex; gap: 0.4rem;
+  display: flex; gap: 0.35rem;
   z-index: 10;
 }
 .switch button {
-  background: rgba(0,0,0,0.55);
-  border: 1px solid var(--border);
-  color: var(--gold);
-  padding: 0.22rem 0.65rem;
-  cursor: pointer; border-radius: 4px;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.82rem; font-weight: 700;
-  letter-spacing: 0.08em;
+  background: transparent;
+  border: 1px solid var(--border-quiet);
+  color: var(--muted);
+  padding: 0.22rem 0.55rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 1px;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .switch button:hover,
 .switch button.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
+  background: rgba(196, 146, 42, 0.18);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 /* =============================================
@@ -168,47 +238,51 @@ body {
    TYPOGRAPHY
    ============================================= */
 h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
-  font-weight: 700; text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  font-weight: 400;
+  text-align: center;
   color: var(--gold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   margin: 1rem 0 0.25rem;
-  line-height: 1.12;
-  text-shadow: 0 2px 24px rgba(196,146,42,0.35);
+  line-height: 1.15;
+  text-shadow: none;
   animation: riseUp 0.9s ease both;
 }
 .lista-title {
-  font-size: clamp(2.9rem, 6.5vw, 4.3rem);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  letter-spacing: 0.12em;
+  text-transform: none;
 }
 h1::after {
   content: '';
-  display: block; width: 52px; height: 2px;
-  background: linear-gradient(90deg, var(--primary), #e0b060);
-  margin: 10px auto 0; border-radius: 2px;
+  display: block; width: 60px; height: 4px;
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
+  margin: 14px auto 0; border-radius: 2px;
 }
 .lista-title::after { content: none; }
 
 .subtitle {
   text-align: center;
-  font-family: 'Kaushan Script', cursive;
-  font-size: 1.25rem;
-  color: var(--primary);
-  letter-spacing: 0.04em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  color: var(--muted);
+  letter-spacing: 0.02em;
   margin: 0.7rem 0 1.8rem;
   animation: fadeIn 1.4s ease both;
 }
 
 p {
-  font-size: 1.3rem;
-  line-height: 1.82;
+  font-size: 1.05rem;
+  line-height: 1.7;
   margin-bottom: 1rem;
   color: var(--text);
 }
-a       { color: var(--gold-dim); text-decoration: underline; }
-a:hover { color: var(--gold); }
+a       { color: var(--gold); text-decoration: underline; text-underline-offset: 0.15em; }
+a:hover { color: var(--gold-hover); }
 
 /* =============================================
    WYRAJ INTRO
@@ -220,16 +294,17 @@ a:hover { color: var(--gold); }
   animation: fadeIn 1.2s ease both;
 }
 .wyraj-intro p {
-  font-size: 1.15rem;
-  line-height: 1.9;
-  font-style: italic;
-  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  font-style: normal;
+  font-weight: 300;
+  color: var(--muted);
 }
 .wyraj-intro p:last-child {
   font-style: normal;
-  font-family: 'Kaushan Script', cursive;
-  font-size: 1.35rem;
-  color: var(--gold-dim);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: var(--gold);
   margin-top: 0.4rem;
 }
 
@@ -237,18 +312,20 @@ a:hover { color: var(--gold); }
    SECTION TITLE
    ============================================= */
 .section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem; font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 300;
   margin: 2.2rem 0 0.7rem;
-  color: var(--gold); letter-spacing: 0.05em;
+  color: var(--gold);
+  letter-spacing: 2px;
   text-align: center;
   animation: fadeIn 1.5s ease both;
 }
 .section-title::after {
   content: '';
-  display: block; width: 36px; height: 2px;
-  background: linear-gradient(90deg, var(--primary), #e0b060);
-  margin: 6px auto 0; border-radius: 2px;
+  display: block; width: 60px; height: 4px;
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
+  margin: 14px auto 0; border-radius: 2px;
 }
 
 /* =============================================
@@ -258,7 +335,7 @@ a:hover { color: var(--gold); }
 
 .tresc ul, .zrodla ul {
   padding-left: 1.5rem;
-  line-height: 1.95; font-size: 1.25rem;
+  line-height: 1.75; font-size: 1.05rem;
   margin: 0.4rem 0 1rem;
 }
 .tresc li, .zrodla li { margin-bottom: 0.65rem; }
@@ -273,8 +350,8 @@ a:hover { color: var(--gold); }
 }
 
 .highlight {
-  font-weight: bold; color: var(--primary);
-  text-shadow: 0 0 8px rgba(196,146,42,0.5);
+  font-weight: 400; color: var(--gold);
+  text-shadow: none;
 }
 
 /* =============================================
@@ -391,15 +468,17 @@ a:hover { color: var(--gold); }
 }
 .swieto-card {
   display: block; text-decoration: none;
-  color: var(--text); background: var(--surface);
-  border: 1px solid rgba(196,146,42,0.18);
+  color: var(--text); background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius); overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .swieto-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.8);
-  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(196, 146, 42, 0.35),
+    0 12px 28px rgba(0, 0, 0, 0.45);
+  border-color: rgba(196, 146, 42, 0.35);
 }
 .card-img-wrap { overflow: hidden; aspect-ratio: 2/3; position: relative; }
 
@@ -423,56 +502,59 @@ a:hover { color: var(--gold); }
   display: flex; flex-direction: column; gap: 0.25rem;
 }
 .card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; font-weight: 700; color: var(--gold);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem; font-weight: 300; color: var(--gold);
+  letter-spacing: 0.5px;
 }
 .card-sub {
-  font-family: 'Kaushan Script', cursive;
-  font-size: 0.94rem; color: var(--primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem; font-weight: 300; color: var(--muted);
 }
 
 /* =============================================
    FOOTER — inside .page-wrap
    ============================================= */
 .footer {
-  background: rgba(8,10,15,0.98);
+  background: var(--panel);
   text-align: center;
-  padding: 2.4rem 1.5rem 2rem;
+  padding: 1.8rem 1.5rem 1.6rem;
   border-top: 1px solid var(--border);
-  border-radius: 0 0 var(--radius) var(--radius);
+  border-radius: 0 0 22px 22px;
   margin: 0;
   width: 100%;
   box-sizing: border-box;
 }
 .footer p {
-  font-size: 1rem;
-  margin: 0.6rem 0 0;
-  color: rgba(255,255,255,0.45);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  margin: 0.4rem 0 0;
+  color: var(--muted);
 }
 .site-credits {
   width: 92%;
   max-width: 960px;
   margin: 0 auto 2.5rem;
   padding: 1.4rem 1.5rem 0;
-  border-top: 1px solid rgba(196,146,42,0.25);
+  border-top: 1px solid var(--border);
   text-align: center;
   box-sizing: border-box;
 }
 .site-credits p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.72rem;
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 300;
+  font-style: normal;
   margin: 0 auto;
   max-width: 42rem;
   line-height: 1.8;
   letter-spacing: 0.01em;
-  color: rgba(255,255,255,0.24);
+  color: rgba(196, 196, 196, 0.45);
 }
 .site-credits a {
-  color: rgba(255,255,255,0.34);
+  color: rgba(196, 146, 42, 0.7);
   text-decoration: none;
-  border-bottom: 1px dotted rgba(255,255,255,0.2);
+  border-bottom: 1px dotted rgba(196, 146, 42, 0.35);
   transition: color 0.2s, border-color 0.2s;
 }
 .site-credits a:hover {
@@ -595,11 +677,11 @@ a:hover { color: var(--gold); }
   width: 100%;
 }
 .kolo-panel-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
   color: var(--gold);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.5px;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -608,10 +690,11 @@ a:hover { color: var(--gold); }
   width: 100%;
 }
 .kolo-panel-sub {
-  font-family: 'Kaushan Script', cursive;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
+  font-weight: 300;
   line-height: 1.3;
-  color: var(--primary);
+  color: var(--muted);
   text-align: center;
   display: flex;
   align-items: center;
@@ -633,10 +716,10 @@ a:hover { color: var(--gold); }
   border-radius: 6px;
   color: var(--gold);
   text-decoration: none;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 1px;
   transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
 }
 .kolo-panel-btn:hover {
@@ -694,8 +777,9 @@ a:hover { color: var(--gold); }
   border: 1px solid rgba(196,146,42,0.4);
   border-radius: 6px;
   padding: 0.32rem 0.7rem;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.78rem;
+  font-weight: 300;
   color: var(--gold);
   white-space: nowrap;
   pointer-events: none;
@@ -757,10 +841,11 @@ a:hover { color: var(--gold); }
      2 lines (that was the previous bug: a hard total height on .kolo-nav
      squeezed this into too little room and overflow:hidden cut it off). */
   min-height: 2.5rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.92rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
   line-height: 1.2;
-  color: rgba(245,225,164,0.78);
+  color: rgba(196, 196, 196, 0.78);
   text-align: center;
   transition: color 0.2s ease;
 }
@@ -844,22 +929,24 @@ a:hover { color: var(--gold); }
   justify-content: center;
 }
 .duchy-label {
-  font-size: 0.88rem;
+  font-size: 0.78rem;
+  font-weight: 300;
   color: var(--muted);
-  letter-spacing: 0.06em;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
 }
 .duch-tag {
   display: inline-block;
   padding: 0.2rem 0.75rem;
   border: 1px solid rgba(196,146,42,0.35);
   border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--gold-dim);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--gold);
   background: rgba(196,146,42,0.07);
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 0.04em;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .duch-tag:hover {
@@ -1029,19 +1116,22 @@ button.duch-tag-bostwo {
 
 .bostwo-panel-body { padding: 1.4rem 1.8rem 1.8rem; text-align: center; }
 .bostwo-imie {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
   font-size: 1.9rem; color: var(--gold);
   margin: 0.2rem 0 0.15rem; letter-spacing: 0.04em;
 }
 .bostwo-epitet {
-  font-family: 'Kaushan Script', cursive;
-  color: var(--primary);
-  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: var(--muted);
+  font-size: 1rem;
   margin: 0 0 0.2rem;
 }
 .bostwo-opis {
-  font-size: 1.08rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
   color: var(--text);
   text-align: left;
 }
@@ -1058,12 +1148,14 @@ button.duch-tag-bostwo {
 .bostwo-ciekawostka.bostwo-ciekawostka-hidden { display: none; }
 .bostwo-ciekawostka-label {
   display: block;
-  font-family: 'Kaushan Script', cursive;
-  color: var(--gold-dim);
-  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: var(--gold);
+  font-size: 0.92rem;
+  letter-spacing: 0.5px;
   margin-bottom: 0.35rem;
 }
-.bostwo-ciekawostka-text { font-size: 0.98rem; color: var(--muted); margin: 0; }
+.bostwo-ciekawostka-text { font-size: 0.95rem; font-weight: 300; color: var(--muted); margin: 0; }
 
 /* Mobile: turn the modal into a bottom sheet */
 @media (max-width: 640px) {
@@ -1147,9 +1239,10 @@ button.duch-tag-bostwo {
   letter-spacing: 0.08em;
 }
 .nav-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.97rem;
-  color: var(--gold-dim);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 0.92rem;
+  color: var(--gold);
   line-height: 1.25;
 }
 .nav-next .nav-info { text-align: right; }
@@ -1191,13 +1284,14 @@ button.duch-tag-bostwo {
 .card-season {
   position: absolute;
   top: 0.5rem; left: 0.5rem;
-  font-size: 0.72rem;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 0.07em;
+  font-size: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
   text-transform: uppercase;
   padding: 0.15rem 0.55rem;
   border-radius: 20px;
-  background: rgba(15,17,23,0.78);
+  background: rgba(6, 6, 6, 0.78);
   border: 1px solid currentColor;
   backdrop-filter: blur(4px);
   pointer-events: none;
@@ -1233,7 +1327,7 @@ button.duch-tag-bostwo {
   top: 0; left: 0;
   height: 2px;
   width: 0%;
-  background: linear-gradient(90deg, var(--primary), #f5e1a4, var(--primary));
+  background: linear-gradient(90deg, var(--gold), var(--gold-hover), var(--gold));
   z-index: 9999;
   transition: width 0.1s linear;
   pointer-events: none;

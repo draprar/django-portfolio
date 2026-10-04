@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
   <title>Wyraj — Słowiańskie Koło Roku</title>
   <meta name="description" content="Wyraj — opisy słowiańskich świąt i obrzędów rocznych: Gaik, Radonica, Jare Gody, Szczodre Gody i więcej.">
   <link rel="stylesheet" href="{% static 'bies/css/wyraj.css' %}">
@@ -10,6 +11,8 @@
   <link rel="icon" href="{% static 'bies/img/veles.ico' %}" type="image/x-icon">
 </head>
 <body>
+  <a class="wyraj-skip" href="#wyraj-main">Przejdź do treści</a>
+
   <div class="site-bg" aria-hidden="true">
     <picture>
       <source media="(max-width: 768px)" srcset="{% static 'bies/img/bg-wyraj-mobile.png' %}">
@@ -24,11 +27,14 @@
   </div>
 
   <div class="page-wrap lista-wrap">
-    <div class="page-content">
+    <div class="page-content" id="wyraj-main">
 
-      <div class="switch">
-        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
-        <button type="button" onclick="switchLang('en')">EN</button>
+      <div class="wyraj-topbar">
+        <a class="wyraj-brand" href="{% url 'bies:wyraj-lista' %}">wyraj</a>
+        <div class="switch">
+          <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+          <button type="button" onclick="switchLang('en')">EN</button>
+        </div>
       </div>
 
       <div class="ornament"><span>⸻</span><span>✦</span><span>⸻</span></div>
@@ -223,7 +229,7 @@
 
     <footer class="footer">
       <div class="lang active" id="pl-footer">
-        <p>© {% now "Y" %} Walery</p>
+        <p>© {% now "Y" %} Walery — Wszelkie prawa zastrzeżone</p>
       </div>
       <div class="lang" id="en-footer">
         <p>© {% now "Y" %} Walery — All rights reserved</p>
