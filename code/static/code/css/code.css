@@ -92,7 +92,7 @@ a {
 
 .code-header h1 {
     font-weight: 300;
-    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    font-size: clamp(2rem, 5.5vw, 3.1rem);
     letter-spacing: 3px;
     margin: 0;
     color: var(--gold);
@@ -108,7 +108,7 @@ a {
 
 .code-role {
     font-weight: 300;
-    font-size: clamp(1.5rem, 3.8vw, 2.1rem);
+    font-size: clamp(1.7rem, 4.2vw, 2.4rem);
     letter-spacing: 3px;
     margin: 0 0 1.2rem;
     color: var(--gold);
@@ -116,10 +116,10 @@ a {
 
 .intro {
     font-weight: 300;
-    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    font-size: clamp(1.12rem, 2.6vw, 1.35rem);
     line-height: 1.55;
     color: #c4c4c4;
-    max-width: 46ch;
+    max-width: 48ch;
     margin: 0 auto;
     text-align: center;
 }

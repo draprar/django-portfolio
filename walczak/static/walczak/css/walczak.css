@@ -233,16 +233,14 @@ summary:focus-visible {
   width: 100%;
   max-width: none;
   margin: 0 auto;
-  container-type: inline-size;
 }
 
 .walczak-home-header .walczak-title {
   white-space: nowrap;
   overflow-wrap: normal;
   line-height: 1.25;
-  /* Fit the longer EN greeting in one line inside the portal. */
-  font-size: clamp(0.9rem, 4.1cqi, 2.8rem);
-  letter-spacing: clamp(0.3px, 0.05cqi, 2px);
+  font-size: clamp(1.8rem, 5.5vw, 3rem);
+  letter-spacing: clamp(1px, 0.2vw, 4px);
 }
 
 .walczak-home-header .walczak-title::after {
