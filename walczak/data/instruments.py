@@ -107,8 +107,8 @@ PREFERENCE: list[dict] = [
         "sort_order": 8,
         "kind": "scale",
         "dimension": "tradition_level",
-        "text_pl": "Jak ważne są dla Ciebie formy i zwyczaje w sali?",
-        "text_en": "How much do forms and hall customs matter to you?",
+        "text_pl": "Jak ważne są dla Ciebie tradycje i zwyczaje w sali?",
+        "text_en": "How much do traditions and hall customs matter to you?",
     },
     {
         "sort_order": 9,
@@ -118,8 +118,8 @@ PREFERENCE: list[dict] = [
         "text_en": "Would you rather train alone, or with a partner?",
         "options": [
             {
-                "text_pl": "Sam, forma albo worek.",
-                "text_en": "Alone, with a form or a bag.",
+                "text_pl": "Sam, technika albo worek.",
+                "text_en": "Alone, with technique or a bag.",
                 "weights": [("solo_training", 2), ("partner_training", -2)],
             },
             {
