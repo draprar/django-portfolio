@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
   <title>{{ swieto.tytul_pl }} — Wyraj</title>
   <meta name="description" content="{{ swieto.meta_opis_pl }}">
   {% if swieto.obraz %}
@@ -13,6 +14,7 @@
   <link rel="icon" href="{% static 'bies/img/veles.ico' %}" type="image/x-icon">
 </head>
 <body>
+  <a class="wyraj-skip" href="#wyraj-main">Przejdź do treści</a>
 
   <div id="loader">
     <div class="loader-rune">ᛏ ᛉ ᛟ</div>
@@ -34,11 +36,14 @@
   {% endif %}
 
   <div class="page-wrap">
-    <div class="page-content">
+    <div class="page-content" id="wyraj-main">
 
-      <div class="switch">
-        <button type="button" onclick="switchLang('pl')" class="active">PL</button>
-        <button type="button" onclick="switchLang('en')">EN</button>
+      <div class="wyraj-topbar">
+        <a class="wyraj-brand" href="{% url 'bies:wyraj-lista' %}">wyraj</a>
+        <div class="switch">
+          <button type="button" onclick="switchLang('pl')" class="active">PL</button>
+          <button type="button" onclick="switchLang('en')">EN</button>
+        </div>
       </div>
 
       <div class="ornament">⸻✦⸻</div>
@@ -264,7 +269,7 @@
 
     <footer class="footer">
       <div class="lang active" id="pl-footer">
-        <p>© {% now "Y" %} Walery</p>
+        <p>© {% now "Y" %} Walery — Wszelkie prawa zastrzeżone</p>
       </div>
       <div class="lang" id="en-footer">
         <p>© {% now "Y" %} Walery — All rights reserved</p>
