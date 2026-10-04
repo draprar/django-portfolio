@@ -304,52 +304,65 @@ h1::after {
   border-radius: 2px;
 }
 
-/* Arrows SVG below 'Otwórz lusterko' — tint gold */
+/* Arrows SVG below 'Otwórz lusterko' — force gold on dark slides (incl. mobile). */
 img[src*="arrows.svg"] {
-  filter: invert(65%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(95%);
-  opacity: 0.85;
+  filter: brightness(0) saturate(100%) invert(64%) sepia(48%) saturate(700%) hue-rotate(5deg) brightness(95%) contrast(92%);
+  -webkit-filter: brightness(0) saturate(100%) invert(64%) sepia(48%) saturate(700%) hue-rotate(5deg) brightness(95%) contrast(92%);
+  opacity: 1;
 }
 
-/* ── Buttons ────────────────────────────────────────────────────────────────── */
+/* ── Buttons — gold CTAs so they don't disappear on dark slides ─────────────── */
 .btn-dark,
 .btn-dark:not(:disabled):not(.disabled) {
-  background: var(--surface2);
-  border-color: var(--surface2);
-  color: var(--light);
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
+  border-color: transparent;
+  color: #fff;
   font-weight: 600;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .btn-dark:hover,
-.btn-dark:focus {
-  background: var(--primary);
-  border-color: var(--primary);
+.btn-dark:focus,
+.btn-dark:focus-visible {
+  background: linear-gradient(45deg, var(--gold-hover), var(--gold-2));
+  border-color: transparent;
   color: #fff;
 }
 
 .btn-success {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
+  border-color: transparent;
   color: #fff;
   font-weight: 600;
 }
 
 .btn-success:hover {
-  background: var(--gold-2);
-  border-color: var(--gold-2);
+  background: linear-gradient(45deg, var(--gold-hover), var(--gold-2));
+  border-color: transparent;
 }
 
 .btn-secondary {
-  background: var(--surface);
-  border-color: var(--border);
+  background: transparent;
+  border: 1px solid var(--border-quiet);
   color: var(--muted);
   font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background: var(--surface2);
-  border-color: var(--muted);
-  color: var(--light);
+  background: rgba(196, 146, 42, 0.12);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+#beaver-yes,
+#beaver-options .btn-dark,
+#beaver-speech-bubble .btn-dark {
+  min-width: 4.5rem;
+}
+
+#beaver-no {
+  min-width: 4.5rem;
 }
 
 /* ── Forms / inputs ─────────────────────────────────────────────────────────── */
