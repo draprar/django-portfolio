@@ -1,17 +1,25 @@
 :root {
-  --primary:  #c4922a;
-  --dark:     #0f1117;
-  --surface:  #1a1e27;
-  --surface2: #22273a;
-  --light:    #e8e8e8;
-  --muted:    #8a8f9a;
-  --border:   rgba(255, 255, 255, 0.08);
-  --radius:   10px;
+  --ink: #060606;
+  --gold: #c4922a;
+  --gold-2: #a0522d;
+  --gold-hover: #d4a535;
+  --muted: #c4c4c4;
+  --panel: rgba(10, 10, 10, 0.95);
+  --card: #0d0d0d;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 10px;
+  --primary: var(--gold);
+  --dark: var(--ink);
+  --surface: var(--card);
+  --surface2: #151515;
+  --light: #e0e0e0;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--dark);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+  background-color: var(--ink);
   color: var(--light);
   min-height: 100vh;
   margin-top: 10px;
@@ -20,8 +28,10 @@ body {
 
 /* ── Page heading ───────────────────────────────────────────────────────────── */
 h1, h2 {
-  font-family: 'Playfair Display', serif;
-  color: var(--light);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--gold);
 }
 
 h2::after {
@@ -29,7 +39,7 @@ h2::after {
   display: block;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary), #e0b060);
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
   margin: 6px 0 24px;
   border-radius: 2px;
 }
@@ -37,7 +47,7 @@ h2::after {
 /* ── Settings card/panel ────────────────────────────────────────────────────── */
 .card,
 .settings-panel {
-  background: var(--surface) !important;
+  background: var(--card) !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
   color: var(--light) !important;
@@ -47,6 +57,7 @@ h2::after {
 .form-control {
   height: 50px;
   font-size: 16px;
+  font-weight: 300;
   background: var(--surface2);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
@@ -60,7 +71,7 @@ h2::after {
 
 .form-control:focus {
   background: var(--surface2);
-  border-color: var(--primary);
+  border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(196, 146, 42, 0.18);
   color: var(--light);
   outline: none;
@@ -78,7 +89,7 @@ label,
 .form-label {
   color: var(--muted);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 300;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 6px;
@@ -88,10 +99,10 @@ label,
 button[type="submit"] {
   height: 50px;
   font-size: 16px;
-  font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.05em;
-  background: var(--primary);
+  background: var(--gold);
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -102,7 +113,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: #a8791f;
+  background: var(--gold-2);
   box-shadow: 0 6px 20px rgba(196, 146, 42, 0.4);
 }
 
@@ -133,11 +144,11 @@ button[type="submit"]:hover {
 
 /* ── Links ──────────────────────────────────────────────────────────────────── */
 a {
-  color: var(--primary);
+  color: var(--gold);
   transition: color 0.2s;
 }
 
-a:hover { color: #e0b060; }
+a:hover { color: var(--gold-hover); }
 
 /* ── Error / help text ──────────────────────────────────────────────────────── */
 .errorlist,
@@ -163,7 +174,7 @@ a:hover { color: #e0b060; }
 
 .table thead th {
   border-color: rgba(196, 146, 42, 0.3);
-  color: var(--primary);
+  color: var(--gold);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -188,7 +199,7 @@ a:hover { color: #e0b060; }
 .alert-success {
   background: rgba(196, 146, 42, 0.1);
   border-color: rgba(196, 146, 42, 0.3);
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .alert-danger {
