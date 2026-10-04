@@ -294,18 +294,12 @@ a:hover { color: var(--gold-hover); }
   animation: fadeIn 1.2s ease both;
 }
 .wyraj-intro p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  font-style: normal;
-  font-weight: 300;
-  color: var(--muted);
-}
-.wyraj-intro p:last-child {
-  font-style: normal;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  color: var(--gold);
-  margin-top: 0.4rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.9;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
 }
 
 /* =============================================
@@ -600,8 +594,8 @@ a:hover { color: var(--gold-hover); }
   .subtitle         { font-size: 1.35rem; }
   .section-title    { font-size: 1.3rem; }
   p                 { font-size: 1.1rem; line-height: 1.75; }
-  .wyraj-intro p    { font-size: 1.02rem; }
-  .wyraj-intro p:last-child { font-size: 1.2rem; }
+  .wyraj-intro p    { font-size: 1.15rem; }
+  .kolo-jump-line   { font-size: 1.04rem; }
   .tresc ul,
   .zrodla ul        { font-size: 1.1rem; }
   .zrodla li        { font-size: 1rem; }
@@ -1431,10 +1425,15 @@ html {
   align-items: center;
   gap: 0.65rem;
   text-decoration: none;
-  color: var(--gold-dim);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.17rem;
+  font-weight: 700;
+  font-style: normal;
+  /* Literary gold (pre-token remap); shared --gold-dim is now brown for chrome */
+  color: #c9a84c;
   text-align: center;
 }
-.kolo-jump-line:hover { color: var(--gold); }
+.kolo-jump-line:hover { color: #f5e1a4; }
 
 /* Rune glyph (ᛦ / Yr) instead of a plain chevron — reads as a downward
    arrow while matching the same runic register as the loader ("ᛏ ᛉ ᛟ")
