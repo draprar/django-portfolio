@@ -154,7 +154,7 @@ summary:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 4px;
   font-family: inherit;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   line-height: 1;
   cursor: pointer;
@@ -191,7 +191,7 @@ summary:focus-visible {
 
 .walczak-eyebrow,
 .walczak-section-title {
-  font-size: 1.15rem;
+  font-size: clamp(1.25rem, 2.8vw, 1.45rem);
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: none;
@@ -207,7 +207,7 @@ summary:focus-visible {
 
 .walczak-title {
   font-weight: 300;
-  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
   color: var(--gold);
   text-transform: none;
   letter-spacing: 3px;
@@ -231,24 +231,23 @@ summary:focus-visible {
 
 .walczak-home-header {
   width: 100%;
-  max-width: 43.2rem;
+  max-width: none;
   margin: 0 auto;
+  container-type: inline-size;
 }
 
 .walczak-home-header .walczak-title {
-  font-size: clamp(1.08rem, 2.52vw + 0.54rem, 1.62rem);
-  font-weight: 300;
-  white-space: normal;
-  overflow-wrap: break-word;
-  letter-spacing: clamp(0.02em, 0.12vw, 0.08em);
-  line-height: 1.2;
-  text-transform: none;
-  color: var(--gold);
+  white-space: nowrap;
+  overflow-wrap: normal;
+  line-height: 1.25;
+  /* Fit the longer EN greeting in one line inside the portal. */
+  font-size: clamp(0.9rem, 4.1cqi, 2.8rem);
+  letter-spacing: clamp(0.3px, 0.05cqi, 2px);
 }
 
 .walczak-home-header .walczak-title::after {
-  width: 62px;
-  margin-top: 17px;
+  width: 60px;
+  margin-top: 14px;
 }
 
 .walczak-header .walczak-title::after {
@@ -282,7 +281,7 @@ summary:focus-visible {
   max-width: 100%;
   white-space: normal;
   overflow-wrap: break-word;
-  font-size: 1rem;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
   line-height: 1.7;
 }
 
@@ -295,7 +294,7 @@ summary:focus-visible {
   max-width: 100%;
   white-space: normal;
   overflow-wrap: break-word;
-  font-size: 1rem;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
   line-height: 1.7;
 }
 
@@ -325,10 +324,9 @@ summary:focus-visible {
 }
 
 .walczak-home-features {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
   width: 100%;
   max-width: 43.2rem;
   margin: 0 auto;
@@ -341,7 +339,7 @@ summary:focus-visible {
   width: 100%;
   margin-bottom: 0;
   text-align: center;
-  padding: 1.86rem 1.8rem 1.62rem;
+  padding: 1.2rem 1.1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -353,20 +351,26 @@ summary:focus-visible {
 }
 
 .walczak-home-feature-title {
-  margin: 0 0 0.84rem;
-  font-size: 1rem;
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 1px;
   text-transform: none;
   color: #fff;
 }
 
+.walczak-home-feature.walczak-card .walczak-home-feature-title {
+  color: #fff;
+  font-weight: 400;
+  margin: 0 0 0.45rem;
+}
+
 .walczak-home-feature-text {
-  margin: 0 0 1.44rem;
+  margin: 0 0 1rem;
   max-width: 33.6rem;
   color: var(--muted);
   line-height: 1.45;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -377,10 +381,35 @@ summary:focus-visible {
 }
 
 .walczak-home-feature .walczak-btn {
-  min-width: 13.8rem;
-  min-height: 53px;
-  padding: 0.9rem 1.56rem;
-  font-size: 1.2rem;
+  min-width: 0;
+  min-height: 0;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  font-weight: 400;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transform: none;
+}
+
+.walczak-home-feature .walczak-btn:hover,
+.walczak-home-feature .walczak-btn:focus-visible {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
+#walczak-main .walczak-home-feature a.walczak-btn {
+  color: var(--muted);
+}
+
+#walczak-main .walczak-home-feature a.walczak-btn:hover,
+#walczak-main .walczak-home-feature a.walczak-btn:focus-visible {
+  color: var(--gold);
 }
 
 .walczak-compare-inline {
@@ -423,7 +452,7 @@ summary:focus-visible {
   color: #fff;
   font-family: inherit;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
@@ -468,7 +497,7 @@ fieldset.walczak-card legend {
   width: 100%;
   padding: 0;
   margin: 0 0 0.85rem;
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.45;
 }
 
@@ -592,7 +621,7 @@ a.walczak-card:hover {
 .walczak-scale-legend {
   margin: 0 0 1.1rem;
   padding: 0.75rem 1rem;
-  font-size: 0.88rem;
+  font-size: 1rem;
   line-height: 1.55;
   color: var(--muted);
   border-left: 3px solid rgba(196, 146, 42, 0.45);
@@ -644,7 +673,7 @@ a.walczak-card:hover {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   text-decoration: none;
@@ -713,7 +742,7 @@ a.walczak-card:hover {
   border: 1px solid rgba(196, 146, 42, 0.35);
   background: rgba(196, 146, 42, 0.1);
   color: var(--gold);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 400;
   letter-spacing: 0.3px;
   line-height: 1.3;
@@ -768,6 +797,10 @@ a.walczak-card:hover {
 
 @media (max-width: 720px) {
   .walczak-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .walczak-home-features {
     grid-template-columns: 1fr;
   }
 
