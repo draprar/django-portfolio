@@ -488,7 +488,14 @@ img[src*="arrows.svg"] {
 #beaver-text,
 #polish-beaver-text { display: block; color: var(--light); }
 
-#beaver-options { margin-top: 10px; }
+#beaver-options {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+}
 
 /* ── Polish beaver: running "facts seen" counter ────────────────────────────── */
 #polish-beaver-counter {
@@ -590,6 +597,10 @@ a.highlight {
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   padding: 0.55rem 0.75rem;
+}
+
+.navbar .ms-auto.d-flex {
+  gap: 0.5rem;
 }
 
 .navbar-dark .navbar-nav .nav-link,
