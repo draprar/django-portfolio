@@ -16,7 +16,7 @@ def test_wybierz_renders_crossroads(client):
     assert "/code/" in content
     assert "/walczak/" in content
     assert "kodzillin'" in content
-    assert "Walczak" in content
+    assert ">walczak</h2>" in content
     assert "code-terminal" in content
     assert "walczak-bg.jpg" in content
     assert 'panel-code' in content

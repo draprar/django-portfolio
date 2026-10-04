@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title {% block title_i18n %}data-pl="Walczak" data-en="Walczak"{% endblock %}>{% block title %}Walczak{% endblock %}</title>
+  <title {% block title_i18n %}data-pl="walczak" data-en="walczak"{% endblock %}>{% block title %}walczak{% endblock %}</title>
   {% block meta_description %}
   <meta name="description"
         data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki."
@@ -15,49 +15,41 @@
         data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."
         content="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.">
   {% endblock %}
-  <meta property="og:title" content="{% block og_title %}Walczak{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}walczak{% endblock %}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
   <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
   {% block robots %}{% endblock %}
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#0a0a0a">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'walczak/css/walczak.css' %}">
 </head>
 <body>
 <a class="walczak-skip" href="#walczak-main" data-en="Skip to content" data-pl="Przejdź do treści">Przejdź do treści</a>
 
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container">
-    <a class="walczak-brand" href="{% url 'walczak:home' %}">Walczak</a>
-    <div class="walczak-lang" role="group" aria-label="Język / Language">
-      <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
-      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+<div class="walczak-stage">
+  <main class="walczak-portal" id="walczak-main">
+    <div class="walczak-portal-top">
+      <a class="walczak-brand" href="{% url 'walczak:home' %}">walczak</a>
+      <div class="walczak-lang" role="group" aria-label="Język / Language">
+        <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
-  </div>
-</nav>
 
-<main class="container" id="walczak-main">
-  {% if messages %}
-  <div class="walczak-messages">
-    {% for message in messages %}
-    <p class="walczak-message{% if message.tags %} walczak-message-{{ message.tags }}{% endif %}" role="status">{{ message }}</p>
-    {% endfor %}
-  </div>
-  {% endif %}
-  {% block walczak %}{% endblock %}
-</main>
-
-<footer class="footer text-center">
-  {% block footer_note %}
-  <p data-en="Take it with a pinch of salt, pal, but get your ass moving."
-     data-pl="Potraktuj to z dystansem mordko, ale ruszże dupę.">
-    Potraktuj to z dystansem mordko, ale ruszże dupę.
-  </p>
-  {% endblock %}
-</footer>
+    {% if messages %}
+    <div class="walczak-messages">
+      {% for message in messages %}
+      <p class="walczak-message{% if message.tags %} walczak-message-{{ message.tags }}{% endif %}" role="status">{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% block walczak %}{% endblock %}
+  </main>
+</div>
 
 <script>
 (function () {
@@ -65,7 +57,6 @@
   if (note) note.focus();
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'core/js/lang.js' %}" defer></script>
 <script>
 (function () {
