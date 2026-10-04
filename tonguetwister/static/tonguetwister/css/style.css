@@ -39,6 +39,7 @@ body {
   font-weight: 300;
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
   background-color: var(--ink);
+  background-attachment: fixed;
   color: var(--light);
   min-height: 100vh;
   min-height: 100dvh;
@@ -56,6 +57,14 @@ p { color: var(--light); }
 
 a { color: var(--gold); }
 a:hover { color: var(--gold-hover); }
+
+#lingwo-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: transparent;
+}
 
 .lingwo-skip {
   position: absolute;
@@ -126,19 +135,26 @@ a:hover { color: var(--gold-hover); }
   overflow: hidden;
   width: 100%;
   position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
 }
 
 /* ── Swiper container — autoHeight ──────────────────────────────────────────── */
 .mySwiper {
   overflow: visible !important;
   width: 100%;
+  flex: 1;
+  background: transparent;
 }
 
 /* Slides — padding-top makes room for the pagination bar above */
 .mySwiper .swiper-slide {
   overflow: visible;
   height: auto;
-  background: var(--dark);
+  min-height: 100%;
+  background: transparent;
   padding: 36px 48px 10px;  /* top: room for progressbar; sides: room for arrows */
   box-sizing: border-box;
 }
@@ -203,7 +219,7 @@ a:hover { color: var(--gold-hover); }
 
 /* ── Swiper chrome ──────────────────────────────────────────────────────────── */
 .textSwiper {
-  background: var(--dark);
+  background: transparent;
   margin: 0;
   padding: 0;
 }
