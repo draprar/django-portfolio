@@ -231,14 +231,16 @@ summary:focus-visible {
 
 .walczak-home-header {
   width: 100%;
-  max-width: 43.2rem;
+  max-width: none;
   margin: 0 auto;
 }
 
 .walczak-home-header .walczak-title {
-  white-space: normal;
-  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow-wrap: normal;
   line-height: 1.25;
+  font-size: clamp(0.95rem, 3.6vw + 0.35rem, 2.8rem);
+  letter-spacing: clamp(0.5px, 0.12vw, 3px);
 }
 
 .walczak-home-header .walczak-title::after {
