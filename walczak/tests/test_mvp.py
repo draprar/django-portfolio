@@ -336,7 +336,8 @@ def test_serious_pages_do_not_call_the_catalog_a_joke(client):
     load_catalog()
     home = client.get(reverse("walczak:home")).content.decode()
     assert "To żart" not in home
-    assert "Siemasz na Walczaku, obczaj niżej." in home
+    assert "Siemasz na Walczaku" in home
+    assert "obczaj niżej" not in home
     assert "Archetyp" not in home
     assert "Quizopasowanie" in home
 

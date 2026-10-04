@@ -15,7 +15,8 @@ def test_home_is_bilingual(client):
     assert ">walczak</a>" in content
     assert 'data-pl="Katalog"' in content
     assert 'data-en="Catalog"' in content
-    assert "Siemasz na Walczaku, obczaj niżej." in content
+    assert "Siemasz na Walczaku" in content
+    assert "obczaj niżej" not in content
     assert "Quizopasowanie" in content
     assert 'property="og:title"' in content
     assert 'data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."' in content
