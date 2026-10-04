@@ -4,38 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}BAZGROLLIN'{% endblock %}</title>
+    <meta name="theme-color" content="#0a0a0a">
 
-    <!-- Favicon -->
     <link rel="icon" href="{% static 'gallery/img/logo.ico' %}" type="image/x-icon">
 
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- Bootstrap & Custom Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'gallery/css/style.css' %}">
 
-    <!-- Fancybox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-
 </head>
 <body>
+
+<a class="gallery-skip" href="#gallery-main">Skip to content</a>
 
 <div id="loader">
   <div class="spinner-border text-primary" role="status"></div>
 </div>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <button class="navbar-toggler custom-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <a class="navbar-brand gallery-brand" href="{% url 'gallery:gallery_home' %}">bazgrollin'</a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Categories & Contact -->
             <ul class="navbar-nav ms-auto">
-                <!-- "All" Category -->
                 <li class="nav-item">
                     <a class="nav-link
                         {% if request.resolver_match.url_name == 'gallery:gallery_home' %}
@@ -44,7 +40,6 @@
                         href="{% url 'gallery:gallery_home' %}">All</a>
                 </li>
 
-                <!-- Dynamic Categories -->
                 {% for category in categories %}
                 <li class="nav-item">
                     <a class="nav-link {% if selected_category == category.title %}active{% endif %}"
@@ -58,29 +53,25 @@
     </div>
 </nav>
 
-    <!-- Main Content -->
-    <main class="container my-5">
-        {% block content %}{% endblock content %}
-    </main>
+<main class="container" id="gallery-main">
+    {% block content %}{% endblock content %}
+</main>
 
-    <!-- Footer -->
-    <footer class="footer text-center">
-        <p>© {% now "Y" %} Walery — All rights reserved</p>
-    </footer>
+<footer class="footer text-center">
+    <p>© {% now "Y" %} Walery — All rights reserved</p>
+</footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'gallery/js/main.js' %}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'gallery/js/main.js' %}" defer></script>
 
-    <!-- Fancybox JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-    <script src="{% static 'gallery/js/fancybox.js' %}"></script>
-    <script>
-      window.addEventListener('load', function () {
-        var loader = document.getElementById('loader');
-        if (loader) loader.style.display = 'none';
-      });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+<script src="{% static 'gallery/js/fancybox.js' %}"></script>
+<script>
+  window.addEventListener('load', function () {
+    var loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
