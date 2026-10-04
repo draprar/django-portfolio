@@ -26,28 +26,46 @@
   {% if style.is_umbrella %}
   <p class="walczak-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
   {% endif %}
+  <div class="walczak-meta-list">
   {% if style.style_types.all %}
-  <p class="walczak-muted">
-    {% for item in style.style_types.all %}
-    <span data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</span>{% if not forloop.last %}, {% endif %}
-    {% endfor %}
-  </p>
+  <div class="walczak-meta-row">
+    <span class="walczak-meta-label" data-en="Type" data-pl="Rodzaj">Rodzaj</span>
+    <ul class="walczak-chips">
+      {% for item in style.style_types.all %}
+      <li class="walczak-chip" data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if style.tags.all %}
+  <div class="walczak-meta-row">
+    <span class="walczak-meta-label" data-en="Tags" data-pl="Tagi">Tagi</span>
+    <ul class="walczak-chips">
+      {% for item in style.tags.all %}
+      <li class="walczak-chip" data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</li>
+      {% endfor %}
+    </ul>
+  </div>
   {% endif %}
   {% if style.origin_pl %}
-  <p>
-    <span data-en="Origin" data-pl="Pochodzenie">Pochodzenie</span>:
+  <div class="walczak-meta-row">
+    <span class="walczak-meta-label" data-en="Origin" data-pl="Pochodzenie">Pochodzenie</span>
     <span class="walczak-meta-value" data-en="{{ style.origin_en }}" data-pl="{{ style.origin_pl }}">{{ style.origin_pl }}</span>
-  </p>
+  </div>
   {% endif %}
   {% if style.period_pl %}
-  <p>
-    <span data-en="Period" data-pl="Okres">Okres</span>:
+  <div class="walczak-meta-row">
+    <span class="walczak-meta-label" data-en="Period" data-pl="Okres">Okres</span>
     <span class="walczak-meta-value" data-en="{{ style.period_en }}" data-pl="{{ style.period_pl }}">{{ style.period_pl }}</span>
-  </p>
+  </div>
   {% endif %}
   {% if style.region %}
-  <p><span data-en="Region" data-pl="Region">Region</span>: <span class="walczak-meta-value">{{ style.region }}</span></p>
+  <div class="walczak-meta-row">
+    <span class="walczak-meta-label" data-en="Region" data-pl="Region">Region</span>
+    <span class="walczak-meta-value">{{ style.region }}</span>
+  </div>
   {% endif %}
+  </div>
 </section>
 
 {% if style.history_pl or style.history_en %}
