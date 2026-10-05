@@ -1,0 +1,56 @@
+{% extends "wiciedzy/base.html" %}
+
+{% block title %}Porównaj | wiciędzy{% endblock %}
+{% block title_i18n %}data-pl="Porównaj | wiciędzy" data-en="Compare | wiciędzy"{% endblock %}
+{% block og_title %}Porównaj | wiciędzy{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="Dwa style z zestawu głównego, jeden obok drugiego."
+      data-en="Two core styles, one next to the other."
+      content="Dwa style z zestawu głównego, jeden obok drugiego.">
+<meta property="og:description"
+      data-pl="Dwa style z zestawu głównego, jeden obok drugiego."
+      data-en="Two core styles, one next to the other."
+      content="Dwa style z zestawu głównego, jeden obok drugiego.">
+{% endblock %}
+
+{% block wiciedzy %}
+<header class="wiciedzy-header wiciedzy-header-left">
+  <h1 class="wiciedzy-title" data-en="Compare" data-pl="Porównaj">Porównaj</h1>
+  <p class="wiciedzy-subtitle"
+     data-en="Two core styles, one next to the other."
+     data-pl="Dwa style z zestawu głównego, jeden obok drugiego.">Dwa style z zestawu głównego, jeden obok drugiego.</p>
+</header>
+
+{% if error %}
+<p class="wiciedzy-message" role="alert" tabindex="-1" data-wiciedzy-error
+   data-en="Pick two different styles from the core set."
+   data-pl="Wybierz dwa różne style z zestawu głównego.">
+  Wybierz dwa różne style z zestawu głównego.
+</p>
+{% endif %}
+
+<form method="post" class="wiciedzy-card wiciedzy-compare-inline">
+  {% csrf_token %}
+  <p class="wiciedzy-compare-label" data-en="Go on, compare:" data-pl="Se porównaj:">Se porównaj:</p>
+  <div class="wiciedzy-compare-row">
+    <label class="wiciedzy-field">
+      <span class="visually-hidden" data-en="First" data-pl="Pierwszy">Pierwszy</span>
+      <select name="a">
+        {% for style in styles %}
+        <option value="{{ style.slug }}" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="wiciedzy-field">
+      <span class="visually-hidden" data-en="Second" data-pl="Drugi">Drugi</span>
+      <select name="b">
+        {% for style in styles %}
+        <option value="{{ style.slug }}" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+  <button class="wiciedzy-btn" type="submit" data-en="Compare" data-pl="Porównaj">Porównaj</button>
+</form>
+{% endblock %}

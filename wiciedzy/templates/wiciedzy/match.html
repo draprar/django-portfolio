@@ -1,0 +1,39 @@
+{% extends "wiciedzy/base.html" %}
+
+{% block title %}Do poczytania | wiciędzy{% endblock %}
+{% block title_i18n %}data-pl="Do poczytania | wiciędzy" data-en="To read | wiciędzy"{% endblock %}
+{% block robots %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block wiciedzy %}
+<header class="wiciedzy-header wiciedzy-header-left">
+  <p class="wiciedzy-eyebrow" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</p>
+  <h1 class="wiciedzy-title" data-en="To read" data-pl="Do poczytania" aria-live="polite">Do poczytania</h1>
+  <p class="wiciedzy-muted" data-en="Five styles to read about — starting with the one that best matches your answers." data-pl="Pięć stylów do poczytania — od tego, który najbardziej pasuje do Twoich odpowiedzi.">Pięć stylów do poczytania — od tego, który najbardziej pasuje do Twoich odpowiedzi.</p>
+</header>
+
+{% for row in rows %}
+<section class="wiciedzy-card">
+  {% if row.style.is_umbrella %}
+  <p class="wiciedzy-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
+  {% endif %}
+  {% if row.style.catalog_set == "golden" %}
+  <p class="wiciedzy-eyebrow" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</p>
+  {% endif %}
+  <h2>
+    <a href="{% url 'wiciedzy:detail' row.style.slug %}" data-en="{{ row.style.name_en }}" data-pl="{{ row.style.name_pl }}">{{ row.style.name_pl }}</a>
+  </h2>
+  {% for line in row.plus %}
+  <p data-en="{{ line.en }}" data-pl="{{ line.pl }}">{{ line.pl }}</p>
+  {% endfor %}
+  {% for line in row.minus %}
+  <p class="wiciedzy-muted" data-en="{{ line.en }}" data-pl="{{ line.pl }}">{{ line.pl }}</p>
+  {% endfor %}
+  {% for other in row.beside %}
+  <p>
+    <span data-en="Next to this sits" data-pl="Blisko tego jest">Blisko tego jest</span>
+    <a href="{% url 'wiciedzy:detail' other.slug %}" data-en="{{ other.name_en }}" data-pl="{{ other.name_pl }}">{{ other.name_pl }}</a>.
+  </p>
+  {% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

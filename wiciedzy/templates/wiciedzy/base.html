@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl" data-default-lang="pl" data-lang-plain>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title {% block title_i18n %}data-pl="wiciędzy" data-en="wiciędzy"{% endblock %}>{% block title %}wiciędzy{% endblock %}</title>
+  {% block meta_description %}
+  <meta name="description"
+        data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki."
+        data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."
+        content="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.">
+  <meta property="og:description"
+        data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki."
+        data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."
+        content="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.">
+  {% endblock %}
+  <meta property="og:title" content="{% block og_title %}wiciędzy{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+  <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+  {% block robots %}{% endblock %}
+  <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="stylesheet" href="{% static 'wiciedzy/css/wiciedzy.css' %}">
+</head>
+<body>
+<a class="wiciedzy-skip" href="#wiciedzy-main" data-en="Skip to content" data-pl="Przejdź do treści">Przejdź do treści</a>
+
+<div class="wiciedzy-stage">
+  <main class="wiciedzy-portal" id="wiciedzy-main">
+    <div class="wiciedzy-portal-top">
+      <a class="wiciedzy-brand" href="{% url 'wiciedzy:home' %}">wiciędzy</a>
+      <div class="wiciedzy-lang" role="group" aria-label="Język / Language">
+        <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    {% if messages %}
+    <div class="wiciedzy-messages">
+      {% for message in messages %}
+      <p class="wiciedzy-message{% if message.tags %} wiciedzy-message-{{ message.tags }}{% endif %}" role="status">{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% block wiciedzy %}{% endblock %}
+  </main>
+</div>
+
+<script>
+(function () {
+  var note = document.querySelector("[data-wiciedzy-error]");
+  if (note) note.focus();
+})();
+</script>
+<script src="{% static 'core/js/lang.js' %}" defer></script>
+<script>
+(function () {
+  function syncOgTitle() {
+    var og = document.querySelector('meta[property="og:title"]');
+    if (og && document.title) og.setAttribute("content", document.title);
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(syncOgTitle, 0);
+    document.querySelectorAll(".lang-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setTimeout(syncOgTitle, 0);
+      });
+    });
+  });
+})();
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -14,13 +14,13 @@ def test_wybierz_renders_crossroads(client):
     assert "/wyraj/" in content
     assert "/tonguetwister/" in content
     assert "/code/" in content
-    assert "/walczak/" in content
+    assert "/wiciedzy/" in content
     assert "kodzillin'" in content
-    assert ">walczak</h2>" in content
+    assert ">wiciędzy</h2>" in content
     assert "code-terminal" in content
-    assert "walczak-bg.jpg" in content
+    assert "wiciedzy-bg.jpg" in content
     assert 'panel-code' in content
-    assert 'panel-walczak' in content
+    assert 'panel-wiciedzy' in content
     assert 'portal-featured' in content
     assert 'code-hero' in content
     assert 'stage-stack' in content
