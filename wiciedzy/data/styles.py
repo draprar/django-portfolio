@@ -319,6 +319,7 @@ CORE: list[dict] = [
         "sources": [
             brit("Taekwondo", "https://www.britannica.com/sports/taekwondo"),
             fed("World Taekwondo", "https://www.worldtaekwondo.org/", "World Taekwondo"),
+            fed("International Taekwon-Do Federation", "https://www.itftkd.org/", "ITF"),
         ],
     },
     {
@@ -711,6 +712,12 @@ CORE: list[dict] = [
                 role="heritage",
                 quality="institutional",
             ),
+            fed(
+                "Pencak Silat Competition Rules and Regulations",
+                "https://worldpencaksilat.org/rules-regulations/",
+                "PERSILAT",
+                role="current_practice",
+            ),
         ],
     },
     {
@@ -737,7 +744,12 @@ CORE: list[dict] = [
         "profile": P(5, 2, 4, 0, 1, 0, 0, 4, 5, 5, 4, 0, 2, 5, 5, 4, 4, 3, 5, 5, 4, 2),
         "sources": [
             wiki("Lethwei", "https://en.wikipedia.org/wiki/Lethwei"),
-            discover("Myanmar", "https://www.britannica.com/place/Myanmar"),
+            fed(
+                "International Lethwei Unified Ruleset",
+                "https://lethweichampionship.com/",
+                "Lethwei Fighting Championship",
+                role="current_practice",
+            ),
         ],
     },
     {
@@ -1211,6 +1223,26 @@ FACTS: list[dict] = [
         "is_legend": False,
         "styles": ["szermierka", "hema"],
         "source_urls": ["https://www.britannica.com/sports/fencing", "https://www.hemaalliance.com/"],
+    },
+    {
+        "text_pl": "W regulaminie zawodów PERSILAT z 2026 roku główne kategorie to Tanding i Jurus; Jurus obejmuje Tunggal, Ganda i Regu.",
+        "text_en": "In the 2026 PERSILAT competition regulations, the main competition categories are Tanding and Jurus; Jurus includes Tunggal, Ganda and Regu.",
+        "is_legend": False,
+        "styles": ["silat"],
+        "source_urls": [
+            "https://worldpencaksilat.org/rules-regulations/",
+            "https://ich.unesco.org/en/RL/traditions-of-pencak-silat-01391",
+        ],
+    },
+    {
+        "text_pl": "World Taekwondo i ITF nie stosują tego samego regulaminu. W kyorugi WT zawodnicy walczą w ochraniaczach i z elektronicznym systemem punktowania, a ITF ma własne układy i regulamin sparingu.",
+        "text_en": "World Taekwondo and the ITF do not use the same rules. WT kyorugi is fought with body armour and electronic scoring, while ITF uses its own patterns and sparring rules.",
+        "is_legend": False,
+        "styles": ["taekwondo"],
+        "source_urls": [
+            "https://www.worldtaekwondo.org/",
+            "https://www.itftkd.org/",
+        ],
     },
 ]
 

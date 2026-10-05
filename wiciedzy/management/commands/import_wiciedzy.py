@@ -8,6 +8,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from wiciedzy.data.instruments import ARCHETYPES, HUMOR, IPIP_ATTRIBUTION, IPIP_ITEMS, IPIP_SCALES, PREFERENCE, TYPES
+from wiciedzy.data.prose import PROSE
 from wiciedzy.data.styles import CORE, FACTS, GOLDEN, RELATIONS, STYLE_TAGS, TAG_CATALOG, UMBRELLAS
 from wiciedzy.models import (
     Archetype,
@@ -35,7 +36,8 @@ class Command(BaseCommand):
         with transaction.atomic():
             self._types()
             self._tags()
-            for row in CORE + GOLDEN:
+            for raw in CORE + GOLDEN:
+                row = {**raw, **PROSE.get(raw["slug"], {})}
                 self._style(row)
             self._relations()
             self._facts()
