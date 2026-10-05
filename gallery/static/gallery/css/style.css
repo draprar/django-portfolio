@@ -215,14 +215,13 @@ main.container {
   margin: 0;
 }
 
-.about-tagline::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(45deg, var(--gold), var(--gold-2));
-  margin: 14px auto 0;
-  border-radius: 2px;
+.about-tagline {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-bottom: 0;
+  color: var(--gold);
+  font-weight: 300;
+  letter-spacing: 2px;
+  line-height: 1.3;
 }
 
 .hero-link {
