@@ -204,7 +204,7 @@ a {
         animation-delay: 0.5s;
     }
 
-    .panel-walczak .panel-bg {
+    .panel-wiciedzy .panel-bg {
         animation-duration: 23s;
         animation-delay: 0.6s;
     }
@@ -344,13 +344,13 @@ a {
     }
 }
 
-.panel-walczak .panel-bg {
-    background: #080808 url('../img/walczak-bg.jpg') center / cover no-repeat;
+.panel-wiciedzy .panel-bg {
+    background: #080808 url('../img/wiciedzy-bg.jpg') center / cover no-repeat;
     filter: blur(2px) brightness(.82) saturate(.92);
 }
 
-.panel-walczak:hover .panel-bg,
-.panel-walczak:focus-visible .panel-bg {
+.panel-wiciedzy:hover .panel-bg,
+.panel-wiciedzy:focus-visible .panel-bg {
     filter: blur(0) brightness(.95) saturate(1);
 }
 
@@ -473,7 +473,7 @@ a {
         animation-delay: 0s;
     }
 
-    .panel-walczak {
+    .panel-wiciedzy {
         animation-delay: 0.3s;
     }
 
@@ -494,7 +494,7 @@ a {
         animation-delay: 0.35s;
     }
 
-    .panel-walczak .cta-arrow {
+    .panel-wiciedzy .cta-arrow {
         animation-delay: 1s;
     }
 }
@@ -602,7 +602,7 @@ a {
         filter: brightness(1) saturate(1) blur(0);
     }
 
-    .panel-walczak .panel-bg {
+    .panel-wiciedzy .panel-bg {
         filter: brightness(.95) saturate(1) blur(0);
     }
 }

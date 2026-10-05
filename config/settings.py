@@ -128,7 +128,7 @@ INSTALLED_APPS = [
     "rozdroze",
     "code",
     "poligon",
-    "walczak",
+    "wiciedzy.apps.WiciedzyConfig",
     # External
     "django_ratelimit",
     "rest_framework",

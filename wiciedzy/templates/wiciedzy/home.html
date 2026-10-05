@@ -1,0 +1,42 @@
+{% extends "wiciedzy/base.html" %}
+
+{% block title %}wiciędzy{% endblock %}
+
+{% block wiciedzy %}
+<div class="wiciedzy-home">
+<header class="wiciedzy-home-intro">
+  <p class="wiciedzy-home-tagline"
+     data-pl="Boks boks, albo kop kop"
+     data-en="Boxing boxing, or kick kick">Boks boks, albo kop kop</p>
+  <p class="wiciedzy-home-lead"
+     data-pl="a jak już musisz to se ogarnij inne."
+     data-en="and if you have to go figure out the rest.">a jak już musisz to se ogarnij inne.</p>
+</header>
+
+<section class="wiciedzy-home-features" aria-label="Opcje">
+  <article class="wiciedzy-home-feature wiciedzy-card">
+    <h2 class="wiciedzy-home-feature-title" data-en="Catalog" data-pl="Katalog">Katalog</h2>
+    <p class="wiciedzy-home-feature-text"
+       data-en="Check out all kinds of combat sports and martial arts. You can compare them too."
+       data-pl="Obczaj różne sporty i sztuki walki. Możesz je też porównywać.">
+      Obczaj różne sporty i sztuki walki. Możesz je też porównywać.
+    </p>
+    <div class="wiciedzy-home-feature-action">
+      <a class="wiciedzy-btn" href="{% url 'wiciedzy:list' %}" data-en="Catalog" data-pl="Katalog">Katalog</a>
+    </div>
+  </article>
+
+  <article class="wiciedzy-home-feature wiciedzy-card">
+    <h2 class="wiciedzy-home-feature-title" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</h2>
+    <p class="wiciedzy-home-feature-text"
+       data-en="Click around and you get a short list of styles matched to your answers."
+       data-pl="Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.">
+      Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
+    </p>
+    <div class="wiciedzy-home-feature-action">
+      <a class="wiciedzy-btn" href="{% url 'wiciedzy:test' %}" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</a>
+    </div>
+  </article>
+</section>
+</div>
+{% endblock %}

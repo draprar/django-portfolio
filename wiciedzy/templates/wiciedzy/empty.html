@@ -1,0 +1,19 @@
+{% extends "wiciedzy/base.html" %}
+
+{% block title %}Brak pytań | wiciędzy{% endblock %}
+{% block title_i18n %}data-pl="Brak pytań | wiciędzy" data-en="No questions | wiciędzy"{% endblock %}
+{% block robots %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block wiciedzy %}
+<section class="wiciedzy-card">
+  <h1 class="wiciedzy-title" data-en="No questions" data-pl="Brak pytań">Brak pytań</h1>
+  <p class="wiciedzy-muted"
+     data-en="I don't have any questions for you right now. The catalog is still waiting."
+     data-pl="Na razie nie mam dla Ciebie pytań. Katalog dalej czeka.">
+    Na razie nie mam dla Ciebie pytań. Katalog dalej czeka.
+  </p>
+  <p class="wiciedzy-links">
+    <a href="{% url 'wiciedzy:list' %}" data-en="Catalog" data-pl="Katalog">Katalog</a>
+  </p>
+</section>
+{% endblock %}

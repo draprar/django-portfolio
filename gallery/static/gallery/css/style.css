@@ -1,4 +1,4 @@
-/* Visual language aligned with kodzillin' / Walczak. */
+/* Visual language aligned with kodzillin' / Wiciędzy. */
 
 :root {
   --ink: #060606;
@@ -213,6 +213,16 @@ main.container {
   color: var(--muted);
   line-height: 1.55;
   margin: 0;
+}
+
+.about-tagline::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
+  margin: 14px auto 0;
+  border-radius: 2px;
 }
 
 .hero-link {

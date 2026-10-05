@@ -1,0 +1,160 @@
+{% extends "wiciedzy/base.html" %}
+
+{% block title %}{{ style.name_pl }} | wiciędzy{% endblock %}
+{% block title_i18n %}data-pl="{{ style.name_pl }} | wiciędzy" data-en="{{ style.name_en }} | wiciędzy"{% endblock %}
+{% block og_title %}{{ style.name_pl }} | wiciędzy{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="{{ style.summary_pl }}"
+      data-en="{{ style.summary_en }}"
+      content="{{ style.summary_pl }}">
+<meta property="og:description"
+      data-pl="{{ style.summary_pl }}"
+      data-en="{{ style.summary_en }}"
+      content="{{ style.summary_pl }}">
+{% endblock %}
+
+{% block wiciedzy %}
+<header class="wiciedzy-header wiciedzy-header-left">
+  <p class="wiciedzy-eyebrow" data-en="{{ style.family_en }}" data-pl="{{ style.get_family_display }}">{{ style.get_family_display }}</p>
+  <h1 class="wiciedzy-title" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</h1>
+</header>
+
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="About" data-pl="O stylu">O stylu</h2>
+  <p data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
+  {% if style.is_umbrella %}
+  <p class="wiciedzy-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
+  {% endif %}
+  <div class="wiciedzy-meta-list">
+  {% if style.style_types.all %}
+  <div class="wiciedzy-meta-row">
+    <span class="wiciedzy-meta-label" data-en="Type" data-pl="Rodzaj">Rodzaj</span>
+    <ul class="wiciedzy-chips">
+      {% for item in style.style_types.all %}
+      <li class="wiciedzy-chip" data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if style.tags.all %}
+  <div class="wiciedzy-meta-row">
+    <span class="wiciedzy-meta-label" data-en="Tags" data-pl="Tagi">Tagi</span>
+    <ul class="wiciedzy-chips">
+      {% for item in style.tags.all %}
+      <li class="wiciedzy-chip" data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if style.origin_pl %}
+  <div class="wiciedzy-meta-row">
+    <span class="wiciedzy-meta-label" data-en="Origin" data-pl="Pochodzenie">Pochodzenie</span>
+    <span class="wiciedzy-meta-value" data-en="{{ style.origin_en }}" data-pl="{{ style.origin_pl }}">{{ style.origin_pl }}</span>
+  </div>
+  {% endif %}
+  {% if style.period_pl %}
+  <div class="wiciedzy-meta-row">
+    <span class="wiciedzy-meta-label" data-en="Period" data-pl="Okres">Okres</span>
+    <span class="wiciedzy-meta-value" data-en="{{ style.period_en }}" data-pl="{{ style.period_pl }}">{{ style.period_pl }}</span>
+  </div>
+  {% endif %}
+  {% if style.region %}
+  <div class="wiciedzy-meta-row">
+    <span class="wiciedzy-meta-label" data-en="Region" data-pl="Region">Region</span>
+    <span class="wiciedzy-meta-value">{{ style.region }}</span>
+  </div>
+  {% endif %}
+  </div>
+</section>
+
+{% if style.history_pl or style.history_en %}
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="History" data-pl="Historia">Historia</h2>
+  {% if style.sources_disagree %}
+  <p class="wiciedzy-muted" data-en="There's no honest single version — the sources are unclear." data-pl="Nie da się uczciwie podać jednej wersji, źródła są niejasne.">Nie da się uczciwie podać jednej wersji, źródła są niejasne.</p>
+  {% endif %}
+  {% if thin_sources %}
+  <p class="wiciedzy-muted" data-en="The description is shorter because the second source only mentions this topic." data-pl="Opis jest krótszy, bo drugie źródło tylko wspomina o tym temacie.">Opis jest krótszy, bo drugie źródło tylko wspomina o tym temacie.</p>
+  {% endif %}
+  <p data-en="{{ style.history_en }}" data-pl="{{ style.history_pl }}">{{ style.history_pl }}</p>
+</section>
+{% endif %}
+
+{% if style.practice_pl or style.practice_en %}
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="How it is fought" data-pl="Jak się walczy">Jak się walczy</h2>
+  <p data-en="{{ style.practice_en }}" data-pl="{{ style.practice_pl }}">{{ style.practice_pl }}</p>
+</section>
+{% endif %}
+
+{% if headline %}
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="Training character" data-pl="Charakter treningu">Charakter treningu</h2>
+  {% include "wiciedzy/_profile_scale_legend.html" %}
+  <ul class="wiciedzy-sources">
+    {% for row in headline %}
+    <li><span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span> — <span data-en="{{ row.word_en }}" data-pl="{{ row.word_pl }}">{{ row.word_pl }}</span></li>
+    {% endfor %}
+  </ul>
+  {% if rest %}
+  <details class="wiciedzy-details">
+    <summary data-en="Show the full profile" data-pl="Pokaż pełny profil">Pokaż pełny profil</summary>
+    {% for group in rest %}
+    <h3 data-en="{{ group.en }}" data-pl="{{ group.pl }}">{{ group.pl }}</h3>
+    <ul class="wiciedzy-sources">
+      {% for row in group.rows %}
+      <li><span data-en="{{ row.en }}" data-pl="{{ row.pl }}">{{ row.pl }}</span> — <span data-en="{{ row.word_en }}" data-pl="{{ row.word_pl }}">{{ row.word_pl }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </details>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if relations %}
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="Relations" data-pl="Relacje">Relacje</h2>
+  <ul class="wiciedzy-sources">
+    {% for relation in relations %}
+    <li>
+      <a href="{% url 'wiciedzy:detail' relation.to_style.slug %}" data-en="{{ relation.to_style.name_en }}" data-pl="{{ relation.to_style.name_pl }}">{{ relation.to_style.name_pl }}</a>
+      <span class="wiciedzy-muted" data-en="{{ relation.note_en }}" data-pl="{{ relation.note_pl }}">{{ relation.note_pl }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if style.facts.all %}
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="Facts" data-pl="Fakty">Fakty</h2>
+  {% for fact in style.facts.all %}
+  <p data-en="{{ fact.text_en }}" data-pl="{{ fact.text_pl }}">{{ fact.text_pl }}</p>
+  {% if fact.is_legend %}
+  <p class="wiciedzy-muted" data-en="Later tradition / legend." data-pl="Późniejsza tradycja / legenda.">Późniejsza tradycja / legenda.</p>
+  {% endif %}
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if style.sources.all %}
+<section class="wiciedzy-card">
+  <h2 class="wiciedzy-section-title" data-en="Sources" data-pl="Źródła">Źródła</h2>
+  <ul class="wiciedzy-sources">
+    {% for source in style.sources.all %}
+    <li>
+      {% if source.url %}
+      <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
+      {% else %}
+      {{ source.title }}
+      {% endif %}
+      {% if source.author %}<span class="wiciedzy-muted"> — {{ source.author }}</span>{% endif %}
+      {% if source.license %}<span class="wiciedzy-muted"> — {{ source.license }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}
