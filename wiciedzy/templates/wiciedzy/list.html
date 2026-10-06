@@ -17,9 +17,6 @@
 {% block wiciedzy %}
 <header class="wiciedzy-header wiciedzy-header-left">
   <h1 class="wiciedzy-title" data-en="Catalog" data-pl="Katalog">Katalog</h1>
-  <p class="wiciedzy-subtitle"
-     data-en="Check out all kinds of combat sports and martial arts — you can compare them too."
-     data-pl="Obczaj różne sporty i sztuki walki — możesz je też porównywać.">Obczaj różne sporty i sztuki walki — możesz je też porównywać.</p>
   {% if compare_styles %}
   <form method="post" action="{% url 'wiciedzy:compare_form' %}" class="wiciedzy-card wiciedzy-compare-inline" id="porownaj">
     {% csrf_token %}
@@ -62,8 +59,8 @@
 {% if styles %}
 <div class="wiciedzy-grid">
   {% for style in styles %}
-  <a class="wiciedzy-card" href="{% url 'wiciedzy:detail' style.slug %}">
-    <p class="wiciedzy-eyebrow" data-en="{{ style.family_en }}" data-pl="{{ style.get_family_display }}">{{ style.get_family_display }}</p>
+  <a class="wiciedzy-card wiciedzy-catalog-card" href="{% url 'wiciedzy:detail' style.slug %}">
+    <span class="wiciedzy-tag" data-en="{{ style.family_en }}" data-pl="{{ style.get_family_display }}">{{ style.get_family_display }}</span>
     <h2 data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</h2>
     <p class="wiciedzy-muted" data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
   </a>

@@ -7,16 +7,13 @@
 {% block wiciedzy %}
 <header class="wiciedzy-header wiciedzy-header-left">
   <h1 class="wiciedzy-title" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</h1>
-  <p class="wiciedzy-subtitle"
-     data-en="Click around and you get a short list of styles matched to your answers."
-     data-pl="Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.">Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.</p>
 </header>
 
 {% if error %}
 <p class="wiciedzy-message" role="alert" tabindex="-1" data-wiciedzy-error
-   data-en="Mark every scale, both choices and the situation. Only then does the list show up."
-   data-pl="Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy pokaże się lista.">
-  Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy pokaże się lista.
+   data-en="Mark every scale and every required choice. Only then does the list show up."
+   data-pl="Zaznacz każdą skalę i każdy wymagany wybór. Dopiero wtedy pokaże się lista.">
+  Zaznacz każdą skalę i każdy wymagany wybór. Dopiero wtedy pokaże się lista.
 </p>
 {% endif %}
 
@@ -26,23 +23,23 @@
 <form method="post">
   {% csrf_token %}
   {% for question in questions %}
-  <fieldset class="wiciedzy-card" data-wiciedzy-index="{{ forloop.counter }}" {% if forloop.first %}aria-current="true"{% endif %}>
-    <legend class="wiciedzy-prompt"><span data-en="{{ question.text_en }}" data-pl="{{ question.text_pl }}">{{ question.text_pl }}</span>{% if question.kind != "multi" %}<span class="visually-hidden" data-en=" Required." data-pl=" Wymagane."> Wymagane.</span>{% endif %}</legend>
+  <fieldset class="wiciedzy-card" data-wiciedzy-index="{{ forloop.counter }}" {% if forloop.first %}aria-current="true"{% endif %}{% if question.kind == "multi" %} data-wiciedzy-multi-exclusive{% endif %}>
+    <legend class="wiciedzy-prompt"><span data-en="{{ question.text_en }}" data-pl="{{ question.text_pl }}">{{ question.text_pl }}</span>{% if question.is_required %}<span class="visually-hidden" data-en=" Required." data-pl=" Wymagane."> Wymagane.</span>{% endif %}</legend>
     {% if question.kind == "scale" %}
     <div class="wiciedzy-options wiciedzy-scale">
       {% for n in "12345" %}
       <label class="wiciedzy-option">
         <input type="radio" name="s{{ question.pk }}" value="{{ n }}">
-        <span>{{ n }}{% if n == "1" %}<span class="visually-hidden" data-en=", not at all" data-pl=", wcale">, wcale</span>{% elif n == "5" %}<span class="visually-hidden" data-en=", very much" data-pl=", bardzo">, bardzo</span>{% endif %}</span>
+        <span>{{ n }}{% if n == "1" %}<span class="visually-hidden" data-en=", {{ question.scale_low_en }}" data-pl=", {{ question.scale_low_pl }}">, {{ question.scale_low_pl }}</span>{% elif n == "5" %}<span class="visually-hidden" data-en=", {{ question.scale_high_en }}" data-pl=", {{ question.scale_high_pl }}">, {{ question.scale_high_pl }}</span>{% endif %}</span>
       </label>
       {% endfor %}
     </div>
-    <p class="wiciedzy-muted" data-en="1 means not at all, 5 — very much." data-pl="1 oznacza wcale, 5 — bardzo.">1 oznacza wcale, 5 — bardzo.</p>
+    <p class="wiciedzy-muted" data-en="{{ question.scale_hint_en }}" data-pl="{{ question.scale_hint_pl }}">{{ question.scale_hint_pl }}</p>
     {% elif question.kind == "multi" %}
     <div class="wiciedzy-options">
       {% for option in question.options.all %}
       <label class="wiciedzy-option">
-        <input type="checkbox" name="m{{ question.pk }}" value="{{ option.pk }}">
+        <input type="checkbox" name="m{{ question.pk }}" value="{{ option.pk }}"{% if not option.weights.all %} data-wiciedzy-exclusive-none{% endif %}>
         <span data-en="{{ option.text_en }}" data-pl="{{ option.text_pl }}">{{ option.text_pl }}</span>
       </label>
       {% endfor %}
@@ -84,6 +81,25 @@
     paint(Number(visible[0].target.getAttribute("data-wiciedzy-index")));
   }, { rootMargin: "-30% 0px -55% 0px", threshold: 0.15 });
   sections.forEach(function (section) { observer.observe(section); });
+
+  document.querySelectorAll("[data-wiciedzy-multi-exclusive]").forEach(function (fieldset) {
+    const boxes = fieldset.querySelectorAll('input[type="checkbox"]');
+    const exclusive = fieldset.querySelector("[data-wiciedzy-exclusive-none]");
+    if (!exclusive) return;
+    boxes.forEach(function (box) {
+      box.addEventListener("change", function () {
+        if (box === exclusive && exclusive.checked) {
+          boxes.forEach(function (other) {
+            if (other !== exclusive) other.checked = false;
+          });
+          return;
+        }
+        if (box !== exclusive && box.checked) {
+          exclusive.checked = false;
+        }
+      });
+    });
+  });
 })();
 </script>
 {% endblock %}

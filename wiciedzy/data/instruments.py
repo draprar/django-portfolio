@@ -65,8 +65,8 @@ PREFERENCE: list[dict] = [
         "sort_order": 2,
         "kind": "scale",
         "dimension": "grappling",
-        "text_pl": "Jak bardzo chcesz chwytać i trzymać?",
-        "text_en": "How much do you want to grapple and hold?",
+        "text_pl": "Jak bardzo chcesz chwytać?",
+        "text_en": "How much do you want to grapple?",
     },
     {
         "sort_order": 3,
@@ -93,8 +93,14 @@ PREFERENCE: list[dict] = [
         "sort_order": 6,
         "kind": "scale",
         "dimension": "contact_level",
-        "text_pl": "Jak mocny ma być kontakt?",
-        "text_en": "How hard should the contact be?",
+        "text_pl": "Jak mocny ma być kontakt na treningu z partnerem?",
+        "text_en": "How hard should partner contact be in training?",
+        "anchor_low_pl": "bardzo lekki",
+        "anchor_low_en": "very light",
+        "anchor_high_pl": "bardzo mocny",
+        "anchor_high_en": "very hard",
+        "hint_pl": "1 oznacza bardzo lekki kontakt, 5 — bardzo mocny.",
+        "hint_en": "1 means very light contact, 5 — very hard.",
     },
     {
         "sort_order": 7,
@@ -107,87 +113,147 @@ PREFERENCE: list[dict] = [
         "sort_order": 8,
         "kind": "scale",
         "dimension": "tradition_level",
-        "text_pl": "Jak ważne są dla Ciebie tradycje i zwyczaje w sali?",
-        "text_en": "How much do traditions and hall customs matter to you?",
+        "text_pl": "Jak ważna jest dla Ciebie tradycja i zwyczaje w sali?",
+        "text_en": "How much do hall custom and tradition matter to you?",
     },
     {
         "sort_order": 9,
-        "kind": "ab",
-        "dimension": "",
-        "text_pl": "Wolisz ćwiczyć sam czy z partnerem?",
-        "text_en": "Would you rather train alone, or with a partner?",
-        "options": [
-            {
-                "text_pl": "Sam, technika albo worek.",
-                "text_en": "Alone, with technique or a bag.",
-                "weights": [("solo_training", 2), ("partner_training", -2)],
-            },
-            {
-                "text_pl": "Z partnerem, który się rusza.",
-                "text_en": "With a partner who moves.",
-                "weights": [("partner_training", 2), ("solo_training", -2)],
-            },
-        ],
+        "kind": "scale",
+        "dimension": "technical_complexity",
+        "text_pl": "Jak bardzo chcesz złożonej technicznie pracy?",
+        "text_en": "How much technical complexity do you want?",
+        "anchor_low_pl": "bardzo prosto",
+        "anchor_low_en": "very simple",
+        "anchor_high_pl": "bardzo złożone",
+        "anchor_high_en": "very complex",
+        "hint_pl": "1 oznacza bardzo prosto, 5 — bardzo złożone.",
+        "hint_en": "1 means very simple, 5 — very complex.",
     },
     {
         "sort_order": 10,
-        "kind": "ab",
-        "dimension": "",
-        "text_pl": "Wolisz zostać daleko czy wejść blisko?",
-        "text_en": "Would you rather stay far, or step in close?",
-        "options": [
-            {
-                "text_pl": "Z daleka, niech noga robi robotę.",
-                "text_en": "At a distance, let the leg do the work.",
-                "weights": [("kicks", 2), ("clinch", -2)],
-            },
-            {
-                "text_pl": "Z bliska, klincz albo chwyt.",
-                "text_en": "Up close, a clinch or a grip.",
-                "weights": [("clinch", 2), ("kicks", -1)],
-            },
-        ],
+        "kind": "scale",
+        "dimension": "athletic_demand",
+        "text_pl": "Jak wymagający fizycznie ma być trening?",
+        "text_en": "How physically demanding do you want training to be?",
+        "anchor_low_pl": "bardzo lekki",
+        "anchor_low_en": "very light",
+        "anchor_high_pl": "bardzo wymagający",
+        "anchor_high_en": "very demanding",
+        "hint_pl": "1 oznacza bardzo lekki trening, 5 — bardzo wymagający.",
+        "hint_en": "1 means very light training, 5 — very demanding.",
     },
     {
         "sort_order": 11,
-        "kind": "situation",
+        "kind": "ab",
         "dimension": "",
-        "text_pl": "Na treningu dochodzi do zwarcia. Co ma być dalej?",
-        "text_en": "In training it comes to close range. What should happen next?",
+        "text_pl": "Wolisz ćwiczyć głównie sam, głównie z partnerem, czy mieszać oba?",
+        "text_en": "Would you rather train mostly alone, mostly with a partner, or a mix of both?",
         "options": [
             {
-                "text_pl": "Rzut.",
-                "text_en": "A throw.",
-                "weights": [("throws", 2), ("takedowns", 1)],
+                "text_pl": "Głównie sam — technika albo worek.",
+                "text_en": "Mostly alone — technique or a bag.",
+                "weights": [("solo_training", 2), ("partner_training", -2)],
             },
             {
-                "text_pl": "Schodzicie do parteru i szukacie poddania.",
-                "text_en": "You go to the ground and look for a submission.",
-                "weights": [("submissions", 2), ("ground_fighting", 2)],
+                "text_pl": "Mieszanka solo i z partnerem.",
+                "text_en": "A mix of solo and partner work.",
+                "weights": [("solo_training", 1), ("partner_training", 1)],
             },
             {
-                "text_pl": "Uderzenie i odskok.",
-                "text_en": "A strike and a step out.",
-                "weights": [("punches", 2), ("striking", 1)],
+                "text_pl": "Głównie z partnerem, który się rusza.",
+                "text_en": "Mostly with a partner who moves.",
+                "weights": [("solo_training", -2), ("partner_training", 2)],
             },
         ],
     },
     {
         "sort_order": 12,
+        "kind": "ab",
+        "dimension": "",
+        "text_pl": "Wolisz zostać z daleka, wejść blisko, czy trzymać mieszankę?",
+        "text_en": "Would you rather stay at range, step in close, or keep a mix?",
+        "options": [
+            {
+                "text_pl": "Z daleka — niech noga robi robotę.",
+                "text_en": "At range — let the leg do the work.",
+                "weights": [("kicks", 2), ("clinch", -2)],
+            },
+            {
+                "text_pl": "Z bliska — klincz albo chwyt.",
+                "text_en": "Up close — a clinch or a grip.",
+                "weights": [("clinch", 2), ("kicks", -2)],
+            },
+            {
+                "text_pl": "Mieszanka — kopnięcia i klincz po równo.",
+                "text_en": "A mix — kicks and clinch matter about equally.",
+                "weights": [("kicks", 1), ("clinch", 1)],
+            },
+        ],
+    },
+    {
+        "sort_order": 13,
+        "kind": "situation",
+        "dimension": "",
+        "text_pl": "Co wolisz, gdy trening schodzi do bliskiej pracy?",
+        "text_en": "What do you prefer when training moves into close work?",
+        "options": [
+            {
+                "text_pl": "Rzut.",
+                "text_en": "A throw.",
+                "weights": [("throws", 2)],
+            },
+            {
+                "text_pl": "Obalenie.",
+                "text_en": "A takedown.",
+                "weights": [("takedowns", 2)],
+            },
+            {
+                "text_pl": "Schodzisz do parteru i szukasz poddania.",
+                "text_en": "Ground work and a submission.",
+                "weights": [("submissions", 2), ("ground_fighting", 2)],
+            },
+            {
+                "text_pl": "Uderzenie z bliska.",
+                "text_en": "A strike at close range.",
+                "weights": [("striking", 1)],
+            },
+        ],
+    },
+    {
+        "sort_order": 14,
         "kind": "multi",
         "dimension": "",
-        "text_pl": "Zaznacz, co ma być w Twoim tygodniu treningowym. Możesz wybrać kilka rzeczy naraz, a jeśli nic z tego Cię nie rusza, zostaw puste.",
-        "text_en": "Tick what should be in your training week. You can pick several, or leave it blank if none of it matters to you.",
+        "text_pl": "Zaznacz, co ma być w Twoim tygodniu treningowym. Możesz wybrać kilka rzeczy naraz; jeśli nic z tego nie ma dla Ciebie znaczenia, zaznacz wyłącznie ostatnią opcję.",
+        "text_en": "Tick what should be in your training week. You can pick several; if none of it matters to you, tick only the last option.",
         "options": [
-            {"text_pl": "Kolana i łokcie.", "text_en": "Knees and elbows.", "weights": [("knees", 2), ("elbows", 2)]},
+            {"text_pl": "Kolana.", "text_en": "Knees.", "weights": [("knees", 2)]},
+            {"text_pl": "Łokcie.", "text_en": "Elbows.", "weights": [("elbows", 2)]},
             {"text_pl": "Zbroja albo maska.", "text_en": "Armour or a mask.", "weights": [("equipment_required", 2)]},
             {"text_pl": "Rękawice.", "text_en": "Gloves.", "weights": [("equipment_required", 1)]},
             {"text_pl": "Wytrzymałość, długie rundy.", "text_en": "Endurance, long rounds.", "weights": [("endurance_demand", 2)]},
-            {"text_pl": "Szybkie, mocne wejście.", "text_en": "An explosive entry.", "weights": [("explosiveness", 2)]},
-            {"text_pl": "Nic z tego.", "text_en": "None of these.", "weights": []},
+            {"text_pl": "Eksplozywne wejście.", "text_en": "An explosive entry.", "weights": [("explosiveness", 2)]},
+            {"text_pl": "Nic z powyższych.", "text_en": "None of these.", "weights": []},
         ],
     },
+    {
+        "sort_order": 15,
+        "kind": "scale",
+        "dimension": "punches",
+        "required": False,
+        "text_pl": "Jak ważna jest dla Ciebie konkretnie praca pięściami?",
+        "text_en": "How important is punch work specifically?",
+    },
 ]
+
+OPTIONAL_SCALE_ORDERS = frozenset(
+    row["sort_order"] for row in PREFERENCE if row.get("required") is False
+)
+
+PREFERENCE_SCALE_ANCHORS: dict[int, dict[str, str]] = {
+    row["sort_order"]: row
+    for row in PREFERENCE
+    if row.get("kind") == "scale" and row.get("anchor_low_pl")
+}
 
 ARCHETYPES: list[dict] = [
     {

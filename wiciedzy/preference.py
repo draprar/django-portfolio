@@ -9,6 +9,7 @@ from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from typing import Any
 
+from wiciedzy.data.instruments import OPTIONAL_SCALE_ORDERS
 from wiciedzy.dimensions import LOW_REASON_COPY, REASON_COPY
 from wiciedzy.models import PreferenceQuestion, StyleRelation, TrainingProfile
 
@@ -18,9 +19,11 @@ REQUIRED_KINDS = frozenset({"scale", "ab", "situation"})
 
 
 def answers_complete(questions: Sequence[PreferenceQuestion], posted: Mapping[str, Any]) -> bool:
-    """Scales, both A/B questions, and the situation are required. The multi question may be blank."""
+    """Required scales, the choice questions, and the situation. Optional scales and the multi may be blank."""
     for question in questions:
         if question.kind not in REQUIRED_KINDS:
+            continue
+        if question.sort_order in OPTIONAL_SCALE_ORDERS:
             continue
         if question.kind == "scale":
             picked = _parse_int(posted.get(f"s{question.pk}"))
@@ -81,6 +84,10 @@ def user_vector(questions: Sequence[PreferenceQuestion], posted: Mapping[str, An
             continue
         selected = _selected_ids(posted, question)
         options = {option.pk: option for option in question.options.all()}
+        if question.kind == "multi":
+            selected_options = [options[option_id] for option_id in selected if option_id in options]
+            if any(not list(option.weights.all()) for option in selected_options):
+                continue
         for option_id in selected:
             option = options.get(option_id)
             if option is None:

@@ -15,7 +15,7 @@ from wiciedzy.dimensions import (
     REASON_COPY,
     level_words,
 )
-from wiciedzy.display import COMPETITION_WORDS, GROUP_LABELS, WEAPON_WORDS
+from wiciedzy.display import COMPETITION_WORDS, GROUP_LABELS, WEAPON_WORDS, region_labels
 from wiciedzy.models import (
     PreferenceQuestion,
     Study,
@@ -133,9 +133,13 @@ def _page_visible_fragment(name: str) -> str:
     return _strip_scripts(fragment)
 
 
+def _legend_pairs() -> list[tuple[str, str]]:
+    return _pairs_from_text(_read_template("_profile_scale_legend.html"))
+
+
 def _legend_pl_lines() -> list[str]:
 
-    pairs = _pairs_from_text(_read_template("_profile_scale_legend.html"))
+    pairs = _legend_pairs()
 
     if not pairs:
         return []
@@ -244,6 +248,27 @@ class ExportWriter:
 
         self.lines.append("")
 
+    def mono(self, text: str, label_pl: str = "Źródło", label_en: str = "Source") -> None:
+
+        text = (text or "").strip()
+
+        if not text:
+            return
+
+        if self.pl_only:
+            self.lines.append(text)
+            return
+
+        if self.plain:
+            self.lines.append(text)
+            return
+
+        self.lines.append(f"**{label_pl}:** {text}")
+
+        self.lines.append(f"**{label_en}:** {text}")
+
+        self.lines.append("")
+
     def heading(self, markdown: str, plain: str) -> None:
 
         if self.pl_only:
@@ -342,8 +367,8 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
         pairs = [(pl, en) for pl, en in _pairs_from_text(_page_visible_fragment(name)) if _is_static_copy(pl)]
 
         if name in LEGEND_ON_PAGES:
-            for line in _legend_pl_lines():
-                w.text(line)
+            for pl, en in _legend_pairs():
+                w.text(pl, en)
 
         if not pairs and name not in LEGEND_ON_PAGES:
             if not pl_only and not plain:
@@ -410,7 +435,8 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
             w.text(style.period_pl, style.period_en)
 
         if style.region:
-            w.text(style.region)
+            region_pl, region_en = region_labels(style.region)
+            w.text(region_pl, region_en)
 
         for t in style.style_types.all():
             w.text(t.name_pl, t.name_en)
@@ -428,8 +454,8 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
             profile = None
 
         if profile is not None:
-            for line in _legend_pl_lines():
-                w.text(line)
+            for pl, en in _legend_pairs():
+                w.text(pl, en)
 
             for key, names in (
                 ("uderzenia", ("striking", "punches", "kicks", "knees", "elbows")),
@@ -499,7 +525,7 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
             if src.license:
                 parts.append(src.license)
 
-            w.text(" — ".join(parts))
+            w.mono(" — ".join(parts))
 
     w.heading("## 5. Quizopasowanie — pytania", "Quizopasowanie — pytania")
 
@@ -516,7 +542,7 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
     for study in Study.objects.distinct().order_by("title"):
         title = study.title + (f" ({study.year})" if study.year else "")
 
-        w.text(title)
+        w.text(title, title)
 
         w.text(study.finding_pl, study.finding_en)
 
@@ -600,6 +626,8 @@ class Command(BaseCommand):
 
         out_path.parent.mkdir(parents=True, exist_ok=True)
 
-        out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        encoding = "utf-8-sig" if out_path.suffix.lower() in {".md", ".txt"} else "utf-8"
+
+        out_path.write_text("\n".join(lines) + "\n", encoding=encoding)
 
         self.stdout.write(self.style.SUCCESS(f"Zapisano: {out_path} ({len(lines)} linii)"))

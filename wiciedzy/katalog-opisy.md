@@ -485,9 +485,9 @@ In the twentieth century kendo arranged material from kenjutsu schools into a sp
 Kendo ułożyło w XX wieku materiał ze szkół kenjutsu w sport z japońskim związkiem i egzaminami na stopnie. Iaido poszło w inną stronę: wyciągnięcie miecza i kata, bez walki na shinai. Kenjutsu nie jest kategorią kendo.
 
 ### How it is fought
-In kendo a valid hit to a target, with a shout and good posture, scores on the shinai. Iaido is practised as a catalogue of forms, often with a training sword, and there is no point for a strike to the men. Kenjutsu stays with the school and its pairs, not with a kendo tournament.
+In kendo a valid strike is judged on the target, posture and distance, with the shout expected in typical practice—not a point for the shinai touch alone. Iaido is practised as a catalogue of forms, often with a training sword, and there is no point for a strike to the men. Kenjutsu stays with the school and its pairs, not with a kendo tournament.
 
-W kendo liczy się poprawne trafienie w dozwoloną strefę, z krzykiem i z dobrą postawą, na shinai. Iaido ćwiczy się katalogiem form, często na mieczu treningowym, bez punktu za cios w men. Kenjutsu zostaje przy szkole i jej parach, nie przy turnieju kendo.
+W kendo ocenia się poprawne trafienie w dozwoloną strefę, z postawą i dystansem oraz krzykiem oczekiwanym w typowej praktyce — nie punkt za samo dotknięcie shinai. Iaido ćwiczy się katalogiem form, często na mieczu treningowym, bez punktu za cios w men. Kenjutsu zostaje przy szkole i jej parach, nie przy turnieju kendo.
 
 ### Facts
 Brak osobnego faktu.
@@ -610,9 +610,9 @@ Local fights are older than today's cards. Modern federations have tightened rou
 Lokalne walki są starsze niż dzisiejsze gale. Współczesne federacje doprecyzowały rundy i sprzęt, ale tradycyjne formuły używają owijek zamiast rękawic bokserskich; współczesne gale lethwei mogą stosować inne regulaminy i wyposażenie. Podobieństwo do muay thai nie zrównało przepisów.
 
 ### How it is fought
-The exchange is hard and stays standing. The head comes in as a strike when the rules do not switch it off. The lack of a thick glove changes the fist compared with Muay Thai and K-1. There is no ground game.
+The exchange is hard and stays standing. Traditional formats include headbutts; modern cards follow their own ruleset. The lack of a thick glove changes the fist compared with Muay Thai and K-1. There is no ground game.
 
-Wymiana jest twarda i stoi. Głowa wchodzi jako uderzenie, gdy regulamin jej nie wyłączy. Brak grubej rękawicy zmienia pięść względem muay thai i K-1. Parteru tu nie ma.
+Wymiana jest twarda i pozostaje w stójce. W tradycyjnych formułach głowa wchodzi jako uderzenie; współczesne gale stosują własne regulaminy. Brak grubej rękawicy zmienia pięść względem muay thai i K-1. Parteru tu nie ma.
 
 ### Facts
 Brak osobnego faktu.
@@ -811,9 +811,9 @@ The schools differ in tempo, in the shape of the movement and in how much applic
 Szkoły różnią się tempem, charakterem ruchu i tym, ile zostawiają zastosowań. IWUF ułożyło z tego sportowe taolu, z osobnym czasem i listą wymaganych ruchów. Formy sportowe nie zastępują szkoły, z której wyszły.
 
 ### How it is fought
-Solo work is a routine, often slow, sometimes with a sharper release of force. In pairs, push-hands are added: breaking balance without a strike as in sanda. A weapon, for example the taiji sword, is a separate routine, not a points fight.
+Solo work is a routine, often slow, sometimes with a sharper release of force. In pairs, push-hands are added: partner balance work, not a striking bout like sanda. A weapon, for example the taiji sword, is a separate routine, not a points fight.
 
-Solo to układ, często wolny, czasem z ostrzejszym wypuszczeniem siły. W parze dochodzą pchnięcia rąk: wytrącenie równowagi bez ciosu jak w sandzie. Broń, na przykład miecz taiji, jest osobnym układem, nie walką na punkty.
+Solo to układ, często wolny, czasem z ostrzejszym wypuszczeniem siły. W parze dochodzą pchnięcia rąk: praca nad równowagą partnera, bez sandowej wymiany na ciosy. Broń, na przykład miecz taiji, jest osobnym układem, nie walką na punkty.
 
 ### Facts
 - The IWUF lists taijiquan among the taolu and names Chen, Yang, Wu, Sun and Wu (Hao) as competition versions. That is a sporting frame, not the whole practice of those schools.
@@ -886,9 +886,11 @@ The sword schools are older than the shared catalogue. In 1969 the AJKF arranged
 Szkoły miecza są starsze niż wspólny katalog. W 1969 roku AJKF ułożyła standaryzowane kata, później rozszerzone, żeby dało się porównać wykonanie. Kenjutsu zostaje przy szkole i jej parach, bez tego katalogu i bez turnieju kendo.
 
 ### How it is fought
-You practise a catalogue of forms, often with a training sword, sometimes with a live blade under the school's supervision. There is no bogu armour and no point for a men strike. A score, if there is one, is about the cut, the posture and the draw, not an exchange of blows.
+You practise a catalogue of forms, often with a training sword, sometimes with a live blade under the school's supervision. There is no bogu armour and no point for a men strike. Contests, when they happen, follow the federation or school format—not kendo's shinai scoring.
 
-Ćwiczy się katalog form, często mieczem treningowym, czasem ostrzem pod nadzorem szkoły. Nie ma zbroi bogu ani punktu za men. Ocena, jeśli jest, dotyczy cięcia, postawy i dobycia, nie wymiany ciosów.
+Ćwiczy się katalog form, często mieczem treningowym, czasem ostrzem pod nadzorem szkoły. Nie ma zbroi bogu ani punktu za men. Zawody, jeśli są, idą według formatu federacji lub szkoły — nie według punktowanego kendo na shinai.
+
+Ćwiczy się katalog form, często mieczem treningowym, czasem ostrzem pod nadzorem szkoły. Nie ma zbroi bogu ani punktu za men. Zawody, jeśli są, idą według formatu federacji lub szkoły — nie według punktowanego kendo na shinai.
 
 ### Facts
 - The AJKF describes iaido as drawing the sword in forms. Iaido contests judge kata, not a shinai hit in kendo armour.
@@ -901,9 +903,9 @@ Brak osobnej relacji.
 Nazwa PL: Kyudo
 
 ### About
-Kyudo is Japanese archery as budō: the bow, the arrow, the ceremony of the shot and training of posture. It is not a variant of kendo and it is not timed Olympic archery.
+Kyudo is Japanese archery as budō: the bow, the arrow, the ceremony of the shot and training of posture. It is not a variant of kendo.
 
-Kyudo to japońskie łucznictwo jako budō: łuk, strzała, ceremonia strzału i trening postawy. To nie jest odmiana kendo i nie jest łucznictwem olimpijskim na czas.
+Kyudo to japońskie łucznictwo jako budō: łuk, strzała, ceremonia strzału i trening postawy. To nie jest odmiana kendo.
 
 ### History
 The bow was a weapon in Japan, and later a way of training. The International Kyudo Federation, founded in 2006, runs contests and exams outside Japan together with the All Nippon Kyudo Federation. The kendo shinai and armour are not part of this kit.
