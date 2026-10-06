@@ -136,6 +136,7 @@ class Command(BaseCommand):
         Fact.objects.exclude(pk__in=keep).delete()
 
     def _preference(self) -> None:
+        keep: list[int] = []
         for row in PREFERENCE:
             question, _created = PreferenceQuestion.objects.update_or_create(
                 sort_order=row["sort_order"],
@@ -157,6 +158,8 @@ class Command(BaseCommand):
                 )
                 for dimension, weight in option["weights"]:
                     OptionWeight.objects.create(option=created, dimension=dimension, weight=weight)
+            keep.append(question.pk)
+        PreferenceQuestion.objects.exclude(pk__in=keep).delete()
 
     def _ipip(self) -> None:
         scales = {}

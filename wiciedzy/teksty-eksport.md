@@ -1,6 +1,6 @@
 ﻿# wiciędze — teksty na stronie (obecny UI)
 
-Wygenerowano: **2026-10-06 17:41 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
+Wygenerowano: **2026-10-06 18:49 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
 
 Źródło: aktywne trasy w `wiciedzy/urls.py`, szablony, modele `Style` (`active=True`), `PreferenceQuestion` (`active=True`), teksty z `dimensions.py` / `display.py`.
 
@@ -624,20 +624,23 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Lethwei
-**EN:** Lethwei
-
-**PL:** Lethwei i muay thai używają podobnych kończyn, ale tradycyjne lethwei dokłada głowę i często zdejmuje rękawicę.
-**EN:** Lethwei and Muay Thai use a similar set of limbs, but traditional lethwei adds the head and often takes the glove away.
-
 **PL:** Kickboxing
 **EN:** Kickboxing
 
 **PL:** Część formuł kickboxingu jest bliżej muay thai, a część nie ma tego klinczu ani kolan.
 **EN:** Some kickboxing formats sit closer to Muay Thai, and some have neither this clinch nor the knees.
 
+**PL:** Lethwei
+**EN:** Lethwei
+
+**PL:** Lethwei i muay thai używają podobnych kończyn, ale tradycyjne lethwei dokłada głowę i często zdejmuje rękawicę.
+**EN:** Lethwei and Muay Thai use a similar set of limbs, but traditional lethwei adds the head and often takes the glove away.
+
 **Źródło:** Muay Thai — Wikipedia contributors — CC BY-SA 4.0
 **Source:** Muay Thai — Wikipedia contributors — CC BY-SA 4.0
+
+**Źródło:** Thailand: Sports and recreation — Encyclopaedia Britannica
+**Source:** Thailand: Sports and recreation — Encyclopaedia Britannica
 
 **Źródło:** International Federation of Muaythai Associations — IFMA
 **Source:** International Federation of Muaythai Associations — IFMA
@@ -925,17 +928,17 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** W typowym treningu MMA parter bierze się z BJJ, obok zapasów i stójki.
 **EN:** In a typical MMA camp the ground game is taken from BJJ, beside wrestling and the stand-up.
 
-**PL:** Zapasy
-**EN:** Wrestling
-
-**PL:** Zapasy są jednym z głównych źródeł obaleń w MMA, choć zawodnicy używają też judo, sambo i innych systemów grapplingowych.
-**EN:** Wrestling is one of the main sources of MMA takedowns, although fighters also use judo, sambo and other grappling systems.
-
 **PL:** Muay thai
 **EN:** Muay Thai
 
 **PL:** Stójka w MMA często bierze boks albo muay thai. Klincz kolanem nie jest jeszcze całą walką MMA.
 **EN:** The stand-up in MMA often takes boxing or Muay Thai. A knee clinch is not yet the whole MMA fight.
+
+**PL:** Zapasy
+**EN:** Wrestling
+
+**PL:** Zapasy są jednym z głównych źródeł obaleń w MMA, choć zawodnicy używają też judo, sambo i innych systemów grapplingowych.
+**EN:** Wrestling is one of the main sources of MMA takedowns, although fighters also use judo, sambo and other grappling systems.
 
 **Źródło:** Mixed martial arts — Encyclopaedia Britannica
 **Source:** Mixed martial arts — Encyclopaedia Britannica
@@ -1989,17 +1992,17 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Sportowe sambo dzieli z judo chwyt za kurtkę i rzuty, ale ma inne przepisy, m.in. dotyczące dźwigni na nogi i punktowania.
 **EN:** Sport sambo shares the jacket grip and throws with judo, but its rules allow leg locks and differ in other techniques and scoring.
 
-**PL:** Zapasy
-**EN:** Wrestling
-
-**PL:** Sambo obejmuje rzuty i grappling, ale ma własną kurtkę i własny regulamin.
-**EN:** Sambo includes throws and grappling, but uses its own jacket and rules.
-
 **PL:** MMA
 **EN:** Mixed martial arts
 
 **PL:** Combat sambo obejmuje uderzenia i walkę w parterze, ale pozostaje odrębnym regulaminem z kurtką i własnym katalogiem technik.
 **EN:** Combat sambo includes striking and ground fighting, but remains a distinct ruleset with a jacket and its own technique list.
+
+**PL:** Zapasy
+**EN:** Wrestling
+
+**PL:** Sambo obejmuje rzuty i grappling, ale ma własną kurtkę i własny regulamin.
+**EN:** Sambo includes throws and grappling, but uses its own jacket and rules.
 
 **Źródło:** Sambo (martial art) — Wikipedia contributors — CC BY-SA 4.0
 **Source:** Sambo (martial art) — Wikipedia contributors — CC BY-SA 4.0
@@ -2150,17 +2153,17 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń opcjonalna
 **EN:** Optional weapon
 
-**PL:** Wing Chun
-**EN:** Wing Chun
-
-**PL:** Wing chun jest jedną ze szkół w rodzinie kung fu, nie formą taolu IWUF i nie sandą.
-**EN:** Wing chun is one school in the kung fu family, not an IWUF taolu routine and not sanda.
-
 **PL:** Taijiquan
 **EN:** Taijiquan
 
 **PL:** Taijiquan ma własne szkoły, formy i pchnięcia rąk. Nie jest synonimem całego wushu.
 **EN:** Taijiquan has its own schools, forms and push-hands. It is not a synonym for all of wushu.
+
+**PL:** Wing Chun
+**EN:** Wing Chun
+
+**PL:** Wing chun jest jedną ze szkół w rodzinie kung fu, nie formą taolu IWUF i nie sandą.
+**EN:** Wing chun is one school in the kung fu family, not an IWUF taolu routine and not sanda.
 
 **Źródło:** Kung fu — Encyclopaedia Britannica
 **Source:** Kung fu — Encyclopaedia Britannica
@@ -2302,17 +2305,17 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Wushu / kung fu
-**EN:** Wushu / kung fu
-
-**PL:** Sanda to współczesny sport związany z wushu, a nie podstyl równy wszystkim tradycyjnym formom kung fu.
-**EN:** Sanda is a contemporary sport tied to wushu, not a substyle equal to every traditional kung fu form.
-
 **PL:** Shuai Jiao
 **EN:** Shuai jiao
 
 **PL:** Sanda dokłada do rzutu uderzenia i platformę. Shuai jiao zostaje przy kurtce, bez tego zestawu ciosów.
 **EN:** Sanda adds strikes and a platform to the throw. Shuai jiao stays with the jacket, without that set of strikes.
+
+**PL:** Wushu / kung fu
+**EN:** Wushu / kung fu
+
+**PL:** Sanda to współczesny sport związany z wushu, a nie podstyl równy wszystkim tradycyjnym formom kung fu.
+**EN:** Sanda is a contemporary sport tied to wushu, not a substyle equal to every traditional kung fu form.
 
 **Źródło:** International Wushu Federation — IWUF
 **Source:** International Wushu Federation — IWUF
@@ -3032,9 +3035,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **Źródło:** Capoeira — Wikipedia contributors — CC BY-SA 4.0
 **Source:** Capoeira — Wikipedia contributors — CC BY-SA 4.0
 
-**Źródło:** Capoeira circle — UNESCO
-**Source:** Capoeira circle — UNESCO
-
 ### kendo — Kendo
 
 **PL:** Kendo
@@ -3643,9 +3643,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **Źródło:** Martial art — Encyclopaedia Britannica
 **Source:** Martial art — Encyclopaedia Britannica
 
-**Źródło:** Republic Act No. 9850 — Lawphil
-**Source:** Republic Act No. 9850 — Lawphil
-
 ### silat — Silat
 
 **PL:** Silat
@@ -3938,9 +3935,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **Źródło:** Lethwei — Wikipedia contributors — CC BY-SA 4.0
 **Source:** Lethwei — Wikipedia contributors — CC BY-SA 4.0
 
-**Źródło:** Myanmar — Encyclopaedia Britannica
-**Source:** Myanmar — Encyclopaedia Britannica
-
 **Źródło:** International Lethwei Unified Ruleset — Lethwei Fighting Championship
 **Source:** International Lethwei Unified Ruleset — Lethwei Fighting Championship
 
@@ -4092,9 +4086,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 **Źródło:** Karate — Encyclopaedia Britannica
 **Source:** Karate — Encyclopaedia Britannica
-
-**Źródło:** KWU kumite and kata rules — Kyokushin World Union
-**Source:** KWU kumite and kata rules — Kyokushin World Union
 
 ### wing-chun — Wing Chun
 
@@ -7146,11 +7137,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 ## 5. Quizopasowanie — pytania
 
-**PL:** Jak bardzo chcesz pracować uderzeniami (oś striking)?
-**EN:** How much do you want striking work (the striking axis)?
+**PL:** Jak bardzo chcesz uderzać?
+**EN:** How much do you want to strike?
 
-**PL:** Jak bardzo chcesz pracować w chwycie (oś grappling)?
-**EN:** How much do you want grappling work (the grappling axis)?
+**PL:** Jak bardzo chcesz chwytać?
+**EN:** How much do you want to grapple?
 
 **PL:** Jak bardzo chcesz walczyć w parterze?
 **EN:** How much do you want to fight on the ground?

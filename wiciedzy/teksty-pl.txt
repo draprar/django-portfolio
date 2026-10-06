@@ -185,11 +185,12 @@ Eksplozywność: wysoko
 Sprzęt: średnio
 Zawody i tradycja
 Bez broni
-Lethwei
-Lethwei i muay thai używają podobnych kończyn, ale tradycyjne lethwei dokłada głowę i często zdejmuje rękawicę.
 Kickboxing
 Część formuł kickboxingu jest bliżej muay thai, a część nie ma tego klinczu ani kolan.
+Lethwei
+Lethwei i muay thai używają podobnych kończyn, ale tradycyjne lethwei dokłada głowę i często zdejmuje rękawicę.
 Muay Thai — Wikipedia contributors — CC BY-SA 4.0
+Thailand: Sports and recreation — Encyclopaedia Britannica
 International Federation of Muaythai Associations — IFMA
 
 Kickboxing
@@ -286,10 +287,10 @@ Zawody
 Bez broni
 Brazylijskie jiu-jitsu
 W typowym treningu MMA parter bierze się z BJJ, obok zapasów i stójki.
-Zapasy
-Zapasy są jednym z głównych źródeł obaleń w MMA, choć zawodnicy używają też judo, sambo i innych systemów grapplingowych.
 Muay thai
 Stójka w MMA często bierze boks albo muay thai. Klincz kolanem nie jest jeszcze całą walką MMA.
+Zapasy
+Zapasy są jednym z głównych źródeł obaleń w MMA, choć zawodnicy używają też judo, sambo i innych systemów grapplingowych.
 Mixed martial arts — Encyclopaedia Britannica
 International Mixed Martial Arts Federation — IMMAF
 
@@ -643,10 +644,10 @@ Zawody
 Bez broni
 Judo
 Sportowe sambo dzieli z judo chwyt za kurtkę i rzuty, ale ma inne przepisy, m.in. dotyczące dźwigni na nogi i punktowania.
-Zapasy
-Sambo obejmuje rzuty i grappling, ale ma własną kurtkę i własny regulamin.
 MMA
 Combat sambo obejmuje uderzenia i walkę w parterze, ale pozostaje odrębnym regulaminem z kurtką i własnym katalogiem technik.
+Zapasy
+Sambo obejmuje rzuty i grappling, ale ma własną kurtkę i własny regulamin.
 Sambo (martial art) — Wikipedia contributors — CC BY-SA 4.0
 International Sambo Federation — FIAS
 
@@ -697,10 +698,10 @@ Eksplozywność: wysoko
 Sprzęt: średnio
 Zawody i tradycja
 Broń opcjonalna
-Wing Chun
-Wing chun jest jedną ze szkół w rodzinie kung fu, nie formą taolu IWUF i nie sandą.
 Taijiquan
 Taijiquan ma własne szkoły, formy i pchnięcia rąk. Nie jest synonimem całego wushu.
+Wing Chun
+Wing chun jest jedną ze szkół w rodzinie kung fu, nie formą taolu IWUF i nie sandą.
 Kung fu — Encyclopaedia Britannica
 International Wushu Federation — IWUF
 
@@ -748,10 +749,10 @@ Eksplozywność: wysoko
 Sprzęt: średnio
 Zawody
 Bez broni
-Wushu / kung fu
-Sanda to współczesny sport związany z wushu, a nie podstyl równy wszystkim tradycyjnym formom kung fu.
 Shuai Jiao
 Sanda dokłada do rzutu uderzenia i platformę. Shuai jiao zostaje przy kurtce, bez tego zestawu ciosów.
+Wushu / kung fu
+Sanda to współczesny sport związany z wushu, a nie podstyl równy wszystkim tradycyjnym formom kung fu.
 International Wushu Federation — IWUF
 Sanda (sport) — Wikipedia contributors — CC BY-SA 4.0
 
@@ -993,7 +994,6 @@ Praktyka tradycyjna
 Bez broni
 Capoeira — Encyclopaedia Britannica
 Capoeira — Wikipedia contributors — CC BY-SA 4.0
-Capoeira circle — UNESCO
 
 Kendo
 Broń
@@ -1198,7 +1198,6 @@ Zawody i tradycja
 Broń główna
 Arnis — Wikipedia contributors — CC BY-SA 4.0
 Martial art — Encyclopaedia Britannica
-Republic Act No. 9850 — Lawphil
 
 Silat
 Mieszane
@@ -1297,7 +1296,6 @@ Sprzęt: średnio
 Zawody
 Bez broni
 Lethwei — Wikipedia contributors — CC BY-SA 4.0
-Myanmar — Encyclopaedia Britannica
 International Lethwei Unified Ruleset — Lethwei Fighting Championship
 
 Kyokushin
@@ -1349,7 +1347,6 @@ Karate
 Kyokushin to pełnokontaktowa odmiana karate, a nie osobna tradycja spoza karate.
 Kyokushin — Wikipedia contributors — CC BY-SA 4.0
 Karate — Encyclopaedia Britannica
-KWU kumite and kata rules — Kyokushin World Union
 
 Wing Chun
 Uderzenia
@@ -2373,8 +2370,8 @@ Praktyka tradycyjna
 Bez broni
 Dambe — Wikipedia contributors — CC BY-SA 4.0
 Hausa — Encyclopaedia Britannica
-Jak bardzo chcesz pracować uderzeniami (oś striking)?
-Jak bardzo chcesz pracować w chwycie (oś grappling)?
+Jak bardzo chcesz uderzać?
+Jak bardzo chcesz chwytać?
 Jak bardzo chcesz walczyć w parterze?
 Jak bardzo chcesz mieć broń na treningu?
 Jak bardzo chcesz kopać?
