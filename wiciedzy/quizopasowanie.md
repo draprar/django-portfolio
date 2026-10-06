@@ -37,7 +37,7 @@ Osie pytanie wprost: uderzenia, chwyt, parter, broń, kopnięcia, kontakt, zawod
 
 Click around and you get a short list of styles matched to your answers.
 
-Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
+Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
 
 ### Błąd, gdy brakuje odpowiedzi
 
@@ -55,7 +55,7 @@ Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy pokaże się lista
 
 Five styles to read about — starting with the one that best matches your answers.
 
-Pięć stylów do poczytania — od tego, który najbardziej pasuje do Twoich odpowiedzi.
+Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.
 
 Next to this sits …
 

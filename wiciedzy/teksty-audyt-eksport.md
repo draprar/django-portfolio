@@ -1,6 +1,6 @@
-# wiciędze — teksty na stronie (obecny UI)
+﻿# wiciędze — teksty na stronie (obecny UI)
 
-Wygenerowano: **2026-10-06 15:37 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
+Wygenerowano: **2026-10-06 16:47 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
 
 Źródło: aktywne trasy w `wiciedzy/urls.py`, szablony, modele `Style` (`active=True`), `PreferenceQuestion` (`active=True`), teksty z `dimensions.py` / `display.py`.
 
@@ -24,8 +24,8 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** Boks boks, albo kop kop
 **EN:** Boxing boxing, or kick kick
 
-**PL:** a jak już musisz to se ogarnij inne.
-**EN:** and if you have to go figure out the rest.
+**PL:** a jak nie to se ogarnij inne
+**EN:** and if not, figure out the rest yourself.
 
 **PL:** Katalog
 **EN:** Catalog
@@ -36,8 +36,8 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** Quizopasowanie
 **EN:** Quizmatch
 
-**PL:** Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
-**EN:** Click around and you get a short list of styles matched to your answers.
+**PL:** Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
+**EN:** Click around and you'll get a short list of matched styles.
 
 ### `/wiciedze/spis/`
 
@@ -45,9 +45,6 @@ _Szablon:_ `list.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 
 **PL:** Katalog
 **EN:** Catalog
-
-**PL:** Obczaj różne sporty i sztuki walki — możesz je też porównywać.
-**EN:** Check out all kinds of combat sports and martial arts — you can compare them too.
 
 **PL:** Se porównaj:
 **EN:** Go on, compare:
@@ -75,16 +72,25 @@ _Szablon:_ `list.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 _Szablon:_ `detail.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** O stylu
 **EN:** About
@@ -144,9 +150,6 @@ _Szablon:_ `test.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** Quizopasowanie
 **EN:** Quizmatch
 
-**PL:** Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
-**EN:** Click around and you get a short list of styles matched to your answers.
-
 **PL:** Zaznacz każdą skalę, oba wybory i sytuację. Dopiero wtedy pokaże się lista.
 **EN:** Mark every scale, both choices and the situation. Only then does the list show up.
 
@@ -175,8 +178,11 @@ _Szablon:_ `match.html` — stałe napisy; nazwy stylów i opisy z sekcji katalo
 **PL:** Do poczytania
 **EN:** To read
 
-**PL:** Pięć stylów do poczytania — od tego, który najbardziej pasuje do Twoich odpowiedzi.
-**EN:** Five styles to read about — starting with the one that best matches your answers.
+**PL:** Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.
+**EN:** Five styles to read about — starting with the best match in this set.
+
+**PL:** To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty; nie opisuje każdej szkoły.
+**EN:** This comparison is based on your preferences and the card's general profile; it does not describe every school.
 
 **PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
 **EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
@@ -214,16 +220,25 @@ _Szablon:_ `compare_form.html` — stałe napisy; nazwy stylów i opisy z sekcji
 _Szablon:_ `compare.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Historia i typ
 **EN:** History and type
@@ -353,7 +368,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Modern rules from 1867
 
 **PL:** Europa
-**EN:** 
+**EN:** Europe
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -365,16 +380,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Training works on holding the guard, footwork, punching on pads and the bag, and sparring. Defence means slips, blocks and a short clinch that the referee breaks.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -463,11 +487,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Reguły Queensberry z 1867 roku ujednoliciły model walki w rękawicach i rundach oraz zakazały zapasów. Wcześniejsze walki na gołe pięści dopuszczały więcej chwytów.
 **EN:** The 1867 Queensberry rules standardised gloved, round-based fighting and banned wrestling. Earlier bare-knuckle bouts had allowed more holding.
 
-**PL:** Boxing — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Boxing — Encyclopaedia Britannica
+**Source:** Boxing — Encyclopaedia Britannica
 
-**PL:** International Boxing Association — IBA
-**EN:** 
+**Źródło:** International Boxing Association — IBA
+**Source:** International Boxing Association — IBA
 
 ### muay-thai — Muay thai
 
@@ -487,7 +511,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Local tradition, sporting form in the 20th century
 
 **PL:** Azja Południowo-Wschodnia
-**EN:** 
+**EN:** Southeast Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -505,16 +529,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Punches, kicks, knees, elbows and clinch work in which the fighter may hold and attack with knees. The ram muay is the dance before the fight, not a round. There is no ground game on the mat. Lethwei adds the head as a weapon and, in traditional formats, uses hand wraps instead of boxing gloves. Kickboxing has different rules for clinching and knees depending on the format.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -612,11 +645,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Część formuł kickboxingu jest bliżej muay thai, a część nie ma tego klinczu ani kolan.
 **EN:** Some kickboxing formats sit closer to Muay Thai, and some have neither this clinch nor the knees.
 
-**PL:** Muay Thai — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Muay Thai — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Muay Thai — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** International Federation of Muaythai Associations — IFMA
-**EN:** 
+**Źródło:** International Federation of Muaythai Associations — IFMA
+**Source:** International Federation of Muaythai Associations — IFMA
 
 ### kickboxing — Kickboxing
 
@@ -636,7 +669,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Globalny
-**EN:** 
+**EN:** Global
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -648,16 +681,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Full Contact generally allows kicks above the waist and restricts the clinch. Low Kick adds legal kicks to the thighs. K1 Style permits knees and limits clinching under its rules. The details vary by organisation; these formats should not be treated as interchangeable.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -743,11 +785,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Kickboxing — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Kickboxing — Encyclopaedia Britannica
+**Source:** Kickboxing — Encyclopaedia Britannica
 
-**PL:** World Association of Kickboxing Organizations — WAKO
-**EN:** 
+**Źródło:** World Association of Kickboxing Organizations — WAKO
+**Source:** World Association of Kickboxing Organizations — WAKO
 
 ### mma — MMA
 
@@ -767,7 +809,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Current form from the 1990s
 
 **PL:** Globalny
-**EN:** 
+**EN:** Global
 
 **PL:** Mieszane
 **EN:** Hybrid
@@ -782,16 +824,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In the gym, striking, takedown entries, control and submissions are drilled apart, then sparring puts them together. Kickboxing without takedowns, or BJJ without punches, is not yet an MMA fight, even when it supplies the tools.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -895,11 +946,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Stójka w MMA często bierze boks albo muay thai. Klincz kolanem nie jest jeszcze całą walką MMA.
 **EN:** The stand-up in MMA often takes boxing or Muay Thai. A knee clinch is not yet the whole MMA fight.
 
-**PL:** Mixed martial arts — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Mixed martial arts — Encyclopaedia Britannica
+**Source:** Mixed martial arts — Encyclopaedia Britannica
 
-**PL:** International Mixed Martial Arts Federation — IMMAF
-**EN:** 
+**Źródło:** International Mixed Martial Arts Federation — IMMAF
+**Source:** International Mixed Martial Arts Federation — IMMAF
 
 ### zapasy — Zapasy
 
@@ -919,7 +970,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Sporting form from the 19th and 20th centuries
 
 **PL:** Globalny
-**EN:** 
+**EN:** Global
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -931,16 +982,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In freestyle the grip may go to the leg. In Greco-Roman an attack below the waist is a foul. In both styles a fall (pin) can end the bout, and technical superiority can also end it under the rules; otherwise the points decide. There are no strikes.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1029,14 +1089,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Catch wrestling
 **EN:** Catch wrestling
 
-**PL:** Catch dokłada poddania. Styl wolny i klasyczny kończą się na rzucie i punktach.
-**EN:** Catch adds submissions. Freestyle and Greco-Roman end on the throw and the points.
+**PL:** Catch wrestling to zapasy z poddaniami obok rzutu; nie jest stylem olimpijskim, ale siedzi w tej samej rodzinie co folkstyle i inne zapasy.
+**EN:** Catch wrestling is submission wrestling beside the throw; it is not an Olympic style, but it sits in the same family as folkstyle and other wrestling.
 
-**PL:** Wrestling — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Wrestling — Encyclopaedia Britannica
+**Source:** Wrestling — Encyclopaedia Britannica
 
-**PL:** United World Wrestling — UWW
-**EN:** 
+**Źródło:** United World Wrestling — UWW
+**Source:** United World Wrestling — UWW
 
 ### judo — Judo
 
@@ -1056,7 +1116,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Late 19th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -1071,16 +1131,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You grip the opponent's judogi, break their balance and throw. On the ground you can hold them or look for a submission the rules allow.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1166,11 +1235,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Judo — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Judo — Encyclopaedia Britannica
+**Source:** Judo — Encyclopaedia Britannica
 
-**PL:** International Judo Federation — IJF
-**EN:** 
+**Źródło:** International Judo Federation — IJF
+**Source:** International Judo Federation — IJF
 
 ### bjj — Brazylijskie jiu-jitsu
 
@@ -1190,7 +1259,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Ameryka Południowa
-**EN:** 
+**EN:** South America
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -1205,16 +1274,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You pass the guard, take the back or mount, and look for a lock or a choke. Sparring is built around continuous work with a partner.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1312,11 +1390,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Luta livre esportiva to brazylijski grappling bez kimona, historycznie obok BJJ, a nie jego reguła no-gi.
 **EN:** Luta livre esportiva is Brazilian grappling without the gi, historically beside BJJ, not its no-gi rule.
 
-**PL:** International Brazilian Jiu-Jitsu Federation — IBJJF
-**EN:** 
+**PL:** Część opracowań wiąże początki BJJ z judo i jujutsu, które ćwiczył Maeda. To historyczna teza, nie opis dzisiejszej praktyki klubowego ju-jitsu.
+**EN:** Some accounts tie the start of BJJ to the judo and jujutsu Maeda practiced. That is a historical claim, not a description of today's club ju-jitsu.
 
-**PL:** Brazilian jiu-jitsu — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** International Brazilian Jiu-Jitsu Federation — IBJJF
+**Source:** International Brazilian Jiu-Jitsu Federation — IBJJF
+
+**Źródło:** Brazilian jiu-jitsu — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Brazilian jiu-jitsu — Wikipedia contributors — CC BY-SA 4.0
 
 ### karate — Karate
 
@@ -1339,7 +1420,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Okinawan tradition, spread in the 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -1357,16 +1438,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Shared training is kihon, kata and kumite, but sparring depends on the school. In WKF kumite the score is a controlled hit, including a punch to the head. In knockdown the contact is fuller and hand strikes to the head drop out. Kata stays a solo or group form, not a fight.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1452,11 +1542,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń opcjonalna
 **EN:** Optional weapon
 
-**PL:** Karate — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Karate — Encyclopaedia Britannica
+**Source:** Karate — Encyclopaedia Britannica
 
-**PL:** World Karate Federation — WKF
-**EN:** 
+**Źródło:** World Karate Federation — WKF
+**Source:** World Karate Federation — WKF
 
 ### taekwondo — Taekwondo
 
@@ -1479,7 +1569,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century, Olympic medal sport from 2000
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -1494,16 +1584,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In WT the fight goes through a chest guard and foot protectors, and a kick to the head scores higher than a punch. ITF keeps patterns, the sine-wave movement and sparring in which the hands have a larger role. Forms are tul or poomsae, depending on the federation, and they are not the fight.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1604,14 +1703,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** World Taekwondo i ITF nie stosują tego samego regulaminu. W kyorugi WT zawodnicy walczą w ochraniaczach i z elektronicznym systemem punktowania, a ITF ma własne układy i regulamin sparingu.
 **EN:** World Taekwondo and the ITF do not use the same rules. WT kyorugi is fought with body armour and electronic scoring, while ITF uses its own patterns and sparring rules.
 
-**PL:** Taekwondo — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Taekwondo — Encyclopaedia Britannica
+**Source:** Taekwondo — Encyclopaedia Britannica
 
-**PL:** World Taekwondo — World Taekwondo
-**EN:** 
+**Źródło:** World Taekwondo — World Taekwondo
+**Source:** World Taekwondo — World Taekwondo
 
-**PL:** International Taekwon-Do Federation — ITF
-**EN:** 
+**Źródło:** International Taekwon-Do Federation — ITF
+**Source:** International Taekwon-Do Federation — ITF
 
 ### sumo — Sumo
 
@@ -1631,7 +1730,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Court and shrine tradition, modern professional sport
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -1646,16 +1745,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A low stance, the charge, a grip on the mawashi, and an attempt to push out or throw. Training is heavy and leans hard on work with a partner.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1741,11 +1849,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Sumo — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Sumo — Encyclopaedia Britannica
+**Source:** Sumo — Encyclopaedia Britannica
 
-**PL:** Nihon Sumo Kyokai — Japan Sumo Association
-**EN:** 
+**Źródło:** Nihon Sumo Kyokai — Japan Sumo Association
+**Source:** Nihon Sumo Kyokai — Japan Sumo Association
 
 ### sambo — Sambo
 
@@ -1765,7 +1873,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 1920s–1930s
 
 **PL:** Europa Wschodnia
-**EN:** 
+**EN:** Eastern Europe
 
 **PL:** Mieszane
 **EN:** Hybrid
@@ -1780,16 +1888,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In sport sambo you fight in a jacket: throws, holds and locks. Combat sambo adds strikes standing and on the ground, still in the jacket, under its own rules. These formats are related but are not the same fight.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -1893,11 +2010,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Combat sambo obejmuje uderzenia i walkę w parterze, ale pozostaje odrębnym regulaminem z kurtką i własnym katalogiem technik.
 **EN:** Combat sambo includes striking and ground fighting, but remains a distinct ruleset with a jacket and its own technique list.
 
-**PL:** Sambo (martial art) — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Sambo (martial art) — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Sambo (martial art) — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** International Sambo Federation — FIAS
-**EN:** 
+**Źródło:** International Sambo Federation — FIAS
+**Source:** International Sambo Federation — FIAS
 
 ### wushu — Wushu / kung fu
 
@@ -1923,7 +2040,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Local traditions, modern wushu from the 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -1938,16 +2055,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Taolu is a routine with or without a weapon, judged as a form. A traditional school adds paired applications and its own weapons. Sanda is a separate fight on a platform. Taijiquan has its own card here, because forms, push-hands and the sport version are already a different set.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2045,11 +2171,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Taijiquan ma własne szkoły, formy i pchnięcia rąk. Nie jest synonimem całego wushu.
 **EN:** Taijiquan has its own schools, forms and push-hands. It is not a synonym for all of wushu.
 
-**PL:** Kung fu — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Kung fu — Encyclopaedia Britannica
+**Source:** Kung fu — Encyclopaedia Britannica
 
-**PL:** International Wushu Federation — IWUF
-**EN:** 
+**Źródło:** International Wushu Federation — IWUF
+**Source:** International Wushu Federation — IWUF
 
 ### sanda — Sanda
 
@@ -2069,7 +2195,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -2081,16 +2207,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You stand on a raised platform, you strike and you look for a throw. There is no continuing ground fighting after a throw; the action ends under the sanda rules. A full Muay Thai clinch, with knees to the head, is not a description of a sanda exchange. Shuai jiao stays with the jacket grip, without this set of strikes.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2188,11 +2323,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Sanda dokłada do rzutu uderzenia i platformę. Shuai jiao zostaje przy kurtce, bez tego zestawu ciosów.
 **EN:** Sanda adds strikes and a platform to the throw. Shuai jiao stays with the jacket, without that set of strikes.
 
-**PL:** International Wushu Federation — IWUF
-**EN:** 
+**Źródło:** International Wushu Federation — IWUF
+**Source:** International Wushu Federation — IWUF
 
-**PL:** Sanda (sport) — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Sanda (sport) — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Sanda (sport) — Wikipedia contributors — CC BY-SA 4.0
 
 ### aikido — Aikido
 
@@ -2212,7 +2347,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -2227,16 +2362,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You practise paired forms, falling and work with a wooden weapon. Contact is often set in advance, and in many schools it is not sparring for a score.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2322,11 +2466,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń treningowa
 **EN:** Training weapon
 
-**PL:** Aikido — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Aikido — Encyclopaedia Britannica
+**Source:** Aikido — Encyclopaedia Britannica
 
-**PL:** Aikido — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Aikido — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Aikido — Wikipedia contributors — CC BY-SA 4.0
 
 ### krav-maga — Krav maga
 
@@ -2346,7 +2490,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Bliski Wschód
-**EN:** 
+**EN:** Middle East
 
 **PL:** Samoobrona
 **EN:** Self-defence
@@ -2358,16 +2502,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Training goes through scenarios: a strike, a grab, a knife or a stick, and a way out. A points spar is usually absent. The differences between IKMF, KMG and military programmes show up in what the course includes, not in the name on the door.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2453,11 +2606,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń opcjonalna
 **EN:** Optional weapon
 
-**PL:** Krav Maga — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Krav Maga — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Krav Maga — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Martial art — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Martial art — Encyclopaedia Britannica
+**Source:** Martial art — Encyclopaedia Britannica
 
 ### hapkido — Hapkido
 
@@ -2480,7 +2633,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Samoobrona
 **EN:** Self-defence
@@ -2495,16 +2648,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A typical pair is a wrist or sleeve grip, a lock and a throw, plus kicks from a distance. There is no WT chest guard and no ITF scoring. Training depends on the line: some add weapons, others stay with the empty hand.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2590,11 +2752,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń opcjonalna
 **EN:** Optional weapon
 
-**PL:** Hapkido — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Hapkido — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Hapkido — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Martial art — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Martial art — Encyclopaedia Britannica
+**Source:** Martial art — Encyclopaedia Britannica
 
 ### savate — Savate
 
@@ -2614,7 +2776,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 19th century
 
 **PL:** Europa
-**EN:** 
+**EN:** Europe
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -2626,16 +2788,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In savate you kick with the toe, the sole and the instep, in shoes, and the fists stay boxing fists. Assaut and combat differ in how much contact is allowed. Canne is judged as an exchange of canes in a mask, not as kicks.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2721,11 +2892,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Savate — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Savate — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Savate — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Fédération Française de Savate — FFSavate
-**EN:** 
+**Źródło:** Fédération Française de Savate — FFSavate
+**Source:** Fédération Française de Savate — FFSavate
 
 ### capoeira — Capoeira
 
@@ -2745,7 +2916,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Slavery era and the 19th–20th centuries
 
 **PL:** Ameryka Południowa
-**EN:** 
+**EN:** South America
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -2760,16 +2931,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** The ginga is the base, and the kicks, evasions and transitions come out of it. Music and rhythm are part of the practice, not just background.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -2855,14 +3035,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Capoeira — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Capoeira — Encyclopaedia Britannica
+**Source:** Capoeira — Encyclopaedia Britannica
 
-**PL:** Capoeira — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Capoeira — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Capoeira — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Capoeira circle — UNESCO
-**EN:** 
+**Źródło:** Capoeira circle — UNESCO
+**Source:** Capoeira circle — UNESCO
 
 ### kendo — Kendo
 
@@ -2882,7 +3062,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Modern form from the 19th–20th centuries
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -2903,16 +3083,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In kendo a valid hit to a target, with a shout and good posture, scores on the shinai. Iaido is practised as a catalogue of forms, often with a training sword, and there is no point for a strike to the men. Kenjutsu stays with the school and its pairs, not with a kendo tournament.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3004,11 +3193,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Kendo punktuje trafienie shinai w zbroi. Iaido ćwiczy dobywanie miecza w formach i nie jest kategorią kendo.
 **EN:** Kendo scores a shinai hit in armour. Iaido practises drawing the sword in forms and is not a kendo division.
 
-**PL:** All Japan Kendo Federation — AJKF
-**EN:** 
+**Źródło:** All Japan Kendo Federation — AJKF
+**Source:** All Japan Kendo Federation — AJKF
 
-**PL:** Kendo — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Kendo — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Kendo — Wikipedia contributors — CC BY-SA 4.0
 
 ### szermierka — Szermierka sportowa
 
@@ -3028,7 +3217,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Sporting form, 19th–20th century
 
 **PL:** Europa
-**EN:** 
+**EN:** Europe
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -3043,16 +3232,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A lesson with a coach, footwork, the lunge and sparring on the piste.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3141,11 +3339,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** W szermierce sportowej trafienie rejestruje aparatura elektryczna. HEMA próbuje odtworzyć techniki opisane w dawnych traktatach. To dwie różne praktyki.
 **EN:** Sport fencing records a touch with electrical kit. HEMA tries to reconstruct techniques described in old treatises. They are two different practices.
 
-**PL:** Fencing — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Fencing — Encyclopaedia Britannica
+**Source:** Fencing — Encyclopaedia Britannica
 
-**PL:** International Fencing Federation — FIE
-**EN:** 
+**Źródło:** International Fencing Federation — FIE
+**Source:** International Fencing Federation — FIE
 
 ### hema — HEMA (Historical European Martial Arts)
 
@@ -3168,7 +3366,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Reconstruction from the late 20th century, sources from the Middle Ages
 
 **PL:** Europa
-**EN:** 
+**EN:** Europe
 
 **PL:** Rekonstrukcja historyczna
 **EN:** Historical reconstruction
@@ -3186,16 +3384,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You drill sets from a treatise, pairs and sparring with blunt weapons in protection matched to the weapon. Sport fencing has foil, épée and sabre, with electrical scoring. Here historical sources and tournament rules determine how techniques and hits are interpreted; there is no single HEMA scoring system.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3285,16 +3492,16 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Sport fencing
 
 **PL:** Szermierka sportowa i HEMA to dwie różne praktyki: w szermierce trafienia rejestruje aparatura, a HEMA odtwarza historyczne techniki z traktatów.
-**EN:** Both practices work with European bladed weapons, but HEMA reconstructs techniques from historical treatises, while sport fencing has three weapons and its own rules. It is not the same training.
+**EN:** Sport fencing and HEMA are two different practices: fencing records touches with electrical kit, while HEMA reconstructs historical techniques from treatises.
 
 **PL:** W szermierce sportowej trafienie rejestruje aparatura elektryczna. HEMA próbuje odtworzyć techniki opisane w dawnych traktatach. To dwie różne praktyki.
 **EN:** Sport fencing records a touch with electrical kit. HEMA tries to reconstruct techniques described in old treatises. They are two different practices.
 
-**PL:** HEMA Alliance — HEMA Alliance
-**EN:** 
+**Źródło:** HEMA Alliance — HEMA Alliance
+**Source:** HEMA Alliance — HEMA Alliance
 
-**PL:** Historical European martial arts — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Historical European martial arts — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Historical European martial arts — Wikipedia contributors — CC BY-SA 4.0
 
 ### arnis — Arnis / Kali / Eskrima
 
@@ -3317,7 +3524,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Local traditions, modern names
 
 **PL:** Azja Południowo-Wschodnia
-**EN:** 
+**EN:** Southeast Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -3335,16 +3542,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Training starts with sticks: angles, a block and a counter. Then the knife, two weapons or the empty hand. In sport the usual tools are a stick and protection. A traditional school does not end at points for hitting with a foam stick.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3430,14 +3646,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń główna
 **EN:** Weapon first
 
-**PL:** Arnis — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Arnis — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Arnis — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Martial art — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Martial art — Encyclopaedia Britannica
+**Source:** Martial art — Encyclopaedia Britannica
 
-**PL:** Republic Act No. 9850 — Lawphil
-**EN:** 
+**Źródło:** Republic Act No. 9850 — Lawphil
+**Source:** Republic Act No. 9850 — Lawphil
 
 ### silat — Silat
 
@@ -3460,7 +3676,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Local traditions, pencak silat sport in the 20th century
 
 **PL:** Azja Południowo-Wschodnia
-**EN:** 
+**EN:** Southeast Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -3475,16 +3691,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Jurus refers to forms or movement sequences in the practice and is also a competition category under the PERSILAT rules. The jurus categories include tunggal, ganda and regu; tanding is the combat category. A school's training can also include weapons. Forms are not the match.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3573,14 +3798,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** W regulaminie zawodów PERSILAT z 2026 roku główne kategorie to Tanding i Jurus; Jurus obejmuje Tunggal, Ganda i Regu.
 **EN:** In the 2026 PERSILAT competition regulations, the main competition categories are Tanding and Jurus; Jurus includes Tunggal, Ganda and Regu.
 
-**PL:** Pencak silat — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Pencak silat — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Pencak silat — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Traditions of Pencak Silat — UNESCO
-**EN:** 
+**Źródło:** Traditions of Pencak Silat — UNESCO
+**Source:** Traditions of Pencak Silat — UNESCO
 
-**PL:** Pencak Silat Competition Rules and Regulations — PERSILAT
-**EN:** 
+**Źródło:** Pencak Silat Competition Rules and Regulations — PERSILAT
+**Source:** Pencak Silat Competition Rules and Regulations — PERSILAT
 
 ### lethwei — Lethwei
 
@@ -3600,7 +3825,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Local tradition, modern cards in the 20th–21st centuries
 
 **PL:** Azja Południowo-Wschodnia
-**EN:** 
+**EN:** Southeast Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -3611,20 +3836,29 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Lokalne walki są starsze niż dzisiejsze gale. Współczesne federacje doprecyzowały rundy i sprzęt, ale tradycyjne formuły używają owijek zamiast rękawic bokserskich; współczesne gale lethwei mogą stosować inne regulaminy i wyposażenie. Podobieństwo do muay thai nie zrównało przepisów.
 **EN:** Local fights are older than today's cards. Modern federations have tightened rounds and kit, but traditional formats use hand wraps rather than boxing gloves; modern Lethwei events can use different rules and equipment. Looking like Muay Thai did not make the rules the same.
 
-**PL:** Wymiana jest twarda i stoi. Głowa wchodzi jako uderzenie, gdy regulamin jej nie wyłączy. Brak grubej rękawicy zmienia pięść względem muay thai i K-1. Parteru tu nie ma.
+**PL:** Wymiana jest twarda i pozostaje w stójce. Głowa wchodzi jako uderzenie, gdy regulamin jej nie wyłączy. Brak grubej rękawicy zmienia pięść względem muay thai i K-1. Parteru tu nie ma.
 **EN:** The exchange is hard and stays standing. The head comes in as a strike when the rules do not switch it off. The lack of a thick glove changes the fist compared with Muay Thai and K-1. There is no ground game.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3710,14 +3944,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Lethwei — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Lethwei — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Lethwei — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Myanmar — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Myanmar — Encyclopaedia Britannica
+**Source:** Myanmar — Encyclopaedia Britannica
 
-**PL:** International Lethwei Unified Ruleset — Lethwei Fighting Championship
-**EN:** 
+**Źródło:** International Lethwei Unified Ruleset — Lethwei Fighting Championship
+**Source:** International Lethwei Unified Ruleset — Lethwei Fighting Championship
 
 ### kyokushin — Kyokushin
 
@@ -3727,8 +3961,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Uderzenia
 **EN:** Striking
 
-**PL:** Kyokushin to pełnokontaktowy styl karate, założony w połowie XX wieku przez Masutatsu Oyamę jako twarda odmiana karate. W klasycznych i wielu współczesnych formułach knock-down ciosy pięścią na głowę są zazwyczaj zakazane, a kopnięcia na głowę dozwolone, choć szczegóły zależą od organizacji i regulaminu.
-**EN:** Kyokushin is a full-contact karate style. In classic and many modern knockdown formats punches to the head are illegal and kicks to the head are allowed. The details still depend on the organisation and the rules.
+**PL:** Kyokushin to pełnokontaktowy styl karate, założony w połowie XX wieku przez Masutatsu Oyamę jako twarda odmiana karate. W knockdownie KWU ciosy i łokcie w twarz są zakazane, a w full contact KWU ciosy w głowę są dozwolone — to nie jest reguła całego karate ani WKF kumite.
+**EN:** Kyokushin is a full-contact karate style. In KWU knockdown, hand and elbow strikes to the face are forbidden; in KWU full contact, punches to the head are allowed — that is not a rule for all karate or for WKF kumite.
 
 **PL:** Japonia, Masutatsu Oyama, w obrębie karate
 **EN:** Japan, Masutatsu Oyama, inside karate
@@ -3737,7 +3971,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Mid 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -3752,16 +3986,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You practise kihon, kata and kumite with contact. Conditioning and sparring are the axis, not the form alone.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3853,14 +4096,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Kyokushin to pełnokontaktowa odmiana karate, a nie osobna tradycja spoza karate.
 **EN:** Kyokushin is a full-contact style of karate, not a tradition from outside karate.
 
-**PL:** Kyokushin — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Kyokushin — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Kyokushin — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Karate — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Karate — Encyclopaedia Britannica
+**Source:** Karate — Encyclopaedia Britannica
 
-**PL:** KWU kumite and kata rules — Kyokushin World Union
-**EN:** 
+**Źródło:** KWU kumite and kata rules — Kyokushin World Union
+**Source:** KWU kumite and kata rules — Kyokushin World Union
 
 ### wing-chun — Wing Chun
 
@@ -3880,7 +4123,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Southern Chinese tradition, popularised in the 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -3895,16 +4138,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You practise forms on the wooden dummy, chi sao and close strikes. Sparring depends on the hall.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -3996,11 +4248,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Późniejsza tradycja / legenda.
 **EN:** Later tradition / legend.
 
-**PL:** Wing Chun — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Wing Chun — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Wing Chun — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Kung fu — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Kung fu — Encyclopaedia Britannica
+**Source:** Kung fu — Encyclopaedia Britannica
 
 ### jeet-kune-do — Jeet Kune Do (JKD)
 
@@ -4020,7 +4272,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 1960s
 
 **PL:** Ameryka Północna
-**EN:** 
+**EN:** North America
 
 **PL:** Mieszane
 **EN:** Hybrid
@@ -4035,16 +4287,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You train with kit, spar, and mix strikes, clinch and simple takedowns, depending on the teacher.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4130,11 +4391,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń opcjonalna
 **EN:** Optional weapon
 
-**PL:** Jeet Kune Do — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Jeet Kune Do — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Jeet Kune Do — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Bruce Lee — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Bruce Lee — Encyclopaedia Britannica
+**Source:** Bruce Lee — Encyclopaedia Britannica
 
 ### jujutsu — Jujutsu
 
@@ -4147,8 +4408,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
 **EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
 
-**PL:** Jujutsu to nazwa na japońskie szkoły chwytów sprzed judo i na późniejsze klubowe ju-jitsu. Koryu, sportowe duo i samoobrona nie grają tą samą walką. Judo rozwinęło się ze starszych szkół jujutsu, natomiast brazylijskie jiu-jitsu rozwinęło się później poprzez brazylijską praktykę judo i pokrewnych form grapplingu. Obie praktyki mają własne karty.
-**EN:** Jujutsu is the name for Japanese grappling schools from before judo and for later club ju-jitsu. Koryu, sporting duo and self-defence are not the same fight. Judo developed from older jujutsu schools, while Brazilian jiu-jitsu developed later through Brazilian practice of judo and related grappling. Both have their own cards.
+**PL:** Jujutsu to nazwa na japońskie szkoły chwytów sprzed judo i na późniejsze klubowe ju-jitsu. Koryu, sportowe duo i samoobrona nie są tą samą praktyką. Judo rozwinęło się ze starszych szkół jujutsu, natomiast brazylijskie jiu-jitsu rozwinęło się później poprzez brazylijską praktykę judo i pokrewnych form grapplingu. Obie praktyki mają własne karty.
+**EN:** Jujutsu is the name for Japanese grappling schools from before judo and for later club ju-jitsu. Koryu, sporting duo and self-defence are not the same practice. Judo developed from older jujutsu schools, while Brazilian jiu-jitsu developed later through Brazilian practice of judo and related grappling. Both have their own cards.
 
 **PL:** Japonia, wiele szkół
 **EN:** Japan, many schools
@@ -4157,7 +4418,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Schools from the early modern period, an umbrella name
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -4172,16 +4433,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In koryu you work paired forms and whatever the school counts as technique, weapons included. In club ju-jitsu you more often see atemi, throws, holds and set pairs for a score. That is not judo randori and it is not a points fight in BJJ.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4270,20 +4540,17 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Judo
 **EN:** Judo
 
-**PL:** Kano ułożył judo z materiału starszych szkół jujutsu. Dzisiejsze judo sportowe nie jest tymi szkołami.
-**EN:** Kano arranged judo from the material of older jujutsu schools. Today's sporting judo is not those schools.
+**PL:** Starsze szkoły jujutsu były jednym z źródeł materiału, z którego Kano ułożył judo. Dzisiejsze judo sportowe nie jest tymi szkołami.
+**EN:** Older jujutsu schools were one source of the material from which Kano built judo. Today's sporting judo is not those schools.
 
-**PL:** Brazylijskie jiu-jitsu
-**EN:** Brazilian jiu-jitsu
+**PL:** Część opracowań wiąże początki BJJ z judo i jujutsu, które ćwiczył Maeda. To historyczna teza, nie opis dzisiejszej praktyki klubowego ju-jitsu.
+**EN:** Some accounts tie the start of BJJ to the judo and jujutsu Maeda practiced. That is a historical claim, not a description of today's club ju-jitsu.
 
-**PL:** Część opracowań wiąże BJJ z judo i jujutsu Maedy. To nie jest dzisiejsze klubowe ju-jitsu.
-**EN:** Some accounts tie BJJ to Maeda's judo and jujutsu. That is not today's club ju-jitsu.
+**Źródło:** Jujutsu — Encyclopaedia Britannica
+**Source:** Jujutsu — Encyclopaedia Britannica
 
-**PL:** Jujutsu — Encyclopaedia Britannica
-**EN:** 
-
-**PL:** Jujutsu — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Jujutsu — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Jujutsu — Wikipedia contributors — CC BY-SA 4.0
 
 ### pankration — Pankration
 
@@ -4303,7 +4570,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Antiquity; modern contests are a sporting reconstruction
 
 **PL:** Europa
-**EN:** 
+**EN:** Europe
 
 **PL:** Rekonstrukcja historyczna
 **EN:** Historical reconstruction
@@ -4318,16 +4585,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** The ancient picture is a fight standing and on the ground, with strikes and grips, and without modern gloves. A contemporary gym may train that as a reconstruction or as its own sporting rules. You then have to read whose rule it is, because there is not one.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4413,11 +4689,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Pankration — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Pankration — Encyclopaedia Britannica
+**Source:** Pankration — Encyclopaedia Britannica
 
-**PL:** Pankration — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Pankration — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Pankration — Wikipedia contributors — CC BY-SA 4.0
 
 ### shuai-jiao — Shuai Jiao
 
@@ -4437,7 +4713,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A wrestling tradition, modern sporting form
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -4455,16 +4731,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You grip the jacket and the sleeve, enter with the hip or the leg and throw. In Beijing style the stress falls on particular entries; other centres hold the grip differently. There are no kicks scored as in sanda, and no knee clinch.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4550,11 +4835,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Shuai jiao — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Shuai jiao — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Shuai jiao — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Kung fu — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Kung fu — Encyclopaedia Britannica
+**Source:** Kung fu — Encyclopaedia Britannica
 
 ### taekkyeon — Taekkyeon
 
@@ -4574,7 +4859,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A Korean tradition, UNESCO inscription in 2011
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -4589,16 +4874,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** The movement is circular and rhythmic, and then it can be sharp. You practise strikes and trips, not an electronic chest guard and not tul forms. A partner is needed when the movement becomes a fight.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4684,11 +4978,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Taekkyeon, a traditional Korean martial art — UNESCO
-**EN:** 
+**Źródło:** Taekkyeon, a traditional Korean martial art — UNESCO
+**Source:** Taekkyeon, a traditional Korean martial art — UNESCO
 
-**PL:** Taekkyeon — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Taekkyeon — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Taekkyeon — Wikipedia contributors — CC BY-SA 4.0
 
 ### taijiquan — Taijiquan
 
@@ -4711,7 +5005,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Modern schools, a sporting form in the 20th century
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -4726,16 +5020,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Solo work is a routine, often slow, sometimes with a sharper release of force. In pairs, push-hands are added: breaking balance without a strike as in sanda. A weapon, for example the taiji sword, is a separate routine, not a points fight.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4821,11 +5124,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń opcjonalna
 **EN:** Optional weapon
 
-**PL:** Wushu taolu, including taijiquan — IWUF
-**EN:** 
+**Źródło:** Wushu taolu, including taijiquan — IWUF
+**Source:** Wushu taolu, including taijiquan — IWUF
 
-**PL:** Tai chi — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Tai chi — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Tai chi — Wikipedia contributors — CC BY-SA 4.0
 
 ### catch — Catch wrestling
 
@@ -4845,7 +5148,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 19th and 20th centuries
 
 **PL:** Europa / Ameryka Północna
-**EN:** 
+**EN:** Europe / North America
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -4860,16 +5163,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You level for the grip, take the opponent down and look for a position from which a lock can be put on. There are no strikes. A judo jacket is usually absent too: the grip goes to the body and the joint.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -4955,11 +5267,17 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Catch wrestling — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**PL:** Zapasy
+**EN:** Wrestling
 
-**PL:** Wrestling — Encyclopaedia Britannica
-**EN:** 
+**PL:** Catch wrestling należy do szerszej rodziny zapasów, ale nie jest stylem olimpijskim wolnym ani klasycznym. Poddanie może zakończyć walkę catch, podczas gdy w stylu wolnym i klasycznym decydują upadek, przewaga techniczna lub punkty.
+**EN:** Catch wrestling belongs to the broader wrestling family but is not Olympic freestyle or Greco-Roman. A submission can end a catch bout, while freestyle and Greco-Roman bouts end by fall, technical superiority or points.
+
+**Źródło:** Catch wrestling — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Catch wrestling — Wikipedia contributors — CC BY-SA 4.0
+
+**Źródło:** Wrestling — Encyclopaedia Britannica
+**Source:** Wrestling — Encyclopaedia Britannica
 
 ### luta-livre — Luta livre esportiva
 
@@ -4979,7 +5297,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** 20th century
 
 **PL:** Ameryka Południowa
-**EN:** 
+**EN:** South America
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -4991,16 +5309,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You fight without the gi. The grip goes to the wrist, the neck and the leg, not to the collar. Sparring looks for a submission. It is not judo randori and it is not points BJJ in the gi, even when some techniques look alike.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5086,11 +5413,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Luta livre — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Luta livre — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Luta livre — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Luta livre esportiva — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Luta livre esportiva — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Luta livre esportiva — Wikipedia contributors — CC BY-SA 4.0
 
 ### iaido — Iaido
 
@@ -5110,7 +5437,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Sword schools, AJKF forms from 1969
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -5128,16 +5455,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You practise a catalogue of forms, often with a training sword, sometimes with a live blade under the school's supervision. There is no bogu armour and no point for a men strike. A score, if there is one, is about the cut, the posture and the draw, not an exchange of blows.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5223,11 +5559,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń treningowa
 **EN:** Training weapon
 
-**PL:** The concept of iaido — AJKF
-**EN:** 
+**Źródło:** The concept of iaido — AJKF
+**Source:** The concept of iaido — AJKF
 
-**PL:** Iaido — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Iaido — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Iaido — Wikipedia contributors — CC BY-SA 4.0
 
 ### kyudo — Kyudo
 
@@ -5247,7 +5583,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** An archery tradition, contemporary federations
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -5265,16 +5601,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You stand, nock the arrow and release it in a set form. A partner does not parry with a sword. Contests are shooting at a mato, not an unarmed fight.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5360,11 +5705,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń główna
 **EN:** Weapon first
 
-**PL:** About the International Kyudo Federation — IKYF
-**EN:** 
+**Źródło:** About the International Kyudo Federation — IKYF
+**Source:** About the International Kyudo Federation — IKYF
 
-**PL:** Kyūdō — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Kyūdō — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Kyūdō — Wikipedia contributors — CC BY-SA 4.0
 
 ### bokh — Bökh
 
@@ -5384,7 +5729,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** The Naadam festival, a wrestling tradition
 
 **PL:** Azja Środkowa
-**EN:** 
+**EN:** Central Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -5395,20 +5740,29 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Naadam składa się z zapasów, łucznictwa i wyścigów konnych. Bökh jest jedną z tych trzech rzeczy. Rytuał wejścia i strój są częścią zawodów, a nie przerywnikiem przed właściwą walką.
 **EN:** Naadam is wrestling, archery and horse racing. Bökh is one of those three. The entrance ritual and the costume are part of the contest, not an interval before the real fight.
 
-**PL:** Chwyt idzie za kurtkę i za tors. Starcie kończy się, gdy rywal dotknie ziemi w sposób określony przez lokalne zasady; szczegóły różnią się między odmianami. Nie ma pasa jak w ssireum, nie ma maty olimpijskiej i nie walczy się do upływu czasu w ten sam sposób co w stylu wolnym.
-**EN:** The grip goes to the jacket and the torso. The bout ends when the opponent touches the ground in a way defined by the local rules; the details vary between variants. There is no belt as in ssireum, no Olympic mat, and it is not fought to the clock the way freestyle is.
+**PL:** Chwyt idzie za kurtkę i za tors. Starcie kończy się, gdy rywal dotknie ziemi w sposób określony przez lokalne zasady; szczegóły różnią się między odmianami.
+**EN:** The grip goes to the jacket and the torso. The bout ends when the opponent touches the ground in a way defined by the local rules; the details vary between variants.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5497,11 +5851,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Naadam w Mongolii to zapasy, łucznictwo i wyścigi konne. Bökh jest jedną z tych trzech konkurencji, a nie całym świętem.
 **EN:** Naadam in Mongolia is wrestling, archery and horse racing. Bökh is one of those three contests, not the whole festival.
 
-**PL:** Mongolian wrestling — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Mongolian wrestling — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Mongolian wrestling — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Mongolia — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Mongolia — Encyclopaedia Britannica
+**Source:** Mongolia — Encyclopaedia Britannica
 
 ### ssireum — Ssireum
 
@@ -5521,7 +5875,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A wrestling tradition, modern contests
 
 **PL:** Azja Wschodnia
-**EN:** 
+**EN:** East Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -5532,20 +5886,29 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Satba owija biodro i udo, więc chwyt ma stałe miejsce, inaczej niż w zapasach olimpijskich. W tradycyjnej formule dorosłych zwycięzca finału bywał nagradzany wołem. Współczesne zawody mają kategorie, ale piasek i pas zostają.
 **EN:** The satba wraps the waist and the thigh, so the grip has a fixed place, unlike Olympic wrestling. In the traditional adult format the final winner used to receive an ox. Modern contests have divisions, but the sand and the belt remain.
 
-**PL:** Nie łapiesz nogi jak w stylu wolnym. Siła idzie przez pas, a dotknięcie piasku tułowiem kończy akcję. To nie jest taekwondo i nie jest taekkyeon: nie ma kopnięć.
-**EN:** You do not attack the leg the way you do in freestyle. The force goes through the belt, and the torso touching the sand ends the action. This is not taekwondo and it is not taekkyeon: there are no kicks.
+**PL:** Chwyt idzie przez pas satba, a dotknięcie piasku tułowiem powyżej kolana kończy akcję. To nie jest taekwondo ani taekkyeon: nie ma kopnięć.
+**EN:** The grip goes through the satba belt, and the torso touching the sand above the knee ends the action. This is not taekwondo or taekkyeon: there are no kicks.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5631,11 +5994,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Ssireum — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Ssireum — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Ssireum — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Traditional Korean wrestling (Ssirum/Ssireum) — UNESCO
-**EN:** 
+**Źródło:** Traditional Korean wrestling (Ssirum/Ssireum) — UNESCO
+**Source:** Traditional Korean wrestling (Ssirum/Ssireum) — UNESCO
 
 ### chidaoba — Chidaoba
 
@@ -5645,8 +6008,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Chwyty
 **EN:** Grappling
 
-**PL:** Chidaoba to gruzińskie zapasy w stroju chokha. Wygrywa rzut przy chwytach, których katalog jest duży. Przy arenie grają zurna i doli. UNESCO wpisało chidaobę w 2018 roku.
-**EN:** Chidaoba is Georgian wrestling in the chokha. A throw with a grip wins, and the catalogue of holds is large. Zurna and doli play by the arena. UNESCO inscribed chidaoba in 2018.
+**PL:** Chidaoba to gruzińskie zapasy w stroju chokha, z dużym katalogiem chwytów. Przy arenie grają zurna i doli. UNESCO wpisało chidaobę w 2018 roku.
+**EN:** Chidaoba is Georgian wrestling in the chokha, with a large catalogue of grips. Zurna and doli play by the arena. UNESCO inscribed chidaoba in 2018.
 
 **PL:** Gruzja
 **EN:** Georgia
@@ -5655,7 +6018,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A wrestling tradition
 
 **PL:** Kaukaz
-**EN:** 
+**EN:** Caucasus
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -5670,16 +6033,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You fight by gripping the costume and the body, with no strikes. The opponent's fall decides it. Music and traditional presentation remain part of the setting, alongside the rules of the contest.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5765,11 +6137,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Chidaoba, wrestling in Georgia — UNESCO
-**EN:** 
+**Źródło:** Chidaoba, wrestling in Georgia — UNESCO
+**Source:** Chidaoba, wrestling in Georgia — UNESCO
 
-**PL:** Chidaoba — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Chidaoba — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Chidaoba — Wikipedia contributors — CC BY-SA 4.0
 
 ### laamb — Laamb
 
@@ -5789,7 +6161,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A wrestling tradition, modern cards
 
 **PL:** Afryka Zachodnia
-**EN:** 
+**EN:** West Africa
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -5804,16 +6176,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** In the format without strikes you look for a throw to the ground. In the avec frappe format you may strike before the grip. The ground is not an Olympic mat, and the end of the fight depends on the format, not on a rule shared with bökh.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -5899,11 +6280,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Senegalese wrestling — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Senegalese wrestling — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Senegalese wrestling — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Senegal — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Senegal — Encyclopaedia Britannica
+**Source:** Senegal — Encyclopaedia Britannica
 
 ### glima — Glíma
 
@@ -5913,8 +6294,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Chwyty
 **EN:** Grappling
 
-**PL:** Glíma to islandzkie zapasy, najczęściej w pasie, z ruchem po kole. Rzut kończy akcję. Uderzeń nie ma. Średniowiecznej ciągłości nie da się tu dowieść z samego treningu.
-**EN:** Glíma is Icelandic wrestling, most often with a belt, moving in a circle. A throw ends the action. There are no strikes. Medieval continuity cannot be proved from the training alone.
+**PL:** Glíma to islandzkie zapasy w pasie, z ruchem po kole; w brokartök, hryggspenna i lausatök zasady chwytu i końca walki różnią się. Uderzeń nie ma.
+**EN:** Glíma is Icelandic belt wrestling, moving in a circle; in brokartök, hryggspenna and lausatök the grip and the end of the bout differ. There are no strikes.
 
 **PL:** Islandia
 **EN:** Iceland
@@ -5923,7 +6304,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A wrestling tradition, also described in the 19th–20th centuries
 
 **PL:** Europa Północna
-**EN:** 
+**EN:** Northern Europe
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -5938,16 +6319,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You stand in the belt, hold the grip and break balance on the move, not in an Olympic clinch. The ground after a throw decides it. There is no ssireum sand and no bökh jacket.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -6033,11 +6423,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Glíma — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Glíma — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Glíma — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Iceland — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Iceland — Encyclopaedia Britannica
+**Source:** Iceland — Encyclopaedia Britannica
 
 ### alysh — Alysh
 
@@ -6057,7 +6447,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A belt-wrestling tradition
 
 **PL:** Azja Środkowa
-**EN:** 
+**EN:** Central Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -6068,20 +6458,29 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Międzynarodowe starty są nowszą ramą na starszych zapasach ludowych. Kurash ma własny chwyt za kurtkę i własną federację. Wspólna mapa nie zrówna pasa z kurtką.
 **EN:** International starts are a newer frame on older folk wrestling. Kurash has its own jacket grip and its own federation. A shared map does not make a belt and a jacket the same.
 
-**PL:** Trzymasz pas obiema rękami i wchodzisz na rzut biodrem. Ciosów nie ma. Nie można opisać tego jako stylu wolnego: pas wyznacza chwyt od początku, a walka ma własne zasady.
-**EN:** You hold the belt with both hands and enter a hip throw. There are no strikes. It cannot be described as freestyle: the belt fixes the grip from the start and the bout follows its own rules.
+**PL:** Trzymasz pas obiema rękami i wchodzisz na rzut biodrem. Ciosów nie ma. Pas wyznacza chwyt od początku, a walka ma własne zasady — to nie styl wolny.
+**EN:** You hold the belt with both hands and enter a hip throw. There are no strikes. The belt fixes the grip from the start and the bout follows its own rules — not freestyle.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -6167,11 +6566,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Alysh — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Alysh — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Alysh — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** United World Wrestling — UWW
-**EN:** 
+**Źródło:** United World Wrestling — UWW
+**Source:** United World Wrestling — UWW
 
 ### kurash — Kurash
 
@@ -6191,7 +6590,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A wrestling tradition, an international federation in the 20th century
 
 **PL:** Azja Środkowa
-**EN:** 
+**EN:** Central Asia
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -6206,16 +6605,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A throw under the rules can score or end the bout, and the action does not continue on the ground. There are no strikes. The jacket is part of the rules, not only the costume.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -6301,11 +6709,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** International Kurash Association — IKA
-**EN:** 
+**Źródło:** International Kurash Association — IKA
+**Source:** International Kurash Association — IKA
 
-**PL:** Kurash — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Kurash — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Kurash — Wikipedia contributors — CC BY-SA 4.0
 
 ### gatka — Gatka
 
@@ -6325,7 +6733,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A Sikh tradition, a revival in the 20th century
 
 **PL:** Azja Południowa
-**EN:** 
+**EN:** South Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -6339,20 +6747,29 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń i wspólnota sikhijska są kontekstem, nie ozdobnikiem. Współczesne szkoły uczą gatki zarówno jako praktyki walki, jak i tradycji kulturowej i religijnej. Nie jest to HEMA ani kendo: inne źródła, inna broń i inny kontekst.
 **EN:** Weapons and the Sikh community are the context, not decoration. Contemporary schools teach gatka both as a martial practice and as a cultural and religious tradition. It is not HEMA and it is not kendo: different sources, different weapons and a different context.
 
-**PL:** Ćwiczy się formy i pary na kiju oraz na broni, często w ruchu kołowym. Kontakt turniejowy nie jest tu osią, tak jak w szermierce. Pokaz i szkolenie religijnej wspólnoty zostają częścią praktyki.
-**EN:** You drill forms and pairs with a stick and with weapons, often in a circular movement. Tournament contact is not the axis, the way it is in fencing. The demonstration and the training of a religious community stay part of the practice.
+**PL:** Ćwiczy się formy i pary na kiju oraz na broni, często w ruchu kołowym. Turniejowy kontakt bywa, ale tradycja, pokaz i szkolenie wspólnoty są równie ważne co punkt.
+**EN:** You drill forms and pairs with a stick and with weapons, often in a circular movement. Tournament contact exists, but tradition, demonstration and community training matter as much as a score.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -6438,11 +6855,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń treningowa
 **EN:** Training weapon
 
-**PL:** Gatka — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Gatka — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Gatka — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Sikhism — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Sikhism — Encyclopaedia Britannica
+**Source:** Sikhism — Encyclopaedia Britannica
 
 ### kalaripayattu — Kalaripayattu
 
@@ -6465,7 +6882,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A Kerala tradition
 
 **PL:** Azja Południowa
-**EN:** 
+**EN:** South Asia
 
 **PL:** Sztuka walki
 **EN:** Martial art
@@ -6483,16 +6900,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** Warm-up and forms come before weapons: stick, dagger, sword and shield, depending on the current. The empty hand is in the set, but the kalari and the sequences do not look like a round in a ring. A partner is needed for weapons and for applications.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -6578,11 +7004,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń treningowa
 **EN:** Training weapon
 
-**PL:** Kalaripayattu — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Kalaripayattu — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Kalaripayattu — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Kerala — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Kerala — Encyclopaedia Britannica
+**Source:** Kerala — Encyclopaedia Britannica
 
 ### dambe — Dambe
 
@@ -6602,7 +7028,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** A fist-and-kick fighting tradition
 
 **PL:** Afryka Zachodnia
-**EN:** 
+**EN:** West Africa
 
 **PL:** Sport walki
 **EN:** Combat sport
@@ -6617,16 +7043,25 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **EN:** You fight with a wrapped fist, in a guard, with kicks. Contact is part of the traditional bout.
 
 **PL:** Oceny (nisko / średnio / wysoko) mówią, jak mocno dany element występuje w typowym treningu — to nie ranking siły ani umiejętności.
-**EN:** 
+**EN:** Ratings (low / medium / high) say how much of something shows up in typical training — not a strength or skill ranking.
 
-**PL:** nisko — prawie nie występuje albo niewielkie nastawienie.
-**EN:** 
+**PL:** nisko
+**EN:** low
 
-**PL:** średnio — umiarkowanie: bywa, ale nie dominuje.
-**EN:** 
+**PL:** — prawie nie występuje albo niewielkie nastawienie.
+**EN:** — barely there or little emphasis.
 
-**PL:** wysoko — wyraźnie ważne i regularne w treningu.
-**EN:** 
+**PL:** średnio
+**EN:** medium
+
+**PL:** — umiarkowanie: bywa, ale nie dominuje.
+**EN:** — moderate: it shows up, but it is not the main thing.
+
+**PL:** wysoko
+**EN:** high
+
+**PL:** — wyraźnie ważne i regularne w treningu.
+**EN:** — clearly important and regular in training.
 
 **PL:** Uderzenia
 **EN:** Striking
@@ -6712,19 +7147,19 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Bez broni
 **EN:** No weapon
 
-**PL:** Dambe — Wikipedia contributors — CC BY-SA 4.0
-**EN:** 
+**Źródło:** Dambe — Wikipedia contributors — CC BY-SA 4.0
+**Source:** Dambe — Wikipedia contributors — CC BY-SA 4.0
 
-**PL:** Hausa — Encyclopaedia Britannica
-**EN:** 
+**Źródło:** Hausa — Encyclopaedia Britannica
+**Source:** Hausa — Encyclopaedia Britannica
 
 ## 5. Quizopasowanie — pytania
 
-**PL:** Jak bardzo chcesz uderzać?
-**EN:** How much do you want to strike?
+**PL:** Jak bardzo chcesz pracować uderzeniami (oś striking)?
+**EN:** How much do you want striking work (the striking axis)?
 
-**PL:** Jak bardzo chcesz chwytać i trzymać?
-**EN:** How much do you want to grapple and hold?
+**PL:** Jak bardzo chcesz chwytać (oś chwyt/grappling)?
+**EN:** How much do you want grappling (the grappling axis)?
 
 **PL:** Jak bardzo chcesz walczyć w parterze?
 **EN:** How much do you want to fight on the ground?
@@ -6735,8 +7170,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Jak bardzo chcesz kopać?
 **EN:** How much do you want to kick?
 
-**PL:** Jak mocny ma być kontakt?
-**EN:** How hard should the contact be?
+**PL:** Jak mocny ma być kontakt na treningu z partnerem?
+**EN:** How hard should partner contact be in training?
 
 **PL:** Jak bardzo chcesz startować w zawodach?
 **EN:** How much do you want to compete?
@@ -6762,17 +7197,20 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Z bliska, klincz albo chwyt.
 **EN:** Up close, a clinch or a grip.
 
-**PL:** Na treningu dochodzi do zwarcia. Co ma być dalej?
-**EN:** In training it comes to close range. What should happen next?
+**PL:** To zależy — kopnięcia i klincz po równo.
+**EN:** It depends — kicks and clinch matter about equally.
 
-**PL:** Rzut.
-**EN:** A throw.
+**PL:** Co wolisz, gdy trening schodzi do bliskiej pracy?
+**EN:** What do you prefer when training moves into close work?
 
-**PL:** Schodzicie do parteru i szukacie poddania.
-**EN:** You go to the ground and look for a submission.
+**PL:** Rzut albo obalenie.
+**EN:** A throw or a takedown.
 
-**PL:** Uderzenie i odskok.
-**EN:** A strike and a step out.
+**PL:** Parter i poddanie.
+**EN:** Ground work and a submission.
+
+**PL:** Uderzenie z bliska.
+**EN:** A strike at close range.
 
 **PL:** Zaznacz, co ma być w Twoim tygodniu treningowym. Możesz wybrać kilka rzeczy naraz, a jeśli nic z tego Cię nie rusza, zostaw puste.
 **EN:** Tick what should be in your training week. You can pick several, or leave it blank if none of it matters to you.
@@ -6792,8 +7230,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Szybkie, mocne wejście.
 **EN:** An explosive entry.
 
-**PL:** Nic z tego.
-**EN:** None of these.
+**PL:** Nic z powyższych mnie nie rusza.
+**EN:** None of the above matters to me.
 
 ## 6. Badania (porównanie)
 
@@ -6817,14 +7255,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Ciało jest tu obciążane lżej, niż chcesz.
 **EN:** The body is loaded lighter here than you want.
 
-**PL:** Walka w zwarciu jest tu mniej więcej tak ważna, jak chcesz.
-**EN:** Close-range work matters here about as much as you want.
+**PL:** Klincz jest tu mniej więcej tak ważny, jak chcesz.
+**EN:** Clinch work matters here about as much as you want.
 
-**PL:** Zwarcia jest tu więcej, niż szukasz.
-**EN:** There's more close-range work here than you're after.
+**PL:** Klinczu jest tu więcej, niż szukasz.
+**EN:** There's more clinch work here than you're after.
 
-**PL:** Zwarcia jest tu mniej, niż szukasz.
-**EN:** There's less close-range work here than you're after.
+**PL:** Klinczu jest tu mniej, niż szukasz.
+**EN:** There's less clinch work here than you're after.
 
 **PL:** Zawodów jest tu mniej więcej tyle, ile chcesz.
 **EN:** There's about as much competition here as you want.
@@ -6841,8 +7279,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Kontakt jest mocniejszy, niż chcesz.
 **EN:** The contact is harder than you want.
 
-**PL:** Kontakt jest lżejszy, niż chcesz.
-**EN:** The contact is lighter than you want.
+**PL:** Kontaktu jest tu mniej, niż szukasz.
+**EN:** There's less contact here than you're after.
 
 **PL:** Łokcie są tu mniej więcej tak ważne, jak chcesz.
 **EN:** Elbows matter here about as much as you want.
@@ -6880,8 +7318,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Jest tu mniej zrywu, niż chcesz.
 **EN:** There's less burst here than you want.
 
-**PL:** Chcesz dużo chwytów i tutaj jest ich dużo.
-**EN:** You want a lot of grappling, and there's a lot of it here.
+**PL:** Chwytów jest tu sporo, zgodnie z tym, czego szukasz.
+**EN:** There's a fair amount of grappling here, in line with what you want.
 
 **PL:** Chwytów jest tu więcej, niż szukasz.
 **EN:** There's more grappling here than you're after.
@@ -6943,8 +7381,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Pracy solo jest tu mniej, niż szukasz.
 **EN:** There's less solo work here than you're after.
 
-**PL:** Chcesz dużo uderzeń i tutaj jest ich dużo.
-**EN:** You want a lot of striking, and there's a lot of it here.
+**PL:** Uderzeń jest tu sporo, zgodnie z tym, czego szukasz.
+**EN:** There's a fair amount of striking here, in line with what you want.
 
 **PL:** Uderzeń jest tu więcej, niż szukasz.
 **EN:** There's more striking here than you're after.
@@ -6958,8 +7396,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Poddania liczą się tu bardziej, niż szukasz.
 **EN:** Submissions matter more here than you're after.
 
-**PL:** Poddania liczą się tu mniej, niż szukasz.
-**EN:** Submissions matter less here than you're after.
+**PL:** Poddania pojawiają się tu rzadziej, niż szukasz.
+**EN:** Submissions show up less often here than you're after.
 
 **PL:** Obaleń jest tu mniej więcej tyle, ile chcesz.
 **EN:** There are about as many takedowns here as you want.
@@ -6973,11 +7411,11 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Złożoność techniczna pasuje do tego, czego szukasz.
 **EN:** The technical load fits what you're after.
 
-**PL:** Techniki jest tu więcej, niż szukasz.
-**EN:** There's more technique here than you're after.
+**PL:** Złożoność techniczna jest tu większa, niż szukasz.
+**EN:** The technical complexity is higher here than you're after.
 
-**PL:** Techniki jest tu mniej, niż szukasz.
-**EN:** There's less technique here than you're after.
+**PL:** Złożoność techniczna jest tu mniejsza, niż szukasz.
+**EN:** The technical complexity is lower here than you're after.
 
 **PL:** Rzuty są tu mniej więcej tak ważne, jak chcesz.
 **EN:** Throws matter here about as much as you want.
@@ -7021,7 +7459,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Łokcie prawie tu nie mają znaczenia — i dobrze, bo właśnie tego szukasz.
 **EN:** Elbows barely matter here — and that's what you want.
 
-**PL:** Nie trzeba jej tu wiele — i dobrze, bo właśnie tego szukasz.
+**PL:** Nie potrzeba tu dużej wytrzymałości — i dobrze, bo właśnie tego szukasz.
 **EN:** You don't need much endurance here — and that's what you want.
 
 **PL:** Sprzętu jest tu mało — i dobrze, bo właśnie tego szukasz.
@@ -7069,7 +7507,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Zwyczajów i tradycji w sali jest tu mało — i dobrze, bo właśnie tego szukasz.
 **EN:** There's little hall custom and tradition here — and that's what you want.
 
-**PL:** Broni jest tu prawie nie ma — i dobrze, bo właśnie tego szukasz.
+**PL:** Broni prawie tu nie ma — i dobrze, bo właśnie tego szukasz.
 **EN:** There's almost no weapon here — and that's what you want.
 
 **PL:** {higher} bardziej obciąża ciało niż {lower}.

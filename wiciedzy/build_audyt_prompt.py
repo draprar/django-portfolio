@@ -11,11 +11,11 @@ Wklej **cały ten plik** do ChatGPT (lub załącz jako plik). Model ma przeprowa
 
 ## Kontekst techniczny (nie oceniaj kodu Django, tylko treść i spójność)
 
-- Aplikacja: **wiciędze** (`/wiciedze/`), katalog **40** stylów w bazie (30 core + 10 golden). Import: `CORE` + `GOLDEN` z `styles.py`, pola About/History/Practice **nadpisuje** `PROSE` z `prose.py`.
-- **Lustro redakcyjne:** `katalog-opisy.md` ma **46** opisów stylów + sekcje „Do sprawdzenia” i meta; **6 kart jest tylko w MD** (nie w imporcie): Taekkyeon, Taijiquan, Catch wrestling, Luta livre esportiva, Iaido, Kyudo.
-- **Fakty** i **relacje** między kartami są tylko w `styles.py` (6 faktów, 4 relacje w imporcie). Notatka Zapasy→Catch jest w MD przy Wrestling; w bazie relacji zapasy→catch **nie ma** (brak sluga catch).
+- Aplikacja: **wiciędze** (`/wiciedze/`), katalog **46** aktywnych stylów w bazie (36 core + 10 golden). Import: `CORE` + `GOLDEN` z `styles.py`, pola About/History/Practice **nadpisuje** `PROSE` z `prose.py`.
+- **Lustro redakcyjne:** `katalog-opisy.md` ma **46** opisów stylów + sekcje „Do sprawdzenia” i meta; katalog w `styles.py` powinien być zgodny z bazą (sprawdź `validate_wiciedzy_content`).
+- **Fakty** i **relacje** między kartami są w `styles.py` (import: `FACTS`, `RELATIONS`). Po imporcie w bazie powinno być **22** relacji, m.in. catch → zapasy (subset).
 - **5 kart** ma flagę `sources_disagree` (baner: źródła niejasne): taekwondo, wushu, hapkido, hema, kalaripayattu.
-- Parasole (umbrella): karate, wushu, arnis, jujutsu, silat.
+- Parasole (umbrella): karate, wushu, arnis, jujutsu, silat, taijiquan.
 - Quiz dopasowania: preferencje + profile 22 osi (nie pokazywane użytkowniku jako liczby). Osobny plik quizu poniżej.
 - Język: pary **EN nad PL** w katalogu MD; na stronie domyślnie PL z `data-en` / `data-pl`. Nie proponuj profilu 1–5 ani „niski/średni/wysoki” w opisach kart.
 
@@ -80,7 +80,7 @@ def main() -> None:
         "## Sekcja D — fakty i relacje (import)\n\n```python\n",
         relations_facts.strip(),
         "\n```\n\n",
-        "## Sekcja A — eksport tekstów widocznych pod /wiciedze/ (UI + 40 kart po PROSE)\n\n",
+        "## Sekcja A — eksport tekstów widocznych pod /wiciedze/ (UI + 46 kart po PROSE)\n\n",
         (ROOT / "teksty-audyt-eksport.md").read_text(encoding="utf-8"),
         "\n\n## Sekcja B — katalog-opisy.md (lustro redakcyjne, 46 stylów)\n\n",
         (ROOT / "katalog-opisy.md").read_text(encoding="utf-8"),
@@ -88,8 +88,8 @@ def main() -> None:
         (ROOT / "quizopasowanie.md").read_text(encoding="utf-8"),
     ]
     out = ROOT / "prompt-audyt-chatgpt.md"
-    out.write_text("".join(chunks), encoding="utf-8")
-    lines = out.read_text(encoding="utf-8").count("\n") + 1
+    out.write_text("".join(chunks), encoding="utf-8-sig")
+    lines = out.read_text(encoding="utf-8-sig").count("\n") + 1
     print(f"Wrote {out} ({lines} lines)")
 
 

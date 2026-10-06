@@ -107,6 +107,7 @@ class Command(BaseCommand):
         return style
 
     def _relations(self) -> None:
+        keep: list[int] = []
         for row in RELATIONS:
             left = Style.objects.get(slug=row["from"])
             right = Style.objects.get(slug=row["to"])
@@ -118,6 +119,8 @@ class Command(BaseCommand):
                 defaults={"note_pl": row["note_pl"], "note_en": row["note_en"]},
             )
             relation.sources.set(Source.objects.filter(url__in=row["source_urls"], style__in=[left, right]))
+            keep.append(relation.pk)
+        StyleRelation.objects.exclude(pk__in=keep).delete()
 
     def _facts(self) -> None:
         keep: list[int] = []

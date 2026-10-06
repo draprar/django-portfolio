@@ -640,6 +640,23 @@ a.wiciedzy-card:hover {
   margin-bottom: 0;
 }
 
+.wiciedzy-catalog-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wiciedzy-catalog-card h2,
+.wiciedzy-catalog-card .wiciedzy-muted {
+  width: 100%;
+  text-align: center;
+}
+
+.wiciedzy-catalog-card .wiciedzy-tag {
+  margin-bottom: 0.65rem;
+}
+
 .wiciedzy-scale-legend {
   margin: 0 0 1.1rem;
   padding: 0.75rem 1rem;
@@ -687,18 +704,26 @@ a.wiciedzy-card:hover {
   margin-top: 1rem;
 }
 
+.wiciedzy-tag,
 .wiciedzy-tags a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
   padding: 4px 12px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--muted);
   font-size: 0.8rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   text-decoration: none;
+  box-sizing: border-box;
+}
+
+.wiciedzy-tag {
+  cursor: inherit;
 }
 
 .wiciedzy-tags a.is-current {

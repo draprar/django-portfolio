@@ -5,12 +5,14 @@ from django.utils.html import escape
 from django.views.decorators.http import require_http_methods
 from django_ratelimit.decorators import ratelimit
 
+from wiciedzy.data.instruments import OPTIONAL_SCALE_ORDERS, PREFERENCE_SCALE_ANCHORS
 from wiciedzy.display import (
     description_is_thin,
     key_differences,
     load_profile,
     paired_groups,
     profile_groups,
+    region_labels,
     split_profile,
 )
 from wiciedzy.models import PreferenceQuestion, Study, Style, Tag
@@ -62,6 +64,7 @@ def style_detail(request: HttpRequest, slug: str) -> HttpResponse:
     relations = [item for item in style.relations_out.all() if item.sources.all()]
     profile = load_profile(style)
     headline, rest = split_profile(profile)
+    region_pl, region_en = region_labels(style.region)
     return render(
         request,
         "wiciedzy/detail.html",
@@ -71,6 +74,8 @@ def style_detail(request: HttpRequest, slug: str) -> HttpResponse:
             "headline": headline,
             "rest": rest,
             "thin_sources": description_is_thin(style),
+            "region_pl": region_pl,
+            "region_en": region_en,
         },
     )
 
@@ -85,6 +90,7 @@ def preference_test(request: HttpRequest) -> HttpResponse:
     )
     if not questions:
         return render(request, "wiciedzy/empty.html")
+    _attach_scale_anchors(questions)
     if request.method == "POST":
         if not answers_complete(questions, request.POST):
             _forget(request, PREFERENCE_KEY)
@@ -179,6 +185,20 @@ def sitemap(request: HttpRequest) -> HttpResponse:
         lines.append(f"<url><loc>{loc}</loc></url>")
     lines.append("</urlset>")
     return HttpResponse("\n".join(lines), content_type="application/xml")
+
+
+def _attach_scale_anchors(questions: list[PreferenceQuestion]) -> None:
+    for question in questions:
+        question.is_required = (
+            question.kind in {"scale", "ab", "situation"} and question.sort_order not in OPTIONAL_SCALE_ORDERS
+        )
+        row = PREFERENCE_SCALE_ANCHORS.get(question.sort_order, {})
+        question.scale_hint_pl = row.get("hint_pl", "1 oznacza wcale, 5 — bardzo.")
+        question.scale_hint_en = row.get("hint_en", "1 means not at all, 5 — very much.")
+        question.scale_low_pl = row.get("anchor_low_pl", "wcale")
+        question.scale_low_en = row.get("anchor_low_en", "not at all")
+        question.scale_high_pl = row.get("anchor_high_pl", "bardzo")
+        question.scale_high_en = row.get("anchor_high_en", "very much")
 
 
 def _forget(request: HttpRequest, key: str) -> None:

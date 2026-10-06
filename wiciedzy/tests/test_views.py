@@ -115,7 +115,7 @@ def test_catalog_copy_says_style_not_discipline(client):
     response = client.get(reverse("wiciedzy:list"))
     content = response.content.decode()
 
-    assert "Obczaj różne sporty i sztuki walki" in content
+    assert "wiciedzy-subtitle" not in content
     assert "dyscyplin" not in content
     assert 'data-en="Catalog"' in content
 

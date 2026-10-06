@@ -73,6 +73,21 @@ jobs:
       - name: Verify migrations are committed
         run: python manage.py makemigrations --check --dry-run
 
+      - name: wiciędze export drift
+        run: |
+          python manage.py migrate --noinput
+          python manage.py import_wiciedzy
+          python manage.py export_wiciedzy_texts -o /tmp/wiciedzy-eksport.md
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          committed = Path("wiciedzy/teksty-eksport.md").read_text(encoding="utf-8-sig")
+          fresh = Path("/tmp/wiciedzy-eksport.md").read_text(encoding="utf-8-sig")
+          strip = lambda t: re.sub(r"^Wygenerowano:.*$", "", t, flags=re.M)
+          if strip(committed) != strip(fresh):
+              raise SystemExit("teksty-eksport.md is stale; run export_wiciedzy_texts and commit")
+          PY
+
       - name: Run tests
         run: python -m pytest -q --cov=. --cov-report=term-missing --cov-fail-under=80
 

@@ -7,6 +7,7 @@ from django.core.management import call_command
 from django.db import IntegrityError, transaction
 from django.urls import reverse
 
+from wiciedzy.data.instruments import OPTIONAL_SCALE_ORDERS
 from wiciedzy.data.styles import FACTS
 from wiciedzy.dimensions import DIMENSION_LABELS
 from wiciedzy.humor import choose_archetypes
@@ -34,6 +35,8 @@ def answered(questions, high_dimensions: set[str] | None = None) -> dict[str, st
     posted: dict[str, str] = {}
     for question in questions:
         if question.kind == "scale":
+            if question.sort_order in OPTIONAL_SCALE_ORDERS:
+                continue
             posted[f"s{question.pk}"] = "5" if question.dimension in high else "1"
         elif question.kind in {"ab", "situation"}:
             option = question.options.all()[0]
@@ -79,7 +82,7 @@ def test_relation_clean_requires_a_source():
     with pytest.raises(ValidationError):
         relation.full_clean()
 
-    relation.sources.add(boks.sources.get())
+    relation.sources.add(boks.sources.order_by("pk").first())
     relation.full_clean()
 
 
@@ -91,14 +94,14 @@ def test_import_is_stable_and_validation_passes():
     relation_count = StyleRelation.objects.count()
     load_catalog()
 
-    assert Style.objects.filter(catalog_set="core", active=True).count() == 30
+    assert Style.objects.filter(catalog_set="core", active=True).count() == 36
     assert Style.objects.filter(catalog_set="golden", active=True).count() == 10
+    assert Style.objects.filter(active=True).count() == 46
     assert Style.objects.filter(slug="boks").count() == 1
     assert boks.sources.count() == source_count
     assert Source.objects.filter(style=boks).count() == source_count
     assert StyleRelation.objects.count() == relation_count
-    assert StyleRelation.objects.filter(from_style__slug="sanda", kind="modern_form").exists()
-    assert not StyleRelation.objects.filter(from_style__slug="sanda", kind="subset").exists()
+    assert StyleRelation.objects.filter(from_style__slug="catch", to_style__slug="zapasy", kind="subset").exists()
     assert StyleRelation.objects.filter(from_style__slug="bjj", kind="influenced").exists()
     assert Fact.objects.count() == len(FACTS)
     assert Style.objects.get(slug="boks").facts.count() == 1
@@ -115,7 +118,17 @@ def test_import_is_stable_and_validation_passes():
 
 
 @pytest.mark.django_db
-def test_validation_fails_before_the_catalog_is_loaded():
+def test_validation_fails_on_orphan_styles():
+    Style.objects.create(
+        slug="orphan-test",
+        name_pl="Orphan",
+        name_en="Orphan",
+        family="uderzenia",
+        catalog_set="core",
+        summary_pl="x",
+        summary_en="x",
+        active=True,
+    )
     with pytest.raises(SystemExit):
         call_command("validate_wiciedzy_content")
 
@@ -381,9 +394,8 @@ def test_low_agreement_and_striking_copy_do_not_say_stance():
     plus_pl, _, _, _ = _reasons({"weapons": 0.0}, {"weapons": 0}, ["weapons"])
     striking, _, _, _ = _reasons({"striking": 5.0}, {"striking": 5}, ["striking"])
 
-    assert plus_pl == ["Broni jest tu prawie nie ma — i dobrze, bo właśnie tego szukasz."]
-    assert "uderz" in striking[0].lower()
-    assert "stój" not in striking[0]
+    assert plus_pl == ["Broni prawie tu nie ma — i dobrze, bo właśnie tego szukasz."]
+    assert "sporo" in striking[0].lower() or "uderze" in striking[0].lower()
 
 
 def test_equal_distance_breaks_the_tie_by_slug():

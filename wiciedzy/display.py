@@ -61,6 +61,32 @@ def load_profile(style: Style) -> TrainingProfile | None:
         return None
 
 
+REGION_EN: dict[str, str] = {
+    "Azja Wschodnia": "East Asia",
+    "Europa": "Europe",
+    "Azja Południowo-Wschodnia": "Southeast Asia",
+    "Ameryka Południowa": "South America",
+    "Azja Środkowa": "Central Asia",
+    "Kaukaz": "Caucasus",
+    "Bliski Wschód": "Middle East",
+    "Afryka Zachodnia": "West Africa",
+    "Europa Wschodnia": "Eastern Europe",
+    "Europa Północna": "Northern Europe",
+    "Azja Południowa": "South Asia",
+    "Ameryka Północna": "North America",
+    "Globalny": "Global",
+    "Europa / Ameryka Północna": "Europe / North America",
+}
+
+
+def region_labels(region: str) -> tuple[str, str]:
+    """Map the PL region label stored on Style to a bilingual pair for the UI."""
+    region = (region or "").strip()
+    if not region:
+        return "", ""
+    return region, REGION_EN.get(region, region)
+
+
 COMPETITION_WORDS = {
     "sport": ("Zawody", "Competition"),
     "traditional": ("Praktyka tradycyjna", "Traditional practice"),
