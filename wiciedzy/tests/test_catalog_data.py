@@ -1,9 +1,9 @@
 import re
+from io import StringIO
+from pathlib import Path
 
 import pytest
-from pathlib import Path
 from django.core.management import call_command
-from io import StringIO
 
 from wiciedzy.content_validation import APPROVED_ACTIVE_SLUGS, collect_findings
 from wiciedzy.data.styles import CORE, GOLDEN, RELATIONS

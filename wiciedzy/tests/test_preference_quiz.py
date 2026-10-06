@@ -7,7 +7,7 @@ from django.core.management import call_command
 
 from wiciedzy.data.instruments import OPTIONAL_SCALE_ORDERS, PREFERENCE
 from wiciedzy.models import PreferenceQuestion, TrainingProfile
-from wiciedzy.preference import answers_complete, rank_styles, user_vector, _reasons
+from wiciedzy.preference import _reasons, answers_complete, rank_styles, user_vector
 
 BLOCKLIST = ("osobowość", "typ człowieka", "skuteczność", "najlepszy dla ciebie")
 

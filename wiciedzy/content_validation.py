@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-from urllib.parse import urlparse
 
 from django.db.models import Count
 
@@ -44,7 +43,6 @@ def collect_findings() -> tuple[list[str], list[str], list[str]]:
     warnings: list[str] = []
     infos: list[str] = []
 
-    source_count = len(CORE) + len(GOLDEN)
     if len(CORE) < 36:
         errors.append(f"CORE ma {len(CORE)}, a po backfillu potrzeba co najmniej 36")
     if len(GOLDEN) < 10:
