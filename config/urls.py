@@ -3,6 +3,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+
+from config.views import legacy_wiciedze_redirect
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 env = environ.Env()
@@ -19,7 +21,11 @@ urlpatterns = [
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
     path("code/", include(("code.urls", "code"), namespace="code")),
     path("cwiczba/", include(("poligon.urls", "poligon"), namespace="poligon")),
-    path("wiciedzy/", include(("wiciedzy.urls", "wiciedzy"), namespace="wiciedzy")),
+    path("wiciedze/", include(("wiciedzy.urls", "wiciedzy"), namespace="wiciedzy")),
+    path("wiciedzy/", legacy_wiciedze_redirect),
+    path("wiciedzy/<path:path>", legacy_wiciedze_redirect),
+    path("wyciedzy/", legacy_wiciedze_redirect),
+    path("wyciedzy/<path:path>", legacy_wiciedze_redirect),
     # API
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),

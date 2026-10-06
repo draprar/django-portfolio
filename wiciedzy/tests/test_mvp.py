@@ -1,4 +1,4 @@
-﻿from io import StringIO
+from io import StringIO
 from pathlib import Path
 
 import pytest
@@ -256,8 +256,8 @@ def test_cards_golden_and_fact(client):
     assert "Karate" in content
     assert "https://en.wikipedia.org/wiki/Kyokushin" in content
 
-    golden = client.get("/wiciedzy/zlote/")
-    fact = client.get("/wiciedzy/fakt/")
+    golden = client.get("/wiciedze/zlote/")
+    fact = client.get("/wiciedze/fakt/")
     assert golden.status_code == 404
     assert fact.status_code == 404
 
@@ -325,8 +325,8 @@ def test_every_core_style_can_be_either_side_of_a_comparison(client):
 @pytest.mark.django_db
 def test_fact_draw_skips_the_previous_one(client):
     load_catalog()
-    first = client.get("/wiciedzy/fakt/")
-    second = client.get("/wiciedzy/fakt/")
+    first = client.get("/wiciedze/fakt/")
+    second = client.get("/wiciedze/fakt/")
     assert first.status_code == 404
     assert second.status_code == 404
 
@@ -336,7 +336,7 @@ def test_serious_pages_do_not_call_the_catalog_a_joke(client):
     load_catalog()
     home = client.get(reverse("wiciedzy:home")).content.decode()
     assert "To żart" not in home
-    assert "Siemasz na Wiciędzy" not in home
+    assert "Siemasz na wiciędze" not in home
     assert "Boks boks, albo kop kop" in home
     assert "obczaj niżej" not in home
     assert "Archetyp" not in home

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title {% block title_i18n %}data-pl="wiciędzy" data-en="wiciędzy"{% endblock %}>{% block title %}wiciędzy{% endblock %}</title>
+  <title {% block title_i18n %}data-pl="wiciędze" data-en="wiciędze"{% endblock %}>{% block title %}wiciędze{% endblock %}</title>
   {% block meta_description %}
   <meta name="description"
         data-pl="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki."
@@ -15,7 +15,7 @@
         data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."
         content="Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.">
   {% endblock %}
-  <meta property="og:title" content="{% block og_title %}wiciędzy{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}wiciędze{% endblock %}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
   <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
@@ -33,7 +33,7 @@
 <div class="wiciedzy-stage">
   <main class="wiciedzy-portal" id="wiciedzy-main">
     <div class="wiciedzy-portal-top">
-      <a class="wiciedzy-brand" href="{% url 'wiciedzy:home' %}">wiciędzy</a>
+      <a class="wiciedzy-brand" href="{% url 'wiciedzy:home' %}">wiciędze</a>
       <div class="wiciedzy-lang" role="group" aria-label="Język / Language">
         <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
         <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>

@@ -25,8 +25,20 @@ def test_custom_404_view_returns_404_and_logs_request(rf, caplog):
 
 
 @pytest.mark.django_db
+def test_legacy_catalog_prefixes_redirect_permanently(client):
+    for prefix in ("/wiciedzy/", "/wyciedzy/"):
+        root = client.get(prefix)
+        nested = client.get(f"{prefix.rstrip('/')}/spis/boks/")
+
+        assert root.status_code == 301
+        assert root["Location"] == "/wiciedze/"
+        assert nested.status_code == 301
+        assert nested["Location"] == "/wiciedze/spis/boks/"
+
+
+@pytest.mark.django_db
 def test_wiciedzy_missing_path_uses_the_app_page(rf):
-    request = rf.get("/wiciedzy/nie-ma/")
+    request = rf.get("/wiciedze/nie-ma/")
     response = custom_404_view(request, Exception("missing"))
     body = response.content.decode()
 

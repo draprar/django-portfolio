@@ -1,4 +1,4 @@
-# Katalog Wiciędzya — opisy do sprawdzenia
+# Katalog wiciędze — opisy do sprawdzenia
 
 Ten plik jest do dwóch przejść, w tej kolejności.
 

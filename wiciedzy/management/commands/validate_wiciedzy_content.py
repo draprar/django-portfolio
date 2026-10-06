@@ -27,7 +27,7 @@ HELPFUL_ROLES = {"history", "definition"}
 
 
 class Command(BaseCommand):
-    help = "Validate Wiciędzy content. Prints ERROR, WARNING, and INFO. Exits 1 only on ERROR."
+    help = "Validate wiciędze content. Prints ERROR, WARNING, and INFO. Exits 1 only on ERROR."
 
     def handle(self, *args, **options) -> None:
         errors, warnings, infos = self._findings()
