@@ -2,9 +2,9 @@
 
 Poniżej są wszystkie teksty z mojej aplikacji.
 
-Wiciędzy jest katalogiem sportów i sztuk walki: opisuje, czym styl jest, skąd się wziął i jak wygląda trening, bez rankingu i bez obietnicy, że któryś jest lepszy. Odwiedzający może zaznaczyć, jakiego treningu szuka, i dostać krótką listę stylów do poczytania, ułożoną według tych odpowiedzi. Może też postawić dwa style obok siebie i zobaczyć, czym się różnią. Osobno jest żart, który kończy się archetypem, oraz szkic osobowości, który liczy pięć liczb i niczego nie diagnozuje ani nie wybiera stylu. Strona jest po polsku i po angielsku, a na dole stoi, że to nie jest rekomendacja treningu ani diagnoza.
+wiciędze jest katalogiem sportów i sztuk walki: opisuje, czym styl jest, skąd się wziął i jak wygląda trening, bez rankingu i bez obietnicy, że któryś jest lepszy. Odwiedzający może zaznaczyć, jakiego treningu szuka, i dostać krótką listę stylów do poczytania, ułożoną według tych odpowiedzi. Może też postawić dwa style obok siebie i zobaczyć, czym się różnią. Osobno jest żart, który kończy się archetypem, oraz szkic osobowości, który liczy pięć liczb i niczego nie diagnozuje ani nie wybiera stylu. Strona jest po polsku i po angielsku, a na dole stoi, że to nie jest rekomendacja treningu ani diagnoza.
 
-Przerób te teksty na mój język. Próbkę tego języka masz w tym pliku, w sekcji „Przykłady”: to teksty z mojej strony głównej, z bazgrollin' i z kodzillin'. Z nich bierz słownictwo, długość zdań i to, co mówię wprost. Tego głosu nie zgaduj z tekstów Wiciędzya poniżej, bo właśnie one mają się do próbki upodobnić. Przykładów nie przerabiaj.
+Przerób te teksty na mój język. Próbkę tego języka masz w tym pliku, w sekcji „Przykłady”: to teksty z mojej strony głównej, z bazgrollin' i z kodzillin'. Z nich bierz słownictwo, długość zdań i to, co mówię wprost. Tego głosu nie zgaduj z tekstów wiciędze poniżej, bo właśnie one mają się do próbki upodobnić. Przykładów nie przerabiaj.
 
 Na wejściu do aplikacji ma być wytłumaczenie, co ta aplikacja robi. Pisz je dla odwiedzającego: co tu znajdzie i co może zrobić, kiedy dopiero wchodzi. To nie jest opis dla programisty.
 
@@ -450,14 +450,14 @@ Napisy na stronach. Treść stylów, pytań i faktów jest niżej, przy swoich m
 
 ### 404.html
 
-PL: Nie ma tej strony | Wiciędzy
-EN: This page is not here | Wiciędzy
+PL: Nie ma tej strony | wiciędze
+EN: This page is not here | wiciędze
 
 PL: Tej strony nie ma.
 EN: This page is not here.
 
-PL: Adres nie pasuje do żadnej strony Wiciędzya. Wróć na start albo otwórz katalog.
-EN: The address does not match a page in Wiciędzy. Go back to the start or open the catalog.
+PL: Adres nie pasuje do żadnej strony wiciędze. Wróć na start albo otwórz katalog.
+EN: The address does not match a page in wiciędze. Go back to the start or open the catalog.
 
 PL: Start
 EN: Start
@@ -487,8 +487,8 @@ EN: Partner
 
 ### base.html
 
-PL: Wiciędzy
-EN: Wiciędzy
+PL: wiciędze
+EN: wiciędze
 
 PL: Katalog sportów i sztuk walki, sprawdzenie, czego chcesz od treningu, porównanie i żart.
 EN: A catalog of combat sports and martial arts, a preference check, a comparison, and a joke.
@@ -546,8 +546,8 @@ EN: Psychology / research
 
 ### compare_form.html
 
-PL: Porównaj | Wiciędzy
-EN: Compare | Wiciędzy
+PL: Porównaj | wiciędze
+EN: Compare | wiciędze
 
 PL: Dwa style z zestawu głównego, obok siebie.
 EN: Two core styles, side by side.
@@ -616,8 +616,8 @@ EN: Sources
 
 ### empty.html
 
-PL: Brak pytań | Wiciędzy
-EN: No questions | Wiciędzy
+PL: Brak pytań | wiciędze
+EN: No questions | wiciędze
 
 PL: Brak pytań
 EN: No questions
@@ -630,8 +630,8 @@ EN: Browse
 
 ### fact.html
 
-PL: Fakt | Wiciędzy
-EN: A fact | Wiciędzy
+PL: Fakt | wiciędze
+EN: A fact | wiciędze
 
 PL: Fakt
 EN: A fact
@@ -647,8 +647,8 @@ EN: No facts yet.
 
 ### golden.html
 
-PL: Mniej oczywiste | Wiciędzy
-EN: Less obvious | Wiciędzy
+PL: Mniej oczywiste | wiciędze
+EN: Less obvious | wiciędze
 
 PL: Ciekawe i mniej oczywiste. Nie lepsze.
 EN: Interesting and less obvious. Not better.
@@ -681,8 +681,8 @@ EN: The personality sketch is in the menu. It counts five numbers and does not p
 
 ### list.html
 
-PL: Poznaj | Wiciędzy
-EN: Browse | Wiciędzy
+PL: Poznaj | wiciędze
+EN: Browse | wiciędze
 
 PL: Trzydzieści głównych stylów i osobny zestaw mniej oczywistych.
 EN: Thirty core styles, and a separate set of less obvious ones.
@@ -718,8 +718,8 @@ Etykieta dla czytnika: Tagi
 
 ### match.html
 
-PL: Do poczytania | Wiciędzy
-EN: To read | Wiciędzy
+PL: Do poczytania | wiciędze
+EN: To read | wiciędze
 
 PL: Jaki trening
 EN: The training you want
@@ -744,8 +744,8 @@ EN: The levels on the cards are an editorial judgment, not a measure of strength
 
 ### personality.html
 
-PL: Szkic osobowości | Wiciędzy
-EN: Personality sketch | Wiciędzy
+PL: Szkic osobowości | wiciędze
+EN: Personality sketch | wiciędze
 
 PL: Szkic osobowości
 EN: Personality sketch
@@ -797,8 +797,8 @@ EN: The items are not loaded yet.
 
 ### quiz.html
 
-PL: Żart | Wiciędzy
-EN: A joke | Wiciędzy
+PL: Żart | wiciędze
+EN: A joke | wiciędze
 
 PL: To żart. To nie jest diagnoza ani rekomendacja treningu.
 EN: This is a joke, not a diagnosis and not a training recommendation.
@@ -817,8 +817,8 @@ EN: Show the archetype
 
 ### result.html
 
-PL: Żart | Wiciędzy
-EN: A joke | Wiciędzy
+PL: Żart | wiciędze
+EN: A joke | wiciędze
 
 PL: To żart. To nie jest diagnoza ani rekomendacja treningu.
 EN: This is a joke, not a diagnosis and not a training recommendation.
@@ -843,8 +843,8 @@ EN: Again
 
 ### test.html
 
-PL: Jaki trening | Wiciędzy
-EN: The training you want | Wiciędzy
+PL: Jaki trening | wiciędze
+EN: The training you want | wiciędze
 
 PL: Jaki trening
 EN: The training you want

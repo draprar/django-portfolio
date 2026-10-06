@@ -1,10 +1,10 @@
-# Wiciędzy — teksty na stronie (obecny UI)
+# wiciędze — teksty na stronie (obecny UI)
 
 Wygenerowano: **2026-10-03 13:32 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
 
 Źródło: aktywne trasy w `wiciedzy/urls.py`, szablony z listy LIVE_TEMPLATES, modele `Style` (`active=True`), `PreferenceQuestion` (`active=True`), teksty generowane z `dimensions.py` / `display.py` (profil, porównanie, dopasowanie).
 
-**Nie wchodzi:** `/wiciedzy/quiz/`, archetyp, `joke_*` w katalogu, `_quick.html` (nigdzie nie renderowany), stary `teksty.md`.
+**Nie wchodzi:** `/wiciedze/quiz/`, archetyp, `joke_*` w katalogu, `_quick.html` (nigdzie nie renderowany), stary `teksty.md`.
 
 **Sekcja 1** = to, co widzisz w treści strony (plus pasek i stopka). Opisy `<meta>` i tytuły karty są w **załączniku SEO** na końcu — nie na home.
 
@@ -13,7 +13,7 @@ Wygenerowano: **2026-10-03 13:32 UTC** poleceniem `python manage.py export_wicie
 
 ### Wspólne: nawigacja i stopka (każda strona)
 
-- Marka: **wiciędzy** (bez przełącznika języka)
+- Marka: **wiciędze** (bez przełącznika języka)
 - Przełącznik: **PL** / **EN**
 
 **PL:** Przejdź do treści
@@ -22,11 +22,11 @@ Wygenerowano: **2026-10-03 13:32 UTC** poleceniem `python manage.py export_wicie
 **PL:** Potraktuj to z dystansem, mordko. Sport jest spoko — rusz dupkę.
 **EN:** Take it with a pinch of salt, pal. Sport's good — get moving.
 
-### `/wiciedzy/`
+### `/wiciedze/`
 _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
-**PL:** Siemasz na Wiciędzy, obczaj niżej.
-**EN:** Hey, welcome to Wiciędzy, check it out below.
+**PL:** Siemasz na wiciędze, obczaj niżej.
+**EN:** Hey, welcome to wiciędze, check it out below.
 
 **PL:** Katalog
 **EN:** Catalog
@@ -40,7 +40,7 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** Se poklikaj, a dostaniesz krótką listę stylów dopasowanych do Twoich odpowiedzi.
 **EN:** Click around and you get a short list of styles matched to your answers.
 
-### `/wiciedzy/spis/`
+### `/wiciedze/spis/`
 _Szablon:_ `list.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** Katalog
@@ -82,7 +82,7 @@ _Szablon:_ `list.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** Pokaż wszystkie
 **EN:** Show all
 
-### `/wiciedzy/spis/<styl>/`
+### `/wiciedze/spis/<styl>/`
 _Szablon:_ `detail.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** {{ style.get_family_display }}
@@ -172,7 +172,7 @@ _Szablon:_ `detail.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** Źródła
 **EN:** Sources
 
-### `/wiciedzy/test/`
+### `/wiciedze/test/`
 _Szablon:_ `test.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** Quizopasowanie
@@ -208,7 +208,7 @@ _Szablon:_ `test.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** Pokaż listę
 **EN:** Show the list
 
-### `/wiciedzy/dopasowanie/`
+### `/wiciedze/dopasowanie/`
 _Szablon:_ `match.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** Quizopasowanie
@@ -238,7 +238,7 @@ _Szablon:_ `match.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** {{ other.name_pl }}
 **EN:** {{ other.name_en }}
 
-### `/wiciedzy/porownaj/`
+### `/wiciedze/porownaj/`
 _Szablon:_ `compare_form.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** Porównaj
@@ -262,7 +262,7 @@ _Szablon:_ `compare_form.html` — stałe napisy; nazwy stylów i opisy z sekcji
 **PL:** Drugi
 **EN:** Second
 
-### `/wiciedzy/porownaj/<a>/<b>/`
+### `/wiciedze/porownaj/<a>/<b>/`
 _Szablon:_ `compare.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** {{ left.name_pl }}
@@ -322,7 +322,7 @@ _Szablon:_ `compare.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** {{ study.limitation_pl }}
 **EN:** {{ study.limitation_en }}
 
-### `/wiciedzy/test/ (brak pytań)`
+### `/wiciedze/test/ (brak pytań)`
 _Szablon:_ `empty.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** Brak pytań
@@ -334,14 +334,14 @@ _Szablon:_ `empty.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 **PL:** Katalog
 **EN:** Catalog
 
-### `404 w Wiciędzy`
+### `404 w wiciędze`
 _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji 4.
 
 **PL:** Tu nic nie ma.
 **EN:** There's nothing here.
 
-**PL:** Adres nie pasuje do żadnej strony w Wiciędzy. Wróć na start albo obczaj katalog.
-**EN:** The address doesn't match any page in Wiciędzy. Go back to the start or check out the catalog.
+**PL:** Adres nie pasuje do żadnej strony w wiciędze. Wróć na start albo obczaj katalog.
+**EN:** The address doesn't match any page in wiciędze. Go back to the start or check out the catalog.
 
 **PL:** Start
 **EN:** Start
@@ -4205,8 +4205,8 @@ Tytuł karty, `meta description`, Open Graph — wyszukiwarki i podgląd linku, 
 
 ### base.html — domyślny <head> (gdy strona nie nadpisuje meta)
 
-**PL:** Wiciędzy
-**EN:** Wiciędzy
+**PL:** wiciędze
+**EN:** wiciędze
 
 **PL:** Katalog sportów i sztuk walki, sprawdzenie, czego szukasz na treningu, porównywarka i trochę beki.
 **EN:** A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh.
@@ -4218,8 +4218,8 @@ Tytuł karty, `meta description`, Open Graph — wyszukiwarki i podgląd linku, 
 
 ### list.html — block title_i18n
 
-**PL:** Katalog | Wiciędzy
-**EN:** Catalog | Wiciędzy
+**PL:** Katalog | wiciędze
+**EN:** Catalog | wiciędze
 
 ### detail.html — block meta_description
 
@@ -4228,18 +4228,18 @@ Tytuł karty, `meta description`, Open Graph — wyszukiwarki i podgląd linku, 
 
 ### detail.html — block title_i18n
 
-**PL:** {{ style.name_pl }} | Wiciędzy
-**EN:** {{ style.name_en }} | Wiciędzy
+**PL:** {{ style.name_pl }} | wiciędze
+**EN:** {{ style.name_en }} | wiciędze
 
 ### test.html — block title_i18n
 
-**PL:** Quizopasowanie | Wiciędzy
-**EN:** Quizmatch | Wiciędzy
+**PL:** Quizopasowanie | wiciędze
+**EN:** Quizmatch | wiciędze
 
 ### match.html — block title_i18n
 
-**PL:** Do poczytania | Wiciędzy
-**EN:** To read | Wiciędzy
+**PL:** Do poczytania | wiciędze
+**EN:** To read | wiciędze
 
 ### compare_form.html — block meta_description
 
@@ -4248,8 +4248,8 @@ Tytuł karty, `meta description`, Open Graph — wyszukiwarki i podgląd linku, 
 
 ### compare_form.html — block title_i18n
 
-**PL:** Porównaj | Wiciędzy
-**EN:** Compare | Wiciędzy
+**PL:** Porównaj | wiciędze
+**EN:** Compare | wiciędze
 
 ### compare.html — block meta_description
 
@@ -4258,15 +4258,15 @@ Tytuł karty, `meta description`, Open Graph — wyszukiwarki i podgląd linku, 
 
 ### compare.html — block title_i18n
 
-**PL:** {{ left.name_pl }} / {{ right.name_pl }} | Wiciędzy
-**EN:** {{ left.name_en }} / {{ right.name_en }} | Wiciędzy
+**PL:** {{ left.name_pl }} / {{ right.name_pl }} | wiciędze
+**EN:** {{ left.name_en }} / {{ right.name_en }} | wiciędze
 
 ### empty.html — block title_i18n
 
-**PL:** Brak pytań | Wiciędzy
-**EN:** No questions | Wiciędzy
+**PL:** Brak pytań | wiciędze
+**EN:** No questions | wiciędze
 
 ### 404.html — block title_i18n
 
-**PL:** Nie ma takiej strony | Wiciędzy
-**EN:** This page is not here | Wiciędzy
+**PL:** Nie ma takiej strony | wiciędze
+**EN:** This page is not here | wiciędze

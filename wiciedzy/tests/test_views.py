@@ -12,12 +12,12 @@ def test_home_is_bilingual(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert ">wiciędzy</a>" in content
+    assert ">wiciędze</a>" in content
     assert 'data-pl="Katalog"' in content
     assert 'data-en="Catalog"' in content
-    assert "Siemasz na Wiciędzy" not in content
+    assert "Siemasz na wiciędze" not in content
     assert "Boks boks, albo kop kop" in content
-    assert "a jak już musisz to se ogarnij inne." in content
+    assert "a jak nie to se ogarnij inne" in content
     assert "wiciedzy-home-tagline" in content
     assert "obczaj niżej" not in content
     assert "Quizopasowanie" in content
@@ -34,7 +34,7 @@ def test_home_is_bilingual(client):
     assert 'data-pl="Szkic"' not in content
     assert 'data-pl="Poznaj"' not in content
     assert 'data-pl="Jaki trening"' not in content
-    assert 'href="/wiciedzy/porownaj/"' not in content
+    assert 'href="/wiciedze/porownaj/"' not in content
     assert "core/js/lang.js" in content
     assert "lang-btn" in content
 
@@ -100,9 +100,9 @@ def test_inactive_style_is_missing(client):
 @pytest.mark.django_db
 @override_settings(DEBUG=False)
 def test_archetype_urls_are_gone(client):
-    assert client.get("/wiciedzy/quiz/").status_code == 404
-    assert client.get("/wiciedzy/wynik/").status_code == 404
-    assert "Tu nic nie ma." in client.get("/wiciedzy/quiz/").content.decode()
+    assert client.get("/wiciedze/quiz/").status_code == 404
+    assert client.get("/wiciedze/wynik/").status_code == 404
+    assert "Tu nic nie ma." in client.get("/wiciedze/quiz/").content.decode()
 
 
 def test_styles_are_in_the_admin():
@@ -138,18 +138,18 @@ def test_sitemap_lists_public_pages_only(client):
     assert response.status_code == 200
     assert response["Content-Type"].startswith("application/xml")
     assert reverse("wiciedzy:detail", args=["boks"]) in body
-    assert "/wiciedzy/quiz/" not in body
+    assert "/wiciedze/quiz/" not in body
     assert reverse("wiciedzy:test") not in body
     assert reverse("wiciedzy:match") not in body
-    assert "/wiciedzy/wynik/" not in body
-    assert "/wiciedzy/zlote/" not in body
-    assert "/wiciedzy/fakt/" not in body
+    assert "/wiciedze/wynik/" not in body
+    assert "/wiciedze/zlote/" not in body
+    assert "/wiciedze/fakt/" not in body
 
 
 @pytest.mark.django_db
 @override_settings(DEBUG=False)
 def test_old_personality_url_is_gone(client):
-    response = client.get("/wiciedzy/osobowosc/")
+    response = client.get("/wiciedze/osobowosc/")
 
     assert response.status_code == 404
     assert "Tu nic nie ma." in response.content.decode()

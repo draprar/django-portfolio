@@ -2,7 +2,7 @@
 
 ## Polecenie
 
-Oceń quiz dopasowania ze strony Wiciędzy. Nie jest testem osobowości, nie mierzy skuteczności w walce i nie jest walidowanym kwestionariuszem. Pyta, jak ktoś chce trenować, i układa z odpowiedzi krótką listę stylów do poczytania.
+Oceń quiz dopasowania ze strony wiciędze. Nie jest testem osobowości, nie mierzy skuteczności w walce i nie jest walidowanym kwestionariuszem. Pyta, jak ktoś chce trenować, i układa z odpowiedzi krótką listę stylów do poczytania.
 
 Najpierw angielski, pod nim polski. Angielski jest tekstem roboczym. Polski ma trzymać ten sam sens.
 

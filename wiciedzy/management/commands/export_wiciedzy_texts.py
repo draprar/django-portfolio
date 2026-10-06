@@ -1,4 +1,4 @@
-"""Eksport tekstów widocznych pod /wiciedzy/ (szablony + baza). Nie eksportuje martwych tras ani żartów z modelu."""
+"""Eksport tekstów widocznych pod /wiciedze/ (szablony + baza). Nie eksportuje martwych tras ani żartów z modelu."""
 
 from __future__ import annotations
 
@@ -28,15 +28,15 @@ from wiciedzy.models import (
 TEMPLATE_DIR = Path(__file__).resolve().parents[2] / "templates" / "wiciedzy"
 
 PAGE_ROUTES: tuple[tuple[str, str], ...] = (
-    ("/wiciedzy/", "home.html"),
-    ("/wiciedzy/spis/", "list.html"),
-    ("/wiciedzy/spis/<styl>/", "detail.html"),
-    ("/wiciedzy/test/", "test.html"),
-    ("/wiciedzy/dopasowanie/", "match.html"),
-    ("/wiciedzy/porownaj/", "compare_form.html"),
-    ("/wiciedzy/porownaj/<a>/<b>/", "compare.html"),
-    ("/wiciedzy/test/ (brak pytań)", "empty.html"),
-    ("404 w Wiciędzy", "404.html"),
+    ("/wiciedze/", "home.html"),
+    ("/wiciedze/spis/", "list.html"),
+    ("/wiciedze/spis/<styl>/", "detail.html"),
+    ("/wiciedze/test/", "test.html"),
+    ("/wiciedze/dopasowanie/", "match.html"),
+    ("/wiciedze/porownaj/", "compare_form.html"),
+    ("/wiciedze/porownaj/<a>/<b>/", "compare.html"),
+    ("/wiciedze/test/ (brak pytań)", "empty.html"),
+    ("404 w wiciędze", "404.html"),
 )
 
 LEGEND_ON_PAGES = frozenset({"detail.html", "compare.html"})
@@ -276,7 +276,7 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
     if not pl_only and not plain:
         now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
-        w.raw("# Wiciędzy — teksty na stronie (obecny UI)")
+        w.raw("# wiciędze — teksty na stronie (obecny UI)")
 
         w.blank()
 
@@ -293,7 +293,7 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
         w.blank()
 
         w.raw(
-            "**Nie wchodzi:** `/wiciedzy/quiz/`, archetyp, `joke_*`, `_quick.html`, stary `teksty.md`. "
+            "**Nie wchodzi:** `/wiciedze/quiz/`, archetyp, `joke_*`, `_quick.html`, stary `teksty.md`. "
             "Sekcja 1 = treść w przeglądarce; SEO na końcu."
         )
 
@@ -306,14 +306,14 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
     w.heading("### Wspólne: nawigacja i stopka", "Nawigacja i stopka (każda strona)")
 
     if not pl_only and not plain:
-        w.raw("- Marka: **wiciędzy** (bez przełącznika języka)")
+        w.raw("- Marka: **wiciędze** (bez przełącznika języka)")
 
         w.raw("- Przełącznik: **PL** / **EN**")
 
         w.blank()
 
     else:
-        w.text("Wiciędzy")
+        w.text("wiciędze")
 
         w.text("PL")
 

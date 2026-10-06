@@ -23,7 +23,7 @@ A full-stack Django portfolio by an engineer-turned-developer — 12 integrated 
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
 | **code**          | IG programming page (`/code/`) | reads `core.Project`, no models |
 | **poligon**       | Ćwiczba, unofficial four-skill trainer, practice levels 0–5 (`/cwiczba/`) | ~1200 exercises · ~1200 cards · Wiktionary / Wikipedia / Tatoeba with attribution · SM-2 · heuristic scoring |
-| **wiciedzy**       | Martial-arts catalog (`/wiciedzy/`) | styles, preference list, comparison, joke, personality sketch |
+| **wiciedzy**       | Martial-arts catalog (`/wiciedze/`, wiciędze) | styles, preference list, comparison, joke, personality sketch |
 | **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
 

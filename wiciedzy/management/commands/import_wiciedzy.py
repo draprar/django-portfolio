@@ -1,4 +1,4 @@
-"""Upsert the Wiciędzy catalog by slug. Does not delete styles or touch sessions."""
+"""Upsert the wiciędze catalog by slug. Does not delete styles or touch sessions."""
 
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ from wiciedzy.models import (
 
 
 class Command(BaseCommand):
-    help = "Upsert Wiciędzy styles, sources, profiles, and questionnaires by stable slug."
+    help = "Upsert wiciędze styles, sources, profiles, and questionnaires by stable slug."
 
     def handle(self, *args, **options) -> None:
         with transaction.atomic():
@@ -44,7 +44,7 @@ class Command(BaseCommand):
             self._preference()
             self._ipip()
             self._humor()
-        self.stdout.write(self.style.SUCCESS("Wiciędzy catalog upserted."))
+        self.stdout.write(self.style.SUCCESS("wiciędze catalog upserted."))
 
     def _types(self) -> None:
         for row in TYPES:
