@@ -1,8 +1,4 @@
-"""Preference items, public-domain IPIP stems, and the humorous archetype quiz.
-
-Polish IPIP wording is a translation made for this project. The English stems are
-IPIP public-domain items in the Mini-IPIP selection (Donnellan et al., 2006).
-"""
+"""Quizopasowanie preference items and style type labels."""
 
 from __future__ import annotations
 
@@ -14,43 +10,6 @@ TYPES: list[dict[str, str]] = [
     {"code": "traditional", "name_pl": "Tradycyjne", "name_en": "Traditional"},
     {"code": "historical_reconstruction", "name_pl": "Rekonstrukcja historyczna", "name_en": "Historical reconstruction"},
     {"code": "hybrid", "name_pl": "Mieszane", "name_en": "Hybrid"},
-]
-
-IPIP_ATTRIBUTION = (
-    "English Mini-IPIP (Donnellan et al., 2006), public-domain IPIP items. "
-    "The Polish wording is my own unvalidated translation."
-)
-
-IPIP_SCALES: list[dict[str, str]] = [
-    {"code": "E", "name_pl": "Ekstrawersja", "name_en": "Extraversion"},
-    {"code": "A", "name_pl": "Ugodowość", "name_en": "Agreeableness"},
-    {"code": "C", "name_pl": "Sumienność", "name_en": "Conscientiousness"},
-    {"code": "N", "name_pl": "Neurotyczność", "name_en": "Neuroticism"},
-    {"code": "O", "name_pl": "Otwartość", "name_en": "Openness"},
-]
-
-# (scale, reverse, en, pl)
-IPIP_ITEMS: list[tuple[str, bool, str, str]] = [
-    ("E", False, "Am the life of the party.", "Jestem duszą towarzystwa."),
-    ("E", True, "Don't talk a lot.", "Mówię niewiele."),
-    ("E", False, "Talk to a lot of different people at parties.", "Na imprezach gadam z wieloma różnymi ludźmi."),
-    ("E", True, "Keep in the background.", "Trzymam się w tle."),
-    ("A", False, "Sympathize with others' feelings.", "Współczuję innym w ich uczuciach."),
-    ("A", True, "Am not interested in other people's problems.", "Cudze problemy mnie nie obchodzą."),
-    ("A", False, "Feel others' emotions.", "Czuję emocje innych."),
-    ("A", True, "Am not really interested in others.", "Inni ludzie specjalnie mnie nie interesują."),
-    ("C", False, "Get chores done right away.", "Obowiązki załatwiam od razu."),
-    ("C", True, "Often forget to put things back in their proper place.", "Często zapominam odłożyć rzeczy na miejsce."),
-    ("C", False, "Like order.", "Lubię porządek."),
-    ("C", True, "Make a mess of things.", "Robię bałagan."),
-    ("N", False, "Have frequent mood swings.", "Często zmienia mi się nastrój."),
-    ("N", True, "Am relaxed most of the time.", "Przez większość czasu jestem spokojny."),
-    ("N", False, "Get upset easily.", "Łatwo się denerwuję."),
-    ("N", True, "Seldom feel blue.", "Rzadko bywa mi smutno."),
-    ("O", False, "Have a vivid imagination.", "Mam bujną wyobraźnię."),
-    ("O", True, "Am not interested in abstract ideas.", "Abstrakcyjne idee mnie nie interesują."),
-    ("O", True, "Have difficulty understanding abstract ideas.", "Trudno mi zrozumieć abstrakcyjne idee."),
-    ("O", True, "Do not have a good imagination.", "Nie mam dobrej wyobraźni."),
 ]
 
 PREFERENCE: list[dict] = [

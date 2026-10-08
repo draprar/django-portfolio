@@ -1,4 +1,5 @@
 from io import StringIO
+from pathlib import Path
 
 import pytest
 from django.core.exceptions import ValidationError
@@ -11,7 +12,6 @@ from wiciedzy.data.styles import FACTS
 from wiciedzy.dimensions import DIMENSION_LABELS
 from wiciedzy.models import (
     Fact,
-    IPIPItem,
     PreferenceQuestion,
     Source,
     Style,
@@ -20,7 +20,6 @@ from wiciedzy.models import (
     TrainingProfile,
 )
 from wiciedzy.preference import _reading_list, _reasons, _sort_key, answers_complete, rank_styles, user_vector
-from wiciedzy.psychology import score_ipip
 
 
 def load_catalog() -> None:
@@ -187,30 +186,6 @@ def test_striking_preference_ranks_boxing_above_judo():
     assert all(line.strip(" .") not in labels for line in ranked["boks"]["plus_pl"])
     assert all("osi:" not in line for line in ranked["boks"]["minus_pl"])
     assert all(count <= 2 for count in families.values())
-
-
-@pytest.mark.django_db
-def test_personality_score_does_not_change_the_preference_rank():
-    load_catalog()
-    questions = list(PreferenceQuestion.objects.filter(active=True).prefetch_related("options__weights"))
-    posted = answered(questions, {"striking", "grappling", "contact_level"})
-    before = [row["slug"] for row in rank_styles(questions, posted)["picks"]]
-
-    items = list(IPIPItem.objects.select_related("scale"))
-    answers = {item.pk: 5 for item in items}
-    assert score_ipip(items, answers) == score_ipip(items, answers)
-    after = [row["slug"] for row in rank_styles(questions, posted)["picks"]]
-    assert before == after
-
-
-@pytest.mark.django_db
-def test_reverse_ipip_item_flips_the_point():
-    load_catalog()
-    item = IPIPItem.objects.select_related("scale").filter(reverse=True).first()
-    assert item is not None
-    scored = score_ipip([item], {item.pk: 1})
-
-    assert scored[item.scale.code] == 5
 
 
 @pytest.mark.django_db

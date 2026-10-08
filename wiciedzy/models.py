@@ -239,56 +239,6 @@ class Fact(models.Model):
         return self.text_pl[:80]
 
 
-class Question(models.Model):
-    """Legacy humor-point quiz. Public /quiz/ no longer reads this model."""
-
-    text_pl = models.TextField(verbose_name="Question (PL)")
-    text_en = models.TextField(verbose_name="Question (EN)")
-    sort_order = models.PositiveSmallIntegerField(default=0)
-    active = models.BooleanField(default=True)
-
-    class Meta:
-        ordering = ["sort_order", "pk"]
-        verbose_name = "Question"
-        verbose_name_plural = "Questions"
-
-    def __str__(self) -> str:
-        return self.text_pl[:80]
-
-
-class Choice(models.Model):
-    """One answer. Points land on a style, with an optional second style."""
-
-    question = models.ForeignKey(Question, related_name="choices", on_delete=models.CASCADE)
-    text_pl = models.CharField(max_length=300, verbose_name="Answer (PL)")
-    text_en = models.CharField(max_length=300, verbose_name="Answer (EN)")
-    sort_order = models.PositiveSmallIntegerField(default=0)
-    style = models.ForeignKey(Style, related_name="choices", on_delete=models.PROTECT)
-    points = models.PositiveSmallIntegerField(default=1)
-    extra_style = models.ForeignKey(
-        Style,
-        related_name="extra_choices",
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True,
-    )
-    extra_points = models.PositiveSmallIntegerField(default=0)
-
-    class Meta:
-        ordering = ["sort_order", "pk"]
-        verbose_name = "Choice"
-        verbose_name_plural = "Choices"
-
-    def __str__(self) -> str:
-        return self.text_pl[:80]
-
-    def clean(self) -> None:
-        if self.extra_style_id and self.extra_style_id == self.style_id:
-            raise ValidationError("The extra style must be a different style.")
-        if not self.extra_style_id:
-            self.extra_points = 0
-
-
 class PreferenceQuestion(models.Model):
     KIND_CHOICES = [
         ("scale", "Scale 1–5"),
@@ -335,30 +285,6 @@ class OptionWeight(models.Model):
         ]
 
 
-class IPIPScale(models.Model):
-    code = models.SlugField(unique=True)
-    name_pl = models.CharField(max_length=80)
-    name_en = models.CharField(max_length=80)
-
-    def __str__(self) -> str:
-        return self.name_en
-
-
-class IPIPItem(models.Model):
-    scale = models.ForeignKey(IPIPScale, related_name="items", on_delete=models.CASCADE)
-    text_en = models.TextField()
-    text_pl = models.TextField()
-    reverse = models.BooleanField(default=False)
-    sort_order = models.PositiveSmallIntegerField(default=0)
-    attribution = models.CharField(max_length=240, default="IPIP public-domain item. Polish wording is a project translation.")
-
-    class Meta:
-        ordering = ["sort_order", "pk"]
-
-    def __str__(self) -> str:
-        return self.text_en[:80]
-
-
 class Study(models.Model):
     EVIDENCE_CHOICES = [
         ("strong", "Strong"),
@@ -383,40 +309,3 @@ class Study(models.Model):
 
     def __str__(self) -> str:
         return self.title
-
-
-class Archetype(models.Model):
-    slug = models.SlugField(unique=True)
-    name_pl = models.CharField(max_length=120)
-    name_en = models.CharField(max_length=120)
-    description_pl = models.TextField()
-    description_en = models.TextField()
-    styles = models.ManyToManyField(Style, blank=True, related_name="archetypes")
-
-    def __str__(self) -> str:
-        return self.name_pl
-
-
-class HumorQuestion(models.Model):
-    text_pl = models.TextField()
-    text_en = models.TextField()
-    sort_order = models.PositiveSmallIntegerField(default=0)
-    active = models.BooleanField(default=True)
-
-    class Meta:
-        ordering = ["sort_order", "pk"]
-
-    def __str__(self) -> str:
-        return self.text_pl[:80]
-
-
-class HumorChoice(models.Model):
-    question = models.ForeignKey(HumorQuestion, related_name="choices", on_delete=models.CASCADE)
-    text_pl = models.CharField(max_length=240)
-    text_en = models.CharField(max_length=240)
-    sort_order = models.PositiveSmallIntegerField(default=0)
-    archetype = models.ForeignKey(Archetype, related_name="choices", on_delete=models.CASCADE)
-    points = models.PositiveSmallIntegerField(default=1)
-
-    class Meta:
-        ordering = ["sort_order", "pk"]

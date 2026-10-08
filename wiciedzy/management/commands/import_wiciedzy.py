@@ -7,13 +7,11 @@ from datetime import date
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from wiciedzy.data.instruments import IPIP_ATTRIBUTION, IPIP_ITEMS, IPIP_SCALES, PREFERENCE, TYPES
+from wiciedzy.data.instruments import PREFERENCE, TYPES
 from wiciedzy.data.prose import PROSE
 from wiciedzy.data.styles import CORE, FACTS, GOLDEN, RELATIONS, STYLE_TAGS, TAG_CATALOG, UMBRELLAS
 from wiciedzy.models import (
     Fact,
-    IPIPItem,
-    IPIPScale,
     OptionWeight,
     PreferenceOption,
     PreferenceQuestion,
@@ -39,7 +37,6 @@ class Command(BaseCommand):
             self._relations()
             self._facts()
             self._preference()
-            self._ipip()
         self.stdout.write(self.style.SUCCESS("wiciędze catalog upserted."))
 
     def _types(self) -> None:
@@ -156,23 +153,3 @@ class Command(BaseCommand):
                     OptionWeight.objects.create(option=created, dimension=dimension, weight=weight)
             keep.append(question.pk)
         PreferenceQuestion.objects.exclude(pk__in=keep).delete()
-
-    def _ipip(self) -> None:
-        scales = {}
-        for row in IPIP_SCALES:
-            scale, _created = IPIPScale.objects.update_or_create(
-                code=row["code"],
-                defaults={"name_pl": row["name_pl"], "name_en": row["name_en"]},
-            )
-            scales[row["code"]] = scale
-        for index, (code, reverse, text_en, text_pl) in enumerate(IPIP_ITEMS, start=1):
-            IPIPItem.objects.update_or_create(
-                scale=scales[code],
-                sort_order=index,
-                defaults={
-                    "text_en": text_en,
-                    "text_pl": text_pl,
-                    "reverse": reverse,
-                    "attribution": IPIP_ATTRIBUTION,
-                },
-            )

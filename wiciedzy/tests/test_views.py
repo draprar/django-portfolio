@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.test import override_settings
 from django.urls import reverse
 
-from wiciedzy.models import Question, Style, Tag
+from wiciedzy.models import PreferenceQuestion, Style, Tag
 
 
 @pytest.mark.django_db
@@ -107,7 +107,7 @@ def test_archetype_urls_are_gone(client):
 
 def test_styles_are_in_the_admin():
     assert Style in admin.site._registry
-    assert Question in admin.site._registry
+    assert PreferenceQuestion in admin.site._registry
 
 
 @pytest.mark.django_db
