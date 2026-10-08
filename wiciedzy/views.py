@@ -27,6 +27,11 @@ def home(request: HttpRequest) -> HttpResponse:
 
 
 @require_http_methods(["GET"])
+def mokuso(request: HttpRequest) -> HttpResponse:
+    return render(request, "wiciedzy/mokuso.html")
+
+
+@require_http_methods(["GET"])
 def style_list(request: HttpRequest) -> HttpResponse:
     tag_raw = request.GET.get("tag") or ""
     tags = list(Tag.objects.all())
@@ -171,6 +176,7 @@ def sitemap(request: HttpRequest) -> HttpResponse:
         reverse("wiciedzy:home"),
         reverse("wiciedzy:list"),
         reverse("wiciedzy:compare_form"),
+        reverse("wiciedzy:mokuso"),
     ]
     paths.extend(
         reverse("wiciedzy:detail", args=[slug])

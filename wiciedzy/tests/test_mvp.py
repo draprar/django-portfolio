@@ -10,10 +10,8 @@ from django.urls import reverse
 from wiciedzy.data.instruments import OPTIONAL_SCALE_ORDERS
 from wiciedzy.data.styles import FACTS
 from wiciedzy.dimensions import DIMENSION_LABELS
-from wiciedzy.humor import choose_archetypes
 from wiciedzy.models import (
     Fact,
-    HumorQuestion,
     IPIPItem,
     PreferenceQuestion,
     Source,
@@ -241,23 +239,14 @@ def test_compare_without_a_study_says_there_is_no_data(client):
 
 
 @pytest.mark.django_db
-def test_humor_post_is_stable_and_ignores_the_matcher():
+def test_szatnia_route_is_gone(client):
     load_catalog()
-    source = Path("wiciedzy/humor.py").read_text(encoding="utf-8")
-    assert "wiciedzy.preference" not in source
-    assert "rank_styles" not in source
-    questions = list(HumorQuestion.objects.filter(active=True).prefetch_related("choices"))
-    posted = {}
-    for question in questions:
-        choice = question.choices.order_by("sort_order").first()
-        assert choice is not None
-        posted[f"q{question.pk}"] = str(choice.pk)
-    first = choose_archetypes(questions, posted)
-    second = choose_archetypes(questions, posted)
+    home = client.get(reverse("wiciedzy:home")).content.decode()
+    gone = client.get("/wiciedze/szatnia/")
 
-    assert first and second
-    assert [item.slug for item in first] == [item.slug for item in second] == ["chce-miecz"]
-    assert choose_archetypes(questions, {}) == []
+    assert gone.status_code == 404
+    assert "A kto to przyszedł?" not in home
+    assert "/wiciedze/szatnia/" not in home
 
 
 @pytest.mark.django_db

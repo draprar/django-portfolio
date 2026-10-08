@@ -7,14 +7,11 @@ from datetime import date
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from wiciedzy.data.instruments import ARCHETYPES, HUMOR, IPIP_ATTRIBUTION, IPIP_ITEMS, IPIP_SCALES, PREFERENCE, TYPES
+from wiciedzy.data.instruments import IPIP_ATTRIBUTION, IPIP_ITEMS, IPIP_SCALES, PREFERENCE, TYPES
 from wiciedzy.data.prose import PROSE
 from wiciedzy.data.styles import CORE, FACTS, GOLDEN, RELATIONS, STYLE_TAGS, TAG_CATALOG, UMBRELLAS
 from wiciedzy.models import (
-    Archetype,
     Fact,
-    HumorChoice,
-    HumorQuestion,
     IPIPItem,
     IPIPScale,
     OptionWeight,
@@ -43,7 +40,6 @@ class Command(BaseCommand):
             self._facts()
             self._preference()
             self._ipip()
-            self._humor()
         self.stdout.write(self.style.SUCCESS("wiciędze catalog upserted."))
 
     def _types(self) -> None:
@@ -180,33 +176,3 @@ class Command(BaseCommand):
                     "attribution": IPIP_ATTRIBUTION,
                 },
             )
-
-    def _humor(self) -> None:
-        archetypes = {}
-        for row in ARCHETYPES:
-            archetype, _created = Archetype.objects.update_or_create(
-                slug=row["slug"],
-                defaults={
-                    "name_pl": row["name_pl"],
-                    "name_en": row["name_en"],
-                    "description_pl": row["description_pl"],
-                    "description_en": row["description_en"],
-                },
-            )
-            archetype.styles.set(Style.objects.filter(slug__in=row["styles"]))
-            archetypes[row["slug"]] = archetype
-        for row in HUMOR:
-            question, _created = HumorQuestion.objects.update_or_create(
-                sort_order=row["sort_order"],
-                defaults={"text_pl": row["text_pl"], "text_en": row["text_en"], "active": True},
-            )
-            question.choices.all().delete()
-            for index, (text_pl, text_en, slug) in enumerate(row["choices"]):
-                HumorChoice.objects.create(
-                    question=question,
-                    text_pl=text_pl,
-                    text_en=text_en,
-                    sort_order=index,
-                    archetype=archetypes[slug],
-                    points=1,
-                )

@@ -9,6 +9,7 @@ urlpatterns = [
     path("spis/", views.style_list, name="list"),
     path("spis/<slug:slug>/", views.style_detail, name="detail"),
     path("test/", views.preference_test, name="test"),
+    path("mokuso/", views.mokuso, name="mokuso"),
     path("dopasowanie/", views.preference_result, name="match"),
     path("porownaj/", views.compare_form, name="compare_form"),
     path("porownaj/<slug:a>/<slug:b>/", views.compare, name="compare"),
