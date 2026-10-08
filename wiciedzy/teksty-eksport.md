@@ -1,6 +1,6 @@
 ﻿# wiciędze — teksty na stronie (obecny UI)
 
-Wygenerowano: **2026-10-06 18:49 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
+Wygenerowano: **2026-10-08 21:40 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
 
 Źródło: aktywne trasy w `wiciedzy/urls.py`, szablony, modele `Style` (`active=True`), `PreferenceQuestion` (`active=True`), teksty z `dimensions.py` / `display.py`.
 
@@ -38,6 +38,9 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 
 **PL:** Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
 **EN:** Click around and you'll get a short list of matched styles.
+
+**PL:** wbijaj się wyciszyć
+**EN:** come in and quiet down
 
 ### `/wiciedze/spis/`
 

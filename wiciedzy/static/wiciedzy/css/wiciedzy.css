@@ -105,7 +105,8 @@ summary:focus-visible {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
-.wiciedzy-portal:has(.wiciedzy-home) {
+.wiciedzy-portal:has(.wiciedzy-home),
+.wiciedzy-portal:has(.mokuso) {
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
@@ -354,6 +355,12 @@ summary:focus-visible {
   margin: 0 auto;
 }
 
+a.wiciedzy-home-feature {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .wiciedzy-home-feature {
   display: flex;
   flex-direction: column;
@@ -403,21 +410,61 @@ summary:focus-visible {
 }
 
 .wiciedzy-home-feature .wiciedzy-btn {
+  display: inline-block;
   min-width: 0;
   min-height: 0;
-  padding: 5px 14px;
-  font-size: 0.8rem;
-  letter-spacing: 0.8px;
+  padding: 6px 17px;
+  font-size: 0.96rem;
+  letter-spacing: 0.96px;
   font-weight: 400;
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
   border: 1px solid rgba(255, 255, 255, 0.14);
   transform: none;
+  pointer-events: none;
 }
 
-.wiciedzy-home-feature .wiciedzy-btn:hover,
-.wiciedzy-home-feature .wiciedzy-btn:focus-visible {
+a.wiciedzy-home-feature:hover .wiciedzy-btn,
+a.wiciedzy-home-feature:focus-visible .wiciedzy-btn {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.wiciedzy-home-extra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 43.2rem;
+  margin: 0.35rem auto 0;
+  padding: 0 1.1rem;
+  box-sizing: border-box;
+}
+
+.wiciedzy-btn.wiciedzy-home-quiet-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  margin-inline: auto;
+  padding: 0.55rem 1.35rem;
+  font-size: 0.96rem;
+  letter-spacing: 0.96px;
+  font-weight: 400;
+  border-radius: 999px;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  transform: none;
+  text-align: center;
+  line-height: 1.35;
+  box-shadow: none;
+}
+
+.wiciedzy-btn.wiciedzy-home-quiet-btn:hover,
+.wiciedzy-btn.wiciedzy-home-quiet-btn:focus-visible {
   color: var(--gold);
   border-color: var(--gold);
   background: transparent;
@@ -425,12 +472,12 @@ summary:focus-visible {
   box-shadow: none;
 }
 
-#wiciedzy-main .wiciedzy-home-feature a.wiciedzy-btn {
+#wiciedzy-main a.wiciedzy-btn.wiciedzy-home-quiet-btn {
   color: var(--muted);
 }
 
-#wiciedzy-main .wiciedzy-home-feature a.wiciedzy-btn:hover,
-#wiciedzy-main .wiciedzy-home-feature a.wiciedzy-btn:focus-visible {
+#wiciedzy-main a.wiciedzy-btn.wiciedzy-home-quiet-btn:hover,
+#wiciedzy-main a.wiciedzy-btn.wiciedzy-home-quiet-btn:focus-visible {
   color: var(--gold);
 }
 

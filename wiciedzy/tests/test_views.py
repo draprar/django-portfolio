@@ -142,6 +142,7 @@ def test_sitemap_lists_public_pages_only(client):
     assert reverse("wiciedzy:test") not in body
     assert reverse("wiciedzy:match") not in body
     assert "/wiciedze/wynik/" not in body
+    assert "/wiciedze/szatnia/" not in body
     assert "/wiciedze/zlote/" not in body
     assert "/wiciedze/fakt/" not in body
 

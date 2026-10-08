@@ -14,7 +14,7 @@
 </header>
 
 <section class="wiciedzy-home-features" aria-label="Opcje">
-  <article class="wiciedzy-home-feature wiciedzy-card">
+  <a class="wiciedzy-home-feature wiciedzy-card" href="{% url 'wiciedzy:list' %}">
     <h2 class="wiciedzy-home-feature-title" data-en="Catalog" data-pl="Katalog">Katalog</h2>
     <p class="wiciedzy-home-feature-text"
        data-en="Check out all kinds of combat sports and martial arts. You can compare them too."
@@ -22,11 +22,11 @@
       Obczaj różne sporty i sztuki walki. Możesz je też porównywać.
     </p>
     <div class="wiciedzy-home-feature-action">
-      <a class="wiciedzy-btn" href="{% url 'wiciedzy:list' %}" data-en="Catalog" data-pl="Katalog">Katalog</a>
+      <span class="wiciedzy-btn" aria-hidden="true" data-en="Catalog" data-pl="Katalog">Katalog</span>
     </div>
-  </article>
+  </a>
 
-  <article class="wiciedzy-home-feature wiciedzy-card">
+  <a class="wiciedzy-home-feature wiciedzy-card" href="{% url 'wiciedzy:test' %}">
     <h2 class="wiciedzy-home-feature-title" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</h2>
     <p class="wiciedzy-home-feature-text"
        data-en="Click around and you'll get a short list of matched styles."
@@ -34,9 +34,14 @@
       Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
     </p>
     <div class="wiciedzy-home-feature-action">
-      <a class="wiciedzy-btn" href="{% url 'wiciedzy:test' %}" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</a>
+      <span class="wiciedzy-btn" aria-hidden="true" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</span>
     </div>
-  </article>
+  </a>
 </section>
+
+<div class="wiciedzy-home-extra">
+  <a class="wiciedzy-btn wiciedzy-home-quiet-btn" href="{% url 'wiciedzy:mokuso' %}"
+     data-pl="wbijaj się wyciszyć" data-en="come in and quiet down">wbijaj się wyciszyć</a>
+</div>
 </div>
 {% endblock %}

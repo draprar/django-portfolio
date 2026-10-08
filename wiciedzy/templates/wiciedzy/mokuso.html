@@ -1,0 +1,108 @@
+{% extends "wiciedzy/base.html" %}
+{% load static %}
+
+{% block title %}mokuso · wiciędze{% endblock %}
+{% block title_i18n %}data-pl="mokuso · wiciędze" data-en="mokuso · wiciędze"{% endblock %}
+{% block meta_description %}
+<meta name="description"
+      data-pl="Chwila ciszy przed treningiem albo w ciągu dnia: oddech, jedno słowo, 5, 10 lub 20 minut."
+      data-en="A moment of silence before training, or any time of day: breath, one word, 5, 10 or 20 minutes."
+      content="Chwila ciszy przed treningiem albo w ciągu dnia: oddech, jedno słowo, 5, 10 lub 20 minut.">
+<meta property="og:description"
+      data-pl="Chwila ciszy przed treningiem albo w ciągu dnia: oddech, jedno słowo, 5, 10 lub 20 minut."
+      data-en="A moment of silence before training, or any time of day: breath, one word, 5, 10 or 20 minutes."
+      content="Chwila ciszy przed treningiem albo w ciągu dnia: oddech, jedno słowo, 5, 10 lub 20 minut.">
+{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'wiciedzy/css/mokuso.css' %}">{% endblock %}
+
+{% block wiciedzy %}
+<div class="mokuso">
+  <section class="mokuso-setup" data-mokuso-setup>
+    <header class="mokuso-intro wiciedzy-header">
+      <h1 id="mokuso-title" class="wiciedzy-title" data-pl="mokuso" data-en="mokuso">mokuso</h1>
+      <p class="mokuso-lead" data-pl="Chwila ciszy. Przed treningiem, w ciągu dnia, kiedy tam ci leży." data-en="A quiet moment. Before training, during the day, whenever you feel like it.">Chwila ciszy. Przed treningiem, w ciągu dnia, kiedy tam ci leży.</p>
+      <p class="mokuso-about wiciedzy-muted" data-pl="Metoda pochodzi z instrukcji Herberta Bensona, lekarza z Harvardu - z jego książki The Relaxation Response (1975)." data-en="The method comes from the instructions of Herbert Benson, a Harvard physician—in his 1975 book The Relaxation Response.">Metoda pochodzi z instrukcji Herberta Bensona, lekarza z Harvardu - z jego książki The Relaxation Response (1975).</p>
+    </header>
+
+    <ol class="mokuso-steps">
+      <li data-pl="Usiądź albo połóż się wygodnie. Zamknij oczy i rozluźnij mięśnie." data-en="Sit or lie down, whichever is comfortable. Close your eyes and relax your muscles.">Usiądź albo połóż się wygodnie. Zamknij oczy i rozluźnij mięśnie.</li>
+      <li data-pl="Oddychaj normalnie. Na każdym wydechu powiedz sobie w myślach jedno krótkie słowo, na przykład ŁAN." data-en="Breathe normally. On each exhale, say one short word to yourself in your head, such as ONE.">Oddychaj normalnie. Na każdym wydechu powiedz sobie w myślach jedno krótkie słowo, na przykład ŁAN.</li>
+      <li data-pl="Myśli będą przychodzić, nie uciekniesz. Wróć na luzie do oddechu i powtarzaj dalej swoje słowo." data-en="Thoughts will come; you won't escape them. Ease back to your breath and keep repeating your word.">Myśli będą przychodzić, nie uciekniesz. Wróć na luzie do oddechu i powtarzaj dalej swoje słowo.</li>
+      <li data-pl="Zacznij od 5 minut. Z czasem możesz dojść do 20." data-en="Start with 5 minutes. You can work up to 20 over time.">Zacznij od 5 minut. Z czasem możesz dojść do 20.</li>
+    </ol>
+
+    <div class="mokuso-controls">
+      <fieldset class="mokuso-durations">
+        <legend class="visually-hidden" data-pl="Czas" data-en="Duration">Czas</legend>
+        <label class="mokuso-duration">
+          <input type="radio" name="mokuso-minutes" value="5" checked>
+          <span data-pl="5 min" data-en="5 min">5 min</span>
+        </label>
+        <label class="mokuso-duration">
+          <input type="radio" name="mokuso-minutes" value="10">
+          <span data-pl="10 min" data-en="10 min">10 min</span>
+        </label>
+        <label class="mokuso-duration">
+          <input type="radio" name="mokuso-minutes" value="20">
+          <span data-pl="20 min" data-en="20 min">20 min</span>
+        </label>
+      </fieldset>
+
+      <p class="mokuso-word-line">
+        <span data-pl="Słowo na wydechu" data-en="Word on the exhale">Słowo na wydechu</span>
+        <strong data-pl="ŁAN" data-en="ONE">ŁAN</strong>
+        <span class="mokuso-word-hint wiciedzy-muted" data-pl="jak „one”, ale możesz wybrać swoje" data-en="or pick your own">jak „one”, ale możesz wybrać swoje</span>
+      </p>
+
+      <label class="mokuso-screenless">
+        <input type="checkbox" data-mokuso-screenless>
+        <span data-pl="Bez ekranu" data-en="Screenless">Bez ekranu</span>
+      </label>
+      <p class="mokuso-fine" data-pl="Po starcie strona robi się czarna. Gong i timer działają, o ile pozwoli na to przeglądarka. Przy zablokowanym ekranie nie ma gwarancji." data-en="The page goes black after you start. Gong and timer work as far as your browser allows. With a locked screen, there are no guarantees.">Po starcie strona robi się czarna. Gong i timer działają, o ile pozwoli na to przeglądarka. Przy zablokowanym ekranie nie ma gwarancji.</p>
+    </div>
+
+    <p class="mokuso-actions">
+      <button type="button" class="wiciedzy-btn" data-mokuso-start data-pl="Start" data-en="Start">Start</button>
+    </p>
+
+    <footer class="mokuso-foot">
+      <p class="mokuso-sources mokuso-fine">
+        <a href="https://en.wikipedia.org/wiki/The_Relaxation_Response" target="_blank" rel="noopener" data-pl="The Relaxation Response" data-en="The Relaxation Response">The Relaxation Response</a>
+        <a href="https://www.health.harvard.edu/blog/a-once-and-future-meditator-tries-the-relaxation-response-for-stress-201110143598" target="_blank" rel="noopener" data-pl="Harvard Health: the relaxation response" data-en="Harvard Health: the relaxation response">Harvard Health: the relaxation response</a>
+      </p>
+    </footer>
+  </section>
+
+  <section class="mokuso-session" hidden tabindex="-1" aria-labelledby="mokuso-session-name" data-mokuso-session>
+    <span id="mokuso-session-name" class="visually-hidden" data-pl="mokuso" data-en="mokuso">mokuso</span>
+    <div class="mokuso-visual" aria-hidden="true">
+      <div class="mokuso-ring" data-mokuso-ring>
+        <svg viewBox="0 0 100 100" focusable="false">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="1.25"></circle>
+        </svg>
+        <div class="mokuso-ring-copy">
+          <p class="mokuso-cue" data-mokuso-word hidden data-pl="ŁAN" data-en="ONE">ŁAN</p>
+          <p class="mokuso-phase">
+            <span data-mokuso-inhale data-pl="wdech" data-en="in">wdech</span>
+            <span data-mokuso-exhale hidden data-pl="wydech" data-en="out">wydech</span>
+          </p>
+        </div>
+      </div>
+      <p class="mokuso-timer" data-mokuso-timer></p>
+    </div>
+    <button type="button" class="wiciedzy-btn wiciedzy-btn-quiet mokuso-stop" data-mokuso-stop data-pl="Stop" data-en="Stop">Stop</button>
+  </section>
+
+  <section class="mokuso-end" hidden data-mokuso-end>
+    <div id="mokuso-end-note">
+      <p class="mokuso-end-line" data-pl="Koniec." data-en="Done.">Koniec.</p>
+      <p class="mokuso-end-line" data-pl="Ukłon." data-en="Bow.">Ukłon.</p>
+    </div>
+    <p class="mokuso-actions">
+      <button type="button" class="wiciedzy-btn" data-mokuso-again aria-describedby="mokuso-end-note" data-pl="Jeszcze raz" data-en="Again">Jeszcze raz</button>
+    </p>
+  </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'wiciedzy/js/mokuso.js' %}" defer></script>{% endblock %}
