@@ -1,6 +1,6 @@
 ﻿# wiciędze — teksty na stronie (obecny UI)
 
-Wygenerowano: **2026-10-08 21:40 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
+Wygenerowano: **2026-10-09 16:38 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
 
 Źródło: aktywne trasy w `wiciedzy/urls.py`, szablony, modele `Style` (`active=True`), `PreferenceQuestion` (`active=True`), teksty z `dimensions.py` / `display.py`.
 
@@ -39,8 +39,8 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
 **EN:** Click around and you'll get a short list of matched styles.
 
-**PL:** wbijaj się wyciszyć
-**EN:** come in and quiet down
+**PL:** wyluzuj
+**EN:** chill
 
 ### `/wiciedze/spis/`
 
@@ -97,9 +97,6 @@ _Szablon:_ `detail.html` — stałe napisy; nazwy stylów i opisy z sekcji katal
 
 **PL:** O stylu
 **EN:** About
-
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
 
 **PL:** Rodzaj
 **EN:** Type
@@ -175,11 +172,8 @@ _Szablon:_ `match.html` — stałe napisy; nazwy stylów i opisy z sekcji katalo
 **PL:** Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.
 **EN:** Five styles to read about — starting with the best match in this set.
 
-**PL:** To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty; nie opisuje każdej szkoły.
-**EN:** This comparison is based on your preferences and the card's general profile; it does not describe every school.
-
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
+**PL:** To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty.
+**EN:** This comparison is based on your preferences and the card's general profile.
 
 **PL:** Mniej oczywiste
 **EN:** Less obvious
@@ -236,9 +230,6 @@ _Szablon:_ `compare.html` — stałe napisy; nazwy stylów i opisy z sekcji kata
 
 **PL:** Historia i typ
 **EN:** History and type
-
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
 
 **PL:** Najważniejsze różnice
 **EN:** Main differences
@@ -1404,9 +1395,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Uderzenia
 **EN:** Striking
 
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
-
 **PL:** Karate to rodzina sztuk uderzeń wywodzących się z Okinawy i rozwiniętych następnie w Japonii, a nie jeden regulamin. WKF punktuje kontrolowane kumite, w tym ciosy w głowę, a formuły knockdown, jak kyokushin, nie dopuszczają ciosów ręką na głowę, pozostawiając kopnięcia na głowę. Kyokushin jest stylem karate, nie sztuką obok karate.
 **EN:** Karate is a family of striking arts rooted in Okinawa and later developed in Japan, not one rule set. WKF scores controlled kumite, including punches to the head, while knockdown formats such as Kyokushin leave the head for kicks. Kyokushin is a karate style, not an art beside karate.
 
@@ -2020,9 +2008,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 **PL:** Uderzenia
 **EN:** Striking
-
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
 
 **PL:** Nie da się uczciwie podać jednej wersji, źródła są niejasne.
 **EN:** There's no honest single version — the sources are unclear.
@@ -3505,9 +3490,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Broń
 **EN:** Weapons
 
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
-
 **PL:** Arnis, kali i eskrima to filipińskie sztuki z kijem, nożem i pustą ręką. Nazwy zależą od regionu i szkoły, nie od trzech różnych sportów. Obok tradycji są też formuły sportowe na kij.
 **EN:** Arnis, kali and eskrima are Philippine arts with stick, knife and empty hand. The names depend on the region and the school, not on three different sports. Sport formats for the stick sit beside the tradition.
 
@@ -3653,9 +3635,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 **PL:** Mieszane
 **EN:** Mixed
-
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
 
 **PL:** Pencak silat to rodzina sztuk z Indonezji, Malezji i pobliskich regionów, nie jeden regulamin. Są nurty regionalne i broń, a w zawodach PERSILAT główne kategorie to tanding i jurus, przy czym jurus obejmuje tunggal, ganda i regu.
 **EN:** Pencak silat is a family of arts from Indonesia, Malaysia and nearby regions, not one rule set. There are regional traditions and weapons, and in PERSILAT competition the main categories are tanding and jurus, with jurus including tunggal, ganda and regu.
@@ -4390,9 +4369,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Chwyty
 **EN:** Grappling
 
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
-
 **PL:** Jujutsu to nazwa na japońskie szkoły chwytów sprzed judo i na późniejsze klubowe ju-jitsu. Koryu, sportowe duo i samoobrona nie są tą samą praktyką. Judo rozwinęło się ze starszych szkół jujutsu, natomiast brazylijskie jiu-jitsu rozwinęło się później poprzez brazylijską praktykę judo i pokrewnych form grapplingu. Obie praktyki mają własne karty.
 **EN:** Jujutsu is the name for Japanese grappling schools from before judo and for later club ju-jitsu. Koryu, sporting duo and self-defence are not the same practice. Judo developed from older jujutsu schools, while Brazilian jiu-jitsu developed later through Brazilian practice of judo and related grappling. Both have their own cards.
 
@@ -4976,9 +4952,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 **PL:** Mieszane
 **EN:** Mixed
-
-**PL:** To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.
-**EN:** It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.
 
 **PL:** Taijiquan to chińska praktyka form, pchnięć rąk i własnej wersji sportowej. Nazwa zbiera szkoły, między innymi Chen, Yang, Wu, Sun i Wu (Hao). To nie jest skrót na całe wushu.
 **EN:** Taijiquan is a Chinese practice of forms, push-hands and its own sport version. The name gathers schools, among them Chen, Yang, Wu, Sun and Wu (Hao). It is not an abbreviation for all of wushu.
@@ -7143,6 +7116,12 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Jak bardzo chcesz uderzać?
 **EN:** How much do you want to strike?
 
+**PL:** Jak ważna jest dla Ciebie konkretnie praca pięściami?
+**EN:** How important is punch work specifically?
+
+**PL:** Jak bardzo chcesz kopać?
+**EN:** How much do you want to kick?
+
 **PL:** Jak bardzo chcesz chwytać?
 **EN:** How much do you want to grapple?
 
@@ -7151,9 +7130,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 **PL:** Jak bardzo chcesz mieć broń na treningu?
 **EN:** How much do you want a weapon in training?
-
-**PL:** Jak bardzo chcesz kopać?
-**EN:** How much do you want to kick?
 
 **PL:** Jak mocny ma być kontakt na treningu z partnerem?
 **EN:** How hard should partner contact be in training?
@@ -7182,7 +7158,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Głównie z partnerem, który się rusza.
 **EN:** Mostly with a partner who moves.
 
-**PL:** Wolisz zostać z daleka, wejść blisko, czy trzymać mieszankę?
+**PL:** Wolisz zostać z daleka, wejść blisko, czy mieszać oba?
 **EN:** Would you rather stay at range, step in close, or keep a mix?
 
 **PL:** Z daleka — niech noga robi robotę.
@@ -7194,7 +7170,7 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Mieszanka — kopnięcia i klincz po równo.
 **EN:** A mix — kicks and clinch matter about equally.
 
-**PL:** Co wolisz, gdy trening schodzi do bliskiej pracy?
+**PL:** Co wybierzesz, gdy dojdzie do kontaktu?
 **EN:** What do you prefer when training moves into close work?
 
 **PL:** Rzut.
@@ -7232,9 +7208,6 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 
 **PL:** Nic z powyższych.
 **EN:** None of these.
-
-**PL:** Jak ważna jest dla Ciebie konkretnie praca pięściami?
-**EN:** How important is punch work specifically?
 
 ## 6. Badania (porównanie)
 
@@ -7321,14 +7294,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Jest tu mniej zrywu, niż chcesz.
 **EN:** There's less burst here than you want.
 
-**PL:** Pracy w chwycie jest tu mniej więcej tyle, ile chcesz.
-**EN:** There's about as much grappling work here as you want.
+**PL:** Chwytania jest tu mniej więcej tyle, ile chcesz.
+**EN:** There's about as much grappling here as you want.
 
-**PL:** Pracy w chwycie jest tu więcej, niż szukasz.
-**EN:** There's more grappling work here than you're after.
+**PL:** Chwytania jest tu więcej, niż szukasz.
+**EN:** There's more grappling here than you're after.
 
-**PL:** Pracy w chwycie jest tu mniej, niż szukasz.
-**EN:** There's less grappling work here than you're after.
+**PL:** Chwytania jest tu mniej, niż szukasz.
+**EN:** There's less grappling here than you're after.
 
 **PL:** Parteru jest tu mniej więcej tyle, ile chcesz.
 **EN:** There's about as much ground work here as you want.
@@ -7339,8 +7312,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Parteru jest tu mniej, niż szukasz.
 **EN:** There's less ground work here than you're after.
 
-**PL:** Kopnięcia są tu mniej więcej tak częste, jak chcesz.
-**EN:** Kicks are about as common here as you want.
+**PL:** Kopnięcia są tu mniej więcej tak istotne, jak chcesz.
+**EN:** Kicks matter here about as much as you want.
 
 **PL:** Kopnięć jest tu więcej, niż szukasz.
 **EN:** There are more kicks here than you're after.
@@ -7366,8 +7339,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Pracy z partnerem jest tu mniej, niż szukasz.
 **EN:** There's less partner work here than you're after.
 
-**PL:** Praca pięścią jest tu mniej więcej tak ważna, jak chcesz.
-**EN:** Fist work matters here about as much as you want.
+**PL:** Praca pięściami jest tu mniej więcej tak ważna, jak chcesz.
+**EN:** Punch work matters here about as much as you want.
 
 **PL:** Pięści liczą się tu bardziej, niż szukasz.
 **EN:** Fists matter more here than you're after.
@@ -7429,14 +7402,14 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Rzutów jest tu mniej, niż szukasz.
 **EN:** There are fewer throws here than you're after.
 
-**PL:** Zwyczajów i tradycji w sali jest tu mniej więcej tyle, ile chcesz.
-**EN:** There's about as much hall custom and tradition here as you want.
+**PL:** Zwyczajów i tradycji na sali jest tu mniej więcej tyle, ile chcesz.
+**EN:** There's about as much custom and tradition in the hall here as you want.
 
-**PL:** Zwyczajów i tradycji w sali jest tu więcej, niż szukasz.
-**EN:** There's more hall custom and tradition here than you're after.
+**PL:** Zwyczajów i tradycji na sali jest tu więcej, niż szukasz.
+**EN:** There's more custom and tradition in the hall here than you're after.
 
-**PL:** Zwyczajów i tradycji w sali jest tu mniej, niż szukasz.
-**EN:** There's less hall custom and tradition here than you're after.
+**PL:** Zwyczajów i tradycji na sali jest tu mniej, niż szukasz.
+**EN:** There's less custom and tradition in the hall here than you're after.
 
 **PL:** Broń na tym treningu jest mniej więcej tak ważna, jak chcesz.
 **EN:** Weapons matter in this training about as much as you want.
@@ -7471,8 +7444,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Zrywu jest tu mało — i dobrze, bo właśnie tego szukasz.
 **EN:** There's little burst here — and that's what you want.
 
-**PL:** Pracy w chwycie jest tu mało — i dobrze, bo właśnie tego szukasz.
-**EN:** There's little grappling work here — and that's what you want.
+**PL:** Chwytania jest tu mało — i dobrze, bo właśnie tego szukasz.
+**EN:** There's little grappling here — and that's what you want.
 
 **PL:** Parteru jest tu mało — i dobrze, bo właśnie tego szukasz.
 **EN:** There's little ground work here — and that's what you want.
@@ -7507,8 +7480,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** Rzutów jest tu mało — i dobrze, bo właśnie tego szukasz.
 **EN:** There are few throws here — and that's what you want.
 
-**PL:** Zwyczajów i tradycji w sali jest tu mało — i dobrze, bo właśnie tego szukasz.
-**EN:** There's little hall custom and tradition here — and that's what you want.
+**PL:** Zwyczajów i tradycji na sali jest tu mało — i dobrze, bo właśnie tego szukasz.
+**EN:** There's little custom and tradition in the hall here — and that's what you want.
 
 **PL:** Broni prawie tu nie ma — i dobrze, bo właśnie tego szukasz.
 **EN:** There's almost no weapon here — and that's what you want.
