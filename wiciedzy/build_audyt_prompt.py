@@ -43,10 +43,6 @@ Wykonaj **dokładnie** polecenie z nagłówka pliku quizu (4 punkty: mechanizm, 
 9. **UI i obietnice.** Czy home/quiz/katalog nie obiecują więcej niż mechanizm daje; ton PL (np. „se poklikaj”, tagline); dostępność sensu bez kontekstu kodu.
 10. **Porównanie i dopasowanie.** Czy copy przy legendzie, „do poczytania”, brak psychometrii — spójne i uczciwe.
 
-### IV. Humor / IPIP (jeśli występują w eksportie A)
-
-11. Jeśli eksport zawiera pytania IPIP lub humor — krótko: czy nie mylą się z quizem dopasowania i czy PL/EN jest spójne. Jeśli brak w eksportcie — pomiń.
-
 ---
 
 ## Format odpowiedzi ChatGPT

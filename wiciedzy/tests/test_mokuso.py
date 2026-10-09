@@ -72,8 +72,10 @@ def test_mokuso_copy_has_both_languages_and_durations(client):
     html = client.get(reverse("wiciedzy:mokuso")).content.decode()
     main = _main(html)
 
-    assert 'data-pl="Chwila ciszy. Przed treningiem, w ciągu dnia, kiedy tam ci leży."' in main
-    assert 'data-en="A quiet moment. Before training, during the day, whenever you feel like it."' in main
+    assert 'data-pl="Wycisz się - przed treningiem, w ciągu dnia, kiedy tam ci leży."' in main
+    assert 'data-en="Quiet down — before training, during the day, whenever you feel like it."' in main
+    assert "Wycisz się" in main
+    assert "Quiet down" in main
     assert "w ciągu dnia" in main
     assert "during the day" in main
     assert "Metoda pochodzi z instrukcji Herberta Bensona" in main
@@ -113,6 +115,9 @@ def test_mokuso_copy_has_both_languages_and_durations(client):
     assert 'data-en="Start"' in main
     assert 'data-pl="Stop"' in main
     assert 'data-en="Stop"' in main
+    assert 'data-pl="Bez dźwięku"' in main
+    assert 'data-en="No sound"' in main
+    assert "data-mokuso-mute" in main
     assert "nie ma gwarancji" in main
     assert "there are no guarantees" in main
     assert "ciszy i bezruchu" not in main
@@ -157,6 +162,9 @@ def test_mokuso_footer_sources(client):
 def test_mokuso_assets_have_no_copy():
     js = (APP_ROOT / "static" / "wiciedzy" / "js" / "mokuso.js").read_text(encoding="utf-8")
     css = (APP_ROOT / "static" / "wiciedzy" / "css" / "mokuso.css").read_text(encoding="utf-8")
+    assert "function isMuted()" in js
+    assert 'input[type="checkbox"][data-mokuso-mute]' in js
+    assert "if (isMuted()) return false;" in js
     for source in (js, css):
         assert "Zen Jaskiniowca" not in source
         assert re.search(r"jaskiniow", source, re.IGNORECASE) is None
@@ -175,8 +183,9 @@ def test_home_links_mokuso_and_sitemap_lists_it(client):
     path = reverse("wiciedzy:mokuso")
 
     assert path in home
-    assert 'data-pl="wbijaj się wyciszyć"' in home
-    assert 'data-en="come in and quiet down"' in home
+    assert 'data-pl="wyluzuj"' in home
+    assert 'data-en="chill"' in home
+    assert "wbijaj się wyciszyć" not in home
     assert "wiciedzy-home-quiet-desc" not in home
     assert "A kto to przyszedł?" not in home
     assert "wiciedzy-home-mokuso" not in home

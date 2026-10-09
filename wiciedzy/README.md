@@ -3,6 +3,15 @@
 ## Source of truth
 
 - Catalog data: `data/styles.py`, `data/prose.py`, `data/instruments.py`
+
+### Quizopasowanie (`instruments.py`) and deploy
+
+Preference questions live in the **database** after `import_wiciedzy`. Code-only changes are not enough for production.
+
+- **Render / CI:** `migrate` then `import_wiciedzy` (see `render.yaml`, `.github/workflows/ci.yaml`).
+- **Reorder, new copy, or new questions:** add a data migration that runs `import_wiciedzy` on deploy (pattern: `migrations/0009_preference_order_copy.py`). Import matches rows by scale `dimension` or choice `text_en`, then sets `sort_order`.
+- Do not rely on a manual import on the server after merge; the PR should ship everything needed for migrate-only deploys.
+
 - Editorial mirror: `katalog-opisy.md`, `quizopasowanie.md`
 - Templates under `templates/wiciedzy/`
 

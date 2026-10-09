@@ -1,8 +1,4 @@
-"""Preference items, public-domain IPIP stems, and the humorous archetype quiz.
-
-Polish IPIP wording is a translation made for this project. The English stems are
-IPIP public-domain items in the Mini-IPIP selection (Donnellan et al., 2006).
-"""
+"""Quizopasowanie preference items and style type labels."""
 
 from __future__ import annotations
 
@@ -16,43 +12,6 @@ TYPES: list[dict[str, str]] = [
     {"code": "hybrid", "name_pl": "Mieszane", "name_en": "Hybrid"},
 ]
 
-IPIP_ATTRIBUTION = (
-    "English Mini-IPIP (Donnellan et al., 2006), public-domain IPIP items. "
-    "The Polish wording is my own unvalidated translation."
-)
-
-IPIP_SCALES: list[dict[str, str]] = [
-    {"code": "E", "name_pl": "Ekstrawersja", "name_en": "Extraversion"},
-    {"code": "A", "name_pl": "Ugodowość", "name_en": "Agreeableness"},
-    {"code": "C", "name_pl": "Sumienność", "name_en": "Conscientiousness"},
-    {"code": "N", "name_pl": "Neurotyczność", "name_en": "Neuroticism"},
-    {"code": "O", "name_pl": "Otwartość", "name_en": "Openness"},
-]
-
-# (scale, reverse, en, pl)
-IPIP_ITEMS: list[tuple[str, bool, str, str]] = [
-    ("E", False, "Am the life of the party.", "Jestem duszą towarzystwa."),
-    ("E", True, "Don't talk a lot.", "Mówię niewiele."),
-    ("E", False, "Talk to a lot of different people at parties.", "Na imprezach gadam z wieloma różnymi ludźmi."),
-    ("E", True, "Keep in the background.", "Trzymam się w tle."),
-    ("A", False, "Sympathize with others' feelings.", "Współczuję innym w ich uczuciach."),
-    ("A", True, "Am not interested in other people's problems.", "Cudze problemy mnie nie obchodzą."),
-    ("A", False, "Feel others' emotions.", "Czuję emocje innych."),
-    ("A", True, "Am not really interested in others.", "Inni ludzie specjalnie mnie nie interesują."),
-    ("C", False, "Get chores done right away.", "Obowiązki załatwiam od razu."),
-    ("C", True, "Often forget to put things back in their proper place.", "Często zapominam odłożyć rzeczy na miejsce."),
-    ("C", False, "Like order.", "Lubię porządek."),
-    ("C", True, "Make a mess of things.", "Robię bałagan."),
-    ("N", False, "Have frequent mood swings.", "Często zmienia mi się nastrój."),
-    ("N", True, "Am relaxed most of the time.", "Przez większość czasu jestem spokojny."),
-    ("N", False, "Get upset easily.", "Łatwo się denerwuję."),
-    ("N", True, "Seldom feel blue.", "Rzadko bywa mi smutno."),
-    ("O", False, "Have a vivid imagination.", "Mam bujną wyobraźnię."),
-    ("O", True, "Am not interested in abstract ideas.", "Abstrakcyjne idee mnie nie interesują."),
-    ("O", True, "Have difficulty understanding abstract ideas.", "Trudno mi zrozumieć abstrakcyjne idee."),
-    ("O", True, "Do not have a good imagination.", "Nie mam dobrej wyobraźni."),
-]
-
 PREFERENCE: list[dict] = [
     {
         "sort_order": 1,
@@ -64,33 +23,41 @@ PREFERENCE: list[dict] = [
     {
         "sort_order": 2,
         "kind": "scale",
-        "dimension": "grappling",
-        "text_pl": "Jak bardzo chcesz chwytać?",
-        "text_en": "How much do you want to grapple?",
+        "dimension": "punches",
+        "required": False,
+        "text_pl": "Jak ważna jest dla Ciebie konkretnie praca pięściami?",
+        "text_en": "How important is punch work specifically?",
     },
     {
         "sort_order": 3,
-        "kind": "scale",
-        "dimension": "ground_fighting",
-        "text_pl": "Jak bardzo chcesz walczyć w parterze?",
-        "text_en": "How much do you want to fight on the ground?",
-    },
-    {
-        "sort_order": 4,
-        "kind": "scale",
-        "dimension": "weapons",
-        "text_pl": "Jak bardzo chcesz mieć broń na treningu?",
-        "text_en": "How much do you want a weapon in training?",
-    },
-    {
-        "sort_order": 5,
         "kind": "scale",
         "dimension": "kicks",
         "text_pl": "Jak bardzo chcesz kopać?",
         "text_en": "How much do you want to kick?",
     },
     {
+        "sort_order": 4,
+        "kind": "scale",
+        "dimension": "grappling",
+        "text_pl": "Jak bardzo chcesz chwytać?",
+        "text_en": "How much do you want to grapple?",
+    },
+    {
+        "sort_order": 5,
+        "kind": "scale",
+        "dimension": "ground_fighting",
+        "text_pl": "Jak bardzo chcesz walczyć w parterze?",
+        "text_en": "How much do you want to fight on the ground?",
+    },
+    {
         "sort_order": 6,
+        "kind": "scale",
+        "dimension": "weapons",
+        "text_pl": "Jak bardzo chcesz mieć broń na treningu?",
+        "text_en": "How much do you want a weapon in training?",
+    },
+    {
+        "sort_order": 7,
         "kind": "scale",
         "dimension": "contact_level",
         "text_pl": "Jak mocny ma być kontakt na treningu z partnerem?",
@@ -103,21 +70,21 @@ PREFERENCE: list[dict] = [
         "hint_en": "1 means very light contact, 5 — very hard.",
     },
     {
-        "sort_order": 7,
+        "sort_order": 8,
         "kind": "scale",
         "dimension": "competition_level",
         "text_pl": "Jak bardzo chcesz startować w zawodach?",
         "text_en": "How much do you want to compete?",
     },
     {
-        "sort_order": 8,
+        "sort_order": 9,
         "kind": "scale",
         "dimension": "tradition_level",
         "text_pl": "Jak ważna jest dla Ciebie tradycja i zwyczaje w sali?",
         "text_en": "How much do hall custom and tradition matter to you?",
     },
     {
-        "sort_order": 9,
+        "sort_order": 10,
         "kind": "scale",
         "dimension": "technical_complexity",
         "text_pl": "Jak bardzo chcesz złożonej technicznie pracy?",
@@ -130,7 +97,7 @@ PREFERENCE: list[dict] = [
         "hint_en": "1 means very simple, 5 — very complex.",
     },
     {
-        "sort_order": 10,
+        "sort_order": 11,
         "kind": "scale",
         "dimension": "athletic_demand",
         "text_pl": "Jak wymagający fizycznie ma być trening?",
@@ -143,7 +110,7 @@ PREFERENCE: list[dict] = [
         "hint_en": "1 means very light training, 5 — very demanding.",
     },
     {
-        "sort_order": 11,
+        "sort_order": 12,
         "kind": "ab",
         "dimension": "",
         "text_pl": "Wolisz ćwiczyć głównie sam, głównie z partnerem, czy mieszać oba?",
@@ -167,10 +134,10 @@ PREFERENCE: list[dict] = [
         ],
     },
     {
-        "sort_order": 12,
+        "sort_order": 13,
         "kind": "ab",
         "dimension": "",
-        "text_pl": "Wolisz zostać z daleka, wejść blisko, czy trzymać mieszankę?",
+        "text_pl": "Wolisz zostać z daleka, wejść blisko, czy mieszać oba?",
         "text_en": "Would you rather stay at range, step in close, or keep a mix?",
         "options": [
             {
@@ -191,10 +158,10 @@ PREFERENCE: list[dict] = [
         ],
     },
     {
-        "sort_order": 13,
+        "sort_order": 14,
         "kind": "situation",
         "dimension": "",
-        "text_pl": "Co wolisz, gdy trening schodzi do bliskiej pracy?",
+        "text_pl": "Co wybierzesz, gdy dojdzie do kontaktu?",
         "text_en": "What do you prefer when training moves into close work?",
         "options": [
             {
@@ -220,7 +187,7 @@ PREFERENCE: list[dict] = [
         ],
     },
     {
-        "sort_order": 14,
+        "sort_order": 15,
         "kind": "multi",
         "dimension": "",
         "text_pl": "Zaznacz, co ma być w Twoim tygodniu treningowym. Możesz wybrać kilka rzeczy naraz; jeśli nic z tego nie ma dla Ciebie znaczenia, zaznacz wyłącznie ostatnią opcję.",
@@ -234,14 +201,6 @@ PREFERENCE: list[dict] = [
             {"text_pl": "Eksplozywne wejście.", "text_en": "An explosive entry.", "weights": [("explosiveness", 2)]},
             {"text_pl": "Nic z powyższych.", "text_en": "None of these.", "weights": []},
         ],
-    },
-    {
-        "sort_order": 15,
-        "kind": "scale",
-        "dimension": "punches",
-        "required": False,
-        "text_pl": "Jak ważna jest dla Ciebie konkretnie praca pięściami?",
-        "text_en": "How important is punch work specifically?",
     },
 ]
 

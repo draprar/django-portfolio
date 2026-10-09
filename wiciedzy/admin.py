@@ -2,17 +2,10 @@ from django.contrib import admin
 from django.db.models import Count
 
 from wiciedzy.models import (
-    Archetype,
-    Choice,
     Fact,
-    HumorChoice,
-    HumorQuestion,
-    IPIPItem,
-    IPIPScale,
     OptionWeight,
     PreferenceOption,
     PreferenceQuestion,
-    Question,
     Source,
     Study,
     Style,
@@ -35,12 +28,6 @@ class TrainingProfileInline(admin.StackedInline):
     extra = 0
 
 
-class ChoiceInline(admin.TabularInline):
-    model = Choice
-    extra = 0
-    autocomplete_fields = ("style", "extra_style")
-
-
 class PreferenceOptionInline(admin.TabularInline):
     model = PreferenceOption
     extra = 0
@@ -48,16 +35,6 @@ class PreferenceOptionInline(admin.TabularInline):
 
 class WeightInline(admin.TabularInline):
     model = OptionWeight
-    extra = 0
-
-
-class HumorChoiceInline(admin.TabularInline):
-    model = HumorChoice
-    extra = 0
-
-
-class IPIPItemInline(admin.TabularInline):
-    model = IPIPItem
     extra = 0
 
 
@@ -119,13 +96,6 @@ class StudyAdmin(admin.ModelAdmin):
     filter_horizontal = ("styles", "sources")
 
 
-@admin.register(Question)
-class QuestionAdmin(admin.ModelAdmin):
-    list_display = ("text_pl", "sort_order", "active")
-    list_filter = ("active",)
-    inlines = [ChoiceInline]
-
-
 @admin.register(PreferenceQuestion)
 class PreferenceQuestionAdmin(admin.ModelAdmin):
     list_display = ("text_pl", "kind", "dimension", "sort_order", "active")
@@ -137,23 +107,3 @@ class PreferenceQuestionAdmin(admin.ModelAdmin):
 class PreferenceOptionAdmin(admin.ModelAdmin):
     list_display = ("text_pl", "question")
     inlines = [WeightInline]
-
-
-@admin.register(IPIPScale)
-class IPIPScaleAdmin(admin.ModelAdmin):
-    list_display = ("code", "name_pl", "name_en")
-    inlines = [IPIPItemInline]
-
-
-@admin.register(Archetype)
-class ArchetypeAdmin(admin.ModelAdmin):
-    list_display = ("name_pl", "slug")
-    search_fields = ("slug", "name_pl")
-    filter_horizontal = ("styles",)
-
-
-@admin.register(HumorQuestion)
-class HumorQuestionAdmin(admin.ModelAdmin):
-    list_display = ("text_pl", "sort_order", "active")
-    list_filter = ("active",)
-    inlines = [HumorChoiceInline]

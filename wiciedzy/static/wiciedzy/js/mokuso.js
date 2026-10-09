@@ -151,7 +151,13 @@
     bus = null;
   }
 
+  function isMuted() {
+    var el = root.querySelector('input[type="checkbox"][data-mokuso-mute]');
+    return !!(el && el.checked);
+  }
+
   function playGong() {
+    if (isMuted()) return false;
     if (!audioCtx || audioCtx.state !== "running") return false;
     var dest = ensureBus();
     if (!dest) return false;
@@ -192,6 +198,10 @@
       }
     }
     audioCtx.resume().then(function () {
+      if (isMuted()) {
+        startGongPlayed = true;
+        return;
+      }
       if (running && !startGongPlayed && audioCtx && audioCtx.state === "running") {
         if (playGong()) startGongPlayed = true;
       }
@@ -253,12 +263,14 @@
     ring.style.transform = "none";
     showOnly("end");
     var skipGong = fromReturn && overshoot > LATE_GONG_MS;
-    if (!skipGong && !endGongPlayed) {
+    if (isMuted()) {
+      endGongPlayed = true;
+    } else if (!skipGong && !endGongPlayed) {
       if (playGong()) {
         endGongPlayed = true;
       } else if (audioCtx) {
         audioCtx.resume().then(function () {
-          if (token !== sessionToken || endGongPlayed) return;
+          if (token !== sessionToken || endGongPlayed || isMuted()) return;
           if (playGong()) endGongPlayed = true;
         }).catch(function () {});
       }
@@ -293,7 +305,7 @@
     durationMs = selectedMinutes() * 60 * 1000;
     sessionToken += 1;
     running = true;
-    startGongPlayed = false;
+    startGongPlayed = isMuted();
     endGongPlayed = false;
     perfStart = performance.now();
     wallStart = Date.now();
@@ -324,8 +336,16 @@
       if (input.checked) saveMinutes(Number(input.value));
     });
   });
+  root.addEventListener("change", function (event) {
+    var target = event.target;
+    if (!target || !target.matches || !target.matches('[data-mokuso-mute]')) return;
+    if (target.checked) silence();
+  });
   startBtn.addEventListener("click", begin);
   stopBtn.addEventListener("click", stop);
+  sessionEl.addEventListener("click", function () {
+    if (root.classList.contains("is-screenless")) stop();
+  });
   againBtn.addEventListener("click", function () {
     showOnly("setup");
     startBtn.focus();

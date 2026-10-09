@@ -6,14 +6,13 @@ from datetime import date
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
+from django.db.models import F
 
-from wiciedzy.data.instruments import IPIP_ATTRIBUTION, IPIP_ITEMS, IPIP_SCALES, PREFERENCE, TYPES
+from wiciedzy.data.instruments import PREFERENCE, TYPES
 from wiciedzy.data.prose import PROSE
 from wiciedzy.data.styles import CORE, FACTS, GOLDEN, RELATIONS, STYLE_TAGS, TAG_CATALOG, UMBRELLAS
 from wiciedzy.models import (
     Fact,
-    IPIPItem,
-    IPIPScale,
     OptionWeight,
     PreferenceOption,
     PreferenceQuestion,
@@ -39,7 +38,6 @@ class Command(BaseCommand):
             self._relations()
             self._facts()
             self._preference()
-            self._ipip()
         self.stdout.write(self.style.SUCCESS("wiciędze catalog upserted."))
 
     def _types(self) -> None:
@@ -131,19 +129,33 @@ class Command(BaseCommand):
             keep.append(fact.pk)
         Fact.objects.exclude(pk__in=keep).delete()
 
+    def _locate_preference_question(self, row: dict) -> PreferenceQuestion | None:
+        kind = row["kind"]
+        dimension = row.get("dimension") or ""
+        if kind == "scale" and dimension:
+            found = PreferenceQuestion.objects.filter(kind=kind, dimension=dimension).first()
+            if found:
+                return found
+        found = PreferenceQuestion.objects.filter(kind=kind, text_en=row["text_en"]).first()
+        if found:
+            return found
+        return PreferenceQuestion.objects.filter(sort_order=row["sort_order"]).first()
+
     def _preference(self) -> None:
+        # Free sort_order slots before reordering (avoid two rows sharing one index).
+        PreferenceQuestion.objects.filter(active=True).update(sort_order=F("sort_order") + 1000)
         keep: list[int] = []
         for row in PREFERENCE:
-            question, _created = PreferenceQuestion.objects.update_or_create(
-                sort_order=row["sort_order"],
-                defaults={
-                    "text_pl": row["text_pl"],
-                    "text_en": row["text_en"],
-                    "kind": row["kind"],
-                    "dimension": row.get("dimension", ""),
-                    "active": True,
-                },
-            )
+            question = self._locate_preference_question(row)
+            if question is None:
+                question = PreferenceQuestion()
+            question.text_pl = row["text_pl"]
+            question.text_en = row["text_en"]
+            question.kind = row["kind"]
+            question.dimension = row.get("dimension", "")
+            question.sort_order = row["sort_order"]
+            question.active = True
+            question.save()
             question.options.all().delete()
             for index, option in enumerate(row.get("options", [])):
                 created = PreferenceOption.objects.create(
@@ -156,23 +168,3 @@ class Command(BaseCommand):
                     OptionWeight.objects.create(option=created, dimension=dimension, weight=weight)
             keep.append(question.pk)
         PreferenceQuestion.objects.exclude(pk__in=keep).delete()
-
-    def _ipip(self) -> None:
-        scales = {}
-        for row in IPIP_SCALES:
-            scale, _created = IPIPScale.objects.update_or_create(
-                code=row["code"],
-                defaults={"name_pl": row["name_pl"], "name_en": row["name_en"]},
-            )
-            scales[row["code"]] = scale
-        for index, (code, reverse, text_en, text_pl) in enumerate(IPIP_ITEMS, start=1):
-            IPIPItem.objects.update_or_create(
-                scale=scales[code],
-                sort_order=index,
-                defaults={
-                    "text_en": text_en,
-                    "text_pl": text_pl,
-                    "reverse": reverse,
-                    "attribution": IPIP_ATTRIBUTION,
-                },
-            )

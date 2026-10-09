@@ -414,12 +414,6 @@ def _build_lines(pl_only: bool, plain: bool, include_seo: bool) -> list[str]:
 
         w.text(style.get_family_display(), style.family_en)
 
-        if style.is_umbrella:
-            w.text(
-                "To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.",
-                "It's an umbrella name, not one rule set, so this description doesn't fit every school or hall.",
-            )
-
         if style.sources_disagree:
             w.text(
                 "Nie da się uczciwie podać jednej wersji, źródła są niejasne.",

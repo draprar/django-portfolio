@@ -69,7 +69,7 @@ def test_preference_questions_match_source_rows():
 @pytest.mark.django_db
 def test_q9_solo_mix_partner_vectors():
     load_catalog()
-    q = question_at(11)
+    q = question_at(12)
     solo = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 0)})
     mix = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 1)})
     partner = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 2)})
@@ -80,7 +80,7 @@ def test_q9_solo_mix_partner_vectors():
 @pytest.mark.django_db
 def test_q10_close_does_not_use_kicks_minus_one():
     load_catalog()
-    q = question_at(12)
+    q = question_at(13)
     close = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 1)})
     assert close["clinch"] > close["kicks"]
     for weight in q.options.all()[1].weights.all():
@@ -90,7 +90,7 @@ def test_q10_close_does_not_use_kicks_minus_one():
 @pytest.mark.django_db
 def test_q11_throw_takedown_strike_weights():
     load_catalog()
-    q = question_at(13)
+    q = question_at(14)
     throw = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 0)})
     takedown = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 1)})
     ground = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 2)})
@@ -104,7 +104,7 @@ def test_q11_throw_takedown_strike_weights():
 @pytest.mark.django_db
 def test_q12_knees_elbows_none_exclusive():
     load_catalog()
-    q = question_at(14)
+    q = question_at(15)
     knees = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 0)})
     elbows = user_vector(questions(), {**all_scales_at(3), **option_posted(q, 1)})
     both = user_vector(
@@ -132,7 +132,7 @@ def test_q12_knees_elbows_none_exclusive():
 @pytest.mark.django_db
 def test_technical_complexity_scale_maps():
     load_catalog()
-    q = question_at(9)
+    q = question_at(10)
     assert q.dimension == "technical_complexity"
     low = user_vector(questions(), {**all_scales_at(3), **scale_posted(q, 1)})
     mid = user_vector(questions(), {**all_scales_at(3), **scale_posted(q, 3)})
@@ -238,7 +238,7 @@ def _mean_distance(user: dict[str, float], style_vector: dict[str, int]) -> floa
 def test_optional_punches_scale_does_not_change_a_blank_ranking():
     load_catalog()
     qs = questions()
-    punches = question_at(15)
+    punches = question_at(2)
     assert punches.dimension == "punches"
     assert punches.text_pl == "Jak ważna jest dla Ciebie konkretnie praca pięściami?"
     assert punches.text_en == "How important is punch work specifically?"
@@ -261,7 +261,7 @@ def test_optional_punches_scale_does_not_change_a_blank_ranking():
         assert vector["striking"] == blank["striking"]
 
     striking = question_at(1)
-    close_strike = question_at(13)
+    close_strike = question_at(14)
     both = user_vector(qs, {**scale_posted(striking, 5), **option_posted(close_strike, 3), **scale_posted(punches, 1)})
     striking_only = user_vector(qs, {**scale_posted(striking, 5), **option_posted(close_strike, 3)})
     assert both["striking"] == striking_only["striking"]

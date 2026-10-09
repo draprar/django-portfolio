@@ -11,7 +11,6 @@ from wiciedzy.data.styles import FACTS
 from wiciedzy.dimensions import DIMENSION_LABELS
 from wiciedzy.models import (
     Fact,
-    IPIPItem,
     PreferenceQuestion,
     Source,
     Style,
@@ -20,7 +19,6 @@ from wiciedzy.models import (
     TrainingProfile,
 )
 from wiciedzy.preference import _reading_list, _reasons, _sort_key, answers_complete, rank_styles, user_vector
-from wiciedzy.psychology import score_ipip
 
 
 def load_catalog() -> None:
@@ -190,30 +188,6 @@ def test_striking_preference_ranks_boxing_above_judo():
 
 
 @pytest.mark.django_db
-def test_personality_score_does_not_change_the_preference_rank():
-    load_catalog()
-    questions = list(PreferenceQuestion.objects.filter(active=True).prefetch_related("options__weights"))
-    posted = answered(questions, {"striking", "grappling", "contact_level"})
-    before = [row["slug"] for row in rank_styles(questions, posted)["picks"]]
-
-    items = list(IPIPItem.objects.select_related("scale"))
-    answers = {item.pk: 5 for item in items}
-    assert score_ipip(items, answers) == score_ipip(items, answers)
-    after = [row["slug"] for row in rank_styles(questions, posted)["picks"]]
-    assert before == after
-
-
-@pytest.mark.django_db
-def test_reverse_ipip_item_flips_the_point():
-    load_catalog()
-    item = IPIPItem.objects.select_related("scale").filter(reverse=True).first()
-    assert item is not None
-    scored = score_ipip([item], {item.pk: 1})
-
-    assert scored[item.scale.code] == 5
-
-
-@pytest.mark.django_db
 def test_compare_without_a_study_says_there_is_no_data(client):
     load_catalog()
     response = client.get(reverse("wiciedzy:compare", args=["boks", "judo"]))
@@ -304,7 +278,7 @@ def test_tag_filter_and_umbrella_label(client):
 
     karate = client.get(reverse("wiciedzy:detail", args=["karate"]))
     karate_page = karate.content.decode()
-    assert "To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali." in karate_page
+    assert "To nazwa zbiorcza, nie jeden regulamin" not in karate_page
     assert "To moja ocena" not in karate_page
     assert "Pokaż pełny profil" in karate.content.decode()
 
