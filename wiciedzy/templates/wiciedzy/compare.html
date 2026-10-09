@@ -28,9 +28,6 @@
   <div class="wiciedzy-compare">
     <div>
       <h3 data-en="{{ left.name_en }}" data-pl="{{ left.name_pl }}">{{ left.name_pl }}</h3>
-      {% if left.is_umbrella %}
-      <p class="wiciedzy-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
-      {% endif %}
       {% for item in left.style_types.all %}
       <p data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</p>
       {% endfor %}
@@ -39,9 +36,6 @@
     </div>
     <div>
       <h3 data-en="{{ right.name_en }}" data-pl="{{ right.name_pl }}">{{ right.name_pl }}</h3>
-      {% if right.is_umbrella %}
-      <p class="wiciedzy-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
-      {% endif %}
       {% for item in right.style_types.all %}
       <p data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</p>
       {% endfor %}

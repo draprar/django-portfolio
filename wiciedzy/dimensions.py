@@ -83,9 +83,9 @@ REASON_COPY: dict[str, tuple[tuple[str, str], tuple[str, str], tuple[str, str]]]
         ("Uderzeń jest tu mniej, niż szukasz.", "There's less striking here than you're after."),
     ),
     "grappling": (
-        ("Pracy w chwycie jest tu mniej więcej tyle, ile chcesz.", "There's about as much grappling work here as you want."),
-        ("Pracy w chwycie jest tu więcej, niż szukasz.", "There's more grappling work here than you're after."),
-        ("Pracy w chwycie jest tu mniej, niż szukasz.", "There's less grappling work here than you're after."),
+        ("Chwytania jest tu mniej więcej tyle, ile chcesz.", "There's about as much grappling here as you want."),
+        ("Chwytania jest tu więcej, niż szukasz.", "There's more grappling here than you're after."),
+        ("Chwytania jest tu mniej, niż szukasz.", "There's less grappling here than you're after."),
     ),
     "clinch": (
         ("Klincz jest tu mniej więcej tak ważny, jak chcesz.", "Clinch work matters here about as much as you want."),
@@ -113,12 +113,12 @@ REASON_COPY: dict[str, tuple[tuple[str, str], tuple[str, str], tuple[str, str]]]
         ("Poddania pojawiają się tu rzadziej, niż szukasz.", "Submissions show up less often here than you're after."),
     ),
     "punches": (
-        ("Praca pięścią jest tu mniej więcej tak ważna, jak chcesz.", "Fist work matters here about as much as you want."),
+        ("Praca pięściami jest tu mniej więcej tak ważna, jak chcesz.", "Punch work matters here about as much as you want."),
         ("Pięści liczą się tu bardziej, niż szukasz.", "Fists matter more here than you're after."),
         ("Pięści liczą się tu mniej, niż szukasz.", "Fists matter less here than you're after."),
     ),
     "kicks": (
-        ("Kopnięcia są tu mniej więcej tak częste, jak chcesz.", "Kicks are about as common here as you want."),
+        ("Kopnięcia są tu mniej więcej tak istotne, jak chcesz.", "Kicks matter here about as much as you want."),
         ("Kopnięć jest tu więcej, niż szukasz.", "There are more kicks here than you're after."),
         ("Kopnięć jest tu mniej, niż szukasz.", "There are fewer kicks here than you're after."),
     ),
@@ -158,9 +158,9 @@ REASON_COPY: dict[str, tuple[tuple[str, str], tuple[str, str], tuple[str, str]]]
         ("Jest tu mniej zawodów, niż chcesz.", "There's less competition here than you want."),
     ),
     "tradition_level": (
-        ("Zwyczajów i tradycji w sali jest tu mniej więcej tyle, ile chcesz.", "There's about as much hall custom and tradition here as you want."),
-        ("Zwyczajów i tradycji w sali jest tu więcej, niż szukasz.", "There's more hall custom and tradition here than you're after."),
-        ("Zwyczajów i tradycji w sali jest tu mniej, niż szukasz.", "There's less hall custom and tradition here than you're after."),
+        ("Zwyczajów i tradycji na sali jest tu mniej więcej tyle, ile chcesz.", "There's about as much custom and tradition in the hall here as you want."),
+        ("Zwyczajów i tradycji na sali jest tu więcej, niż szukasz.", "There's more custom and tradition in the hall here than you're after."),
+        ("Zwyczajów i tradycji na sali jest tu mniej, niż szukasz.", "There's less custom and tradition in the hall here than you're after."),
     ),
     "technical_complexity": (
         ("Złożoność techniczna pasuje do tego, czego szukasz.", "The technical complexity fits what you're after."),
@@ -217,7 +217,7 @@ DIFF_COPY: dict[str, tuple[str, str]] = {
 # Both sides low, and close. The high-agreement line would claim a lot of the thing.
 LOW_REASON_COPY: dict[str, tuple[str, str]] = {
     "striking": ("Uderzeń jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little striking here — and that's what you want."),
-    "grappling": ("Pracy w chwycie jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little grappling work here — and that's what you want."),
+    "grappling": ("Chwytania jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little grappling here — and that's what you want."),
     "clinch": ("Zwarcia jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little close-range work here — and that's what you want."),
     "throws": ("Rzutów jest tu mało — i dobrze, bo właśnie tego szukasz.", "There are few throws here — and that's what you want."),
     "takedowns": ("Obaleń jest tu mało — i dobrze, bo właśnie tego szukasz.", "There are few takedowns here — and that's what you want."),
@@ -232,7 +232,7 @@ LOW_REASON_COPY: dict[str, tuple[str, str]] = {
     "partner_training": ("Pracy z partnerem jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little partner work here — and that's what you want."),
     "contact_level": ("Kontaktu jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little contact here — and that's what you want."),
     "competition_level": ("Zawodów jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little competition here — and that's what you want."),
-    "tradition_level": ("Zwyczajów i tradycji w sali jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little hall custom and tradition here — and that's what you want."),
+    "tradition_level": ("Zwyczajów i tradycji na sali jest tu mało — i dobrze, bo właśnie tego szukasz.", "There's little custom and tradition in the hall here — and that's what you want."),
     "technical_complexity": ("Technicznie jest tu prościej — i dobrze, bo właśnie tego szukasz.", "Technically it's simpler here — and that's what you want."),
     "athletic_demand": ("Obciążenia fizycznego jest tu mało — i dobrze, bo właśnie tego szukasz.", "The physical demand is low here — and that's what you want."),
     "endurance_demand": ("Nie potrzeba tu dużej wytrzymałości — i dobrze, bo właśnie tego szukasz.", "You don't need much endurance here — and that's what you want."),

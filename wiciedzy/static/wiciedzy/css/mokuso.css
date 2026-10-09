@@ -159,6 +159,10 @@
   line-height: 1.4;
 }
 
+.mokuso-controls .mokuso-screenless {
+  align-self: center;
+}
+
 .mokuso-screenless {
   display: inline-flex;
   align-items: center;

@@ -9,14 +9,11 @@
   <p class="wiciedzy-eyebrow" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</p>
   <h1 class="wiciedzy-title" data-en="To read" data-pl="Do poczytania" aria-live="polite">Do poczytania</h1>
   <p class="wiciedzy-muted" data-en="Five styles to read about — starting with the best match in this set." data-pl="Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.">Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.</p>
-  <p class="wiciedzy-muted" data-en="This comparison is based on your preferences and the card's general profile; it does not describe every school." data-pl="To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty; nie opisuje każdej szkoły.">To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty; nie opisuje każdej szkoły.</p>
+  <p class="wiciedzy-muted" data-en="This comparison is based on your preferences and the card's general profile." data-pl="To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty.">To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty.</p>
 </header>
 
 {% for row in rows %}
 <section class="wiciedzy-card">
-  {% if row.style.is_umbrella %}
-  <p class="wiciedzy-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
-  {% endif %}
   {% if row.style.catalog_set == "golden" %}
   <p class="wiciedzy-eyebrow" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</p>
   {% endif %}

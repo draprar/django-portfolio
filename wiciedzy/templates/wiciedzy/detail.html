@@ -23,9 +23,6 @@
 <section class="wiciedzy-card">
   <h2 class="wiciedzy-section-title" data-en="About" data-pl="O stylu">O stylu</h2>
   <p data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
-  {% if style.is_umbrella %}
-  <p class="wiciedzy-muted" data-en="It's an umbrella name, not one rule set, so this description doesn't fit every school or hall." data-pl="To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.">To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali.</p>
-  {% endif %}
   <div class="wiciedzy-meta-list">
   {% if style.style_types.all %}
   <div class="wiciedzy-meta-row">

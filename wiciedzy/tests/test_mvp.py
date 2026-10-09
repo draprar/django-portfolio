@@ -278,7 +278,7 @@ def test_tag_filter_and_umbrella_label(client):
 
     karate = client.get(reverse("wiciedzy:detail", args=["karate"]))
     karate_page = karate.content.decode()
-    assert "To nazwa zbiorcza, nie jeden regulamin, więc ten opis nie pasuje do każdej szkoły ani sali." in karate_page
+    assert "To nazwa zbiorcza, nie jeden regulamin" not in karate_page
     assert "To moja ocena" not in karate_page
     assert "Pokaż pełny profil" in karate.content.decode()
 

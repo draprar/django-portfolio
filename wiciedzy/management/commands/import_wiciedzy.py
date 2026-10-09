@@ -6,6 +6,7 @@ from datetime import date
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
+from django.db.models import F
 
 from wiciedzy.data.instruments import PREFERENCE, TYPES
 from wiciedzy.data.prose import PROSE
@@ -128,19 +129,33 @@ class Command(BaseCommand):
             keep.append(fact.pk)
         Fact.objects.exclude(pk__in=keep).delete()
 
+    def _locate_preference_question(self, row: dict) -> PreferenceQuestion | None:
+        kind = row["kind"]
+        dimension = row.get("dimension") or ""
+        if kind == "scale" and dimension:
+            found = PreferenceQuestion.objects.filter(kind=kind, dimension=dimension).first()
+            if found:
+                return found
+        found = PreferenceQuestion.objects.filter(kind=kind, text_en=row["text_en"]).first()
+        if found:
+            return found
+        return PreferenceQuestion.objects.filter(sort_order=row["sort_order"]).first()
+
     def _preference(self) -> None:
+        # Free sort_order slots before reordering (avoid two rows sharing one index).
+        PreferenceQuestion.objects.filter(active=True).update(sort_order=F("sort_order") + 1000)
         keep: list[int] = []
         for row in PREFERENCE:
-            question, _created = PreferenceQuestion.objects.update_or_create(
-                sort_order=row["sort_order"],
-                defaults={
-                    "text_pl": row["text_pl"],
-                    "text_en": row["text_en"],
-                    "kind": row["kind"],
-                    "dimension": row.get("dimension", ""),
-                    "active": True,
-                },
-            )
+            question = self._locate_preference_question(row)
+            if question is None:
+                question = PreferenceQuestion()
+            question.text_pl = row["text_pl"]
+            question.text_en = row["text_en"]
+            question.kind = row["kind"]
+            question.dimension = row.get("dimension", "")
+            question.sort_order = row["sort_order"]
+            question.active = True
+            question.save()
             question.options.all().delete()
             for index, option in enumerate(row.get("options", [])):
                 created = PreferenceOption.objects.create(
