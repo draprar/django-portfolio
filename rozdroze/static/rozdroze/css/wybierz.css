@@ -2,6 +2,8 @@
     --ink: #060606;
     --gold: #c4922a;
     --gold-2: #a0522d;
+    --gold-hover: #d4a535;
+    --lingwo-navy: #0a0e18;
     --hub-gap: clamp(12px, 2.4vw, 32px);
     --hub-pad: clamp(14px, 3vw, 32px);
 }
@@ -50,26 +52,6 @@ a {
     margin: 0 auto;
 }
 
-/* ── kodzillin': full-width strip under the hub header ────────────── */
-.code-hero {
-    width: 100%;
-    flex-shrink: 0;
-}
-
-.code-hero .panel-wide {
-    width: 100%;
-    min-height: clamp(6.5rem, 13vh, 8.5rem);
-}
-
-/* Title centered; terminal stays left/mid behind it */
-.code-hero .panel-wide .panel-content {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 1rem 1.25rem;
-    gap: 0.35rem;
-}
-
 /* ── Portal: the rounded frame everything lives inside ──────────────── */
 .portal {
     position: relative;
@@ -105,7 +87,7 @@ a {
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }
 
-/* ── Hub: featured code strip + 2×2, equal gaps ───────────────────── */
+/* ── Hub: 2×2 tiles, equal gaps ───────────────────────────────────── */
 .hub {
     display: flex;
     flex-direction: column;
@@ -244,13 +226,9 @@ a {
     object-fit: cover;
 }
 
-.panel-bazg .panel-bg {
-    background: #050505 url('../img/bazgrollin-bg.png') center / cover no-repeat;
-}
-
 .panel-wyraj .panel-bg {
     background: #0a0805 url('../img/wyraj-bg.png') center / cover no-repeat;
-    /* the artwork itself is much darker than bazgrollin's — compensate
+    /* the artwork itself is much darker than the other panels — compensate
        so it doesn't read as a broken/underexposed image */
     filter: blur(2px) brightness(1.35) saturate(1.05) contrast(1.05);
 }
@@ -268,9 +246,10 @@ a {
     background: #0a0e18 url('../img/lingwolamek-bg.png') center / cover no-repeat;
 }
 
+/* kodzillin': same navy base as LingwoŁamki (.panel-lingwo) */
 .panel-code .panel-bg {
-    background-color: #070b12;
-    filter: brightness(0.9) saturate(0.95) blur(0);
+    background-color: var(--lingwo-navy);
+    filter: brightness(0.88) saturate(0.92) blur(0);
     /* Don't fade the left edge — that's where the typing lives */
     -webkit-mask-image: linear-gradient(to right, black 0%, black 70%, transparent 100%);
     mask-image: linear-gradient(to right, black 0%, black 70%, transparent 100%);
@@ -319,15 +298,15 @@ a {
     text-align: left;
 }
 
-.code-terminal .t-dim { color: #5a626e; }
-.code-terminal .t-gold { color: #d4a535; }
-.code-terminal .t-green { color: #9ed684; }
-.code-terminal .t-text { color: #e2e2d6; }
-.code-terminal .t-cyan { color: #78bed2; }
+.code-terminal .t-dim { color: #485662; }
+.code-terminal .t-gold { color: var(--gold); }
+.code-terminal .t-green { color: #8ec6a8; }
+.code-terminal .t-text { color: #dcd8ce; }
+.code-terminal .t-cyan { color: #6eafbf; }
 
 .code-terminal-cursor {
     display: inline;
-    color: #d4a535;
+    color: var(--gold-hover, #d4a535);
     font-weight: 700;
     animation: code-cursor-blink 1s steps(1) infinite;
 }
@@ -469,10 +448,6 @@ a {
         animation-delay: 0.05s;
     }
 
-    .portal-featured .panel-wide {
-        animation-delay: 0s;
-    }
-
     .panel-wiciedzy {
         animation-delay: 0.3s;
     }
@@ -528,14 +503,6 @@ a {
 
     .stage-stack {
         gap: 10px;
-    }
-
-    .code-hero .panel-wide {
-        min-height: clamp(5.75rem, 12vh, 7.5rem);
-    }
-
-    .code-hero .panel-wide .panel-content {
-        padding: 0.75rem 0.85rem;
     }
 
     .code-terminal {

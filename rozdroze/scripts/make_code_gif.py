@@ -6,12 +6,13 @@ from PIL import Image, ImageDraw, ImageFont
 
 OUT = Path(__file__).resolve().parents[1] / "static" / "rozdroze" / "img" / "code-bg.gif"
 W, H = 560, 360
-BG = (7, 11, 18)
-GOLD = (212, 165, 53)
-GREEN = (158, 214, 132)
-CYAN = (120, 190, 210)
-DIM = (90, 98, 110)
-TEXT = (226, 226, 214)
+# Match hub LingwoŁamki / kodzillin' tile (--lingwo-navy, portal gold)
+BG = (10, 14, 24)
+GOLD = (196, 146, 42)
+GREEN = (142, 198, 168)
+CYAN = (110, 175, 195)
+DIM = (72, 86, 98)
+TEXT = (220, 216, 206)
 PROMPT = ">>>"
 
 
@@ -35,7 +36,7 @@ def draw_scanlines(im: Image.Image) -> Image.Image:
     overlay = Image.new("RGB", im.size, BG)
     d = ImageDraw.Draw(overlay)
     for y in range(0, H, 3):
-        d.line((0, y, W, y), fill=(4, 6, 10))
+        d.line((0, y, W, y), fill=(5, 8, 14))
     return Image.blend(im.convert("RGB"), overlay, 0.18)
 
 

@@ -10,7 +10,8 @@ def test_wybierz_renders_crossroads(client):
     content = response.content.decode()
     assert "Se klikaj" in content
     assert "Se wybierz" not in content
-    assert "/gallery/" in content
+    assert "/gallery/" not in content
+    assert "bazgrollin" not in content
     assert "/wyraj/" in content
     assert "/tonguetwister/" in content
     assert "/code/" in content
@@ -21,10 +22,8 @@ def test_wybierz_renders_crossroads(client):
     assert "wiciedzy-bg.jpg" in content
     assert 'panel-code' in content
     assert 'panel-wiciedzy' in content
-    assert 'portal-featured' in content
-    assert 'code-hero' in content
     assert 'stage-stack' in content
-    assert 'panel-wide' in content
+    assert 'class="split"' in content
     assert "Wejdź" not in content
     assert 'class="cta-arrow"' not in content
     assert 'panel-cta' not in content

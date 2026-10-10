@@ -17,7 +17,7 @@ def test_jedzien_root_serves_hub_without_redirect(client, host):
     assert "Location" not in response
     content = response.content.decode()
     assert "Se klikaj" in content
-    assert "/gallery/" in content
+    assert "/gallery/" not in content
     assert "/code/" in content
     assert 'id="contact-form"' not in content
 
