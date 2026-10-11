@@ -13,17 +13,17 @@ def test_home_is_bilingual(client):
 
     assert response.status_code == 200
     assert ">wiciędze</a>" in content
-    assert 'data-pl="Katalog"' in content
-    assert 'data-en="Catalog"' in content
+    assert 'data-pl="katalog"' in content
+    assert 'data-en="catalog"' in content
     assert "Siemasz na wiciędze" not in content
     assert "Boks boks, albo kop kop" in content
     assert "a jak nie to se ogarnij inne" in content
     assert "wiciedzy-home-tagline" in content
     assert "obczaj niżej" not in content
-    assert "Quizopasowanie" in content
+    assert "quizopasowanie" in content
     assert 'property="og:title"' in content
     assert 'data-en="A catalog of combat sports and martial arts, a check of what you want from training, a comparison tool and a bit of a laugh."' in content
-    assert 'data-pl="Quizopasowanie"' in content
+    assert 'data-pl="quizopasowanie"' in content
     assert 'data-pl="Archetyp"' not in content
     assert "karuzela śmiechu" not in content
     assert "navbar-toggler" not in content
@@ -47,10 +47,10 @@ def test_list_ignores_family_query(client):
     assert response.status_code == 200
     assert "Judo" in content
     assert "Boks" in content
-    assert "Se porównaj:" in content
+    assert "se porównaj:" in content
     assert reverse("wiciedzy:compare_form") in content
     assert 'name="a"' in content
-    assert 'data-pl="Katalog"' in content
+    assert 'data-pl="katalog"' in content
     assert 'data-pl="Wszystkie"' not in content
     assert "Mniej oczywiste" not in content
     assert "Losowy fakt" not in content
@@ -71,8 +71,8 @@ def test_detail_shows_history_and_source(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "Historia" in content
-    assert "Jak się walczy" in content
+    assert "historia" in content
+    assert "jak się walczy" in content
     assert "https://www.britannica.com/sports/boxing" in content
     assert 'data-en="Boxing"' in content
 
@@ -102,7 +102,7 @@ def test_inactive_style_is_missing(client):
 def test_archetype_urls_are_gone(client):
     assert client.get("/wiciedze/quiz/").status_code == 404
     assert client.get("/wiciedze/wynik/").status_code == 404
-    assert "Tu nic nie ma." in client.get("/wiciedze/quiz/").content.decode()
+    assert "tu nic nie ma." in client.get("/wiciedze/quiz/").content.decode()
 
 
 def test_styles_are_in_the_admin():
@@ -117,7 +117,7 @@ def test_catalog_copy_says_style_not_discipline(client):
 
     assert "wiciedzy-subtitle" not in content
     assert "dyscyplin" not in content
-    assert 'data-en="Catalog"' in content
+    assert 'data-en="catalog"' in content
 
 
 @pytest.mark.django_db
@@ -126,7 +126,7 @@ def test_empty_tag_does_not_blame_the_family(client):
     response = client.get(reverse("wiciedzy:list"), {"tag": "pusty"})
     content = response.content.decode()
 
-    assert "Żaden styl nie ma tego tagu." in content
+    assert "żaden styl nie ma tego tagu." in content
     assert "Brak stylów w tej rodzinie" not in content
 
 
@@ -153,7 +153,7 @@ def test_old_personality_url_is_gone(client):
     response = client.get("/wiciedze/osobowosc/")
 
     assert response.status_code == 404
-    assert "Tu nic nie ma." in response.content.decode()
+    assert "tu nic nie ma." in response.content.decode()
 
 
 @pytest.mark.django_db

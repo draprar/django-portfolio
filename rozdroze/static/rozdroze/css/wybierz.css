@@ -6,6 +6,7 @@
     --lingwo-navy: #0a0e18;
     --hub-gap: clamp(12px, 2.4vw, 32px);
     --hub-pad: clamp(14px, 3vw, 32px);
+    --hub-label: clamp(1.45rem, 3.2vw, 2rem);
 }
 
 * {
@@ -48,7 +49,7 @@ a {
     justify-content: center;
     gap: var(--hub-gap);
     width: 100%;
-    max-width: 1040px;
+    max-width: 840px;
     margin: 0 auto;
 }
 
@@ -57,56 +58,131 @@ a {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 1040px;
+    max-width: 840px;
     border-radius: 22px;
     overflow: hidden;
     background: rgba(10, 10, 10, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    padding: 1.4rem 1.6rem 1.5rem;
 }
 
 /* ── Header ──────────────────────────────────────────────────────────── */
 .rozdroze-header {
     text-align: center;
-    padding: var(--hub-gap) var(--hub-pad) 0;
+    padding: 0.85rem 0 0;
 }
 
 .rozdroze-header h1 {
     font-weight: 300;
-    font-size: clamp(1.7rem, 4vw, 2.3rem);
-    letter-spacing: 2px;
+    font-size: calc(var(--hub-label) * 1.2);
+    letter-spacing: 1.5px;
     margin: 0;
     color: var(--gold);
 }
 
 .rozdroze-header .underline {
-    width: 60px;
-    height: 4px;
-    margin: 14px auto 0;
+    width: 48px;
+    height: 3px;
+    margin: 8px auto 0;
     border-radius: 2px;
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }
 
-/* ── Hub: 2×2 tiles, equal gaps ───────────────────────────────────── */
-.hub {
-    display: flex;
-    flex-direction: column;
-    gap: var(--hub-gap);
-    padding: var(--hub-gap) var(--hub-pad) var(--hub-pad);
+/* ── Compact kodzillin' strip, then 3D card carousel ─────────────── */
+.panel-code {
+    margin: 0;
+    min-height: 0;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ── Split layout: N cards, side by side on desktop ──────────────────
-   Grid, not flex: column count is one declaration (repeat(N, 1fr)),
-   so adding a 4th panel later is a one-line change here instead of
-   touching flex-basis math on every breakpoint. */
-/* ── Split layout: 2×2 on desktop ─────────────────────────────────── */
-.split {
+.carousel {
+    --peek: clamp(108px, 18vw, 190px);
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--hub-gap);
-    padding: 0;
-    min-height: 56vh;
-    perspective: 1200px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.15rem 0 0;
+}
+
+.carousel-stage {
+    position: relative;
+    height: min(46vh, 400px);
+    min-height: 220px;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    outline: none;
+}
+
+.carousel-stage .panel {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    width: min(54%, 340px);
+    height: 88%;
+    transition: transform 0.5s cubic-bezier(.22, .7, .2, 1), filter 0.5s ease, opacity 0.5s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.carousel-stage .panel-bg {
+    -webkit-mask-image: none;
+    mask-image: none;
+    filter: brightness(0.62) saturate(0.9) blur(0);
+}
+
+.carousel-stage .panel[data-slot="active"] {
+    z-index: 3;
+    opacity: 1;
+    filter: none;
+    border-color: rgba(196, 146, 42, 0.45);
+    box-shadow:
+        0 0 0 1px rgba(196, 146, 42, 0.28),
+        0 16px 36px rgba(0, 0, 0, 0.45);
+    transform: translate3d(-50%, 0, 48px) scale(1);
+}
+
+.carousel-stage .panel[data-slot="active"]:hover,
+.carousel-stage .panel[data-slot="active"]:focus-visible {
+    transform: translate3d(-50%, -4px, 48px) scale(1);
+}
+
+.carousel-stage .panel[data-slot="prev"] {
+    z-index: 1;
+    opacity: 0.9;
+    filter: brightness(0.72);
+    transform: translate3d(calc(-50% - var(--peek)), 0, -80px) rotateY(18deg) scale(0.86);
+}
+
+.carousel-stage .panel[data-slot="next"] {
+    z-index: 2;
+    opacity: 0.9;
+    filter: brightness(0.72);
+    transform: translate3d(calc(-50% + var(--peek)), 0, -80px) rotateY(-18deg) scale(0.86);
+}
+
+.carousel-nav {
+    font-family: inherit;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: #c4c4c4;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.carousel-nav:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.carousel-nav:hover {
+    color: #fff;
+    border-color: var(--gold);
+    background: rgba(196, 146, 42, 0.18);
 }
 
 .panel {
@@ -124,18 +200,22 @@ a {
     cursor: pointer;
     border-radius: 16px;
     background: #0d0d0d;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty)) scale(var(--tilt-scale));
-    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease, border-color 0.35s ease;
 }
 
-.panel:hover,
-.panel:focus-visible {
-    --ty: -6px;
+.panel-code {
+    transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty)) scale(var(--tilt-scale));
+}
+
+.panel-code:hover,
+.panel-code:focus-visible {
+    --ty: -4px;
+    border-color: rgba(196, 146, 42, 0.45);
     box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.6),
         0 0 0 1px rgba(196, 146, 42, 0.35),
-        0 0 40px rgba(196, 146, 42, 0.12);
+        0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
 .panel:active {
@@ -148,8 +228,15 @@ a {
     outline-offset: -4px;
 }
 
-.split.has-focus .panel:not(.is-active) {
-    filter: brightness(0.6);
+.panel-code .panel-content {
+    padding: 0.55rem 1.15rem;
+}
+
+.panel-code .panel-title {
+    font-size: var(--hub-label);
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: none;
 }
 
 .panel-bg {
@@ -246,13 +333,12 @@ a {
     background: #0a0e18 url('../img/lingwolamek-bg.png') center / cover no-repeat;
 }
 
-/* kodzillin': same navy base as LingwoŁamki (.panel-lingwo) */
+/* kodzillin': flat black, same as the card — no navy slab behind the prompt */
 .panel-code .panel-bg {
-    background-color: var(--lingwo-navy);
-    filter: brightness(0.88) saturate(0.92) blur(0);
-    /* Don't fade the left edge — that's where the typing lives */
-    -webkit-mask-image: linear-gradient(to right, black 0%, black 70%, transparent 100%);
-    mask-image: linear-gradient(to right, black 0%, black 70%, transparent 100%);
+    background-color: #000;
+    filter: none;
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 .panel-code:hover .panel-bg,
@@ -261,12 +347,7 @@ a {
 }
 
 .panel-code .panel-veil {
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.15) 0%,
-        rgba(0, 0, 0, 0.35) 45%,
-        rgba(0, 0, 0, 0.72) 100%
-    );
+    background: transparent;
 }
 
 /* Live terminal behind kodzillin' — decorative, mirrors old code-bg.gif */
@@ -357,10 +438,10 @@ a {
 }
 
 .panel-title {
-    font-weight: 200;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: clamp(1.4rem, 4vw, 2.1rem);
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 2px;
+    font-size: var(--hub-label);
     margin: 0;
     color: var(--gold);
     transition: letter-spacing 0.35s ease;
@@ -368,7 +449,7 @@ a {
 
 .panel:hover .panel-title,
 .panel:focus-visible .panel-title {
-    letter-spacing: 5.5px;
+    letter-spacing: 2.5px;
 }
 
 .panel-tag {
@@ -430,9 +511,15 @@ a {
 }
 
 /* ── Motion (respect prefers-reduced-motion) ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-stage .panel {
+        transition: none;
+    }
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .rozdroze-header,
-    .panel {
+    .panel-code {
         animation: fade-up 0.7s ease both;
     }
 
@@ -505,26 +592,36 @@ a {
         gap: 10px;
     }
 
-    .code-terminal {
-        font-size: calc(0.72rem - 2px);
-        padding: 0.4rem 0.7rem;
+    .panel-code .code-terminal {
+        display: none;
+    }
+
+    .carousel-stage .panel:not([data-slot="active"]) .panel-title {
+        opacity: 0;
     }
 
     .rozdroze-header {
         padding: var(--hub-gap) 10px 0;
     }
 
-    .hub {
-        gap: 10px;
-        padding: 10px 10px 14px;
+    .carousel {
+        --peek: 56px;
+        padding-inline: 0;
     }
 
-    .split {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, minmax(21vh, 1fr));
-        gap: 10px;
-        padding: 0;
-        min-height: 46vh;
+    .carousel-stage {
+        height: min(42vh, 320px);
+        min-height: 200px;
+    }
+
+    .carousel-stage .panel {
+        width: min(78%, 280px);
+    }
+
+    .carousel-nav {
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 1.3rem;
     }
 
     .panel {
@@ -536,14 +633,17 @@ a {
         gap: 0.35rem;
     }
 
+    :root {
+        --hub-label: clamp(1rem, 5.5vw, 1.3rem);
+    }
+
     .panel-title {
-        font-size: clamp(1rem, 5.5vw, 1.3rem);
         letter-spacing: 1.5px;
     }
 
     .panel:hover .panel-title,
     .panel:focus-visible .panel-title {
-        letter-spacing: 2.5px;
+        letter-spacing: 2px;
     }
 
     .panel-tag {

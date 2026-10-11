@@ -1,0 +1,296 @@
+:root {
+    --ink: #060606;
+    --gold: #c4922a;
+    --gold-2: #a0522d;
+    --gold-hover: #d4a535;
+    --muted: #c4c4c4;
+    --panel: rgba(10, 10, 10, 0.95);
+    --card: #0d0d0d;
+    --border: rgba(255, 255, 255, 0.08);
+    --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #2d2d2d 100%);
+    background-color: var(--ink);
+    color: #e0e0e0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+a { color: var(--gold); }
+a:hover { color: var(--gold-hover); }
+
+.rugby-skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1100;
+    background: var(--gold);
+    color: #fff;
+    padding: 0.7rem 1.1rem;
+}
+.rugby-skip:focus {
+    left: 0;
+}
+
+.rugby-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+}
+
+.rugby-portal {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.rugby-hero {
+    text-align: center;
+    padding: clamp(2rem, 5vw, 3rem) 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.rugby-hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+}
+
+.rugby-hero h1 {
+    font-weight: 300;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--gold);
+    margin: 0 0 0.35rem;
+}
+
+.rugby-hero .status {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0 0 1rem;
+}
+
+.rugby-hero .lead {
+    max-width: 42ch;
+    margin: 0 auto;
+    line-height: 1.55;
+}
+
+.rugby-section {
+    padding: 2rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.rugby-section h2 {
+    font-weight: 300;
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    color: var(--gold);
+    margin: 0 0 1rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.rugby-muted { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+
+.rugby-variant-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.rugby-vtab {
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    background: transparent;
+    color: #e0e0e0;
+}
+.rugby-vtab.is-active {
+    background: linear-gradient(45deg, var(--gold), var(--gold-2));
+    color: #fff;
+    border-color: transparent;
+}
+.rugby-vtab:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.rugby-law-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.rugby-law-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+}
+
+.rugby-law-card[data-variant] { display: none; }
+body[data-variant="sevens"] .rugby-law-card[data-variant="sevens"],
+body[data-variant="xv"] .rugby-law-card[data-variant="xv"] { display: block; }
+
+.rugby-law-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    color: var(--gold-hover);
+    font-weight: 400;
+}
+
+.rugby-law-card .meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.65rem;
+}
+
+.rugby-history-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+.rugby-history-item h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    color: var(--gold-hover);
+    font-weight: 400;
+}
+
+.rugby-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.rugby-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.rugby-card .pos {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin: 0.25rem 0;
+}
+
+.rugby-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--gold-2);
+    margin-left: 0.5rem;
+}
+
+.rugby-timeline li {
+    padding: 0 0 1.25rem 1.25rem;
+    position: relative;
+}
+
+.rugby-timeline li::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.rugby-timeline .years {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rugby-timeline .label {
+    color: var(--gold-hover);
+    font-weight: 400;
+    margin: 0.15rem 0;
+}
+
+.rugby-timeline .certainty-disputed {
+    font-size: 0.78rem;
+    color: #c9a227;
+}
+
+.rugby-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.rugby-media-grid figure {
+    margin: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.rugby-media-grid img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+}
+
+.rugby-media-grid figcaption {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.82rem;
+}
+
+.rugby-footer {
+    padding: 1.5rem 1.25rem 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.rugby-footer p { margin: 0.35rem 0; }
+
+dialog.rugby-dialog {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: #e0e0e0;
+    max-width: min(92vw, 720px);
+    padding: 0;
+}
+dialog.rugby-dialog img { width: 100%; display: block; }
+dialog.rugby-dialog form { text-align: right; padding: 0.5rem; }
+
+.rugby-film-btn {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.rugby-film-embed { display: none; margin-top: 0.5rem; }
+.rugby-film-embed.is-open { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}

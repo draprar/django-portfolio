@@ -522,8 +522,8 @@ a.wiciedzy-home-feature:focus-visible .wiciedzy-btn {
   font-family: inherit;
   font-weight: 400;
   font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-transform: none;
+  letter-spacing: 0.4px;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -763,8 +763,8 @@ a.wiciedzy-card:hover {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
+  text-transform: none;
+  letter-spacing: 0.4px;
   text-decoration: none;
   box-sizing: border-box;
 }

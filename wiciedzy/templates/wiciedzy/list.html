@@ -16,14 +16,14 @@
 
 {% block wiciedzy %}
 <header class="wiciedzy-header wiciedzy-header-left">
-  <h1 class="wiciedzy-title" data-en="Catalog" data-pl="Katalog">Katalog</h1>
+  <h1 class="wiciedzy-title" data-en="catalog" data-pl="katalog">katalog</h1>
   {% if compare_styles %}
   <form method="post" action="{% url 'wiciedzy:compare_form' %}" class="wiciedzy-card wiciedzy-compare-inline" id="porownaj">
     {% csrf_token %}
-    <p class="wiciedzy-compare-label" data-en="Go on, compare:" data-pl="Se porównaj:">Se porównaj:</p>
+    <p class="wiciedzy-compare-label" data-en="go on, compare:" data-pl="se porównaj:">se porównaj:</p>
     <div class="wiciedzy-compare-row">
       <label class="wiciedzy-field">
-        <span class="visually-hidden" data-en="First" data-pl="Pierwszy">Pierwszy</span>
+        <span class="visually-hidden" data-en="first" data-pl="pierwszy">pierwszy</span>
         <select name="a">
           {% for style in compare_styles %}
           <option value="{{ style.slug }}" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</option>
@@ -31,7 +31,7 @@
         </select>
       </label>
       <label class="wiciedzy-field">
-        <span class="visually-hidden" data-en="Second" data-pl="Drugi">Drugi</span>
+        <span class="visually-hidden" data-en="second" data-pl="drugi">drugi</span>
         <select name="b">
           {% for style in compare_styles %}
           <option value="{{ style.slug }}" data-en="{{ style.name_en }}" data-pl="{{ style.name_pl }}">{{ style.name_pl }}</option>
@@ -39,14 +39,14 @@
         </select>
       </label>
     </div>
-    <button class="wiciedzy-btn" type="submit" data-en="Compare" data-pl="Porównaj">Porównaj</button>
+    <button class="wiciedzy-btn" type="submit" data-en="compare" data-pl="porównaj">porównaj</button>
   </form>
   {% endif %}
   {% if tags %}
   <div class="wiciedzy-tags" role="navigation" aria-label="Tagi">
     <a class="{% if not selected_tag %}is-current{% endif %}"
        href="{% url 'wiciedzy:list' %}"
-       data-en="All tags" data-pl="Wszystkie tagi">Wszystkie tagi</a>
+       data-en="all tags" data-pl="wszystkie tagi">wszystkie tagi</a>
     {% for tag in tags %}
     <a class="{% if selected_tag == tag.slug %}is-current{% endif %}"
        href="{% url 'wiciedzy:list' %}?tag={{ tag.slug }}"
@@ -68,9 +68,9 @@
 </div>
 {% else %}
 <section class="wiciedzy-card">
-  <h2 data-en="No style has this tag." data-pl="Żaden styl nie ma tego tagu.">Żaden styl nie ma tego tagu.</h2>
+  <h2 data-en="no style has this tag." data-pl="żaden styl nie ma tego tagu.">żaden styl nie ma tego tagu.</h2>
   <p class="wiciedzy-links">
-    <a href="{% url 'wiciedzy:list' %}" data-en="Show all" data-pl="Pokaż wszystkie">Pokaż wszystkie</a>
+    <a href="{% url 'wiciedzy:list' %}" data-en="show all" data-pl="pokaż wszystkie">pokaż wszystkie</a>
   </p>
 </section>
 {% endif %}

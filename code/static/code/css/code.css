@@ -256,8 +256,8 @@ h2 {
 
 .repo-links a {
     font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
+    text-transform: none;
+    letter-spacing: 0.4px;
     color: #c4c4c4;
     border: 1px solid rgba(255, 255, 255, 0.14);
     padding: 4px 10px;
@@ -340,8 +340,8 @@ textarea.portal-input {
     cursor: pointer;
     font-family: inherit;
     font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-transform: none;
+    letter-spacing: 0.4px;
     color: #fff;
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
     padding: 10px 22px;

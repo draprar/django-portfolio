@@ -1,23 +1,74 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const split = document.querySelector('.split');
     const panels = document.querySelectorAll('.panel');
+    const stage = document.querySelector('.carousel-stage');
+    const cards = stage ? [...stage.querySelectorAll('.panel')] : [];
+    let index = 0;
+    let pointerX = null;
+    let dragged = false;
 
-    const focus = (side) => {
-        panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === side));
-        if (split) split.classList.add('has-focus');
+    const place = () => {
+        const n = cards.length;
+        cards.forEach((card, i) => {
+            const delta = (i - index + n) % n;
+            const slot = delta === 0 ? 'active' : delta === 1 ? 'next' : 'prev';
+            card.dataset.slot = slot;
+            if (slot === 'active') card.setAttribute('aria-current', 'true');
+            else card.removeAttribute('aria-current');
+            card.tabIndex = slot === 'active' ? 0 : -1;
+        });
     };
 
-    const reset = () => {
-        if (split) split.classList.remove('has-focus');
+    const go = (step) => {
+        if (!cards.length) return;
+        index = (index + step + cards.length) % cards.length;
+        place();
     };
 
-    panels.forEach(panel => {
-        const side = panel.dataset.panel;
-        panel.addEventListener('mouseenter', () => focus(side));
-        panel.addEventListener('focus', () => focus(side));
-        panel.addEventListener('mouseleave', reset);
-        panel.addEventListener('blur', reset);
+    place();
+
+    document.querySelector('.carousel-prev')?.addEventListener('click', () => go(-1));
+    document.querySelector('.carousel-next')?.addEventListener('click', () => go(1));
+
+    cards.forEach((card, i) => {
+        card.addEventListener('click', (event) => {
+            if (dragged) {
+                event.preventDefault();
+                dragged = false;
+                return;
+            }
+            if (card.dataset.slot !== 'active') {
+                event.preventDefault();
+                const n = cards.length;
+                const delta = (i - index + n) % n;
+                go(delta === 1 ? 1 : -1);
+            }
+        });
     });
+
+    if (stage) {
+        stage.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                go(1);
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                go(-1);
+            }
+        });
+
+        stage.addEventListener('pointerdown', (event) => {
+            pointerX = event.clientX;
+            dragged = false;
+        });
+        stage.addEventListener('pointerup', (event) => {
+            if (pointerX == null) return;
+            const dx = event.clientX - pointerX;
+            pointerX = null;
+            if (Math.abs(dx) < 48) return;
+            dragged = true;
+            go(dx < 0 ? 1 : -1);
+        });
+    }
 
     // ── Warm the destination up: fetch it in the background as soon as
     // someone shows intent (hover on desktop, touch on mobile), so the
@@ -47,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (supportsTilt && !reducedMotion) {
         const MAX_TILT = 4; // degrees
 
-        panels.forEach(panel => {
+        document.querySelectorAll('.panel-code').forEach(panel => {
             panel.addEventListener('mousemove', (e) => {
                 const rect = panel.getBoundingClientRect();
                 const px = (e.clientX - rect.left) / rect.width;  // 0 → 1

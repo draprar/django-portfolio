@@ -21,12 +21,12 @@
 </header>
 
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="About" data-pl="O stylu">O stylu</h2>
+  <h2 class="wiciedzy-section-title" data-en="about" data-pl="o stylu">o stylu</h2>
   <p data-en="{{ style.summary_en }}" data-pl="{{ style.summary_pl }}">{{ style.summary_pl }}</p>
   <div class="wiciedzy-meta-list">
   {% if style.style_types.all %}
   <div class="wiciedzy-meta-row">
-    <span class="wiciedzy-meta-label" data-en="Type" data-pl="Rodzaj">Rodzaj</span>
+    <span class="wiciedzy-meta-label" data-en="type" data-pl="rodzaj">rodzaj</span>
     <ul class="wiciedzy-chips">
       {% for item in style.style_types.all %}
       <li class="wiciedzy-chip" data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</li>
@@ -36,7 +36,7 @@
   {% endif %}
   {% if style.tags.all %}
   <div class="wiciedzy-meta-row">
-    <span class="wiciedzy-meta-label" data-en="Tags" data-pl="Tagi">Tagi</span>
+    <span class="wiciedzy-meta-label" data-en="tags" data-pl="tagi">tagi</span>
     <ul class="wiciedzy-chips">
       {% for item in style.tags.all %}
       <li class="wiciedzy-chip" data-en="{{ item.name_en }}" data-pl="{{ item.name_pl }}">{{ item.name_pl }}</li>
@@ -46,19 +46,19 @@
   {% endif %}
   {% if style.origin_pl %}
   <div class="wiciedzy-meta-row">
-    <span class="wiciedzy-meta-label" data-en="Origin" data-pl="Pochodzenie">Pochodzenie</span>
+    <span class="wiciedzy-meta-label" data-en="origin" data-pl="pochodzenie">pochodzenie</span>
     <span class="wiciedzy-meta-value" data-en="{{ style.origin_en }}" data-pl="{{ style.origin_pl }}">{{ style.origin_pl }}</span>
   </div>
   {% endif %}
   {% if style.period_pl %}
   <div class="wiciedzy-meta-row">
-    <span class="wiciedzy-meta-label" data-en="Period" data-pl="Okres">Okres</span>
+    <span class="wiciedzy-meta-label" data-en="period" data-pl="okres">okres</span>
     <span class="wiciedzy-meta-value" data-en="{{ style.period_en }}" data-pl="{{ style.period_pl }}">{{ style.period_pl }}</span>
   </div>
   {% endif %}
   {% if region_pl %}
   <div class="wiciedzy-meta-row">
-    <span class="wiciedzy-meta-label" data-en="Region" data-pl="Region">Region</span>
+    <span class="wiciedzy-meta-label" data-en="region" data-pl="region">region</span>
     <span class="wiciedzy-meta-value" data-en="{{ region_en }}" data-pl="{{ region_pl }}">{{ region_pl }}</span>
   </div>
   {% endif %}
@@ -67,7 +67,7 @@
 
 {% if style.history_pl or style.history_en %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="History" data-pl="Historia">Historia</h2>
+  <h2 class="wiciedzy-section-title" data-en="history" data-pl="historia">historia</h2>
   {% if style.sources_disagree %}
   <p class="wiciedzy-muted" data-en="There's no honest single version — the sources are unclear." data-pl="Nie da się uczciwie podać jednej wersji, źródła są niejasne.">Nie da się uczciwie podać jednej wersji, źródła są niejasne.</p>
   {% endif %}
@@ -80,14 +80,14 @@
 
 {% if style.practice_pl or style.practice_en %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="How it is fought" data-pl="Jak się walczy">Jak się walczy</h2>
+  <h2 class="wiciedzy-section-title" data-en="how it is fought" data-pl="jak się walczy">jak się walczy</h2>
   <p data-en="{{ style.practice_en }}" data-pl="{{ style.practice_pl }}">{{ style.practice_pl }}</p>
 </section>
 {% endif %}
 
 {% if headline %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Training character" data-pl="Charakter treningu">Charakter treningu</h2>
+  <h2 class="wiciedzy-section-title" data-en="training character" data-pl="charakter treningu">charakter treningu</h2>
   {% include "wiciedzy/_profile_scale_legend.html" %}
   <ul class="wiciedzy-sources">
     {% for row in headline %}
@@ -96,7 +96,7 @@
   </ul>
   {% if rest %}
   <details class="wiciedzy-details">
-    <summary data-en="Show the full profile" data-pl="Pokaż pełny profil">Pokaż pełny profil</summary>
+    <summary data-en="show the full profile" data-pl="pokaż pełny profil">pokaż pełny profil</summary>
     {% for group in rest %}
     <h3 data-en="{{ group.en }}" data-pl="{{ group.pl }}">{{ group.pl }}</h3>
     <ul class="wiciedzy-sources">
@@ -112,7 +112,7 @@
 
 {% if relations %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Relations" data-pl="Relacje">Relacje</h2>
+  <h2 class="wiciedzy-section-title" data-en="relations" data-pl="relacje">relacje</h2>
   <ul class="wiciedzy-sources">
     {% for relation in relations %}
     <li>
@@ -126,11 +126,11 @@
 
 {% if style.facts.all %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Facts" data-pl="Fakty">Fakty</h2>
+  <h2 class="wiciedzy-section-title" data-en="facts" data-pl="fakty">fakty</h2>
   {% for fact in style.facts.all %}
   <p data-en="{{ fact.text_en }}" data-pl="{{ fact.text_pl }}">{{ fact.text_pl }}</p>
   {% if fact.is_legend %}
-  <p class="wiciedzy-muted" data-en="Later tradition / legend." data-pl="Późniejsza tradycja / legenda.">Późniejsza tradycja / legenda.</p>
+  <p class="wiciedzy-muted" data-en="later tradition / legend." data-pl="późniejsza tradycja / legenda.">późniejsza tradycja / legenda.</p>
   {% endif %}
   {% endfor %}
 </section>
@@ -138,7 +138,7 @@
 
 {% if style.sources.all %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Sources" data-pl="Źródła">Źródła</h2>
+  <h2 class="wiciedzy-section-title" data-en="sources" data-pl="źródła">źródła</h2>
   <ul class="wiciedzy-sources">
     {% for source in style.sources.all %}
     <li>
