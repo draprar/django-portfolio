@@ -124,7 +124,7 @@ a {
     height: 88%;
     touch-action: pan-y;
     -webkit-user-drag: none;
-    transition: transform 0.5s cubic-bezier(.22, .7, .2, 1), filter 0.5s ease, opacity 0.5s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: transform 0.5s cubic-bezier(.22, .7, .2, 1), width 0.5s cubic-bezier(.22, .7, .2, 1), filter 0.5s ease, opacity 0.5s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .carousel-stage .panel-bg {
@@ -653,6 +653,10 @@ a {
 
     .carousel-stage .panel {
         width: min(54%, 210px);
+    }
+
+    .carousel-stage .panel[data-slot="active"] {
+        width: clamp(150px, 70%, 260px);
     }
 
     .carousel-nav {
