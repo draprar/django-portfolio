@@ -6,8 +6,8 @@
 
 {% block wiciedzy %}
 <header class="wiciedzy-header wiciedzy-header-left">
-  <p class="wiciedzy-eyebrow" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</p>
-  <h1 class="wiciedzy-title" data-en="To read" data-pl="Do poczytania" aria-live="polite">Do poczytania</h1>
+  <p class="wiciedzy-eyebrow" data-en="quizmatch" data-pl="quizopasowanie">quizopasowanie</p>
+  <h1 class="wiciedzy-title" data-en="to read" data-pl="do poczytania" aria-live="polite">do poczytania</h1>
   <p class="wiciedzy-muted" data-en="Five styles to read about — starting with the best match in this set." data-pl="Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.">Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.</p>
   <p class="wiciedzy-muted" data-en="This comparison is based on your preferences and the card's general profile." data-pl="To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty.">To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty.</p>
 </header>
@@ -15,7 +15,7 @@
 {% for row in rows %}
 <section class="wiciedzy-card">
   {% if row.style.catalog_set == "golden" %}
-  <p class="wiciedzy-eyebrow" data-en="Less obvious" data-pl="Mniej oczywiste">Mniej oczywiste</p>
+  <p class="wiciedzy-eyebrow" data-en="less obvious" data-pl="mniej oczywiste">mniej oczywiste</p>
   {% endif %}
   <h2>
     <a href="{% url 'wiciedzy:detail' row.style.slug %}" data-en="{{ row.style.name_en }}" data-pl="{{ row.style.name_pl }}">{{ row.style.name_pl }}</a>
@@ -28,7 +28,7 @@
   {% endfor %}
   {% for other in row.beside %}
   <p>
-    <span data-en="Next to this sits" data-pl="Blisko tego jest">Blisko tego jest</span>
+    <span data-en="next to this sits" data-pl="blisko tego jest">blisko tego jest</span>
     <a href="{% url 'wiciedzy:detail' other.slug %}" data-en="{{ other.name_en }}" data-pl="{{ other.name_pl }}">{{ other.name_pl }}</a>.
   </p>
   {% endfor %}

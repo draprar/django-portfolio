@@ -1,12 +1,12 @@
 {% extends "wiciedzy/base.html" %}
 
-{% block title %}Quizopasowanie | wiciędze{% endblock %}
-{% block title_i18n %}data-pl="Quizopasowanie | wiciędze" data-en="Quizmatch | wiciędze"{% endblock %}
+{% block title %}quizopasowanie | wiciędze{% endblock %}
+{% block title_i18n %}data-pl="quizopasowanie | wiciędze" data-en="quizmatch | wiciędze"{% endblock %}
 {% block robots %}<meta name="robots" content="noindex">{% endblock %}
 
 {% block wiciedzy %}
 <header class="wiciedzy-header wiciedzy-header-left">
-  <h1 class="wiciedzy-title" data-en="Quizmatch" data-pl="Quizopasowanie">Quizopasowanie</h1>
+  <h1 class="wiciedzy-title" data-en="quizmatch" data-pl="quizopasowanie">quizopasowanie</h1>
 </header>
 
 {% if error %}
@@ -18,7 +18,7 @@
 {% endif %}
 
 <p class="wiciedzy-progress" id="wiciedzy-progress" role="status"
-   data-en="Question 1 of {{ total }}" data-pl="Pytanie 1 z {{ total }}">Pytanie 1 z {{ total }}</p>
+   data-en="question 1 of {{ total }}" data-pl="pytanie 1 z {{ total }}">pytanie 1 z {{ total }}</p>
 
 <form method="post">
   {% csrf_token %}
@@ -56,7 +56,7 @@
     {% endif %}
   </fieldset>
   {% endfor %}
-  <button class="wiciedzy-btn" type="submit" data-en="Show the list" data-pl="Pokaż listę">Pokaż listę</button>
+  <button class="wiciedzy-btn" type="submit" data-en="show the list" data-pl="pokaż listę">pokaż listę</button>
 </form>
 {% endblock %}
 

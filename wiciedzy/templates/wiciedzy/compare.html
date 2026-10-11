@@ -24,7 +24,7 @@
 </header>
 
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="History and type" data-pl="Historia i typ">Historia i typ</h2>
+  <h2 class="wiciedzy-section-title" data-en="history and type" data-pl="historia i typ">historia i typ</h2>
   <div class="wiciedzy-compare">
     <div>
       <h3 data-en="{{ left.name_en }}" data-pl="{{ left.name_pl }}">{{ left.name_pl }}</h3>
@@ -47,7 +47,7 @@
 
 {% if differences %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Main differences" data-pl="Najważniejsze różnice">Najważniejsze różnice</h2>
+  <h2 class="wiciedzy-section-title" data-en="main differences" data-pl="najważniejsze różnice">najważniejsze różnice</h2>
   {% for line in differences %}
   <p data-en="{{ line.en }}" data-pl="{{ line.pl }}">{{ line.pl }}</p>
   {% endfor %}
@@ -56,7 +56,7 @@
 
 {% if pairs %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Technique and training" data-pl="Techniki i trening">Techniki i trening</h2>
+  <h2 class="wiciedzy-section-title" data-en="technique and training" data-pl="techniki i trening">techniki i trening</h2>
   {% include "wiciedzy/_profile_scale_legend.html" %}
   {% for group in pairs %}
   <h3 data-en="{{ group.en }}" data-pl="{{ group.pl }}">{{ group.pl }}</h3>
@@ -76,7 +76,7 @@
 
 {% if studies %}
 <section class="wiciedzy-card">
-  <h2 class="wiciedzy-section-title" data-en="Psychology / research" data-pl="Psychologia / badania">Psychologia / badania</h2>
+  <h2 class="wiciedzy-section-title" data-en="psychology / research" data-pl="psychologia / badania">psychologia / badania</h2>
   {% for study in studies %}
   <h3>{{ study.title }}{% if study.year %} ({{ study.year }}){% endif %}</h3>
   <p data-en="{{ study.finding_en }}" data-pl="{{ study.finding_pl }}">{{ study.finding_pl }}</p>

@@ -196,10 +196,10 @@ def test_compare_without_a_study_says_there_is_no_data(client):
     assert response.status_code == 200
     assert "wiciedzy-scale-legend" in content
     assert "prawie nie występuje albo niewielkie nastawienie" in content
-    assert "Historia i typ" in content
+    assert "historia i typ" in content
     assert "Psychologia / badania" not in content
     assert "Szybki profil" not in content
-    assert content.index("Historia i typ") < content.index("Techniki i trening")
+    assert content.index("historia i typ") < content.index("techniki i trening")
     assert "<canvas" not in content
 
     same = client.post(reverse("wiciedzy:compare_form"), {"a": "boks", "b": "boks"})
@@ -227,7 +227,7 @@ def test_cards_golden_and_fact(client):
     load_catalog()
     detail = client.get(reverse("wiciedzy:detail", args=["kyokushin"]))
     content = detail.content.decode()
-    assert "Pochodzenie" in content
+    assert "pochodzenie" in content
     assert "Karate" in content
     assert "https://en.wikipedia.org/wiki/Kyokushin" in content
 
@@ -280,7 +280,7 @@ def test_tag_filter_and_umbrella_label(client):
     karate_page = karate.content.decode()
     assert "To nazwa zbiorcza, nie jeden regulamin" not in karate_page
     assert "To moja ocena" not in karate_page
-    assert "Pokaż pełny profil" in karate.content.decode()
+    assert "pokaż pełny profil" in karate.content.decode()
 
 
 @pytest.mark.django_db
@@ -315,7 +315,7 @@ def test_serious_pages_do_not_call_the_catalog_a_joke(client):
     assert "Boks boks, albo kop kop" in home
     assert "obczaj niżej" not in home
     assert "Archetyp" not in home
-    assert "Quizopasowanie" in home
+    assert "quizopasowanie" in home
 
 
 @pytest.mark.django_db
@@ -337,11 +337,11 @@ def test_incomplete_preference_does_not_open_a_list(client):
     opened = client.post(reverse("wiciedzy:test"), posted)
     assert opened.status_code == 302
     page = client.get(reverse("wiciedzy:match")).content.decode()
-    assert "Do poczytania" in page
+    assert "do poczytania" in page
     assert "22 osie" not in page
     assert "Wysokie dopasowanie" not in page
     assert "moja ocena" not in page
-    assert "Quizopasowanie" in page
+    assert "quizopasowanie" in page
     assert 'name="robots" content="noindex"' in page
     forgotten = client.post(reverse("wiciedzy:test"), {})
     assert forgotten.status_code == 200

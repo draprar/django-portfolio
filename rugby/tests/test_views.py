@@ -1,48 +1,26 @@
 import pytest
-from django.contrib.auth.models import User
-from django.test import Client
 from django.urls import reverse
-from django.utils import timezone
-
-from rugby.models import Post
 
 
 @pytest.mark.django_db
-class TestPostListView:
+class TestRugbyHomeView:
     def setup_method(self):
-        self.client = Client()
+        self.url = reverse("post_list")
 
-    def test_post_list_view_with_posts(self):
-        user = User.objects.create(username="testuser")
-        Post.objects.create(
-            author=user,
-            title_pl="Test Post",
-            text_pl="This is a test post.",
-            published_date=timezone.now(),
-        )
-        url = reverse("post_list")
-        response = self.client.get(url)
+    def test_home_returns_200(self, client):
+        response = client.get(self.url)
         assert response.status_code == 200
-        assert "posts" in response.context
-        assert len(response.context["posts"]) == 1
 
-    def test_post_list_view_no_posts(self):
-        url = reverse("post_list")
-        response = self.client.get(url)
-        assert response.status_code == 200
-        assert "posts" in response.context
-        assert len(response.context["posts"]) == 0
+    def test_no_accordion_or_posts_context(self, client):
+        response = client.get(self.url)
+        content = response.content.decode()
+        assert "posts" not in response.context
+        assert "accordion" not in content.lower()
+        assert "Rugby 7 czy XV?" in content
+        assert "18.09.2010" in content
 
-    def test_post_list_only_published(self):
-        user = User.objects.create(username="testuser")
-        # Post z przyszłą datą, nie powinien się pokazać
-        Post.objects.create(
-            author=user,
-            title_pl="Future Post",
-            text_pl="Should not appear",
-            published_date=timezone.now() + timezone.timedelta(days=1),
-        )
-        url = reverse("post_list")
-        response = self.client.get(url)
-        assert response.status_code == 200
-        assert len(response.context["posts"]) == 0
+    def test_meta_title(self, client):
+        response = client.get(self.url)
+        content = response.content.decode()
+        assert "<title>rugby — 7 i XV</title>" in content
+        assert "aktualny obraz" not in content.lower()

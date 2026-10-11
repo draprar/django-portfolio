@@ -1,6 +1,6 @@
 ﻿# wiciędze — teksty na stronie (obecny UI)
 
-Wygenerowano: **2026-10-09 16:38 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
+Wygenerowano: **2026-10-11 13:12 UTC** poleceniem `python manage.py export_wiciedzy_texts`.
 
 Źródło: aktywne trasy w `wiciedzy/urls.py`, szablony, modele `Style` (`active=True`), `PreferenceQuestion` (`active=True`), teksty z `dimensions.py` / `display.py`.
 
@@ -27,14 +27,14 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** a jak nie to se ogarnij inne
 **EN:** and if not, figure out the rest yourself.
 
-**PL:** Katalog
-**EN:** Catalog
+**PL:** katalog
+**EN:** catalog
 
 **PL:** Obczaj różne sporty i sztuki walki. Możesz je też porównywać.
 **EN:** Check out all kinds of combat sports and martial arts. You can compare them too.
 
-**PL:** Quizopasowanie
-**EN:** Quizmatch
+**PL:** quizopasowanie
+**EN:** quizmatch
 
 **PL:** Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
 **EN:** Click around and you'll get a short list of matched styles.
@@ -46,29 +46,29 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 
 _Szablon:_ `list.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
-**PL:** Katalog
-**EN:** Catalog
+**PL:** katalog
+**EN:** catalog
 
-**PL:** Se porównaj:
-**EN:** Go on, compare:
+**PL:** se porównaj:
+**EN:** go on, compare:
 
-**PL:** Pierwszy
-**EN:** First
+**PL:** pierwszy
+**EN:** first
 
-**PL:** Drugi
-**EN:** Second
+**PL:** drugi
+**EN:** second
 
-**PL:** Porównaj
-**EN:** Compare
+**PL:** porównaj
+**EN:** compare
 
-**PL:** Wszystkie tagi
-**EN:** All tags
+**PL:** wszystkie tagi
+**EN:** all tags
 
-**PL:** Żaden styl nie ma tego tagu.
-**EN:** No style has this tag.
+**PL:** żaden styl nie ma tego tagu.
+**EN:** no style has this tag.
 
-**PL:** Pokaż wszystkie
-**EN:** Show all
+**PL:** pokaż wszystkie
+**EN:** show all
 
 ### `/wiciedze/spis/<styl>/`
 
@@ -95,26 +95,26 @@ _Szablon:_ `detail.html` — stałe napisy; nazwy stylów i opisy z sekcji katal
 **PL:** — wyraźnie ważne i regularne w treningu.
 **EN:** — clearly important and regular in training.
 
-**PL:** O stylu
-**EN:** About
+**PL:** o stylu
+**EN:** about
 
-**PL:** Rodzaj
-**EN:** Type
+**PL:** rodzaj
+**EN:** type
 
-**PL:** Tagi
-**EN:** Tags
+**PL:** tagi
+**EN:** tags
 
-**PL:** Pochodzenie
-**EN:** Origin
+**PL:** pochodzenie
+**EN:** origin
 
-**PL:** Okres
-**EN:** Period
+**PL:** okres
+**EN:** period
 
-**PL:** Region
-**EN:** Region
+**PL:** region
+**EN:** region
 
-**PL:** Historia
-**EN:** History
+**PL:** historia
+**EN:** history
 
 **PL:** Nie da się uczciwie podać jednej wersji, źródła są niejasne.
 **EN:** There's no honest single version — the sources are unclear.
@@ -122,33 +122,33 @@ _Szablon:_ `detail.html` — stałe napisy; nazwy stylów i opisy z sekcji katal
 **PL:** Opis jest krótszy, bo drugie źródło tylko wspomina o tym temacie.
 **EN:** The description is shorter because the second source only mentions this topic.
 
-**PL:** Jak się walczy
-**EN:** How it is fought
+**PL:** jak się walczy
+**EN:** how it is fought
 
-**PL:** Charakter treningu
-**EN:** Training character
+**PL:** charakter treningu
+**EN:** training character
 
-**PL:** Pokaż pełny profil
-**EN:** Show the full profile
+**PL:** pokaż pełny profil
+**EN:** show the full profile
 
-**PL:** Relacje
-**EN:** Relations
+**PL:** relacje
+**EN:** relations
 
-**PL:** Fakty
-**EN:** Facts
+**PL:** fakty
+**EN:** facts
 
-**PL:** Późniejsza tradycja / legenda.
-**EN:** Later tradition / legend.
+**PL:** późniejsza tradycja / legenda.
+**EN:** later tradition / legend.
 
-**PL:** Źródła
-**EN:** Sources
+**PL:** źródła
+**EN:** sources
 
 ### `/wiciedze/test/`
 
 _Szablon:_ `test.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
-**PL:** Quizopasowanie
-**EN:** Quizmatch
+**PL:** quizopasowanie
+**EN:** quizmatch
 
 **PL:** Zaznacz każdą skalę i każdy wymagany wybór. Dopiero wtedy pokaże się lista.
 **EN:** Mark every scale and every required choice. Only then does the list show up.
@@ -156,18 +156,18 @@ _Szablon:_ `test.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** Wymagane.
 **EN:** Required.
 
-**PL:** Pokaż listę
-**EN:** Show the list
+**PL:** pokaż listę
+**EN:** show the list
 
 ### `/wiciedze/dopasowanie/`
 
 _Szablon:_ `match.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
-**PL:** Quizopasowanie
-**EN:** Quizmatch
+**PL:** quizopasowanie
+**EN:** quizmatch
 
-**PL:** Do poczytania
-**EN:** To read
+**PL:** do poczytania
+**EN:** to read
 
 **PL:** Pięć stylów do poczytania — zaczynamy od najlepszego dopasowania w tym zestawie.
 **EN:** Five styles to read about — starting with the best match in this set.
@@ -175,18 +175,18 @@ _Szablon:_ `match.html` — stałe napisy; nazwy stylów i opisy z sekcji katalo
 **PL:** To porównanie opiera się na Twoich preferencjach i ogólnym profilu karty.
 **EN:** This comparison is based on your preferences and the card's general profile.
 
-**PL:** Mniej oczywiste
-**EN:** Less obvious
+**PL:** mniej oczywiste
+**EN:** less obvious
 
-**PL:** Blisko tego jest
-**EN:** Next to this sits
+**PL:** blisko tego jest
+**EN:** next to this sits
 
 ### `/wiciedze/porownaj/`
 
 _Szablon:_ `compare_form.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
-**PL:** Porównaj
-**EN:** Compare
+**PL:** porównaj
+**EN:** compare
 
 **PL:** Dwa style z zestawu głównego, jeden obok drugiego.
 **EN:** Two core styles, one next to the other.
@@ -194,14 +194,14 @@ _Szablon:_ `compare_form.html` — stałe napisy; nazwy stylów i opisy z sekcji
 **PL:** Wybierz dwa różne style z zestawu głównego.
 **EN:** Pick two different styles from the core set.
 
-**PL:** Se porównaj:
-**EN:** Go on, compare:
+**PL:** se porównaj:
+**EN:** go on, compare:
 
-**PL:** Pierwszy
-**EN:** First
+**PL:** pierwszy
+**EN:** first
 
-**PL:** Drugi
-**EN:** Second
+**PL:** drugi
+**EN:** second
 
 ### `/wiciedze/porownaj/<a>/<b>/`
 
@@ -228,46 +228,46 @@ _Szablon:_ `compare.html` — stałe napisy; nazwy stylów i opisy z sekcji kata
 **PL:** — wyraźnie ważne i regularne w treningu.
 **EN:** — clearly important and regular in training.
 
-**PL:** Historia i typ
-**EN:** History and type
+**PL:** historia i typ
+**EN:** history and type
 
-**PL:** Najważniejsze różnice
-**EN:** Main differences
+**PL:** najważniejsze różnice
+**EN:** main differences
 
-**PL:** Techniki i trening
-**EN:** Technique and training
+**PL:** techniki i trening
+**EN:** technique and training
 
-**PL:** Psychologia / badania
-**EN:** Psychology / research
+**PL:** psychologia / badania
+**EN:** psychology / research
 
 ### `/wiciedze/test/ (brak pytań)`
 
 _Szablon:_ `empty.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
-**PL:** Brak pytań
-**EN:** No questions
+**PL:** brak pytań
+**EN:** no questions
 
 **PL:** Na razie nie mam dla Ciebie pytań. Katalog dalej czeka.
 **EN:** I don't have any questions for you right now. The catalog is still waiting.
 
-**PL:** Katalog
-**EN:** Catalog
+**PL:** katalog
+**EN:** catalog
 
 ### `404 w wiciędze`
 
 _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu.
 
-**PL:** Tu nic nie ma.
-**EN:** There's nothing here.
+**PL:** tu nic nie ma.
+**EN:** there's nothing here.
 
 **PL:** Adres nie pasuje do żadnej strony w wiciędze. Wróć na start albo obczaj katalog.
 **EN:** The address doesn't match any page in wiciędze. Go back to the start or check out the catalog.
 
-**PL:** Start
-**EN:** Start
+**PL:** start
+**EN:** start
 
-**PL:** Katalog
-**EN:** Catalog
+**PL:** katalog
+**EN:** catalog
 
 ## 2. Tagi
 
@@ -7572,8 +7572,8 @@ _Szablon:_ `404.html` — stałe napisy; nazwy stylów i opisy z sekcji katalogu
 **PL:** {{ style.name_pl }} | wiciędze
 **EN:** {{ style.name_en }} | wiciędze
 
-**PL:** Quizopasowanie | wiciędze
-**EN:** Quizmatch | wiciędze
+**PL:** quizopasowanie | wiciędze
+**EN:** quizmatch | wiciędze
 
 **PL:** Do poczytania | wiciędze
 **EN:** To read | wiciędze

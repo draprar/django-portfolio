@@ -18,7 +18,7 @@ A full-stack Django portfolio by an engineer-turned-developer — 12 integrated 
 | **docdiff**       | Document comparison engine | AI semantic scoring · MIME/signature validation · HTML reports |
 | **gallery**       | Image gallery with categories | CRUD · DRF · manual Instagram-style posts in admin |
 | **core**          | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
-| **rugby**         | Rugby team archive | ORM posts, bilingual admin |
+| **rugby**         | Rugby 7/XV learn + AFC Giżycko archive | Public page at `/rugby/`; `Post` rows + `data/archive_posts.json` |
 | **bies**          | Slavic Wheel of the Year | festivals, deities, R2 media |
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
 | **code**          | IG programming page (`/code/`) | reads `core.Project`, no models |

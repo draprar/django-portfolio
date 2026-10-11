@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jedzien</title>
-  <meta name="description" content="kodzillin', Wyraj, LingwoŁamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta name="description" content="kodzillin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
   <meta name="theme-color" content="#0a0a0a">
 
   <meta property="og:title" content="Jedzien">
-  <meta property="og:description" content="kodzillin', Wyraj, LingwoŁamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta property="og:description" content="kodzillin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,64 +27,55 @@
     <div class="stage-stack">
     <main class="portal portal-chooser">
 
+      <a href="/code/" class="panel panel-code" data-panel="code" aria-label="kodzillin'">
+        <div class="panel-bg" aria-hidden="true">
+          <pre class="code-terminal"><code class="code-terminal-lines"><span class="t-gold">>>> who?</span></code></pre>
+        </div>
+        <div class="panel-veil"></div>
+        <div class="panel-sheen"></div>
+        <div class="panel-content">
+          <h2 class="panel-title">kodzillin'</h2>
+        </div>
+      </a>
+
       <header class="rozdroze-header">
-        <h1>Se klikaj:</h1>
+        <h1>se klikaj</h1>
         <div class="underline" aria-hidden="true"></div>
       </header>
 
-      <div class="hub">
-      <div class="split">
+      <div class="carousel" data-carousel>
+        <button type="button" class="carousel-nav carousel-prev" aria-label="Poprzednia">‹</button>
+        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze">
+          <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" data-slot="active" aria-current="true" aria-label="wyraj">
+            <div class="panel-bg"></div>
+            <div class="panel-veil"></div>
+            <div class="panel-sheen"></div>
+            <div class="panel-content">
+              <h2 class="panel-title">wyraj</h2>
+            </div>
+          </a>
 
-        <!-- ═══ kodzillin' ═══ -->
-        <a href="/code/" class="panel panel-code" data-panel="code" aria-label="kodzillin'">
-          <div class="panel-bg" aria-hidden="true">
-            <pre class="code-terminal"><code class="code-terminal-lines"><span class="t-gold">>>> who?</span></code></pre>
-          </div>
-          <div class="panel-veil"></div>
-          <div class="panel-sheen"></div>
-          <div class="panel-content">
-            <h2 class="panel-title">kodzillin'</h2>
-          </div>
-        </a>
+          <a href="/tonguetwister/" class="panel panel-lingwo" data-panel="lingwo" data-slot="next" aria-label="lingwołamki">
+            <div class="panel-bg"></div>
+            <div class="panel-veil"></div>
+            <div class="panel-sheen"></div>
+            <div class="panel-content">
+              <h2 class="panel-title">lingwołamki</h2>
+            </div>
+          </a>
 
-        <!-- ═══ Wyraj ═══ -->
-        <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" aria-label="Wyraj">
-          <div class="panel-bg"></div>
-
-          <div class="panel-veil"></div>
-          <div class="panel-sheen"></div>
-
-          <div class="panel-content">
-            <h2 class="panel-title">Wyraj</h2>
-          </div>
-        </a>
-
-        <!-- ═══ LingwoŁamek ═══ -->
-        <a href="/tonguetwister/" class="panel panel-lingwo" data-panel="lingwo" aria-label="LingwoŁamki">
-          <div class="panel-bg"></div>
-
-          <div class="panel-veil"></div>
-          <div class="panel-sheen"></div>
-
-          <div class="panel-content">
-            <h2 class="panel-title">LingwoŁamki</h2>
-          </div>
-        </a>
-
-        <!-- ═══ wiciedzy ═══ -->
-        <a href="/wiciedze/" class="panel panel-wiciedzy" data-panel="wiciedzy" aria-label="wiciędze">
-          <div class="panel-bg"></div>
-
-          <div class="panel-veil"></div>
-          <div class="panel-sheen"></div>
-
-          <div class="panel-content">
-            <h2 class="panel-title">wiciędze</h2>
-          </div>
-        </a>
-
+          <a href="/wiciedze/" class="panel panel-wiciedzy" data-panel="wiciedzy" data-slot="prev" aria-label="wiciędze">
+            <div class="panel-bg"></div>
+            <div class="panel-veil"></div>
+            <div class="panel-sheen"></div>
+            <div class="panel-content">
+              <h2 class="panel-title">wiciędze</h2>
+            </div>
+          </a>
+        </div>
+        <button type="button" class="carousel-nav carousel-next" aria-label="Następna">›</button>
       </div>
-      </div>
+
     </main>
     </div>
   </div>

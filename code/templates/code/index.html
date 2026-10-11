@@ -44,31 +44,31 @@
       </header>
 
       <section id="offer" class="offer-section">
-        <h2 data-en="What's there?" data-pl="Co tam?">What's there?</h2>
+        <h2 data-en="what's there?" data-pl="co tam?">what's there?</h2>
         <div class="offer-grid">
           <article class="offer">
-            <h3>Web</h3>
+            <h3>web</h3>
             <p data-en="Sites, apps, tools and SEO [and you just send a link]."
                data-pl="Stronki, aplikacje, narzędzia i SEO [i se wyślesz linkiem].">
               Sites, apps, tools and SEO [and you just send a link].
             </p>
           </article>
           <article class="offer">
-            <h3>Power BI</h3>
+            <h3>power bi</h3>
             <p data-en="Dashboards and visuals [Excel and PowerPoint = sic!]."
                data-pl="Dashboardy i wizualizacje [excele i powerpointy = sic!].">
               Dashboards and visuals [Excel and PowerPoint = sic!].
             </p>
           </article>
           <article class="offer">
-            <h3 data-en="Code" data-pl="Kod">Code</h3>
+            <h3 data-en="code" data-pl="kod">code</h3>
             <p data-en="Programs, systems, and automation [sounds smart, right?]."
                data-pl="Programy, systemy i automatyzacja [mądrze brzmi, co?].">
               Programs, systems, and automation [sounds smart, right?].
             </p>
           </article>
           <article class="offer">
-            <h3 data-en="Machine learning" data-pl="Uczenie maszynowe">Machine learning</h3>
+            <h3 data-en="machine learning" data-pl="uczenie maszynowe">machine learning</h3>
             <p data-en="Analyses, forecasts, and models [and they actually help decisions]."
                data-pl="Analizy, prognozy i modele [a to spoko wspomaga decyzje].">
               Analyses, forecasts, and models [and they actually help decisions].
@@ -78,7 +78,7 @@
       </section>
 
       <section id="projects" class="projects-section">
-        <h2 data-en="Repos" data-pl="Reposy">Repos</h2>
+        <h2 data-en="repos" data-pl="reposy">repos</h2>
         <ul class="repo-list">
           {% for project in projects %}
           <li class="repo">
@@ -95,10 +95,10 @@
                 <h3 data-en="{{ project.title_en }}" data-pl="{{ project.title_pl }}">{{ project.title_en }}</h3>
                 <div class="repo-links">
                   {% if project.github_url %}
-                  <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">github</a>
                   {% endif %}
                   {% if project.live_url %}
-                  <a href="{{ project.public_live_url }}" target="_blank" rel="noopener noreferrer">Live</a>
+                  <a href="{{ project.public_live_url }}" target="_blank" rel="noopener noreferrer">live</a>
                   {% endif %}
                 </div>
               </div>
@@ -116,7 +116,7 @@
       </section>
 
       <section id="contact" class="contact">
-        <h2 data-en="Contact" data-pl="Puknij w kaloryfer">Puknij w kaloryfer</h2>
+        <h2 data-en="contact" data-pl="puknij w kaloryfer">puknij w kaloryfer</h2>
 
         <div id="contact-alerts"></div>
 
@@ -130,7 +130,7 @@
           {{ form.message }}
           <div class="contact-actions">
             <button type="submit" class="send-btn">
-              <span data-en="Send Message" data-pl="Wyślij wiadomość">Send Message</span>
+              <span data-en="send message" data-pl="wyślij wiadomość">send message</span>
             </button>
           </div>
         </form>
