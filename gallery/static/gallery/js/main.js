@@ -135,10 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
         reelObserver.observe(video);
     });
 
-    // ── Hub-style gallery carousel (default view). Side cards rotate in;
+    // ── One hub-style carousel per category. Side cards rotate in;
     // the active image opens in Fancybox. Only three slots are visible.
-    const galleryCarousel = document.querySelector('[data-gallery-carousel]');
-    if (galleryCarousel) {
+    document.querySelectorAll('[data-gallery-carousel]').forEach((galleryCarousel) => {
         const stage = galleryCarousel.querySelector('.gallery-carousel-stage');
         const cards = stage ? [...stage.querySelectorAll('.g-card')] : [];
         let index = Math.max(0, cards.findIndex((card) => card.dataset.slot === 'active'));
@@ -241,5 +240,5 @@ document.addEventListener("DOMContentLoaded", () => {
             video.addEventListener('play', () => playBtn.classList.add('hidden'));
             video.addEventListener('pause', () => playBtn.classList.remove('hidden'));
         });
-    }
+    });
 });

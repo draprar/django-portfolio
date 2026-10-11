@@ -605,8 +605,8 @@ main.container {
 
 .gallery-carousel-stage {
   position: relative;
-  height: min(62vh, 560px);
-  min-height: 280px;
+  height: min(46vh, 420px);
+  min-height: 240px;
   perspective: 1400px;
   transform-style: preserve-3d;
   outline: none;

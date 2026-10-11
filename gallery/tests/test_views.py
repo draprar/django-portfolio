@@ -45,6 +45,8 @@ class TestGalleryViews:
         assert 'aria-current="page"' in content
         assert "karuzela" in content
         assert "siatka" in content
+        assert content.count("data-gallery-carousel") == 1
+        assert "section-title" in content
 
     @override_settings(SECURE_SSL_REDIRECT=False)
     def test_home_grid_view_keeps_category_sections(self, client):
@@ -77,6 +79,24 @@ class TestGalleryViews:
         assert "category=Nature" in response.context["grid_url"]
         assert "view=grid" in response.context["grid_url"]
         assert "view=grid" not in response.context["carousel_url"]
+        assert content.count("data-gallery-carousel") == 1
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_carousel_is_separate_per_category(self, client):
+        nature = Category.objects.create(title="Nature")
+        animals = Category.objects.create(title="Animals")
+        Gallery.objects.create(category=nature, image="images/nature.jpg", title="mgła")
+        Gallery.objects.create(category=animals, image="images/animals.jpg", title="lis")
+
+        response = client.get(reverse("gallery:gallery_home"))
+        content = response.content.decode()
+
+        assert content.count("data-gallery-carousel") == 2
+        assert f'data-fancybox="gallery-{nature.id}"' in content
+        assert f'data-fancybox="gallery-{animals.id}"' in content
+        assert "mgła" in content
+        assert "lis" in content
+        assert len(response.context["carousel_groups"]) == 2
 
     @override_settings(SECURE_SSL_REDIRECT=False)
     def test_home_view_filtered_by_category(self, client):
