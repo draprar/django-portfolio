@@ -54,8 +54,14 @@ def _category_items(category) -> list[dict[str, str]]:
     return items
 
 
+def _instagram_cards(instagram_posts) -> list[dict]:
+    posts = [post for post in instagram_posts if post.media.all()]
+    total = len(posts)
+    return [{"slot": _slot(index, total), "post": post} for index, post in enumerate(posts)]
+
+
 def _carousel_groups(categories, instagram_posts, selected: str) -> list[dict]:
-    """One section per category. Instagram stays a set of posts; other categories are 3D carousels."""
+    """One 3D carousel per category. An Instagram album stays one card."""
     groups = []
     for category in categories:
         if selected != "All" and selected != category.title:
@@ -66,7 +72,7 @@ def _carousel_groups(categories, instagram_posts, selected: str) -> list[dict]:
                     "id": category.id,
                     "title": category.title,
                     "kind": "instagram",
-                    "posts": instagram_posts,
+                    "posts": _instagram_cards(instagram_posts),
                 }
             )
             continue
@@ -85,9 +91,9 @@ class Home(generic.TemplateView):
     """
     Gallery homepage. Category filtering happens in the template from
     `selected_category`; images are loaded via Category.images prefetch.
-    Default presentation is one 3D carousel per photo category. Instagram stays
-    a set of posts, with its own inner carousel when a post has several images.
-    `?view=grid` keeps the grid.
+    Default presentation is one 3D carousel per category. An Instagram post is
+    one card, and extra photos stay inside that card. `?view=grid` keeps the grid
+    on a wide screen; a phone always shows the carousel.
     """
 
     template_name = "gallery/home.html"

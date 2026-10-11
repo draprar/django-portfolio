@@ -1,3 +1,27 @@
+@property --turn-x {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --turn-y {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --turn-z {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --turn-ry {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
 :root {
     --ink: #060606;
     --gold: #c4922a;
@@ -125,9 +149,21 @@ a {
     height: 88%;
     touch-action: pan-y;
     -webkit-user-drag: none;
+    --turn-x: 0px;
+    --turn-y: 0px;
+    --turn-z: 0px;
+    --turn-ry: 0deg;
     transform-origin: center center;
-    /* Same function list in every slot so the turn interpolates instead of crossfading. */
-    transition: transform 0.68s cubic-bezier(0.22, 1, 0.36, 1), width 0.68s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.68s ease, box-shadow 0.68s ease;
+    /* One registered transform. Safari animates the variables; a mixed calc() list snaps on iPhone. */
+    transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+    transition:
+        --turn-x 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        --turn-y 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        --turn-z 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        --turn-ry 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.68s ease,
+        box-shadow 0.68s ease;
 }
 
 .carousel-stage .panel::after {
@@ -154,7 +190,10 @@ a {
     box-shadow:
         0 0 0 1px rgba(196, 146, 42, 0.28),
         0 18px 40px rgba(0, 0, 0, 0.4);
-    transform: translate3d(-50%, 0, 40px) rotateY(0deg);
+    --turn-x: 0px;
+    --turn-y: 0px;
+    --turn-z: 40px;
+    --turn-ry: 0deg;
 }
 
 .carousel-stage .panel[data-slot="active"]::after {
@@ -163,17 +202,21 @@ a {
 
 .carousel-stage .panel[data-slot="active"]:hover,
 .carousel-stage .panel[data-slot="active"]:focus-visible {
-    transform: translate3d(-50%, -4px, 40px) rotateY(0deg);
+    --turn-y: -4px;
 }
 
 .carousel-stage .panel[data-slot="prev"] {
     z-index: 1;
-    transform: translate3d(calc(-50% - var(--peek)), 0, -72px) rotateY(28deg);
+    --turn-x: calc(var(--peek) * -1);
+    --turn-z: -72px;
+    --turn-ry: 28deg;
 }
 
 .carousel-stage .panel[data-slot="next"] {
     z-index: 2;
-    transform: translate3d(calc(-50% + var(--peek)), 0, -72px) rotateY(-28deg);
+    --turn-x: var(--peek);
+    --turn-z: -72px;
+    --turn-ry: -28deg;
 }
 
 .carousel-stage .panel[data-slot="prev"]::after,

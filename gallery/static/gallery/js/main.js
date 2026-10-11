@@ -135,8 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
         reelObserver.observe(video);
     });
 
-    // ── One hub-style carousel per category. Side cards rotate in;
-    // the active image opens in Fancybox. Only three slots are visible.
+    // ── One hub-style carousel per category. Photos stay in the carousel.
     document.querySelectorAll('[data-gallery-carousel]').forEach((galleryCarousel) => {
         const stage = galleryCarousel.querySelector('.gallery-carousel-stage');
         const cards = stage ? [...stage.querySelectorAll('.g-card')] : [];
@@ -205,7 +204,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             stage.addEventListener('pointerdown', (event) => {
-                if (event.target.closest('.g-card-play')) return;
+                if (event.target.closest('.g-card-play, .ig-post-media')) {
+                    pointerX = null;
+                    return;
+                }
                 pointerX = event.clientX;
                 dragged = false;
             });
