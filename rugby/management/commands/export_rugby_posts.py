@@ -19,7 +19,7 @@ def _iso(dt: datetime | None) -> str | None:
     if dt is None:
         return None
     if dj_tz.is_naive(dt):
-        dt = dj_tz.make_aware(dt, timezone.get_default_timezone())
+        dt = dj_tz.make_aware(dt, dj_tz.get_default_timezone())
     return dt.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
