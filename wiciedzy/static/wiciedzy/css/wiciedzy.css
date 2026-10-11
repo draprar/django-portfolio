@@ -442,6 +442,31 @@ a.wiciedzy-home-feature:focus-visible .wiciedzy-btn {
   box-sizing: border-box;
 }
 
+/* Pod panelem — ten sam układ co .site-credits w wyraju (tu: etymologia, nie źródła). */
+.wiciedzy-stage-note {
+  width: 92%;
+  max-width: 960px;
+  margin: auto auto 0;
+  padding: 1.4rem 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.wiciedzy-stage-note p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0 auto;
+  max-width: min(52rem, 100%);
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: rgba(196, 196, 196, 0.55);
+  text-wrap: balance;
+}
+
 .wiciedzy-btn.wiciedzy-home-quiet-btn {
   display: inline-flex;
   align-items: center;

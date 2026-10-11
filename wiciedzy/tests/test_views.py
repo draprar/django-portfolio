@@ -37,6 +37,8 @@ def test_home_is_bilingual(client):
     assert 'href="/wiciedze/porownaj/"' not in content
     assert "core/js/lang.js" in content
     assert "lang-btn" in content
+    assert "harpagani Bałtyku" in content
+    assert "wiciedzy-stage-note" in content
 
 
 @pytest.mark.django_db
