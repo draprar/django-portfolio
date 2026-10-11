@@ -607,7 +607,8 @@ main.container {
   position: relative;
   height: min(46vh, 420px);
   min-height: 240px;
-  perspective: 1400px;
+  perspective: 980px;
+  perspective-origin: 50% 46%;
   transform-style: preserve-3d;
   outline: none;
 }
@@ -626,7 +627,15 @@ main.container {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.5s cubic-bezier(.22, .7, .2, 1), filter 0.5s ease, opacity 0.5s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transform-origin: center center;
+  will-change: transform;
+  transition:
+    transform 0.95s cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 0.95s ease,
+    opacity 0.95s ease,
+    box-shadow 0.95s ease,
+    border-color 0.7s ease,
+    z-index 0s linear 0.42s;
 }
 
 .g-card-media {
@@ -680,29 +689,35 @@ main.container {
   box-shadow:
     0 0 0 1px rgba(196, 146, 42, 0.28),
     0 16px 36px rgba(0, 0, 0, 0.45);
-  transform: translate3d(-50%, 0, 48px) scale(1);
+  transform: translate3d(-50%, 0, 28px) rotateY(0deg) scale(1);
 }
 
 .g-card[data-slot="prev"] {
   z-index: 1;
-  opacity: 0.9;
+  opacity: 0.92;
   filter: brightness(0.72);
-  transform: translate3d(calc(-50% - var(--peek)), 0, -80px) rotateY(18deg) scale(0.86);
+  transform: translate3d(calc(-50% - var(--peek)), 6px, -130px) rotateY(28deg) scale(0.86);
 }
 
 .g-card[data-slot="next"] {
   z-index: 2;
-  opacity: 0.9;
+  opacity: 0.92;
   filter: brightness(0.72);
-  transform: translate3d(calc(-50% + var(--peek)), 0, -80px) rotateY(-18deg) scale(0.86);
+  transform: translate3d(calc(-50% + var(--peek)), 6px, -130px) rotateY(-28deg) scale(0.86);
 }
 
 .g-card[data-slot="off"] {
   z-index: 0;
   opacity: 0;
-  visibility: hidden;
   pointer-events: none;
-  transform: translate3d(-50%, 0, -120px) scale(0.8);
+  transform: translate3d(-50%, 12px, -240px) scale(0.7);
+  transition:
+    transform 0.95s cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 0.95s ease,
+    opacity 0.4s ease,
+    box-shadow 0.95s ease,
+    border-color 0.7s ease,
+    z-index 0s linear 0.42s;
 }
 
 .gallery-carousel-nav {
@@ -757,6 +772,12 @@ main.container {
   transform: translateY(0);
 }
 
+/* A transformed ancestor flattens preserve-3d, so this section only fades. */
+.gallery-container.fade-in,
+.gallery-container.fade-in.visible {
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fade-in {
     opacity: 1;
@@ -787,6 +808,14 @@ main.container {
   .g-card {
     width: min(78%, 280px);
     border-radius: 12px;
+  }
+
+  .g-card[data-slot="prev"] {
+    transform: translate3d(calc(-50% - var(--peek)), 4px, -70px) rotateY(18deg) scale(0.9);
+  }
+
+  .g-card[data-slot="next"] {
+    transform: translate3d(calc(-50% + var(--peek)), 4px, -70px) rotateY(-18deg) scale(0.9);
   }
 
   .gallery-carousel-stage .g-card:not([data-slot="active"]) .g-card-copy {
