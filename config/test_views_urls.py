@@ -43,8 +43,8 @@ def test_wiciedzy_missing_path_uses_the_app_page(rf):
     body = response.content.decode()
 
     assert response.status_code == 404
-    assert "Tu nic nie ma." in body
-    assert 'data-en="There\'s nothing here."' in body
+    assert "tu nic nie ma." in body
+    assert 'data-en="there\'s nothing here."' in body
     assert reverse("wiciedzy:list") in body
 
 
