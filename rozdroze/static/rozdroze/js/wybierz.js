@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = stage ? [...stage.querySelectorAll('.panel')] : [];
     let index = 0;
     let pointerX = null;
-    let dragged = false;
+    let pointerY = null;
+    let suppressClick = false;
 
     const place = () => {
         const n = cards.length;
@@ -31,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cards.forEach((card, i) => {
         card.addEventListener('click', (event) => {
-            if (dragged) {
+            if (suppressClick) {
                 event.preventDefault();
-                dragged = false;
+                suppressClick = false;
                 return;
             }
             if (card.dataset.slot !== 'active') {
@@ -56,17 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        stage.addEventListener('pointerdown', (event) => {
-            pointerX = event.clientX;
-            dragged = false;
-        });
-        stage.addEventListener('pointerup', (event) => {
+        const endPointer = (event) => {
             if (pointerX == null) return;
             const dx = event.clientX - pointerX;
+            const dy = event.clientY - pointerY;
             pointerX = null;
-            if (Math.abs(dx) < 48) return;
-            dragged = true;
+            pointerY = null;
+            if (Math.abs(dx) < 24 || Math.abs(dx) < Math.abs(dy)) return;
+            suppressClick = true;
             go(dx < 0 ? 1 : -1);
+        };
+
+        stage.addEventListener('pointerdown', (event) => {
+            if (event.pointerType === 'mouse' && event.button !== 0) return;
+            suppressClick = false;
+            pointerX = event.clientX;
+            pointerY = event.clientY;
+            stage.setPointerCapture?.(event.pointerId);
+        });
+        stage.addEventListener('pointerup', endPointer);
+        stage.addEventListener('pointercancel', () => {
+            pointerX = null;
+            pointerY = null;
         });
     }
 

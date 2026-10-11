@@ -92,7 +92,7 @@ a {
 /* ── Compact kodzillin' strip, then 3D card carousel ─────────────── */
 .panel-code {
     margin: 0;
-    min-height: 0;
+    min-height: 4.4rem;
     background: #0d0d0d;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -113,6 +113,7 @@ a {
     perspective: 1400px;
     transform-style: preserve-3d;
     outline: none;
+    touch-action: pan-y;
 }
 
 .carousel-stage .panel {
@@ -121,6 +122,8 @@ a {
     left: 50%;
     width: min(54%, 340px);
     height: 88%;
+    touch-action: pan-y;
+    -webkit-user-drag: none;
     transition: transform 0.5s cubic-bezier(.22, .7, .2, 1), filter 0.5s ease, opacity 0.5s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
@@ -593,11 +596,45 @@ a {
     }
 
     .panel-code .code-terminal {
-        display: none;
+        font-size: 0.68rem;
+        line-height: 1.35;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .panel-code .panel-title {
+        text-shadow: 0 0 12px #000, 0 1px 3px #000;
     }
 
     .carousel-stage .panel:not([data-slot="active"]) .panel-title {
-        opacity: 0;
+        opacity: 0.95;
+        font-size: 0.7rem;
+        letter-spacing: 0.4px;
+        line-height: 1.15;
+        white-space: nowrap;
+    }
+
+    .carousel-stage .panel[data-slot="prev"] .panel-content {
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 0.7rem 0.85rem 0.85rem 0.25rem;
+    }
+
+    .carousel-stage .panel[data-slot="next"] .panel-content {
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 0.7rem 0.25rem 0.85rem 0.85rem;
+    }
+
+    .carousel-stage .panel[data-slot="prev"] {
+        opacity: 1;
+        filter: brightness(0.86);
+        transform: translate3d(calc(-50% - var(--peek)), 0, -24px) rotateY(10deg) scale(0.92);
+    }
+
+    .carousel-stage .panel[data-slot="next"] {
+        opacity: 1;
+        filter: brightness(0.86);
+        transform: translate3d(calc(-50% + var(--peek)), 0, -24px) rotateY(-10deg) scale(0.92);
     }
 
     .rozdroze-header {
@@ -605,17 +642,17 @@ a {
     }
 
     .carousel {
-        --peek: 56px;
+        --peek: clamp(96px, 30vw, 132px);
         padding-inline: 0;
     }
 
     .carousel-stage {
-        height: min(42vh, 320px);
-        min-height: 200px;
+        height: min(46vh, 340px);
+        min-height: 240px;
     }
 
     .carousel-stage .panel {
-        width: min(78%, 280px);
+        width: min(54%, 210px);
     }
 
     .carousel-nav {
