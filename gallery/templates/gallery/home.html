@@ -15,6 +15,16 @@
 <!-- Gallery / Instagram -->
 <section class="gallery-container fade-in">
 
+    <div class="view-switch" role="group" aria-label="widok">
+        <a href="{{ carousel_url }}"
+           class="view-switch-link{% if view_mode != 'grid' %} is-active{% endif %}"
+           {% if view_mode != 'grid' %}aria-current="page"{% endif %}>karuzela</a>
+        <a href="{{ grid_url }}"
+           class="view-switch-link{% if view_mode == 'grid' %} is-active{% endif %}"
+           {% if view_mode == 'grid' %}aria-current="page"{% endif %}>siatka</a>
+    </div>
+
+    {% if view_mode == 'grid' %}
     {% for category in categories %}
 
         {% if not selected_category or selected_category == 'All' or selected_category == category.title %}
@@ -150,6 +160,74 @@
         {% endif %}
 
     {% endfor %}
+    {% elif carousel_items %}
+    <div class="gallery-carousel" data-gallery-carousel>
+        {% if carousel_items|length > 1 %}
+        <button type="button" class="gallery-carousel-nav gallery-carousel-prev" aria-label="poprzednie">‹</button>
+        {% else %}
+        <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
+        {% endif %}
+        <div class="gallery-carousel-stage" tabindex="0" aria-label="prace">
+            {% for item in carousel_items %}
+                {% if item.kind == 'video' %}
+                <div class="g-card"
+                     data-slot="{{ item.slot }}"
+                     data-kind="video"
+                     {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
+                     {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                    <video class="g-card-media"
+                           src="{{ item.src }}"
+                           loop
+                           playsinline
+                           preload="metadata"
+                           controlsList="nodownload noremoteplayback"
+                           disablePictureInPicture></video>
+                    <button class="ig-post-play-btn g-card-play" type="button" aria-label="odtwórz">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                    <span class="g-card-veil" aria-hidden="true"></span>
+                    <span class="g-card-copy">
+                        <span class="g-card-kicker">{{ item.kicker }}</span>
+                        {% if item.title != item.kicker %}
+                        <span class="g-card-title">{{ item.title }}</span>
+                        {% endif %}
+                    </span>
+                </div>
+                {% else %}
+                <a href="javascript:;"
+                   class="g-card"
+                   data-slot="{{ item.slot }}"
+                   data-kind="image"
+                   data-fancybox="gallery-view"
+                   data-src="{{ item.src }}"
+                   data-caption="{{ item.caption }}"
+                   {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
+                   {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                    <img class="g-card-media"
+                         src="{{ item.src }}"
+                         alt="{{ item.title }}"
+                         {% if forloop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+                         draggable="false">
+                    <span class="g-card-veil" aria-hidden="true"></span>
+                    <span class="g-card-copy">
+                        <span class="g-card-kicker">{{ item.kicker }}</span>
+                        {% if item.title != item.kicker %}
+                        <span class="g-card-title">{{ item.title }}</span>
+                        {% endif %}
+                    </span>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% if carousel_items|length > 1 %}
+        <button type="button" class="gallery-carousel-nav gallery-carousel-next" aria-label="następne">›</button>
+        {% else %}
+        <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
+        {% endif %}
+    </div>
+    {% else %}
+        <p class="no-images">Brak zdjęć w tej kategorii.</p>
+    {% endif %}
 
 </section>
 
