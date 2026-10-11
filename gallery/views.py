@@ -34,42 +34,20 @@ def _slot(index: int, total: int) -> str:
     return "off"
 
 
-def _category_items(category, instagram_posts) -> list[dict[str, str]]:
+def _category_items(category) -> list[dict[str, str]]:
     items: list[dict[str, str]] = []
-    if category.title == "Instagram":
-        for post in instagram_posts:
-            caption = post.location or post.caption or "bazgrollin'"
-            for media in post.media.all():
-                if media.is_video and media.video:
-                    src = media.video.url
-                    kind = "video"
-                elif media.image:
-                    src = media.image.url
-                    kind = "image"
-                else:
-                    continue
-                items.append(
-                    {
-                        "kind": kind,
-                        "src": src,
-                        "title": caption,
-                        "kicker": category.title,
-                        "caption": caption,
-                    }
-                )
-    else:
-        for art in category.images.all():
-            title = (art.title or "").strip() or category.title
-            caption = art.title or art.description or category.title
-            items.append(
-                {
-                    "kind": "image",
-                    "src": art.image.url,
-                    "title": title,
-                    "kicker": category.title,
-                    "caption": caption,
-                }
-            )
+    for art in category.images.all():
+        title = (art.title or "").strip() or category.title
+        caption = art.title or art.description or category.title
+        items.append(
+            {
+                "kind": "image",
+                "src": art.image.url,
+                "title": title,
+                "kicker": category.title,
+                "caption": caption,
+            }
+        )
     total = len(items)
     for index, item in enumerate(items):
         item["slot"] = _slot(index, total)
@@ -77,16 +55,27 @@ def _category_items(category, instagram_posts) -> list[dict[str, str]]:
 
 
 def _carousel_groups(categories, instagram_posts, selected: str) -> list[dict]:
-    """One hub-style carousel per category, in category order."""
+    """One section per category. Instagram stays a set of posts; other categories are 3D carousels."""
     groups = []
     for category in categories:
         if selected != "All" and selected != category.title:
+            continue
+        if category.title == "Instagram":
+            groups.append(
+                {
+                    "id": category.id,
+                    "title": category.title,
+                    "kind": "instagram",
+                    "posts": instagram_posts,
+                }
+            )
             continue
         groups.append(
             {
                 "id": category.id,
                 "title": category.title,
-                "items": _category_items(category, instagram_posts),
+                "kind": "images",
+                "items": _category_items(category),
             }
         )
     return groups
@@ -96,7 +85,9 @@ class Home(generic.TemplateView):
     """
     Gallery homepage. Category filtering happens in the template from
     `selected_category`; images are loaded via Category.images prefetch.
-    Default presentation is one 3D carousel per category; `?view=grid` keeps the grid.
+    Default presentation is one 3D carousel per photo category. Instagram stays
+    a set of posts, with its own inner carousel when a post has several images.
+    `?view=grid` keeps the grid.
     """
 
     template_name = "gallery/home.html"

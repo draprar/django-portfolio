@@ -13,7 +13,7 @@
 </section>
 
 <!-- Gallery / Instagram -->
-<section class="gallery-container fade-in">
+<section class="gallery-container fade-in{% if view_mode == 'grid' %} is-grid{% endif %}">
 
     <div class="view-switch" role="group" aria-label="widok">
         <a href="{{ carousel_url }}"
@@ -25,6 +25,7 @@
     </div>
 
     {% if view_mode == 'grid' %}
+    <div class="gallery-grid-view">
     {% for category in categories %}
 
         {% if not selected_category or selected_category == 'All' or selected_category == category.title %}
@@ -35,85 +36,10 @@
                     {{ category.title }}
                 </h2>
 
-                <!-- Instagram Category -->
                 {% if category.title == 'Instagram' %}
 
                     {% if instagram_posts %}
-                        <div class="instagram-grid">
-
-                            {% for post in instagram_posts %}
-                                <div class="ig-post-card">
-
-                                    <!-- Header: username + location -->
-                                    <div class="ig-post-header">
-                                        <div class="ig-post-user">
-                                            <a href="https://www.instagram.com/bazgrollin/"
-                                               target="_blank"
-                                               rel="noopener noreferrer"
-                                               class="ig-post-username">
-                                                bazgrollin'
-                                            </a>
-                                            {% if post.location %}
-                                                <span class="ig-post-location">{{ post.location }}</span>
-                                            {% endif %}
-                                        </div>
-
-                                        {% if post.permalink %}
-                                            <a href="{{ post.permalink }}"
-                                               target="_blank"
-                                               rel="noopener noreferrer"
-                                               class="ig-post-link"
-                                               title="Zobacz na Instagramie">
-                                                <i class="fa-brands fa-instagram"></i>
-                                            </a>
-                                        {% endif %}
-                                    </div>
-
-                                    <!-- Photo(s): same square size, carousel when there's more than one -->
-                                    <div class="ig-post-media" data-carousel>
-                                        <div class="ig-post-track">
-                                            {% for item in post.media.all %}
-                                                <div class="ig-post-slide">
-                                                    {% if item.is_video %}
-                                                        <video src="{{ item.video.url }}"
-                                                               loop
-                                                               playsinline
-                                                               preload="metadata"
-                                                               controlsList="nodownload noremoteplayback"
-                                                               disablePictureInPicture></video>
-                                                        <button class="ig-post-play-btn" type="button" aria-label="Odtwórz rolkę">
-                                                            <i class="fa-solid fa-play"></i>
-                                                        </button>
-                                                    {% else %}
-                                                        <a href="javascript:;"
-                                                           data-fancybox="ig-post-{{ post.id }}"
-                                                           data-src="{{ item.image.url }}"
-                                                           data-caption="{{ post.location|default:"bazgrollin'" }}">
-                                                            <img src="{{ item.image.url }}"
-                                                                 alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
-                                                                 loading="lazy"
-                                                                 draggable="false">
-                                                        </a>
-                                                    {% endif %}
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-
-                                        {% if post.media.all|length > 1 %}
-                                            <button class="ig-post-nav ig-post-prev" type="button" aria-label="Poprzednie zdjęcie">&#10094;</button>
-                                            <button class="ig-post-nav ig-post-next" type="button" aria-label="Następne zdjęcie">&#10095;</button>
-                                            <div class="ig-post-dots">
-                                                {% for item in post.media.all %}
-                                                    <span class="ig-post-dot{% if forloop.first %} active{% endif %}"></span>
-                                                {% endfor %}
-                                            </div>
-                                        {% endif %}
-                                    </div>
-
-                                </div>
-                            {% endfor %}
-
-                        </div>
+                        {% include "gallery/partials/instagram_posts.html" %}
                     {% endif %}
 
                 <!-- Normal Gallery -->
@@ -126,7 +52,7 @@
                             <div class="gallery-item">
 
                                 <a href="javascript:;"
-                                   data-fancybox="gallery-{{ category.id }}"
+                                   data-fancybox="gallery-grid-{{ category.id }}"
                                    data-src="{{ art.image.url }}"
                                    data-caption="{{ art.title|default:art.description|default:category.title }}">
 
@@ -160,11 +86,20 @@
         {% endif %}
 
     {% endfor %}
-    {% elif carousel_groups %}
+    </div>
+    {% endif %}
+    <div class="gallery-carousel-view">
+    {% if carousel_groups %}
         {% for group in carousel_groups %}
         <div class="category-block mb-5">
             <h2 class="section-title">{{ group.title }}</h2>
-            {% if group.items %}
+            {% if group.kind == "instagram" %}
+                {% if group.posts %}
+                    {% include "gallery/partials/instagram_posts.html" with instagram_posts=group.posts %}
+                {% else %}
+                    <p class="no-images">Brak zdjęć w tej kategorii.</p>
+                {% endif %}
+            {% elif group.items %}
             <div class="gallery-carousel" data-gallery-carousel>
                 {% if group.items|length > 1 %}
                 <button type="button" class="gallery-carousel-nav gallery-carousel-prev" aria-label="poprzednie">‹</button>
@@ -235,6 +170,7 @@
     {% else %}
         <p class="no-images">Brak zdjęć w tej kategorii.</p>
     {% endif %}
+    </div>
 
 </section>
 

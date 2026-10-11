@@ -6,8 +6,9 @@ from django.contrib.messages import get_messages
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import override_settings
 from django.urls import reverse
+from django.utils import timezone
 
-from gallery.models import Category, Gallery
+from gallery.models import Category, Gallery, InstagramPost, InstagramPostMedia
 
 
 @pytest.mark.django_db
@@ -58,7 +59,9 @@ class TestGalleryViews:
 
         assert response.context["view_mode"] == "grid"
         assert 'class="gallery-grid"' in content
-        assert "data-gallery-carousel" not in content
+        assert "gallery-grid-view" in content
+        assert "is-grid" in content
+        assert "data-gallery-carousel" in content
         assert "section-title" in content
         assert "Nature" in content
         assert "view=grid" in content
@@ -97,6 +100,41 @@ class TestGalleryViews:
         assert "mgła" in content
         assert "lis" in content
         assert len(response.context["carousel_groups"]) == 2
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_carousel_keeps_instagram_album_as_one_post(self, client):
+        instagram = Category.objects.create(title="Instagram", order=0)
+        photo = Category.objects.create(title="Photo", order=1)
+        post = InstagramPost.objects.create(
+            category=instagram,
+            location="Gdańsk",
+            caption="muminek",
+            created_at=timezone.now(),
+        )
+        InstagramPostMedia.objects.create(post=post, image="instagram/a.jpg", order=0)
+        InstagramPostMedia.objects.create(post=post, image="instagram/b.jpg", order=1)
+        Gallery.objects.create(category=photo, image="images/castle.jpg", title="Castle")
+
+        response = client.get(reverse("gallery:gallery_home"))
+        content = response.content.decode()
+
+        assert [group["kind"] for group in response.context["carousel_groups"]] == ["instagram", "images"]
+        assert content.count("ig-post-card") == 1
+        assert content.count("data-carousel") == 1
+        assert content.count("ig-post-slide") == 2
+        assert content.count("data-gallery-carousel") == 1
+        assert content.count('class="g-card"') == 1
+        assert f'data-fancybox="ig-post-{post.id}"' in content
+        assert "Poprzednie zdjęcie" in content
+        assert "Gdańsk" in content
+        assert "Castle" in content
+
+        grid = client.get(reverse("gallery:gallery_home") + "?view=grid")
+        grid_content = grid.content.decode()
+        assert "gallery-grid-view" in grid_content
+        assert grid_content.count("ig-post-card") == 2
+        assert grid_content.count("ig-post-slide") == 4
+        assert "data-gallery-carousel" in grid_content
 
     @override_settings(SECURE_SSL_REDIRECT=False)
     def test_home_view_filtered_by_category(self, client):
