@@ -110,8 +110,8 @@ a {
     position: relative;
     height: min(46vh, 400px);
     min-height: 220px;
-    perspective: 980px;
-    perspective-origin: 50% 46%;
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
     transform-style: preserve-3d;
     outline: none;
     touch-action: pan-y;
@@ -126,15 +126,20 @@ a {
     touch-action: pan-y;
     -webkit-user-drag: none;
     transform-origin: center center;
-    will-change: transform;
-    transition:
-        transform 0.95s cubic-bezier(0.22, 0.61, 0.36, 1),
-        width 0.95s cubic-bezier(0.22, 0.61, 0.36, 1),
-        filter 0.95s ease,
-        opacity 0.95s ease,
-        box-shadow 0.95s ease,
-        border-color 0.7s ease,
-        z-index 0s linear 0.42s;
+    /* Same function list in every slot so the turn interpolates instead of crossfading. */
+    transition: transform 0.68s cubic-bezier(0.22, 1, 0.36, 1), width 0.68s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.68s ease, box-shadow 0.68s ease;
+}
+
+.carousel-stage .panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.68s ease;
 }
 
 .carousel-stage .panel-bg {
@@ -145,32 +150,35 @@ a {
 
 .carousel-stage .panel[data-slot="active"] {
     z-index: 3;
-    opacity: 1;
-    filter: none;
     border-color: rgba(196, 146, 42, 0.45);
     box-shadow:
         0 0 0 1px rgba(196, 146, 42, 0.28),
-        0 16px 36px rgba(0, 0, 0, 0.45);
-    transform: translate3d(-50%, 0, 28px) rotateY(0deg) scale(1);
+        0 18px 40px rgba(0, 0, 0, 0.4);
+    transform: translate3d(-50%, 0, 40px) rotateY(0deg);
+}
+
+.carousel-stage .panel[data-slot="active"]::after {
+    opacity: 0;
 }
 
 .carousel-stage .panel[data-slot="active"]:hover,
 .carousel-stage .panel[data-slot="active"]:focus-visible {
-    transform: translate3d(-50%, -4px, 28px) rotateY(0deg) scale(1);
+    transform: translate3d(-50%, -4px, 40px) rotateY(0deg);
 }
 
 .carousel-stage .panel[data-slot="prev"] {
     z-index: 1;
-    opacity: 0.92;
-    filter: brightness(0.72);
-    transform: translate3d(calc(-50% - var(--peek)), 6px, -130px) rotateY(28deg) scale(0.86);
+    transform: translate3d(calc(-50% - var(--peek)), 0, -72px) rotateY(28deg);
 }
 
 .carousel-stage .panel[data-slot="next"] {
     z-index: 2;
-    opacity: 0.92;
-    filter: brightness(0.72);
-    transform: translate3d(calc(-50% + var(--peek)), 6px, -130px) rotateY(-28deg) scale(0.86);
+    transform: translate3d(calc(-50% + var(--peek)), 0, -72px) rotateY(-28deg);
+}
+
+.carousel-stage .panel[data-slot="prev"]::after,
+.carousel-stage .panel[data-slot="next"]::after {
+    opacity: 1;
 }
 
 .carousel-nav {
@@ -525,7 +533,8 @@ a {
 
 /* ── Motion (respect prefers-reduced-motion) ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-    .carousel-stage .panel {
+    .carousel-stage .panel,
+    .carousel-stage .panel::after {
         transition: none;
     }
 }
@@ -636,15 +645,11 @@ a {
     }
 
     .carousel-stage .panel[data-slot="prev"] {
-        opacity: 1;
-        filter: brightness(0.86);
-        transform: translate3d(calc(-50% - var(--peek)), 4px, -70px) rotateY(18deg) scale(0.9);
+        transform: translate3d(calc(-50% - var(--peek)), 0, -36px) rotateY(18deg);
     }
 
     .carousel-stage .panel[data-slot="next"] {
-        opacity: 1;
-        filter: brightness(0.86);
-        transform: translate3d(calc(-50% + var(--peek)), 4px, -70px) rotateY(-18deg) scale(0.9);
+        transform: translate3d(calc(-50% + var(--peek)), 0, -36px) rotateY(-18deg);
     }
 
     .rozdroze-header {
