@@ -51,21 +51,14 @@
 
                             <div class="gallery-item">
 
-                                <a href="javascript:;"
-                                   data-fancybox="gallery-grid-{{ category.id }}"
-                                   data-src="{{ art.image.url }}"
-                                   data-caption="{{ art.title|default:art.description|default:category.title }}">
+                                <img src="{{ art.image.url }}"
+                                     alt="{{ art.title|default:category.title }}"
+                                     loading="lazy"
+                                     draggable="false">
 
-                                    <img src="{{ art.image.url }}"
-                                         alt="{{ art.title|default:category.title }}"
-                                         loading="lazy"
-                                         draggable="false">
-
-                                    <div class="overlay">
-                                        <p>{{ art.title|default:"Untitled" }}</p>
-                                    </div>
-
-                                </a>
+                                <div class="overlay">
+                                    <p>{{ art.title|default:"Untitled" }}</p>
+                                </div>
 
                             </div>
 
@@ -95,9 +88,69 @@
             <h2 class="section-title">{{ group.title }}</h2>
             {% if group.kind == "instagram" %}
                 {% if group.posts %}
-                    {% include "gallery/partials/instagram_posts.html" with instagram_posts=group.posts %}
+                <div class="gallery-carousel" data-gallery-carousel>
+                    {% if group.posts|length > 1 %}
+                    <button type="button" class="gallery-carousel-nav gallery-carousel-prev" aria-label="poprzednie">‹</button>
+                    {% else %}
+                    <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
+                    {% endif %}
+                    <div class="gallery-carousel-stage" tabindex="0" aria-label="{{ group.title }}">
+                        {% for card in group.posts %}
+                        <div class="g-card"
+                             data-slot="{{ card.slot }}"
+                             {% if card.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
+                             {% if card.slot == 'off' %}aria-hidden="true"{% endif %}>
+                            <div class="ig-post-media" data-carousel>
+                                <div class="ig-post-track">
+                                    {% for item in card.post.media.all %}
+                                    <div class="ig-post-slide">
+                                        {% if item.is_video %}
+                                        <video class="g-card-media"
+                                               src="{{ item.video.url }}"
+                                               loop
+                                               playsinline
+                                               preload="metadata"
+                                               controlsList="nodownload noremoteplayback"
+                                               disablePictureInPicture></video>
+                                        <button class="ig-post-play-btn" type="button" aria-label="Odtwórz rolkę">
+                                            <i class="fa-solid fa-play"></i>
+                                        </button>
+                                        {% else %}
+                                        <img class="g-card-media"
+                                             src="{{ item.image.url }}"
+                                             alt="{{ card.post.caption|default:card.post.location|default:'bazgrollin' }}"
+                                             {% if forloop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+                                             draggable="false">
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% if card.post.media.all|length > 1 %}
+                                <button class="ig-post-nav ig-post-prev" type="button" aria-label="Poprzednie zdjęcie">&#10094;</button>
+                                <button class="ig-post-nav ig-post-next" type="button" aria-label="Następne zdjęcie">&#10095;</button>
+                                <div class="ig-post-dots">
+                                    {% for item in card.post.media.all %}
+                                    <span class="ig-post-dot{% if forloop.first %} active{% endif %}"></span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% if card.post.location or card.post.caption %}
+                            <span class="g-card-copy">
+                                <span class="g-card-kicker">{{ card.post.location|default:card.post.caption }}</span>
+                            </span>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if group.posts|length > 1 %}
+                    <button type="button" class="gallery-carousel-nav gallery-carousel-next" aria-label="następne">›</button>
+                    {% else %}
+                    <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
+                    {% endif %}
+                </div>
                 {% else %}
-                    <p class="no-images">Brak zdjęć w tej kategorii.</p>
+                <p class="no-images">Brak zdjęć w tej kategorii.</p>
                 {% endif %}
             {% elif group.items %}
             <div class="gallery-carousel" data-gallery-carousel>
@@ -132,15 +185,11 @@
                             {% endif %}
                         </div>
                         {% else %}
-                        <a href="javascript:;"
-                           class="g-card"
-                           data-slot="{{ item.slot }}"
-                           data-kind="image"
-                           data-fancybox="gallery-{{ group.id }}"
-                           data-src="{{ item.src }}"
-                           data-caption="{{ item.caption }}"
-                           {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
-                           {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                        <div class="g-card"
+                             data-slot="{{ item.slot }}"
+                             data-kind="image"
+                             {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
+                             {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
                             <img class="g-card-media"
                                  src="{{ item.src }}"
                                  alt="{{ item.title }}"
@@ -152,7 +201,7 @@
                                 <span class="g-card-kicker">{{ item.title }}</span>
                             </span>
                             {% endif %}
-                        </a>
+                        </div>
                         {% endif %}
                     {% endfor %}
                 </div>

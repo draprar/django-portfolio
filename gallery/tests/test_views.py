@@ -95,8 +95,7 @@ class TestGalleryViews:
         content = response.content.decode()
 
         assert content.count("data-gallery-carousel") == 2
-        assert f'data-fancybox="gallery-{nature.id}"' in content
-        assert f'data-fancybox="gallery-{animals.id}"' in content
+        assert "data-fancybox" not in content
         assert "mgła" in content
         assert "lis" in content
         assert len(response.context["carousel_groups"]) == 2
@@ -119,12 +118,12 @@ class TestGalleryViews:
         content = response.content.decode()
 
         assert [group["kind"] for group in response.context["carousel_groups"]] == ["instagram", "images"]
-        assert content.count("ig-post-card") == 1
+        assert content.count("ig-post-card") == 0
         assert content.count("data-carousel") == 1
         assert content.count("ig-post-slide") == 2
-        assert content.count("data-gallery-carousel") == 1
-        assert content.count('class="g-card"') == 1
-        assert f'data-fancybox="ig-post-{post.id}"' in content
+        assert content.count("data-gallery-carousel") == 2
+        assert content.count('class="g-card"') == 2
+        assert "data-fancybox" not in content
         assert "Poprzednie zdjęcie" in content
         assert "Gdańsk" in content
         assert "Castle" in content
@@ -132,9 +131,10 @@ class TestGalleryViews:
         grid = client.get(reverse("gallery:gallery_home") + "?view=grid")
         grid_content = grid.content.decode()
         assert "gallery-grid-view" in grid_content
-        assert grid_content.count("ig-post-card") == 2
+        assert grid_content.count("ig-post-card") == 1
         assert grid_content.count("ig-post-slide") == 4
-        assert "data-gallery-carousel" in grid_content
+        assert grid_content.count("data-gallery-carousel") == 2
+        assert "data-fancybox" not in grid_content
 
     @override_settings(SECURE_SSL_REDIRECT=False)
     def test_home_view_filtered_by_category(self, client):

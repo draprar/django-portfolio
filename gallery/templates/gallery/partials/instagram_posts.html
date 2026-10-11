@@ -40,15 +40,10 @@
                                     <i class="fa-solid fa-play"></i>
                                 </button>
                             {% else %}
-                                <a href="javascript:;"
-                                   data-fancybox="ig-post-{{ post.id }}"
-                                   data-src="{{ item.image.url }}"
-                                   data-caption="{{ post.location|default:"bazgrollin'" }}">
-                                    <img src="{{ item.image.url }}"
-                                         alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
-                                         loading="lazy"
-                                         draggable="false">
-                                </a>
+                                <img src="{{ item.image.url }}"
+                                     alt="{{ post.caption|default:'Zdjęcie z Instagrama' }}"
+                                     loading="lazy"
+                                     draggable="false">
                             {% endif %}
                         </div>
                     {% endfor %}

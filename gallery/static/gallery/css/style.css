@@ -1,5 +1,29 @@
 /* Visual language aligned with kodzillin' / wiciędze. */
 
+@property --turn-x {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --turn-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --turn-z {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --turn-ry {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
   --ink: #060606;
   --gold: #c4922a;
@@ -640,8 +664,19 @@ main.container {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  --turn-x: 0px;
+  --turn-y: 0px;
+  --turn-z: -160px;
+  --turn-ry: 0deg;
   transform-origin: center center;
-  transition: transform 0.68s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.68s ease, box-shadow 0.68s ease;
+  transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+  transition:
+    --turn-x 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    --turn-y 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    --turn-z 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    --turn-ry 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.68s ease,
+    box-shadow 0.68s ease;
 }
 
 .g-card::after {
@@ -704,17 +739,23 @@ main.container {
   box-shadow:
     0 0 0 1px rgba(196, 146, 42, 0.28),
     0 18px 40px rgba(0, 0, 0, 0.4);
-  transform: translate3d(-50%, 0, 40px) rotateY(0deg);
+  --turn-x: 0px;
+  --turn-z: 40px;
+  --turn-ry: 0deg;
 }
 
 .g-card[data-slot="prev"] {
   z-index: 1;
-  transform: translate3d(calc(-50% - var(--peek)), 0, -72px) rotateY(28deg);
+  --turn-x: calc(var(--peek) * -1);
+  --turn-z: -72px;
+  --turn-ry: 28deg;
 }
 
 .g-card[data-slot="next"] {
   z-index: 2;
-  transform: translate3d(calc(-50% + var(--peek)), 0, -72px) rotateY(-28deg);
+  --turn-x: var(--peek);
+  --turn-z: -72px;
+  --turn-ry: -28deg;
 }
 
 .g-card[data-slot="prev"]::after,
@@ -727,7 +768,33 @@ main.container {
   z-index: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-50%, 0, -160px) rotateY(0deg);
+  --turn-x: 0px;
+  --turn-z: -160px;
+  --turn-ry: 0deg;
+}
+
+.g-card .ig-post-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  aspect-ratio: auto;
+}
+
+.g-card .ig-post-nav,
+.g-card .ig-post-dots,
+.g-card .ig-post-play-btn {
+  z-index: 3;
+}
+
+.g-card .ig-post-dots {
+  bottom: 3.4rem;
+}
+
+.g-card-media,
+.ig-post-slide img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 .gallery-carousel-nav {
