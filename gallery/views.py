@@ -34,57 +34,69 @@ def _slot(index: int, total: int) -> str:
     return "off"
 
 
-def _carousel_items(categories, instagram_posts, selected: str) -> list[dict[str, str]]:
-    """Flat list of works for the hub-style carousel, in category order."""
+def _category_items(category, instagram_posts) -> list[dict[str, str]]:
     items: list[dict[str, str]] = []
-    for category in categories:
-        if selected != "All" and selected != category.title:
-            continue
-        if category.title == "Instagram":
-            for post in instagram_posts:
-                caption = post.location or post.caption or "bazgrollin'"
-                for media in post.media.all():
-                    if media.is_video and media.video:
-                        src = media.video.url
-                        kind = "video"
-                    elif media.image:
-                        src = media.image.url
-                        kind = "image"
-                    else:
-                        continue
-                    items.append(
-                        {
-                            "kind": kind,
-                            "src": src,
-                            "title": caption,
-                            "kicker": category.title,
-                            "caption": caption,
-                        }
-                    )
-        else:
-            for art in category.images.all():
-                title = (art.title or "").strip() or category.title
-                caption = art.title or art.description or category.title
+    if category.title == "Instagram":
+        for post in instagram_posts:
+            caption = post.location or post.caption or "bazgrollin'"
+            for media in post.media.all():
+                if media.is_video and media.video:
+                    src = media.video.url
+                    kind = "video"
+                elif media.image:
+                    src = media.image.url
+                    kind = "image"
+                else:
+                    continue
                 items.append(
                     {
-                        "kind": "image",
-                        "src": art.image.url,
-                        "title": title,
+                        "kind": kind,
+                        "src": src,
+                        "title": caption,
                         "kicker": category.title,
                         "caption": caption,
                     }
                 )
+    else:
+        for art in category.images.all():
+            title = (art.title or "").strip() or category.title
+            caption = art.title or art.description or category.title
+            items.append(
+                {
+                    "kind": "image",
+                    "src": art.image.url,
+                    "title": title,
+                    "kicker": category.title,
+                    "caption": caption,
+                }
+            )
     total = len(items)
     for index, item in enumerate(items):
         item["slot"] = _slot(index, total)
     return items
 
 
+def _carousel_groups(categories, instagram_posts, selected: str) -> list[dict]:
+    """One hub-style carousel per category, in category order."""
+    groups = []
+    for category in categories:
+        if selected != "All" and selected != category.title:
+            continue
+        groups.append(
+            {
+                "id": category.id,
+                "title": category.title,
+                "items": _category_items(category, instagram_posts),
+            }
+        )
+    return groups
+
+
 class Home(generic.TemplateView):
     """
     Gallery homepage. Category filtering happens in the template from
     `selected_category`; images are loaded via Category.images prefetch.
-    Default presentation is a 3D carousel; `?view=grid` keeps the per-category grid.
+    Default presentation is one 3D carousel per category; `?view=grid` keeps the grid.
     """
 
     template_name = "gallery/home.html"
@@ -100,7 +112,7 @@ class Home(generic.TemplateView):
         context["view_mode"] = view_mode
         context["categories"] = categories
         context["instagram_posts"] = instagram_posts
-        context["carousel_items"] = _carousel_items(categories, instagram_posts, selected)
+        context["carousel_groups"] = _carousel_groups(categories, instagram_posts, selected)
         context["carousel_url"] = _home_url("carousel", selected)
         context["grid_url"] = _home_url("grid", selected)
         return context

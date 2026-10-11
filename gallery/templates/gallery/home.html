@@ -160,71 +160,78 @@
         {% endif %}
 
     {% endfor %}
-    {% elif carousel_items %}
-    <div class="gallery-carousel" data-gallery-carousel>
-        {% if carousel_items|length > 1 %}
-        <button type="button" class="gallery-carousel-nav gallery-carousel-prev" aria-label="poprzednie">‹</button>
-        {% else %}
-        <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
-        {% endif %}
-        <div class="gallery-carousel-stage" tabindex="0" aria-label="prace">
-            {% for item in carousel_items %}
-                {% if item.kind == 'video' %}
-                <div class="g-card"
-                     data-slot="{{ item.slot }}"
-                     data-kind="video"
-                     {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
-                     {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
-                    <video class="g-card-media"
-                           src="{{ item.src }}"
-                           loop
-                           playsinline
-                           preload="metadata"
-                           controlsList="nodownload noremoteplayback"
-                           disablePictureInPicture></video>
-                    <button class="ig-post-play-btn g-card-play" type="button" aria-label="odtwórz">
-                        <i class="fa-solid fa-play"></i>
-                    </button>
-                    <span class="g-card-veil" aria-hidden="true"></span>
-                    <span class="g-card-copy">
-                        <span class="g-card-kicker">{{ item.kicker }}</span>
-                        {% if item.title != item.kicker %}
-                        <span class="g-card-title">{{ item.title }}</span>
-                        {% endif %}
-                    </span>
-                </div>
+    {% elif carousel_groups %}
+        {% for group in carousel_groups %}
+        <div class="category-block mb-5">
+            <h2 class="section-title">{{ group.title }}</h2>
+            {% if group.items %}
+            <div class="gallery-carousel" data-gallery-carousel>
+                {% if group.items|length > 1 %}
+                <button type="button" class="gallery-carousel-nav gallery-carousel-prev" aria-label="poprzednie">‹</button>
                 {% else %}
-                <a href="javascript:;"
-                   class="g-card"
-                   data-slot="{{ item.slot }}"
-                   data-kind="image"
-                   data-fancybox="gallery-view"
-                   data-src="{{ item.src }}"
-                   data-caption="{{ item.caption }}"
-                   {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
-                   {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
-                    <img class="g-card-media"
-                         src="{{ item.src }}"
-                         alt="{{ item.title }}"
-                         {% if forloop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
-                         draggable="false">
-                    <span class="g-card-veil" aria-hidden="true"></span>
-                    <span class="g-card-copy">
-                        <span class="g-card-kicker">{{ item.kicker }}</span>
-                        {% if item.title != item.kicker %}
-                        <span class="g-card-title">{{ item.title }}</span>
-                        {% endif %}
-                    </span>
-                </a>
+                <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
                 {% endif %}
-            {% endfor %}
+                <div class="gallery-carousel-stage" tabindex="0" aria-label="{{ group.title }}">
+                    {% for item in group.items %}
+                        {% if item.kind == 'video' %}
+                        <div class="g-card"
+                             data-slot="{{ item.slot }}"
+                             data-kind="video"
+                             {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
+                             {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                            <video class="g-card-media"
+                                   src="{{ item.src }}"
+                                   loop
+                                   playsinline
+                                   preload="metadata"
+                                   controlsList="nodownload noremoteplayback"
+                                   disablePictureInPicture></video>
+                            <button class="ig-post-play-btn g-card-play" type="button" aria-label="odtwórz">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                            <span class="g-card-veil" aria-hidden="true"></span>
+                            {% if item.title != item.kicker %}
+                            <span class="g-card-copy">
+                                <span class="g-card-kicker">{{ item.title }}</span>
+                            </span>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <a href="javascript:;"
+                           class="g-card"
+                           data-slot="{{ item.slot }}"
+                           data-kind="image"
+                           data-fancybox="gallery-{{ group.id }}"
+                           data-src="{{ item.src }}"
+                           data-caption="{{ item.caption }}"
+                           {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
+                           {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                            <img class="g-card-media"
+                                 src="{{ item.src }}"
+                                 alt="{{ item.title }}"
+                                 {% if forloop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+                                 draggable="false">
+                            <span class="g-card-veil" aria-hidden="true"></span>
+                            {% if item.title != item.kicker %}
+                            <span class="g-card-copy">
+                                <span class="g-card-kicker">{{ item.title }}</span>
+                            </span>
+                            {% endif %}
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% if group.items|length > 1 %}
+                <button type="button" class="gallery-carousel-nav gallery-carousel-next" aria-label="następne">›</button>
+                {% else %}
+                <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
+                {% endif %}
+            </div>
+            {% else %}
+            <p class="no-images">Brak zdjęć w tej kategorii.</p>
+            {% endif %}
         </div>
-        {% if carousel_items|length > 1 %}
-        <button type="button" class="gallery-carousel-nav gallery-carousel-next" aria-label="następne">›</button>
-        {% else %}
-        <span class="gallery-carousel-nav gallery-carousel-nav-spacer" aria-hidden="true"></span>
-        {% endif %}
-    </div>
+        {% endfor %}
     {% else %}
         <p class="no-images">Brak zdjęć w tej kategorii.</p>
     {% endif %}
