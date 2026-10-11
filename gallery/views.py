@@ -1,7 +1,9 @@
+from urllib.parse import urlencode
+
 from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from rest_framework import filters, generics
 
@@ -10,10 +12,79 @@ from .models import Category, Gallery, InstagramPost
 from .serializers import CategorySerializer, GallerySerializer
 
 
+def _home_url(view: str, category: str) -> str:
+    params: dict[str, str] = {}
+    if category and category != "All":
+        params["category"] = category
+    if view == "grid":
+        params["view"] = "grid"
+    base = reverse("gallery:gallery_home")
+    if not params:
+        return base
+    return f"{base}?{urlencode(params)}"
+
+
+def _slot(index: int, total: int) -> str:
+    if index == 0:
+        return "active"
+    if total > 2 and index == total - 1:
+        return "prev"
+    if index == 1:
+        return "next"
+    return "off"
+
+
+def _carousel_items(categories, instagram_posts, selected: str) -> list[dict[str, str]]:
+    """Flat list of works for the hub-style carousel, in category order."""
+    items: list[dict[str, str]] = []
+    for category in categories:
+        if selected != "All" and selected != category.title:
+            continue
+        if category.title == "Instagram":
+            for post in instagram_posts:
+                caption = post.location or post.caption or "bazgrollin'"
+                for media in post.media.all():
+                    if media.is_video and media.video:
+                        src = media.video.url
+                        kind = "video"
+                    elif media.image:
+                        src = media.image.url
+                        kind = "image"
+                    else:
+                        continue
+                    items.append(
+                        {
+                            "kind": kind,
+                            "src": src,
+                            "title": caption,
+                            "kicker": category.title,
+                            "caption": caption,
+                        }
+                    )
+        else:
+            for art in category.images.all():
+                title = (art.title or "").strip() or category.title
+                caption = art.title or art.description or category.title
+                items.append(
+                    {
+                        "kind": "image",
+                        "src": art.image.url,
+                        "title": title,
+                        "kicker": category.title,
+                        "caption": caption,
+                    }
+                )
+    total = len(items)
+    for index, item in enumerate(items):
+        item["slot"] = _slot(index, total)
+    return items
+
+
 class Home(generic.TemplateView):
     """
     Gallery homepage. Category filtering happens in the template from
     `selected_category`; images are loaded via Category.images prefetch.
+    Default presentation is a 3D carousel; `?view=grid` keeps the per-category grid.
     """
 
     template_name = "gallery/home.html"
@@ -21,9 +92,17 @@ class Home(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         category = self.request.GET.get("category") or None
-        context["selected_category"] = category if category else "All"
-        context["categories"] = Category.objects.all().prefetch_related("images").order_by("order", "title")
-        context["instagram_posts"] = InstagramPost.objects.all().prefetch_related("media").order_by("-created_at")
+        selected = category if category else "All"
+        view_mode = "grid" if self.request.GET.get("view") == "grid" else "carousel"
+        categories = Category.objects.all().prefetch_related("images").order_by("order", "title")
+        instagram_posts = InstagramPost.objects.all().prefetch_related("media").order_by("-created_at")
+        context["selected_category"] = selected
+        context["view_mode"] = view_mode
+        context["categories"] = categories
+        context["instagram_posts"] = instagram_posts
+        context["carousel_items"] = _carousel_items(categories, instagram_posts, selected)
+        context["carousel_url"] = _home_url("carousel", selected)
+        context["grid_url"] = _home_url("grid", selected)
         return context
 
 

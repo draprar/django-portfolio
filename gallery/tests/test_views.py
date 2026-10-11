@@ -30,6 +30,55 @@ class TestGalleryViews:
         assert gallery_item in nature.images.all()
 
     @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_home_defaults_to_carousel(self, client):
+        category = Category.objects.create(title="Nature")
+        Gallery.objects.create(category=category, image="images/nature.jpg", title="mgła")
+
+        response = client.get(reverse("gallery:gallery_home"))
+        content = response.content.decode()
+
+        assert response.status_code == 200
+        assert response.context["view_mode"] == "carousel"
+        assert "data-gallery-carousel" in content
+        assert 'class="gallery-grid"' not in content
+        assert "mgła" in content
+        assert 'aria-current="page"' in content
+        assert "karuzela" in content
+        assert "siatka" in content
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_home_grid_view_keeps_category_sections(self, client):
+        category = Category.objects.create(title="Nature")
+        Gallery.objects.create(category=category, image="images/nature.jpg", title="mgła")
+
+        response = client.get(reverse("gallery:gallery_home") + "?view=grid")
+        content = response.content.decode()
+
+        assert response.context["view_mode"] == "grid"
+        assert 'class="gallery-grid"' in content
+        assert "data-gallery-carousel" not in content
+        assert "section-title" in content
+        assert "Nature" in content
+        assert "view=grid" in content
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_carousel_respects_category_filter(self, client):
+        nature = Category.objects.create(title="Nature")
+        animals = Category.objects.create(title="Animals")
+        Gallery.objects.create(category=nature, image="images/nature.jpg", title="mgła")
+        Gallery.objects.create(category=animals, image="images/animals.jpg", title="lis")
+
+        response = client.get(reverse("gallery:gallery_home") + "?category=Nature")
+        content = response.content.decode()
+
+        assert response.context["view_mode"] == "carousel"
+        assert "mgła" in content
+        assert "lis" not in content
+        assert "category=Nature" in response.context["grid_url"]
+        assert "view=grid" in response.context["grid_url"]
+        assert "view=grid" not in response.context["carousel_url"]
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
     def test_home_view_filtered_by_category(self, client):
         """Home view should filter gallery by selected category"""
         category = Category.objects.create(title="Nature")
