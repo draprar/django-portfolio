@@ -595,6 +595,19 @@ main.container {
   background: rgba(196, 146, 42, 0.18);
 }
 
+@media (min-width: 641px) {
+  .gallery-container.is-grid .gallery-carousel-view {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .view-switch,
+  .gallery-grid-view {
+    display: none;
+  }
+}
+
 .gallery-carousel {
   --peek: clamp(108px, 18vw, 190px);
   display: grid;
@@ -794,36 +807,47 @@ main.container {
 }
 
 @media (max-width: 640px) {
+  /* Arrows sit on the stage so the turn has the same room as on a wide screen. */
   .gallery-carousel {
-    --peek: 56px;
+    position: relative;
+    display: block;
+    --peek: clamp(72px, 20vw, 104px);
   }
 
   .gallery-carousel-stage {
-    height: min(52vh, 420px);
-    min-height: 240px;
+    height: min(74vw, 420px);
+    min-height: 250px;
   }
 
   .g-card {
-    width: min(78%, 280px);
-    border-radius: 12px;
+    width: min(58%, 250px);
+    border-radius: 14px;
   }
 
-  .g-card[data-slot="prev"] {
-    transform: translate3d(calc(-50% - var(--peek)), 0, -36px) rotateY(18deg);
+  .gallery-carousel-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: 2.75rem;
+    height: 2.75rem;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.42);
   }
 
-  .g-card[data-slot="next"] {
-    transform: translate3d(calc(-50% + var(--peek)), 0, -36px) rotateY(-18deg);
+  .gallery-carousel-prev {
+    left: 0.35rem;
+  }
+
+  .gallery-carousel-next {
+    right: 0.35rem;
+  }
+
+  .gallery-carousel-nav-spacer {
+    display: none;
   }
 
   .gallery-carousel-stage .g-card:not([data-slot="active"]) .g-card-copy {
     opacity: 0;
-  }
-
-  .gallery-carousel-nav {
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 1.3rem;
   }
 }
 
