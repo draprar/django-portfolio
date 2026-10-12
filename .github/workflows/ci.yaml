@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
       contents: read
@@ -38,10 +38,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -49,7 +49,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
+          # GitHub sometimes 500s the spaCy model wheel. Retry the same install.
+          pip install -r requirements-dev.txt \
+            || { sleep 10; pip install -r requirements-dev.txt; } \
+            || { sleep 20; pip install -r requirements-dev.txt; }
 
       - name: Lint (ruff, blocking)
         run: ruff check .
@@ -92,26 +95,51 @@ jobs:
         run: python -m pytest -q --cov=. --cov-report=term-missing --cov-fail-under=80
 
   pip_audit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
       contents: read
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
 
-      - name: Install audit dependencies
+      - name: Install pip-audit
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
+          pip install pip-audit==2.10.0
 
       - name: Dependency audit
-        run: pip-audit --progress-spinner off
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def pins(path: Path) -> list[str]:
+              found: list[str] = []
+              for raw in path.read_text(encoding="utf-8").splitlines():
+                  line = raw.split("#", 1)[0].strip()
+                  if not line or line.startswith("-r ") or " @ " in line:
+                      continue
+                  found.append(line)
+              return found
+
+          # Skip the spaCy model wheel. It is a direct GitHub URL, not a PyPI
+          # release, and a 500 from that host was failing the audit before
+          # pip-audit could run. spaCy itself stays in the audited set.
+          ordered = pins(Path("requirements-prod.txt")) + pins(Path("requirements-dev.txt"))
+          unique: list[str] = []
+          seen: set[str] = set()
+          for line in ordered:
+              if line not in seen:
+                  seen.add(line)
+                  unique.append(line)
+          Path("requirements-audit.txt").write_text("\n".join(unique) + "\n", encoding="utf-8")
+          PY
+          pip-audit -r requirements-audit.txt --progress-spinner off
 
