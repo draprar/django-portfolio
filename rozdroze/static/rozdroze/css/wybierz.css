@@ -99,10 +99,13 @@ a {
 
 .rozdroze-header h1 {
     font-weight: 300;
-    font-size: calc(var(--hub-label) * 1.2);
-    letter-spacing: 1.5px;
+    /* Slightly below kodzillin' / card titles (--hub-label), one line on narrow phones. */
+    font-size: clamp(0.78rem, 3.55vw, calc(var(--hub-label) * 0.88));
+    letter-spacing: clamp(0.15px, 0.32vw, 1px);
+    white-space: nowrap;
     margin: 0;
     color: var(--gold);
+    max-width: 100%;
 }
 
 .rozdroze-header .underline {
@@ -175,6 +178,8 @@ a {
     inset: 0;
     transform-origin: center center;
     transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .panel-face {
@@ -188,6 +193,9 @@ a {
     background: #0d0d0d;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0.01px);
     transition: border-color 0.68s ease, box-shadow 0.68s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -218,10 +226,29 @@ a {
 }
 
 .carousel-stage .panel[data-slot="active"] .panel-face {
-    border-color: rgba(196, 146, 42, 0.45);
+    border-color: rgba(196, 146, 42, 0.55);
+    /* Inset ring stays on the card plane. An outer 0 0 0 1px halo skews on iOS 3D. */
     box-shadow:
-        0 0 0 1px rgba(196, 146, 42, 0.28),
+        inset 0 0 0 1px rgba(196, 146, 42, 0.35),
         0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-stage .panel-sheen {
+    display: none;
+}
+
+.carousel-stage .panel:hover .panel-bg,
+.carousel-stage .panel:focus-visible .panel-bg {
+    transform: none;
+}
+
+.carousel-stage .panel:focus-visible {
+    outline: none;
+}
+
+.carousel-stage .panel:focus-visible .panel-face {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
 }
 
 .carousel-stage .panel[data-slot="active"] .panel-face::after {
@@ -785,6 +812,11 @@ a {
 }
 
 @media (hover: none) {
+    /* Drop shadow on the active face is drawn in screen space and skews card corners on iOS. */
+    .carousel-stage .panel[data-slot="active"] .panel-face {
+        box-shadow: inset 0 0 0 1px rgba(196, 146, 42, 0.35);
+    }
+
     /* No hover on touch, so the "reveal" state has to be the resting
        state — nothing should be sitting there blurred and dimmed. */
     .panel-bg {
