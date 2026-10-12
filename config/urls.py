@@ -20,7 +20,6 @@ urlpatterns = [
     path("analytics/", include("analytics.urls")),  # analytics
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
     path("code/", include(("code.urls", "code"), namespace="code")),
-    path("cwiczba/", include(("poligon.urls", "poligon"), namespace="poligon")),
     path("wiciedze/", include(("wiciedzy.urls", "wiciedzy"), namespace="wiciedzy")),
     path("wiciedzy/", legacy_wiciedze_redirect),
     path("wiciedzy/<path:path>", legacy_wiciedze_redirect),

@@ -86,6 +86,10 @@ def _validate_production_env() -> None:
 _validate_production_env()
 
 # Security & Session settings
+# Django's default "same-origin" strips Referer on cross-origin iframes.
+# YouTube then answers with player error 153.
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
 if not DEBUG:
     # Enforce HTTPS and related security features
     SECURE_HSTS_SECONDS = 31536000  # Enable HSTS for 1 year (recommended for production)
@@ -107,7 +111,6 @@ if not DEBUG:
     # Content Security Policy (CSP) Headers
     SECURE_BROWSER_XSS_FILTER = True  # Enable XSS filter in browsers
     SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
-    SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 # Application definition
 INSTALLED_APPS = [
@@ -127,7 +130,6 @@ INSTALLED_APPS = [
     "analytics",
     "rozdroze",
     "code",
-    "poligon",
     "wiciedzy.apps.WiciedzyConfig",
     # External
     "django_ratelimit",
@@ -144,7 +146,6 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "poligon.i18n.PoligonLanguageMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -166,7 +167,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "gallery.context_processors.categories",
-                "poligon.context_processors.nav",
             ],
         },
     },
@@ -457,7 +457,9 @@ SECURE_CSP = {
     "img-src": "'self' data: https:",
     "media-src": f"'self'{_supabase_media_src}{_r2_media_src}",
     "font-src": "'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
-    "connect-src": "'self' https://cdn.jsdelivr.net https://unpkg.com",
+    "connect-src": (
+        "'self' https://cdn.jsdelivr.net https://unpkg.com https://tile.openstreetmap.org"
+    ),
     "frame-src": "'self' https://www.youtube.com https://www.instagram.com",
     "frame-ancestors": "'none'",
 }

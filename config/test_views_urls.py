@@ -23,7 +23,6 @@ def test_custom_404_view_returns_404_and_logs_request(rf, caplog):
     assert any("path=/missing-page/" in rec.message for rec in caplog.records)
     assert any("ip=203.0.113.42" in rec.message for rec in caplog.records)
 
-
 @pytest.mark.django_db
 def test_legacy_catalog_prefixes_redirect_permanently(client):
     for prefix in ("/wiciedzy/", "/wyciedzy/"):
