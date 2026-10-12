@@ -8,7 +8,8 @@ def test_wybierz_renders_crossroads(client):
 
     assert response.status_code == 200
     content = response.content.decode()
-    assert ">se klikaj</h1>" in content
+    assert ">klik tudzież słajp</h1>" in content
+    assert "se klikaj" not in content
     assert "Se klikaj" not in content
     assert ">wyraj</h2>" in content
     assert ">lingwołamki</h2>" in content
@@ -29,6 +30,7 @@ def test_wybierz_renders_crossroads(client):
     assert 'stage-stack' in content
     assert 'class="carousel"' in content
     assert "carousel-stage" in content
+    assert content.count("panel-turn") == 3
     assert "Wejdź" not in content
     assert 'class="cta-arrow"' not in content
     assert 'panel-cta' not in content

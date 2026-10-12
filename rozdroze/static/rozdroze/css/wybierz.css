@@ -1,3 +1,27 @@
+@property --turn-x {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --turn-y {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --turn-z {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --turn-ry {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
 :root {
     --ink: #060606;
     --gold: #c4922a;
@@ -60,7 +84,7 @@ a {
     width: 100%;
     max-width: 840px;
     border-radius: 22px;
-    overflow: hidden;
+    overflow: visible;
     background: rgba(10, 10, 10, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
@@ -75,10 +99,13 @@ a {
 
 .rozdroze-header h1 {
     font-weight: 300;
-    font-size: calc(var(--hub-label) * 1.2);
-    letter-spacing: 1.5px;
+    /* Slightly below kodzillin' / card titles (--hub-label), one line on narrow phones. */
+    font-size: clamp(0.78rem, 3.55vw, calc(var(--hub-label) * 0.88));
+    letter-spacing: clamp(0.15px, 0.32vw, 1px);
+    white-space: nowrap;
     margin: 0;
     color: var(--gold);
+    max-width: 100%;
 }
 
 .rozdroze-header .underline {
@@ -110,7 +137,8 @@ a {
     position: relative;
     height: min(46vh, 400px);
     min-height: 220px;
-    perspective: 1400px;
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
     transform-style: preserve-3d;
     outline: none;
     touch-action: pan-y;
@@ -122,45 +150,143 @@ a {
     left: 50%;
     width: min(54%, 340px);
     height: 88%;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    filter: none;
     touch-action: pan-y;
     -webkit-user-drag: none;
-    transition: transform 0.5s cubic-bezier(.22, .7, .2, 1), width 0.5s cubic-bezier(.22, .7, .2, 1), filter 0.5s ease, opacity 0.5s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transform-style: preserve-3d;
+    --turn-x: 0px;
+    --turn-y: 0px;
+    --turn-z: 0px;
+    --turn-ry: 0deg;
+}
+
+.carousel-stage .panel,
+.carousel-stage .panel:hover,
+.carousel-stage .panel:focus-visible,
+.carousel-stage .panel:active {
+    transition: none;
+}
+
+.panel-turn {
+    position: absolute;
+    inset: 0;
+    transform-origin: center center;
+    transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.panel-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0.01px);
+    transition: border-color 0.68s ease, box-shadow 0.68s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-stage .panel-face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.68s ease;
 }
 
 .carousel-stage .panel-bg {
     -webkit-mask-image: none;
     mask-image: none;
     filter: brightness(0.62) saturate(0.9) blur(0);
+    border-radius: inherit;
+}
+
+/* wiciedzy-bg.jpg has a sun flare top-right; on iOS 3D it leaks as a gold wedge in the corner. */
+.carousel-stage .panel-wiciedzy .panel-bg {
+    background-position: 38% 44%;
+}
+
+.carousel-stage .panel-wiciedzy .panel-veil {
+    background:
+        linear-gradient(to bottom left, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.4) 34%, transparent 52%),
+        linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.48) 45%, rgba(0, 0, 0, 0.78));
 }
 
 .carousel-stage .panel[data-slot="active"] {
     z-index: 3;
-    opacity: 1;
-    filter: none;
-    border-color: rgba(196, 146, 42, 0.45);
-    box-shadow:
-        0 0 0 1px rgba(196, 146, 42, 0.28),
-        0 16px 36px rgba(0, 0, 0, 0.45);
-    transform: translate3d(-50%, 0, 48px) scale(1);
+    --turn-x: 0px;
+    --turn-y: 0px;
+    --turn-z: 40px;
+    --turn-ry: 0deg;
 }
 
-.carousel-stage .panel[data-slot="active"]:hover,
-.carousel-stage .panel[data-slot="active"]:focus-visible {
-    transform: translate3d(-50%, -4px, 48px) scale(1);
+.carousel-stage .panel[data-slot="active"] .panel-face {
+    /* One border only. Inset/outer box-shadow fills square corners on iOS (gold wedge top-right). */
+    border: 1px solid rgba(196, 146, 42, 0.65);
+    box-shadow: none;
+}
+
+.carousel-stage .panel-sheen {
+    display: none;
+}
+
+.carousel-stage .panel:hover .panel-bg,
+.carousel-stage .panel:focus-visible .panel-bg {
+    transform: none;
+}
+
+.carousel-stage .panel:focus-visible {
+    outline: none;
+}
+
+.carousel-stage .panel:focus-visible .panel-face {
+    outline: none;
+    border-color: rgba(196, 146, 42, 0.65);
+}
+
+.carousel-stage .panel[data-slot="active"] .panel-face::after {
+    opacity: 0;
+}
+
+.carousel-stage .panel[data-slot="active"]:hover .panel-face,
+.carousel-stage .panel[data-slot="active"]:focus-visible .panel-face {
+    transform: translateY(-4px);
 }
 
 .carousel-stage .panel[data-slot="prev"] {
     z-index: 1;
-    opacity: 0.9;
-    filter: brightness(0.72);
-    transform: translate3d(calc(-50% - var(--peek)), 0, -80px) rotateY(18deg) scale(0.86);
+    --turn-x: calc(var(--peek) * -1);
+    --turn-z: -72px;
+    --turn-ry: 28deg;
 }
 
 .carousel-stage .panel[data-slot="next"] {
     z-index: 2;
-    opacity: 0.9;
-    filter: brightness(0.72);
-    transform: translate3d(calc(-50% + var(--peek)), 0, -80px) rotateY(-18deg) scale(0.86);
+    --turn-x: var(--peek);
+    --turn-z: -72px;
+    --turn-ry: -28deg;
+}
+
+.carousel-stage .panel[data-slot="prev"] .panel-face::after,
+.carousel-stage .panel[data-slot="next"] .panel-face::after {
+    opacity: 1;
 }
 
 .carousel-nav {
@@ -515,7 +641,9 @@ a {
 
 /* ── Motion (respect prefers-reduced-motion) ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-    .carousel-stage .panel {
+    .panel-turn,
+    .panel-face,
+    .carousel-stage .panel-face::after {
         transition: none;
     }
 }
@@ -596,76 +724,74 @@ a {
     }
 
     .panel-code .code-terminal {
-        font-size: 0.68rem;
+        align-items: center;
+        font-size: 0.62rem;
         line-height: 1.35;
         padding: 0.35rem 0.7rem;
+        -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 16%, transparent 34%);
+        mask-image: linear-gradient(90deg, #000 0%, #000 16%, transparent 34%);
     }
 
     .panel-code .panel-title {
+        position: relative;
+        z-index: 2;
         text-shadow: 0 0 12px #000, 0 1px 3px #000;
-    }
-
-    .carousel-stage .panel:not([data-slot="active"]) .panel-title {
-        opacity: 0.95;
-        font-size: 0.7rem;
-        letter-spacing: 0.4px;
-        line-height: 1.15;
-        white-space: nowrap;
-    }
-
-    .carousel-stage .panel[data-slot="prev"] .panel-content {
-        align-items: flex-end;
-        justify-content: flex-end;
-        padding: 0.7rem 0.85rem 0.85rem 0.25rem;
-    }
-
-    .carousel-stage .panel[data-slot="next"] .panel-content {
-        align-items: flex-start;
-        justify-content: flex-end;
-        padding: 0.7rem 0.25rem 0.85rem 0.85rem;
-    }
-
-    .carousel-stage .panel[data-slot="prev"] {
-        opacity: 1;
-        filter: brightness(0.86);
-        transform: translate3d(calc(-50% - var(--peek)), 0, -24px) rotateY(10deg) scale(0.92);
-    }
-
-    .carousel-stage .panel[data-slot="next"] {
-        opacity: 1;
-        filter: brightness(0.86);
-        transform: translate3d(calc(-50% + var(--peek)), 0, -24px) rotateY(-10deg) scale(0.92);
     }
 
     .rozdroze-header {
         padding: var(--hub-gap) 10px 0;
     }
 
+    /* Same turn as desktop. Arrows overlay the stage so the side faces stay readable. */
     .carousel {
-        --peek: clamp(96px, 30vw, 132px);
+        position: relative;
+        display: block;
+        --peek: clamp(84px, 24vw, 120px);
         padding-inline: 0;
     }
 
     .carousel-stage {
-        height: min(46vh, 340px);
-        min-height: 240px;
+        height: min(52vh, 360px);
+        min-height: 250px;
     }
 
-    .carousel-stage .panel {
-        width: min(54%, 210px);
-    }
-
+    .carousel-stage .panel,
     .carousel-stage .panel[data-slot="active"] {
-        width: clamp(150px, 70%, 260px);
+        width: min(56%, 210px);
+    }
+
+    .carousel-stage .panel:not([data-slot="active"]) .panel-title,
+    .carousel-stage .panel:not([data-slot="active"]) .panel-tag {
+        opacity: 0;
     }
 
     .carousel-nav {
-        width: 1.8rem;
-        height: 1.8rem;
-        font-size: 1.3rem;
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        width: 2.75rem;
+        height: 2.75rem;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .carousel-prev {
+        left: 0.15rem;
+    }
+
+    .carousel-next {
+        right: 0.15rem;
     }
 
     .panel {
+        border-radius: 12px;
+    }
+
+    .carousel-stage .panel {
+        border-radius: 0;
+    }
+
+    .panel-face {
         border-radius: 12px;
     }
 
@@ -712,5 +838,10 @@ a {
 
     .panel-wiciedzy .panel-bg {
         filter: brightness(.95) saturate(1) blur(0);
+    }
+
+    .carousel-stage .panel-wiciedzy .panel-bg {
+        filter: brightness(0.56) saturate(0.86) blur(0);
+        background-position: 38% 44%;
     }
 }
