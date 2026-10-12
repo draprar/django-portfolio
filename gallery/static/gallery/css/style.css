@@ -676,6 +676,8 @@ main.container {
   inset: 0;
   transform-origin: center center;
   transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .g-card-face {
@@ -686,6 +688,9 @@ main.container {
   background: var(--card);
   border: 1px solid var(--border);
   box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0.01px);
   transition: border-color 0.68s ease, box-shadow 0.68s ease;
 }
 
@@ -751,9 +756,9 @@ main.container {
 }
 
 .g-card[data-slot="active"] .g-card-face {
-  border-color: rgba(196, 146, 42, 0.45);
+  border-color: rgba(196, 146, 42, 0.55);
   box-shadow:
-    0 0 0 1px rgba(196, 146, 42, 0.28),
+    inset 0 0 0 1px rgba(196, 146, 42, 0.35),
     0 18px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -884,6 +889,12 @@ main.container {
   .g-card-face,
   .g-card-face::after {
     transition: none;
+  }
+}
+
+@media (hover: none) {
+  .g-card[data-slot="active"] .g-card-face {
+    box-shadow: inset 0 0 0 1px rgba(196, 146, 42, 0.35);
   }
 }
 
