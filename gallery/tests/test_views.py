@@ -95,6 +95,7 @@ class TestGalleryViews:
         content = response.content.decode()
 
         assert content.count("data-gallery-carousel") == 2
+        assert content.count("g-card-turn") == 2
         assert "data-fancybox" not in content
         assert "mgła" in content
         assert "lis" in content
@@ -123,6 +124,7 @@ class TestGalleryViews:
         assert content.count("ig-post-slide") == 2
         assert content.count("data-gallery-carousel") == 2
         assert content.count('class="g-card"') == 2
+        assert content.count("g-card-turn") == 2
         assert "data-fancybox" not in content
         assert "Poprzednie zdjęcie" in content
         assert "Gdańsk" in content

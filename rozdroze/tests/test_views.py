@@ -29,6 +29,7 @@ def test_wybierz_renders_crossroads(client):
     assert 'stage-stack' in content
     assert 'class="carousel"' in content
     assert "carousel-stage" in content
+    assert content.count("panel-turn") == 3
     assert "Wejdź" not in content
     assert 'class="cta-arrow"' not in content
     assert 'panel-cta' not in content

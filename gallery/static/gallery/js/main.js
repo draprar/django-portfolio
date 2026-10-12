@@ -136,15 +136,68 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ── One hub-style carousel per category. Photos stay in the carousel.
+    // Safari drops a CSS transition when the transform list changes. Each pose
+    // is therefore the same translate3d + rotateY, with pixels filled in here.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const TURN_MS = 680;
+    const TURN_EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+    const fixed = (n) => {
+        const text = n.toFixed(2);
+        return text === '-0.00' ? '0.00' : text;
+    };
+
+    const poseFor = (slot, peek) => {
+        if (slot === 'active') return { x: 0, y: 0, z: 40, ry: 0 };
+        if (slot === 'prev') return { x: -peek, y: 0, z: -72, ry: 28 };
+        if (slot === 'next') return { x: peek, y: 0, z: -72, ry: -28 };
+        return { x: 0, y: 0, z: -160, ry: 0 };
+    };
+
+    const frameFor = (pose, width) =>
+        `translate3d(${fixed(-width / 2 + pose.x)}px, ${fixed(pose.y)}px, ${fixed(pose.z)}px) rotateY(${fixed(pose.ry)}deg)`;
+
+    const frameNow = (turn) => {
+        const raw = getComputedStyle(turn).transform;
+        if (!raw || raw === 'none' || !raw.startsWith('matrix3d(')) return '';
+        const values = raw.slice(9, -1).split(',').map((part) => parseFloat(part));
+        if (values.length !== 16 || values.some((n) => Number.isNaN(n))) return '';
+        const ry = Math.atan2(-values[2], values[0]) * (180 / Math.PI);
+        return `translate3d(${fixed(values[12])}px, ${fixed(values[13])}px, ${fixed(values[14])}px) rotateY(${fixed(ry)}deg)`;
+    };
+
+    const peekPx = (stage) => {
+        if (!stage._peekProbe) {
+            const probe = document.createElement('div');
+            probe.setAttribute('aria-hidden', 'true');
+            probe.style.cssText = 'position:absolute;left:0;top:0;width:var(--peek);height:0;visibility:hidden;pointer-events:none;';
+            stage.appendChild(probe);
+            stage._peekProbe = probe;
+        }
+        return stage._peekProbe.getBoundingClientRect().width;
+    };
+
+    const spin = (turn, next, animate) => {
+        const from = frameNow(turn);
+        turn.getAnimations().forEach((anim) => anim.cancel());
+        turn.style.transform = next;
+        if (!animate || reducedMotion || !from || from === next) return;
+        turn.animate(
+            [{ transform: from }, { transform: next }],
+            { duration: TURN_MS, easing: TURN_EASE, fill: 'forwards' },
+        );
+    };
+
     document.querySelectorAll('[data-gallery-carousel]').forEach((galleryCarousel) => {
         const stage = galleryCarousel.querySelector('.gallery-carousel-stage');
-        const cards = stage ? [...stage.querySelectorAll('.g-card')] : [];
+        const cards = stage ? [...stage.querySelectorAll(':scope > .g-card')] : [];
         let index = Math.max(0, cards.findIndex((card) => card.dataset.slot === 'active'));
         let pointerX = null;
         let dragged = false;
 
-        const place = () => {
+        const place = (animate) => {
             const n = cards.length;
+            const peek = stage ? peekPx(stage) : 0;
             cards.forEach((card, i) => {
                 const delta = (i - index + n) % n;
                 let slot = 'off';
@@ -159,16 +212,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 else card.removeAttribute('aria-hidden');
                 const video = card.querySelector('video');
                 if (video && slot !== 'active' && !video.paused) video.pause();
+                const turn = card.querySelector(':scope > .g-card-turn');
+                const width = turn ? turn.offsetWidth : 0;
+                if (turn && width >= 1) spin(turn, frameFor(poseFor(slot, peek), width), animate);
             });
         };
 
         const go = (step) => {
             if (!cards.length) return;
             index = (index + step + cards.length) % cards.length;
-            place();
+            place(true);
         };
 
-        place();
+        place(false);
+        if (stage && window.ResizeObserver) {
+            let frame = 0;
+            const observer = new ResizeObserver(() => {
+                cancelAnimationFrame(frame);
+                frame = requestAnimationFrame(() => place(false));
+            });
+            observer.observe(stage);
+        }
 
         galleryCarousel.querySelector('.gallery-carousel-prev')?.addEventListener('click', () => go(-1));
         galleryCarousel.querySelector('.gallery-carousel-next')?.addEventListener('click', () => go(1));
