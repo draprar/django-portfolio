@@ -238,11 +238,9 @@ a {
 }
 
 .carousel-stage .panel[data-slot="active"] .panel-face {
-    border-color: rgba(196, 146, 42, 0.55);
-    /* Inset ring stays on the card plane. An outer 0 0 0 1px halo skews on iOS 3D. */
-    box-shadow:
-        inset 0 0 0 1px rgba(196, 146, 42, 0.35),
-        0 18px 40px rgba(0, 0, 0, 0.4);
+    /* One border only. Inset/outer box-shadow fills square corners on iOS (gold wedge top-right). */
+    border: 1px solid rgba(196, 146, 42, 0.65);
+    box-shadow: none;
 }
 
 .carousel-stage .panel-sheen {
@@ -259,8 +257,8 @@ a {
 }
 
 .carousel-stage .panel:focus-visible .panel-face {
-    outline: 2px solid var(--gold);
-    outline-offset: -2px;
+    outline: none;
+    border-color: rgba(196, 146, 42, 0.65);
 }
 
 .carousel-stage .panel[data-slot="active"] .panel-face::after {
@@ -824,11 +822,6 @@ a {
 }
 
 @media (hover: none) {
-    /* Drop shadow on the active face is drawn in screen space and skews card corners on iOS. */
-    .carousel-stage .panel[data-slot="active"] .panel-face {
-        box-shadow: inset 0 0 0 1px rgba(196, 146, 42, 0.35);
-    }
-
     /* No hover on touch, so the "reveal" state has to be the resting
        state — nothing should be sitting there blurred and dimmed. */
     .panel-bg {
