@@ -1,7 +1,0 @@
-from django.apps import AppConfig
-
-
-class PoligonConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
-    name = "poligon"
-    verbose_name = "Ćwiczba"
