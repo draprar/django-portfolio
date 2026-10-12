@@ -84,7 +84,7 @@ a {
     width: 100%;
     max-width: 840px;
     border-radius: 22px;
-    overflow: hidden;
+    overflow: visible;
     background: rgba(10, 10, 10, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
@@ -147,26 +147,51 @@ a {
     left: 50%;
     width: min(54%, 340px);
     height: 88%;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    filter: none;
     touch-action: pan-y;
     -webkit-user-drag: none;
+    transform-style: preserve-3d;
     --turn-x: 0px;
     --turn-y: 0px;
     --turn-z: 0px;
     --turn-ry: 0deg;
-    transform-origin: center center;
-    /* One registered transform. Safari animates the variables; a mixed calc() list snaps on iPhone. */
-    transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
-    transition:
-        --turn-x 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-        --turn-y 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-        --turn-z 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-        --turn-ry 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-        width 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-        border-color 0.68s ease,
-        box-shadow 0.68s ease;
 }
 
-.carousel-stage .panel::after {
+.carousel-stage .panel,
+.carousel-stage .panel:hover,
+.carousel-stage .panel:focus-visible,
+.carousel-stage .panel:active {
+    transition: none;
+}
+
+.panel-turn {
+    position: absolute;
+    inset: 0;
+    transform-origin: center center;
+    transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+}
+
+.panel-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    transition: border-color 0.68s ease, box-shadow 0.68s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-stage .panel-face::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -186,23 +211,26 @@ a {
 
 .carousel-stage .panel[data-slot="active"] {
     z-index: 3;
-    border-color: rgba(196, 146, 42, 0.45);
-    box-shadow:
-        0 0 0 1px rgba(196, 146, 42, 0.28),
-        0 18px 40px rgba(0, 0, 0, 0.4);
     --turn-x: 0px;
     --turn-y: 0px;
     --turn-z: 40px;
     --turn-ry: 0deg;
 }
 
-.carousel-stage .panel[data-slot="active"]::after {
+.carousel-stage .panel[data-slot="active"] .panel-face {
+    border-color: rgba(196, 146, 42, 0.45);
+    box-shadow:
+        0 0 0 1px rgba(196, 146, 42, 0.28),
+        0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-stage .panel[data-slot="active"] .panel-face::after {
     opacity: 0;
 }
 
-.carousel-stage .panel[data-slot="active"]:hover,
-.carousel-stage .panel[data-slot="active"]:focus-visible {
-    --turn-y: -4px;
+.carousel-stage .panel[data-slot="active"]:hover .panel-face,
+.carousel-stage .panel[data-slot="active"]:focus-visible .panel-face {
+    transform: translateY(-4px);
 }
 
 .carousel-stage .panel[data-slot="prev"] {
@@ -219,8 +247,8 @@ a {
     --turn-ry: -28deg;
 }
 
-.carousel-stage .panel[data-slot="prev"]::after,
-.carousel-stage .panel[data-slot="next"]::after {
+.carousel-stage .panel[data-slot="prev"] .panel-face::after,
+.carousel-stage .panel[data-slot="next"] .panel-face::after {
     opacity: 1;
 }
 
@@ -576,8 +604,9 @@ a {
 
 /* ── Motion (respect prefers-reduced-motion) ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-    .carousel-stage .panel,
-    .carousel-stage .panel::after {
+    .panel-turn,
+    .panel-face,
+    .carousel-stage .panel-face::after {
         transition: none;
     }
 }
@@ -718,6 +747,14 @@ a {
     }
 
     .panel {
+        border-radius: 12px;
+    }
+
+    .carousel-stage .panel {
+        border-radius: 0;
+    }
+
+    .panel-face {
         border-radius: 12px;
     }
 

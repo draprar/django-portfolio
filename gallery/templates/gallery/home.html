@@ -100,6 +100,8 @@
                              data-slot="{{ card.slot }}"
                              {% if card.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
                              {% if card.slot == 'off' %}aria-hidden="true"{% endif %}>
+                            <div class="g-card-turn">
+                            <div class="g-card-face">
                             <div class="ig-post-media" data-carousel>
                                 <div class="ig-post-track">
                                     {% for item in card.post.media.all %}
@@ -140,6 +142,8 @@
                                 <span class="g-card-kicker">{{ card.post.location|default:card.post.caption }}</span>
                             </span>
                             {% endif %}
+                            </div>
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
@@ -167,6 +171,8 @@
                              data-kind="video"
                              {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
                              {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                            <div class="g-card-turn">
+                            <div class="g-card-face">
                             <video class="g-card-media"
                                    src="{{ item.src }}"
                                    loop
@@ -183,6 +189,8 @@
                                 <span class="g-card-kicker">{{ item.title }}</span>
                             </span>
                             {% endif %}
+                            </div>
+                            </div>
                         </div>
                         {% else %}
                         <div class="g-card"
@@ -190,6 +198,8 @@
                              data-kind="image"
                              {% if item.slot == 'active' %}aria-current="true" tabindex="0"{% else %}tabindex="-1"{% endif %}
                              {% if item.slot == 'off' %}aria-hidden="true"{% endif %}>
+                            <div class="g-card-turn">
+                            <div class="g-card-face">
                             <img class="g-card-media"
                                  src="{{ item.src }}"
                                  alt="{{ item.title }}"
@@ -201,6 +211,8 @@
                                 <span class="g-card-kicker">{{ item.title }}</span>
                             </span>
                             {% endif %}
+                            </div>
+                            </div>
                         </div>
                         {% endif %}
                     {% endfor %}

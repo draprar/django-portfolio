@@ -657,29 +657,39 @@ main.container {
   width: min(52%, 420px);
   height: 92%;
   display: block;
-  overflow: hidden;
-  border-radius: 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
+  overflow: visible;
+  background: transparent;
+  border: 0;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  transform-style: preserve-3d;
   --turn-x: 0px;
   --turn-y: 0px;
   --turn-z: -160px;
   --turn-ry: 0deg;
-  transform-origin: center center;
-  transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
-  transition:
-    --turn-x 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-    --turn-y 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-    --turn-z 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-    --turn-ry 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.68s ease,
-    box-shadow 0.68s ease;
 }
 
-.g-card::after {
+/* The turn is only the motion. Clipping lives on the face, so Safari can keep the perspective. */
+.g-card-turn {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  transform: translate3d(calc(-50% + var(--turn-x)), var(--turn-y), var(--turn-z)) rotateY(var(--turn-ry));
+}
+
+.g-card-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  transition: border-color 0.68s ease, box-shadow 0.68s ease;
+}
+
+.g-card-face::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -735,13 +745,16 @@ main.container {
 
 .g-card[data-slot="active"] {
   z-index: 3;
+  --turn-x: 0px;
+  --turn-z: 40px;
+  --turn-ry: 0deg;
+}
+
+.g-card[data-slot="active"] .g-card-face {
   border-color: rgba(196, 146, 42, 0.45);
   box-shadow:
     0 0 0 1px rgba(196, 146, 42, 0.28),
     0 18px 40px rgba(0, 0, 0, 0.4);
-  --turn-x: 0px;
-  --turn-z: 40px;
-  --turn-ry: 0deg;
 }
 
 .g-card[data-slot="prev"] {
@@ -758,9 +771,9 @@ main.container {
   --turn-ry: -28deg;
 }
 
-.g-card[data-slot="prev"]::after,
-.g-card[data-slot="next"]::after,
-.g-card[data-slot="off"]::after {
+.g-card[data-slot="prev"] .g-card-face::after,
+.g-card[data-slot="next"] .g-card-face::after,
+.g-card[data-slot="off"] .g-card-face::after {
   opacity: 1;
 }
 
@@ -867,8 +880,9 @@ main.container {
     transform: none;
   }
 
-  .g-card,
-  .g-card::after {
+  .g-card-turn,
+  .g-card-face,
+  .g-card-face::after {
     transition: none;
   }
 }
@@ -888,6 +902,9 @@ main.container {
 
   .g-card {
     width: min(58%, 250px);
+  }
+
+  .g-card-face {
     border-radius: 14px;
   }
 
