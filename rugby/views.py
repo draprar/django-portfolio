@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.utils import timezone
 
-from rugby.content import page_context
+from .models import Post
 
 
-def home(request):
-    ctx = page_context()
-    return render(request, "rugby/home.html", ctx)
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by("published_date")
+    return render(request, "rugby/post_list.html", {"posts": posts})
