@@ -54,8 +54,7 @@
     try { lang = localStorage.getItem('rugby_lang'); } catch (e) { lang = null; }
 
     if (!lang) {
-      const nav = (navigator.languages && navigator.languages[0]) || navigator.language || '';
-      lang = nav.toLowerCase().startsWith('pl') ? 'pl' : 'en';
+      lang = 'pl';
     }
 
     switchLang(lang);
