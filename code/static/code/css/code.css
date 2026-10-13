@@ -2,6 +2,8 @@
     --ink: #060606;
     --gold: #c4922a;
     --gold-2: #a0522d;
+    --offer-title: 1.265rem;
+    --offer-body: 1.1rem;
 }
 
 * {
@@ -106,18 +108,8 @@ a {
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }
 
-.code-role {
-    font-weight: 300;
-    font-size: clamp(1.7rem, 4.2vw, 2.4rem);
-    letter-spacing: 3px;
-    margin: 0 0 1.2rem;
-    color: var(--gold);
-}
-
 .intro {
     font-weight: 300;
-    font-size: clamp(1.12rem, 2.6vw, 1.35rem);
-    line-height: 1.55;
     color: #c4c4c4;
     max-width: 48ch;
     margin: 0 auto;
@@ -126,6 +118,9 @@ a {
 
 .intro-cta {
     margin: 0;
+    font-size: var(--offer-title);
+    line-height: 1.45;
+    letter-spacing: 1px;
 }
 
 .intro-link {
@@ -181,7 +176,7 @@ h2 {
 .offer h3 {
     margin: 0 0 0.45rem;
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: var(--offer-title);
     letter-spacing: 1px;
     color: #fff;
 }
@@ -189,7 +184,7 @@ h2 {
 .offer p {
     margin: 0;
     font-weight: 300;
-    font-size: 1rem;
+    font-size: var(--offer-body);
     color: #c4c4c4;
     line-height: 1.45;
 }
@@ -238,14 +233,14 @@ h2 {
 .repo h3 {
     margin: 0;
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: var(--offer-body);
     color: var(--gold);
 }
 
 .repo p {
     margin: 0.4rem 0 0;
     font-weight: 300;
-    font-size: 1rem;
+    font-size: 0.99rem;
     color: #c4c4c4;
 }
 
