@@ -8,7 +8,7 @@ def test_wybierz_renders_crossroads(client):
 
     assert response.status_code == 200
     content = response.content.decode()
-    assert ">klik tudzież słajp</h1>" in content
+    assert ">click tudzież swipe</h1>" in content
     assert "se klikaj" not in content
     assert "Se klikaj" not in content
     assert ">wyraj</h2>" in content
