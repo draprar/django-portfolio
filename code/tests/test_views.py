@@ -23,8 +23,8 @@ def test_code_page_renders_intro_and_project(client):
         title_pl="Przykladowe repo",
         desc_en="Long CV description from the recruiter landing.",
         desc_pl="Dlugi opis CV z landinga rekrutera.",
-        desc_code_en="Short kodzillin blurb for the IG page (EN).",
-        desc_code_pl="Krotki opis kodzillin dla strony IG (PL).",
+        desc_code_en="Short codzillin blurb for the IG page (EN).",
+        desc_code_pl="Krotki opis codzillin dla strony IG (PL).",
         github_url="https://github.com/example/sample-repo",
         live_url="https://example.com",
     )
@@ -33,9 +33,9 @@ def test_code_page_renders_intro_and_project(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "kodzillin'" in content
+    assert "codzillin'" in content
     assert 'class="code-role"' not in content
-    assert "Dowożę, obczaj obszary poniżej, a jak masz problem, potrzebę albo sztos pomysł" in content
+    assert "Dowożę, sprawdź obszary poniżej, a jak masz problem, potrzebę albo sztos pomysł" in content
     assert 'data-pl="co tam?"' in content
     assert 'data-pl="reposy"' in content
     assert 'data-pl="skrobnij"' in content
@@ -48,8 +48,8 @@ def test_code_page_renders_intro_and_project(client):
     assert ">skrobnij</a>" in content
     assert "Sample Repo" in content
     assert "Przykladowe repo" in content
-    assert "Short kodzillin blurb for the IG page (EN)." in content
-    assert "Krotki opis kodzillin dla strony IG (PL)." in content
+    assert "Short codzillin blurb for the IG page (EN)." in content
+    assert "Krotki opis codzillin dla strony IG (PL)." in content
     assert "Long CV description from the recruiter landing." not in content
     assert 'class="intro-link"' in content
     assert "https://github.com/example/sample-repo" in content
@@ -95,7 +95,7 @@ def test_code_page_renders_project_thumb(client, settings, tmp_path):
 
 @pytest.mark.django_db
 def test_code_page_falls_back_to_cv_desc(client):
-    """When desc_code_* is empty, /code/ should show desc_* (CV description)."""
+    """When desc_code_* is empty, /codzillin/ should show desc_* (CV description)."""
     Project.objects.create(
         title_en="CV only",
         title_pl="Tylko CV",

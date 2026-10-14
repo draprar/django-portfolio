@@ -21,11 +21,11 @@ class Project(models.Model):
     desc_pl = models.TextField(blank=True, help_text="Full CV description for / (recruiter landing).")
     desc_code_en = models.TextField(
         blank=True,
-        help_text="Short kodzillin'-style blurb for /code/ (EN). Falls back to desc_en if empty.",
+        help_text="Short codzillin'-style blurb for /codzillin/ (EN). Falls back to desc_en if empty.",
     )
     desc_code_pl = models.TextField(
         blank=True,
-        help_text="Short kodzillin'-style blurb for /code/ (PL). Falls back to desc_pl if empty.",
+        help_text="Short codzillin'-style blurb for /codzillin/ (PL). Falls back to desc_pl if empty.",
     )
     github_url = models.URLField(blank=True)
     live_url = models.URLField(blank=True)

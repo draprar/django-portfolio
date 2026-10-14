@@ -14,6 +14,14 @@ def legacy_wiciedze_redirect(request, path=""):
     return HttpResponsePermanentRedirect(target)
 
 
+def legacy_code_redirect(request, path=""):
+    target = f"/codzillin/{path}" if path else "/codzillin/"
+    qs = request.META.get("QUERY_STRING")
+    if qs:
+        target = f"{target}?{qs}"
+    return HttpResponsePermanentRedirect(target)
+
+
 def custom_404_view(request, exception):
     logger.warning("404 Not Found: path=%s ip=%s", request.path, request.META.get("REMOTE_ADDR"))
     if request.path.startswith("/wiciedze/"):

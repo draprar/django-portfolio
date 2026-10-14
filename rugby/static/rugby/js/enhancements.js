@@ -48,7 +48,7 @@
       @keyframes lbZoomIn { from { transform: scale(0.92); opacity:0 } to { transform: scale(1); opacity:1 } }
       #lb-caption {
         margin-top: 0.9rem;
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 0.88rem;
         color: rgba(232,232,232,0.65);
         text-align: center;

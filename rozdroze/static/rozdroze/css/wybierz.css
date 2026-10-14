@@ -99,7 +99,7 @@ a {
 
 .rozdroze-header h1 {
     font-weight: 300;
-    /* Slightly below kodzillin' / card titles (--hub-label), one line on narrow phones. */
+    /* Slightly below codzillin' / card titles (--hub-label), one line on narrow phones. */
     font-size: clamp(0.78rem, 3.55vw, calc(var(--hub-label) * 0.88));
     letter-spacing: clamp(0.15px, 0.32vw, 1px);
     white-space: nowrap;
@@ -116,7 +116,7 @@ a {
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }
 
-/* ── Compact kodzillin' strip, then 3D card carousel ─────────────── */
+/* ── Compact codzillin' strip, then 3D card carousel ─────────────── */
 .panel-code {
     margin: 0;
     min-height: 4.4rem;
@@ -289,6 +289,10 @@ a {
     opacity: 1;
 }
 
+.carousel-stage .panel[data-slot="hidden"] {
+    z-index: 0;
+}
+
 .carousel-nav {
     font-family: inherit;
     width: 2.1rem;
@@ -402,6 +406,11 @@ a {
         animation-delay: 0.5s;
     }
 
+    .panel-bazgr .panel-bg {
+        animation-duration: 24s;
+        animation-delay: 0.75s;
+    }
+
     .panel-wiciedzy .panel-bg {
         animation-duration: 23s;
         animation-delay: 0.6s;
@@ -462,7 +471,17 @@ a {
     background: #0a0e18 url('../img/lingwolamek-bg.png') center / cover no-repeat;
 }
 
-/* kodzillin': flat black, same as the card — no navy slab behind the prompt */
+.panel-bazgr .panel-bg {
+    background: #080808 url('../img/bazgrollin-bg.png') center / cover no-repeat;
+    filter: blur(2px) brightness(0.88) saturate(0.95);
+}
+
+.panel-bazgr:hover .panel-bg,
+.panel-bazgr:focus-visible .panel-bg {
+    filter: blur(0) brightness(0.98) saturate(1);
+}
+
+/* codzillin': flat black, same as the card — no navy slab behind the prompt */
 .panel-code .panel-bg {
     background-color: #000;
     filter: none;
@@ -479,7 +498,7 @@ a {
     background: transparent;
 }
 
-/* Live terminal behind kodzillin' — decorative, mirrors old code-bg.gif */
+/* Live terminal behind codzillin' — decorative, mirrors old code-bg.gif */
 .code-terminal {
     position: absolute;
     inset: 0;

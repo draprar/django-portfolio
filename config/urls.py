@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from config.views import legacy_wiciedze_redirect
+from config.views import legacy_code_redirect, legacy_wiciedze_redirect
 
 env = environ.Env()
 
@@ -19,7 +19,9 @@ urlpatterns = [
     path("docdiff/", include("docdiff.urls")),  # AI Document Diff Tool
     path("analytics/", include("analytics.urls")),  # analytics
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
-    path("code/", include(("code.urls", "code"), namespace="code")),
+    path("codzillin/", include(("code.urls", "code"), namespace="code")),
+    path("code/", legacy_code_redirect),
+    path("code/<path:path>", legacy_code_redirect),
     path("wiciedze/", include(("wiciedzy.urls", "wiciedzy"), namespace="wiciedzy")),
     path("wiciedzy/", legacy_wiciedze_redirect),
     path("wiciedzy/<path:path>", legacy_wiciedze_redirect),
