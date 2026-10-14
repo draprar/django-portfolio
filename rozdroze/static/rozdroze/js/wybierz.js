@@ -15,11 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return text === '-0.00' ? '0.00' : text;
     };
 
+    const slotFor = (delta, n, index, card, allCards) => {
+        if (delta === 0) return 'active';
+        if (delta === 1) return 'next';
+        if (delta === n - 1) {
+            const last = allCards[n - 1];
+            if (card === last && index < n - 1) return 'hidden';
+            return 'prev';
+        }
+        if (n === 4 && delta === 2 && index === 0) return 'prev';
+        return 'hidden';
+    };
+
     const poseFor = (slot, peek) => {
         if (slot === 'active') return { x: 0, y: 0, z: 40, ry: 0 };
         if (slot === 'prev') return { x: -peek, y: 0, z: -72, ry: 28 };
         if (slot === 'next') return { x: peek, y: 0, z: -72, ry: -28 };
-        return { x: 0, y: 0, z: 0, ry: 0 };
+        return { x: 0, y: 0, z: -200, ry: 0 };
     };
 
     const frameFor = (pose, width) =>
@@ -61,14 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const peek = stage ? peekPx(stage) : 0;
         cards.forEach((card, i) => {
             const delta = (i - index + n) % n;
-            const slot = delta === 0 ? 'active' : delta === 1 ? 'next' : 'prev';
+            const slot = slotFor(delta, n, index, card, cards);
             card.dataset.slot = slot;
+            const hidden = slot === 'hidden';
+            card.style.visibility = hidden ? 'hidden' : '';
+            card.style.pointerEvents = hidden ? 'none' : '';
             if (slot === 'active') card.setAttribute('aria-current', 'true');
             else card.removeAttribute('aria-current');
             card.tabIndex = slot === 'active' ? 0 : -1;
             const turn = card.querySelector(':scope > .panel-turn');
             const width = turn ? turn.offsetWidth : 0;
-            if (turn && width >= 1) spin(turn, frameFor(poseFor(slot, peek), width), animate);
+            if (turn && width >= 1) spin(turn, frameFor(poseFor(slot, peek), width), animate && !hidden);
         });
     };
 
@@ -192,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Live terminal for kodzillin' (replaces code-bg.gif)
+    // ── Live terminal for codzillin' (replaces code-bg.gif)
     // Always ≤2 lines: current command + one output — left-aligned,
     // vertically centered so they stay visible in the short strip.
     const termRoot = document.querySelector('.panel-code .code-terminal-lines');
@@ -249,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const runScript = async () => {
             await flash('walery@code:~$ python', 't-dim', 650);
 
-            await beat('who?', [['"kodzillin\'"', 't-green']], { hold: 950 });
+            await beat('who?', [['"codzillin\'"', 't-green']], { hold: 950 });
 
             await beat('what?', [
                 ['[', 't-text'],
@@ -272,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (err) {
                     paint(
                         span(`${PROMPT} who?`, 't-gold'),
-                        span('"kodzillin\'"', 't-green'),
+                        span('"codzillin\'"', 't-green'),
                     );
                     await sleep(1500);
                 }

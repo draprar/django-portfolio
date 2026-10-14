@@ -4,7 +4,7 @@ Poniżej są wszystkie teksty z mojej aplikacji.
 
 wiciędze jest katalogiem sportów i sztuk walki: opisuje, czym styl jest, skąd się wziął i jak wygląda trening, bez rankingu i bez obietnicy, że któryś jest lepszy. Odwiedzający może zaznaczyć, jakiego treningu szuka, i dostać krótką listę stylów do poczytania, ułożoną według tych odpowiedzi. Może też postawić dwa style obok siebie i zobaczyć, czym się różnią. Osobno jest żart, który kończy się archetypem, oraz szkic osobowości, który liczy pięć liczb i niczego nie diagnozuje ani nie wybiera stylu. Strona jest po polsku i po angielsku, a na dole stoi, że to nie jest rekomendacja treningu ani diagnoza.
 
-Przerób te teksty na mój język. Próbkę tego języka masz w tym pliku, w sekcji „Przykłady”: to teksty z mojej strony głównej, z bazgrollin' i z kodzillin'. Z nich bierz słownictwo, długość zdań i to, co mówię wprost. Tego głosu nie zgaduj z tekstów wiciędze poniżej, bo właśnie one mają się do próbki upodobnić. Przykładów nie przerabiaj.
+Przerób te teksty na mój język. Próbkę tego języka masz w tym pliku, w sekcji „Przykłady”: to teksty z mojej strony głównej, z bazgrollin' i z codzillin'. Z nich bierz słownictwo, długość zdań i to, co mówię wprost. Tego głosu nie zgaduj z tekstów wiciędze poniżej, bo właśnie one mają się do próbki upodobnić. Przykładów nie przerabiaj.
 
 Na wejściu do aplikacji ma być wytłumaczenie, co ta aplikacja robi. Pisz je dla odwiedzającego: co tu znajdzie i co może zrobić, kiedy dopiero wchodzi. To nie jest opis dla programisty.
 
@@ -14,7 +14,7 @@ Zostaw pary polski / angielski i nagłówki miejsc, żebym mógł wstawić zdani
 
 # Przykłady
 
-To nie jest materiał do przeróbki. To mój język: strona główna, bazgrollin' i kodzillin'. Bierz stąd słownictwo, długość zdań i to, co mówię wprost.
+To nie jest materiał do przeróbki. To mój język: strona główna, bazgrollin' i codzillin'. Bierz stąd słownictwo, długość zdań i to, co mówię wprost.
 
 ## Core (strona główna)
 
@@ -250,10 +250,10 @@ PL: bazgrollin'
 PL: Galerija
 PL: Wejdź
 
-## kodzillin'
+## codzillin'
 
-PL: kodzillin'
-EN: kodzillin'
+PL: codzillin'
+EN: codzillin'
 
 PL: Inżynier danych — czasem coś dowiozę.
 EN: Inżynier danych — czasem coś dowiozę.
@@ -296,11 +296,11 @@ EN: Contact
 
 Na rozdrożu, kafelek do kodu:
 
-PL: kodzillin'
+PL: codzillin'
 PL: Komputerek
 PL: Wejdź
 
-Krótkie opisy projektów na kodzillin':
+Krótkie opisy projektów na codzillin':
 
 ### Django Rugby Giżycko
 

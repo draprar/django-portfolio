@@ -61,7 +61,7 @@ The scope should specify which app or component is affected:
 - `rugby` - Blog section
 - `bies` - Slavic Wheel of the Year
 - `rozdroze` - Crossroads landing
-- `code` - IG programming page (`/code/`)
+- `code` - IG programming page (`/codzillin/`, legacy `/code/`)
 - `config` - Project configuration
 - `analytics` - Analytics module
 - `tests` - Test suite
@@ -94,7 +94,7 @@ Must pass without errors.
 ### 2. Type Checking (MyPy)
 
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code wiciedzy \
+mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon wiciedzy \
   --ignore-missing-imports --disable-error-code=import-untyped
 ```
 
@@ -208,7 +208,7 @@ Tests are organized by app in `app_name/tests/` directory:
 
 3. **Run quality checks**
    ```bash
-   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code wiciedzy && pytest -q --cov=. --cov-fail-under=80
+   ruff check . && mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon wiciedzy && pytest -q --cov=. --cov-fail-under=80
    ```
 
 4. **Commit with meaningful messages**

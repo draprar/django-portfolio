@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jedzien</title>
-  <meta name="description" content="kodzillin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta name="description" content="codzillin', .bazgr, wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
   <meta name="theme-color" content="#0a0a0a">
 
   <meta property="og:title" content="Jedzien">
-  <meta property="og:description" content="kodzillin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta property="og:description" content="codzillin', .bazgr, wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{% static 'rozdroze/css/wybierz.css' %}">
 
   <link rel="preload" as="image" href="{% static 'rozdroze/img/wyraj-bg.png' %}">
+  <link rel="preload" as="image" href="{% static 'rozdroze/img/bazgrollin-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/lingwolamek-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/wiciedzy-bg.jpg' %}">
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon" />
@@ -27,25 +28,25 @@
     <div class="stage-stack">
     <main class="portal portal-chooser">
 
-      <a href="/code/" class="panel panel-code" data-panel="code" aria-label="kodzillin'">
+      <a href="/codzillin/" class="panel panel-code" data-panel="code" aria-label="codzillin'">
         <div class="panel-bg" aria-hidden="true">
           <pre class="code-terminal"><code class="code-terminal-lines"><span class="t-gold">>>> who?</span></code></pre>
         </div>
         <div class="panel-veil"></div>
         <div class="panel-sheen"></div>
         <div class="panel-content">
-          <h2 class="panel-title">kodzillin'</h2>
+          <h2 class="panel-title">codzillin'</h2>
         </div>
       </a>
 
       <header class="rozdroze-header">
-        <h1>klik tudzież słajp</h1>
+        <h1>click tudzież swipe</h1>
         <div class="underline" aria-hidden="true"></div>
       </header>
 
       <div class="carousel" data-carousel>
         <button type="button" class="carousel-nav carousel-prev" aria-label="Poprzednia">‹</button>
-        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze">
+        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze, .bazgr">
           <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" data-slot="active" aria-current="true" aria-label="wyraj">
             <div class="panel-turn">
               <div class="panel-face">
@@ -80,6 +81,19 @@
                 <div class="panel-sheen"></div>
                 <div class="panel-content">
                   <h2 class="panel-title">wiciędze</h2>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/gallery/" class="panel panel-bazgr" data-panel="bazgr" aria-label=".bazgr">
+            <div class="panel-turn">
+              <div class="panel-face">
+                <div class="panel-bg"></div>
+                <div class="panel-veil"></div>
+                <div class="panel-sheen"></div>
+                <div class="panel-content">
+                  <h2 class="panel-title">.bazgr</h2>
                 </div>
               </div>
             </div>

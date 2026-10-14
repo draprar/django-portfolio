@@ -24,6 +24,17 @@ def test_custom_404_view_returns_404_and_logs_request(rf, caplog):
     assert any("ip=203.0.113.42" in rec.message for rec in caplog.records)
 
 @pytest.mark.django_db
+def test_legacy_code_prefix_redirects_permanently(client):
+    root = client.get("/code/")
+    nested = client.get("/code/foo/bar/")
+
+    assert root.status_code == 301
+    assert root["Location"] == "/codzillin/"
+    assert nested.status_code == 301
+    assert nested["Location"] == "/codzillin/foo/bar/"
+
+
+@pytest.mark.django_db
 def test_legacy_catalog_prefixes_redirect_permanently(client):
     for prefix in ("/wiciedzy/", "/wyciedzy/"):
         root = client.get(prefix)
