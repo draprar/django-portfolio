@@ -291,6 +291,19 @@ a {
 
 .carousel-stage .panel[data-slot="hidden"] {
     z-index: 0;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* All carousel links share one layout box; only the active tile may receive taps. */
+.carousel-stage .panel[data-slot="prev"],
+.carousel-stage .panel[data-slot="next"] {
+    pointer-events: none;
+}
+
+.carousel-stage .panel[data-slot="active"] {
+    pointer-events: auto;
 }
 
 .carousel-nav {

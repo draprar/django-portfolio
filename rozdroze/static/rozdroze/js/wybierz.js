@@ -15,15 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return text === '-0.00' ? '0.00' : text;
     };
 
-    const slotFor = (delta, n, index, card, allCards) => {
+    // Four tiles: wyraj → lingwo → wiciędze → .bazgr. Only three faces show;
+    // .bazgr stays off-stage until you rotate to it (last in DOM = back of deck).
+    const slotFor = (delta, n, index, i) => {
         if (delta === 0) return 'active';
         if (delta === 1) return 'next';
-        if (delta === n - 1) {
-            const last = allCards[n - 1];
-            if (card === last && index < n - 1) return 'hidden';
-            return 'prev';
-        }
-        if (n === 4 && delta === 2 && index === 0) return 'prev';
+        // Last tile (.bazgr): off-stage until it becomes active.
+        if (i === n - 1 && index !== n - 1 && delta === n - 1) return 'hidden';
+        if (delta === n - 1) return 'prev';
+        // wyraj active: wiciędze on the left, not .bazgr.
+        if (n === 4 && index === 0 && i === 2) return 'prev';
         return 'hidden';
     };
 
@@ -73,11 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const peek = stage ? peekPx(stage) : 0;
         cards.forEach((card, i) => {
             const delta = (i - index + n) % n;
-            const slot = slotFor(delta, n, index, card, cards);
+            const slot = slotFor(delta, n, index, i);
             card.dataset.slot = slot;
             const hidden = slot === 'hidden';
-            card.style.visibility = hidden ? 'hidden' : '';
-            card.style.pointerEvents = hidden ? 'none' : '';
+            if (hidden) {
+                card.setAttribute('aria-hidden', 'true');
+            } else {
+                card.removeAttribute('aria-hidden');
+            }
             if (slot === 'active') card.setAttribute('aria-current', 'true');
             else card.removeAttribute('aria-current');
             card.tabIndex = slot === 'active' ? 0 : -1;
@@ -94,6 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     place(false);
+    // First paint: run again once layout has real card widths (inline transforms).
+    requestAnimationFrame(() => place(false));
     if (stage && window.ResizeObserver) {
         let frame = 0;
         const observer = new ResizeObserver(() => {
@@ -103,22 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(stage);
     }
 
-    document.querySelector('.carousel-prev')?.addEventListener('click', () => go(-1));
-    document.querySelector('.carousel-next')?.addEventListener('click', () => go(1));
+    document.querySelector('.carousel-prev')?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        go(-1);
+    });
+    document.querySelector('.carousel-next')?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        go(1);
+    });
+
+    const openCard = (card) => {
+        const href = card?.getAttribute('href');
+        if (href) window.location.assign(href);
+    };
+
+    const faceAt = (x, y) => {
+        const active = cards[index];
+        const face = active?.querySelector('.panel-face');
+        if (!face) return null;
+        const rect = face.getBoundingClientRect();
+        if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) return null;
+        return active;
+    };
 
     cards.forEach((card, i) => {
         card.addEventListener('click', (event) => {
+            if (card.dataset.slot === 'active') return;
+            event.preventDefault();
             if (suppressClick) {
-                event.preventDefault();
                 suppressClick = false;
                 return;
             }
-            if (card.dataset.slot !== 'active') {
-                event.preventDefault();
-                const n = cards.length;
-                const delta = (i - index + n) % n;
-                go(delta === 1 ? 1 : -1);
-            }
+            const n = cards.length;
+            const delta = (i - index + n) % n;
+            go(delta === 1 ? 1 : -1);
         });
     });
 
@@ -133,34 +157,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const endPointer = (event) => {
-            if (pointerX == null) return;
-            const dx = event.clientX - pointerX;
-            const dy = event.clientY - pointerY;
-            pointerX = null;
-            pointerY = null;
-            if (Math.abs(dx) < 24 || Math.abs(dx) < Math.abs(dy)) return;
-            suppressClick = true;
-            go(dx < 0 ? 1 : -1);
-        };
-
         stage.addEventListener('pointerdown', (event) => {
             if (event.pointerType === 'mouse' && event.button !== 0) return;
+            if (event.target.closest('.carousel-nav')) return;
             suppressClick = false;
             pointerX = event.clientX;
             pointerY = event.clientY;
-            stage.setPointerCapture?.(event.pointerId);
         });
-        stage.addEventListener('pointerup', endPointer);
+        stage.addEventListener('pointerup', (event) => {
+            if (pointerX == null) return;
+            const dx = event.clientX - pointerX;
+            const dy = event.clientY - pointerY;
+            const x = event.clientX;
+            const y = event.clientY;
+            pointerX = null;
+            pointerY = null;
+            if (Math.abs(dx) >= 24 && Math.abs(dx) >= Math.abs(dy)) {
+                suppressClick = true;
+                go(dx < 0 ? 1 : -1);
+                return;
+            }
+            const card = faceAt(x, y);
+            if (!card) return;
+            event.preventDefault();
+            openCard(card);
+        });
         stage.addEventListener('pointercancel', () => {
             pointerX = null;
             pointerY = null;
         });
     }
 
-    // ── Warm the destination up: fetch it in the background as soon as
-    // someone shows intent (hover on desktop, touch on mobile), so the
-    // actual navigation feels instant. Fires once per panel.
     const prefetched = new Set();
     const prefetch = (href) => {
         if (!href || prefetched.has(href)) return;
@@ -177,19 +204,16 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.addEventListener('touchstart', () => prefetch(href), { once: true, passive: true });
     });
 
-    // ── Cursor-tracking tilt + gold sheen. Purely a lighting effect, so it
-    // only runs on devices with a real pointer, and only if the visitor
-    // hasn't asked for reduced motion.
     const supportsTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
     if (supportsTilt && !reducedMotion) {
-        const MAX_TILT = 4; // degrees
+        const MAX_TILT = 4;
 
         document.querySelectorAll('.panel-code').forEach(panel => {
             panel.addEventListener('mousemove', (e) => {
                 const rect = panel.getBoundingClientRect();
-                const px = (e.clientX - rect.left) / rect.width;  // 0 → 1
-                const py = (e.clientY - rect.top) / rect.height;  // 0 → 1
+                const px = (e.clientX - rect.left) / rect.width;
+                const py = (e.clientY - rect.top) / rect.height;
 
                 const ry = (px - 0.5) * (MAX_TILT * 2);
                 const rx = (0.5 - py) * (MAX_TILT * 2);
@@ -207,9 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Live terminal for codzillin' (replaces code-bg.gif)
-    // Always ≤2 lines: current command + one output — left-aligned,
-    // vertically centered so they stay visible in the short strip.
     const termRoot = document.querySelector('.panel-code .code-terminal-lines');
     if (termRoot) {
         const PROMPT = '>>>';
@@ -278,8 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
             await beat('uuu', [['"nom"', 't-green']], { hold: 1100 });
         };
 
-        // Always animate — iOS "Reduce Motion" would otherwise freeze on the
-        // static what?/ML frame and look broken. Cursor blink stays CSS-gated.
         (async () => {
             for (;;) {
                 try {
