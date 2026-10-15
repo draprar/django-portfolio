@@ -33,7 +33,7 @@ def test_code_page_renders_intro_and_project(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "codzillin'" in content
+    assert "codillin'" in content
     assert 'class="code-role"' not in content
     assert "Dowożę, sprawdź obszary poniżej, a jak masz problem, potrzebę albo sztos pomysł" in content
     assert 'data-pl="co tam?"' in content
@@ -95,7 +95,7 @@ def test_code_page_renders_project_thumb(client, settings, tmp_path):
 
 @pytest.mark.django_db
 def test_code_page_falls_back_to_cv_desc(client):
-    """When desc_code_* is empty, /codzillin/ should show desc_* (CV description)."""
+    """When desc_code_* is empty, /codillin/ should show desc_* (CV description)."""
     Project.objects.create(
         title_en="CV only",
         title_pl="Tylko CV",

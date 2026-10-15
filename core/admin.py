@@ -12,7 +12,7 @@ class ProjectAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("title_en", "title_pl", "github_url", "live_url", "image", "admin_image_preview")}),
         ("CV descriptions (/)", {"fields": ("desc_en", "desc_pl")}),
-        ("/codzillin/ — short codzillin' blurbs", {"fields": ("desc_code_en", "desc_code_pl")}),
+        ("/codillin/ — short codillin' blurbs", {"fields": ("desc_code_en", "desc_code_pl")}),
     )
 
     @admin.display(description="Preview")

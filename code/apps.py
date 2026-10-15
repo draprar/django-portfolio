@@ -4,4 +4,4 @@ from django.apps import AppConfig
 class CodeConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "code"
-    verbose_name = "codzillin' (IG programming page)"
+    verbose_name = "codillin' (IG programming page)"

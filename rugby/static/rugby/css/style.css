@@ -1,4 +1,4 @@
-/* Visual language aligned with codzillin' / wiciędze.
+/* Visual language aligned with codillin' / wiciędze.
    Rugby keeps its own layout: full-bleed hero, sections, timeline, archive. */
 
 /* ── Loader ──────────────────────────────────────────────────────────────── */
@@ -16,7 +16,7 @@
   border-color: var(--primary) transparent var(--primary) transparent !important;
 }
 
-/* ── Design tokens (shared with codzillin' / wiciędze) ─────────────────────── */
+/* ── Design tokens (shared with codillin' / wiciędze) ─────────────────────── */
 :root {
   --ink:          #060606;
   --gold:         #c4922a;
@@ -424,7 +424,7 @@ em, i, .text-muted em, h5 em, p em {
 #info .text-muted { color: var(--muted) !important; font-size: 1.02rem; font-weight: 300; }
 #info strong { color: var(--gold); }
 
-/* Three facts, same grid as codzillin' offer cards */
+/* Three facts, same grid as codillin' offer cards */
 #info .row.text-center {
   display: grid;
   grid-template-columns: 1fr;

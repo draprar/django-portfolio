@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return text === '-0.00' ? '0.00' : text;
     };
 
-    // Four tiles: wyraj → lingwo → wiciędze → .bazgr. Only three faces show;
-    // .bazgr stays off-stage until you rotate to it (last in DOM = back of deck).
+    // Four tiles: wyraj → lingwo → wiciędze → bazgrollin'. Only three faces show;
+    // bazgrollin' stays off-stage until you rotate to it (last in DOM = back of deck).
     const slotFor = (delta, n, index, i) => {
         if (delta === 0) return 'active';
         if (delta === 1) return 'next';
-        // Last tile (.bazgr): off-stage until it becomes active.
+        // Last tile (bazgrollin'): off-stage until it becomes active.
         if (i === n - 1 && index !== n - 1 && delta === n - 1) return 'hidden';
         if (delta === n - 1) return 'prev';
-        // wyraj active: wiciędze on the left, not .bazgr.
+        // wyraj active: wiciędze on the left, not bazgrollin'.
         if (n === 4 && index === 0 && i === 2) return 'prev';
         return 'hidden';
     };
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const runScript = async () => {
             await flash('walery@code:~$ python', 't-dim', 650);
 
-            await beat('who?', [['"codzillin\'"', 't-green']], { hold: 950 });
+            await beat('who?', [['"codillin\'"', 't-green']], { hold: 950 });
 
             await beat('what?', [
                 ['[', 't-text'],
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (err) {
                     paint(
                         span(`${PROMPT} who?`, 't-gold'),
-                        span('"codzillin\'"', 't-green'),
+                        span('"codillin\'"', 't-green'),
                     );
                     await sleep(1500);
                 }

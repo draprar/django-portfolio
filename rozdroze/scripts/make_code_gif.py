@@ -1,4 +1,4 @@
-"""Looping terminal GIF for the /wybierz/ codzillin' tile."""
+"""Looping terminal GIF for the /wybierz/ codillin' tile."""
 
 from pathlib import Path
 
@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 OUT = Path(__file__).resolve().parents[1] / "static" / "rozdroze" / "img" / "code-bg.gif"
 W, H = 560, 360
-# Match hub LingwoŁamki / codzillin' tile (--lingwo-navy, portal gold)
+# Match hub LingwoŁamki / codillin' tile (--lingwo-navy, portal gold)
 BG = (10, 14, 24)
 GOLD = (196, 146, 42)
 GREEN = (142, 198, 168)
@@ -71,7 +71,7 @@ def main() -> None:
 
     typewrite(frames, hist, f"{PROMPT} ", "who?", GOLD)
     hist.append((f"{PROMPT} who?", GOLD))
-    hist.append(('"codzillin\'"', GREEN))
+    hist.append(('"codillin\'"', GREEN))
     frames.append(paint(hist, cursor=False))
     frames.extend([paint(hist, cursor=False)] * 6)
 

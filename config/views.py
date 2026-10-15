@@ -15,7 +15,7 @@ def legacy_wiciedze_redirect(request, path=""):
 
 
 def legacy_code_redirect(request, path=""):
-    target = f"/codzillin/{path}" if path else "/codzillin/"
+    target = f"/codillin/{path}" if path else "/codillin/"
     qs = request.META.get("QUERY_STRING")
     if qs:
         target = f"{target}?{qs}"

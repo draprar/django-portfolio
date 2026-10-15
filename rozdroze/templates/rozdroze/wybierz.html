@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jedzien</title>
-  <meta name="description" content="codzillin', .bazgr, wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta name="description" content="codillin', bazgrollin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
   <meta name="theme-color" content="#0a0a0a">
 
   <meta property="og:title" content="Jedzien">
-  <meta property="og:description" content="codzillin', .bazgr, wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta property="og:description" content="codillin', bazgrollin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'rozdroze/css/wybierz.css' %}">
 
   <link rel="preload" as="image" href="{% static 'rozdroze/img/wyraj-bg.png' %}">
@@ -28,14 +28,14 @@
     <div class="stage-stack">
     <main class="portal portal-chooser">
 
-      <a href="/codzillin/" class="panel panel-code" data-panel="code" aria-label="codzillin'">
+      <a href="/codillin/" class="panel panel-code" data-panel="code" aria-label="codillin'">
         <div class="panel-bg" aria-hidden="true">
           <pre class="code-terminal"><code class="code-terminal-lines"><span class="t-gold">>>> who?</span></code></pre>
         </div>
         <div class="panel-veil"></div>
         <div class="panel-sheen"></div>
         <div class="panel-content">
-          <h2 class="panel-title">codzillin'</h2>
+          <h2 class="panel-title">codillin'</h2>
         </div>
       </a>
 
@@ -46,7 +46,7 @@
 
       <div class="carousel" data-carousel>
         <button type="button" class="carousel-nav carousel-prev" aria-label="Poprzednia">‹</button>
-        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze, .bazgr">
+        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze, bazgrollin'">
           <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" aria-label="wyraj">
             <div class="panel-turn">
               <div class="panel-face">
@@ -54,7 +54,10 @@
                 <div class="panel-veil"></div>
                 <div class="panel-sheen"></div>
                 <div class="panel-content">
-                  <h2 class="panel-title">wyraj</h2>
+                  <div class="panel-lockup">
+                    <span class="panel-import" aria-hidden="true">import</span>
+                    <h2 class="panel-title">wyraj</h2>
+                  </div>
                 </div>
               </div>
             </div>
@@ -67,7 +70,10 @@
                 <div class="panel-veil"></div>
                 <div class="panel-sheen"></div>
                 <div class="panel-content">
-                  <h2 class="panel-title">lingwołamki</h2>
+                  <div class="panel-lockup">
+                    <span class="panel-import" aria-hidden="true">import</span>
+                    <h2 class="panel-title">lingwołamki</h2>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,20 +86,26 @@
                 <div class="panel-veil"></div>
                 <div class="panel-sheen"></div>
                 <div class="panel-content">
-                  <h2 class="panel-title">wiciędze</h2>
+                  <div class="panel-lockup">
+                    <span class="panel-import" aria-hidden="true">import</span>
+                    <h2 class="panel-title">wiciędze</h2>
+                  </div>
                 </div>
               </div>
             </div>
           </a>
 
-          <a href="/gallery/" class="panel panel-bazgr" data-panel="bazgr" data-slot="hidden" aria-hidden="true" tabindex="-1" aria-label=".bazgr">
+          <a href="/gallery/" class="panel panel-bazgr" data-panel="bazgr" data-slot="hidden" aria-hidden="true" tabindex="-1" aria-label="bazgrollin'">
             <div class="panel-turn">
               <div class="panel-face">
                 <div class="panel-bg"></div>
                 <div class="panel-veil"></div>
                 <div class="panel-sheen"></div>
                 <div class="panel-content">
-                  <h2 class="panel-title">.bazgr</h2>
+                  <div class="panel-lockup">
+                    <span class="panel-import" aria-hidden="true">import</span>
+                    <h2 class="panel-title">bazgrollin'</h2>
+                  </div>
                 </div>
               </div>
             </div>

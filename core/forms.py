@@ -41,7 +41,7 @@ class ContactForm(forms.ModelForm):
 
 
 def portal_contact_form(*, bilingual: bool = True) -> ContactForm:
-    """ContactForm styled for portal pages (codzillin' / hub)."""
+    """ContactForm styled for portal pages (codillin' / hub)."""
     form = ContactForm()
     extras = {
         "name": {"class": "portal-input", "autocomplete": "name"},

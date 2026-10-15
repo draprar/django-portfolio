@@ -61,7 +61,7 @@ The scope should specify which app or component is affected:
 - `rugby` - Blog section
 - `bies` - Slavic Wheel of the Year
 - `rozdroze` - Crossroads landing
-- `code` - IG programming page (`/codzillin/`, legacy `/code/`)
+- `code` - IG programming page (`/codillin/`, legacy `/code/` and `/codzillin/`)
 - `config` - Project configuration
 - `analytics` - Analytics module
 - `tests` - Test suite
