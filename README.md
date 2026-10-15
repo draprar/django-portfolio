@@ -21,7 +21,7 @@ A full-stack Django portfolio by an engineer-turned-developer — 12 integrated 
 | **rugby**         | Rugby 7/XV learn + AFC Giżycko archive | Public page at `/rugby/`; `Post` rows + `data/archive_posts.json` |
 | **bies**          | Slavic Wheel of the Year | festivals, deities, R2 media |
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
-| **code**          | IG programming page (`/codzillin/`, legacy `/code/`) | reads `core.Project`, no models |
+| **code**          | IG programming page (`/codillin/`, legacy `/code/` and `/codzillin/`) | reads `core.Project`, no models |
 | **poligon**       | milingwo, unofficial four-skill trainer, practice levels 0–5 (`/milingwo/`) | ~1200 exercises · ~1200 cards · Wiktionary / Wikipedia / Tatoeba with attribution · SM-2 · heuristic scoring |
 | **wiciedzy**       | Martial-arts catalog (`/wiciedze/`, wiciędze) | styles, preference list, comparison, joke, personality sketch |
 | **analytics**     | Stubs — tracking disabled | — |

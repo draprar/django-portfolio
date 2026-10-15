@@ -19,7 +19,9 @@ urlpatterns = [
     path("docdiff/", include("docdiff.urls")),  # AI Document Diff Tool
     path("analytics/", include("analytics.urls")),  # analytics
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
-    path("codzillin/", include(("code.urls", "code"), namespace="code")),
+    path("codillin/", include(("code.urls", "code"), namespace="code")),
+    path("codzillin/", legacy_code_redirect),
+    path("codzillin/<path:path>", legacy_code_redirect),
     path("code/", legacy_code_redirect),
     path("code/<path:path>", legacy_code_redirect),
     path("wiciedze/", include(("wiciedzy.urls", "wiciedzy"), namespace="wiciedzy")),

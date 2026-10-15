@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 class CodeView(View):
     """
-    Instagram-facing codzillin' page at /codzillin/.
+    Instagram-facing codillin' page at /codillin/.
 
     Shows all Project rows, prefers short `desc_code_*` blurbs;
     falls back to CV descriptions (`desc_*`) if code blurbs are empty.

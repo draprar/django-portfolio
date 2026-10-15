@@ -99,7 +99,7 @@ a {
 
 .rozdroze-header h1 {
     font-weight: 300;
-    /* Slightly below codzillin' / card titles (--hub-label), one line on narrow phones. */
+    /* Slightly below codillin' / card titles (--hub-label), one line on narrow phones. */
     font-size: clamp(0.78rem, 3.55vw, calc(var(--hub-label) * 0.88));
     letter-spacing: clamp(0.15px, 0.32vw, 1px);
     white-space: nowrap;
@@ -116,7 +116,7 @@ a {
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }
 
-/* ── Compact codzillin' strip, then 3D card carousel ─────────────── */
+/* ── Compact codillin' strip, then 3D card carousel ─────────────── */
 .panel-code {
     margin: 0;
     min-height: 4.4rem;
@@ -494,7 +494,7 @@ a {
     filter: blur(0) brightness(0.98) saturate(1);
 }
 
-/* codzillin': flat black, same as the card — no navy slab behind the prompt */
+/* codillin': flat black, same as the card — no navy slab behind the prompt */
 .panel-code .panel-bg {
     background-color: #000;
     filter: none;
@@ -511,7 +511,7 @@ a {
     background: transparent;
 }
 
-/* Live terminal behind codzillin' — decorative, mirrors old code-bg.gif */
+/* Live terminal behind codillin' — decorative, mirrors old code-bg.gif */
 .code-terminal {
     position: absolute;
     inset: 0;
@@ -606,6 +606,25 @@ a {
     margin: 0;
     color: var(--gold);
     transition: letter-spacing 0.35s ease;
+}
+
+.carousel-stage .panel-lockup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.38em;
+    max-width: 100%;
+}
+
+.carousel-stage .panel-import {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: calc(var(--hub-label) * 0.85);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: rgba(210, 198, 170, 0.62);
+    flex: 0 0 auto;
 }
 
 .panel:hover .panel-title,
@@ -792,7 +811,13 @@ a {
         width: min(56%, 210px);
     }
 
+    .carousel-stage .panel-lockup {
+        flex-direction: column;
+        gap: 0.12rem;
+    }
+
     .carousel-stage .panel:not([data-slot="active"]) .panel-title,
+    .carousel-stage .panel:not([data-slot="active"]) .panel-import,
     .carousel-stage .panel:not([data-slot="active"]) .panel-tag {
         opacity: 0;
     }

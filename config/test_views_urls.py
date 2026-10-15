@@ -29,9 +29,16 @@ def test_legacy_code_prefix_redirects_permanently(client):
     nested = client.get("/code/foo/bar/")
 
     assert root.status_code == 301
-    assert root["Location"] == "/codzillin/"
+    assert root["Location"] == "/codillin/"
     assert nested.status_code == 301
-    assert nested["Location"] == "/codzillin/foo/bar/"
+    assert nested["Location"] == "/codillin/foo/bar/"
+
+    legacy = client.get("/codzillin/")
+    legacy_nested = client.get("/codzillin/foo/bar/")
+    assert legacy.status_code == 301
+    assert legacy["Location"] == "/codillin/"
+    assert legacy_nested.status_code == 301
+    assert legacy_nested["Location"] == "/codillin/foo/bar/"
 
 
 @pytest.mark.django_db

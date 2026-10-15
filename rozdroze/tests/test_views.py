@@ -12,7 +12,11 @@ def test_wybierz_renders_crossroads(client):
     assert "se klikaj" not in content
     assert "Se klikaj" not in content
     assert ">wyraj</h2>" in content
-    assert ">.bazgr</h2>" in content
+    assert content.count('class="panel-import"') == 4
+    assert 'panel-code"' in content
+    code_panel, carousel = content.split('class="carousel"', 1)
+    assert "panel-import" not in code_panel
+    assert ">bazgrollin'</h2>" in content
     assert ">lingwołamki</h2>" in content
     assert "Se wybierz" not in content
     assert "/gallery/" in content
@@ -20,10 +24,10 @@ def test_wybierz_renders_crossroads(client):
     assert "bazgrollin-bg.png" in content
     assert "/wyraj/" in content
     assert "/tonguetwister/" in content
-    assert "/codzillin/" in content
+    assert "/codillin/" in content
     assert "/wiciedze/" in content
     assert "panel-rugby" not in content
-    assert "codzillin'" in content
+    assert "codillin'" in content
     assert ">wiciędze</h2>" in content
     assert "code-terminal" in content
     assert "wiciedzy-bg.jpg" in content

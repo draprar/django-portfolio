@@ -36,8 +36,8 @@ def test_project_public_live_url_strips_first_party_hosts():
     onrender = Project(live_url="https://walery.onrender.com/docdiff/")
     assert onrender.public_live_url == "/docdiff/"
 
-    jedzien = Project(live_url="https://jedzien.pl/codzillin/#contact")
-    assert jedzien.public_live_url == "/codzillin/#contact"
+    jedzien = Project(live_url="https://jedzien.pl/codillin/#contact")
+    assert jedzien.public_live_url == "/codillin/#contact"
 
 
 def test_project_public_live_url_keeps_external_and_empty():
