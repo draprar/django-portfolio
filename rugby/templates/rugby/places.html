@@ -1,0 +1,119 @@
+{% load static %}
+<section class="page-section bg-light" id="places">
+  <div class="container px-4 py-5">
+    <div class="text-center info mb-3">
+      <h2 data-pl="Kluby rugby w Polsce — ostatnia dekada" data-en="Rugby clubs in Poland — the last decade">Kluby rugby w Polsce — ostatnia dekada</h2>
+      <p class="text-muted map-data-scope rugby-lead mx-auto"
+         data-pl="Mapa pokazuje kluby związane z Ekstraligą i Polską Ligą Rugby 7 (PLR7) w sezonach z ostatnich 10 lat, dla których udało się potwierdzić dane w dostępnych źródłach. Nie jest to pełny wykaz klubów ani kompletna historia sezonów. Osobno pokazano historyczny punkt AFC Rugby Giżycko (2008–2010); zachowane dane o tej inicjatywie są niepełne."
+         data-en="The map shows clubs linked to Ekstraliga and the Polish Rugby 7 League (PLR7) in seasons from the last 10 years where data could be confirmed in available sources. It is not a complete list of clubs or a full season-by-season history. AFC Rugby Giżycko (2008–2010) is shown separately as a historic marker; surviving records for that initiative are incomplete.">
+        Mapa pokazuje kluby związane z Ekstraligą i Polską Ligą Rugby 7 (PLR7) w sezonach z ostatnich 10 lat, dla których udało się potwierdzić dane w dostępnych źródłach. Nie jest to pełny wykaz klubów ani kompletna historia sezonów. Osobno pokazano historyczny punkt AFC Rugby Giżycko (2008–2010); zachowane dane o tej inicjatywie są niepełne.
+      </p>
+      <div class="map-how-to text-start mx-auto text-muted small">
+        <p class="fw-semibold mb-2" data-pl="Jak korzystać z mapy?" data-en="How to use the map?">Jak korzystać z mapy?</p>
+        <ul class="mb-3">
+          <li data-pl="Wybór ligi: wybierz Ekstraligę lub PLR7, aby zawęzić wyniki." data-en="League filter: choose Ekstraliga or PLR7 to narrow the results.">Wybór ligi: wybierz Ekstraligę lub PLR7, aby zawęzić wyniki.</li>
+          <li data-pl="Szczegóły klubu: wybierz marker, aby zobaczyć nazwę klubu, sezony i dostępne źródła." data-en="Club details: select a marker to see the club name, seasons and available sources.">Szczegóły klubu: wybierz marker, aby zobaczyć nazwę klubu, sezony i dostępne źródła.</li>
+          <li data-pl="Zmiana skali: Ctrl + kółko myszy w Windows/Linux lub Cmd + kółko w macOS; na ekranie dotykowym gest dwoma palcami." data-en="Scale: Ctrl + mouse wheel on Windows/Linux or Cmd + wheel on macOS; on a touchscreen, a two-finger pinch.">Zmiana skali: Ctrl + kółko myszy w Windows/Linux lub Cmd + kółko w macOS; na ekranie dotykowym gest dwoma palcami.</li>
+          <li data-pl="Przewijanie i przesuwanie: zwykłe kółko myszy przewija stronę. Po zmianie skali mapę można przeciągać; na ekranie dotykowym jeden palec przewija stronę lub — po zwiększeniu skali — przesuwa mapę." data-en="Scroll and pan: the mouse wheel scrolls the page. After changing the map scale you can drag the map; on a touchscreen one finger scrolls the page or, once zoomed in, pans the map.">Przewijanie i przesuwanie: zwykłe kółko myszy przewija stronę. Po zmianie skali mapę można przeciągać; na ekranie dotykowym jeden palec przewija stronę lub — po zwiększeniu skali — przesuwa mapę.</li>
+          <li data-pl="Skupiska na telefonie: dotknij skupiska, aby rozsunąć markery, a następnie wybierz konkretny marker." data-en="Clusters on a phone: touch a cluster to spread out its markers, then select an individual marker.">Skupiska na telefonie: dotknij skupiska, aby rozsunąć markery, a następnie wybierz konkretny marker.</li>
+        </ul>
+      </div>
+      {{ map_projection_json|json_script:"rugby-map-projection" }}
+    </div>
+    <div class="rugby-map-wrap" id="rugby-map"
+         data-aria-pl="Mapa klubów rugby w Polsce z ostatnich 10 lat"
+         data-aria-en="Map of rugby clubs in Poland from the last 10 years">
+      <div class="map-filter-toolbar" id="map-league-filters" role="group"
+           data-aria-pl="Filtr rozgrywek na mapie"
+           data-aria-en="Competition filter on the map">
+        <button type="button" class="map-btn map-filter is-active" data-map-filter="all" aria-pressed="true"
+                data-pl="Wszystkie rozgrywki" data-en="All competitions">Wszystkie rozgrywki</button>
+        <button type="button" class="map-btn map-filter" data-map-filter="ekstraliga" aria-pressed="false"
+                data-pl="Ekstraliga" data-en="Ekstraliga">Ekstraliga</button>
+        <button type="button" class="map-btn map-filter" data-map-filter="sevens" aria-pressed="false"
+                data-pl="Polska Liga Rugby 7 (PLR7)" data-en="Polish Rugby 7 League (PLR7)">Polska Liga Rugby 7 (PLR7)</button>
+      </div>
+      <div class="rugby-map-toolbar">
+        <button type="button" class="map-btn" data-map-action="zoom-in" data-pl="Przybliż" data-en="Zoom in">Przybliż</button>
+        <button type="button" class="map-btn" data-map-action="zoom-out" data-pl="Oddal" data-en="Zoom out" disabled>Oddal</button>
+        <button type="button" class="map-btn" data-map-action="reset" data-pl="Cała Polska" data-en="All of Poland">Cała Polska</button>
+      </div>
+      <p class="map-hint small text-muted"
+         data-pl="Ctrl/Cmd + kółko zmienia skalę mapy. Na ekranie dotykowym użyj dwóch palców, aby przybliżyć lub oddalić mapę."
+         data-en="Ctrl/Cmd + wheel changes the map scale. On a touchscreen, use two fingers to zoom the map in or out.">
+        Ctrl/Cmd + kółko zmienia skalę mapy. Na ekranie dotykowym użyj dwóch palców, aby przybliżyć lub oddalić mapę.
+      </p>
+      <div class="rugby-map-viewport">
+        <div class="rugby-map-stage" id="rugby-map-stage">
+          <img src="{% static 'rugby/img/map-europe.svg' %}" alt="" class="rugby-map-base" width="960" height="720" draggable="false">
+          {% for place in places %}
+          <button type="button"
+                  class="map-marker map-marker--{{ place.kind }}"
+                  style="left: {{ place.map_x }}%; top: {{ place.map_y }}%;"
+                  data-place-id="{{ place.id }}"
+                  data-place-kind="{{ place.kind }}"
+                  data-city-pl="{{ place.city_pl }}"
+                  data-city-en="{{ place.city_en }}"
+                  data-label-pl="{{ place.label_pl }}"
+                  data-label-en="{{ place.label_en }}"
+                  data-comp-pl="{{ place.comp_pl }}"
+                  data-comp-en="{{ place.comp_en }}"
+                  data-seasons-pl="{{ place.seasons_pl }}"
+                  data-seasons-en="{{ place.seasons_en }}"
+                  data-club-url="{{ place.club_url }}"
+                  data-pzr-profile-url="{{ place.pzr_profile_url }}"
+                  data-source-url="{{ place.source_url }}"
+                  data-internal="{{ place.internal_href|default:'' }}"
+                  data-aria-pl="Klub rugby: {{ place.label_pl }}, miasto {{ place.city_pl }}"
+                  data-aria-en="Rugby club: {{ place.label_en }}, city {{ place.city_en }}">
+            <span class="map-marker-dot" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
+                <circle class="mk-fill" cx="12" cy="12" r="7"></circle>
+                <circle class="mk-ring" cx="12" cy="12" r="6" fill="none" stroke-width="2"></circle>
+                <circle class="mk-core" cx="12" cy="12" r="3.5"></circle>
+                <polygon class="mk-diamond" points="12,4 20,12 12,20 4,12"></polygon>
+              </svg>
+            </span>
+            <span class="map-marker-label map-marker-label--{{ place.label_pos|default:'e' }}" data-pl="{{ place.city_pl }}" data-en="{{ place.city_en }}">{{ place.city_pl }}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+      <div id="map-card" class="map-card d-none" role="dialog" aria-modal="false" tabindex="-1"
+           aria-labelledby="map-card-club-title"
+           data-aria-pl="Informacje o klubie" data-aria-en="Club information">
+        <button type="button" class="map-card-close" aria-label="Zamknij informacje o klubie"
+                data-aria-pl="Zamknij informacje o klubie" data-aria-en="Close club information">
+          <span class="map-card-close-icon" aria-hidden="true">×</span>
+        </button>
+        <p class="map-card-city small text-muted mb-1"></p>
+        <h3 class="h6 map-card-club mb-2" id="map-card-club-title"></h3>
+        <p class="map-card-body small text-muted"></p>
+        <p class="map-card-link-wrap mb-0"></p>
+      </div>
+      <ul class="map-legend-swatches">
+        <li>
+          <svg class="swatch" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7" fill="currentColor"></circle></svg>
+          <span data-pl="Ekstraliga" data-en="Ekstraliga">Ekstraliga</span>
+        </li>
+        <li>
+          <svg class="swatch" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"></circle></svg>
+          <span data-pl="Polska Liga Rugby 7 (PLR7)" data-en="Polish Rugby 7 League (PLR7)">Polska Liga Rugby 7 (PLR7)</span>
+        </li>
+        <li>
+          <svg class="swatch" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="12" cy="12" r="3.5" fill="currentColor"></circle></svg>
+          <span data-pl="Klub ujęty w obu zestawieniach" data-en="Club included in both league lists">Klub ujęty w obu zestawieniach</span>
+        </li>
+        <li>
+          <svg class="swatch" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,4 20,12 12,20 4,12" fill="currentColor"></polygon></svg>
+          <span data-pl="AFC — historia 2008–2010" data-en="AFC — history, 2008–2010">AFC — historia 2008–2010</span>
+        </li>
+      </ul>
+      <p class="map-legend small text-muted mb-0"
+         data-pl="Uwaga: Markery wskazują przybliżone położenie miasta, a nie konkretnego stadionu."
+         data-en="Note: Markers indicate approximate city locations, not specific stadiums.">
+        Uwaga: Markery wskazują przybliżone położenie miasta, a nie konkretnego stadionu.
+      </p>
+    </div>
+  </div>
+</section>

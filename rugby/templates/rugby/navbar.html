@@ -1,66 +1,15 @@
 {% load static %}
-
 <nav class="navbar navbar-expand-md fixed-top">
-  <div class="container-fluid px-3">
-
-    <a class="navbar-brand" href="#">
-      <img src="{% static 'rugby/img/navbar-logo.svg' %}"
-           alt="AFC Rugby"
-           width="28" height="28"
-           style="display:block;">
+  <div class="container-fluid px-3 rugby-navbar-inner">
+    <a class="navbar-brand rugby-brand" href="#rugby-basics"
+       data-aria-pl="AFC Rugby — przejdź do podstaw gry"
+       data-aria-en="AFC Rugby — go to the basics of the game"
+       aria-label="AFC Rugby — przejdź do podstaw gry">
+      <img src="{% static 'rugby/img/navbar-logo.svg' %}" alt="" width="32" height="32" class="rugby-brand-mark" aria-hidden="true">
     </a>
-
-    <button class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#info"
-             data-en="Team" data-pl="Drużyna">Drużyna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#media"
-             data-en="Promotion" data-pl="Promocja">Promocja</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#about"
-             data-en="History" data-pl="Historia">Historia</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-uppercase" href="#archive"
-             data-en="Archive" data-pl="Archiwum">Archiwum</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-uppercase" href="{% url 'home' %}#contact"
-             data-en="Contact" data-pl="Kontakt">Kontakt</a>
-        </li>
-
-        <!-- Mobile: separator + centred lang buttons inside collapse -->
-        <li class="nav-item d-md-none">
-          <hr class="my-2" style="border-color: var(--border);">
-        </li>
-        <li class="nav-item d-md-none">
-          <div class="lang-switcher-mobile">
-            <button class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
-            <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-          </div>
-        </li>
-      </ul>
-
-      <!-- Desktop: lang buttons right of nav -->
-      <div class="d-none d-md-flex align-items-center gap-2 ms-2">
-        <button class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
-        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-      </div>
+    <div class="rugby-lang-toolbar d-flex align-items-center gap-2 ms-auto">
+      <button class="lang-btn" type="button" data-lang="pl" aria-pressed="false">PL</button>
+      <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
-
   </div>
 </nav>

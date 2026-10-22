@@ -38,6 +38,9 @@ media/
 staticfiles/
 django_warnings.log
 
+# Rugby scan originals (unredacted; keep out of git)
+rugby/private/
+
 # Local debug artifacts
 debug/
 tmp/
@@ -66,3 +69,8 @@ yarn-error.log
 # Build artifacts
 build/
 dist/
+
+# Poligon offline fetch caches (builders only; catalog JSON is committed)
+poligon/data/_wiktionary_cache*.json
+poligon/data/_wikipedia_cache.json
+poligon/data/_tatoeba_cache.json

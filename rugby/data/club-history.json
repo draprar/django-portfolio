@@ -1,0 +1,1586 @@
+{
+  "window": "2016-10-21 to 2026-10-21",
+  "clubs": [
+    {
+      "club_id": "gdansk",
+      "display_name_pl": "RC Lechia Gdańsk",
+      "display_name_en": "RC Lechia Gdańsk",
+      "city_pl": "Gdańsk",
+      "city_en": "Gdańsk",
+      "lat": 54.352,
+      "lng": 18.6466,
+      "label_pos": "s",
+      "club_url": "https://lechiarugby.pl/",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "sopot",
+      "display_name_pl": "Energa Ogniwo Sopot",
+      "display_name_en": "Energa Ogniwo Sopot",
+      "city_pl": "Sopot",
+      "city_en": "Sopot",
+      "lat": 54.4416,
+      "lng": 18.5601,
+      "label_pos": "e",
+      "club_url": "https://ogniwosopot.pl/",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "gdynia",
+      "display_name_pl": "RC Arka Gdynia",
+      "display_name_en": "RC Arka Gdynia",
+      "city_pl": "Gdynia",
+      "city_en": "Gdynia",
+      "lat": 54.5233,
+      "lng": 18.604,
+      "label_pos": "n",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/1/arka-gdynia-rugby-club",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "sochaczew",
+      "display_name_pl": "RC Orkan Sochaczew",
+      "display_name_en": "RC Orkan Sochaczew",
+      "city_pl": "Sochaczew",
+      "city_en": "Sochaczew",
+      "lat": 52.2297,
+      "lng": 20.2384,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/7/orkan-sochaczew-rugby-club",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "siedlce",
+      "display_name_pl": "Awenta Pogoń Siedlce",
+      "display_name_en": "Awenta Pogoń Siedlce",
+      "city_pl": "Siedlce",
+      "city_en": "Siedlce",
+      "lat": 52.1677,
+      "lng": 22.2901,
+      "label_pos": "e",
+      "club_url": "https://www.pogon.siedlce.pl/",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "lodz",
+      "display_name_pl": "Budowlani Łódź",
+      "display_name_en": "Budowlani Łódź",
+      "city_pl": "Łódź",
+      "city_en": "Łódź",
+      "lat": 51.7592,
+      "lng": 19.455,
+      "label_pos": "w",
+      "club_url": "https://ksb-rugby.pl/",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "lublin",
+      "display_name_pl": "Budowlani Lublin",
+      "display_name_en": "Budowlani Lublin",
+      "city_pl": "Lublin",
+      "city_en": "Lublin",
+      "lat": 51.2506,
+      "lng": 22.5701,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/2/budowlani-lublin-klub-sportowy",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "krakow",
+      "display_name_pl": "RzKS Juvenia Kraków",
+      "display_name_en": "RzKS Juvenia Kraków",
+      "city_pl": "Kraków",
+      "city_en": "Kraków",
+      "lat": 50.0647,
+      "lng": 19.945,
+      "label_pos": "e",
+      "club_url": "https://juvenia.info/",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2016/17",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/2302/ekstraliga-rozgrywki-2016-2017",
+          "evidence_type": "group_roster"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/9/ekstraliga-rugby-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "jarocin",
+      "display_name_pl": "RK Sparta Jarocin",
+      "display_name_en": "RK Sparta Jarocin",
+      "city_pl": "Jarocin",
+      "city_en": "Jarocin",
+      "lat": 51.9739,
+      "lng": 17.5011,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/17/sparta-jarocin-rugby-klub",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "bialystok",
+      "display_name_pl": "Budmex Rugby Białystok",
+      "display_name_en": "Budmex Rugby Białystok",
+      "city_pl": "Białystok",
+      "city_en": "Białystok",
+      "lat": 53.1275,
+      "lng": 23.1471,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/16/rugby-bialystok",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/23/ekstraliga-rugby-20242025",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2026/27",
+          "status": "w_toku",
+          "source_url": "https://polskie.rugby/sezon/39/ekstraliga-rugby-20262027",
+          "evidence_type": "snapshot",
+          "as_of": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "club_id": "koszalin",
+      "display_name_pl": "KSRC Koszalin",
+      "display_name_en": "KSRC Koszalin",
+      "city_pl": "Koszalin",
+      "city_en": "Koszalin",
+      "lat": 54.1909,
+      "lng": 16.1771,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/69/rugby-club-koszalin-klub-sportowy",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "gniezno",
+      "display_name_pl": "GKR Tytan Gniezno",
+      "display_name_en": "GKR Tytan Gniezno",
+      "city_pl": "Gniezno",
+      "city_en": "Gniezno",
+      "lat": 52.5247,
+      "lng": 17.5982,
+      "label_pos": "n",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/75/tytan-gniezno-gnieznienski-klub-rugby",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2021",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/7136/plr7-viii-turniej-w-poznaniu",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "szczecin",
+      "display_name_pl": "Kaskada Szczecin",
+      "display_name_en": "Kaskada Szczecin",
+      "city_pl": "Szczecin",
+      "city_en": "Szczecin",
+      "lat": 53.4302,
+      "lng": 14.551,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/60/kaskada-szczecin-rugby-klub-stowarzyszenie-kultury-fizycznej",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "unislaw",
+      "display_name_pl": "RK Unisław",
+      "display_name_en": "RK Unisław",
+      "city_pl": "Unisław",
+      "city_en": "Unisław",
+      "lat": 53.2135,
+      "lng": 18.3852,
+      "label_pos": "w",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/71/rugby-klub-unislaw",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2021",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/7136/plr7-viii-turniej-w-poznaniu",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "bytom",
+      "display_name_pl": "Czarni Bytom",
+      "display_name_en": "Czarni Bytom",
+      "city_pl": "Bytom",
+      "city_en": "Bytom",
+      "lat": 50.3653,
+      "lng": 18.8723,
+      "label_pos": "w",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/51/czarni-bytom-rugby-klub-sportowy",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "czestochowa",
+      "display_name_pl": "RC Częstochowa",
+      "display_name_en": "RC Częstochowa",
+      "city_pl": "Częstochowa",
+      "city_en": "Częstochowa",
+      "lat": 50.809,
+      "lng": 19.1244,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/65/rugby-club-czestochowa",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "bielsko",
+      "display_name_pl": "RC Bielsko-Biała",
+      "display_name_en": "RC Bielsko-Biała",
+      "city_pl": "Bielsko-Biała",
+      "city_en": "Bielsko-Biała",
+      "lat": 49.8121,
+      "lng": 19.0292,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "https://polskie.rugby/kluby/67/rugby-club-bielsko-biala",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "katowice",
+      "display_name_pl": "Piraci Katowice",
+      "display_name_en": "Piraci Katowice",
+      "city_pl": "Katowice",
+      "city_en": "Katowice",
+      "lat": 50.2137,
+      "lng": 19.0059,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2024/25",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/27/polska-liga-rugby-7-20242025",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "warszawa-ligi",
+      "display_name_pl": "Skra, Legia i AZS AWF (wspólny punkt na mapie)",
+      "display_name_en": "Skra, Legia and AZS AWF (combined map marker)",
+      "city_pl": "Warszawa",
+      "city_en": "Warsaw",
+      "lat": 52.2297,
+      "lng": 21.0122,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2018",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/4359/ekstraliga-kalendarz-fazy-ii",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2025/26",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/32/ekstraliga-rugby-20252026",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "poznan",
+      "display_name_pl": "Posnania Poznań",
+      "display_name_en": "Posnania Poznań",
+      "city_pl": "Poznań",
+      "city_en": "Poznań",
+      "lat": 52.4064,
+      "lng": 16.9252,
+      "label_pos": "w",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2019",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/5118/ekstraliga-ogniwo-mistrzem-polski",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/5004/ekstraliga-aktualna-tabela"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2021",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/7136/plr7-viii-turniej-w-poznaniu",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/1/ekstraliga-rugby-20222023",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "aleksandrow",
+      "display_name_pl": "Budo 2011 Aleksandrów Łódzki",
+      "display_name_en": "Budo 2011 Aleksandrów Łódzki",
+      "city_pl": "Aleksandrów Łódzki",
+      "city_en": "Aleksandrów Łódzki",
+      "lat": 51.8194,
+      "lng": 19.3033,
+      "label_pos": "w",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": []
+    },
+    {
+      "club_id": "biesal",
+      "display_name_pl": "Rugby Biesal",
+      "display_name_en": "Rugby Biesal",
+      "city_pl": "Biesal",
+      "city_en": "Biesal",
+      "lat": 53.749,
+      "lng": 20.22,
+      "label_pos": "n",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "pruszcz",
+      "display_name_pl": "Zielono-Czarni Pruszcz Gdański",
+      "display_name_en": "Zielono-Czarni Pruszcz Gdański",
+      "city_pl": "Pruszcz Gdański",
+      "city_en": "Pruszcz Gdański",
+      "lat": 54.2622,
+      "lng": 18.6363,
+      "label_pos": "w",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2021",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/7136/plr7-viii-turniej-w-poznaniu",
+          "evidence_type": "snapshot"
+        }
+      ]
+    },
+    {
+      "club_id": "boleslawiec",
+      "display_name_pl": "Bolesławiec Rugby Club",
+      "display_name_en": "Bolesławiec Rugby Club",
+      "city_pl": "Bolesławiec",
+      "city_en": "Bolesławiec",
+      "lat": 51.2642,
+      "lng": 15.5697,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "bydgoszcz",
+      "display_name_pl": "Alfa Bydgoszcz",
+      "display_name_en": "Alfa Bydgoszcz",
+      "city_pl": "Bydgoszcz",
+      "city_en": "Bydgoszcz",
+      "lat": 53.1235,
+      "lng": 18.0084,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "wroclaw",
+      "display_name_pl": "Rugby Wrocław",
+      "display_name_en": "Rugby Wrocław",
+      "city_pl": "Wrocław",
+      "city_en": "Wrocław",
+      "lat": 51.1079,
+      "lng": 17.0385,
+      "label_pos": "s",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2021",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/artykul/7136/plr7-viii-turniej-w-poznaniu",
+          "evidence_type": "snapshot"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "ruda",
+      "display_name_pl": "Rugby Ruda Śląska",
+      "display_name_en": "Rugby Ruda Śląska",
+      "city_pl": "Ruda Śląska",
+      "city_en": "Ruda Śląska",
+      "lat": 50.2584,
+      "lng": 18.8563,
+      "label_pos": "w",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "ekstraliga",
+          "season": "2020/21",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%202021.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "ekstraliga",
+          "season": "2021/22",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/storage/files/Ekstraliga%20Rugby%20-%20Wiosna%202022.pdf",
+          "evidence_type": "final_table"
+        },
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        },
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "ciechanow",
+      "display_name_pl": "Ciechan Ciechanów",
+      "display_name_en": "Ciechan Ciechanów",
+      "city_pl": "Ciechanów",
+      "city_en": "Ciechanów",
+      "lat": 52.8814,
+      "lng": 20.6198,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2022/23",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/5/polska-liga-rugby-7-20222023",
+          "evidence_type": "final_table",
+          "supplemental_urls": [
+            "https://polskie.rugby/artykul/8892/plr7-v-turniej-w-poznaniu"
+          ]
+        }
+      ]
+    },
+    {
+      "club_id": "nowy-sacz",
+      "display_name_pl": "Biało-Czarni Nowy Sącz",
+      "display_name_en": "Biało-Czarni Nowy Sącz",
+      "city_pl": "Nowy Sącz",
+      "city_en": "Nowy Sącz",
+      "lat": 49.6249,
+      "lng": 20.6916,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": false,
+      "internal_href": "",
+      "seasons": [
+        {
+          "league": "sevens",
+          "season": "2023/24",
+          "status": "potwierdzony",
+          "source_url": "https://polskie.rugby/sezon/12/polska-liga-rugby-7-20232024",
+          "evidence_type": "final_table"
+        }
+      ]
+    },
+    {
+      "club_id": "gizycko",
+      "display_name_pl": "AFC Rugby Giżycko",
+      "display_name_en": "AFC Rugby Giżycko",
+      "city_pl": "Giżycko",
+      "city_en": "Giżycko",
+      "lat": 54.0399,
+      "lng": 21.7657,
+      "label_pos": "e",
+      "club_url": "",
+      "pzr_profile_url": "",
+      "aliases": [],
+      "historic": true,
+      "internal_href": "#afc-farewell",
+      "seasons": []
+    }
+  ],
+  "season_source_note": "Season rows from PZR tables (sync_club_seasons.py). PLR7 2025/26 and 2026/27 not invented — see docs/planning/afc-rugby-map-sources.md."
+}
