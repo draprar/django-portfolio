@@ -459,6 +459,7 @@ em, i, .text-muted em, h5 em, p em {
   letter-spacing: 1px;
 }
 #info .text-muted { color: var(--muted) !important; font-weight: 300; }
+#info .rugby-card { text-align: center; }
 #info .rugby-card .text-muted { font-size: var(--fs-body); }
 #info strong { color: var(--gold); }
 
@@ -530,6 +531,9 @@ em, i, .text-muted em, h5 em, p em {
 }
 .card .text-muted,
 .card p.text-muted { color: var(--muted) !important; font-size: 0.95rem; font-weight: 300; }
+.card .card-body {
+  text-align: center;
+}
 .card .card-body > p:first-child {
   font-weight: 400;
   margin-bottom: 0.22rem;
@@ -1062,7 +1066,6 @@ a.hero-scroll-hint {
 .page-section ul.small,
 .page-section .map-how-to,
 .page-section .map-legend,
-.page-section .map-hint,
 .site-origin-note,
 .account-dek-line,
 .account-meta {
@@ -1124,12 +1127,24 @@ a.hero-scroll-hint {
 
 .map-how-to {
   max-width: 42rem;
-  text-align: left;
+  text-align: center;
 }
 
 .map-how-to ul {
-  padding-left: 1.15rem;
+  list-style: none;
+  padding-left: 0;
   margin-bottom: 0;
+}
+
+.map-how-to li {
+  margin: 0.35rem 0;
+}
+
+.map-how-mobile { display: none; }
+
+@media (max-width: 767.98px) {
+  .map-how-desktop { display: none; }
+  .map-how-mobile { display: list-item; }
 }
 
 .rugby-pitch-block {
@@ -1144,6 +1159,14 @@ a.hero-scroll-hint {
   font-weight: 400;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.rugby-pitch-block > p {
+  text-align: center;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #rugby-pitch {
@@ -1151,6 +1174,7 @@ a.hero-scroll-hint {
   overflow: hidden;
   border: 1px solid rgba(196, 146, 42, 0.25);
   background: #0a0a0a;
+  touch-action: manipulation;
 }
 
 #phase-heading {
@@ -1158,16 +1182,24 @@ a.hero-scroll-hint {
 }
 
 .site-origin-note {
+  text-align: center;
   padding: 1.15rem 1.2rem;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
 }
+.site-origin-note ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+.site-origin-note li { margin: 0.35rem 0; }
 
 .farewell-quote {
   border-left: 3px solid var(--gold);
   padding-left: 1rem;
   margin: 0;
+  text-align: left;
 }
 
 .farewell-block {
@@ -1183,8 +1215,11 @@ a.hero-scroll-hint {
 }
 
 .pitch-svg { width: 100%; height: auto; display: block; }
-.pitch-hit { cursor: pointer; outline: none; }
-.pitch-hit:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pitch-hit,
+.pitch-player { cursor: pointer; outline: none; }
+.pitch-hit:focus-visible,
+.pitch-player:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pitch-player-hit { pointer-events: auto; }
 
 .scoring-list .scoring-btn {
   width: 100%;
@@ -1584,6 +1619,7 @@ footer.footer.footer-photo .footer-photo-img {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--card);
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -1857,10 +1893,17 @@ footer.footer.footer-photo .footer-photo-img {
 #phase-scrum.is-on circle, #phase-maul.is-on circle, #phase-ball.is-on {
   fill: #c4922a; stroke: #fff; opacity: 1;
 }
-.pitch-player.is-on circle { stroke: #fff; stroke-width: 3; }
+.pitch-player.is-on circle:not(.pitch-player-hit) { stroke: #fff; stroke-width: 3; }
 
-.map-legend-swatches { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; list-style: none; padding: 0.8rem 0 0; margin: 0; }
+.map-legend-swatches { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem 1.2rem; list-style: none; padding: 0.8rem 0 0; margin: 0; }
 .map-legend-swatches li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: var(--fs-caption); }
+.map-legend { text-align: center; }
+.map-filter-toolbar,
+.rugby-map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .map-legend-swatches .swatch {
   width: 20px;
   height: 20px;
@@ -1885,17 +1928,7 @@ footer.footer.footer-photo .footer-photo-img {
     width: 28px;
     height: 28px;
   }
-  #rugby-pitch .pitch-player {
-    transform-box: fill-box;
-    transform-origin: center;
-    transform: scale(1.45);
-  }
   .page-section h2::after { margin: 10px auto 10px; }
-  .page-section .text-center > p,
-  .page-section .text-center > .rugby-lead,
-  .rugby-lead p {
-    text-align: left;
-  }
   .rugby-pitch-block { margin-top: 1.25rem !important; }
   .trace-rail {
     display: grid;

@@ -91,7 +91,7 @@
 
     function clampScale(next) {
       const floor = openingScale > 1 ? openingScale : 1;
-      return Math.min(10, Math.max(floor, next));
+      return Math.min(28, Math.max(floor, next));
     }
 
     function clampPan() {
@@ -463,8 +463,8 @@
         const action = btn.getAttribute('data-map-action');
         const cx = viewport.clientWidth / 2 + viewport.getBoundingClientRect().left;
         const cy = viewport.clientHeight / 2 + viewport.getBoundingClientRect().top;
-        if (action === 'zoom-in') zoomAt(cx, cy, scale + 0.35);
-        if (action === 'zoom-out' && !btn.disabled) zoomAt(cx, cy, scale - 0.35);
+        if (action === 'zoom-in') zoomAt(cx, cy, scale * 1.35);
+        if (action === 'zoom-out' && !btn.disabled) zoomAt(cx, cy, scale / 1.35);
         if (action === 'reset') {
           focusBBox(POLAND.lonMin, POLAND.lonMax, POLAND.latMin, POLAND.latMax, POLAND_PAD);
         }
