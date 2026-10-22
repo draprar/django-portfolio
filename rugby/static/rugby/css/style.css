@@ -42,9 +42,9 @@ html.loader-active { overflow: hidden; }
   --surface3:     #151515;
   --light:        #e0e0e0;
   --border-hover: var(--border-quiet);
-  --fs-lead: 1.125rem;
-  --fs-body: 1.05rem;
-  --fs-caption: 1rem;
+  --fs-lead: 1.0625rem;
+  --fs-body: 1rem;
+  --fs-caption: 0.875rem;
 }
 
 /* ── Base reset ─────────────────────────────────────────────────────────────── */
@@ -113,8 +113,8 @@ body {
   color: #e0e0e0;
   margin: 0;
   padding: 0;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* ── Back-to-top ────────────────────────────────────────────────────────────── */
@@ -402,7 +402,7 @@ main .page-section > .container {
 .page-section h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
   color: var(--gold);
   text-align: center;
   margin-bottom: 0;
@@ -413,8 +413,8 @@ main .page-section > .container {
 .page-section h5 {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 /* Gold rule under section title — equal gap above/below the bar */
@@ -1047,13 +1047,14 @@ a.hero-scroll-hint {
 
 .rugby-lead { max-width: 65ch; margin-left: auto; margin-right: auto; }
 
-/* Readable type scale: leads a step above card body; .small must not drop below ~16px. */
+/* Leads sit just above body. Captions and .small stay a step smaller, like wiciędze meta. */
 .page-section .rugby-lead,
 .page-section .rugby-lead > p,
 .page-section .map-data-scope,
-.page-section .text-center.info > p {
+.page-section .text-center.info > p,
+.account-body {
   font-size: var(--fs-lead);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .page-section p.small,
@@ -1063,12 +1064,11 @@ a.hero-scroll-hint {
 .page-section .map-how-to,
 .page-section .map-legend,
 .page-section .map-hint,
-.timeline-panel .text-muted,
 .site-origin-note,
 .account-dek-line,
-.account-body {
-  font-size: var(--fs-body);
-  line-height: 1.65;
+.account-meta {
+  font-size: var(--fs-caption);
+  line-height: 1.55;
 }
 
 .page-section .map-data-scope {
@@ -1076,7 +1076,7 @@ a.hero-scroll-hint {
 }
 
 .rugby-lead > h3 {
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   line-height: 1.4;
 }
 
@@ -1190,7 +1190,7 @@ a.hero-scroll-hint {
   padding: 0.65rem 0.75rem;
   margin-bottom: 0.5rem;
   border-radius: 12px;
-  font-size: var(--fs-body);
+  font-size: var(--fs-caption);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1214,7 +1214,7 @@ a.hero-scroll-hint {
 .scoring-list .scoring-desc {
   display: block;
   margin-top: 0.4rem;
-  font-size: var(--fs-body);
+  font-size: var(--fs-caption);
   font-weight: 300;
   color: var(--muted);
   line-height: 1.55;
@@ -1256,7 +1256,7 @@ a.hero-scroll-hint {
 .pitch-explainer {
   min-height: 3rem;
   color: var(--muted);
-  font-size: var(--fs-body);
+  font-size: var(--fs-caption);
 }
 
 .rugby-map-viewport {
@@ -1855,7 +1855,7 @@ footer.footer.footer-photo .footer-photo-img {
 .pitch-player.is-on circle { stroke: #fff; stroke-width: 3; }
 
 .map-legend-swatches { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; list-style: none; padding: 0.8rem 0 0; margin: 0; }
-.map-legend-swatches li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: var(--fs-body); }
+.map-legend-swatches li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: var(--fs-caption); }
 .map-legend-swatches .swatch {
   width: 20px;
   height: 20px;
@@ -1873,7 +1873,17 @@ footer.footer.footer-photo .footer-photo-img {
   .page-section h2 {
     letter-spacing: 0;
     line-height: 1.25;
-    font-size: 1.45rem;
+    font-size: clamp(1.2rem, 5vw, 1.4rem);
+  }
+  .map-marker-dot,
+  .map-marker-dot svg {
+    width: 28px;
+    height: 28px;
+  }
+  #rugby-pitch .pitch-player {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1.45);
   }
   .page-section h2::after { margin: 10px auto 10px; }
   .page-section .text-center > p,
