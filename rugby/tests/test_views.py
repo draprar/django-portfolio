@@ -125,10 +125,13 @@ class TestPostListView:
         html = self.client.get(self.url).content.decode()
         assert "Klub ujęty w obu zestawieniach" in html
         assert "Polska Liga Rugby 7 (PLR7)" in html
-        assert "Ctrl/Cmd + kółko zmienia skalę mapy" in html
+        assert "map-hint" not in html
+        assert "Ctrl/Cmd + kółko zmienia skalę mapy" not in html
         assert "Jak korzystać z mapy?" in html
-        assert "dotknij markera, aby zobaczyć informacje o klubie" in html
-        assert "tap a marker to see the club information" in html
+        assert "map-how-desktop" in html
+        assert "map-how-mobile" in html
+        assert "Dotknij markera, aby zobaczyć informacje o klubie." in html
+        assert "Tap a marker to see the club information." in html
         assert "Niektóre kluby (np. AFC)" not in html
 
     def test_warsaw_combined_marker_label(self):
@@ -210,7 +213,11 @@ class TestPostListView:
         html = self.client.get(self.url).content.decode()
         assert "Plakat czarno-biały: napis RUGBY, data i godzina spotkania 6.06.2008 w GCK" in html
         assert "Plakat czarno-biały z nagłówkiem Ogłaszamy nabór" in html
-        assert "Wycinek prasowy dotyczący środowiska rugby w Olsztynie." in html
+        assert "Plakat informujący o naborze do sekcji." in html
+        assert "Autor: Paweł Mieczkowski" in html
+        assert "Materiał prasowy zachowany w archiwum drużyny." in html
+        assert "Autor: Sebastian Woźniak" in html
+        assert "Skan z Encyklopedii Polskiego Rugby." in html
 
     def test_map_card_close_icon(self):
         html = self.client.get(self.url).content.decode()

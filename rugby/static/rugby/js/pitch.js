@@ -182,15 +182,14 @@
   function setPlayerPos(n, x, y) {
     const g = document.querySelector('#rugby-pitch .pitch-player[data-player="' + n + '"]');
     if (!g) return;
-    const circle = g.querySelector('circle');
-    const text = g.querySelector('text');
-    if (circle) {
+    g.querySelectorAll('circle').forEach((circle) => {
       circle.setAttribute('cx', x);
       circle.setAttribute('cy', y);
-    }
+    });
+    const text = g.querySelector('text');
     if (text) {
       text.setAttribute('x', x);
-      text.setAttribute('y', y + 5);
+      text.setAttribute('y', y + 6);
     }
   }
 
@@ -341,9 +340,26 @@
     root.querySelectorAll('.pitch-hit').forEach((hit) => {
       const activate = () => {
         const key = hit.getAttribute('data-pitch-key');
-        const map = { in_goal: 4, posts: 5, player: stepIndex };
         if (key === 'in_goal') goTo(4);
         else if (key === 'posts') goTo(5);
+      };
+      hit.addEventListener('click', activate);
+      hit.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate();
+        }
+      });
+    });
+
+    root.querySelectorAll('.pitch-player').forEach((hit) => {
+      const activate = () => {
+        const n = Number(hit.getAttribute('data-player'));
+        if (!n) return;
+        const later = PHASES.findIndex((phase, i) => i > stepIndex && phase.active.includes(n));
+        const first = PHASES.findIndex((phase) => phase.active.includes(n));
+        if (later >= 0) goTo(later);
+        else if (first >= 0) goTo(first);
       };
       hit.addEventListener('click', activate);
       hit.addEventListener('keydown', (e) => {
