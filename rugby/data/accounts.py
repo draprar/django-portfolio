@@ -1,5 +1,5 @@
 """
-Three editorial archive accounts for the public /rugby/ page (not DB Post rows).
+Four editorial archive accounts for the public /rugby/ page (not DB Post rows).
 Edit this file to change titles or bodies; keep PL/EN pairs in sync.
 """
 
@@ -35,6 +35,28 @@ ACCOUNTS = [
             "material. Day to day we trained on the MOSiR side pitch, which was stony and poorly "
             "suited to rugby, because the facility’s management would not let us use the main pitch, "
             "so we were looking for a better place near Giżycko."
+        ),
+    },
+    {
+        "slug": "orkan-2008",
+        "year": "2008",
+        "meta_pl": "Trening: 13 sierpnia 2008 · Miejsce: Giżycko",
+        "meta_en": "Training: 13 August 2008 · Location: Giżycko",
+        "title_pl": "Trening z Orkanem",
+        "title_en": "Training with Orkan",
+        "body_pl": (
+            "13 sierpnia 2008 roku o godzinie 10:30 na górnej płycie stadionu MOSiR odbył się "
+            "trening z Maciejem Misiakiem, trenerem reprezentacji Polski juniorów, oraz Jakubem "
+            "Sekleckim, zawodnikiem Orkana Sochaczew. Przyjechali do Giżycka na obóz z drużyną "
+            "MKS Orkan Sochaczew; tego dnia byliśmy także na ich treningu. Zobaczyliśmy, jak "
+            "można pracować z piłką i które ćwiczenia warto wykorzystywać na własnych zajęciach."
+        ),
+        "body_en": (
+            "On 13 August 2008, at 10:30 a.m., a session took place on the upper pitch at the "
+            "MOSiR stadium with Maciej Misiak, coach of the Polish junior national team, and "
+            "Jakub Seklecki, a player from Orkan Sochaczew. They had come to Giżycko for a camp "
+            "with MKS Orkan Sochaczew; we also attended their training that day. We saw how to "
+            "work with the ball and which exercises were worth using in our own sessions."
         ),
     },
     {

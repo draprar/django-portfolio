@@ -16,9 +16,9 @@ class TestPostListView:
     def test_post_list_ok(self):
         assert self.client.get(self.url).status_code == 200
 
-    def test_three_accounts_in_context(self):
+    def test_accounts_in_context(self):
         response = self.client.get(self.url)
-        assert len(response.context["accounts"]) == 3
+        assert len(response.context["accounts"]) == 4
 
     def test_pesel_post_not_in_html(self):
         user = User.objects.create(username="peseluser")
@@ -98,6 +98,9 @@ class TestPostListView:
         assert "Mecz: 5 lipca 2008 · Miejsce: Gągławki" in html
         assert "Wpis opublikowany: 10 listopada 2008 · Miejsce: Giżycko" in html
         assert "Trening z zawodnikiem Skry Warszawa" in html
+        assert "Trening: 13 sierpnia 2008 · Miejsce: Giżycko" in html
+        assert "Trening z Orkanem" in html
+        assert "Maciejem Misiakiem" in html
 
     def test_footer_photo_only(self):
         html = self.client.get(self.url).content.decode()
@@ -194,9 +197,13 @@ class TestPostListView:
 
     def test_about_editorial_copy(self):
         html = self.client.get(self.url).content.decode()
-        assert "W zachowanych materiałach nie ma wyniku meczu" in html
+        assert "Narodziny lokalnej drużyny" not in html
+        assert "year-rail" not in html
         assert "energia tamtych lat" not in html
         assert "fajny sposób" not in html
+        assert "Koniec działalności · 18 września 2010" in html
+        assert 'id="site-origin"' in html
+        assert "rugby.gizycko.pl" in html
 
     def test_media_poster_alts(self):
         html = self.client.get(self.url).content.decode()
@@ -220,3 +227,4 @@ class TestPostListView:
         assert 'data-en="Rugby in a nutshell"' in html
         assert 'data-en="Our first friendly in Gągławki"' in html
         assert 'data-en="Training with a Skra Warszawa player"' in html
+        assert 'data-en="Training with Orkan"' in html

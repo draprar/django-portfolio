@@ -1040,8 +1040,8 @@ a.hero-scroll-hint {
 #places,
 #info,
 #media,
-#about,
-#archive {
+#archive,
+#site-origin {
   scroll-margin-top: 5.5rem;
 }
 
@@ -1163,6 +1163,11 @@ a.hero-scroll-hint {
   border-left: 3px solid var(--gold);
   padding-left: 1rem;
   margin: 0;
+}
+
+.farewell-block {
+  border-color: rgba(196, 146, 42, 0.5);
+  box-shadow: 0 0 0 1px rgba(196, 146, 42, 0.22);
 }
 
 .rugby-card {

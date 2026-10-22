@@ -114,53 +114,6 @@
     });
   }
 
-  function animateTimelineLine() {
-    const timeline = document.querySelector('.timeline');
-    if (!timeline) return;
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          timeline.classList.add('line-visible');
-          obs.unobserve(timeline);
-        }
-      });
-    }, { threshold: 0.05 });
-    obs.observe(timeline);
-  }
-
-  function bindYearRail() {
-    document.querySelectorAll('[data-year-filter]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const year = btn.getAttribute('data-year-filter');
-        document.querySelectorAll('[data-year-filter]').forEach((item) => {
-          const on = item === btn;
-          item.classList.toggle('is-active', on);
-          item.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        document.querySelectorAll('.timeline [data-year]').forEach((el) => {
-          const itemYear = el.getAttribute('data-year');
-          el.classList.toggle('is-dimmed', year !== 'all' && itemYear !== year);
-        });
-      });
-    });
-  }
-
-  function bindAccountJump() {
-    document.querySelectorAll('a[href*="#account-"]').forEach((link) => {
-      link.addEventListener('click', () => {
-        const id = (link.getAttribute('href') || '').split('#').pop();
-        const card = id && document.getElementById(id);
-        if (!card) return;
-        document.querySelectorAll('.account-card.is-linked').forEach((el) => el.classList.remove('is-linked'));
-        window.setTimeout(() => {
-          card.classList.add('is-linked');
-          const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          if (!reduce) window.setTimeout(() => card.classList.remove('is-linked'), 1100);
-        }, 350);
-      });
-    });
-  }
-
   function bindParallax() {
     const bg = document.querySelector('.hero-bg');
     const hero = document.querySelector('.hero');
@@ -177,9 +130,6 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     buildLightbox();
-    bindYearRail();
-    bindAccountJump();
     bindParallax();
-    animateTimelineLine();
   });
 })();

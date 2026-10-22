@@ -56,7 +56,6 @@
 {% include 'rugby/places.html' %}
 {% include 'rugby/info.html' %}
 {% include 'rugby/media.html' %}
-{% include 'rugby/about.html' %}
 
 <section class="page-section bg-light rugby-scroll-section" id="archive">
   <div class="container px-4 py-5">
@@ -66,8 +65,10 @@
     <div>
       {% block news %}{% endblock %}
     </div>
+    {% include 'rugby/closing.html' %}
   </div>
 </section>
+{% include 'rugby/origin.html' %}
 </main>
 
 {% include 'rugby/footer.html' %}

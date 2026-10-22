@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 
 # Legacy list copied from pre-v11 places.py (run once).
