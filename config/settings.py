@@ -130,7 +130,6 @@ INSTALLED_APPS = [
     "analytics",
     "rozdroze",
     "code",
-    "poligon",
     "wiciedzy.apps.WiciedzyConfig",
     # External
     "django_ratelimit",
@@ -147,7 +146,6 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "poligon.i18n.PoligonLanguageMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -169,7 +167,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "gallery.context_processors.categories",
-                "poligon.context_processors.nav",
             ],
         },
     },
