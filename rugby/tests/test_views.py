@@ -127,7 +127,8 @@ class TestPostListView:
         assert "Polska Liga Rugby 7 (PLR7)" in html
         assert "Ctrl/Cmd + kółko zmienia skalę mapy" in html
         assert "Jak korzystać z mapy?" in html
-        assert "dotknij skupiska" in html
+        assert "dotknij markera, aby zobaczyć informacje o klubie" in html
+        assert "tap a marker to see the club information" in html
         assert "Niektóre kluby (np. AFC)" not in html
 
     def test_warsaw_combined_marker_label(self):
