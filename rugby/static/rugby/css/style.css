@@ -7,10 +7,15 @@
   inset: 0;
   background: var(--dark);
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  transition: opacity 0.25s ease;
 }
+html.loader-active { overflow: hidden; }
+#loader-text { color: var(--muted); font-size: 0.95rem; }
 
 .spinner-border {
   border-color: var(--primary) transparent var(--primary) transparent !important;
@@ -37,6 +42,9 @@
   --surface3:     #151515;
   --light:        #e0e0e0;
   --border-hover: var(--border-quiet);
+  --fs-lead: 1.125rem;
+  --fs-body: 1.05rem;
+  --fs-caption: 1rem;
 }
 
 /* ── Base reset ─────────────────────────────────────────────────────────────── */
@@ -48,12 +56,60 @@ html, body {
   background-color: var(--ink);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  padding: 0.7rem 1.1rem;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 400;
+  border: none;
+  border-radius: 0 0 12px 0;
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-decoration: none;
+}
+
+[id^="account-"], #afc-farewell { scroll-margin-top: 5.5rem; }
+
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
   background-color: var(--ink);
-  background-attachment: fixed;
   color: #e0e0e0;
   margin: 0;
   padding: 0;
@@ -64,15 +120,22 @@ body {
 /* ── Back-to-top ────────────────────────────────────────────────────────────── */
 #topBtn {
   display: none;
+  flex-direction: row;
   position: fixed;
   bottom: 24px;
   right: 28px;
   z-index: 999;
   font-size: 16.5px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--border-quiet);
   background: var(--card);
   color: var(--muted);
   cursor: pointer;
+  border-radius: 8px;
   padding: 11px 14px;
   border-radius: 4px;
   font-family: inherit;
@@ -99,9 +162,15 @@ body {
   min-height: 56px;
 }
 
-.navbar .container-fluid {
+.navbar .container-fluid,
+.rugby-navbar-inner {
   align-items: center;
   min-height: 56px;
+}
+
+.rugby-navbar-inner {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .navbar.scrolled {
@@ -111,129 +180,64 @@ body {
   box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.5);
 }
 
-.navbar-brand {
+.navbar-brand,
+.rugby-brand {
   display: flex;
   align-items: center;
-  transition: opacity 0.2s;
-  padding: 0;
+  gap: 0.55rem;
+  padding: 0.35rem 0;
   line-height: 1;
-}
-.navbar-brand:hover { opacity: 0.75; }
-
-/* ── Nav links — left-aligned next to logo ──────────────────────────────────── */
-.navbar-nav {
-  gap: 0.11rem;
-  align-items: center;
-  margin-right: auto !important;
-  margin-left: 0 !important;
+  text-decoration: none;
 }
 
-.navbar-nav .nav-link {
-  position: relative;
-  color: #e0e0e0 !important;
-  font-size: 0.9rem;
-  font-weight: 300;
-  letter-spacing: 1px;
-  padding: 0.605rem 0.77rem;
-  transition: color 0.25s;
-  line-height: 1;
+.rugby-brand-mark {
+  display: block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.45));
 }
 
-/* Animated underline — only as wide as the text */
-.navbar-nav .nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0.77rem;
-  bottom: 0.33rem;
-  height: 2px;
-  width: calc(100% - 1.54rem);
-  background: linear-gradient(90deg, var(--gold), var(--gold-2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-  border-radius: 2px;
+.navbar:not(.scrolled) .rugby-brand-mark {
+  filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.75));
 }
 
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link.active::after { transform: scaleX(1); }
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active { color: var(--primary) !important; }
-
-/* ── Hamburger icon ──────────────────────────────────────────────────────────── */
-.navbar-toggler {
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 10px;
-}
-.navbar-toggler:focus { box-shadow: none; }
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232,232,232,0.85%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+.rugby-lang-toolbar .lang-btn {
+  text-shadow: none;
 }
 
-/* ── Mobile dropdown ────────────────────────────────────────────────────────── */
-@media (max-width: 767.98px) {
-  .navbar-collapse {
-    position: fixed;
-    top: 56px;
-    left: 0;
-    right: 0;
-    z-index: 1040;
-    background: #0d0d0d !important;  /* tło zawsze, nie tylko po .show */
-  }
-
-  /* Animacja rozwinięcia — sam panel */
-  .navbar-collapse.show,
-  .navbar-collapse.collapsing {
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.65);
-    padding: 0.825rem 0 1.375rem;
-  }
-
-  /* Linki centered, shrink-wrapped */
-  .navbar-collapse .navbar-nav {
-    align-items: center;
-    gap: 0.165rem;
-  }
-
-  .navbar-collapse .navbar-nav .nav-link {
-    display: inline-block;
-    text-align: center;
-    padding: 0.605rem 1.1rem;
-    color: var(--light) !important;
-  }
-
-  .navbar-collapse .navbar-nav .nav-link::after {
-    left: 0;
-    width: 100%;
-    bottom: 0.275rem;
-  }
-
-  .navbar-collapse .navbar-nav .nav-link:hover,
-  .navbar-collapse .navbar-nav .nav-link.active { color: var(--primary) !important; }
+.navbar:not(.scrolled) .rugby-lang-toolbar .lang-btn {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75);
 }
 
 /* HERO */
 
 .hero {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  height: 100dvh; /* dynamic viewport — accounts for mobile browser chrome */
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: #060606;
+}
+
+.hero-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -8vh;
+  bottom: -8vh;
   background-image:
     linear-gradient(rgba(0,0,0,0.82), rgba(6,6,6,0.58)),
     url("../img/header.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
-  overflow: hidden;
+  z-index: 0;
+  will-change: transform;
 }
 
 /* Grain overlay */
@@ -248,12 +252,12 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero {
+  .hero-bg {
     background-image:
       linear-gradient(rgba(0,0,0,0.65), rgba(6,6,6,0.45)),
       url("../img/header_mob.jpg");
-    background-attachment: scroll;
-    /* Pad for notch / home-indicator on modern phones */
+  }
+  .hero {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
   }
@@ -273,12 +277,12 @@ body {
 
 .hero-eyebrow {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
-  letter-spacing: 3px;
+  font-size: clamp(1.87rem, 3.9vw, 2.36rem);
+  letter-spacing: 4.9px;
   text-transform: none;
   color: var(--gold);
   font-weight: 300;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.79rem;
   opacity: 0;
   animation: fadeSlideUp 0.7s 0.2s ease forwards;
 }
@@ -296,10 +300,10 @@ body {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  font-size: clamp(1.71rem, 3.58vw, 1.95rem);
   font-weight: 300;
   color: var(--muted);
-  max-width: 36rem;
+  max-width: 58.5rem;
   margin: 0 auto;
   opacity: 0;
   animation: fadeSlideUp 0.8s 0.7s ease forwards;
@@ -338,6 +342,21 @@ body {
   animation: bounceArrow 1.4s ease infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-name,
+  .hero-eyebrow,
+  .hero h1,
+  .hero-subtitle,
+  .hero-scroll-hint,
+  .scroll-arrow {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  .hero-bg { transform: none !important; }
+  .timeline::before { animation: none !important; }
+}
+
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -356,7 +375,22 @@ body {
 }
 
 .page-section.bg-light {
-  background: rgba(10, 10, 10, 0.55) !important;
+  background: transparent !important;
+}
+
+main .page-section {
+  padding: clamp(1.25rem, 4vw, 2.75rem) clamp(0.65rem, 3vw, 1.25rem);
+}
+
+main .page-section > .container {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.25rem, 4vw, 1.85rem);
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 }
 
 .page-section .container {
@@ -383,15 +417,20 @@ body {
   line-height: 1.55;
 }
 
-/* Gold rule under section title */
+/* Gold rule under section title — equal gap above/below the bar */
 .page-section h2::after {
   content: '';
   display: block;
   width: 60px;
   height: 4px;
   background: linear-gradient(45deg, var(--gold), var(--gold-2));
-  margin: 14px auto 0;
+  margin: 14px auto 14px;
   border-radius: 2px;
+}
+
+.page-section .text-center.info > p,
+.page-section .text-center.info > .rugby-lead {
+  margin-top: 0;
 }
 
 .page-section h5.text-muted,
@@ -409,8 +448,7 @@ em, i, .text-muted em, h5 em, p em {
   margin-bottom: 2.2rem !important;
 }
 
-/* AOS: prevent FOUC */
-[data-aos] { opacity: 0; }
+/* Sections stay visible if the animation library does not load. */
 
 /* INFO SECTION  (#info) */
 
@@ -421,48 +459,53 @@ em, i, .text-muted em, h5 em, p em {
   font-size: 1.15rem;
   letter-spacing: 1px;
 }
-#info .text-muted { color: var(--muted) !important; font-size: 1.02rem; font-weight: 300; }
+#info .text-muted { color: var(--muted) !important; font-weight: 300; }
+#info .rugby-card .text-muted { font-size: var(--fs-body); }
 #info strong { color: var(--gold); }
 
-/* Three facts, same grid as codillin' offer cards */
-#info .row.text-center {
+/* AFC glance cards — independent of legacy Bootstrap column overrides */
+.glance-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  margin-left: 0;
-  margin-right: 0;
+  gap: 1rem;
+  margin: 0;
 }
 
-#info .col-md-4 {
-  width: auto;
-  max-width: none;
-  padding: 1.35rem 1.15rem 1.5rem;
-  background: var(--card);
-  border: 1px solid var(--border);
+@media (min-width: 768px) {
+  .glance-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+}
+
+.glance-grid__item {
+  min-width: 0;
+}
+
+#info .glance-grid .rugby-card {
   border-radius: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-#info .col-md-4:hover {
+#info .glance-grid .rugby-card p {
+  max-width: 65ch;
+}
+
+#info .glance-grid .rugby-card:hover {
   transform: translateY(-4px);
   box-shadow:
     0 0 0 1px rgba(196, 146, 42, 0.35),
     0 12px 28px rgba(0, 0, 0, 0.45);
-}
-
-@media (min-width: 768px) {
-  #info .row.text-center {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  border-color: rgba(196, 146, 42, 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #info .col-md-4,
-  .card {
+  .card,
+  #info .glance-grid .rugby-card {
     transition: none;
   }
-  #info .col-md-4:hover,
-  .card:hover {
+  .card:hover,
+  #info .glance-grid .rugby-card:hover {
     transform: none;
   }
 }
@@ -507,6 +550,10 @@ em, i, .text-muted em, h5 em, p em {
 .card:hover > img,
 .card:hover .img-fluid:not(.ratio *) {
   transform: scale(1.06);
+}
+
+.trace-card:hover .trace-open img {
+  transform: none;
 }
 
 /* ── YouTube thumbnail card ─────────────────────────────────────────────────── */
@@ -865,6 +912,12 @@ footer.footer {
   font-weight: 300;
 }
 
+footer.footer.footer-photo {
+  padding: 1.5rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--panel) !important;
+}
+
 footer.footer img {
   max-height: 128px;
   opacity: 0.65;
@@ -881,6 +934,12 @@ footer.footer p {
 /* LANG SWITCHER */
 
 .lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 44px;
+  min-height: 44px;
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 400;
@@ -892,7 +951,7 @@ footer.footer p {
   color: var(--muted);
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
-  line-height: 1.4;
+  line-height: 1;
 }
 
 .lang-btn:hover,
@@ -900,16 +959,6 @@ footer.footer p {
   color: #fff;
   border-color: var(--gold);
   background: rgba(196, 146, 42, 0.18);
-}
-
-/* Mobile: lang buttons centred inside collapsed menu */
-@media (max-width: 767.98px) {
-  .navbar-collapse .lang-switcher-mobile {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0 0.25rem;
-  }
 }
 
 /* FOCUS / ACCESSIBILITY */
@@ -922,4 +971,929 @@ button:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 2px;
   border-radius: 3px;
+}
+
+/* --- AFC Rugby refresh --- */
+
+.hero-name {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.03rem, 4.88vw, 2.68rem);
+  font-weight: 300;
+  letter-spacing: 4.9px;
+  text-transform: none;
+  color: var(--gold);
+  margin-bottom: 1.38rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s 0.1s ease forwards;
+}
+
+@media (max-width: 767.98px) {
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .hero-name,
+  .hero-eyebrow,
+  .hero-subtitle {
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .hero-name {
+    font-size: clamp(1.15rem, 5.4vw, 1.85rem);
+    letter-spacing: clamp(1px, 0.35vw, 3.9px);
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-eyebrow {
+    font-size: clamp(0.62rem, 3.15vw, 1rem);
+    letter-spacing: clamp(0.5px, 0.2vw, 2px);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.68rem, 3.35vw, 1.05rem);
+    max-width: none;
+  }
+}
+
+.hero h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(45deg, var(--gold), var(--gold-2));
+}
+
+a.hero-scroll-hint {
+  text-decoration: none;
+  color: inherit;
+}
+
+.rugby-scroll-section,
+#rugby-basics,
+#places,
+#info,
+#media,
+#archive,
+#site-origin {
+  scroll-margin-top: 5.5rem;
+}
+
+.rugby-lead { max-width: 65ch; margin-left: auto; margin-right: auto; }
+
+/* Readable type scale: leads a step above card body; .small must not drop below ~16px. */
+.page-section .rugby-lead,
+.page-section .rugby-lead > p,
+.page-section .map-data-scope,
+.page-section .text-center.info > p {
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+}
+
+.page-section p.small,
+.page-section .small.text-muted,
+.page-section .text-muted.small,
+.page-section ul.small,
+.page-section .map-how-to,
+.page-section .map-legend,
+.page-section .map-hint,
+.timeline-panel .text-muted,
+.site-origin-note,
+.account-dek-line,
+.account-body {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+.page-section .map-data-scope {
+  max-width: 65ch;
+}
+
+.rugby-lead > h3 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.rugby-links-label {
+  color: var(--gold);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.rugby-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rugby-links li {
+  margin: 0;
+}
+
+.rugby-ext-btn {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  color: var(--gold);
+  font-weight: 500;
+  text-decoration: none;
+  background: rgba(10, 10, 10, 0.35);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rugby-ext-btn:hover,
+.rugby-ext-btn:focus-visible {
+  color: var(--gold-hover);
+  border-color: var(--gold-hover);
+  background: rgba(196, 146, 42, 0.08);
+  box-shadow: 0 0 0 1px rgba(196, 146, 42, 0.25);
+}
+
+.map-how-to {
+  max-width: 42rem;
+  text-align: left;
+}
+
+.map-how-to ul {
+  padding-left: 1.15rem;
+  margin-bottom: 0;
+}
+
+.rugby-pitch-block {
+  padding: 1.25rem 1.15rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.rugby-pitch-block > h3 {
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+#rugby-pitch {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 146, 42, 0.25);
+  background: #0a0a0a;
+}
+
+.site-origin-note {
+  padding: 1.15rem 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.farewell-quote {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.farewell-block {
+  border-color: rgba(196, 146, 42, 0.5);
+  box-shadow: 0 0 0 1px rgba(196, 146, 42, 0.22);
+}
+
+.rugby-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.pitch-svg { width: 100%; height: auto; display: block; }
+.pitch-hit { cursor: pointer; outline: none; }
+.pitch-hit:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.scoring-list .scoring-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: #e8e8e8;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
+  font-size: var(--fs-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scoring-list .scoring-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.scoring-list .scoring-pts {
+  flex-shrink: 0;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.scoring-list .scoring-desc {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.scoring-list .scoring-btn:hover,
+.scoring-list .scoring-btn:focus-visible,
+.scoring-list .scoring-btn.is-on {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(196, 146, 42, 0.25);
+}
+.scoring-list .scoring-btn.is-on {
+  font-weight: 600;
+}
+
+#rugby-pitch .pitch-hit.is-on rect,
+#rugby-pitch .pitch-hit.is-scoring rect {
+  stroke: #e8d7a2;
+  stroke-width: 3;
+}
+
+#rugby-pitch .pitch-hit.is-on.pitch-player circle {
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+#rugby-pitch .pitch-hit.is-on[data-pitch-key="posts"] line,
+#rugby-pitch .pitch-hit.is-scoring[data-pitch-key="posts"] line {
+  stroke: #fff;
+  stroke-width: 4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scoring-list .scoring-btn {
+    transition: none;
+  }
+}
+
+.pitch-explainer {
+  min-height: 3rem;
+  color: var(--muted);
+  font-size: var(--fs-body);
+}
+
+.rugby-map-viewport {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #101114;
+  touch-action: pan-y;
+  height: min(62dvh, 560px);
+  height: min(62vh, 560px);
+}
+
+.rugby-map-wrap .rugby-map-viewport {
+  max-width: min(100%, 720px);
+  margin-left: auto;
+  margin-right: auto;
+}
+.rugby-map-viewport.is-zoomed {
+  touch-action: none;
+}
+
+.rugby-map-stage {
+  position: relative;
+  width: 100%;
+  transform-origin: 0 0;
+  overflow: visible;
+}
+
+.rugby-map-base { width: 100%; height: auto; display: block; pointer-events: none; }
+
+.map-marker {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  margin-top: -22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  z-index: 2;
+  translate: 0 0;
+  scale: 1;
+  transform-origin: center center;
+  overflow: visible;
+  display: grid;
+  place-items: center;
+}
+
+.map-marker-dot {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.map-marker-dot svg {
+  display: block;
+  overflow: visible;
+  color: var(--gold);
+}
+
+.map-marker .mk-fill,
+.map-marker .mk-ring,
+.map-marker .mk-core,
+.map-marker .mk-diamond { display: none; }
+.map-marker .mk-fill,
+.map-marker .mk-core { fill: currentColor; }
+.map-marker .mk-ring { stroke: currentColor; fill: none; }
+.map-marker .mk-diamond { fill: #e8d7a2; }
+
+.map-marker--ekstraliga .mk-fill { display: inline; }
+.map-marker--sevens .mk-ring { display: inline; }
+.map-marker--both .mk-ring,
+.map-marker--both .mk-core { display: inline; }
+.map-marker--historic .mk-diamond,
+.map-marker--archive .mk-diamond { display: inline; }
+
+.map-marker:focus-visible .map-marker-dot svg,
+.map-marker:hover .map-marker-dot svg,
+.map-marker.is-active .map-marker-dot svg {
+  color: #e8d7a2;
+}
+
+.map-marker-label {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: #e6e6e6;
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+}
+
+.map-marker:hover .map-marker-label,
+.map-marker:focus-visible .map-marker-label,
+.map-marker.is-active .map-marker-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+.map-marker.is-clustered {
+  z-index: 3;
+}
+
+.map-marker.is-filtered-out {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.map-filter-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.map-btn.is-active {
+  border-color: var(--gold);
+  color: #fff;
+  background: rgba(196, 146, 42, 0.15);
+}
+
+.map-club-section { margin-top: 1.25rem; }
+.map-club-section h4 {
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+
+.map-marker-label--e { left: calc(50% + 10px); top: 50%; transform: translateY(-50%); }
+.map-marker-label--w { right: calc(50% + 10px); left: auto; top: 50%; transform: translateY(-50%); }
+.map-marker-label--s { left: 50%; top: calc(50% + 10px); transform: translateX(-50%); }
+.map-marker-label--n { left: 50%; bottom: calc(50% + 10px); top: auto; transform: translateX(-50%); }
+
+.map-tier {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.rugby-map-wrap {
+  position: relative;
+  padding: 1rem 1rem 0.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.map-card {
+  position: fixed;
+  z-index: 1040;
+  width: min(260px, calc(100vw - 24px));
+  max-width: 260px;
+  margin: 0;
+  padding: 0.55rem 2rem 0.6rem 0.75rem;
+  background: var(--card);
+  border: 1px solid rgba(196, 146, 42, 0.45);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  pointer-events: auto;
+}
+.map-card .map-card-club { font-size: 0.95rem; margin-bottom: 0.35rem !important; }
+.map-card .map-card-body { white-space: pre-line; line-height: 1.35; margin-bottom: 0.35rem; }
+.map-card-close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+.map-card-close:hover,
+.map-card-close:focus-visible {
+  color: var(--gold);
+}
+.map-card-close-icon {
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1;
+}
+.map-card-link-row { margin: 0; }
+.map-data-note {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.map-leaders {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+.map-leaders line {
+  stroke: rgba(232, 215, 162, 0.6);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+
+.map-btn {
+  font-size: 0.8rem;
+  margin-right: 0.35rem;
+  margin-bottom: 0.35rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+
+.map-btn:hover { border-color: var(--gold); color: #fff; }
+
+.trace-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.trace-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #151515;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.trace-open {
+  cursor: zoom-in;
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  transition: box-shadow 0.2s ease;
+}
+
+.trace-open:hover,
+.trace-open:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+
+.trace-open img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #151515;
+}
+
+.trace-card--video .yt-thumb-wrap {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trace-card--video .yt-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.footer-photo-wrap {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+footer.footer.footer-photo .footer-photo-img {
+  width: 100%;
+  display: block;
+  max-height: 128px;
+  margin-bottom: 0;
+  opacity: 0.18;
+  filter: grayscale(1) contrast(0.88) brightness(0.52);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.footer-photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 6, 6, 0.35) 0%,
+    rgba(6, 6, 6, 0.55) 50%,
+    rgba(6, 6, 6, 0.62) 100%
+  );
+}
+.account-card {
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.rugby-accounts .account-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(196, 146, 42, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(196, 146, 42, 0.25),
+    0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.account-eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.45rem;
+}
+
+.account-title {
+  margin-bottom: 0.65rem;
+  color: #fff;
+}
+
+/* Compact timeline — vertical axis, no legacy float/circle layout */
+.timeline.timeline-compact {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  max-width: 44rem;
+  position: relative;
+}
+
+.timeline.timeline-compact::before {
+  left: 11px;
+  width: 2px;
+  margin-left: 0;
+  opacity: 0.45;
+  transform: none;
+  background: linear-gradient(to bottom, var(--gold) 0%, rgba(196, 146, 42, 0.15) 100%);
+}
+
+.timeline.timeline-compact.line-visible::before {
+  opacity: 0.45;
+  transform: none;
+}
+
+.timeline.timeline-compact > li {
+  position: relative;
+  min-height: 0;
+  margin-bottom: 1.35rem;
+  padding-left: 2.15rem;
+}
+
+.timeline.timeline-compact > li::after {
+  content: none;
+  display: none;
+}
+.timeline.timeline-compact > li::before {
+  display: block;
+  content: '';
+  clear: none;
+}
+
+.timeline.timeline-compact > li::before {
+  position: absolute;
+  left: 4px;
+  top: 0.55rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--ink);
+  box-shadow: 0 0 0 2px rgba(196, 146, 42, 0.28);
+  z-index: 2;
+}
+
+.timeline.timeline-compact .timeline-panel {
+  float: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  padding: 1rem 1.15rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-align: left;
+}
+.timeline.timeline-compact .timeline-panel > * {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+}
+
+.timeline.timeline-compact .timeline-title {
+  all: unset;
+  display: block;
+  color: var(--gold);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0 0 0.35rem;
+}
+
+.timeline.timeline-compact #afc-farewell .timeline-panel {
+  border-color: rgba(196, 146, 42, 0.5);
+  box-shadow: 0 0 0 1px rgba(196, 146, 42, 0.22);
+}
+
+@media (min-width: 768px) {
+  .timeline.timeline-compact::before { left: 11px; }
+  .timeline.timeline-compact > li .timeline-panel,
+  .timeline.timeline-compact > li.timeline-inverted > .timeline-panel {
+    float: none;
+    width: auto;
+    padding: 1rem 1.15rem;
+    text-align: left;
+  }
+}
+
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.93);
+  align-items: center;
+  justify-content: center;
+}
+
+#lb-overlay.open { display: flex; }
+
+#lb-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 92vw;
+  max-height: 92vh;
+}
+
+#lb-img {
+  max-width: 88vw;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+#lb-caption { margin-top: 0.75rem; color: rgba(232, 232, 232, 0.75); text-align: center; font-size: 0.9rem; }
+
+#lb-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#lb-prev, #lb-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#lb-prev { left: 14px; }
+#lb-next { right: 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rugby-map-stage { transition: none; }
+  .scroll-arrow { animation: none; }
+  .hero-bg { transform: none !important; }
+}
+
+.page-section a,
+#archive a,
+.rugby-link {
+  color: var(--gold);
+  text-underline-offset: 0.18em;
+}
+.page-section a:visited,
+#archive a:visited,
+.rugby-link:visited { color: var(--gold); }
+.page-section a:hover,
+#archive a:hover,
+.rugby-link:hover { color: var(--gold-hover); }
+.page-section a:active,
+#archive a:active,
+.rugby-link:active { color: var(--gold-hover); }
+.page-section a:focus-visible,
+#archive a:focus-visible,
+.rugby-link:focus-visible {
+  color: var(--gold-hover);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+#rugby-basics .phase-nav-btn { min-height: 44px; min-width: 44px; }
+#rugby-pitch .pitch-player circle { transition: cx 0.35s ease, cy 0.35s ease; }
+#rugby-pitch .phase-mark { opacity: 0; transition: opacity 0.2s ease; }
+#rugby-pitch .phase-mark.is-on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  #rugby-pitch .pitch-player circle { transition: none; }
+}
+
+.year-rail, .phase-row, .phase-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.8rem 0 1rem;
+}
+.year-btn, .phase-btn {
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: #e8e8e8;
+  font: inherit;
+}
+.year-btn.is-active, .phase-btn.is-on {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+#phase-steps .phase-btn.is-on {
+  font-weight: 600;
+}
+.year-rail { width: 100%; }
+@media (max-width: 767.98px) {
+  .year-btn { flex: 1 1 auto; }
+}
+[data-year].is-dimmed { opacity: 0.38; }
+.account-card.is-linked { box-shadow: 0 0 0 2px var(--gold); }
+.account-dek { margin-bottom: 0.35rem; }
+.account-place, .account-dek-line { display: block; }
+.account-dek-line { color: var(--muted); font-size: 0.92rem; }
+
+.phase-now {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0.25rem;
+  color: #fff;
+  font-size: 1.15rem;
+}
+.phase-score { color: var(--gold); letter-spacing: 0.06em; min-height: 0; }
+.phase-explainer { margin: 0 0 0.75rem; color: var(--muted); }
+.phase-aside-label { margin: 0.35rem 0 0.25rem; }
+.phase-row-aside .phase-btn { flex-basis: auto; background: transparent; }
+.phase-row {
+  overflow: visible;
+  flex-wrap: wrap;
+  scroll-snap-type: none;
+}
+.phase-btn { flex: 1 1 30%; }
+.phase-mark { opacity: 0; stroke: #e8d7a2; stroke-width: 3; fill: none; }
+.phase-mark.is-on { opacity: 1; }
+#phase-scrum.is-on circle, #phase-maul.is-on circle, #phase-ball.is-on {
+  fill: #c4922a; stroke: #fff; opacity: 1;
+}
+.pitch-player.is-on circle { stroke: #fff; stroke-width: 3; }
+
+.map-legend-swatches { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; list-style: none; padding: 0.8rem 0 0; margin: 0; }
+.map-legend-swatches li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: var(--fs-body); }
+.map-legend-swatches .swatch {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--gold);
+  overflow: visible;
+}
+@media (max-width: 767.98px) {
+  main .page-section { padding: 0.85rem 0.5rem; }
+  main .page-section > .container {
+    padding: 1.35rem 1rem !important;
+    border-radius: 18px;
+  }
+  .info { margin-top: 0 !important; margin-bottom: 1rem !important; }
+  .page-section h2 {
+    letter-spacing: 0;
+    line-height: 1.25;
+    font-size: 1.45rem;
+  }
+  .page-section h2::after { margin: 10px auto 10px; }
+  .page-section .text-center > p,
+  .page-section .text-center > .rugby-lead,
+  .rugby-lead p {
+    text-align: left;
+  }
+  .rugby-pitch-block { margin-top: 1.25rem !important; }
+  .trace-rail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    overflow: visible;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .trace-rail > .col {
+    width: auto !important;
+    max-width: none;
+    padding: 0;
+  }
+  .trace-media, .trace-card--video .yt-thumb-wrap { aspect-ratio: 3 / 4; }
 }

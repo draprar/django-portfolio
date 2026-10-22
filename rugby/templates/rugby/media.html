@@ -1,109 +1,136 @@
 {% load static %}
-
 <section class="page-section bg-light" id="media">
-    <div class="container px-4 py-5">
-        <div class="text-center info" data-aos="fade-up">
-            <h2 class="text-uppercase"
-                data-en="Club Promotion" data-pl="Promocja klubu">Promocja klubu</h2>
-            <h5 class="my-3 text-muted">
-              <em data-en="Selected press materials, posters and media."
-                  data-pl="Wybrane materiały prasowe, plakaty oraz media.">
-                Wybrane materiały prasowe, plakaty oraz media.
-              </em>
-            </h5>
-        </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <img class="img-fluid w-100" src="{% static 'rugby/img/1_poster.png' %}" alt="Pierwszy plakat" style="object-fit:cover;" />
-                    <div class="card-body">
-                        <p class="fw-semibold mb-1"
-                           data-en="First poster" data-pl="Pierwszy plakat">Pierwszy plakat</p>
-                        <p class="text-muted small mb-0"
-                           data-en="Author: Jakub Turek" data-pl="Autor: Jakub Turek">Autor: Jakub Turek</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <img class="img-fluid w-100" src="{% static 'rugby/img/2_poster.jpg' %}" alt="Drugi plakat" style="object-fit:cover;" />
-                    <div class="card-body">
-                        <p class="fw-semibold mb-1"
-                           data-en="Second poster" data-pl="Drugi plakat">Drugi plakat</p>
-                        <p class="text-muted small mb-0"
-                           data-en="Author: Jakub Turek" data-pl="Autor: Jakub Turek">Autor: Jakub Turek</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <img class="img-fluid w-100" src="{% static 'rugby/img/gg.png' %}" alt="Artykuł Gazeta Giżycka" style="object-fit:cover;" />
-                    <div class="card-body">
-                        <p class="fw-semibold mb-1"
-                           data-en="Article (Gazeta Giżycka)" data-pl="Artykuł (Gazeta Giżycka)">Artykuł (Gazeta Giżycka)</p>
-                        <p class="text-muted small mb-0"
-                           data-en="Author: Paweł Mieczkowski" data-pl="Autor: Paweł Mieczkowski">Autor: Paweł Mieczkowski</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <img class="img-fluid w-100" src="{% static 'rugby/img/go.png' %}" alt="Artykuł Gazeta Olsztyńska" style="object-fit:cover;" />
-                    <div class="card-body">
-                        <p class="fw-semibold mb-1"
-                           data-en="Article (Gazeta Olsztyńska)" data-pl="Artykuł (Gazeta Olsztyńska)">Artykuł (Gazeta Olsztyńska)</p>
-                        <p class="text-muted small mb-0"
-                           data-en="Author: Sebastian Woźniak" data-pl="Autor: Sebastian Woźniak">Autor: Sebastian Woźniak</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <img class="img-fluid w-100" src="{% static 'rugby/img/pzr.png' %}" alt="Encyklopedia Polskiego Rugby" style="object-fit:cover;" />
-                    <div class="card-body">
-                        <p class="fw-semibold mb-1"
-                           data-en="Encyclopaedia of Polish Rugby" data-pl="Encyklopedia Polskiego Rugby">Encyklopedia Polskiego Rugby</p>
-                        <p class="text-muted small mb-0"
-                           data-en="Authors: Maciej Powała-Niedźwiedzki &amp; Jacek Wierzbicki"
-                           data-pl="Autorzy: Maciej Powała-Niedźwiedzki &amp; Jacek Wierzbicki">Autorzy: Maciej Powała-Niedźwiedzki &amp; Jacek Wierzbicki</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <a href="https://www.youtube.com/watch?v=TBdK3AkhQKE"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="yt-thumb-link"
-                       aria-label="Watch on YouTube">
-                        <div class="yt-thumb-wrap">
-                            <img
-                                src="https://img.youtube.com/vi/TBdK3AkhQKE/hqdefault.jpg"
-                                alt="Film AFC Rugby Giżycko"
-                                class="img-fluid w-100 yt-thumb-img">
-                            <div class="yt-play-btn" aria-hidden="true">
-                                <svg viewBox="0 0 68 48" width="68" height="48">
-                                    <path d="M66.52 7.74A8.5 8.5 0 0 0 60.7 1.9C55.4.5 34 .5 34 .5S12.6.5 7.3 1.9A8.5 8.5 0 0 0 1.48 7.74C.08 13.08.08 24 .08 24s0 10.92 1.4 16.26A8.5 8.5 0 0 0 7.3 46.1C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.4a8.5 8.5 0 0 0 5.82-5.84C67.92 34.92 67.92 24 67.92 24s0-10.92-1.4-16.26z" fill="#ff0000"/>
-                                    <path d="M27 34l18-10-18-10v20z" fill="#fff"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="card-body">
-                        <p class="fw-semibold mb-1"
-                           data-en="Film" data-pl="Film">Film</p>
-                        <p class="text-muted small mb-0"
-                           data-en="Author: Michał Walerowicz" data-pl="Autor: Michał Walerowicz">Autor: Michał Walerowicz</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+  <div class="container px-4 py-5">
+    <div class="text-center info mb-4">
+      <h2 data-pl="Ślady drużyny" data-en="Traces of the team">Ślady drużyny</h2>
+      <p class="text-muted"
+         data-pl="Zachowane materiały obejmują plakaty, wycinki prasowe, hasło w encyklopedii i film związany z inicjatywą."
+         data-en="Surviving materials include posters, newspaper clippings, an encyclopedia entry and a video related to the initiative.">
+        Zachowane materiały obejmują plakaty, wycinki prasowe, hasło w encyklopedii i film związany z inicjatywą.
+      </p>
     </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 trace-rail">
+      <div class="col" data-year="2008">
+        <div class="card shadow-sm h-100 trace-card">
+          <button type="button" class="trace-open border-0 bg-transparent p-0 w-100 text-start trace-media"
+                  data-lightbox-item
+                  data-src="{% static 'rugby/img/1_poster.png' %}"
+                  data-title-pl="Plakat spotkania organizacyjnego"
+                  data-title-en="Organisational meeting poster"
+                  data-aria-pl="Powiększ: Plakat spotkania organizacyjnego"
+                  data-aria-en="Enlarge: Organisational meeting poster"
+                  data-alt-pl="Plakat czarno-biały: napis RUGBY, data i godzina spotkania 6.06.2008 w GCK, sekcja Active Free Crew oraz logo Giżyckiego Centrum Kultury."
+                  data-alt-en="Black-and-white poster: RUGBY headline, meeting date and time 6 June 2008 at GCK, Active Free Crew section and Giżycko Cultural Centre logo.">
+            <img class="img-fluid w-100" src="{% static 'rugby/img/1_poster.png' %}" width="600" height="800" loading="lazy" decoding="async"
+                 data-alt-pl="Plakat czarno-biały: napis RUGBY, data i godzina spotkania 6.06.2008 w GCK, sekcja Active Free Crew oraz logo Giżyckiego Centrum Kultury."
+                 data-alt-en="Black-and-white poster: RUGBY headline, meeting date and time 6 June 2008 at GCK, Active Free Crew section and Giżycko Cultural Centre logo."
+                 alt="Plakat czarno-biały: napis RUGBY, data i godzina spotkania 6.06.2008 w GCK, sekcja Active Free Crew oraz logo Giżyckiego Centrum Kultury.">
+          </button>
+          <div class="card-body">
+            <p class="fw-semibold mb-1" data-pl="Plakat spotkania organizacyjnego" data-en="Organisational meeting poster">Plakat spotkania organizacyjnego</p>
+            <p class="text-muted small mb-0" data-pl="Plakat zapraszający na spotkanie organizacyjne w czerwcu 2008 roku." data-en="A poster inviting people to the organisational meeting in June 2008.">Plakat zapraszający na spotkanie organizacyjne w czerwcu 2008 roku.</p>
+            <p class="text-muted small mb-0" data-pl="Autor: Jakub Turek" data-en="Author: Jakub Turek">Autor: Jakub Turek</p>
+          </div>
+        </div>
+      </div>
+      <div class="col" data-year="2008">
+        <div class="card shadow-sm h-100 trace-card">
+          <button type="button" class="trace-open border-0 bg-transparent p-0 w-100 text-start trace-media"
+                  data-lightbox-item
+                  data-src="{% static 'rugby/img/2_poster.jpg' %}"
+                  data-title-pl="Plakat naborowy"
+                  data-title-en="Recruitment poster"
+                  data-aria-pl="Powiększ: Plakat naborowy"
+                  data-aria-en="Enlarge: Recruitment poster"
+                  data-alt-pl="Plakat czarno-biały z nagłówkiem Ogłaszamy nabór, harmonogramem treningów w sobotę i niedzielę na boisku SP 7 oraz napisami MTS Rugby Giżycko i GCK."
+                  data-alt-en="Black-and-white poster headed Ogłaszamy nabór, with Saturday and Sunday training times at Primary School 7 and MTS Rugby Giżycko and GCK lettering.">
+            <img class="img-fluid w-100" src="{% static 'rugby/img/2_poster.jpg' %}" width="600" height="800" loading="lazy" decoding="async"
+                 data-alt-pl="Plakat czarno-biały z nagłówkiem Ogłaszamy nabór, harmonogramem treningów w sobotę i niedzielę na boisku SP 7 oraz napisami MTS Rugby Giżycko i GCK."
+                 data-alt-en="Black-and-white poster headed Ogłaszamy nabór, with Saturday and Sunday training times at Primary School 7 and MTS Rugby Giżycko and GCK lettering."
+                 alt="Plakat czarno-biały z nagłówkiem Ogłaszamy nabór, harmonogramem treningów w sobotę i niedzielę na boisku SP 7 oraz napisami MTS Rugby Giżycko i GCK.">
+          </button>
+          <div class="card-body">
+            <p class="fw-semibold mb-1" data-pl="Plakat naborowy" data-en="Recruitment poster">Plakat naborowy</p>
+            <p class="text-muted small mb-0" data-pl="Zachowany plakat informujący o naborze do sekcji." data-en="A surviving poster announcing recruitment to the team.">Zachowany plakat informujący o naborze do sekcji.</p>
+            <p class="text-muted small mb-0" data-pl="Autor: Jakub Turek" data-en="Author: Jakub Turek">Autor: Jakub Turek</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm h-100 trace-card">
+          <button type="button" class="trace-open border-0 bg-transparent p-0 w-100 text-start trace-media"
+                  data-lightbox-item data-src="{% static 'rugby/img/gg.png' %}"
+                  data-title-pl="Wycinek prasowy — Giżycko" data-title-en="Newspaper clipping — Giżycko"
+                  data-aria-pl="Powiększ: Wycinek prasowy — Giżycko" data-aria-en="Enlarge: Newspaper clipping — Giżycko"
+                  data-alt-pl="Skan artykułu prasowego z Giżycka." data-alt-en="Scan of a newspaper article from Giżycko.">
+            <img class="img-fluid w-100" src="{% static 'rugby/img/gg.png' %}" width="600" height="800" loading="lazy" decoding="async"
+                 data-alt-pl="Skan artykułu prasowego z Giżycka." data-alt-en="Scan of a newspaper article from Giżycko."
+                 alt="Skan artykułu prasowego z Giżycka.">
+          </button>
+          <div class="card-body">
+            <p class="fw-semibold mb-1" data-pl="Wycinek prasowy — Giżycko" data-en="Newspaper clipping — Giżycko">Wycinek prasowy — Giżycko</p>
+            <p class="text-muted small mb-0" data-pl="Materiał prasowy zachowany w archiwum drużyny." data-en="A press clipping preserved in the team archive.">Materiał prasowy zachowany w archiwum drużyny.</p>
+            <p class="text-muted small mb-0" data-pl="Fotografia: Paweł Mieczkowski" data-en="Photo credit: Paweł Mieczkowski">Fotografia: Paweł Mieczkowski</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm h-100 trace-card">
+          <button type="button" class="trace-open border-0 bg-transparent p-0 w-100 text-start trace-media"
+                  data-lightbox-item data-src="{% static 'rugby/img/go.png' %}"
+                  data-title-pl="Wycinek prasowy — Olsztyn" data-title-en="Newspaper clipping — Olsztyn"
+                  data-aria-pl="Powiększ: Wycinek prasowy — Olsztyn" data-aria-en="Enlarge: Newspaper clipping — Olsztyn"
+                  data-alt-pl="Skan artykułu prasowego związanego z Olsztynem." data-alt-en="Scan of a newspaper article connected with Olsztyn.">
+            <img class="img-fluid w-100" src="{% static 'rugby/img/go.png' %}" width="600" height="800" loading="lazy" decoding="async"
+                 data-alt-pl="Skan artykułu prasowego związanego z Olsztynem." data-alt-en="Scan of a newspaper article connected with Olsztyn."
+                 alt="Skan artykułu prasowego związanego z Olsztynem.">
+          </button>
+          <div class="card-body">
+            <p class="fw-semibold mb-1" data-pl="Wycinek prasowy — Olsztyn" data-en="Newspaper clipping — Olsztyn">Wycinek prasowy — Olsztyn</p>
+            <p class="text-muted small mb-0" data-pl="Wycinek prasowy dotyczący środowiska rugby w Olsztynie." data-en="A newspaper clipping about the rugby community in Olsztyn.">Wycinek prasowy dotyczący środowiska rugby w Olsztynie.</p>
+            <p class="text-muted small mb-0" data-pl="Podpis widoczny na wycinku: Sebastian Woźniak" data-en="Name shown on the clipping: Sebastian Woźniak">Podpis widoczny na wycinku: Sebastian Woźniak</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm h-100 trace-card">
+          <button type="button" class="trace-open border-0 bg-transparent p-0 w-100 text-start trace-media"
+                  data-lightbox-item data-src="{% static 'rugby/img/pzr.png' %}"
+                  data-title-pl="Encyklopedia Polskiego Rugby" data-title-en="Polish Rugby Encyclopedia"
+                  data-aria-pl="Powiększ: Encyklopedia Polskiego Rugby" data-aria-en="Enlarge: Polish Rugby Encyclopedia"
+                  data-alt-pl="Skan hasła o drużynie w Encyklopedii Polskiego Rugby." data-alt-en="Scan of the entry about the team in the Polish Rugby Encyclopedia.">
+            <img class="img-fluid w-100" src="{% static 'rugby/img/pzr.png' %}" width="600" height="800" loading="lazy" decoding="async"
+                 data-alt-pl="Skan hasła o drużynie w Encyklopedii Polskiego Rugby." data-alt-en="Scan of the entry about the team in the Polish Rugby Encyclopedia."
+                 alt="Skan hasła o drużynie w Encyklopedii Polskiego Rugby.">
+          </button>
+          <div class="card-body">
+            <p class="fw-semibold mb-1" data-pl="Encyklopedia Polskiego Rugby" data-en="Polish Rugby Encyclopedia">Encyklopedia Polskiego Rugby</p>
+            <p class="text-muted small mb-0" data-pl="Skan zachowanego hasła poświęconego drużynie." data-en="A scan of the surviving entry about the team.">Skan zachowanego hasła poświęconego drużynie.</p>
+            <p class="text-muted small mb-0" data-pl="Autorzy: Maciej Powała-Niedźwiedzki i Jacek Wierzbicki" data-en="Authors: Maciej Powała-Niedźwiedzki and Jacek Wierzbicki">Autorzy: Maciej Powała-Niedźwiedzki i Jacek Wierzbicki</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm h-100 trace-card trace-card--video">
+          <a href="https://www.youtube.com/watch?v=TBdK3AkhQKE" target="_blank" rel="noopener noreferrer" class="yt-thumb-link"
+             data-aria-pl="Film AFC Rugby Giżycko na YouTube" data-aria-en="AFC Rugby Giżycko video on YouTube" aria-label="Film AFC Rugby Giżycko na YouTube">
+            <div class="yt-thumb-wrap">
+              <img src="{% static 'rugby/img/yt-afc.jpg' %}" alt="Film AFC Rugby Giżycko" class="img-fluid w-100 yt-thumb-img">
+              <div class="yt-play-btn" aria-hidden="true">
+                <svg viewBox="0 0 68 48" width="68" height="48">
+                  <path d="M66.52 7.74A8.5 8.5 0 0 0 60.7 1.9C55.4.5 34 .5 34 .5S12.6.5 7.3 1.9A8.5 8.5 0 0 0 1.48 7.74C.08 13.08.08 24 .08 24s0 10.92 1.4 16.26A8.5 8.5 0 0 0 7.3 46.1C12.6 47.5 34 47.5 34 47.5s21.4 0 26.7-1.4a8.5 8.5 0 0 0 5.82-5.84C67.92 34.92 67.92 24 67.92 24s0-10.92-1.4-16.26z" fill="#c4922a"/>
+                  <path d="M27 34l18-10-18-10v20z" fill="#111"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+          <div class="card-body">
+            <p class="fw-semibold mb-1" data-pl="Film AFC Rugby Giżycko" data-en="AFC Rugby Giżycko video">Film AFC Rugby Giżycko</p>
+            <p class="text-muted small mb-0" data-pl="Film udostępniony na YouTube." data-en="A video shared on YouTube.">Film udostępniony na YouTube.</p>
+            <p class="text-muted small mb-0" data-pl="Autor: Michał Walerowicz" data-en="Author: Michał Walerowicz">Autor: Michał Walerowicz</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

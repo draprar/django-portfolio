@@ -1,0 +1,149 @@
+{% load static %}
+<section class="page-section" id="rugby-basics">
+  <div class="container px-4 py-5">
+    <div class="text-center info mb-4">
+      <h2 data-en="Rugby in a nutshell" data-pl="Rugby w pigułce">Rugby w pigułce</h2>
+    </div>
+    <div class="rugby-lead mx-auto text-start">
+      <h3 class="h5 text-center mb-3"
+          data-pl="Czym jest rugby"
+          data-en="What is rugby">Czym jest rugby</h3>
+      <p class="text-muted"
+         data-pl="Rugby to gra zespołowa, w której piłkę można nieść lub kopnąć, ale nie wolno podawać jej ręką do przodu. Punkty zdobywa się m.in. przez przyłożenie piłki do ziemi w polu punktowym przeciwnika."
+         data-en="Rugby is a team sport in which you can run with or kick the ball, but you must not pass it forward by hand. Points are scored in several ways, including grounding the ball in the opponents’ in-goal area.">
+        Rugby to gra zespołowa, w której piłkę można nieść lub kopnąć, ale nie wolno podawać jej ręką do przodu. Punkty zdobywa się m.in. przez przyłożenie piłki do ziemi w polu punktowym przeciwnika.
+      </p>
+      <h3 class="h5 text-center mb-3 mt-4"
+          data-pl="Rugby XV i Rugby 7: różne oblicza"
+          data-en="Rugby XV and rugby 7: different forms">Rugby XV i Rugby 7: różne oblicza</h3>
+      <p class="text-muted"
+         data-pl="W rugby XV każda drużyna wystawia 15 zawodników, a gra wymaga wytrzymałości i współpracy. Rugby 7 to szybsza odmiana, w której każda drużyna ma siedmiu zawodników na pełnowymiarowym boisku. Mecz trwa zwykle dwie 7-minutowe połowy."
+         data-en="In rugby union, each team fields 15 players and the game demands endurance and teamwork. Rugby 7 is a faster form with seven players per team on a full-size pitch. A match usually lasts two seven-minute halves.">
+        W rugby XV każda drużyna wystawia 15 zawodników, a gra wymaga wytrzymałości i współpracy. Rugby 7 to szybsza odmiana, w której każda drużyna ma siedmiu zawodników na pełnowymiarowym boisku. Mecz trwa zwykle dwie 7-minutowe połowy.
+      </p>
+      <h3 class="h5 text-center mb-3 mt-4"
+          data-pl="Rugby 7 na świecie"
+          data-en="Rugby 7 around the world">Rugby 7 na świecie</h3>
+      <p class="text-muted"
+         data-pl="Rugby 7 zadebiutowało na igrzyskach olimpijskich w 2016 roku. W Polsce działały również lokalne inicjatywy związane z rugby 7, w tym AFC Rugby Giżycko."
+         data-en="Rugby sevens made its Olympic debut in 2016. In Poland, local rugby sevens initiatives also existed, including AFC Rugby Giżycko.">
+        Rugby 7 zadebiutowało na igrzyskach olimpijskich w 2016 roku. W Polsce działały również lokalne inicjatywy związane z rugby 7, w tym AFC Rugby Giżycko.
+      </p>
+    </div>
+    <p class="rugby-links-label fw-semibold mt-4 text-center"
+       data-pl="Dowiedz się więcej" data-en="Learn more">Dowiedz się więcej</p>
+    <ul class="rugby-links list-unstyled">
+      <li><a class="rugby-ext-btn" href="https://polskie.rugby/" target="_blank" rel="noopener noreferrer" data-pl="Polski Związek Rugby" data-en="Polish Rugby Union">Polski Związek Rugby</a><span class="visually-hidden" data-pl=" (otwiera się w nowej karcie)" data-en=" (opens in a new tab)"> (otwiera się w nowej karcie)</span></li>
+      <li><a class="rugby-ext-btn" href="https://polskie.rugby/kluby" target="_blank" rel="noopener noreferrer" data-pl="Lista klubów" data-en="Club directory">Lista klubów</a><span class="visually-hidden" data-pl=" (otwiera się w nowej karcie)" data-en=" (opens in a new tab)"> (otwiera się w nowej karcie)</span></li>
+      <li><a class="rugby-ext-btn" href="https://polskie.rugby/rozgrywki" target="_blank" rel="noopener noreferrer" data-pl="Rozgrywki" data-en="Competitions">Rozgrywki</a><span class="visually-hidden" data-pl=" (otwiera się w nowej karcie)" data-en=" (opens in a new tab)"> (otwiera się w nowej karcie)</span></li>
+      <li><a class="rugby-ext-btn" href="https://www.world.rugby/the-game/laws/home" target="_blank" rel="noopener noreferrer" data-pl="Przepisy gry" data-en="Laws of the game">Przepisy gry</a><span class="visually-hidden" data-pl=" (otwiera się w nowej karcie)" data-en=" (opens in a new tab)"> (otwiera się w nowej karcie)</span></li>
+    </ul>
+
+    <div class="rugby-pitch-block mt-5">
+      <h3 class="h5" data-pl="Rugby 7: Dynamiczna akcja od biegu do wznowienia" data-en="Rugby 7: one move from carry to restart">Rugby 7: Dynamiczna akcja od biegu do wznowienia</h3>
+      <p class="text-muted small"
+         data-pl="Rugby 7 to szybka gra, gdzie role są płynne — zawodnicy atakują i bronią w zależności od sytuacji. Poniżej przykładowa akcja: przechodź między fazami, aby zobaczyć, co dzieje się na boisku."
+         data-en="Sevens is a fast game with fluid roles — players attack and defend as the situation changes. Below is one example move: step through the phases to see what happens on the pitch.">
+        Rugby 7 to szybka gra, gdzie role są płynne — zawodnicy atakują i bronią w zależności od sytuacji. Poniżej przykładowa akcja: przechodź między fazami, aby zobaczyć, co dzieje się na boisku.
+      </p>
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+          <div id="rugby-pitch" class="rugby-pitch" role="group"
+               data-aria-pl="Schemat boiska do rugby z siedmioma neutralnymi znacznikami zawodników; ilustracja pokazuje kolejne fazy jednej przykładowej akcji."
+               data-aria-en="A schematic rugby pitch with seven neutral player markers; the illustration shows the phases of one example move."
+               aria-label="Schemat boiska do rugby z siedmioma neutralnymi znacznikami zawodników; ilustracja pokazuje kolejne fazy jednej przykładowej akcji.">
+            {% include "rugby/partials/pitch_svg.html" %}
+          </div>
+          <p id="phase-heading" class="phase-heading fw-semibold" aria-live="polite"></p>
+          <p id="pitch-explainer" class="pitch-explainer text-muted" aria-live="polite"></p>
+          <p id="phase-now" class="phase-now" aria-live="polite">
+            <span data-pl="Wynik" data-en="Score">Wynik</span>
+            <span id="phase-score" class="phase-score">0:0</span>
+          </p>
+          <div class="phase-row" id="phase-steps" role="group"
+               data-aria-pl="Kroki jednej akcji" data-aria-en="Steps of one attack"></div>
+          <div class="phase-nav">
+            <button type="button" class="phase-btn phase-nav-btn" id="phase-prev" disabled
+                    data-pl="Wstecz" data-en="Previous">Wstecz</button>
+            <button type="button" class="phase-btn phase-nav-btn" id="phase-next"
+                    data-pl="Dalej" data-en="Next">Dalej</button>
+          </div>
+          <p class="text-muted small mt-3"
+             data-pl="To przykład jednej akcji, a nie cały mecz. W rugby występują też m.in. młyn i aut; ta plansza ich nie odtwarza."
+             data-en="This is one example move, not a full match. Rugby also includes set pieces such as scrums and lineouts; this board does not simulate them.">
+            To przykład jednej akcji, a nie cały mecz. W rugby występują też m.in. młyn i aut; ta plansza ich nie odtwarza.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <h4 class="h6" data-pl="Jak zdobywa się punkty?" data-en="How are points scored?">Jak zdobywa się punkty?</h4>
+          <ul class="scoring-list list-unstyled" role="list">
+            <li>
+              <button type="button" class="scoring-btn" data-scoring="try" aria-pressed="false"
+                      aria-describedby="scoring-desc-try">
+                <span class="scoring-head">
+                  <span data-pl="Przyłożenie" data-en="Try">Przyłożenie</span>
+                  <span class="scoring-pts" aria-hidden="true">5</span>
+                </span>
+                <span id="scoring-desc-try" class="scoring-desc"
+                      data-pl="Przyłożenie piłki do ziemi w polu punktowym przeciwnika."
+                      data-en="Grounding the ball on the ground in the opponents’ in-goal area.">Przyłożenie piłki do ziemi w polu punktowym przeciwnika.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="scoring-btn" data-scoring="conversion" aria-pressed="false"
+                      aria-describedby="scoring-desc-conversion">
+                <span class="scoring-head">
+                  <span data-pl="Podwyższenie" data-en="Conversion">Podwyższenie</span>
+                  <span class="scoring-pts" aria-hidden="true">2</span>
+                </span>
+                <span id="scoring-desc-conversion" class="scoring-desc"
+                      data-pl="Celny kop po przyłożeniu. W rugby 7 drop-kick w ciągu 30 sekund od przyznania przyłożenia."
+                      data-en="A successful kick at goal after a try. In sevens, a drop kick within 30 seconds of the try being awarded.">Celny kop po przyłożeniu. W rugby 7 drop-kick w ciągu 30 sekund od przyznania przyłożenia.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="scoring-btn" data-scoring="penalty_try" aria-pressed="false"
+                      aria-describedby="scoring-desc-penalty-try">
+                <span class="scoring-head">
+                  <span data-pl="Przyłożenie karne" data-en="Penalty try">Przyłożenie karne</span>
+                  <span class="scoring-pts" aria-hidden="true">7</span>
+                </span>
+                <span id="scoring-desc-penalty-try" class="scoring-desc"
+                      data-pl="Przyznawane, gdy przewinienie przeciwnika uniemożliwia zdobycie prawdopodobnego przyłożenia albo przyłożenia w korzystniejszej pozycji. Nie wykonuje się podwyższenia."
+                      data-en="Awarded when an opponent’s infringement prevents a probable try or a try in a more advantageous position. No conversion is attempted.">Przyznawane, gdy przewinienie przeciwnika uniemożliwia zdobycie prawdopodobnego przyłożenia albo przyłożenia w korzystniejszej pozycji. Nie wykonuje się podwyższenia.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="scoring-btn" data-scoring="penalty_goal" aria-pressed="false"
+                      aria-describedby="scoring-desc-penalty-goal">
+                <span class="scoring-head">
+                  <span data-pl="Rzut karny na bramkę" data-en="Penalty goal">Rzut karny na bramkę</span>
+                  <span class="scoring-pts" aria-hidden="true">3</span>
+                </span>
+                <span id="scoring-desc-penalty-goal" class="scoring-desc"
+                      data-pl="Celny kop na bramkę z rzutu karnego."
+                      data-en="A successful kick at goal from a penalty.">Celny kop na bramkę z rzutu karnego.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="scoring-btn" data-scoring="drop_goal" aria-pressed="false"
+                      aria-describedby="scoring-desc-drop-goal">
+                <span class="scoring-head">
+                  <span data-pl="Drop-goal" data-en="Dropped goal">Drop-goal</span>
+                  <span class="scoring-pts" aria-hidden="true">3</span>
+                </span>
+                <span id="scoring-desc-drop-goal" class="scoring-desc"
+                      data-pl="Celny kop na bramkę w grze otwartej, wykonany po odbiciu piłki od ziemi."
+                      data-en="A successful kick at goal in open play, taken after the ball bounces off the ground.">Celny kop na bramkę w grze otwartej, wykonany po odbiciu piłki od ziemi.</span>
+              </button>
+            </li>
+          </ul>
+          <p class="small text-muted mt-3">
+            <span data-pl="Źródło zasad: " data-en="Laws source: ">Źródło zasad: </span>
+            <a href="https://passport.world.rugby/laws-of-the-game/variations-7s-10s-u19-game-on/sevens/8-scoring/" target="_blank" rel="noopener noreferrer">World Rugby</a><span class="visually-hidden" data-pl=" (otwiera się w nowej karcie)" data-en=" (opens in a new tab)"> (otwiera się w nowej karcie)</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

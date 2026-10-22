@@ -1,31 +1,18 @@
 {% extends 'rugby/base.html' %}
 {% block news %}
-{% for post in posts reversed %}
-<div class="accordion" id="accordion">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="heading{{ post.id }}">
-            <button class="accordion-button btn-archive collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapse{{ post.id }}"
-                    aria-expanded="false"
-                    aria-controls="collapse{{ post.id }}"
-                    data-pl="{{ post.title_pl }} ({{ post.published_date|date:'d.m.Y' }})"
-                    data-en="{% if post.title_en %}{{ post.title_en }}{% else %}{{ post.title_pl }}{% endif %} ({{ post.published_date|date:'d.m.Y' }})">
-                <strong>{{ post.title_pl }} ({{ post.published_date|date:'d.m.Y' }})</strong>
-            </button>
-        </h2>
-        <div id="collapse{{ post.id }}"
-             class="accordion-collapse collapse"
-             aria-labelledby="heading{{ post.id }}"
-             data-bs-parent="#accordion">
-            <div class="accordion-body"
-                 data-pl="{{ post.text_pl }}"
-                 data-en="{% if post.text_en %}{{ post.text_en }}{% else %}{{ post.text_pl }}{% endif %}">
-                {{ post.text_pl|linebreaksbr }}
-            </div>
-        </div>
-    </div>
+<div class="rugby-accounts">
+  {% for account in accounts %}
+  <article class="account-card mb-4" id="account-{{ account.slug }}"{% if account.year %} data-year="{{ account.year }}"{% endif %}>
+    <p class="account-meta text-muted small"
+       data-pl="{{ account.meta_pl }}"
+       data-en="{{ account.meta_en }}">{{ account.meta_pl }}</p>
+    <h3 class="h5 account-title"
+        data-pl="{{ account.title_pl }}"
+        data-en="{{ account.title_en }}">{{ account.title_pl }}</h3>
+    <div class="account-body text-muted"
+         data-pl="{{ account.body_pl }}"
+         data-en="{{ account.body_en }}">{{ account.body_pl|linebreaksbr }}</div>
+  </article>
+  {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

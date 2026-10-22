@@ -38,6 +38,9 @@ media/
 staticfiles/
 django_warnings.log
 
+# Rugby scan originals (unredacted; keep out of git)
+rugby/private/
+
 # Local debug artifacts
 debug/
 tmp/
