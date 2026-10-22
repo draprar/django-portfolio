@@ -356,7 +356,7 @@
 
       card.classList.remove('d-none');
       activeId = marker.getAttribute('data-place-id') || '';
-      window.requestAnimationFrame(() => placeTip(marker));
+      placeTip(marker);
       markers.forEach((item) => {
         const on = item === marker;
         item.classList.toggle('is-active', on);
@@ -377,15 +377,32 @@
       card.style.width = maxW + 'px';
       const tipW = card.offsetWidth;
       const tipH = card.offsetHeight;
-      let left = mr.right + 8;
-      let top = mr.top + mr.height / 2 - tipH / 2;
+      let left;
+      let top;
+      if (narrow()) {
+        left = mr.left + (mr.width - tipW) / 2;
+        const below = mr.bottom + 8;
+        const above = mr.top - tipH - 8;
+        if (below + tipH <= window.innerHeight - pad) top = below;
+        else if (above >= pad) top = above;
+        else top = Math.max(pad, window.innerHeight - tipH - pad);
+        if (left < pad) left = pad;
+        if (left + tipW > window.innerWidth - pad) left = window.innerWidth - tipW - pad;
+        card.style.left = left + 'px';
+        card.style.top = top + 'px';
+        return;
+      }
+      left = mr.right + 8;
+      top = mr.top + mr.height / 2 - tipH / 2;
       if (left + tipW > vr.right - pad) left = mr.left - tipW - 8;
-      if (left < vr.left + pad) left = vr.left + pad;
-      if (left + tipW > vr.right - pad) left = vr.right - tipW - pad;
-      if (top < vr.top + pad) top = vr.top + pad;
-      if (top + tipH > vr.bottom - pad) top = vr.bottom - tipH - pad;
-      if (top < pad) top = pad;
-      if (top + tipH > window.innerHeight - pad) top = window.innerHeight - tipH - pad;
+      const minLeft = Math.max(pad, vr.left + pad);
+      const maxLeft = Math.min(window.innerWidth, vr.right) - tipW - pad;
+      if (left < minLeft) left = minLeft;
+      if (left > maxLeft) left = Math.max(pad, maxLeft);
+      const minTop = Math.max(pad, vr.top + pad);
+      const maxTop = Math.min(window.innerHeight, vr.bottom) - tipH - pad;
+      if (top < minTop) top = minTop;
+      if (top > maxTop) top = Math.max(pad, maxTop);
       card.style.left = left + 'px';
       card.style.top = top + 'px';
     }
@@ -415,12 +432,13 @@
 
     function selectMarker(marker) {
       if (!marker) return;
-      const id = clusterId(marker);
-      if (narrow() && id && openCluster !== id) {
-        openCluster = id;
+      if (narrow()) {
+        openCluster = '';
         spiderfy();
+        showCard(marker, false);
         return;
       }
+      const id = clusterId(marker);
       openCluster = id || openCluster;
       spiderfy();
       showCard(marker, true);
@@ -563,6 +581,10 @@
         if (restoringFocus) return;
         lastMarkerFocus = marker;
         pinned = true;
+        if (narrow()) {
+          openCluster = '';
+          spiderfy();
+        }
         showCard(marker);
       });
     });

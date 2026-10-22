@@ -334,11 +334,10 @@ body {
 }
 
 .scroll-arrow {
-  width: 18px;
-  height: 18px;
-  border-right: 2px solid var(--primary);
-  border-bottom: 2px solid var(--primary);
-  transform: rotate(45deg);
+  display: block;
+  width: 22px;
+  height: 22px;
+  color: var(--primary);
   animation: bounceArrow 1.4s ease infinite;
 }
 
@@ -363,8 +362,8 @@ body {
 }
 
 @keyframes bounceArrow {
-  0%,100% { transform: rotate(45deg) translate(0, 0); }
-  50%      { transform: rotate(45deg) translate(0, 5px); }
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
 }
 
 /* SECTIONS — shared */
@@ -1047,14 +1046,14 @@ a.hero-scroll-hint {
 
 .rugby-lead { max-width: 65ch; margin-left: auto; margin-right: auto; }
 
-/* Leads sit just above body. Captions and .small stay a step smaller, like wiciędze meta. */
+/* Intro and archive copy match the smaller body text. Captions stay as they are. */
 .page-section .rugby-lead,
 .page-section .rugby-lead > p,
 .page-section .map-data-scope,
 .page-section .text-center.info > p,
 .account-body {
-  font-size: var(--fs-lead);
-  line-height: 1.65;
+  font-size: var(--fs-caption);
+  line-height: 1.6;
 }
 
 .page-section p.small,
@@ -1075,9 +1074,11 @@ a.hero-scroll-hint {
   max-width: 65ch;
 }
 
-.rugby-lead > h3 {
-  font-size: 1.125rem;
+.rugby-lead > h3,
+.account-card .account-title {
+  font-size: var(--fs-body);
   line-height: 1.4;
+  font-weight: 400;
 }
 
 .rugby-links-label {
@@ -1150,6 +1151,10 @@ a.hero-scroll-hint {
   overflow: hidden;
   border: 1px solid rgba(196, 146, 42, 0.25);
   background: #0a0a0a;
+}
+
+#phase-heading {
+  margin: 1.35rem 0 0.4rem;
 }
 
 .site-origin-note {
@@ -1894,7 +1899,7 @@ footer.footer.footer-photo .footer-photo-img {
   .rugby-pitch-block { margin-top: 1.25rem !important; }
   .trace-rail {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 0.75rem;
     overflow: visible;
     margin-left: 0;
@@ -1903,7 +1908,14 @@ footer.footer.footer-photo .footer-photo-img {
   .trace-rail > .col {
     width: auto !important;
     max-width: none;
+    min-width: 0;
     padding: 0;
+  }
+  .trace-rail .trace-open,
+  .trace-rail .trace-media,
+  .trace-rail img {
+    min-width: 0;
+    max-width: 100%;
   }
   .trace-media, .trace-card--video .yt-thumb-wrap { aspect-ratio: 3 / 4; }
 }
