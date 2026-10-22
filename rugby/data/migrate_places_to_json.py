@@ -67,7 +67,8 @@ def seasons_from_legacy(place: dict) -> list[dict]:
 def main() -> None:
     clubs = []
     for place in places_legacy.PLACES:
-        club_url, pzr_url = split_urls(place.get("url"))
+        raw_url = place.get("url")
+        club_url, pzr_url = split_urls(raw_url if isinstance(raw_url, str) else None)
         entry = {
             "club_id": place["id"],
             "display_name_pl": place["label_pl"],
