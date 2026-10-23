@@ -21,13 +21,18 @@ def test_wybierz_renders_crossroads(client):
     assert "Se wybierz" not in content
     assert "/gallery/" in content
     assert "panel-bazgr" in content
+    assert 'data-panel="bazgr" data-slot="hidden"' in content
     assert "bazgrollin-bg.png" in content
     assert "/wyraj/" in content
+    assert 'data-panel="wyraj" data-slot="active"' in content
+    assert 'data-panel="lingwo" data-slot="next"' in content
+    assert 'data-panel="wiciedzy" data-slot="prev"' in content
     assert "/tonguetwister/" in content
     assert "/codillin/" in content
     assert "/wiciedze/" in content
     assert "/rugby/" in content
     assert "panel-iaio" in content
+    assert 'data-panel="iaio" data-slot="hidden"' in content
     assert ">iaio</h2>" in content
     assert "iaio-bg.jpg" in content
     assert "codillin'" in content

@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const panels = document.querySelectorAll('.panel');
     const stage = document.querySelector('.carousel-stage');
     const cards = stage ? [...stage.querySelectorAll(':scope > .panel')] : [];
-    let index = 0;
+    // DOM ring: wiciędze → wyraj → lingwołamki → bazgrollin' → iaio. Start on wyraj.
+    const wyrajIdx = cards.findIndex((card) => card.dataset.panel === 'wyraj');
+    let index = wyrajIdx >= 0 ? wyrajIdx : 0;
     let pointerX = null;
     let pointerY = null;
     let suppressClick = false;
@@ -15,16 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return text === '-0.00' ? '0.00' : text;
     };
 
-    // Carousel: wyraj → lingwo → wiciędze → bazgrollin' → iaio. Only three faces
-    // show; the last tile stays off-stage until you rotate to it (back of deck).
-    const slotFor = (delta, n, index, i) => {
+    // Pure ring: delta 0 active, 1 next, n-1 prev; everything else stays in the back.
+    const slotFor = (delta, n) => {
         if (delta === 0) return 'active';
         if (delta === 1) return 'next';
-        // Last tile: off-stage until it becomes active.
-        if (i === n - 1 && index !== n - 1 && delta === n - 1) return 'hidden';
         if (delta === n - 1) return 'prev';
-        // Opening view: wiciędze on the left of wyraj (not the back-of-deck tile).
-        if (index === 0 && i === 2) return 'prev';
         return 'hidden';
     };
 
@@ -74,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const peek = stage ? peekPx(stage) : 0;
         cards.forEach((card, i) => {
             const delta = (i - index + n) % n;
-            const slot = slotFor(delta, n, index, i);
+            const slot = slotFor(delta, n);
             card.dataset.slot = slot;
             const hidden = slot === 'hidden';
             if (hidden) {
@@ -94,6 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const go = (step) => {
         if (!cards.length) return;
         index = (index + step + cards.length) % cards.length;
+        place(true);
+    };
+
+    const goTo = (i) => {
+        if (!cards.length) return;
+        index = ((i % cards.length) + cards.length) % cards.length;
         place(true);
     };
 
@@ -140,9 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 suppressClick = false;
                 return;
             }
-            const n = cards.length;
-            const delta = (i - index + n) % n;
-            go(delta === 1 ? 1 : -1);
+            goTo(i);
         });
     });
 

@@ -476,7 +476,7 @@ em, i, .text-muted em, h5 em, p em {
 }
 #info .text-muted { color: var(--muted) !important; font-weight: 300; }
 #info .rugby-card { text-align: center; }
-#info .rugby-card .text-muted { font-size: var(--fs-body); }
+#info .rugby-card .text-muted { font-size: var(--fs-caption); }
 #info strong { color: var(--gold); }
 
 /* AFC glance cards — independent of legacy Bootstrap column overrides */
@@ -1588,6 +1588,16 @@ a.hero-scroll-hint {
   max-width: 900px;
   margin: 0 auto;
   padding: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 footer.footer.footer-photo .footer-photo-img {
@@ -1595,9 +1605,9 @@ footer.footer.footer-photo .footer-photo-img {
   display: block;
   max-height: 128px;
   margin-bottom: 0;
-  opacity: 0.18;
-  filter: grayscale(1) contrast(0.88) brightness(0.52);
-  border-radius: 10px;
+  opacity: 0.42;
+  filter: grayscale(0.65) contrast(0.95) brightness(0.92);
+  border-radius: 18px;
   object-fit: cover;
 }
 
@@ -1605,13 +1615,13 @@ footer.footer.footer-photo .footer-photo-img {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 10px;
+  border-radius: 18px;
   pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(6, 6, 6, 0.35) 0%,
-    rgba(6, 6, 6, 0.55) 50%,
-    rgba(6, 6, 6, 0.62) 100%
+  background: radial-gradient(
+    ellipse 85% 90% at 50% 45%,
+    rgba(6, 6, 6, 0.08) 0%,
+    rgba(6, 6, 6, 0.28) 55%,
+    rgba(6, 6, 6, 0.48) 100%
   );
 }
 
@@ -1626,11 +1636,11 @@ footer.footer.footer-photo .footer-photo-img {
 
 .rugby-stage-note p {
   font-family: "Poppins", sans-serif;
-  font-size: 0.55rem;
+  font-size: var(--fs-caption);
   font-weight: 300;
   margin: 0 auto;
   max-width: min(52rem, 100%);
-  line-height: 1.75;
+  line-height: 1.55;
   letter-spacing: 0.02em;
   color: rgba(196, 196, 196, 0.55);
   text-wrap: balance;
