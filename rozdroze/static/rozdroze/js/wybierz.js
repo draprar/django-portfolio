@@ -15,16 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return text === '-0.00' ? '0.00' : text;
     };
 
-    // Four tiles: wyraj → lingwo → wiciędze → bazgrollin'. Only three faces show;
-    // bazgrollin' stays off-stage until you rotate to it (last in DOM = back of deck).
+    // Carousel: wyraj → lingwo → wiciędze → bazgrollin' → iaio. Only three faces
+    // show; the last tile stays off-stage until you rotate to it (back of deck).
     const slotFor = (delta, n, index, i) => {
         if (delta === 0) return 'active';
         if (delta === 1) return 'next';
-        // Last tile (bazgrollin'): off-stage until it becomes active.
+        // Last tile: off-stage until it becomes active.
         if (i === n - 1 && index !== n - 1 && delta === n - 1) return 'hidden';
         if (delta === n - 1) return 'prev';
-        // wyraj active: wiciędze on the left, not bazgrollin'.
-        if (n === 4 && index === 0 && i === 2) return 'prev';
+        // Opening view: wiciędze on the left of wyraj (not the back-of-deck tile).
+        if (index === 0 && i === 2) return 'prev';
         return 'hidden';
     };
 

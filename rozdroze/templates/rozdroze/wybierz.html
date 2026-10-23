@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jedzien</title>
-  <meta name="description" content="codillin', bazgrollin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta name="description" content="codillin', bazgrollin', wyraj, lingwołamki, wiciędze albo iaio — wybierz, dokąd wejść.">
   <meta name="theme-color" content="#0a0a0a">
 
   <meta property="og:title" content="Jedzien">
-  <meta property="og:description" content="codillin', bazgrollin', wyraj, lingwołamki albo wiciędze — wybierz, dokąd wejść.">
+  <meta property="og:description" content="codillin', bazgrollin', wyraj, lingwołamki, wiciędze albo iaio — wybierz, dokąd wejść.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,7 @@
   <link rel="preload" as="image" href="{% static 'rozdroze/img/bazgrollin-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/lingwolamek-bg.png' %}">
   <link rel="preload" as="image" href="{% static 'rozdroze/img/wiciedzy-bg.jpg' %}">
+  <link rel="preload" as="image" href="{% static 'rozdroze/img/iaio-bg.jpg' %}">
   <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon" />
 </head>
 <body>
@@ -46,7 +47,7 @@
 
       <div class="carousel" data-carousel>
         <button type="button" class="carousel-nav carousel-prev" aria-label="Poprzednia">‹</button>
-        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze, bazgrollin'">
+        <div class="carousel-stage" tabindex="0" aria-label="wyraj, lingwołamki, wiciędze, bazgrollin', iaio">
           <a href="/wyraj/" class="panel panel-wyraj" data-panel="wyraj" aria-label="wyraj">
             <div class="panel-turn">
               <div class="panel-face">
@@ -95,7 +96,7 @@
             </div>
           </a>
 
-          <a href="/gallery/" class="panel panel-bazgr" data-panel="bazgr" data-slot="hidden" aria-hidden="true" tabindex="-1" aria-label="bazgrollin'">
+          <a href="/gallery/" class="panel panel-bazgr" data-panel="bazgr" aria-label="bazgrollin'">
             <div class="panel-turn">
               <div class="panel-face">
                 <div class="panel-bg"></div>
@@ -105,6 +106,22 @@
                   <div class="panel-lockup">
                     <span class="panel-import" aria-hidden="true">import</span>
                     <h2 class="panel-title">bazgrollin'</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/rugby/" class="panel panel-iaio" data-panel="iaio" data-slot="hidden" aria-hidden="true" tabindex="-1" aria-label="iaio">
+            <div class="panel-turn">
+              <div class="panel-face">
+                <div class="panel-bg"></div>
+                <div class="panel-veil"></div>
+                <div class="panel-sheen"></div>
+                <div class="panel-content">
+                  <div class="panel-lockup">
+                    <span class="panel-import" aria-hidden="true">import</span>
+                    <h2 class="panel-title">iaio</h2>
                   </div>
                 </div>
               </div>
