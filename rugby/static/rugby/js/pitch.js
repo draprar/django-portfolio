@@ -302,9 +302,23 @@
       btn.type = 'button';
       btn.className = 'phase-btn';
       btn.setAttribute('data-phase-step', String(i));
-      btn.setAttribute('data-pl', (i + 1) + ' ' + phase.namePl);
-      btn.setAttribute('data-en', (i + 1) + ' ' + phase.nameEn);
-      btn.textContent = (i + 1) + ' ' + phase.namePl;
+      btn.setAttribute('data-aria-pl', (i + 1) + ' ' + phase.namePl);
+      btn.setAttribute('data-aria-en', (i + 1) + ' ' + phase.nameEn);
+      btn.setAttribute('aria-label', (i + 1) + ' ' + phase.namePl);
+
+      const num = document.createElement('span');
+      num.className = 'phase-btn-num';
+      num.setAttribute('aria-hidden', 'true');
+      num.textContent = String(i + 1);
+
+      const label = document.createElement('span');
+      label.className = 'phase-btn-label';
+      label.setAttribute('data-pl', phase.namePl);
+      label.setAttribute('data-en', phase.nameEn);
+      label.textContent = phase.namePl;
+
+      btn.appendChild(num);
+      btn.appendChild(label);
       btn.addEventListener('click', () => goTo(i));
       row.appendChild(btn);
     });
