@@ -420,7 +420,7 @@ def main() -> None:
     payload["window"] = "2016-10-21 to 2026-10-21"
     payload["season_source_note"] = (
         "Season rows from PZR tables (sync_club_seasons.py). "
-        "PLR7 2025/26 and 2026/27 not invented — see docs/planning/afc-rugby-map-sources.md."
+        "PLR7 2025/26 and 2026/27 not invented — only seasons with published PZR tables."
     )
     with JSON_PATH.open("w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=2)

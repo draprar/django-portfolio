@@ -127,7 +127,6 @@ INSTALLED_APPS = [
     "rugby",
     "bies",
     "docdiff",
-    "analytics",
     "rozdroze",
     "code",
     "wiciedzy.apps.WiciedzyConfig",

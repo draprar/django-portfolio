@@ -1,11 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 
-from analytics.utils import count_visit
-
 from .models import Swieto
 
 
-@count_visit
 def wyraj_lista(request):
     # Fetch all festivals with related bibliographic sources.
     swieta = Swieto.objects.prefetch_related("zrodla").order_by("kolejnosc", "tytul_pl")
@@ -40,7 +37,6 @@ def wyraj_lista(request):
     )
 
 
-@count_visit
 def wyraj_detail(request, slug):
     # Fetch single festival with related sources, or return 404.
     swieto = get_object_or_404(

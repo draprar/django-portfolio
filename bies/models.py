@@ -1,7 +1,33 @@
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 from core.storages_backends import get_bies_storage
+
+_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "webp"]
+_VIDEO_EXTENSIONS = ["mp4", "webm"]
+_IMAGE_MAX_MB = 8
+_VIDEO_MAX_MB = 10
+
+
+def validate_bies_image_size(file):
+    try:
+        size = file.size
+    except (OSError, ValueError, AttributeError):
+        return
+    if size > _IMAGE_MAX_MB * 1024 * 1024:
+        raise ValidationError(_(f"Max image size is {_IMAGE_MAX_MB} MB"))
+
+
+def validate_bies_video_size(file):
+    try:
+        size = file.size
+    except (OSError, ValueError, AttributeError):
+        return
+    if size > _VIDEO_MAX_MB * 1024 * 1024:
+        raise ValidationError(_(f"Max video size is {_VIDEO_MAX_MB} MB"))
 
 
 class Swieto(models.Model):
@@ -40,7 +66,11 @@ class Swieto(models.Model):
         blank=True,
         null=True,
         verbose_name="Image",
-        help_text="Recommended format: PNG or JPG, min. 1200×800 px.",
+        validators=[
+            FileExtensionValidator(allowed_extensions=_IMAGE_EXTENSIONS),
+            validate_bies_image_size,
+        ],
+        help_text="PNG/JPG/WebP/GIF, max 8 MB. Recommended min. 1200×800 px.",
     )
 
     # --- video (card + hero background) ---
@@ -50,7 +80,11 @@ class Swieto(models.Model):
         blank=True,
         null=True,
         verbose_name="Video (MP4)",
-        help_text="MP4, recommended max 10 MB. Used as card thumbnail and hero background.",
+        validators=[
+            FileExtensionValidator(allowed_extensions=_VIDEO_EXTENSIONS),
+            validate_bies_video_size,
+        ],
+        help_text="MP4/WebM, max 10 MB. Used as card thumbnail and hero background.",
     )
 
     # --- Wheel of the Year: node angle (0° = top, clockwise direction) ---
@@ -255,6 +289,11 @@ class Bostwo(models.Model):
         blank=True,
         null=True,
         verbose_name="Portrait",
+        validators=[
+            FileExtensionValidator(allowed_extensions=_IMAGE_EXTENSIONS),
+            validate_bies_image_size,
+        ],
+        help_text="PNG/JPG/WebP/GIF, max 8 MB.",
     )
 
     class Meta:

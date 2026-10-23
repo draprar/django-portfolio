@@ -17,7 +17,6 @@ urlpatterns = [
     path("tonguetwister/", include("tonguetwister.urls")),  # tonguetwister
     path("wyraj/", include("bies.urls")),  # bies
     path("docdiff/", include("docdiff.urls")),  # AI Document Diff Tool
-    path("analytics/", include("analytics.urls")),  # analytics
     path("wybierz/", include("rozdroze.urls", namespace="rozdroze")),
     path("codillin/", include(("code.urls", "code"), namespace="code")),
     path("codzillin/", legacy_code_redirect),

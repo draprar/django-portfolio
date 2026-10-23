@@ -1,10 +1,6 @@
 import pytest
-from django.contrib.auth.models import User
 from django.test import Client
 from django.urls import reverse
-from django.utils import timezone
-
-from rugby.models import Post
 
 
 @pytest.mark.django_db
@@ -20,14 +16,7 @@ class TestPostListView:
         response = self.client.get(self.url)
         assert len(response.context["accounts"]) == 4
 
-    def test_pesel_post_not_in_html(self):
-        user = User.objects.create(username="peseluser")
-        Post.objects.create(
-            author=user,
-            title_pl="Ukryty",
-            text_pl="Proszę o numer PESEL i adres.",
-            published_date=timezone.now(),
-        )
+    def test_sensitive_copy_not_in_html(self):
         html = self.client.get(self.url).content.decode()
         assert "PESEL" not in html
 

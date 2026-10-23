@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from rest_framework import filters, generics
+from rest_framework.permissions import AllowAny
 
 from .forms import CategoryForm, GalleryForm
 from .models import Category, Gallery, InstagramPost
@@ -206,6 +207,7 @@ class CategoryListView(generics.ListAPIView):
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = [AllowAny]
 
 
 class GalleryListView(generics.ListAPIView):
@@ -217,3 +219,4 @@ class GalleryListView(generics.ListAPIView):
     serializer_class = GallerySerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ["category__title", "title"]  # Enable searching by category or image title
+    permission_classes = [AllowAny]
