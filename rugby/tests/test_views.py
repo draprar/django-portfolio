@@ -126,12 +126,11 @@ class TestPostListView:
         assert "Klub ujęty w obu zestawieniach" in html
         assert "Polska Liga Rugby 7 (PLR7)" in html
         assert "map-hint" not in html
+        assert "map-how-to" not in html
+        assert "Jak korzystać z mapy?" not in html
         assert "Ctrl/Cmd + kółko zmienia skalę mapy" not in html
-        assert "Jak korzystać z mapy?" in html
-        assert "map-how-desktop" in html
-        assert "map-how-mobile" in html
-        assert "Dotknij markera, aby zobaczyć informacje o klubie." in html
-        assert "Tap a marker to see the club information." in html
+        assert "zachowane dane o tej inicjatywie są niepełne" not in html
+        assert "surviving records for that initiative are incomplete" not in html
         assert "Niektóre kluby (np. AFC)" not in html
 
     def test_warsaw_combined_marker_label(self):
@@ -168,7 +167,9 @@ class TestPostListView:
 
     def test_archive_section_no_lead_paragraph(self):
         html = self.client.get(self.url).content.decode()
-        assert "Wybrane relacje" in html
+        assert "Śladami mazurskiego rugby" in html
+        assert "In the footsteps of Masurian rugby" in html
+        assert "Wybrane relacje" not in html
         assert "Z zachowanych wpisów wybraliśmy trzy" not in html
 
     def test_no_background_attachment_fixed(self):
@@ -184,7 +185,8 @@ class TestPostListView:
 
     def test_basics_editorial_copy(self):
         html = self.client.get(self.url).content.decode()
-        assert 'data-pl="Czym jest rugby"' in html
+        assert "Czym jest rugby" not in html
+        assert "To przykład jednej akcji" not in html
         assert "lokalne inicjatywy związane z rugby 7" in html
         assert "local rugby sevens initiatives also existed" in html
         assert "popularyzowały" not in html
@@ -192,10 +194,14 @@ class TestPostListView:
     def test_info_editorial_copy(self):
         html = self.client.get(self.url).content.decode()
         assert "AFC Rugby Giżycko w skrócie" in html
+        assert "Michał Walerowicz" in html
+        assert "Pomysłodawcą i jednocześnie pierwszym trenerem" in html
         assert 'data-pl="Treningi"' in html
-        assert "Współpraca z WMPD PUDiZ Olsztyn" in html
-        assert "Działalność w latach 2008–2010" in html
-        assert "W zachowanych materiałach pojawiają się także nazwa MTS Rugby Giżycko" in html
+        assert 'data-pl="Współpraca"' in html
+        assert "Działalność 2008–2010" in html
+        assert "JW4352" in html
+        assert "Przełomem w formowaniu drużyny" in html
+        assert "poprzednia nazwa MTS Rugby Giżycko" in html
         assert "Serce drużyny" not in html
         assert "niezapomniane" not in html
 
