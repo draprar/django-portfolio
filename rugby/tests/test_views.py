@@ -129,6 +129,8 @@ class TestPostListView:
         assert "map-how-to" not in html
         assert "Jak korzystać z mapy?" not in html
         assert "Ctrl/Cmd + kółko zmienia skalę mapy" not in html
+        assert "zachowane dane o tej inicjatywie są niepełne" not in html
+        assert "surviving records for that initiative are incomplete" not in html
         assert "Niektóre kluby (np. AFC)" not in html
 
     def test_warsaw_combined_marker_label(self):
@@ -192,6 +194,8 @@ class TestPostListView:
     def test_info_editorial_copy(self):
         html = self.client.get(self.url).content.decode()
         assert "AFC Rugby Giżycko w skrócie" in html
+        assert "Michał Walerowicz" in html
+        assert "Pomysłodawcą i jednocześnie pierwszym trenerem" in html
         assert 'data-pl="Treningi"' in html
         assert 'data-pl="Współpraca"' in html
         assert "Działalność 2008–2010" in html
