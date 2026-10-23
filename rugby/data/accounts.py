@@ -18,10 +18,8 @@ ACCOUNTS = [
             "Koledzy z Olsztyna podpowiadali nam, jak zachowywać się na boisku, i starali się, "
             "by piłkę dostawali głównie zawodnicy z mniejszym stażem. Mecz poprowadził sędzia "
             "międzynarodowy. Trenerzy byli zadowoleni z naszej postawy, a kilku zawodników "
-            "dostało propozycję gry w rugby XV. Obyło się bez kontuzji; ucierpiały tylko stroje. "
-            "Wynik spotkania nie zachował się w dostępnych materiałach. Na co dzień trenowaliśmy "
-            "na bocznej płycie MOSiR, kamienistej i słabo nadającej się do rugby, bo zarząd "
-            "obiektu nie udostępnił nam płyty głównej, więc szukaliśmy lepszego miejsca w okolicy Giżycka."
+            "dostało propozycję gry w rugby XV. Obyło się bez kontuzji; na szczęście ucierpiały "
+            "tylko stroje."
         ),
         "body_en": (
             "On 5 July 2008, at 5:49 a.m., we set off for Olsztyn, where coaches Leszek Bors "
@@ -31,10 +29,7 @@ ACCOUNTS = [
             "on the pitch and tried to make sure that the less experienced players got most of "
             "the ball. The match was refereed by an international referee. The coaches were pleased "
             "with our performance, and several players were invited to try the 15-a-side game. "
-            "There were no injuries; only our kit suffered. No score survives in the available "
-            "material. Day to day we trained on the MOSiR side pitch, which was stony and poorly "
-            "suited to rugby, because the facility’s management would not let us use the main pitch, "
-            "so we were looking for a better place near Giżycko."
+            "There were no injuries; luckily, only our kit suffered."
         ),
     },
     {
@@ -72,7 +67,7 @@ ACCOUNTS = [
             "Zamiast rezygnować, wyszliśmy na zewnątrz i zagraliśmy na świeżym powietrzu. "
             "Do treningu dołączył Olgierd Grefkowicz, występujący w Skrze Warszawa na pozycji "
             "skrzydłowego. Różnica poziomu była wyraźna — zobaczyliśmy, ile jeszcze musimy się "
-            "nauczyć, ale też że jesteśmy na dobrej drodze. Na szczęście nie było zimno."
+            "nauczyć, ale też że jesteśmy na dobrej drodze."
         ),
         "body_en": (
             "The session planned for the sports hall at Primary School No. 7 fell through because "
@@ -80,7 +75,7 @@ ACCOUNTS = [
             "the phone. Rather than give up, we moved outside and trained in the open air. "
             "Olgierd Grefkowicz, a winger for Skra Warszawa, joined the session. The difference "
             "in level was obvious: we could see how much we still had to learn, but also that we "
-            "were moving in the right direction. Luckily, it was not cold."
+            "were moving in the right direction."
         ),
     },
     {
