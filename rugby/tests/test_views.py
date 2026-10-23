@@ -218,7 +218,10 @@ class TestPostListView:
         assert "fajny sposób" not in html
         assert "Koniec działalności · 18 września 2010" in html
         assert 'id="site-origin"' in html
+        assert "site-origin-note" not in html
         assert "rugby.gizycko.pl" in html
+        assert 'width="57"' in html
+        assert 'class="col-lg-5 text-center"' in html
 
     def test_media_poster_alts(self):
         html = self.client.get(self.url).content.decode()

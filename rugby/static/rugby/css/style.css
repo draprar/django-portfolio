@@ -1089,7 +1089,7 @@ a.hero-scroll-hint {
 .page-section .text-muted.small,
 .page-section ul.small,
 .page-section .map-legend,
-.site-origin-note,
+#site-origin .container,
 .account-dek-line,
 .account-meta {
   font-size: var(--fs-caption);
@@ -1180,21 +1180,19 @@ a.hero-scroll-hint {
 
 #phase-heading {
   margin: 1.35rem 0 0.4rem;
+  text-align: center;
 }
 
-.site-origin-note {
+#site-origin .container {
   text-align: center;
-  padding: 1.15rem 1.2rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  max-width: 42rem;
 }
-.site-origin-note ul {
+#site-origin .container ul {
   list-style: none;
   padding: 0;
   margin: 0.75rem 0 0;
 }
-.site-origin-note li { margin: 0.35rem 0; }
+#site-origin .container li { margin: 0.35rem 0; }
 
 .farewell-quote {
   border-left: 3px solid var(--gold);
@@ -1224,7 +1222,7 @@ a.hero-scroll-hint {
 
 .scoring-list .scoring-btn {
   width: 100%;
-  text-align: left;
+  text-align: center;
   background: var(--card);
   border: 1px solid var(--border);
   color: #e8e8e8;
@@ -1238,7 +1236,7 @@ a.hero-scroll-hint {
 .scoring-list .scoring-head {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.75rem;
   font-weight: 400;
   color: #fff;
@@ -1298,6 +1296,7 @@ a.hero-scroll-hint {
   min-height: 3rem;
   color: var(--muted);
   font-size: var(--fs-caption);
+  text-align: center;
 }
 
 .rugby-map-viewport {
@@ -1864,6 +1863,7 @@ footer.footer.footer-photo .footer-photo-img {
   flex-wrap: wrap;
   gap: 0.4rem;
   margin: 0.8rem 0 1rem;
+  justify-content: center;
 }
 .year-btn, .phase-btn {
   min-height: 44px;
@@ -1894,11 +1894,12 @@ footer.footer.footer-photo .footer-photo-img {
 .phase-now {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.75rem;
   margin: 0.75rem 0 0.25rem;
   color: #fff;
   font-size: 1.15rem;
+  text-align: center;
 }
 .phase-score { color: var(--gold); letter-spacing: 0.06em; min-height: 0; }
 .phase-explainer { margin: 0 0 0.75rem; color: var(--muted); }
@@ -1909,7 +1910,29 @@ footer.footer.footer-photo .footer-photo-img {
   flex-wrap: wrap;
   scroll-snap-type: none;
 }
-.phase-btn { flex: 1 1 30%; }
+#phase-steps .phase-btn {
+  flex: 1 1 30%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  text-align: center;
+  line-height: 1.25;
+}
+.phase-btn-num {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--gold);
+}
+.phase-btn-label {
+  display: block;
+}
+.phase-nav .phase-btn {
+  flex: 0 1 auto;
+}
 .phase-mark { opacity: 0; stroke: #e8d7a2; stroke-width: 3; fill: none; }
 .phase-mark.is-on { opacity: 1; }
 #phase-scrum.is-on circle, #phase-maul.is-on circle, #phase-ball.is-on {
