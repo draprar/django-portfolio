@@ -2,8 +2,6 @@ from django.contrib.auth.views import LogoutView
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from analytics.utils import count_visit
-
 from . import views
 from .views import (
     ArticulatorViewSet,
@@ -26,7 +24,7 @@ router.register(r"twisters", TwisterViewSet, basename="twisters")
 router.register(r"trivias", TriviaViewSet, basename="trivias")
 
 urlpatterns = [
-    path("", count_visit(views.main), name="main"),
+    path("", views.main, name="main"),
     path("content_management/", views.content_management, name="content_management"),
     path("login/", views.login_view, name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),

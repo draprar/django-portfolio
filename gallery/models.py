@@ -2,6 +2,19 @@ from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.db.models import Q
+from django.utils.translation import gettext_lazy as _
+
+_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "webp"]
+_IMAGE_MAX_MB = 5
+
+
+def validate_gallery_image_size(file):
+    try:
+        size = file.size
+    except (OSError, ValueError, AttributeError):
+        return
+    if size > _IMAGE_MAX_MB * 1024 * 1024:
+        raise ValidationError(_(f"Max file size is {_IMAGE_MAX_MB} MB"))
 
 
 class Category(models.Model):
@@ -31,7 +44,14 @@ class Gallery(models.Model):
     """
 
     category = models.ForeignKey(Category, related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images")
+    image = models.ImageField(
+        upload_to="images",
+        validators=[
+            FileExtensionValidator(allowed_extensions=_IMAGE_EXTENSIONS),
+            validate_gallery_image_size,
+        ],
+        help_text="Allowed: jpg, png, gif, webp. Max 5 MB.",
+    )
     title = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -75,7 +95,16 @@ class InstagramPostMedia(models.Model):
     """
 
     post = models.ForeignKey(InstagramPost, related_name="media", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="instagram", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="instagram",
+        blank=True,
+        null=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=_IMAGE_EXTENSIONS),
+            validate_gallery_image_size,
+        ],
+        help_text="Allowed: jpg, png, gif, webp. Max 5 MB.",
+    )
     video = models.FileField(
         upload_to="instagram/reels",
         blank=True,

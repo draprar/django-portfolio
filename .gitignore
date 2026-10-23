@@ -35,11 +35,15 @@ ENV/
 # === DJANGO PROJECT FILES ===
 # Media & user uploads (store elsewhere in prod!)
 media/
+test_media/
 staticfiles/
 django_warnings.log
 
 # Rugby scan originals (unredacted; keep out of git)
 rugby/private/
+
+# Generated one-off audit dumps (rebuild via wiciedzy/build_audyt_prompt.py)
+wiciedzy/prompt-audyt-chatgpt.md
 
 # Local debug artifacts
 debug/

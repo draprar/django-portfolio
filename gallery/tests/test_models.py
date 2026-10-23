@@ -97,23 +97,40 @@ def test_instagram_post_creation():
 
 @pytest.mark.django_db
 def test_instagram_media_accepts_image_xor_video():
+    from django.core.files.uploadedfile import SimpleUploadedFile
+
     category = Category.objects.create(title="Photography")
     post = InstagramPost.objects.create(caption="cap", created_at=now(), category=category)
-    media = InstagramPostMedia.objects.create(post=post, image="instagram/photo.jpg")
+    media = InstagramPostMedia(
+        post=post,
+        image=SimpleUploadedFile("photo.jpg", b"fake-image", content_type="image/jpeg"),
+    )
     media.full_clean()
+    media.save()
     assert media.is_video is False
 
-    video_media = InstagramPostMedia.objects.create(post=post, video="instagram/reels/clip.mp4", order=1)
+    video_media = InstagramPostMedia(
+        post=post,
+        video=SimpleUploadedFile("clip.mp4", b"fake-video", content_type="video/mp4"),
+        order=1,
+    )
     video_media.full_clean()
+    video_media.save()
     assert video_media.is_video is True
 
 
 @pytest.mark.django_db
 def test_instagram_media_rejects_both_or_neither():
+    from django.core.files.uploadedfile import SimpleUploadedFile
+
     category = Category.objects.create(title="Photography")
     post = InstagramPost.objects.create(caption="cap", created_at=now(), category=category)
 
-    both = InstagramPostMedia(post=post, image="instagram/photo.jpg", video="instagram/reels/clip.mp4")
+    both = InstagramPostMedia(
+        post=post,
+        image=SimpleUploadedFile("photo.jpg", b"fake-image", content_type="image/jpeg"),
+        video=SimpleUploadedFile("clip.mp4", b"fake-video", content_type="video/mp4"),
+    )
     with pytest.raises(ValidationError):
         both.full_clean()
 
@@ -122,4 +139,8 @@ def test_instagram_media_rejects_both_or_neither():
         neither.full_clean()
 
     with pytest.raises(IntegrityError):
-        InstagramPostMedia.objects.create(post=post, image="instagram/photo.jpg", video="instagram/reels/clip.mp4")
+        InstagramPostMedia.objects.create(
+            post=post,
+            image=SimpleUploadedFile("photo2.jpg", b"fake-image", content_type="image/jpeg"),
+            video=SimpleUploadedFile("clip2.mp4", b"fake-video", content_type="video/mp4"),
+        )

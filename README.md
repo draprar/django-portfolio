@@ -6,7 +6,7 @@
 
 🌐 Live: [walery.onrender.com](https://walery.onrender.com) · hub: [jedzien.pl](https://jedzien.pl)
 
-A full-stack Django portfolio by an engineer-turned-developer — 12 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
+A full-stack Django portfolio by an engineer-turned-developer — 10 integrated apps covering language tooling, document diffing, image galleries and more. Built to demonstrate real production patterns, not just CRUD.
 
 > Split view architecture · DRF + SimpleJWT · AI heuristics · 80% CI coverage threshold
 
@@ -18,13 +18,11 @@ A full-stack Django portfolio by an engineer-turned-developer — 12 integrated 
 | **docdiff**       | Document comparison engine | AI semantic scoring · MIME/signature validation · HTML reports |
 | **gallery**       | Image gallery with categories | CRUD · DRF · manual Instagram-style posts in admin |
 | **core**          | Landing page, contact form | rate limiting · honeypot · Brevo email · i18n |
-| **rugby**         | Rugby 7/XV learn + AFC Giżycko archive | Public page at `/rugby/`; `Post` rows + `data/archive_posts.json` |
+| **rugby**         | Rugby 7/XV learn + AFC Giżycko archive | Public page at `/rugby/`; editorial accounts in `data/accounts.py` + club map JSON |
 | **bies**          | Slavic Wheel of the Year | festivals, deities, R2 media |
 | **rozdroze**      | Crossroads landing (`/wybierz/`) | TemplateView, no models |
 | **code**          | IG programming page (`/codillin/`, legacy `/code/` and `/codzillin/`) | reads `core.Project`, no models |
-| **poligon**       | milingwo, unofficial four-skill trainer, practice levels 0–5 (`/milingwo/`) | ~1200 exercises · ~1200 cards · Wiktionary / Wikipedia / Tatoeba with attribution · SM-2 · heuristic scoring |
 | **wiciedzy**       | Martial-arts catalog (`/wiciedze/`, wiciędze) | styles, preference list, comparison, joke, personality sketch |
-| **analytics**     | Stubs — tracking disabled | — |
 | **config**        | Global settings, URLs, ASGI/WSGI | — |
 
 ## Code highlights
@@ -73,7 +71,7 @@ pytest -q
 
 **Type checking:**
 ```bash
-mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code poligon wiciedzy
+mypy config core tonguetwister gallery docdiff rugby bies rozdroze code wiciedzy
 ```
 
 **Linting:**

@@ -18,7 +18,7 @@ jobs:
       CI: "true"
       DJANGO_TESTING: "true"
       DJANGO_SETTINGS_MODULE: config.settings
-      DJANGO_SECRET_KEY: ci-secret-key
+      DJANGO_SECRET_KEY: ci-secret-key-must-be-at-least-32-bytes-long
       DJANGO_DEBUG: "true"
       SENTRY_DSN: ""
       CORS_ALLOWED_ORIGINS: http://localhost,http://127.0.0.1
@@ -59,7 +59,7 @@ jobs:
 
       - name: Type check (mypy, blocking)
         run: |
-          mypy config core tonguetwister gallery docdiff rugby bies analytics rozdroze code wiciedzy \
+          mypy config core tonguetwister gallery docdiff rugby bies rozdroze code wiciedzy \
             --ignore-missing-imports --disable-error-code=import-untyped
 
       - name: Django system checks
