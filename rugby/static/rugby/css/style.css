@@ -277,7 +277,7 @@ body {
 
 .hero-eyebrow {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.87rem, 3.9vw, 2.36rem);
+  font-size: clamp(1.5rem, 3.12vw, 1.89rem);
   letter-spacing: 4.9px;
   text-transform: none;
   color: var(--gold);
@@ -1018,7 +1018,7 @@ button:focus-visible {
   }
 
   .hero-eyebrow {
-    font-size: clamp(0.62rem, 3.15vw, 1rem);
+    font-size: clamp(0.5rem, 2.52vw, 0.8rem);
     letter-spacing: clamp(0.5px, 0.2vw, 2px);
   }
 }
