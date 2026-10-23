@@ -148,7 +148,8 @@
       el.style.marginLeft = 'auto';
       el.style.marginRight = 'auto';
       let lo = 11;
-      let hi = 72;
+      // Short "rugby" would otherwise grow toward 72px; keep the name modest.
+      let hi = el.classList.contains('hero-name') ? 44 : 72;
       for (let i = 0; i < 16; i += 1) {
         const mid = (lo + hi) / 2;
         el.style.fontSize = mid + 'px';

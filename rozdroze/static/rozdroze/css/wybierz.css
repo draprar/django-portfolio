@@ -429,6 +429,11 @@ a {
         animation-delay: 0.6s;
     }
 
+    .panel-iaio .panel-bg {
+        animation-duration: 24s;
+        animation-delay: 0.9s;
+    }
+
     /* Code hero: typing supplies motion — skip background pan. */
     .panel-code .panel-bg {
         animation: none;
@@ -573,6 +578,16 @@ a {
 .panel-wiciedzy:hover .panel-bg,
 .panel-wiciedzy:focus-visible .panel-bg {
     filter: blur(0) brightness(.95) saturate(1);
+}
+
+.panel-iaio .panel-bg {
+    background: #0a0805 url('../img/iaio-bg.jpg') center / cover no-repeat;
+    filter: blur(2px) brightness(0.88) saturate(0.95);
+}
+
+.panel-iaio:hover .panel-bg,
+.panel-iaio:focus-visible .panel-bg {
+    filter: blur(0) brightness(0.98) saturate(1);
 }
 
 .panel-veil {

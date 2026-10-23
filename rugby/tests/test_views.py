@@ -107,6 +107,11 @@ class TestPostListView:
         assert "Kontakt przez portfolio" not in html
         assert "Jeśli rozpoznajesz siebie na zdjęciu" not in html
         assert "footer-photo-wrap" in html
+        assert "rugby-stage-note" in html
+        assert "W baskijskim iaio znaczy" in html
+        assert "In Basque, iaio means" in html
+        assert 'class="rugby-brand-word"' in html
+        assert ">iaio</span>" in html
 
     def test_gold_link_rules_present(self):
         css = open("rugby/static/rugby/css/style.css", encoding="utf-8").read()

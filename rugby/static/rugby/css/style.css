@@ -183,8 +183,9 @@ body {
 .navbar-brand,
 .rugby-brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.15rem;
   padding: 0.35rem 0;
   line-height: 1;
   text-decoration: none;
@@ -196,8 +197,22 @@ body {
   filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.45));
 }
 
+.rugby-brand-word {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: #fff;
+  line-height: 1.1;
+}
+
 .navbar:not(.scrolled) .rugby-brand-mark {
   filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.75));
+}
+
+.navbar:not(.scrolled) .rugby-brand-word {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75);
 }
 
 .rugby-lang-toolbar .lang-btn {
@@ -302,6 +317,7 @@ body {
 .hero-subtitle {
   font-size: clamp(1.71rem, 3.58vw, 1.95rem);
   font-weight: 300;
+  font-style: italic;
   color: var(--muted);
   max-width: 58.5rem;
   margin: 0 auto 1.79rem;
@@ -980,7 +996,7 @@ button:focus-visible {
 
 .hero-name {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.03rem, 4.88vw, 2.68rem);
+  font-size: clamp(1.75rem, 4.2vw, 2.3rem);
   font-weight: 300;
   letter-spacing: 4.9px;
   text-transform: none;
@@ -1006,7 +1022,7 @@ button:focus-visible {
   }
 
   .hero-name {
-    font-size: clamp(1.15rem, 5.4vw, 1.85rem);
+    font-size: clamp(1.05rem, 4.7vw, 1.55rem);
     letter-spacing: clamp(1px, 0.35vw, 3.9px);
     margin-bottom: 0.85rem;
   }
@@ -1598,6 +1614,27 @@ footer.footer.footer-photo .footer-photo-img {
     rgba(6, 6, 6, 0.55) 50%,
     rgba(6, 6, 6, 0.62) 100%
   );
+}
+
+.rugby-stage-note {
+  width: 92%;
+  max-width: 960px;
+  margin: 1.15rem auto 0;
+  padding: 0 1.25rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rugby-stage-note p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 300;
+  margin: 0 auto;
+  max-width: min(52rem, 100%);
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: rgba(196, 196, 196, 0.55);
+  text-wrap: balance;
 }
 .account-card {
   padding: 1.15rem 1.25rem;
