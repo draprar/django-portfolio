@@ -45,6 +45,8 @@ html.loader-active { overflow: hidden; }
   --fs-lead: 1.0625rem;
   --fs-body: 1rem;
   --fs-caption: 0.875rem;
+  /* Kaushan: under-brand quote (not standalone tagline) */
+  --fs-script-quote: clamp(1.2rem, 2.5vw, 1.4rem);
 }
 
 /* ── Base reset ─────────────────────────────────────────────────────────────── */
@@ -316,7 +318,7 @@ body {
 
 .hero-subtitle {
   font-family: "Kaushan Script", cursive;
-  font-size: clamp(1.2rem, 2.5vw, 1.365rem);
+  font-size: var(--fs-script-quote);
   font-weight: 400;
   font-style: normal;
   color: var(--muted);

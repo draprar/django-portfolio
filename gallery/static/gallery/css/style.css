@@ -35,6 +35,8 @@
   --input: #111;
   --border: rgba(255, 255, 255, 0.08);
   --border-quiet: rgba(255, 255, 255, 0.14);
+  /* Kaushan: standalone motto / specify */
+  --fs-script-tagline: clamp(1.55rem, 3.4vw, 2rem);
 }
 
 /* ── Loader ──────────────────────────────────────────────────────────────── */
@@ -240,9 +242,10 @@ main.container {
   margin: 0;
 }
 
-.about-tagline {
+/* Beat .about-me p so Kaushan tagline size/color actually apply */
+.about-me .about-tagline {
   font-family: "Kaushan Script", cursive;
-  font-size: clamp(2.8rem, 7vw, 4rem);
+  font-size: var(--fs-script-tagline);
   margin-bottom: 0;
   color: var(--gold);
   font-weight: 400;
