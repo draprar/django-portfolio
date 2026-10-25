@@ -3,11 +3,18 @@
   <div class="container px-4 py-5">
     <div class="text-center info mb-3">
       <h2 data-pl="Kluby rugby w Polsce — ostatnia dekada" data-en="Rugby clubs in Poland — the last decade">Kluby rugby w Polsce — ostatnia dekada</h2>
-      <p class="text-muted map-data-scope rugby-lead mx-auto"
-         data-pl="Mapa pokazuje kluby związane z Ekstraligą i Polską Ligą Rugby 7 (PLR7) w sezonach z ostatnich 10 lat, dla których udało się potwierdzić dane w dostępnych źródłach. Nie jest to pełny wykaz klubów ani kompletna historia sezonów. Osobno pokazano historyczny punkt AFC Rugby Giżycko (2008–2010)."
-         data-en="The map shows clubs linked to Ekstraliga and the Polish Rugby 7 League (PLR7) in seasons from the last 10 years where data could be confirmed in available sources. It is not a complete list of clubs or a full season-by-season history. AFC Rugby Giżycko (2008–2010) is shown separately as a historic marker.">
-        Mapa pokazuje kluby związane z Ekstraligą i Polską Ligą Rugby 7 (PLR7) w sezonach z ostatnich 10 lat, dla których udało się potwierdzić dane w dostępnych źródłach. Nie jest to pełny wykaz klubów ani kompletna historia sezonów. Osobno pokazano historyczny punkt AFC Rugby Giżycko (2008–2010).
-      </p>
+      <div class="rugby-lead mx-auto text-center map-data-scope">
+        <p class="text-muted"
+           data-pl="Mapa pokazuje kluby związane z Ekstraligą i Polską Ligą Rugby 7 (PLR7) w sezonach z ostatnich 10 lat, dla których udało się potwierdzić dane w dostępnych źródłach. Nie jest to pełny wykaz klubów ani kompletna historia sezonów."
+           data-en="The map shows clubs linked to Ekstraliga and the Polish Rugby 7 League (PLR7) in seasons from the last 10 years where data could be confirmed in available sources. It is not a complete list of clubs or a full season-by-season history.">
+          Mapa pokazuje kluby związane z Ekstraligą i Polską Ligą Rugby 7 (PLR7) w sezonach z ostatnich 10 lat, dla których udało się potwierdzić dane w dostępnych źródłach. Nie jest to pełny wykaz klubów ani kompletna historia sezonów.
+        </p>
+        <p class="text-muted"
+           data-pl="Osobno pokazano historyczny punkt AFC Rugby Giżycko (2008–2010)."
+           data-en="AFC Rugby Giżycko (2008–2010) is shown separately as a historic marker.">
+          Osobno pokazano historyczny punkt AFC Rugby Giżycko (2008–2010).
+        </p>
+      </div>
       {{ map_projection_json|json_script:"rugby-map-projection" }}
     </div>
     <div class="rugby-map-wrap" id="rugby-map"
@@ -22,11 +29,6 @@
                 data-pl="Ekstraliga" data-en="Ekstraliga">Ekstraliga</button>
         <button type="button" class="map-btn map-filter" data-map-filter="sevens" aria-pressed="false"
                 data-pl="Polska Liga Rugby 7 (PLR7)" data-en="Polish Rugby 7 League (PLR7)">Polska Liga Rugby 7 (PLR7)</button>
-      </div>
-      <div class="rugby-map-toolbar">
-        <button type="button" class="map-btn" data-map-action="zoom-in" data-pl="Przybliż" data-en="Zoom in">Przybliż</button>
-        <button type="button" class="map-btn" data-map-action="zoom-out" data-pl="Oddal" data-en="Zoom out" disabled>Oddal</button>
-        <button type="button" class="map-btn" data-map-action="reset" data-pl="Cała Polska" data-en="All of Poland">Cała Polska</button>
       </div>
       <div class="rugby-map-viewport">
         <div class="rugby-map-stage" id="rugby-map-stage">
