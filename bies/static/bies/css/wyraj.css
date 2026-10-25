@@ -19,6 +19,8 @@
   --gold-dim: var(--gold-2);
   --text: #e0e0e0;
   --radius: 16px;
+  /* Kaushan: standalone motto / specify */
+  --fs-script-tagline: clamp(1.55rem, 3.4vw, 2rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -268,8 +270,8 @@ h1::after {
   text-align: center;
   font-family: 'Kaushan Script', cursive;
   font-weight: 400;
-  font-size: clamp(1.62rem, 3.6vw, 2.1rem);
-  color: var(--muted);
+  font-size: var(--fs-script-tagline);
+  color: var(--gold);
   letter-spacing: 0.02em;
   margin: 0.7rem 0 1.8rem;
   animation: fadeIn 1.4s ease both;
@@ -591,7 +593,6 @@ a:hover { color: var(--gold-hover); }
 
   h1                { font-size: 2.6rem; }
   .lista-title      { font-size: 3.2rem; letter-spacing: 0.1em; }
-  .subtitle         { font-size: 1.86rem; }
   .section-title    { font-size: 1.3rem; }
   p                 { font-size: 1.1rem; line-height: 1.75; }
   .wyraj-intro p    { font-size: 1.15rem; }
