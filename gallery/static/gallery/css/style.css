@@ -241,11 +241,12 @@ main.container {
 }
 
 .about-tagline {
-  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-family: "Kaushan Script", cursive;
+  font-size: clamp(2.8rem, 7vw, 4rem);
   margin-bottom: 0;
   color: var(--gold);
-  font-weight: 300;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   line-height: 1.3;
 }
 

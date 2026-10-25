@@ -240,6 +240,15 @@ summary:focus-visible {
   margin-bottom: 0;
 }
 
+.wiciedzy-home-intro .wiciedzy-home-tagline,
+.wiciedzy-home-intro .wiciedzy-home-lead {
+  font-family: "Kaushan Script", cursive;
+  font-size: 1.38rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.35;
+}
+
 .wiciedzy-home-tagline::after {
   content: "";
   display: block;

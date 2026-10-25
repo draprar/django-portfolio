@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@200;300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Shared with codillin' / wiciędze / bazgrollin' */
@@ -266,9 +266,9 @@ h1::after {
 
 .subtitle {
   text-align: center;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 400;
+  font-size: clamp(1.62rem, 3.6vw, 2.1rem);
   color: var(--muted);
   letter-spacing: 0.02em;
   margin: 0.7rem 0 1.8rem;
@@ -591,7 +591,7 @@ a:hover { color: var(--gold-hover); }
 
   h1                { font-size: 2.6rem; }
   .lista-title      { font-size: 3.2rem; letter-spacing: 0.1em; }
-  .subtitle         { font-size: 1.35rem; }
+  .subtitle         { font-size: 1.86rem; }
   .section-title    { font-size: 1.3rem; }
   p                 { font-size: 1.1rem; line-height: 1.75; }
   .wyraj-intro p    { font-size: 1.15rem; }

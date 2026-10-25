@@ -315,10 +315,12 @@ body {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.71rem, 3.58vw, 1.95rem);
-  font-weight: 300;
-  font-style: italic;
+  font-family: "Kaushan Script", cursive;
+  font-size: clamp(1.2rem, 2.5vw, 1.365rem);
+  font-weight: 400;
+  font-style: normal;
   color: var(--muted);
+  letter-spacing: 0.02em;
   max-width: 58.5rem;
   margin: 0 auto 1.79rem;
   opacity: 0;
@@ -996,7 +998,7 @@ button:focus-visible {
 
 .hero-name {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.75rem, 4.2vw, 2.3rem);
+  font-size: clamp(3rem, 8.4vw, 4.6rem);
   font-weight: 300;
   letter-spacing: 4.9px;
   text-transform: none;
@@ -1021,21 +1023,24 @@ button:focus-visible {
     max-width: 100%;
   }
 
-  .hero-name {
-    font-size: clamp(1.05rem, 4.7vw, 1.55rem);
+  .hero-name,
+  .hero-eyebrow {
     letter-spacing: clamp(1px, 0.35vw, 3.9px);
-    margin-bottom: 0.85rem;
-  }
-
-  .hero-subtitle {
-    font-size: clamp(0.68rem, 3.35vw, 1.05rem);
-    max-width: none;
-    margin-bottom: 0.75rem;
   }
 
   .hero-eyebrow {
     font-size: clamp(0.5rem, 2.52vw, 0.8rem);
-    letter-spacing: clamp(0.5px, 0.2vw, 2px);
+  }
+
+  .hero-name {
+    font-size: clamp(1rem, 5.04vw, 1.6rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.66rem, 2.8vw, 0.95rem);
+    max-width: none;
+    margin-bottom: 0.75rem;
   }
 }
 

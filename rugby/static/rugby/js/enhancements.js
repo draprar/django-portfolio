@@ -142,14 +142,12 @@
     });
     if (!narrow) return;
     const target = hero.clientWidth * 0.9;
-    lines.forEach((el) => {
+    const fitOne = (el, hi) => {
       el.style.width = 'max-content';
       el.style.maxWidth = 'none';
       el.style.marginLeft = 'auto';
       el.style.marginRight = 'auto';
       let lo = 11;
-      // Short "rugby" would otherwise grow toward 72px; keep the name modest.
-      let hi = el.classList.contains('hero-name') ? 44 : 72;
       for (let i = 0; i < 16; i += 1) {
         const mid = (lo + hi) / 2;
         el.style.fontSize = mid + 'px';
@@ -157,7 +155,34 @@
         else lo = mid;
       }
       el.style.fontSize = lo + 'px';
-    });
+      return lo;
+    };
+    const name = document.querySelector('.hero-name');
+    const eyebrow = document.querySelector('.hero-eyebrow');
+    const subtitle = document.querySelector('.hero-subtitle');
+    // Eyebrow sets the shared scale; name is 2× that size (capped so it still fits).
+    if (eyebrow) {
+      const base = fitOne(eyebrow, 44);
+      eyebrow.style.fontSize = base + 'px';
+      if (name) {
+        name.style.width = 'max-content';
+        name.style.maxWidth = 'none';
+        name.style.marginLeft = 'auto';
+        name.style.marginRight = 'auto';
+        let nameSize = base * 2;
+        name.style.fontSize = nameSize + 'px';
+        while (nameSize > 11 && name.getBoundingClientRect().width > target) {
+          nameSize -= 0.5;
+          name.style.fontSize = nameSize + 'px';
+        }
+      }
+    } else if (name) {
+      fitOne(name, 44);
+    }
+    if (subtitle) {
+      const sub = fitOne(subtitle, 72);
+      subtitle.style.fontSize = (sub * 0.7) + 'px';
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
