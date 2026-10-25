@@ -181,7 +181,8 @@
     }
     if (subtitle) {
       const sub = fitOne(subtitle, 72);
-      subtitle.style.fontSize = (sub * 0.7) + 'px';
+      // Keep subtitle ~0.7 of fit, then ×1.2 vs prior quote scale
+      subtitle.style.fontSize = (sub * 0.84) + 'px';
     }
   }
 
