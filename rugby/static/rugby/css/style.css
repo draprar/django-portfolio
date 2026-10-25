@@ -45,8 +45,8 @@ html.loader-active { overflow: hidden; }
   --fs-lead: 1.0625rem;
   --fs-body: 1rem;
   --fs-caption: 0.875rem;
-  /* Kaushan: under-brand quote (not standalone tagline) */
-  --fs-script-quote: clamp(1.2rem, 2.5vw, 1.4rem);
+  /* Kaushan: under-brand quote (×1.2 vs prior) */
+  --fs-script-quote: clamp(1.44rem, 3vw, 1.68rem);
 }
 
 /* ── Base reset ─────────────────────────────────────────────────────────────── */
@@ -1040,7 +1040,7 @@ button:focus-visible {
   }
 
   .hero-subtitle {
-    font-size: clamp(0.66rem, 2.8vw, 0.95rem);
+    font-size: clamp(0.792rem, 3.36vw, 1.14rem);
     max-width: none;
     margin-bottom: 0.75rem;
   }

@@ -9,8 +9,8 @@
   --panel: rgba(10, 10, 10, 0.95);
   --card: #0d0d0d;
   --input: #111;
-  /* Kaushan: standalone motto / specify */
-  --fs-script-tagline: clamp(1.55rem, 3.4vw, 2rem);
+  /* Kaushan: standalone motto / specify (×0.9 vs hub tagline) */
+  --fs-script-tagline: clamp(1.395rem, 3.06vw, 1.8rem);
 }
 
 *,
@@ -250,6 +250,23 @@ summary:focus-visible {
   letter-spacing: 1px;
   line-height: 1.35;
   color: #fff;
+}
+
+@media (max-width: 640px) {
+  .wiciedzy-home-intro {
+    max-width: none;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .wiciedzy-home-intro .wiciedzy-home-tagline,
+  .wiciedzy-home-intro .wiciedzy-home-lead {
+    white-space: nowrap;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .wiciedzy-home-tagline::after {

@@ -54,3 +54,52 @@
   </p>
 </div>
 {% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  function fitIntroLines() {
+    var intro = document.querySelector(".wiciedzy-home-intro");
+    if (!intro) return;
+    var lines = intro.querySelectorAll(".wiciedzy-home-tagline, .wiciedzy-home-lead");
+    if (!lines.length) return;
+    var narrow = window.matchMedia("(max-width: 640px)").matches;
+    lines.forEach(function (el) {
+      el.style.fontSize = "";
+    });
+    if (!narrow) return;
+    var target = intro.clientWidth;
+    lines.forEach(function (el) {
+      var lo = 11;
+      var hi = 40;
+      var cs = window.getComputedStyle(el);
+      var start = parseFloat(cs.fontSize) || 22;
+      hi = Math.max(start, 18);
+      for (var i = 0; i < 16; i += 1) {
+        var mid = (lo + hi) / 2;
+        el.style.fontSize = mid + "px";
+        if (el.getBoundingClientRect().width > target) hi = mid;
+        else lo = mid;
+      }
+      el.style.fontSize = lo + "px";
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    fitIntroLines();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitIntroLines).catch(function () {});
+    }
+    document.querySelectorAll(".lang-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setTimeout(fitIntroLines, 0);
+      });
+    });
+    var t = 0;
+    window.addEventListener("resize", function () {
+      window.clearTimeout(t);
+      t = window.setTimeout(fitIntroLines, 80);
+    });
+  });
+})();
+</script>
+{% endblock %}
