@@ -35,6 +35,14 @@
   --input: #111;
   --border: rgba(255, 255, 255, 0.08);
   --border-quiet: rgba(255, 255, 255, 0.14);
+  /* Hub Poppins scale */
+  --fs-nav: clamp(1.2rem, 2.9vw, 1.55rem);
+  --fs-page: clamp(1.8rem, 5vw, 2.8rem);
+  --fs-section: clamp(1.25rem, 2.8vw, 1.5rem);
+  --fs-body: 1.05rem;
+  --fs-caption: 0.875rem;
+  --fs-muted: clamp(1rem, 2.2vw, 1.15rem);
+  --measure: 920px;
   /* Kaushan: standalone motto / specify */
   --fs-script-tagline: clamp(1.55rem, 3.4vw, 2rem);
 }
@@ -109,7 +117,7 @@ textarea:focus-visible,
   letter-spacing: 3px;
   color: var(--gold) !important;
   text-decoration: none;
-  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-size: var(--fs-nav);
   transition: color 0.3s ease;
 }
 
@@ -156,7 +164,7 @@ textarea:focus-visible,
 main.container {
   flex: 1 0 auto;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--measure);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
@@ -186,7 +194,7 @@ main.container {
 /* Section Titles */
 .section-title {
   text-align: center;
-  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-size: var(--fs-section);
   margin-bottom: 1.5rem;
   color: var(--gold);
   font-weight: 300;
@@ -225,7 +233,7 @@ main.container {
 }
 
 .about-me h1 {
-  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-size: var(--fs-page);
   font-weight: 200;
   text-transform: none;
   letter-spacing: 4px;
@@ -235,10 +243,10 @@ main.container {
 }
 
 .about-me p {
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-size: var(--fs-muted);
   font-weight: 300;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.65;
   margin: 0;
 }
 
@@ -310,7 +318,7 @@ main.container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  max-width: 1200px;
+  max-width: var(--measure);
   margin: 0 auto;
   padding: 1rem 0;
   align-items: stretch;

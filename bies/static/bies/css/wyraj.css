@@ -19,6 +19,14 @@
   --gold-dim: var(--gold-2);
   --text: #e0e0e0;
   --radius: 16px;
+  /* Hub Poppins scale */
+  --fs-nav: clamp(1.2rem, 2.9vw, 1.55rem);
+  --fs-page: clamp(1.8rem, 5vw, 2.8rem);
+  --fs-section: clamp(1.25rem, 2.8vw, 1.5rem);
+  --fs-body: 1.05rem;
+  --fs-caption: 0.875rem;
+  --fs-muted: clamp(1rem, 2.2vw, 1.15rem);
+  --measure: 920px;
   /* Kaushan: standalone motto / specify */
   --fs-script-tagline: clamp(1.55rem, 3.4vw, 2rem);
 }
@@ -33,7 +41,8 @@ body {
   background-color: var(--ink);
   color: var(--text);
   overflow-x: hidden;
-  font-size: 1.05rem;
+  font-size: var(--fs-body);
+  line-height: 1.65;
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -67,7 +76,7 @@ button:focus-visible,
   display: inline-block;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-size: var(--fs-nav);
   letter-spacing: 3px;
   color: var(--gold);
   text-decoration: none;
@@ -178,7 +187,7 @@ button:focus-visible,
    ============================================= */
 .page-wrap {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--measure);
   margin: -4rem auto 0;
   background: var(--panel);
   border: 1px solid var(--border);
@@ -241,7 +250,7 @@ button:focus-visible,
    ============================================= */
 h1 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  font-size: var(--fs-page);
   font-weight: 400;
   text-align: center;
   color: var(--gold);
@@ -254,7 +263,7 @@ h1 {
 .lista-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-size: var(--fs-page);
   letter-spacing: 0.12em;
   text-transform: none;
 }
@@ -278,8 +287,8 @@ h1::after {
 }
 
 p {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: var(--fs-body);
+  line-height: 1.65;
   margin-bottom: 1rem;
   color: var(--text);
 }
@@ -309,7 +318,7 @@ a:hover { color: var(--gold-hover); }
    ============================================= */
 .section-title {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.15rem;
+  font-size: var(--fs-section);
   font-weight: 300;
   margin: 2.2rem 0 0.7rem;
   color: var(--gold);
@@ -529,7 +538,7 @@ a:hover { color: var(--gold-hover); }
 }
 .site-credits {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--measure);
   margin: 0 auto 2.5rem;
   padding: 1.4rem 1.5rem 0;
   border-top: 1px solid var(--border);
@@ -582,7 +591,7 @@ a:hover { color: var(--gold-hover); }
    RESPONSIVE — tablet & mobile
    ============================================= */
 @media (max-width: 768px) {
-  body { font-size: 1.1rem; }
+  body { font-size: var(--fs-body); }
 
   .hero             { height: 46vh; min-height: 260px; }
   .hero-veil        { height: 58%; }
@@ -591,15 +600,12 @@ a:hover { color: var(--gold-hover); }
   .page-wrap.lista-wrap { margin-top: 1.2rem; margin-bottom: 1.5rem; }
   .page-content     { padding: 1.6rem 1.1rem 0; }
 
-  h1                { font-size: 2.6rem; }
-  .lista-title      { font-size: 3.2rem; letter-spacing: 0.1em; }
-  .section-title    { font-size: 1.3rem; }
-  p                 { font-size: 1.1rem; line-height: 1.75; }
-  .wyraj-intro p    { font-size: 1.15rem; }
-  .kolo-jump-line   { font-size: 1.04rem; }
+  .lista-title      { letter-spacing: 0.1em; }
+  .wyraj-intro p    { font-size: var(--fs-muted); }
+  .kolo-jump-line   { font-size: var(--fs-body); }
   .tresc ul,
-  .zrodla ul        { font-size: 1.1rem; }
-  .zrodla li        { font-size: 1rem; }
+  .zrodla ul        { font-size: var(--fs-body); }
+  .zrodla li        { font-size: var(--fs-body); }
 
   .box              { padding: 1rem 1.1rem; }
   .switch           { top: 0.7rem; right: 0.9rem; }
@@ -619,8 +625,6 @@ a:hover { color: var(--gold-hover); }
 }
 
 @media (max-width: 400px) {
-  h1           { font-size: 1.7rem; }
-  .lista-title { font-size: 1.95rem; }
   .swieta-grid { grid-template-columns: 1fr; }
 }
 

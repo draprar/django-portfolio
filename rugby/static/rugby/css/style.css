@@ -42,9 +42,15 @@ html.loader-active { overflow: hidden; }
   --surface3:     #151515;
   --light:        #e0e0e0;
   --border-hover: var(--border-quiet);
-  --fs-lead: 1.0625rem;
-  --fs-body: 1rem;
+  /* Hub Poppins scale */
+  --fs-nav: clamp(1.2rem, 2.9vw, 1.55rem);
+  --fs-page: clamp(1.8rem, 5vw, 2.8rem);
+  --fs-section: clamp(1.25rem, 2.8vw, 1.5rem);
+  --fs-body: 1.05rem;
   --fs-caption: 0.875rem;
+  --fs-muted: clamp(1rem, 2.2vw, 1.15rem);
+  --fs-lead: var(--fs-body);
+  --measure: 920px;
   /* Kaushan: under-brand quote (×1.2 vs prior) */
   --fs-script-quote: clamp(1.44rem, 3vw, 1.68rem);
 }
@@ -402,7 +408,7 @@ main .page-section {
 }
 
 main .page-section > .container {
-  max-width: 920px;
+  max-width: var(--measure);
   margin-left: auto;
   margin-right: auto;
   padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.25rem, 4vw, 1.85rem);
@@ -421,7 +427,7 @@ main .page-section > .container {
 .page-section h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-size: var(--fs-section);
   color: var(--gold);
   text-align: center;
   margin-bottom: 0;
@@ -1073,14 +1079,14 @@ a.hero-scroll-hint {
 
 .rugby-lead { max-width: 65ch; margin-left: auto; margin-right: auto; }
 
-/* Intro and archive copy match the smaller body text. Captions stay as they are. */
+/* Section lead = body; captions stay on --fs-caption elsewhere. */
 .page-section .rugby-lead,
 .page-section .rugby-lead > p,
 .page-section .map-data-scope,
 .page-section .text-center.info > p,
 .account-body {
-  font-size: var(--fs-caption);
-  line-height: 1.6;
+  font-size: var(--fs-lead);
+  line-height: 1.65;
 }
 
 .page-section .rugby-lead > p {
@@ -1634,7 +1640,7 @@ footer.footer.footer-photo .footer-photo-img {
 
 .rugby-stage-note {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--measure);
   margin: 1.15rem auto 0;
   padding: 0 1.25rem;
   text-align: center;
