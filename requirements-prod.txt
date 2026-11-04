@@ -42,7 +42,7 @@ docx==0.2.4
 drf-spectacular==0.28.0
 et_xmlfile==2.0.0
 fastjsonschema==2.21.1
-filelock==3.20.3
+filelock==4.2.1
 fonttools==4.60.2
 gunicorn==23.0.0
 h11==0.16.0
@@ -63,7 +63,7 @@ license-expression==30.4.4
 lxml==6.1.0
 marisa-trie==1.2.1
 MarkupSafe==3.0.2
-msgpack==1.2.1
+msgpack==1.2.3
 murmurhash==1.0.12
 numpy==2.3.2
 openpyxl==3.1.5

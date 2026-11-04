@@ -9,6 +9,14 @@
   --panel: rgba(10, 10, 10, 0.95);
   --card: #0d0d0d;
   --input: #111;
+  /* Hub Poppins scale */
+  --fs-nav: clamp(1.2rem, 2.9vw, 1.55rem);
+  --fs-page: clamp(1.8rem, 5vw, 2.8rem);
+  --fs-section: clamp(1.25rem, 2.8vw, 1.5rem);
+  --fs-body: 1.05rem;
+  --fs-caption: 0.875rem;
+  --fs-muted: clamp(1rem, 2.2vw, 1.15rem);
+  --measure: 920px;
   /* Kaushan: standalone motto / specify (×0.9 vs hub tagline) */
   --fs-script-tagline: clamp(1.395rem, 3.06vw, 1.8rem);
 }
@@ -98,7 +106,7 @@ summary:focus-visible {
   z-index: 1;
   flex: 1 0 auto;
   width: 100%;
-  max-width: 840px;
+  max-width: var(--measure);
   margin: 0 auto;
   padding: 1.4rem 1.6rem 2.4rem;
   background: var(--panel);
@@ -129,7 +137,7 @@ summary:focus-visible {
   letter-spacing: 3px;
   color: var(--gold);
   text-decoration: none;
-  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-size: var(--fs-nav);
   line-height: 1.2;
 }
 
@@ -195,7 +203,7 @@ summary:focus-visible {
 
 .wiciedzy-eyebrow,
 .wiciedzy-section-title {
-  font-size: clamp(1.25rem, 2.8vw, 1.45rem);
+  font-size: var(--fs-section);
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: none;
@@ -211,7 +219,7 @@ summary:focus-visible {
 
 .wiciedzy-title {
   font-weight: 300;
-  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-size: var(--fs-page);
   color: var(--gold);
   text-transform: none;
   letter-spacing: 3px;
@@ -293,7 +301,7 @@ summary:focus-visible {
   white-space: nowrap;
   overflow-wrap: normal;
   line-height: 1.25;
-  font-size: clamp(1.8rem, 5.5vw, 3rem);
+  font-size: var(--fs-page);
   letter-spacing: clamp(1px, 0.2vw, 4px);
 }
 
@@ -333,8 +341,8 @@ summary:focus-visible {
   max-width: 100%;
   white-space: normal;
   overflow-wrap: break-word;
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
-  line-height: 1.7;
+  font-size: var(--fs-muted);
+  line-height: 1.65;
 }
 
 .wiciedzy-header-left .wiciedzy-subtitle,
@@ -346,8 +354,8 @@ summary:focus-visible {
   max-width: 100%;
   white-space: normal;
   overflow-wrap: break-word;
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
-  line-height: 1.7;
+  font-size: var(--fs-muted);
+  line-height: 1.65;
 }
 
 #wiciedzy-main p,
@@ -410,7 +418,7 @@ a.wiciedzy-home-feature {
 
 .wiciedzy-home-feature-title {
   margin: 0 0 0.45rem;
-  font-size: 1.15rem;
+  font-size: var(--fs-section);
   font-weight: 400;
   letter-spacing: 1px;
   text-transform: none;
@@ -427,8 +435,8 @@ a.wiciedzy-home-feature {
   margin: 0 0 1rem;
   max-width: 33.6rem;
   color: var(--muted);
-  line-height: 1.45;
-  font-size: 1rem;
+  line-height: 1.65;
+  font-size: var(--fs-body);
   font-weight: 300;
 }
 
@@ -474,7 +482,7 @@ a.wiciedzy-home-feature:focus-visible .wiciedzy-btn {
 /* Pod panelem — ten sam układ co .site-credits w wyraju (tu: etymologia, nie źródła). */
 .wiciedzy-stage-note {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--measure);
   margin: auto auto 0;
   padding: 1.4rem 1.5rem 0;
   text-align: center;

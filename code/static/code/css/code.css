@@ -2,8 +2,14 @@
     --ink: #060606;
     --gold: #c4922a;
     --gold-2: #a0522d;
-    --offer-title: 1.265rem;
-    --offer-body: 1.1rem;
+    /* Hub Poppins scale */
+    --fs-nav: clamp(1.2rem, 2.9vw, 1.55rem);
+    --fs-page: clamp(1.8rem, 5vw, 2.8rem);
+    --fs-section: clamp(1.25rem, 2.8vw, 1.5rem);
+    --fs-body: 1.05rem;
+    --fs-caption: 0.875rem;
+    --fs-muted: clamp(1rem, 2.2vw, 1.15rem);
+    --measure: 920px;
 }
 
 * {
@@ -47,7 +53,7 @@ a {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 840px;
+    max-width: var(--measure);
     border-radius: 22px;
     background: rgba(10, 10, 10, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -94,7 +100,7 @@ a {
 
 .code-header h1 {
     font-weight: 300;
-    font-size: clamp(2rem, 5.5vw, 3.1rem);
+    font-size: var(--fs-page);
     letter-spacing: 3px;
     margin: 0;
     color: var(--gold);
@@ -118,8 +124,9 @@ a {
 
 .intro-cta {
     margin: 0;
-    font-size: var(--offer-title);
-    line-height: 1.45;
+    /* Title-ish Poppins lead: ~15% above offer body (not Kaushan, not section h2) */
+    font-size: calc(var(--fs-body) * 1.15);
+    line-height: 1.65;
     letter-spacing: 1px;
 }
 
@@ -138,7 +145,7 @@ a {
 
 h2 {
     font-weight: 300;
-    font-size: clamp(1.25rem, 2.8vw, 1.45rem);
+    font-size: var(--fs-section);
     letter-spacing: 2px;
     color: var(--gold);
     text-align: center;
@@ -176,7 +183,7 @@ h2 {
 .offer h3 {
     margin: 0 0 0.45rem;
     font-weight: 400;
-    font-size: var(--offer-title);
+    font-size: var(--fs-section);
     letter-spacing: 1px;
     color: #fff;
 }
@@ -184,9 +191,9 @@ h2 {
 .offer p {
     margin: 0;
     font-weight: 300;
-    font-size: var(--offer-body);
+    font-size: var(--fs-body);
     color: #c4c4c4;
-    line-height: 1.45;
+    line-height: 1.65;
 }
 
 .repo-list {
@@ -233,15 +240,16 @@ h2 {
 .repo h3 {
     margin: 0;
     font-weight: 400;
-    font-size: var(--offer-body);
+    font-size: var(--fs-body);
     color: var(--gold);
 }
 
 .repo p {
     margin: 0.4rem 0 0;
     font-weight: 300;
-    font-size: 0.99rem;
+    font-size: var(--fs-muted);
     color: #c4c4c4;
+    line-height: 1.65;
 }
 
 .repo-links {
