@@ -48,7 +48,7 @@ drf-spectacular==0.28.0
 et_xmlfile==2.0.0
 executing==2.2.0
 fastjsonschema==2.21.1
-filelock==3.20.3
+filelock==4.2.1
 fonttools==4.60.2
 gunicorn==23.0.0
 h11==0.16.0
@@ -79,7 +79,7 @@ MarkupSafe==3.0.2
 matplotlib-inline==0.1.7
 mdurl==0.1.2
 mistune==3.3.3
-msgpack==1.2.1
+msgpack==1.2.3
 murmurhash==1.0.12
 mypy==1.20.0
 mypy_extensions==1.1.0
