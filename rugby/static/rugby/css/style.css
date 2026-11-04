@@ -42,10 +42,11 @@ html.loader-active { overflow: hidden; }
   --surface3:     #151515;
   --light:        #e0e0e0;
   --border-hover: var(--border-quiet);
-  /* Hub Poppins scale */
+  /* Hub Poppins scale — clear steps, never collapse title into body */
   --fs-nav: clamp(1.2rem, 2.9vw, 1.55rem);
   --fs-page: clamp(1.8rem, 5vw, 2.8rem);
   --fs-section: clamp(1.25rem, 2.8vw, 1.5rem);
+  --fs-subhead: clamp(1.15rem, 2.4vw, 1.28rem); /* card / account / block titles */
   --fs-body: 1.05rem;
   --fs-caption: 0.875rem;
   --fs-muted: clamp(1rem, 2.2vw, 1.15rem);
@@ -121,8 +122,8 @@ body {
   color: #e0e0e0;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: var(--fs-body);
+  line-height: 1.65;
 }
 
 /* ── Back-to-top ────────────────────────────────────────────────────────────── */
@@ -435,11 +436,17 @@ main .page-section > .container {
   letter-spacing: 2px;
 }
 
-.page-section h5 {
+.page-section h3,
+.page-section h4,
+.page-section h5,
+.page-section .h5,
+.page-section .h6 {
   font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.45;
+  font-weight: 400;
+  font-size: var(--fs-subhead);
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  color: #fff;
 }
 
 /* Gold rule under section title — equal gap above/below the bar */
@@ -477,16 +484,18 @@ em, i, .text-muted em, h5 em, p em {
 
 /* INFO SECTION  (#info) */
 
-#info h4 {
+#info h3,
+#info h4,
+#info .h5 {
   color: #fff;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  font-size: 1.15rem;
-  letter-spacing: 1px;
+  font-size: var(--fs-subhead);
+  letter-spacing: 0.5px;
 }
 #info .text-muted { color: var(--muted) !important; font-weight: 300; }
 #info .rugby-card { text-align: center; }
-#info .rugby-card .text-muted { font-size: var(--fs-caption); }
+#info .rugby-card .text-muted { font-size: var(--fs-body); line-height: 1.65; }
 #info strong { color: var(--gold); }
 
 /* AFC glance cards — independent of legacy Bootstrap column overrides */
@@ -734,9 +743,9 @@ em, i, .text-muted em, h5 em, p em {
 .timeline-heading h4 {
   color: var(--gold) !important;
   font-family: "Poppins", sans-serif;
-  font-size: 1.05rem;
+  font-size: var(--fs-subhead);
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-bottom: 0.44rem;
   text-transform: none !important;
 }
@@ -1079,12 +1088,16 @@ a.hero-scroll-hint {
 
 .rugby-lead { max-width: 65ch; margin-left: auto; margin-right: auto; }
 
-/* Section lead = body; captions stay on --fs-caption elsewhere. */
+/* Narrative copy = body/lead. Captions stay on --fs-caption (meta, sources, media credits). */
 .page-section .rugby-lead,
 .page-section .rugby-lead > p,
 .page-section .map-data-scope,
 .page-section .text-center.info > p,
-.account-body {
+.account-body,
+.farewell-quote,
+#site-origin .container,
+#site-origin .container p,
+.map-card .map-card-body {
   font-size: var(--fs-lead);
   line-height: 1.65;
 }
@@ -1102,9 +1115,9 @@ a.hero-scroll-hint {
 .page-section .text-muted.small,
 .page-section ul.small,
 .page-section .map-legend,
-#site-origin .container,
 .account-dek-line,
-.account-meta {
+.account-meta,
+.map-card .map-card-city {
   font-size: var(--fs-caption);
   line-height: 1.55;
 }
@@ -1113,10 +1126,13 @@ a.hero-scroll-hint {
   max-width: 65ch;
 }
 
-.account-card .account-title {
-  font-size: var(--fs-body);
-  line-height: 1.4;
+.account-card .account-title,
+.account-title {
+  font-size: var(--fs-subhead);
+  line-height: 1.35;
   font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #fff;
 }
 
 .rugby-links-label {
@@ -1170,6 +1186,7 @@ a.hero-scroll-hint {
 
 .rugby-pitch-block > h3 {
   color: #fff;
+  font-size: var(--fs-subhead);
   font-weight: 400;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
@@ -1194,6 +1211,9 @@ a.hero-scroll-hint {
 #phase-heading {
   margin: 1.35rem 0 0.4rem;
   text-align: center;
+  font-size: var(--fs-subhead);
+  font-weight: 400;
+  color: #fff;
 }
 
 #site-origin .container {
@@ -1242,7 +1262,7 @@ a.hero-scroll-hint {
   padding: 0.65rem 0.75rem;
   margin-bottom: 0.5rem;
   border-radius: 12px;
-  font-size: var(--fs-caption);
+  font-size: var(--fs-body);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1266,10 +1286,10 @@ a.hero-scroll-hint {
 .scoring-list .scoring-desc {
   display: block;
   margin-top: 0.4rem;
-  font-size: var(--fs-caption);
+  font-size: var(--fs-body);
   font-weight: 300;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.65;
 }
 
 .scoring-list .scoring-btn:hover,
@@ -1308,7 +1328,8 @@ a.hero-scroll-hint {
 .pitch-explainer {
   min-height: 3rem;
   color: var(--muted);
-  font-size: var(--fs-caption);
+  font-size: var(--fs-body);
+  line-height: 1.65;
   text-align: center;
 }
 
@@ -1480,7 +1501,12 @@ a.hero-scroll-hint {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   pointer-events: auto;
 }
-.map-card .map-card-club { font-size: 0.95rem; margin-bottom: 0.35rem !important; }
+.map-card .map-card-club {
+  font-size: var(--fs-subhead);
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 0.35rem !important;
+}
 .map-card .map-card-body { white-space: pre-line; line-height: 1.35; margin-bottom: 0.35rem; }
 .map-card-close {
   position: absolute;
@@ -1686,7 +1712,6 @@ footer.footer.footer-photo .footer-photo-img {
 
 .account-title {
   margin-bottom: 0.65rem;
-  color: #fff;
 }
 
 /* Compact timeline — vertical axis, no legacy float/circle layout */
