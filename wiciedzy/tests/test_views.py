@@ -17,7 +17,9 @@ def test_home_is_bilingual(client):
     assert 'data-en="catalog"' in content
     assert "Siemasz na wiciędze" not in content
     assert "Boks boks, albo kop kop" in content
-    assert "a jak nie to se ogarnij inne" in content
+    assert 'data-pl="a jak nie to ogarnij inne"' in content
+    assert "color: var(--gold);" in open("wiciedzy/static/wiciedzy/css/wiciedzy.css", encoding="utf-8").read()
+    assert "Poklikaj, a dostaniesz krótką listę dopasowanych stylów." in content
     assert "wiciedzy-home-tagline" in content
     assert "obczaj niżej" not in content
     assert "quizopasowanie" in content

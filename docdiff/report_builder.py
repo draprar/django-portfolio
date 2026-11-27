@@ -11,17 +11,17 @@ _LOGGER = logging.getLogger(__name__)
 
 STYLE = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap');
 
 /* ── Design tokens — dark gold system ── */
 :root {
-  --bg:           #0f1117;
-  --surface:      #1a1e27;
-  --surface2:     #22273a;
+  --bg:           #060606;
+  --surface:      #0d0d0d;
+  --surface2:     #111111;
   --border:       rgba(255,255,255,0.07);
   --border-gold:  rgba(196,146,42,0.35);
   --text:         #e0e0e0;
-  --muted:        #8a8f9a;
+  --muted:        #c4c4c4;
   --gold:         #c4922a;
   --gold-light:   #e0b060;
   --added-bg:     rgba(34,90,50,0.35);
@@ -44,9 +44,9 @@ STYLE = """
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  background: var(--bg);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
   color: var(--text);
   line-height: 1.65;
   margin: 0;
@@ -55,9 +55,14 @@ body {
 }
 
 .container {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 5rem;
+  max-width: 952px;
+  min-height: calc(100vh - 80px);
+  margin: 32px auto;
+  padding: 1.4rem 1.6rem 2.4rem;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
 /* ── Top bar ── */
@@ -90,10 +95,10 @@ body {
 .report-header { margin-bottom: 2.5rem; }
 
 .report-title {
-  font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 700;
-  color: var(--text);
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--gold);
   margin: 0 0 0.2rem;
   display: inline-block;
 }
@@ -116,14 +121,14 @@ body {
 
 /* ── Chips / buttons ── */
 .chip {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px solid var(--border-gold);
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 999px;
   margin: 3px;
   cursor: pointer;
   display: inline-block;
@@ -148,7 +153,7 @@ body {
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1.2rem 1.4rem;
   margin-bottom: 1rem;
   transition: border-color 0.2s;
@@ -274,7 +279,7 @@ tr:hover td { background: rgba(196,146,42,0.04); }
 
 /* ── Mobile ── */
 @media (max-width: 600px) {
-  .container { padding: 1.2rem 1rem 4rem; }
+  .container { margin: 12px; padding: 1rem 1rem 2rem; min-height: calc(100vh - 24px); }
   .report-topbar { flex-direction: column; align-items: flex-start; }
 }
 </style>

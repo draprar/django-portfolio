@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
 /* ── Section: fills viewport so footer stays at bottom ─────────────────────── */
 .docdiff-section {
   min-height: calc(100vh - 160px);
@@ -310,5 +308,288 @@
   }
   .file-drop-inner {
     padding: 2.4rem 1.5rem;
+  }
+}
+
+/* DocDiff surfaces use the shared wiciedzy portal palette and layout. */
+.docdiff-section {
+  min-height: 0;
+  display: block;
+  padding: 0.6rem 0 0.5rem;
+}
+
+.docdiff-inner {
+  width: 100%;
+  max-width: 840px;
+}
+
+.docdiff-portal {
+  max-width: 920px;
+  padding: 1.2rem 1.6rem 2rem;
+}
+
+.docdiff-header {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 42rem;
+}
+
+.docdiff-title {
+  font-family: "Poppins", sans-serif;
+  color: #c4922a;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 300;
+  letter-spacing: clamp(1px, 0.2vw, 4px);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.docdiff-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(45deg, #c4922a, #a0522d);
+}
+
+.docdiff-subtitle {
+  color: #c4c4c4;
+  font: 300 clamp(1rem, 2.2vw, 1.15rem)/1.65 "Poppins", sans-serif;
+  margin: 1rem auto 0;
+  max-width: 38rem;
+}
+
+.docdiff-alert {
+  font-family: "Poppins", sans-serif;
+  color: #fca5a5;
+  background: rgba(100, 28, 28, 0.35);
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  border-radius: 10px;
+  padding: 0.8rem 1.1rem;
+  margin: 0 auto 1.2rem;
+  text-align: center;
+}
+
+.docdiff-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.upload-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.upload-field label {
+  font-family: "Poppins", sans-serif;
+  color: #c4922a;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.file-drop {
+  min-height: 180px;
+  color: inherit;
+  background: #0d0d0d;
+  border: 1px dashed rgba(196, 146, 42, 0.45);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.file-drop:hover,
+.file-drop:focus-visible {
+  border-color: #c4922a;
+  box-shadow: 0 0 0 1px rgba(196, 146, 42, 0.25), 0 12px 28px rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+.file-drop.drag-over,
+.file-drop.has-file {
+  border-style: solid;
+  border-color: #c4922a;
+  background: rgba(196, 146, 42, 0.06);
+}
+
+.file-drop-inner {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.5rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.drop-icon {
+  color: rgba(196, 146, 42, 0.75);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.drop-label {
+  font-family: "Poppins", sans-serif;
+  color: #c4c4c4;
+  font-size: 0.98rem;
+  font-weight: 300;
+}
+
+.drop-name {
+  font-family: "Poppins", sans-serif;
+  min-height: 1.5em;
+  color: #d4a535;
+  font-size: 0.9rem;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.upload-arrow {
+  color: #c4922a;
+  font-size: 1.5rem;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.docdiff-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.5rem;
+  color: #fff;
+  background: linear-gradient(45deg, #c4922a, #8b4513);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: 400 0.96rem/1.2 "Poppins", sans-serif;
+  letter-spacing: 0.6px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.22s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+.docdiff-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, #d4a535, #8b4513);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.docdiff-btn:hover:not(:disabled)::before,
+.docdiff-btn:focus-visible::before {
+  opacity: 1;
+}
+
+.docdiff-btn:hover:not(:disabled),
+.docdiff-btn:focus-visible {
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(196, 146, 42, 0.2);
+  transform: translateY(-2px);
+}
+
+.docdiff-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.docdiff-btn .btn-text,
+.docdiff-btn .btn-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.docdiff-btn:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.docdiff-btn:focus-visible,
+.file-drop:focus-visible {
+  outline: 3px solid #c4922a;
+  outline-offset: 3px;
+}
+
+.docdiff-result-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0.5rem 0 1rem;
+}
+
+.docdiff-result-wrap h1 {
+  font-family: "Poppins", sans-serif;
+  color: #c4922a;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.docdiff-result-wrap p {
+  font-family: "Poppins", sans-serif;
+}
+
+.docdiff-result-wrap iframe {
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  width: 100%;
+  min-height: 70vh;
+}
+
+.docdiff-result-wrap .open-link {
+  color: #c4922a;
+  font-family: "Poppins", sans-serif;
+}
+
+@media (max-width: 640px) {
+  .docdiff-portal {
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  .docdiff-section {
+    padding: 0.4rem 0 0.5rem;
+  }
+
+  .docdiff-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .upload-pair {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .file-drop,
+  .file-drop-inner {
+    min-height: 145px;
+  }
+
+  .upload-arrow {
+    padding: 0;
+    line-height: 1;
+    transform: rotate(90deg);
+  }
+
+  .docdiff-btn {
+    width: 100%;
+    padding: 0.65rem 1.5rem;
   }
 }

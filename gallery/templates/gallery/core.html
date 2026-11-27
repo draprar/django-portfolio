@@ -37,13 +37,13 @@
                         {% if request.resolver_match.url_name == 'gallery:gallery_home' %}
                             {% if not selected_category or selected_category == 'All' %}active{% endif %}
                         {% endif %}"
-                        href="{% url 'gallery:gallery_home' %}{% if request.GET.view == 'grid' %}?view=grid{% endif %}">All</a>
+                        href="{% url 'gallery:gallery_home' %}{% if request.GET.view == 'grid' or request.GET.view == 'carousel' %}?view={{ request.GET.view }}{% endif %}">All</a>
                 </li>
 
                 {% for category in categories %}
                 <li class="nav-item">
                     <a class="nav-link {% if selected_category == category.title %}active{% endif %}"
-                        href="{% url 'gallery:gallery_home' %}?category={{ category.title|urlencode }}{% if request.GET.view == 'grid' %}&view=grid{% endif %}">
+                        href="{% url 'gallery:gallery_home' %}?category={{ category.title|urlencode }}{% if request.GET.view == 'grid' or request.GET.view == 'carousel' %}&view={{ request.GET.view }}{% endif %}">
                         {{ category.title }}
                     </a>
                 </li>

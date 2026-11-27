@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "docdiff/base.html" %}
 {% load static %}
 
 {% block title %}Document Diff Tool | Walery{% endblock %}
@@ -7,26 +7,24 @@
 <link rel="stylesheet" href="{% static 'docdiff/style.css' %}">
 {% endblock %}
 
-{% block content %}
-
+{% block docdiff %}
 <section class="docdiff-section fade-in">
   <div class="docdiff-inner">
-
     <div class="docdiff-header">
       <h2 class="docdiff-title"
           data-en="Document Diff Tool"
-          data-pl="Narzędzie porównujące dokumenty">
-        Document Diff Tool
+          data-pl="Porównaj dokumenty">
+        Porównaj dokumenty
       </h2>
       <p class="docdiff-subtitle"
-         data-en="Compare two DOCX, XLSX or TXT files with AI-powered difference detection."
-         data-pl="Porównaj dwa pliki DOCX, XLSX lub TXT z analizą różnic wspieraną przez AI.">
-        Compare two DOCX, XLSX or TXT files with AI-powered difference detection.
+         data-en="Upload two DOCX, XLSX or TXT files to get an AI-powered comparison."
+         data-pl="Wgraj dwa pliki DOCX, XLSX lub TXT - otrzymasz analizę różnic wspieraną przez AI.">
+        Wgraj dwa pliki DOCX, XLSX lub TXT - otrzymasz analizę różnic wspieraną przez AI.
       </p>
     </div>
 
     {% if error_code %}
-      <div class="docdiff-alert" id="docdiff-error" data-error="{{ error_code }}"></div>
+      <div class="docdiff-alert" id="docdiff-error" data-error="{{ error_code }}" role="alert" aria-live="assertive" tabindex="-1"></div>
     {% endif %}
 
     <form method="POST" enctype="multipart/form-data" class="docdiff-form" id="docdiff-form">
@@ -35,12 +33,12 @@
       <div class="upload-pair">
 
         <div class="upload-field">
-          <label for="file_old" data-en="Old version" data-pl="Stara wersja">Stara wersja</label>
-          <div class="file-drop" id="drop-old">
+          <label for="file_old" id="label-old" data-en="Old version" data-pl="Stara wersja">Stara wersja</label>
+          <div class="file-drop" id="drop-old" role="button" tabindex="0" aria-labelledby="label-old" aria-describedby="hint-old name-old">
             <input type="file" name="file_old" id="file_old" accept=".docx,.xlsx,.txt" required hidden>
             <div class="file-drop-inner">
-              <i class="fas fa-file-alt drop-icon"></i>
-              <span class="drop-label" data-en="Drop file or click" data-pl="Upuść plik lub kliknij">Upuść plik lub kliknij</span>
+              <i class="fas fa-file-alt drop-icon" aria-hidden="true"></i>
+              <span class="drop-label" id="hint-old" data-en="Drop file or click" data-pl="Upuść plik lub kliknij">Upuść plik lub kliknij</span>
               <span class="drop-name" id="name-old"></span>
             </div>
           </div>
@@ -51,12 +49,12 @@
         </div>
 
         <div class="upload-field">
-          <label for="file_new" data-en="New version" data-pl="Nowa wersja">Nowa wersja</label>
-          <div class="file-drop" id="drop-new">
+          <label for="file_new" id="label-new" data-en="New version" data-pl="Nowa wersja">Nowa wersja</label>
+          <div class="file-drop" id="drop-new" role="button" tabindex="0" aria-labelledby="label-new" aria-describedby="hint-new name-new">
             <input type="file" name="file_new" id="file_new" accept=".docx,.xlsx,.txt" required hidden>
             <div class="file-drop-inner">
-              <i class="fas fa-file-alt drop-icon"></i>
-              <span class="drop-label" data-en="Drop file or click" data-pl="Upuść plik lub kliknij">Upuść plik lub kliknij</span>
+              <i class="fas fa-file-alt drop-icon" aria-hidden="true"></i>
+              <span class="drop-label" id="hint-new" data-en="Drop file or click" data-pl="Upuść plik lub kliknij">Upuść plik lub kliknij</span>
               <span class="drop-name" id="name-new"></span>
             </div>
           </div>
@@ -66,15 +64,14 @@
 
       <button type="submit" class="docdiff-btn" id="docdiff-submit">
         <span class="btn-text" data-en="Compare documents" data-pl="Porównaj dokumenty">Porównaj dokumenty</span>
-        <i class="fas fa-search btn-icon"></i>
+        <i class="fas fa-search btn-icon" aria-hidden="true"></i>
       </button>
 
     </form>
-
   </div>
 </section>
 
-<div id="docdiff-messages" class="d-none">
+<div id="docdiff-messages" hidden>
   <span data-key="missing_files"     data-en="Please upload both files."                              data-pl="Wgraj oba pliki."></span>
   <span data-key="format_mismatch"   data-en="Both files must have the same format."                  data-pl="Oba pliki muszą mieć ten sam format."></span>
   <span data-key="extract_failed"    data-en="Failed to read document content. File may be corrupted." data-pl="Nie udało się odczytać pliku. Może być uszkodzony."></span>
@@ -91,28 +88,30 @@
 {% block extra_js %}
 <script>
 (function () {
-  /* ── click-to-open file picker ─── */
+  /* Open the file picker by click or keyboard. */
   function initDrop(dropId, inputId, nameId) {
     const drop  = document.getElementById(dropId);
     const input = document.getElementById(inputId);
     const name  = document.getElementById(nameId);
 
-    /* open picker on click anywhere inside drop zone */
     drop.addEventListener('click', () => input.click());
+    drop.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        input.click();
+      }
+    });
 
-    /* show chosen filename */
     input.addEventListener('change', () => {
       const f = input.files[0];
       name.textContent = f ? f.name : '';
       drop.classList.toggle('has-file', !!f);
     });
 
-    /* drag-over highlight */
     drop.addEventListener('dragenter', e => { e.preventDefault(); drop.classList.add('drag-over'); });
     drop.addEventListener('dragover',  e => { e.preventDefault(); drop.classList.add('drag-over'); });
     drop.addEventListener('dragleave', e => { e.preventDefault(); drop.classList.remove('drag-over'); });
 
-    /* actual file drop */
     drop.addEventListener('drop', e => {
       e.preventDefault();
       drop.classList.remove('drag-over');
@@ -129,7 +128,6 @@
   initDrop('drop-old', 'file_old', 'name-old');
   initDrop('drop-new', 'file_new', 'name-new');
 
-  /* ── submit: validate + loading state ─── */
   document.getElementById('docdiff-form').addEventListener('submit', function (e) {
     const oldOk = !!document.getElementById('file_old').files[0];
     const newOk = !!document.getElementById('file_new').files[0];
@@ -144,10 +142,14 @@
         box = document.createElement('div');
         box.id = 'docdiff-error';
         box.className = 'docdiff-alert';
+        box.setAttribute('role', 'alert');
+        box.setAttribute('aria-live', 'assertive');
+        box.setAttribute('tabindex', '-1');
         document.querySelector('.docdiff-form').before(box);
       }
       box.textContent = msg;
       box.style.display = 'block';
+      box.focus();
       return;
     }
 

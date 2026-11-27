@@ -31,7 +31,7 @@ class TestGalleryViews:
         assert gallery_item in nature.images.all()
 
     @override_settings(SECURE_SSL_REDIRECT=False)
-    def test_home_defaults_to_carousel(self, client):
+    def test_home_defaults_to_grid_and_keeps_mobile_carousel_markup(self, client):
         category = Category.objects.create(title="Nature")
         Gallery.objects.create(category=category, image="images/nature.jpg", title="mgła")
 
@@ -39,13 +39,16 @@ class TestGalleryViews:
         content = response.content.decode()
 
         assert response.status_code == 200
-        assert response.context["view_mode"] == "carousel"
+        assert response.context["view_mode"] == "grid"
+        assert "Bazgrolę, enjoy." in content
+        assert "Se bazgrolę, enjoy." not in content
         assert "data-gallery-carousel" in content
-        assert 'class="gallery-grid"' not in content
+        assert 'class="gallery-grid"' in content
+        assert "is-grid" in content
         assert "mgła" in content
         assert 'aria-current="page"' in content
-        assert "karuzela" in content
         assert "siatka" in content
+        assert "view=carousel" in content
         assert content.count("data-gallery-carousel") == 1
         assert "section-title" in content
 
@@ -67,13 +70,22 @@ class TestGalleryViews:
         assert "view=grid" in content
 
     @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_carousel_can_be_selected_explicitly(self, client):
+        response = client.get(reverse("gallery:gallery_home") + "?view=carousel")
+
+        assert response.context["view_mode"] == "carousel"
+        carousel_html = response.content.decode()
+        assert 'class="view-switch-link is-active"' in carousel_html
+        assert "karuzela" in carousel_html
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
     def test_carousel_respects_category_filter(self, client):
         nature = Category.objects.create(title="Nature")
         animals = Category.objects.create(title="Animals")
         Gallery.objects.create(category=nature, image="images/nature.jpg", title="mgła")
         Gallery.objects.create(category=animals, image="images/animals.jpg", title="lis")
 
-        response = client.get(reverse("gallery:gallery_home") + "?category=Nature")
+        response = client.get(reverse("gallery:gallery_home") + "?category=Nature&view=carousel")
         content = response.content.decode()
 
         assert response.context["view_mode"] == "carousel"
@@ -81,7 +93,7 @@ class TestGalleryViews:
         assert "lis" not in content
         assert "category=Nature" in response.context["grid_url"]
         assert "view=grid" in response.context["grid_url"]
-        assert "view=grid" not in response.context["carousel_url"]
+        assert "view=carousel" in response.context["carousel_url"]
         assert content.count("data-gallery-carousel") == 1
 
     @override_settings(SECURE_SSL_REDIRECT=False)
@@ -119,9 +131,9 @@ class TestGalleryViews:
         content = response.content.decode()
 
         assert [group["kind"] for group in response.context["carousel_groups"]] == ["instagram", "images"]
-        assert content.count("ig-post-card") == 0
-        assert content.count("data-carousel") == 1
-        assert content.count("ig-post-slide") == 2
+        assert content.count("ig-post-card") == 1
+        assert content.count("data-carousel") == 2
+        assert content.count("ig-post-slide") == 4
         assert content.count("data-gallery-carousel") == 2
         assert content.count('class="g-card"') == 2
         assert content.count("g-card-turn") == 2

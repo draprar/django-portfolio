@@ -24,7 +24,7 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** Boks boks, albo kop kop
 **EN:** Boxing boxing, or kick kick
 
-**PL:** a jak nie to se ogarnij inne
+**PL:** a jak nie to ogarnij inne
 **EN:** and if not, figure out the rest yourself.
 
 **PL:** katalog
@@ -36,7 +36,7 @@ _Szablon:_ `home.html` — stałe napisy; nazwy stylów i opisy z sekcji katalog
 **PL:** quizopasowanie
 **EN:** quizmatch
 
-**PL:** Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
+**PL:** Poklikaj, a dostaniesz krótką listę dopasowanych stylów.
 **EN:** Click around and you'll get a short list of matched styles.
 
 **PL:** wyluzuj

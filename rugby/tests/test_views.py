@@ -12,6 +12,11 @@ class TestPostListView:
     def test_post_list_ok(self):
         assert self.client.get(self.url).status_code == 200
 
+    def test_hero_name_uses_title_case(self):
+        html = self.client.get(self.url).content.decode()
+        assert 'data-pl="Rugby"' in html
+        assert ">Rugby</p>" in html
+
     def test_accounts_in_context(self):
         response = self.client.get(self.url)
         assert len(response.context["accounts"]) == 4

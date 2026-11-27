@@ -436,6 +436,11 @@ a {
         animation-delay: 0.9s;
     }
 
+    .panel-docdiff .panel-bg {
+        animation-duration: 24s;
+        animation-delay: 1.1s;
+    }
+
     /* Code hero: typing supplies motion — skip background pan. */
     .panel-code .panel-bg {
         animation: none;
@@ -594,6 +599,16 @@ a {
 
 .panel-iaio:hover .panel-bg,
 .panel-iaio:focus-visible .panel-bg {
+    filter: blur(0) brightness(1.02) saturate(1);
+}
+
+.panel-docdiff .panel-bg {
+    background: #080808 url('../img/docdiff.png') center / cover no-repeat;
+    filter: blur(2px) brightness(0.92) saturate(0.95);
+}
+
+.panel-docdiff:hover .panel-bg,
+.panel-docdiff:focus-visible .panel-bg {
     filter: blur(0) brightness(1.02) saturate(1);
 }
 
@@ -917,6 +932,7 @@ a {
     .panel-wiciedzy .panel-bg,
     .panel-bazgr .panel-bg,
     .panel-iaio .panel-bg,
+    .panel-docdiff .panel-bg,
     .panel-lingwo .panel-bg {
         filter: brightness(0.95) saturate(0.95) blur(0);
     }

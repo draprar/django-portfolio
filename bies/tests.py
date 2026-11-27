@@ -132,6 +132,11 @@ class WyrajListaViewTests(TestCase):
             "bies/wyraj/lista.html",
         )
 
+    def test_list_subtitle_uses_title_case(self):
+        response = self.client.get(reverse("bies:wyraj-lista"))
+        self.assertContains(response, "<title>wyraj — Słowiańskie Koło Roku</title>", html=True)
+        self.assertContains(response, '<p class="subtitle">Słowiańskie Koło Roku</p>', html=True)
+
     def test_context_swieta(self):
         make_swieto()
         r = self.client.get(reverse("bies:wyraj-lista"))

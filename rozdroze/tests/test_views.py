@@ -14,7 +14,7 @@ def test_wybierz_renders_crossroads(client):
     assert "se klikaj" not in content
     assert "Se klikaj" not in content
     assert ">wyraj</h2>" in content
-    assert content.count('class="panel-import"') == 5
+    assert content.count('class="panel-import"') == 6
     assert 'panel-code"' in content
     code_panel, carousel = content.split('class="carousel"', 1)
     assert "panel-import" not in code_panel
@@ -37,6 +37,11 @@ def test_wybierz_renders_crossroads(client):
     assert 'data-panel="iaio" data-slot="hidden"' in content
     assert ">iaio</h2>" in content
     assert "iaio-bg.jpg" in content
+    assert 'href="/docdiff/"' in content
+    assert 'data-panel="docdiff" data-slot="hidden"' in content
+    assert ">docdiff</h2>" in content
+    assert "docdiff.png" in content
+    assert content.index('data-panel="docdiff"') > content.index('data-panel="iaio"')
     assert "codillin'" in content
     assert 'aria-label="w czym rzecz?"' in content
     assert ">w czym rzecz?</h2>" in content
@@ -48,7 +53,7 @@ def test_wybierz_renders_crossroads(client):
     assert 'stage-stack' in content
     assert 'class="carousel"' in content
     assert "carousel-stage" in content
-    assert content.count("panel-turn") == 5
+    assert content.count("panel-turn") == 6
     assert "Wejdź" not in content
     assert 'class="cta-arrow"' not in content
     assert 'panel-cta' not in content
