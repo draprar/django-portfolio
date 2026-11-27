@@ -111,7 +111,7 @@ a {
 .rozdroze-header .underline {
     width: 48px;
     height: 3px;
-    margin: 8px auto 0;
+    margin: 0 auto 8px;
     border-radius: 2px;
     background: linear-gradient(45deg, var(--gold), var(--gold-2));
 }

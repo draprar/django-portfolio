@@ -255,35 +255,35 @@ PL: Wejdź
 PL: codillin'
 EN: codillin'
 
-PL: Inżynier danych — czasem coś dowiozę.
-EN: Inżynier danych — czasem coś dowiozę.
+PL: Grzebię w danych, procesach i systemach, żeby znaleźć to, co kosztuje, spowalnia albo się psuje. Dowożę też strony, narzędzia i automatyzacje.
+EN: I dig through data, processes and systems to find whatever costs money, slows things down or breaks. I also deliver sites, tools and automation.
 
 PL: data engineer
 EN: data engineer
 
-PL: Se dowożę, obczaj obszary z oferty, a jak masz problem, potrzebę albo sztos pomysł: skrobnij
-EN: I deliver stuff, check the offer areas, and if you've got a problem, a need, or a cool idea: drop me a line
+PL: Głównie grzebię w danych, procesach i systemach, co by znaleźć to, co kosztuje, spowalnia albo się psuje, ale dowożę też inne tematy. Sprawdź obszary poniżej, a jak masz problem, potrzebę lub sztos pomysł: skrobnij
+EN: I dig through data, processes and systems to find whatever costs money, slows things down or breaks, but I also deliver other stuff. Check the areas below, and if you've got a problem, a need or a killer idea: drop me a line
 
 PL: Co tam?
 EN: What's there?
 
-PL: Stronki, aplikacje, narzędzia i SEO [i se wyślesz linkiem].
-EN: Sites, apps, tools and SEO [and you just send a link].
+PL: Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie].
+EN: Processes, costs, quality and efficiency [know the cause, find the fix].
 
-PL: Dashboardy i wizualizacje [excele i powerpointy = sic!].
-EN: Dashboards and visuals [Excel and PowerPoint = sic!].
+PL: Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!].
+EN: Dashboards, reports and visuals [Excel and PowerPoint = sic!].
 
-PL: Kod
-EN: Code
+PL: Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów].
+EN: Forecasts, models and anomaly detection [less tea-leaf reading].
 
-PL: Programy, systemy i automatyzacja [mądrze brzmi, co?].
-EN: Programs, systems, and automation [sounds smart, right?].
+PL: Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer].
+EN: Programs, scripts and automation [hand the boring stuff to the computer].
 
-PL: Uczenie maszynowe
-EN: Machine learning
+PL: Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem].
+EN: Sites, apps, SEO and online tools [and you just send a link].
 
-PL: Analizy, prognozy i modele [a to spoko wspomaga decyzje].
-EN: Analyses, forecasts, and models [and they actually help decisions].
+PL: Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania].
+EN: Standards, procedures and system mapping [not what only Jane knows].
 
 PL: Reposy
 EN: Repos

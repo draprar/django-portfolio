@@ -4,6 +4,10 @@
     document.documentElement.setAttribute('lang', lang);
   };
 
+  function renderOfferDescription(text) {
+    return text.replace(/\[[^\]]*\]/g, aside => `<span class="aside">${aside}</span>`);
+  }
+
   function applyTextToElement(el, text, plainOnly) {
     if (el.tagName === 'META') {
       el.setAttribute('content', text);
@@ -14,6 +18,11 @@
       // if placeholder/value
       if ('placeholder' in el) el.placeholder = text;
       if ('value' in el && (el.type === 'button' || el.type === 'submit')) el.value = text;
+      return;
+    }
+
+    if (el.classList.contains('offer-description')) {
+      el.innerHTML = renderOfferDescription(text);
       return;
     }
 

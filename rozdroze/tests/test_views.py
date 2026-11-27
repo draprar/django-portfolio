@@ -9,6 +9,8 @@ def test_wybierz_renders_crossroads(client):
     assert response.status_code == 200
     content = response.content.decode()
     assert ">click tudzież swipe</h1>" in content
+    header = content.split('<header class="rozdroze-header">', 1)[1].split("</header>", 1)[0]
+    assert header.index('class="underline"') < header.index(">click tudzież swipe</h1>")
     assert "se klikaj" not in content
     assert "Se klikaj" not in content
     assert ">wyraj</h2>" in content
@@ -36,6 +38,8 @@ def test_wybierz_renders_crossroads(client):
     assert ">iaio</h2>" in content
     assert "iaio-bg.jpg" in content
     assert "codillin'" in content
+    assert 'aria-label="w czym rzecz?"' in content
+    assert ">w czym rzecz?</h2>" in content
     assert ">wiciędze</h2>" in content
     assert "code-terminal" in content
     assert "wiciedzy-bg.jpg" in content
