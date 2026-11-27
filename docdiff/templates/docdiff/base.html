@@ -1,0 +1,32 @@
+{% load static %}
+<html lang="pl" data-default-lang="pl" data-lang-plain>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}DocDiff{% endblock %}</title>
+  <link rel="icon" href="{% static 'docdiff/img/doo.ico' %}" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="{% static 'wiciedzy/css/wiciedzy.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+<a class="wiciedzy-skip" href="#docdiff-main" data-en="Skip to content" data-pl="Przejdź do treści">Przejdź do treści</a>
+<div class="wiciedzy-stage">
+  <main class="wiciedzy-portal docdiff-portal" id="docdiff-main">
+    <div class="wiciedzy-portal-top">
+      <a class="wiciedzy-brand" href="{% url 'rozdroze:wybierz' %}">DocDiff</a>
+      <div class="wiciedzy-lang" role="group" aria-label="Język / Language">
+        <button type="button" class="lang-btn" data-lang="pl" aria-pressed="true">PL</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+    {% block docdiff %}{% endblock %}
+  </main>
+</div>
+<script src="{% static 'core/js/lang.js' %}" defer></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

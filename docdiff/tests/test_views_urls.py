@@ -20,6 +20,13 @@ class TestDocDiffView:
         # expect form tag or file input
         assert "<form" in html
         assert "file" in html
+        assert "docdiff/style.css" in html
+        assert "docdiff/img/doo.ico" in html
+        assert "wiciedzy/css/wiciedzy.css" in html
+        assert 'href="/wybierz/"' in html
+        assert 'class="docdiff-inner"' in html
+        assert 'id="drop-old" role="button"' in html
+        assert 'id="drop-new" role="button"' in html
 
     def test_post_without_files_returns_400(self, client):
         """POST request without files should return a 400 JSON error."""

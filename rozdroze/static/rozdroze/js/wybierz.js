@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panels = document.querySelectorAll('.panel');
     const stage = document.querySelector('.carousel-stage');
     const cards = stage ? [...stage.querySelectorAll(':scope > .panel')] : [];
-    // DOM ring: wiciędze → wyraj → lingwołamki → bazgrollin' → iaio. Start on wyraj.
+    // Keep the existing app order intact; newly added panels go at the ring's end. Start on wyraj.
     const wyrajIdx = cards.findIndex((card) => card.dataset.panel === 'wyraj');
     let index = wyrajIdx >= 0 ? wyrajIdx : 0;
     let pointerX = null;
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const runScript = async () => {
             await flash('walery@code:~$ python', 't-dim', 650);
 
-            await beat('who?', [['"codillin\'"', 't-green']], { hold: 950 });
+            await beat('who?', [['"jedzien"', 't-green']], { hold: 950 });
 
             await beat('what?', [
                 ['[', 't-text'],
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 [']', 't-text'],
             ], { outMs: 300, hold: 700 });
 
-            await beat('uuu', [['"nom"', 't-green']], { hold: 1100 });
+            await beat('uuu', [['"yup"', 't-green']], { hold: 1100 });
         };
 
         (async () => {
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (err) {
                     paint(
                         span(`${PROMPT} who?`, 't-gold'),
-                        span('"codillin\'"', 't-green'),
+                        span('"jedzien"', 't-green'),
                     );
                     await sleep(1500);
                 }

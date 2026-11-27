@@ -37,7 +37,7 @@ Osie pytanie wprost: uderzenia, chwyt, parter, broń, kopnięcia, kontakt, zawod
 
 Click around and you get a short list of styles matched to your answers.
 
-Se poklikaj, a dostaniesz krótką listę dopasowanych stylów.
+Poklikaj, a dostaniesz krótką listę dopasowanych stylów.
 
 ### Błąd, gdy brakuje odpowiedzi
 

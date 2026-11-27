@@ -71,7 +71,7 @@ def main() -> None:
 
     typewrite(frames, hist, f"{PROMPT} ", "who?", GOLD)
     hist.append((f"{PROMPT} who?", GOLD))
-    hist.append(('"codillin\'"', GREEN))
+    hist.append(('"jedzien"', GREEN))
     frames.append(paint(hist, cursor=False))
     frames.extend([paint(hist, cursor=False)] * 6)
 
@@ -87,7 +87,7 @@ def main() -> None:
 
     typewrite(frames, hist, f"{PROMPT} ", "uuu", GOLD)
     hist.append((f"{PROMPT} uuu", GOLD))
-    hist.append(('"nom"', GREEN))
+    hist.append(('"yup"', GREEN))
     hold = paint(hist, cursor=True)
     frames.extend([hold] * 10)
     blink_off = paint(hist, cursor=False)

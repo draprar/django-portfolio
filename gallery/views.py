@@ -17,8 +17,8 @@ def _home_url(view: str, category: str) -> str:
     params: dict[str, str] = {}
     if category and category != "All":
         params["category"] = category
-    if view == "grid":
-        params["view"] = "grid"
+    if view in {"grid", "carousel"}:
+        params["view"] = view
     base = reverse("gallery:gallery_home")
     if not params:
         return base
@@ -92,9 +92,8 @@ class Home(generic.TemplateView):
     """
     Gallery homepage. Category filtering happens in the template from
     `selected_category`; images are loaded via Category.images prefetch.
-    Default presentation is one 3D carousel per category. An Instagram post is
-    one card, and extra photos stay inside that card. `?view=grid` keeps the grid
-    on a wide screen; a phone always shows the carousel.
+    Default presentation is a grid on desktop and a 3D carousel on phones.
+    An Instagram post is one card, and extra photos stay inside that card.
     """
 
     template_name = "gallery/home.html"
@@ -103,7 +102,8 @@ class Home(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         category = self.request.GET.get("category") or None
         selected = category if category else "All"
-        view_mode = "grid" if self.request.GET.get("view") == "grid" else "carousel"
+        requested_view = self.request.GET.get("view")
+        view_mode = "carousel" if requested_view == "carousel" else "grid"
         categories = Category.objects.all().prefetch_related("images").order_by("order", "title")
         instagram_posts = InstagramPost.objects.all().prefetch_related("media").order_by("-created_at")
         context["selected_category"] = selected

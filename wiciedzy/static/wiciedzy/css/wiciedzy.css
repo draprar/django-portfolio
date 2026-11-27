@@ -257,7 +257,7 @@ summary:focus-visible {
   font-weight: 400;
   letter-spacing: 1px;
   line-height: 1.35;
-  color: #fff;
+  color: var(--gold);
 }
 
 @media (max-width: 640px) {
