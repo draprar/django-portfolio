@@ -13,6 +13,7 @@ def test_home_is_bilingual(client):
 
     assert response.status_code == 200
     assert ">wiciędze</a>" in content
+    assert 'href="/static/wiciedzy/img/wic.ico"' in content
     assert 'data-pl="katalog"' in content
     assert 'data-en="catalog"' in content
     assert "Siemasz na wiciędze" not in content
