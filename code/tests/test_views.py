@@ -33,14 +33,37 @@ def test_code_page_renders_intro_and_project(client):
     content = response.content.decode()
 
     assert response.status_code == 200
-    assert "codillin'" in content
+    assert "kodzillin'" in content
+    assert 'data-en="kodzillin\'"' in content
+    assert 'data-pl="kodzillin\'"' in content
     assert 'class="code-role"' not in content
-    assert "Dowożę, sprawdź obszary poniżej, a jak masz problem, potrzebę albo sztos pomysł" in content
+    assert "Głównie grzebię w danych, procesach i systemach, co by znaleźć to, co kosztuje, spowalnia albo się psuje, ale dowożę też inne tematy. Sprawdź obszary poniżej, a jak masz problem, potrzebę lub sztos pomysł" in content
+    assert "I dig through data, processes and systems to find whatever costs money, slows things down or breaks, but I also deliver other stuff. Check the areas below, and if you've got a problem, a need or a killer idea:" in content
+    assert 'name="description"' in content
+    assert 'data-en="I dig through data, processes and systems to find whatever costs money, slows things down or breaks. I also deliver sites, tools and automation."' in content
+    assert 'data-pl="Grzebię w danych, procesach i systemach, żeby znaleźć to, co kosztuje, spowalnia albo się psuje. Dowożę też strony, narzędzia i automatyzacje."' in content
     assert 'data-pl="co tam?"' in content
     assert 'data-pl="reposy"' in content
     assert 'data-pl="skrobnij"' in content
-    assert 'data-pl="Stronki, aplikacje, narzędzia i SEO [i se wyślesz linkiem]."' in content
-    assert 'data-pl="kod"' in content
+    offer_titles = [
+        'data-pl="analityka"',
+        'data-pl="power bi"',
+        'data-pl="uczenie maszynowe"',
+        'data-pl="kod"',
+        'data-pl="web"',
+        'data-pl="dokumentacja"',
+    ]
+    assert [content.index(title) for title in offer_titles] == sorted(content.index(title) for title in offer_titles)
+    assert 'data-pl="Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie]."' in content
+    assert 'data-en="Processes, costs, quality and efficiency [know the cause, find the fix]."' in content
+    assert 'data-pl="Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!]."' in content
+    assert 'data-pl="Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów]."' in content
+    assert 'data-pl="Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer]."' in content
+    assert 'data-pl="Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem]."' in content
+    assert 'data-pl="Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania]."' in content
+    assert content.count('class="offer-description"') == 6
+    assert content.count('class="aside"') == 6
+    assert '<span class="aside">[znasz przyczynę, znajdziesz rozwiązanie]</span>' in content
     assert 'href="#contact"' in content
     assert 'id="contact-form"' in content
     assert reverse("contact") in content

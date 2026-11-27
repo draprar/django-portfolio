@@ -1,14 +1,20 @@
-{% load static %}
+{% load static code_extras %}
 <html lang="pl" data-default-lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>codillin'</title>
-  <meta name="description" content="Inżynier danych — czasem coś dowiozę.">
+  <title data-en="kodzillin'" data-pl="kodzillin'">kodzillin'</title>
+  <meta name="description"
+        content="Grzebię w danych, procesach i systemach, żeby znaleźć to, co kosztuje, spowalnia albo się psuje. Dowożę też strony, narzędzia i automatyzacje."
+        data-en="I dig through data, processes and systems to find whatever costs money, slows things down or breaks. I also deliver sites, tools and automation."
+        data-pl="Grzebię w danych, procesach i systemach, żeby znaleźć to, co kosztuje, spowalnia albo się psuje. Dowożę też strony, narzędzia i automatyzacje.">
   <meta name="theme-color" content="#0a0a0a">
 
-  <meta property="og:title" content="codillin'">
-  <meta property="og:description" content="Inżynier danych — czasem coś dowiozę.">
+  <meta property="og:title" content="kodzillin'" data-en="kodzillin'" data-pl="kodzillin'">
+  <meta property="og:description"
+        content="Grzebię w danych, procesach i systemach, żeby znaleźć to, co kosztuje, spowalnia albo się psuje. Dowożę też strony, narzędzia i automatyzacje."
+        data-en="I dig through data, processes and systems to find whatever costs money, slows things down or breaks. I also deliver sites, tools and automation."
+        data-pl="Grzebię w danych, procesach i systemach, żeby znaleźć to, co kosztuje, spowalnia albo się psuje. Dowożę też strony, narzędzia i automatyzacje.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,13 +34,13 @@
       </div>
 
       <header class="code-header">
-        <h1>codillin'</h1>
+        <h1 data-en="kodzillin'" data-pl="kodzillin'">kodzillin'</h1>
         <div class="underline" aria-hidden="true"></div>
         <div class="intro">
           <p class="intro-cta">
-            <span data-en="I deliver, check the areas below, and if you've got a problem, a need, or a cool idea: "
-                  data-pl="Dowożę, sprawdź obszary poniżej, a jak masz problem, potrzebę albo sztos pomysł: ">
-              Dowożę, sprawdź obszary poniżej, a jak masz problem, potrzebę albo sztos pomysł:
+            <span data-en="I dig through data, processes and systems to find whatever costs money, slows things down or breaks, but I also deliver other stuff. Check the areas below, and if you've got a problem, a need or a killer idea: "
+                  data-pl="Głównie grzebię w danych, procesach i systemach, co by znaleźć to, co kosztuje, spowalnia albo się psuje, ale dowożę też inne tematy. Sprawdź obszary poniżej, a jak masz problem, potrzebę lub sztos pomysł: ">
+              Głównie grzebię w danych, procesach i systemach, co by znaleźć to, co kosztuje, spowalnia albo się psuje, ale dowożę też inne tematy. Sprawdź obszary poniżej, a jak masz problem, potrzebę lub sztos pomysł:
             </span><a class="intro-link" href="#contact"
                data-en="drop me a line"
                data-pl="skrobnij">skrobnij</a>
@@ -46,31 +52,51 @@
         <h2 data-en="what's there?" data-pl="co tam?">what's there?</h2>
         <div class="offer-grid">
           <article class="offer">
-            <h3>web</h3>
-            <p data-en="Sites, apps, tools and SEO [and you just send a link]."
-               data-pl="Stronki, aplikacje, narzędzia i SEO [i se wyślesz linkiem].">
-              Sites, apps, tools and SEO [and you just send a link].
+            <h3 data-en="analytics" data-pl="analityka">analityka</h3>
+            <p class="offer-description"
+               data-en="Processes, costs, quality and efficiency [know the cause, find the fix]."
+               data-pl="Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie].">
+              {% filter aside_markup %}Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie].{% endfilter %}
             </p>
           </article>
           <article class="offer">
-            <h3>power bi</h3>
-            <p data-en="Dashboards and visuals [Excel and PowerPoint = sic!]."
-               data-pl="Dashboardy i wizualizacje [excele i powerpointy = sic!].">
-              Dashboards and visuals [Excel and PowerPoint = sic!].
+            <h3 data-en="power bi" data-pl="power bi">power bi</h3>
+            <p class="offer-description"
+               data-en="Dashboards, reports and visuals [Excel and PowerPoint = sic!]."
+               data-pl="Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!].">
+              {% filter aside_markup %}Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!].{% endfilter %}
             </p>
           </article>
           <article class="offer">
-            <h3 data-en="code" data-pl="kod">code</h3>
-            <p data-en="Programs, systems, and automation [sounds smart, right?]."
-               data-pl="Programy, systemy i automatyzacja [mądrze brzmi, co?].">
-              Programs, systems, and automation [sounds smart, right?].
+            <h3 data-en="machine learning" data-pl="uczenie maszynowe">uczenie maszynowe</h3>
+            <p class="offer-description"
+               data-en="Forecasts, models and anomaly detection [less tea-leaf reading]."
+               data-pl="Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów].">
+              {% filter aside_markup %}Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów].{% endfilter %}
             </p>
           </article>
           <article class="offer">
-            <h3 data-en="machine learning" data-pl="uczenie maszynowe">machine learning</h3>
-            <p data-en="Analyses, forecasts, and models [and they actually help decisions]."
-               data-pl="Analizy, prognozy i modele [a to spoko wspomaga decyzje].">
-              Analyses, forecasts, and models [and they actually help decisions].
+            <h3 data-en="code" data-pl="kod">kod</h3>
+            <p class="offer-description"
+               data-en="Programs, scripts and automation [hand the boring stuff to the computer]."
+               data-pl="Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer].">
+              {% filter aside_markup %}Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer].{% endfilter %}
+            </p>
+          </article>
+          <article class="offer">
+            <h3 data-en="web" data-pl="web">web</h3>
+            <p class="offer-description"
+               data-en="Sites, apps, SEO and online tools [and you just send a link]."
+               data-pl="Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem].">
+              {% filter aside_markup %}Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem].{% endfilter %}
+            </p>
+          </article>
+          <article class="offer">
+            <h3 data-en="documentation" data-pl="dokumentacja">dokumentacja</h3>
+            <p class="offer-description"
+               data-en="Standards, procedures and system mapping [not what only Jane knows]."
+               data-pl="Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania].">
+              {% filter aside_markup %}Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania].{% endfilter %}
             </p>
           </article>
         </div>
