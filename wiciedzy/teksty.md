@@ -267,23 +267,23 @@ EN: I dig through data, processes and systems to find whatever costs money, slow
 PL: Co tam?
 EN: What's there?
 
-PL: Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie].
-EN: Processes, costs, quality and efficiency [know the cause, find the fix].
+PL: Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie]
+EN: Processes, costs, quality and efficiency [know the cause, find the fix]
 
-PL: Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!].
-EN: Dashboards, reports and visuals [Excel and PowerPoint = sic!].
+PL: Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!]
+EN: Dashboards, reports and visuals [Excel and PowerPoint = sic!]
 
-PL: Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów].
-EN: Forecasts, models and anomaly detection [less tea-leaf reading].
+PL: Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów]
+EN: Forecasts, models and anomaly detection [less tea-leaf reading]
 
-PL: Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer].
-EN: Programs, scripts and automation [hand the boring stuff to the computer].
+PL: Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer]
+EN: Programs, scripts and automation [hand the boring stuff to the computer]
 
-PL: Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem].
-EN: Sites, apps, SEO and online tools [and you just send a link].
+PL: Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem]
+EN: Sites, apps, SEO and online tools [and you just send a link]
 
-PL: Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania].
-EN: Standards, procedures and system mapping [not what only Jane knows].
+PL: Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania]
+EN: Standards, procedures and system mapping [not what only Jane knows]
 
 PL: Reposy
 EN: Repos
@@ -3719,4 +3719,3 @@ EN: Naadam in Mongolia is wrestling, archery, and racing. Bökh is one of the th
 
 PL: Szermierka sportowa liczy trafienie lampą. HEMA próbuje czytać, co autor traktatu kazał zrobić ciałem. Pomylenie tych dwóch rzeczy psuje obie.
 EN: Sport fencing scores a touch with a light. HEMA tries to read what a treatise told the body to do. Mixing the two up ruins both.
-

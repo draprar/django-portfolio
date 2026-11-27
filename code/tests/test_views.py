@@ -54,13 +54,14 @@ def test_code_page_renders_intro_and_project(client):
         'data-pl="dokumentacja"',
     ]
     assert [content.index(title) for title in offer_titles] == sorted(content.index(title) for title in offer_titles)
-    assert 'data-pl="Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie]."' in content
-    assert 'data-en="Processes, costs, quality and efficiency [know the cause, find the fix]."' in content
-    assert 'data-pl="Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!]."' in content
-    assert 'data-pl="Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów]."' in content
-    assert 'data-pl="Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer]."' in content
-    assert 'data-pl="Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem]."' in content
-    assert 'data-pl="Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania]."' in content
+    assert 'data-pl="Procesy, koszty, jakość i wydajność [znasz przyczynę, znajdziesz rozwiązanie]"' in content
+    assert 'data-en="Processes, costs, quality and efficiency [know the cause, find the fix]"' in content
+    assert 'data-pl="Dashboardy, raporty i wizualizacje [excele + powerpointy = sic!]"' in content
+    assert 'data-pl="Prognozy, modele i wykrywanie anomalii [mniej wróżenia z fusów]"' in content
+    assert 'data-pl="Programy, skrypty i automatyzacje [nudną robotę zrzucisz na komputer]"' in content
+    assert 'data-pl="Strony, aplikacje, SEO i narzędzia online [i sobie wyślesz linkiem]"' in content
+    assert 'data-pl="Standardy, procedury i mapowanie systemów [a nie to, co wie tylko Ania]"' in content
+    assert content.count(']</span>.') == 0
     assert content.count('class="offer-description"') == 6
     assert content.count('class="aside"') == 6
     assert '<span class="aside">[znasz przyczynę, znajdziesz rozwiązanie]</span>' in content
